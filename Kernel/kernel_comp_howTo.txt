@@ -1,0 +1,47 @@
+Download latest stable kernel version from:
+www.kernels.org
+
+Copy the url and use wget:
+
+wget "<url>"
+
+It comes with a .xz extension:
+
+tar -Jxvf <file.tar.xz> -C /usr/src/
+cd /usr/src
+
+# copy the configuration file from current kernel:
+
+sudo cp /boot/config-<current-kernel-generic> ./.config
+
+# this .config file is our configuration file to use as a template for compiling the new kernel version
+
+# as root you execute menuconfig and choose what modules and options you want to be part of the kernel (default/template is current):
+# if fails, probably you may need to install these libraries: libncurses-dev (perhaps kernel-package, build-dep, linux-image, linux-image-amd64)
+
+make menuconfig
+
+# compilation: 
+
+make
+
+# compile modules:
+
+make modules
+
+make modules_install
+
+# install:
+
+make install
+
+# check grub to check if new kernel version is there:
+
+cat /boot/grub/menu.lst
+
+# and boot folder:
+
+ls -lah /boot/
+
+
+

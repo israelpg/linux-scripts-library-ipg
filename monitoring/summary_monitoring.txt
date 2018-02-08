@@ -1,0 +1,21 @@
+To monitor different aspects of our system:
+
+PORTS: nmap
+
+OPEN FILES/IP: lsof
+
+Network Bandwith: vnstat
+
+PACKETS: iftop
+
+CPU Performance/Power: powertop, iostat
+
+LOGIN/SESSION: last
+
+PROCESSES: ps / pgrep, iotop
+
+DISK USAGE: du -ah / du -cm
+
+FILE SYSTEM: df -h / df -H
+
+

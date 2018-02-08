@@ -1,0 +1,20 @@
+#pgrep can list processes per application or per user:
+
+pgrep firefox
+
+pgrep -u natasa
+
+# then pmap lists details:
+
+pmap -x pid
+
+pmap `pgrep -u natasa`
+
+# free is generic:
+
+free
+
+# whereas smem is more specific by checking the PSS column:
+
+smem -u natasa # see PSS
+

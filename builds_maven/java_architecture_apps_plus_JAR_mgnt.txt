@@ -1,0 +1,45 @@
+JAVA Stuff, architecture:
+
+code is in a .java file ...
+
+compilation: javac filename.java (filename = class name)
+
+Run java app by typing: java filename
+
+###################################################
+
+Create a JAR file: (possible to use wildcards * and so on)
+
+jar cvf filename.jar file1 file2
+
+# compression using 0: jar cvf0filename.jar file1 file2
+
+# we can use an existing manifest when creating a jar:
+
+jar cmf existing-manifest file.jar input_file(s)
+
+# or editing manifest including, for instance, the default entry point (main class to execute with jar when called as java -jar ...)
+
+jar cfe file.jar ClassName file1.class file1.java
+
+
+# to view content of a jar file:
+
+tar tvf file.jar
+
+
+# extracting a jar file:
+
+tar xf file.jar
+
+
+# updating a jar file, adding more content:
+
+tar uf file.jar new_files
+
+tar uf file2.jar images/new.gif
+
+
+# execute JAR file as execution: (ONLY IF THERE IS A MANIFEST!)
+
+java -jar file.jar

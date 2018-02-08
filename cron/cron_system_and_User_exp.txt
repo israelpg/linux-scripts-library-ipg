@@ -1,0 +1,15 @@
+#
+# /etc/cron.d/<package/service> for system services like sysstat, samba, etc ...
+# when adding a cron configuration/service, remember to add user root: file requires root:root and 644 perm
+# eg: * * * * * root /usr/bin/touch /home/ip14aai/ding_dong.txt
+#
+# /etc/crontab (refers to info about how to process crons for each service)
+#
+# /var/spool/cron/crontabs/<username> (it displays the actual cron for the user, using sudo privileges to cat)
+#
+# to list cron for one user: crontab -l
+#
+# to edit cron: crontab -e
+#
+#
+#

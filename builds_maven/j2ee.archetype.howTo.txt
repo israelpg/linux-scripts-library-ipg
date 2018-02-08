@@ -1,0 +1,1 @@
+mvn archetype:generate -DgroupId=com.ip14aai.app -DartifactId=my-j2ee -DarchetypeArtifactId=maven-archetype-j2ee-simple -DinteractiveMode=false

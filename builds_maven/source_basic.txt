@@ -1,0 +1,11 @@
+https://maven.apache.org/guides/getting-started/index.html
+
+# create archetype
+
+mvn compile # target created
+
+mvn test
+
+mvn package # jar or ear
+
+mvn install # copied into your repository, defined in: settings.xml

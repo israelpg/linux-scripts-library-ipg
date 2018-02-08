@@ -1,0 +1,10 @@
+iotop is simply for displaying on live the performance and activity of cpu and devices
+
+iostat is more like a statistic, a report, let's say, that can be refreshed every x seconds ... you can display per cpu or device (disk)
+
+sysstat package includes the sar command, which executes sa1 sa2 scripts for reporting, and is similar to iostat:
+
+sar -u for cpy
+sar -d for devices
+
+So, you can either use iostat or sysstat/sar

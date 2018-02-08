@@ -1,0 +1,26 @@
+List open files for a specific process, so you are aware of its actions:
+
+lsof -i -n -P | grep 'firefox'
+
+firefox 4820 natasa   70u  IPv4 138514      0t0  TCP 10.57.122.197:39695->147.67.138.13:8012 (ESTABLISHED)
+firefox 4820 natasa   84u  IPv4 138654      0t0  TCP 10.57.122.197:41743->147.67.138.13:8012 (ESTABLISHED)
+firefox 4820 natasa   86u  IPv4 138762      0t0  TCP 10.57.122.197:41953->147.67.138.13:8012 (ESTABLISHED)
+
+i IPv4 sockets , -i6 for IPv6
+n dns resolution --> removing the -n option it lists the name instead of IP, sometimes better!
+P Port number --> Always this option!
+
+In any case, the best is just simply:
+
+lsof -i4 -P | grep 'ssh'
+
+and
+
+lsof -i6 -P | grep 'ssh'
+
+If you want to get the Parent ID as well, for instance the one that runs sudo plus process itself:
+
+lsof -i4 -P -R | grep 'ssh' # using -R
+
+The idea is ... you get the PID of the process, and you can check what files are opened while processing
+If you want, you can kill them ... kill -9 PID
