@@ -1,0 +1,43 @@
+1/ BIOS and Boot Loader Security
+2/ Password Security Policy
+3/ Administrative Controls (who has an account in the system)
+4/ Available Network Services (systemctl)
+5/ Personal Firewalls (iptables, ...)
+6/ Security Enhanced Communication Tools (extra tools)
+
+
+1/ Protecting BIOS, just set a password.
+
+Protection Boot Loader, is protecting the GRUB with a password.
+Generate the hashed password following instructions in:
+bootLoader_securing.sh
+
++ This may also help you to set a lock in the boot for a Windows system via GRUB.
+
++ At the same time, is always a good idea to protect system from enabling Interactive Session while booting ... preventing I ... in init with a PROMPT=no
+
+
+2/ Basically module pam.d making use of login or password .so libraries: login_password_expiration_inactive.sh
+
+Index of activities / listing script with instructions and examples:
+- Setting manual password: sudo passwd username (it will use definition in /etc/login.defs) / 
+- Changing user and password settings manually: chage, Locking account: usermod
+- More settings for password definition extending /etc/login.defs via pam.d module service password
+- Locking and account after several days of inactivity
+- Locking account after several failed attempts entering password: account_locking_failedPasswd.sh
++
+- Protecting services restricting to users from a file list (services: imap, pop, ssh, vsftpd ...) / protecting_services_by_user_fileList.sh
++
+- Preventing root shell: (/sbin/nologin ... /etc/securetty ... ssh/sshd_config 'PermitRootLogin no') / root_preventing_directShell.sh
++
+- Preventing access to login or ssh by username, group, from IP range ... / access_sec_config_local_and_ssh.sh
+- Limit maxlogins per user: access_sec_config.sh
++
+- Checking last login sessions: last, lastlog (again, pam.d module loading lib) / log__lastlog_check.sh
+
+4/ Network Services:
+
+The ones which are not used, disable them. Specially telnet, ftp, mail ... which are insecure
+
+6/ Using xinetd to manage services access control
+

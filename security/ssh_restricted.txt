@@ -1,0 +1,11 @@
+You can do a more restricted level of security, depending on the solution implemented:
+
+Imagine for SSH:
+
+1/ Either you allow ssh connections, but restricting access for users being member of a group with access/allowed
+eg: /etc/ssh/sshd_config --> AllowGroups sshlogin
+groupadd sshlogin
+usermod -a -G sshlogin username
+
+2/ Either you use ufw/iptables, so that you can restrict access via port 22/ssh for specific range of IPs, etc ...
+sudo ufw deny 22

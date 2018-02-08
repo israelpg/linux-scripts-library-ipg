@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Normally Network Services via systemctl are turned off by default (disable), although there are some exceptions that could be enable:
+
+cupsd - print server
+portmap - to mount NFSv3 columes
+lpd - alternative print server
+xinetd - controls connections to telnet of gssftp as a superserver
+sendmail - listening to localhost
+
+## turn off / disable them manually, examples below:
+
+# if printer is not used in this server, turn it off:
+
+sudo systemctl disable cupsd
+
+# disable the NFSv3 service via ypbind.service
+
+sudo systemctl disable ypbind.service
+
+...

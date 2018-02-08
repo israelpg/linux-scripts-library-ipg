@@ -1,0 +1,5 @@
+# placed in /etc/banners/
+You are about to start a remote ssh session with CentOS7-IPG Server
+All Activity on this machine via ssh is being logged for security purposes
+Inappropriate use will result in your access privileges being removed
+
