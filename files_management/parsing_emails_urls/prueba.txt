@@ -1,0 +1,5 @@
+This is a line which contains some addresses, like <email> #slynyx@slynux.com. </email>
+and email address, blog "http://www.google.com", test@yahoo.com
+dffdhjdhfjdhfjdhf;cool.hacks@gmail.com<br/>
+<a href="https://code.hacking.co.uk"><h1>Heading</h1>
+http://000grants-prod0.domain0.hack

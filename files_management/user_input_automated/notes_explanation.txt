@@ -1,0 +1,3 @@
+Con echo -e desde terminal pasamos argumentos llamando al script que los muestra
+
+Mientras que usando el expect, tenemos un script que hace spawn del script pasandole args

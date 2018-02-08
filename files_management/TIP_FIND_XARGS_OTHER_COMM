@@ -1,0 +1,9 @@
+You can process several files by finding them
+
+FIND
+
+then you use XARGS to process them one by one, even in parallel
+
+then you can execute a SED, AWK ...
+
+Example: xargs_find

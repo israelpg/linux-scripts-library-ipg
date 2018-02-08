@@ -1,0 +1,52 @@
+# Apart than giving the usual permissions, a file or directory may have an ACL (Access Control List), useful for the following case:
+
+# We have a folder "sales_folder" with group ownership "sales", but we want a user "pepito" from "training_team" to be able to edit files as well, we do not
+# plan to add the user to the group training_team, the solution is using an ACL for that directory:
+
+setfacl -m u:pepito:rwx /sales_folder
+
+# or another case, we may have a specific user (UID: 500) who is part of sales group, but we do not want him to have any permissions in the folder:
+
+setfacl -x u:500 /sales_folder
+
+# UID 500 is still part of the group sales, but do not have any access at all to sales_folder
+
+# other options with examples:
+
+# Revoking write access from all groups and all named users (using the effective rights mask)
+
+setfacl -m m::rx file
+
+#Removing a named group entry from a file's ACL
+
+setfacl -x g:staff file
+
+#Copying the ACL of one file to another
+
+getfacl file1 | setfacl --set-file=- file2
+
+#Copying the access ACL into the Default ACL
+
+getfacl --access dir | setfacl -d -M- dir
+
+# default ACL in a directory: Meaning that all files created under it, will have permissions defined in Default ACL (Only in DIRS!):
+# example below: setting ACL to directory /share by specifying to Others, permissions rx
+
+setfacl -m d:o:rx /share
+
+# retrieving ACL information over folder or file:
+
+getfacl /dir
+getfacl filename
+
+# transfering ACLs during tar or cp:
+
+# cp using the option -a
+
+cp -a file1 /anotherdir/file2
+
+# tar using --acls
+
+tar -cvf --acls compressed.tar /share
+
+
