@@ -1,0 +1,5 @@
+#!/bin/bash
+
+sudo cat root_file.txt
+
+#cat normalUser_file.txt
