@@ -1,0 +1,9 @@
+
+01/08/18
+10.57.121.95
+Command         TTY   User            %CPU     %MEM     Status CPU      Status MEM     
+gnome-shell     ?     ip14aai         2.2      7.3      OK              OK             
+firefox         ?     ip14aai         1.3      6.3      OK              OK             
+Xorg            tty1  root            1.3      3.3      OK              OK             
+evolution-calen ?     ip14aai         0.0      1.2      OK              OK             
+gnome-settings- ?     ip14aai         0.0      0.6      OK              OK             

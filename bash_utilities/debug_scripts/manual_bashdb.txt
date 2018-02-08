@@ -1,0 +1,22 @@
+#Install bashdb
+
+sudo apt-get install bashdb
+
+#debug script test1.sh
+
+bashdb test1.sh
+
+# once you are in, you have these options:
+
+step --> move forwards
+
+edit --> when an error is detected ... then type:
+
+visual --> it will use vi or vim to edit file on live and once saved return to bashdb
+
+R --> Restart debuging script
+
+q --> quit
+
+
+

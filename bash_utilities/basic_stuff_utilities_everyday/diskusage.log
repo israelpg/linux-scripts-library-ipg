@@ -1,0 +1,3 @@
+Date     IP address     Device    Capacity Used   Free   Percent Status
+09/01/17 10.57.122.76   /dev/sr0  60M      60M    0      100%    ALERT
+09/01/17 10.57.122.76   /dev/sda1 25G      8,6G   15G    38%     SAFE
