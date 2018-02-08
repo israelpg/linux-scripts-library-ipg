@@ -1,0 +1,17 @@
+Scenario in the config saved in folder: /config_rtd_nat
+
+The server has two network cards, one is connected to the main network 10.57.122.0/24, pointing to the router
+10.57.122.1. Server IP is configured in iface enp0s3 (main network iface in VBox) as 10.57.122.196
+Out of a VBox environment will be eth0. This network card in VBox is configured as Bridged, with static IP.
+
+Then our server has a second network interface card, in VBox as Host Only, and the VBox itself provides an IP (dhcp)
+which is range 192.168.56.0/24, in enp0s8 iface, IP: 192.168.56.101
+
+This second iface is "connected" to an internal subnet with that range 192.168.56.0/24, as the rest of machines.
+
+See diagram in 6-Enrutamiento.pdf (ITE Manual).
+
+The client machine, also has VBox Host Only with a dhcp IP assigned: 192.168.56.102
+
+The server makes NAT so that the internal network will be translated to range 10.57.122.0/24 and then routed to
+gateway 10.57.122.1, which will redirect traffic to the Internet accordingly.

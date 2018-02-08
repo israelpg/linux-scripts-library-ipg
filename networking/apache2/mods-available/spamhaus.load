@@ -1,0 +1,1 @@
+LoadModule spamhaus_module   /usr/lib/apache2/modules/mod_spamhaus.so
