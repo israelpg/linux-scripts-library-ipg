@@ -1,0 +1,10 @@
+ALIAS: ServerName is the simple url, eg: firstweb.ip14aai.com (with domain name included), but users can
+access via Alias: www.firstweb.ip14aai.com
+
+Access Management: Better to implement in each Virtual Host, if applicable only to particular case.
+For instance, access to a specific content (url) in secondweb.ip14aai.com, protected with password, creating
+auth directive, password is stored in specified folder, and so on ...
+
+Directory container as well in phpjokes site, protecting access, which is forbidden for specific IP.
+
+
