@@ -1,0 +1,134 @@
+# Date: 21/11/2017
+# Author: Israel Palomino Garcia
+# Version: 1.0
+# Description: Automation of perfomance monitoring in localhost
+
+#!/bin/bash
+
+# include library source
+#. /home/ip14aai/pruebas/scripts/bash_programming/examples_bash_prog/automation/lib/sh/functions_ipgmonitor.sh
+
+# if script encounters an error, it will exit 1
+set -o errexit
+
+# functions declaration
+checkPercentage()
+{
+	numberPercentage=$(echo $1 | tr -d '%')
+	if [ $numberPercentage -gt 75 ]
+	then
+		resetPerc=1
+	fi
+}
+
+# unset any variable which system may be using concerning this script:
+unset resetPerc tecreset os architecture kernelrelease internalip externalip nameserver loadaverage
+
+# this loop controls if arguments -i or -v have been passed calling the script:
+# -i installs the script (basically copying it into /bin), whereas -v displays the version
+
+while getopts iv name
+do
+	case $name in
+	i)iopt=1;;
+	v)vopt=1;;
+	*)echo "Invalid argument when calling the script, pass -i (install) or -v (version)" ; exit 1;;
+	esac
+done
+
+# checking if -i argument has been passed when calling the script for installation:
+if [[ ! -z $iopt ]]
+then
+	if [ -f /usr/bin/monitor ] # if the file does not exist, has not been installed, proceeding:
+	then
+		echo "Script $0 is already installed in this host. Run with command: ipgmonitor"
+	else
+		scriptname=$0
+		su -c "cp $scriptname /usr/bin/ipgmonitor" root &&
+		echo "Script $0 installed, run with command: ipgmonitor" || echo "Error while installing" ; exit 1
+	fi
+fi
+
+if [[ ! -z $vopt ]]
+then
+	echo -e "ipg_monitoring version 1.0\nDesigned by Israel PG\nGPL 2017"
+fi
+
+# variable which stores value of resetting rich format in terminal (no bold, no color ...)
+tecreset=$(tput sgr0)
+
+echo -e "\E[32m***** HOSTNAME INFORMATION *****\e[0m"
+hostnamectl
+echo ""
+
+echo -e "\E[32m***** CONNECTIVITY STATUS *****\e[0m"
+#ping -c 1 google.com &>/dev/null && echo -e '\E[32m'"Internet: Connected $tecreset" || echo -e '\e[31;22m'"Internet: Disconnected"
+echo ""
+# Check Internal IP
+internalip=$(hostname -I)
+echo -e '\E[32m'"Internal IP :" $tecreset $internalip
+# Check External IP
+externalip=$(curl -s ipecho.net/plain;echo)
+echo -e '\E[32m'"External IP : $tecreset "$externalip
+
+# -File system disk space usage, calling function checkDisks which checks percentages as well:
+echo -e "\E[32m***** FILE SYSTEM DISK SPACE USAGE *****\e[0m"
+dfTotalLine=$(df -h --total | grep -i 'filesystem')
+echo "$dfTotalLine"
+# displaying rest of df lines checking percentages
+while read line;
+do
+	percentage=$(echo $line | awk '{print $5}')
+	checkPercentage $percentage
+	if [[ ! -z $resetPerc ]] # token found, meaning percentage is -gt than 75
+	then
+		echo -e '\e[31;22m'"$line $tecreset"
+		unset resetPerc
+	else
+		echo "$line"
+	fi
+done < <(df -h --total | grep -vi 'filesystem')
+echo ""
+
+# -Free and used memory in the system:
+echo -e "\E[32m ***** FREE AND USED MEMORY *****\e[0m"
+headerMem=$(free -m | grep -i 'total')
+echo -e "$headerMem"
+# echo rest of free -m lines, checking mem limit to alert user
+while read line;
+do
+	total=$(echo $line | awk '{print $2}')
+	used=$(echo $line | awk '{print $3}')
+	limit=$(echo "$total * 75 / 100" | bc)
+	if [ $used -ge $limit ]
+	then
+		echo -e '\e[31;22m'"$line $tecreset"
+	else
+		echo "$line"
+	fi
+done < <(free -m | grep -vi 'total')
+echo ""
+
+# -System uptime and load:
+echo -e "\E[32m***** SYSTEM UPTIME AND LOAD *****\e[0m"
+uptime
+echo ""
+# -Logged-in users:
+echo -e "\E[32m***** CURRENTLY LOGGED-IN USERS *****\e[0m"
+w
+echo ""
+# -Top 5 processes as far as memory usage is concerned
+echo -e "\E[32m***** TOP 5 MEMORY-CONSUMING PROCESSES *****\e[0m"
+ps -eo pmem,pcpu,comm,tty,user --sort=-pmem | head -n 6
+# or using the line below with similar output:
+#ps -eo %mem,%cpu,comm --sort=-%mem | head -n 6
+echo ""
+echo -e "\E[32m***** TOP 5 BIGGEST FILES IN /HOME/$USER FOLDER *****\e[0m"
+sudo find /home/$USER -type f -size +1M | xargs -I {} du -ah {} | sort -nrk 1 | head -n 5
+echo ""
+echo -e "\e[1;32mDone.\e[0m"
+
+# Unset variables
+unset resetPerc tecreset os architecture kernelrelease internalip externalip nameserver loadaverage
+
+shift $(($OPTIND -1)) # resetting arguments index, so that next argument will be again $1

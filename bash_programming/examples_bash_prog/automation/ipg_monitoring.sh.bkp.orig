@@ -1,0 +1,82 @@
+# Date: 21/11/2017
+# Author: Israel Palomino Garcia
+# Version: 1.0
+# Description: Automation of perfomance monitoring in localhost
+
+#!/bin/bash
+
+# library source
+source bin/sh/functions_ipgmonitor.sh
+
+# if script encounters an error, it will exit 1
+set -o errexit
+
+# unset any variable which system may be using concerning this script:
+unset tecreset os architecture kernelrelease internalip externalip nameserver loadaverage
+
+# this loop controls if arguments -i or -v have been passed calling the script:
+# -i installs the script (basically copying it into /bin), whereas -v displays the version
+
+while getopts iv name
+do
+	case $name in
+	i)iopt=1;;
+	v)vopt=1;;
+	*)echo "Invalid argument when calling the script, pass -i (install) or -v (version)" ; exit 1;;
+	esac
+done
+
+# checking if -i argument has been passed when calling the script for installation:
+if [[ ! -z $iopt ]]
+then
+	if [ -f /usr/bin/monitor ] # if the file does not exist, has not been installed, proceeding:
+	then
+		echo "Script $0 is already installed in this host. Run with command: ipgmonitor"
+	else
+		scriptname=$0
+		su -c "cp $scriptname /usr/bin/ipgmonitor" root &&
+		echo "Script $0 installed, run with command: ipgmonitor" || echo "Error while installing" ; exit 1
+	fi
+fi
+
+if [[ ! -z $vopt ]]
+then
+	echo -e "ipg_monitoring version 1.0\nDesigned by Israel PG\nGPL 2017"
+fi
+
+# variable which stores value of resetting rich format in terminal (no bold, no color ...)
+tecreset=$(tput sgr0)
+
+echo -e "\e[31;22m***** HOSTNAME INFORMATION *****\e[0m"
+hostnamectl
+echo ""
+echo -e "\e[31;22m***** CONNECTIVITY STATUS *****\e[0m"
+ping -c 1 google.com &>/dev/null && echo -e '\E[32m'"Internet: $tecreset Connected" || echo -e '\E[32m'"Internet: Disconnected"
+echo ""
+# -File system disk space usage:
+echo -e "\e[31;22m***** FILE SYSTEM DISK SPACE USAGE *****\e[0m"
+df -h
+echo ""
+# -Free and used memory in the system:
+echo -e "\e[31;22m ***** FREE AND USED MEMORY *****\e[0m"
+free -m
+echo ""
+# -System uptime and load:
+echo -e "\e[31;22m***** SYSTEM UPTIME AND LOAD *****\e[0m"
+uptime
+echo ""
+# -Logged-in users:
+echo -e "\e[31;22m***** CURRENTLY LOGGED-IN USERS *****\e[0m"
+w
+echo ""
+# -Top 5 processes as far as memory usage is concerned
+echo -e "\e[31;22m***** TOP 5 MEMORY-CONSUMING PROCESSES *****\e[0m"
+ps -eo pmem,pcpu,comm,tty,user --sort=-pmem | head -n 6
+# or using the line below with similar output:
+#ps -eo %mem,%cpu,comm --sort=-%mem | head -n 6
+echo ""
+echo -e "\e[31;22m***** TOP 5 BIGGEST FILES IN /HOME/$USER FOLDER *****\e[0m"
+sudo find /home/$USER -type f -size +1M | xargs -I {} du -ah {} | sort -nrk 1 | head -n 5
+echo ""
+echo -e "\e[1;32mDone.\e[0m"
+#checkPercentages
