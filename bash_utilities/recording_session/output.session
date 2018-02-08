@@ -1,0 +1,21 @@
+Script started on ven. 05 mai 2017 17:02:57 CEST
+]0;natasa@02DI20161542846: ~/pruebas/scripts/recording_session[01;32mnatasa@02DI20161542846[00m:[01;34m~/pruebas/scripts/recording_session[00m$ ls -lah
+total 16K
+drwxr-xr-x  2 natasa profesores 4,0K mai    5 17:02 [0m[01;34m.[0m
+drwxr-xr-x 17 natasa profesores 4,0K mai    5 17:00 [01;34m..[0m
+-rw-r--r--  1 natasa profesores  127 mai    5 17:02 calling_playback.sh
+-rw-r--r--  1 natasa profesores   82 mai    5 17:01 calling_record.sh
+-rw-r--r--  1 natasa profesores    0 mai    5 17:02 output.session
+-rw-r--r--  1 natasa profesores    0 mai    5 17:02 timing.log
+]0;natasa@02DI20161542846: ~/pruebas/scripts/recording_session[01;32mnatasa@02DI20161542846[00m:[01;34m~/pruebas/scripts/recording_session[00m$ date ([K"+%d %B %Y"
+05 mai 2017
+]0;natasa@02DI20161542846: ~/pruebas/scripts/recording_session[01;32mnatasa@02DI20161542846[00m:[01;34m~/pruebas/scripts/recording_session[00m$ time pwd
+/home/natasa/pruebas/scripts/recording_session
+
+real	0m0.000s
+user	0m0.000s
+sys	0m0.000s
+]0;natasa@02DI20161542846: ~/pruebas/scripts/recording_session[01;32mnatasa@02DI20161542846[00m:[01;34m~/pruebas/scripts/recording_session[00m$ exit
+exit
+
+Script done on ven. 05 mai 2017 17:03:38 CEST

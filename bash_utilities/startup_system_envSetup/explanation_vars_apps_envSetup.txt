@@ -1,0 +1,7 @@
+1st: /etc/profile (startup programs)
+2nd: previous file loads /etc/profile.d (for user logged in)
+3rd: ~/bash_profile (which calls ~/.bashrc)
+
+If something is added in 1st, it may be overwritten by a following rule in 2nd or 3rd, bear in mind mate.
+
+

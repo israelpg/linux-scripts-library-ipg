@@ -1,0 +1,13 @@
+Well, you pass a script with sed arguments and options that work as:
+
+1/ Indicating line to line, like you do normally with sed -n '1,3' p , for instance
+
+2/ Then you open {} , and you type a substitution s option, one regex pattern for another string
+
+3/ Then option w , for writing output to a txt file
+
+$ sed -nf scriptF.sed apache2.conf
+
+# f to pass file scriptF with lines and substitution, then you indicate working with apache2.conf file
+
+# I have used tags in apache2.conf, to indicate my own code, so that can be extracted with sed

@@ -1,0 +1,17 @@
+dd if=/dev/zero of=loopfile bs=1M count=100
+
+mkfs.ext2 loopfile
+
+file loopfile
+
+sudo losetup /dev/loop1 loopfile
+
+sudo mount /dev/loop1 /mnt/loopfile
+
+######
+
+losetup permite cargar un loop file en disco, lo que seria el /dev/loop{n}
+
+Y luego se monta en /mnt/<created folder>
+
+Previamente teniamos todo logico, ahora es desde fisico se monta en system

@@ -1,0 +1,10 @@
+# israel-manual-config-start
+setting 1
+line added
+just for fun
+# israel-manual-config-end
+# israel-manual-config-start
+This is another configuration, the 2nd
+I hope This proves how sed is useful in these cases
+right, so This is the end of 2dn
+# israel-manual-config-end
