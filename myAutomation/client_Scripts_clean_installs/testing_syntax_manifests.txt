@@ -1,0 +1,3 @@
+$ sudo apt-get install puppet-lint
+
+$ puppet-lint <manifest_name>.pp

@@ -1,0 +1,15 @@
+Common folder for group profesores, anyone from that group can store there files, but ...
+instead of having file group ownership for that user, would be owned by profesores!
+
+Se usa el setgid:
+
+chmod 2755 foldername
+
+# 2 para setgid - group
+
+# or: s
+
+chmod g+s foldername
+
+
+# Using setgid in files, causes to be executed with group ownership permission.

@@ -1,0 +1,12 @@
+#dn: dc=ip14aai,dc=com
+#dc: ip14aai
+#description: LDAP Admin
+#objectClass: dcObject
+#objectClass: organizationalUnit
+#ou: rootobject
+
+dn: ou=marketing-ou,dc=ip14aai,dc=com
+ou: marketing-ou
+description: Users of Marketing ou
+objectClass: organizationalUnit
+objectClass: top

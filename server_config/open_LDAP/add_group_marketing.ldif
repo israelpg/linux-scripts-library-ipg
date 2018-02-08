@@ -1,0 +1,7 @@
+# marketing-group, marketing-ou, ip14aai.com
+dn: cn=marketing-group,ou=marketing-ou,dc=ip14aai,dc=com
+cn: marketing-group
+objectClass: posixGroup
+objectClass: top
+gidNumber: 4001
+

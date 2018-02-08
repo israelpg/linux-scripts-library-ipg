@@ -1,0 +1,3 @@
+Public server key sent to client allowing ssh autologin with root privileges
+Host is added in the list of clients to be monitored by Nagios3
+t1.sh: line 23: pepe: command not found

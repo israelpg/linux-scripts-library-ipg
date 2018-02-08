@@ -1,0 +1,5 @@
+Ubuntu does not allow setuid in executable homemade scripts
+
+You can only use setuid for ELF binaries
+
+/usr/bin/<command>

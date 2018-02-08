@@ -1,0 +1,16 @@
+# either:
+
+sudo visudo
+
+# or:
+
+sudo nano -c /etc/sudoers
+
+# then add line with your user below root one
+
+
+# preventing that sudo keeps action without requesting passwd within the next 5 minutes of introducint it:
+# edit /etc/sudoers :
+
+Defaults	timestamp_timeout=0
+

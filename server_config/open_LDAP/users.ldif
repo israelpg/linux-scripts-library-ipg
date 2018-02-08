@@ -1,0 +1,32 @@
+### MANUALLY ADDING USER, even the initial one, like no phpldapadmin is used:
+# users.ldif :
+dn: cn=Raquel,cn=sales-group,ou=sales,dc=ip14aai,dc=com
+cn: Raquel Cordoba
+gidnumber: 4000
+givenname: Raquel
+homedirectory: /home/rcordoba
+loginshell: /bin/sh
+objectclass: inetOrgPerson
+objectclass: posixAccount
+objectclass: shadowAccount
+objectclass: top
+sn: Cordoba
+uid: rcordoba
+uidnumber: 4001
+userpassword: {MD5}qUZSqpfHIRuolU3RWjz4OA==
+
+dn: cn=Pep Guardiola,cn=sales-group,ou=sales,dc=ip14aai,dc=com
+#cn: Pep Guardiola
+gidnumber: 4000
+givenname: Pep
+homedirectory: /home/pguardiola
+loginshell: /bin/sh
+objectclass: inetOrgPerson
+objectclass: posixAccount
+objectclass: shadowAccount
+objectclass: top
+sn: Guardiola  
+uid: guardiola  
+uidnumber: 4002
+userpassword: {MD5}qUZSqpfHIRuolU3RWjz4OA==
+

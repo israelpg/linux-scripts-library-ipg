@@ -1,0 +1,9 @@
+# First add the username to the group wheel:
+
+sudo usermod -a -G wheel ip14aai # or sudo gpasswd -a ip14aai wheel
+
+# then uncomment in file /etc/pam.d/su the line:
+
+# auth required pam_sheel.so use_uid
+
+# so that now only members of group wheel are allowed to make su

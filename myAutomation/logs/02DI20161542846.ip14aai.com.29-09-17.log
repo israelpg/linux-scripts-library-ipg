@@ -1,0 +1,93 @@
+Public server key sent to client allowing ssh autologin with root privileges
+Host is added in the list of clients to be monitored by Nagios3
+Checking if puppet-agent is already installed in 02DI20161542846.ip14aai.com
+Connection to 10.57.121.192 closed.
+puppet-agent is not installed in 02DI20161542846.ip14aai.com ...  installation will begin:
+Transfering puppetlabs-pc1-xenial.deb package to client machine...
+sending incremental file list
+puppetlabs-release-pc1-xenial.deb
+
+sent 13,744 bytes  received 35 bytes  27,558.00 bytes/sec
+total size is 13,662  speedup is 0.99
+File transfered, starting installation...
+Selecting previously unselected package puppetlabs-release-pc1.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 238299 files and directories currently installed.)
+Preparing to unpack .../puppetlabs-release-pc1-xenial.deb ...
+Unpacking puppetlabs-release-pc1 (1.1.0-2xenial) ...
+Setting up puppetlabs-release-pc1 (1.1.0-2xenial) ...
+0% [Working]            Get:1 http://archive.ubuntu.com/ubuntu xenial InRelease [247 kB]
+0% [1 InRelease 0 B/247 kB 0%] [Waiting for headers] [Waiting for headers] [Waiting for headers]                                                                                                Get:2 http://uk.archive.ubuntu.com/ubuntu xenial InRelease [247 kB]
+0% [1 InRelease 14,1 kB/247 kB 6%] [Waiting for headers] [2 InRelease 0 B/247 kB 0%] [Waiting for headers]                                                                                                          Ign:3 http://apt.puppetlabs.com xenial InRelease
+                                                                                                          0% [1 InRelease 14,1 kB/247 kB 6%] [Waiting for headers] [2 InRelease 0 B/247 kB 0%]                                                                                    Hit:4 http://archive.canonical.com/ubuntu xenial InRelease
+0% [1 InRelease 43,1 kB/247 kB 17%] [2 InRelease 42,4 kB/247 kB 17%] [Waiting for headers]0% [4 InRelease gpgv 11,5 kB] [1 InRelease 43,1 kB/247 kB 17%] [2 InRelease 42,4 kB/247 kB 17%] [Waiting for headers]                                                                                                                     Hit:5 http://apt.puppetlabs.com xenial Release
+                                                                                                                     0% [4 InRelease gpgv 11,5 kB] [1 InRelease 159 kB/247 kB 64%] [2 InRelease 101 kB/247 kB 41%]                                                                                             0% [4 InRelease gpgv 11,5 kB] [Waiting for headers] [2 InRelease 247 kB/247 kB 100%]                                                                                    0% [4 InRelease gpgv 11,5 kB] [Waiting for headers] [Waiting for headers]                                                                         Get:6 http://archive.ubuntu.com/ubuntu xenial-updates InRelease [102 kB]
+0% [4 InRelease gpgv 11,5 kB] [6 InRelease 14,5 kB/102 kB 14%] [Waiting for headers]                                                                                    0% [4 InRelease gpgv 11,5 kB] [Waiting for headers]                                                   Get:7 http://uk.archive.ubuntu.com/ubuntu xenial-security InRelease [102 kB]
+0% [4 InRelease gpgv 11,5 kB] [Waiting for headers] [7 InRelease 4 966 B/102 kB 5%]                                                                                   0% [4 InRelease gpgv 11,5 kB] [Waiting for headers] [Waiting for headers]                                                                         Get:8 http://archive.ubuntu.com/ubuntu xenial-security InRelease [102 kB]
+0% [4 InRelease gpgv 11,5 kB] [8 InRelease 0 B/102 kB 0%] [Waiting for headers]                                                                               0% [4 InRelease gpgv 11,5 kB] [Waiting for headers]                                                   0% [Waiting for headers] [Waiting for headers]0% [Release.gpg gpgv 58,9 kB] [Waiting for headers] [Waiting for headers]                                                                         Get:9 http://uk.archive.ubuntu.com/ubuntu xenial-updates InRelease [102 kB]
+0% [Release.gpg gpgv 58,9 kB] [Waiting for headers] [9 InRelease 15,7 kB/102 kB 15%]                                                                                    0% [Release.gpg gpgv 58,9 kB] [Waiting for headers]                                                   Get:10 http://archive.ubuntu.com/ubuntu xenial-backports InRelease [102 kB]
+0% [Release.gpg gpgv 58,9 kB] [10 InRelease 5 955 B/102 kB 6%]                                                              0% [Release.gpg gpgv 58,9 kB]                             0% [Working]0% [1 InRelease gpgv 247 kB]                            0% [Working]0% [2 InRelease gpgv 247 kB]                            0% [Working]0% [6 InRelease gpgv 102 kB]                            0% [Working]0% [7 InRelease gpgv 102 kB]                            0% [Working]0% [8 InRelease gpgv 102 kB]                            0% [Working]0% [9 InRelease gpgv 102 kB]                            0% [Working]0% [10 InRelease gpgv 102 kB]                             100% [Working]              Fetched 1 004 kB in 0s (1 005 kB/s)
+Reading package lists... 0%Reading package lists... 0%Reading package lists... 1%Reading package lists... 2%Reading package lists... 2%Reading package lists... 4%Reading package lists... 4%Reading package lists... 5%Reading package lists... 5%Reading package lists... 5%Reading package lists... 5%Reading package lists... 5%Reading package lists... 5%Reading package lists... 5%Reading package lists... 5%Reading package lists... 19%Reading package lists... 19%Reading package lists... 22%Reading package lists... 32%Reading package lists... 32%Reading package lists... 39%Reading package lists... 39%Reading package lists... 39%Reading package lists... 39%Reading package lists... 40%Reading package lists... 40%Reading package lists... 40%Reading package lists... 40%Reading package lists... 41%Reading package lists... 41%Reading package lists... 42%Reading package lists... 42%Reading package lists... 43%Reading package lists... 43%Reading package lists... 43%Reading package lists... 43%Reading package lists... 43%Reading package lists... 43%Reading package lists... 43%Reading package lists... 43%Reading package lists... 44%Reading package lists... 44%Reading package lists... 46%Reading package lists... 46%Reading package lists... 46%Reading package lists... 46%Reading package lists... 46%Reading package lists... 46%Reading package lists... 46%Reading package lists... 46%Reading package lists... 46%Reading package lists... 46%Reading package lists... 47%Reading package lists... 47%Reading package lists... 48%Reading package lists... 48%Reading package lists... 48%Reading package lists... 48%Reading package lists... 48%Reading package lists... 48%Reading package lists... 48%Reading package lists... 48%Reading package lists... 48%Reading package lists... 48%Reading package lists... 49%Reading package lists... 49%Reading package lists... 49%Reading package lists... 49%Reading package lists... 49%Reading package lists... 49%Reading package lists... 49%Reading package lists... 49%Reading package lists... 49%Reading package lists... 49%Reading package lists... 49%Reading package lists... 49%Reading package lists... 49%Reading package lists... 49%Reading package lists... 49%Reading package lists... 49%Reading package lists... 49%Reading package lists... 49%Reading package lists... 49%Reading package lists... 49%Reading package lists... 49%Reading package lists... 49%Reading package lists... 49%Reading package lists... 49%Reading package lists... 49%Reading package lists... 49%Reading package lists... 49%Reading package lists... 49%Reading package lists... 49%Reading package lists... 49%Reading package lists... 51%Reading package lists... 51%Reading package lists... 54%Reading package lists... 54%Reading package lists... 54%Reading package lists... 55%Reading package lists... 55%Reading package lists... 55%Reading package lists... 55%Reading package lists... 55%Reading package lists... 55%Reading package lists... 55%Reading package lists... 55%Reading package lists... 68%Reading package lists... 68%Reading package lists... 81%Reading package lists... 81%Reading package lists... 89%Reading package lists... 89%Reading package lists... 89%Reading package lists... 89%Reading package lists... 89%Reading package lists... 89%Reading package lists... 89%Reading package lists... 89%Reading package lists... 90%Reading package lists... 90%Reading package lists... 91%Reading package lists... 91%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 92%Reading package lists... 94%Reading package lists... 94%Reading package lists... 95%Reading package lists... 95%Reading package lists... 96%Reading package lists... 96%Reading package lists... 96%Reading package lists... 96%Reading package lists... 96%Reading package lists... 96%Reading package lists... 96%Reading package lists... 96%Reading package lists... 97%Reading package lists... 97%Reading package lists... 98%Reading package lists... 98%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... 99%Reading package lists... Done
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree       
+Reading state information... 0%Reading state information... 0%Reading state information... Done
+The following packages were automatically installed and are no longer required:
+  auth-client-config libnss-ldap
+Use 'apt autoremove' to remove them.
+The following NEW packages will be installed:
+  puppet-agent
+0 upgraded, 1 newly installed, 0 to remove and 292 not upgraded.
+Need to get 0 B/16,4 MB of archives.
+After this operation, 92,0 MB of additional disk space will be used.
+Selecting previously unselected package puppet-agent.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 238304 files and directories currently installed.)
+Preparing to unpack .../puppet-agent_1.10.8-1xenial_amd64.deb ...
+Unpacking puppet-agent (1.10.8-1xenial) ...
+Processing triggers for libc-bin (2.23-0ubuntu9) ...
+Setting up puppet-agent (1.10.8-1xenial) ...
+Created symlink from /etc/systemd/system/multi-user.target.wants/puppet.service to /lib/systemd/system/puppet.service.
+Created symlink from /etc/systemd/system/multi-user.target.wants/mcollective.service to /lib/systemd/system/mcollective.service.
+Created symlink from /etc/systemd/system/multi-user.target.wants/pxp-agent.service to /lib/systemd/system/pxp-agent.service.
+Removed symlink /etc/systemd/system/multi-user.target.wants/pxp-agent.service.
+Processing triggers for libc-bin (2.23-0ubuntu9) ...
+Connection to 10.57.121.192 closed.
+Installation of puppet-agent package completed. Enabling and starting puppet service completed
+Certificate request issued by 02DI20161542846.ip14aai.com will be signed off by puppet-server
+Hostname 02DI20161542846.ip14aai.com requesting its certificate to be signed
+Do you want to sign certificate for hostname 02DI20161542846.ip14aai.com ? Y/N ? Right, you want to sign certificate for hostname 02DI20161542846.ip14aai.com
+Signing Certificate Request for:
+  "02di20161542846.ip14aai.com" (SHA256) BE:41:F4:99:D8:74:C5:A6:AE:DB:F5:0F:51:AF:B1:4B:2E:D5:D1:A1:AF:1C:65:75:9F:D9:1B:26:32:C6:13:87
+[mNotice: Signed certificate request for 02di20161542846.ip14aai.com[0m
+[mNotice: Removing file Puppet::SSL::CertificateRequest 02di20161542846.ip14aai.com at '/etc/puppetlabs/puppet/ssl/ca/requests/02di20161542846.ip14aai.com.pem'[0m
+Certificate signed off, the complete list of certificates is now:
++ "02di20161542844.ip14aai.com" (SHA256) 7F:51:97:19:35:DA:22:03:A1:C7:38:6D:BF:0E:A0:D6:38:60:9B:62:62:E0:B8:8F:11:47:17:4F:AC:26:25:BD (alt names: "DNS:puppet", "DNS:02di20161542844.ip14aai.com")
++ "02di20161542846.ip14aai.com" (SHA256) DE:77:AB:61:CB:28:8A:AF:74:19:B2:75:FE:58:5A:CD:34:7A:EE:A9:6E:E6:27:89:F9:4D:8E:58:65:72:4C:AF
+List of manifest(s) to be implemented or checked for revision in 02DI20161542846.ip14aai.com:
+total 44K
+drwxr-xr-x 2 puppet puppet 4,0K sept. 26 16:36 .
+drwxr-xr-x 5 root   root   4,0K juin  27 10:34 ..
+-rw-r--r-- 1 puppet puppet   42 juin  28 17:47 nmap_installation.pp
+-rw-r--r-- 1 root   root    375 sept. 26 16:36 openLDAP_clientConfig.pp
+-rw-r--r-- 1 root   root    640 sept.  7 17:52 scheduled_backups_test.pp
+-rw-r--r-- 1 puppet puppet  201 juin  29 13:45 service_bind9.pp
+-rw-r--r-- 1 puppet puppet  201 juin  28 16:29 service_rsync.pp
+-rw-r--r-- 1 puppet puppet  238 juin  28 10:15 site2.pp
+-rw-rw-r-- 1 puppet puppet  240 juil.  4 16:28 site3.pp
+-rw-r--r-- 1 puppet puppet  227 juil.  4 14:36 site.pp
+-rw-r--r-- 1 root   root    242 juil.  6 14:11 site_test.pp
+Do you want to check and/or deploy manifest(s) in host 02DI20161542846.ip14aai.com ? Y/N?  Right, you want to deploy manifest(s) in host 02DI20161542846.ip14aai.com
+[0;32mInfo: Caching certificate for 02di20161542846.ip14aai.com[0m
+[0;32mInfo: Caching certificate_revocation_list for ca[0m
+[0;32mInfo: Caching certificate for 02di20161542846.ip14aai.com[0m
+[0;32mInfo: Using configured environment 'production'[0m
+[0;32mInfo: Retrieving pluginfacts[0m
+[0;32mInfo: Retrieving plugin[0m
+[0;32mInfo: Caching catalog for 02di20161542846.ip14aai.com[0m
+[0;32mInfo: Applying configuration version '1506693896'[0m
+[mNotice: /Stage[main]/Main/Package[ldap-auth-client]/ensure: created[0m
+[mNotice: /Stage[main]/Main/Package[nscd]/ensure: created[0m
+[mNotice: /Stage[main]/Main/File[/etc/ldap.conf]/ensure: defined content as '{md5}b2df3664bb38bde781096d6c607153df'[0m
+[mNotice: /Stage[main]/Main/Service[rsync]/ensure: ensure changed 'stopped' to 'running'[0m
+[0;32mInfo: /Stage[main]/Main/Service[rsync]: Unscheduling refresh on Service[rsync][0m
+[0;32mInfo: Creating state file /opt/puppetlabs/puppet/cache/state/state.yaml[0m
+[mNotice: Applied catalog in 9.69 seconds[0m
+Connection to 02di20161542846.ip14aai.com closed.

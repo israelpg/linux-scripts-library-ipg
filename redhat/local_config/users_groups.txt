@@ -1,0 +1,21 @@
+# same as for Debian
+
+# useradd for adding a user, normally is better for first groupadd in case he/she needs own group
+
+groupadd <groupname>
+
+useradd -d /home/<username> -m -g <groupname> -s /bin/bash
+
+# to add more groups to the user:
+
+usermod -aG group1,group2 username
+
+# to do it in an individual group only, instead of several:
+
+gpasswd -a username groupname
+
+# delete individual user of group:
+
+gpasswd -d username groupname
+
+

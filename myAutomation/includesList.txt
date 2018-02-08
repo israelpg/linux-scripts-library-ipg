@@ -1,0 +1,33 @@
+Server centralizes the installation and configuration of client machines in our network.
+
+1. Running detectNewHosts.sh script, in order to check if new hosts have joined our network, if so, some actions take place:
+
+2. Register the new host in the server file records, plus adding hostname/IP in our Bind9 Server, sending ssh key so that remote connections take place without passwd
+
+3. Check if puppet-agent package is installed, if not, then pushing installation
+
+4. Sign certificate request from each client
+
+5. Deploy manifests, including:
+
+5.1. openLDAP
+
+5.2. totalBkp.sh script, in order to run a cron backup in client
+
+6. Logging --> Define logrotate in server, for managing logs for deployments
+
+7
+
+
+PENDING to be implemented: 
+
+a) Puppet implementing classes, according to documentation: https://docs.puppet.com/puppet/latest/bgtm.html
+
+b) Check totalBkp.sh script
+
+c) Implement logrotate
+
+d) Deploy git, define workspace an initial remote setting up
+
+e) Deploy Maven, for local builds
+

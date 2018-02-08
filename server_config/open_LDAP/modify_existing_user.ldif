@@ -1,0 +1,6 @@
+dn: cn=Juan Berenguel,cn=sales-group,ou=sales-ou,dc=ip14aai,dc=com
+changetype: Modify
+#add: foo
+#foo: bar
+replace: uidNumber
+uidNumber: 4000

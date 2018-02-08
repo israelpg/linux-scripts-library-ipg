@@ -1,0 +1,8 @@
+When installing a new Linux client machine in our network, puppet is installed at first, so that we can automate installation and configuration.
+
+First, the client gets an IP from the DHCP Server. The hostname is defined.
+
+Then our server runs the main script to check clients (hostname) which are new in the network, recently defined, and if it is the case, then
+it installs puppet, then it will execute the script to sign certificate, and then, it will check packages needed for openLDAP.
+
+
