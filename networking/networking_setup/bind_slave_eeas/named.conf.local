@@ -1,0 +1,19 @@
+//
+// Do any local configuration here
+//
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bind/zones.rfc1918";
+
+zone "ipgdomain.com" {
+	type slave;
+	file "etc/bind/ipgdomain.db";
+	masters { 10.56.16.32; };
+};
+
+zone "16.56.10.in-addr.arpa" {
+	type slave;
+	file "etc/bind/10.rev";
+	masters { 10.56.16.32; };
+};

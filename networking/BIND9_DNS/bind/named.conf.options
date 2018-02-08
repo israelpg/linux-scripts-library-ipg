@@ -1,0 +1,42 @@
+# ip14aai Trusted Section
+acl "trusted" {
+	10.57.122.196;	# DNS Server itself - localhost*
+	10.57.122.197;	# Host - Ubuntu Client
+};
+
+options {
+	directory "/var/cache/bind";
+
+	// If there is a firewall between you and nameservers you want
+	// to talk to, you may need to fix the firewall to allow multiple
+	// ports to talk.  See http://www.kb.cert.org/vuls/id/800113
+
+	// If your ISP provided one or more IP addresses for stable 
+	// nameservers, you probably want to use them as forwarders.  
+	// Uncomment the following block, and insert the addresses replacing 
+	// the all-0's placeholder.
+
+	recursion yes;			# enables recursive queries
+	allow-recursion { trusted; };	# allows recursive queries from "trusted" clients
+	listen-on { 10.57.122.196; };	# DNS Server private IP address - listen on private network
+	allow-transfer { none; };	# disable zone transfers by default
+	allow-query { any; };
+	
+	forwarders {
+		10.57.33.12;
+		10.57.33.13;
+		#10.57.33.17;
+		#8.8.8.8;		# Google DNS Server 1
+		#8.8.4.4;		# Google DNS Server 2
+	};
+
+	//========================================================================
+	// If BIND logs error messages about the root key being expired,
+	// you will need to update your keys.  See https://www.isc.org/bind-keys
+	//========================================================================
+	dnssec-validation auto;
+
+	auth-nxdomain no;    # conform to RFC1035
+	listen-on-v6 { any; };
+};
+

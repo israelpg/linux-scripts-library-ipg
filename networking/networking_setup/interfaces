@@ -1,0 +1,17 @@
+# interfaces(5) file used by ifup(8) and ifdown(8)
+auto lo
+iface lo inet loopback
+
+# The primary network interface  
+auto enp0s3 
+iface enp0s3 inet static  
+	address 10.57.122.196  
+	netmask 255.255.255.0
+	gateway 10.57.122.1
+	network 10.57.122.0  
+	broadcast 10.57.122.255
+	dns-nameservers 10.57.122.196
+	dns-nameservers 10.57.33.12
+	dns-nameservers 10.57.33.13
+	dns-search ip14aai.com      
+ 

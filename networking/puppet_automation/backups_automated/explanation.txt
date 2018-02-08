@@ -1,0 +1,5 @@
+# under this path you save the modules which are referred in the manifests, like files:
+/opt/puppetlabs/puppet/modules/<module_name>/files
+
+# under this path, you configure the manifest:
+/etc/puppetlabs/code/environments/production/manifests/<manifest_name>.pp

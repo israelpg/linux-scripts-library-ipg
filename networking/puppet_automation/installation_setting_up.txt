@@ -1,0 +1,112 @@
+Client-Server Architecture
+
+One main server is the Puppet-Server, the rest of servers or hosts are the puppet client agents.
+
+SOURCES:
+https://www.digitalocean.com/community/tutorials/how-to-install-puppet-4-on-ubuntu-16-04
+
+Youtube Channel: urbanpenguin
+
+Steps:
+
+1/ In a local environment, for testing purposes, identify the puppet server in the hosts for each machine, server itself and agents:
+
+/etc/hosts
+<IP> puppet
+
+In a real environment, use the DNS entries in the BIND9 DNS Server
+
+* MEM requirements ... minimum use 3GB
+
+2/ Server: Install puppetserver
+
+$ curl -O <url with the apt sources list to be added in our machine, instead of using directly apt-get install>
+$ sudo dpkg -i <it-will-be-installed-as-a-package>.deb
+$ sudo apt-get update
+$ sudo apt-get install puppetserver
+
+3/ Allow default puppet port in our Firewall (ufw):
+
+sudo ufw allow 8140
+
+sudo ufw status
+
+4/ Start service for puppetserver, plus enable it for future boot sessions (this can be done via sysv-rc-conf as well)
+
+sudo systemctl start puppetserver
+sudo systemctl enable puppetserver
+
+5/ Installing the puppet agents: one by one
+
+$ curl -O <url>.deb
+$ sudo dpkg -i <package>.deb
+$ sudo apt-get update
+$ sudo apt-get install puppet-agent
+
+6/ 
+$ sudo systemctl start puppet
+$ sudo systemctl enable puppet
+
+7/ Now, the agent client will send a certificate request to the server, to display in the server the list of certificate requests:
+
+$ sudo /opt/puppetlabs/bin/puppet cert list 
+
+# cert requests are listed for each agent, and you need to sign them: (bear in mind, request by fqdn/dns) if you want specific certname:
+# edit: /etc/puppetlabs/puppet/puppet.conf (add line):
+# certname=machine22445.ip14aai.com (or the name you like to be listed as agent's cert request in the cert list -all in the server)
+
+# what can be added in each agent, is the name of the server, for network identification between puppet agent / server:
+[main]
+server=02DI20161542844.ip14aai.com
+
+$ sudo /opt/puppetlabs/bin/puppet cert sign
+
+8/ MANIFESTO: Creating a file, and spreading it to agents: .pp extension
+
+$ sudo nano -c /etc/puppetlabs/code/environments/production/manifests/site.pp
+
+# this format is exclusive to puppet:
+
+file {'/tmp/it_works.txt':					# resource type file and filename
+	ensure => present,					# make sure it exists
+	mode => '0644',						# file permissions
+	content => "It works on ${ipaddress_enp0s3}!\n",	# Print the enp0s3 fact
+}
+
+# This config does the following: Creates a temp file in each agent which displays a quote, is done by running in each agent:
+
+sudo /opt/puppetlabs/bin/puppet agent --test
+
+9/ Logging:
+
+$ tail -f /var/log/puppetlabs/puppetserver/puppetserver.log
+
+################# REVOKING A SIGNED CERTIFICATE ##################################
+
+# SERVER
+
+$ sudo /opt/puppetlabs/bin/puppet cert revoke <agent_fqdn>
+
+$ sudo /opt/puppetlabs/bin/puppet cert clean <agent_fqdn>
+
+# CLIENT/AGENT
+
+$ sudo systemctl stop puppet.service
+$ sudo systemctl stop mcollective.service
+$ sudo rm -Rf /etc/puppetlabs/puppet/ssl
+# or more technical way:
+$ sudo find /etc/puppetlabs/puppet/ssl -name agent_fqdn.pem -delete
+# clear cache info:
+$ sudo rm -Rf /opt/puppetlabs/puppet/cache
+$ sudo systemctl start puppet.service
+$ sudo systemctl start mcollective.service
+
+10/ To check current configuration, and locate properties/values, use:
+
+puppet master --configprint <property_name>
+
+puppet master --configprint masterport # 8140
+
+puppet master --configprint all | less
+
+

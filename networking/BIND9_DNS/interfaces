@@ -1,0 +1,51 @@
+# interfaces(5) file used by ifup(8) and ifdown(8)
+auto lo
+iface lo inet loopback
+
+# The primary network interface  
+auto enp0s3 
+iface enp0s3 inet static  
+	address 10.57.122.196  
+	netmask 255.255.255.0
+	gateway 10.57.122.1
+	network 10.57.122.0  
+	broadcast 10.57.122.255
+	dns-nameservers 10.57.122.196
+	dns-nameservers 10.57.33.12
+	dns-nameservers 10.57.33.13
+	dns-search ip14aai.com      
+
+# Bridge Network:
+#auto br0
+#iface br0 inet static
+#	address 192.168.55.10
+#	netmask 192.168.55.0
+#	broadcast 192.168.55.255
+#	gateway 192.168.55.1
+#	bridge_ports enp0s3
+#	bridge_fd 9
+#	bridge_hello 2
+#	bridge_maxage 12
+#	bridge_stp off
+ 
+# vlan:
+#auto enp0s3.100
+#iface enp0s3.100 inet static
+# vlan-raw-device enp0s3
+# address 192.168.1.1
+# netmask 255.255.255.0
+
+auto enp0s8
+iface enp0s8 inet dhcp
+#        address 192.168.1.196
+#        netmask 255.255.255.0
+#        gateway 192.168.1.1
+#        network 192.168.0.0
+#        broadcast 192.168.1.255
+#        dns-nameservers 10.57.122.196
+#        dns-nameservers 10.57.33.12
+#        dns-nameservers 10.57.33.13
+        dns-search ip14aai.com
+
+auto enp0s9
+iface enp0s9 inet dhcp

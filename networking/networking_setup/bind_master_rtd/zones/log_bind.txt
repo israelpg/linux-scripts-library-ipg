@@ -1,0 +1,21 @@
+● bind9.service - BIND Domain Name Server
+   Loaded: loaded (/etc/systemd/system/bind9.service; enabled; vendor preset: enabled)
+  Drop-In: /run/systemd/generator/bind9.service.d
+           └─50-insserv.conf-$named.conf
+   Active: active (running) since mer. 2017-04-26 15:00:44 CEST; 1min 4s ago
+     Docs: man:named(8)
+  Process: 16888 ExecStop=/usr/sbin/rndc stop (code=exited, status=0/SUCCESS)
+ Main PID: 16894 (named)
+   CGroup: /system.slice/bind9.service
+           └─16894 /usr/sbin/named -f -u bind -4
+
+avril 26 15:01:26 02DI20161542844.ip14aai.com named[16894]: connection refused resolving './NS/IN': 192.36.148.17#53
+avril 26 15:01:26 02DI20161542844.ip14aai.com named[16894]: connection refused resolving 'secondweb.com/A/IN': 192.36.148.17#53
+avril 26 15:01:26 02DI20161542844.ip14aai.com named[16894]: connection refused resolving './NS/IN': 192.203.230.10#53
+avril 26 15:01:26 02DI20161542844.ip14aai.com named[16894]: connection refused resolving 'secondweb.com/A/IN': 192.203.230.10#53
+avril 26 15:01:26 02DI20161542844.ip14aai.com named[16894]: connection refused resolving './NS/IN': 198.41.0.4#53
+avril 26 15:01:26 02DI20161542844.ip14aai.com named[16894]: connection refused resolving 'secondweb.com/A/IN': 198.41.0.4#53
+avril 26 15:01:26 02DI20161542844.ip14aai.com named[16894]: connection refused resolving './NS/IN': 192.228.79.201#53
+avril 26 15:01:26 02DI20161542844.ip14aai.com named[16894]: connection refused resolving 'secondweb.com/A/IN': 192.228.79.201#53
+avril 26 15:01:26 02DI20161542844.ip14aai.com named[16894]: connection refused resolving './NS/IN': 192.58.128.30#53
+avril 26 15:01:26 02DI20161542844.ip14aai.com named[16894]: connection refused resolving 'secondweb.com/A/IN': 192.58.128.30#53

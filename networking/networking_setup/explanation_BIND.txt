@@ -1,0 +1,2 @@
+If you are making a master which is also makes forwarding, indicate in the Server
+its own IP as dns server, but also the forwarders ip's!

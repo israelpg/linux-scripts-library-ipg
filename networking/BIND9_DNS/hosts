@@ -1,0 +1,16 @@
+#127.0.0.1	localhost 02DI20161542844.ip14aai.com 02DI20161542844
+127.0.0.1	localhost
+127.0.1.1	02DI20161542844.ip14aai.com 02DI20161542844
+10.57.122.196	02DI20161542844.ip14aai.com 02DI20161542844
+192.168.56.101	02DI20161542844.ip14aai.com 02DI20161542844
+#127.0.0.1	ip14aai.com www.ip14aai.com
+#127.0.0.1	firstweb.com www.firstweb.com
+#127.0.0.1	secondweb.com www.secondweb.com
+#127.0.0.1	phpjokes.com www.phpjokes.com
+
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters

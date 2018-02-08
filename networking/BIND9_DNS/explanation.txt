@@ -1,0 +1,21 @@
+Within RTD:
+
+In any case, I created a DOMAIN: ip14aai.com
+
+To add machines in the Domain, type FQDN in /etc/hosts file for 127.0.1.1 (loopback) and its own IP.
+Check with hostname -f
+
+named.config.options: listen on server itself/IP, forwarders to external DNS (Internet), so that our server
+only resolves internally, our own local network. Add trusted hosts, for more security (our local hosts).
+
+named.conf.local: Indicate zone files: forward and reverse. Plus logging options.
+
+/etc/bind/zones: Here the zone files (2: forward and reverse)
+
+
+
+
+
+
+
+

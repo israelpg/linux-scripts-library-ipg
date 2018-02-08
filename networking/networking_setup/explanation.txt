@@ -1,0 +1,30 @@
+#hostname:
+
+sudo nano -c /etc/hostname
+# Type only the hostname, not the FQDN with the Domain
+
+#domainame
+
+sudo nano -c /etc/hosts
+
+127.0.0.1 localhost
+127.0.1.1 FQDN hostname
+IP FQDN hostname
+
+# FQDN is hostname.domainame
+
+# flush iface
+
+sudo ifdown --force interface && sudo ip addr flush dev interface && sudo ifup --force interface
+
+# proxy setting in shell: export http_proxy and https_proxy variables to env / environment, with parameters (same for ftp)
+http_proxy=http://username:password@IP_proxy:port/
+
+# IP and DNS:
+
+sudo nano -c /etc/network/interfaces # including dns-nameserver IP / dns-search domainname
+# /etc/resolv.conf is updated then automatically
+
+# add ROUTE
+
+sudo route add -net IP_gateway

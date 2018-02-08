@@ -1,0 +1,18 @@
+;
+; BIND data file for local loopback interface
+;
+$TTL	604800
+@	IN	SOA	ipgdomain.com. root.ipgdomain.com. (
+			      1		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+
+@	IN	NS	israel-ubuntu1010.ipgdomain.com.
+
+israel-ubuntu1010	IN	A	10.56.16.32
+israel.pizzas	IN	A	10.56.16.32
+israel-ubuntu1010-client	IN	A	10.56.16.36
+israel-PC-win7	IN	A	10.56.16.46
+

@@ -1,0 +1,32 @@
+//
+// Do any local configuration here
+//
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+include "/etc/bind/zones.rfc1918";
+
+// busqueda directa
+zone "ip14aai.com" {
+	type master;
+	file "/etc/bind/zones/db.ip14aai.com";
+	#allow-transfer { 10.57.122.xxx  }; --> To apply if there is a second DNS Server
+};
+
+// busqueda inversa
+zone "122.57.10.in-addr.arpa" {
+	type master;
+	file "/etc/bind/zones/db.10";
+	#allow-tranfer { 10.57.122.xxx  }; --> Second DNS Server
+};
+
+logging {
+	channel query.log {
+		file "/var/log/bind9/query.log";
+		severity debug 3;
+		print-time yes;
+		print-category yes;
+	};
+	category queries { query.log;  }; 
+};
+
