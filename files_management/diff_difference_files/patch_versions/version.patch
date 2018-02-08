@@ -1,0 +1,18 @@
+--- test1.txt	2017-05-19 17:03:09.486397234 +0200
++++ test2.txt	2017-05-19 17:03:09.486397234 +0200
+@@ -1,10 +1,9 @@
+-
+ ahmad
++ankica
++david
++israel
+ javi
+-juan
++julia
+ natasa
+-raquel
+-sami
++noelia
+ sandra
+-javi
+-juan

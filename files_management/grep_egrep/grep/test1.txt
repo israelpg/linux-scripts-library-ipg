@@ -1,0 +1,3 @@
+this is the line containing pattern
+another line
+and still another one
