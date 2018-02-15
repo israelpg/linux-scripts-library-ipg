@@ -1,3 +1,7 @@
 #!/bin/bash
 
-sudo netstat -ntp
+sudo netstat -tuplna
+
+# t: tcp , u: udp
+
+

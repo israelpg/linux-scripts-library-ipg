@@ -9,7 +9,7 @@
 
 function recordEntryDNS()
 {
-	hostAssignedIP=$(awk -F '.' '{print $4}' <<< "$host")
+	hostAssignedIP=$(awk -F '.' '{print $4}' <<< "$host") # last 8 bits of IP address is kept
 	hostnameNoDomain=$(awk -F '.' '{print $1}' <<< "$hostnameChecking")
 	echo "$hostAssignedIP	IN	PTR	$hostnameChecking." >>/etc/bind/zones/db.10
 	echo "$hostnameNoDomain	IN	A	$host" >>/etc/bind/zones/db.ip14aai.com
@@ -22,17 +22,11 @@ function hostMonitoring()
 # then, sed -i to substitute the client_hostname, client_IP, and client_alias in the new file by values passed
 # as argument in this script :)
 #
-	cp client_template.cfg /etc/nagios3/conf.d/$hostnameChecking.cfg
+	mv /etc/nagios3/conf.d/client_template.cfg /etc/nagios3/conf.d/$hostnameChecking.cfg
 	hostNoDomain=$(awk -F '.' '{print $1}' <<< $hostnameChecking)
 	sed -i "s/client_hostname/$hostNoDomain/" /etc/nagios3/conf.d/$hostnameChecking.cfg
 	sed -i "s/client_IP/$host/" /etc/nagios3/conf.d/$hostnameChecking.cfg
 	sed -i "s/client_alias/$hostnameChecking/" /etc/nagios3/conf.d/$hostnameChecking.cfg
-}
-
-function deployingManifests()
-{
-	bash puppet_deploying_changes.sh $hostnameChecking && arrayDeployedHosts[indexArrayDepl] = $hostnameChecking ; let indexArrayDepl++
-
 }
 
 function installPuppetAgent()
@@ -57,11 +51,19 @@ function installPuppetAgent()
 
 }
 
+function deployingManifests()
+{
+        bash puppet_deploying_changes.sh $hostnameChecking && arrayDeployedHosts[indexArrayDepl] = $hostnameChecking ; let indexArrayDepl++
+
+}
+
+# starting script..
+
 timestamp=$(date +"%d-%m-%y")
 
 # Getting list of active hosts in our network:
 #activeHosts=$(fping -a -g 10.57.121.0/24 2>/dev/null) --> this is the real production code line
-activeHosts=$(fping 10.57.121.192 | awk '{ print $1 }') # temp solution to apply in only client machine used for testing purposes
+activeHosts=$(fping 10.136.137.107 | awk '{ print $1 }') # temp solution to apply in only client machine used for testing purposes
 
 # our file with hostnames recorded in the server: If recorded, no further installation is pushed
 recordedHosts=/recordedHosts/recordedHosts.txt
@@ -71,19 +73,18 @@ indexArrayDepl=0
 for host in $activeHosts
 do
 	echo "$timestamp - Checking for new hosts in the network"
-	nslookup $host > /tmp/hostToCheck_$$.log
-	hostnameChecking=$(cat /tmp/hostToCheck_$$.log | awk '{ print $4 }')
-	hostnameChecking=$(echo $hostnameChecking | rev | cut -c 2- | rev) # removing last character  .
-	# cross-check the hostname with our file acting as a db for hostnames recorded in the server
-	counterCheck=$(cat $recordedHosts | grep $hostnameChecking | wc -l)
-	# Defining log file for this host, only created if is a new client to be recorded/deployed
+	# getting just hostname removing last character .
+	hostnameChecking=$(nslookup 10.136.137.107 | awk '{print $4}' | rev | cut -c 2- | rev)
+	# Defining log file for this host, which will only created if is a new client to be recorded/deployed
         logFile="$hostnameChecking.$timestamp.log"
         pathLog=logs/$logFile
+	# cross-check the hostname with our file acting as a db for hostnames recorded in the server
+	counterCheck=$(cat $recordedHosts | grep $hostnameChecking | wc -l)
 	# If hostname is not recorded in our file returns 0 records, then installation of puppet + manifests deployment after cert is signed, plus record DNS entry in bind9
 	(if [ $counterCheck -eq 0 ]
 	then
 		echo $hostnameChecking >> /recordedHosts/recordedHosts.txt # hostname is now recorded
-		echo "Hostname: $hostnameChecking recorded as new client, therefore we proceed with puppet-agent installation if not installed yet" >> $pathLog
+		echo "Hostname: $hostnameChecking has been recorded as new client, therefore we proceed with puppet-agent installation if not installed yet" >> $pathLog
 		# First the id_rsa.pub server key is sent to the client in order to allow ssh autologin without password to be entered
 		echo "Public server key sent to client allowing ssh autologin with root privileges"
 		scp /root/.ssh/id_rsa.pub root@$host:/root/.ssh/authorized_keys2

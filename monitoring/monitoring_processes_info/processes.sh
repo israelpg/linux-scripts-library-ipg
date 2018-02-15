@@ -12,17 +12,22 @@ pgrep firefox # gives pid, say 3265
 
 ps -p 3265 -o comm,user,tty,pcpu,pmem
 
+## equivalent to:
+[root@02DI20161235444 ip14aai]# ps -p `pgrep firefox` -o comm,user,tty,pmem,pcpu
+COMMAND         USER     TT       %MEM %CPU
+firefox         ip14aai  ?         4.9  0.5
+
 # or:
 ps -C firefox -o comm,user,tty,pcpu,pmem
 
 # or:
 
-cat /proc/pid/comm 
+cat /proc/pid/comm
 
 
 # more processes info can be obtained using several options, FOR INSTANCE:
 
-ps -eo pid,user,tty,pmem,stat
+ps -eo pid,comm,user,tty,pmem,stat
 
 # OPTIONS ARE LISTED BELOW:
 # pcpu
@@ -31,7 +36,7 @@ ps -eo pid,user,tty,pmem,stat
 # pmem
 # comm (executable filename, to identify process by its name)
 # cmd (Simple command)
-# user 
+# user
 # nice (Priority)
 # time (cumulative CPU time)
 # etime (elapsed time since the process started)
@@ -56,7 +61,9 @@ ps -u israel
 
 ps -U root -u root
 
-A good example: ps -U root -u root -o user,comm,nice,state,tty,pmem,time| head -n 10
+# A good example:
+
+ps -U root -u root -o user,pid,comm,nice,state,tty,pmem,time| head -n 10
 
 # SORTING, by CPU consumption:
 

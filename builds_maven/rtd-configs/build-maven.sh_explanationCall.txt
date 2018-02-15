@@ -1,0 +1,11 @@
+From RTC, command to call script build-maven.sh:
+
+/ec/local/sw/rtc-buildengine/buildscripts/build-maven.sh
+
+Arguments (options when calling the script):
+
+-s ${runSonar} -m ${buildType} -d ${team.scm.fetchDestination} -w ${team.scm.workspaceUUID} -b ${buildResultUUID} -j 8 -p ${personalBuild}
+
+Working Directory:
+
+${team.scm.fetchDestination}/<app-name>

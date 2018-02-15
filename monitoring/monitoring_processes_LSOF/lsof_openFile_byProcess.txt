@@ -1,6 +1,6 @@
-List open files for a specific process, so you are aware of its actions:
+#List open files for a specific process, so you are aware of its actions:
 
-lsof -i -n -P | grep 'firefox'
+lsof -i -N -P | grep 'firefox'
 
 firefox 4820 natasa   70u  IPv4 138514      0t0  TCP 10.57.122.197:39695->147.67.138.13:8012 (ESTABLISHED)
 firefox 4820 natasa   84u  IPv4 138654      0t0  TCP 10.57.122.197:41743->147.67.138.13:8012 (ESTABLISHED)
