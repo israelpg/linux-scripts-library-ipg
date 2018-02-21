@@ -1,0 +1,1 @@
+dmidecode # info about hardware

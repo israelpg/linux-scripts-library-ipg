@@ -22,8 +22,9 @@ function hostMonitoring()
 # then, sed -i to substitute the client_hostname, client_IP, and client_alias in the new file by values passed
 # as argument in this script :)
 #
-	mv /etc/nagios3/conf.d/client_template.cfg /etc/nagios3/conf.d/$hostnameChecking.cfg
+	cp /etc/nagios3/conf.d/client_template.cfg /etc/nagios3/conf.d/$hostnameChecking.cfg
 	hostNoDomain=$(awk -F '.' '{print $1}' <<< $hostnameChecking)
+	# updating the template with hostname's details:
 	sed -i "s/client_hostname/$hostNoDomain/" /etc/nagios3/conf.d/$hostnameChecking.cfg
 	sed -i "s/client_IP/$host/" /etc/nagios3/conf.d/$hostnameChecking.cfg
 	sed -i "s/client_alias/$hostnameChecking/" /etc/nagios3/conf.d/$hostnameChecking.cfg
@@ -42,13 +43,19 @@ function installPuppetAgent()
 		echo "Transfering puppetlabs-pc1-xenial.deb package to client machine..."
                 rsync -avz /home/ip14aai/Downloads/puppetlabs-release-pc1-xenial.deb root@$host:/usr/share
                 echo "File transfered, starting installation..."
+		# Note: I need to add functions to check for active service, and so on ...
 		ssh -t root@$host "dpkg -i /usr/share/puppetlabs-release-pc1-xenial.deb && apt-get update && apt-get install puppet-agent && systemctl enable puppet.service ;
 				systemctl start puppet.service ; rm /usr/share/puppetlabs-release-pc1-xenial.deb"
 	        echo "Installation of puppet-agent package completed. Enabling and starting puppet service completed"
 		echo "Certificate request issued by $hostnameChecking will be signed off by puppet-server"
 		bash puppet_validate_signCerts.sh $hostnameChecking
 	fi
+}
 
+# function to check if a service is active ... se more details in library for this function type:
+function checkingForService(serviceName)
+{
+	systemctl -H root@$host "status $serviceName"
 }
 
 function deployingManifests()

@@ -16,6 +16,7 @@ do
 	then
 		echo "Right, you want to deploy manifest(s) in host $1"
 		let token++
+		# you may probably want to check if puppet.service is enabled&active: systemctl -H user@host "status puppet.service", checking what returns
 		ssh -t root@$1 '/opt/puppetlabs/bin/puppet agent --test'
 	elif [ $promptInput == 'N' ]
 	then

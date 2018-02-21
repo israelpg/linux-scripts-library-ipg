@@ -4,11 +4,12 @@
 
 ### 2nd you must protect GRUB with a Password if this is used as a Boot Loader for our Linux Machine 
 # in two cases, if machine is only system or in a dual boot config with Win:
-
 sudo /sbin/grub-md5-crypt # it generates the hashed password for GRUB
-
 # edit the grub config file to add the password: /boot/grub/grub.conf:
 password --md5 <password-hash>
+
+# in red hat: /usr/sbin/grub2-setpassword:
+sudo grub-setpassword # — Generate the user.cfg file containing the hashed grub bootloader password.
 
 # secured, because:
 # to enter command line before grub loads our RH, you must first press p followed by the GRUB password

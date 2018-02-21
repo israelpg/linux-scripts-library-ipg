@@ -10,12 +10,12 @@ set -o nounset
 
 bash -v scriptname # verbose: executing while displaying all commands and so on ...
 bash -n scriptname # simulates execution, checking syntax
-bash -x scriptname # execution with trancing mode, displaying all details, including arguments' values and so on
+bash -x scriptname # execution with tracing mode, displaying all details, including arguments' values and so on
 
 ## Tip: you can declare the execution option (simulation or logging) withing the script iself:
-# simulating
+# simulating:
 #!/bin/bash -n
-# tracing mode
+# tracing mode:
 #!/bin/bash -x
 
 # debugging just a section of the script:
@@ -30,6 +30,10 @@ PATH="$PATH:/thisnewpath/"
 
 # get script filename:
 $0
+
+# arguments: when calling script, e.g.: scriptname arg1 arg2:
+$1 # arg1
+$2 # arg2
 
 # Builtin variables:
 # There are some useful builtin variables, like
@@ -90,7 +94,7 @@ fi
 # files:
 
 Operator syntax 	Description
--a <FILE> 	True if <FILE> exists. :!: (not recommended, may collide with -a for AND, see below) 	
+-a <FILE> 	True if <FILE> exists. :!: (not recommended, may collide with -a for AND, see below)
 -e <FILE> 	True if <FILE> exists.
 -f <FILE> 	True, if <FILE> exists and is a regular file.
 -d <FILE> 	True, if <FILE> exists and is a directory.
@@ -106,7 +110,7 @@ Operator syntax 	Description
 -w <FILE> 	True, if <FILE> exists and is writable.
 -x <FILE> 	True, if <FILE> exists and is executable.
 -s <FILE> 	True, if <FILE> exists and has size bigger than 0 (not empty).
--t <fd> 	True, if file descriptor <fd> is open and refers to a terminal. 	
+-t <fd> 	True, if file descriptor <fd> is open and refers to a terminal.
 <FILE1> -nt <FILE2> 	True, if <FILE1> is newer than <FILE2> (mtime). :!:
 <FILE1> -ot <FILE2> 	True, if <FILE1> is older than <FILE2> (mtime). :!:
 <FILE1> -ef <FILE2> 	True, if <FILE1> and <FILE2> refer to the same device and inode numbers. :!:
@@ -184,7 +188,7 @@ do
 	#instructions
 done
 
-## repeating command until successful resolution:
+## repeating command until successful resolution: e.g. calling function repeat with arg cmd="ls -lah": repeat $cmd
 function repeat()
 {
 	while true
@@ -216,14 +220,36 @@ done < <(df -h --total | grep -vi filesystem)
 # redirecting results of script execution to log file:
 
 (
-# instructions, loops, etc ...
+	# instructions, loops, etc ...
 ) >> $logfile
 
 # redirecting to log file, but also displaying error 2 in stdout screen 1:
 2>&1 | tee -a $pathLog # stdout in the screen, plus tee redirection to log file
 
+# using commands for files with var input: e.g.: awk
+resultAwk=$(awk -F '.' '{print $4}' <<< $hostIP)
+
 # installing the script
 # make use of the getopts iv name in a loop for evaluating with case, see above
+while getopts iv name
+do
+	case $name in
+		i) iopt="install";;
+		v) vopt="version";;
+		*) echo "error";;
+	esac
+done
+
+# input from user:
+read -p "enter something here: " input
+
+# input password:
+read -s "enter your password: " password
+
+# assign values to vars with a single input with a command instead of input:
+read -r username pass uid gid comments homedir shell <<< $(cat /etc/passwd | grep "^$username")
+echo -e "The username is: $username\n"
+...
 
 # terminal with rich text: tput
 tput bold
@@ -231,8 +257,6 @@ tput bold
 tput sgr0
 
 ### calling a script from another script:
-
-
 
 There are a couple of ways you can do this:
 
