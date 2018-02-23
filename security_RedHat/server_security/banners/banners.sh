@@ -8,7 +8,7 @@
 /etc/banners/sshd
 
 # activate banner via:
-/etc/sshd_config
+/etc/ssh/sshd_config
 Banner /etc/banners/sshd
 
 # allowing ALL users to have access to the server after banner is displayed before login:
@@ -17,7 +17,7 @@ sshd : ALL : banners /etc/banners/
 # for an after login message:
 /etc/motd
 # if you want to use script instead, then better edit the motd as a sh script in:
-/etc/profile.d/motd.sh
+/etc/profile.d/motd.sh # which may be customized for bin login or for ssh
 
 
 
