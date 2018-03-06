@@ -5,7 +5,7 @@
 
 /etc/pam.d/vsftpd
 
-auth	required	/lib/security/pam_listfile.so	item=user	sense=deny	file=/etc/vsftpd.ftpusers onerr=succeed
+auth	required	pam_listfile.so	item=user	sense=deny	file=/etc/vsftpd.ftpusers onerr=succeed
 
 # same applicability for other services like: /etc/pam.d/pop ... imap ... ssh
 

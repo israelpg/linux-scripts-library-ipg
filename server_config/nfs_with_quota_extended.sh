@@ -18,11 +18,11 @@
 
 # 1/ Create a folder that will be shared
 
-sudo mkdir -p /nfs-folder-quota
+sudo mkdir -p /nfs-quota
 
 # 2/ Create an image file stored in server folder /usr/disk-img:
 
-sudo dd if=/dev/zero of=/usr/disk-img/shared-disk.ext3 bs=1M count=100
+sudo dd if=/dev/zero of=/usr/disk-img/test-img.ext3 bs=1M count=100
 
 # 3/ mkfs to ext3 extension:
 
@@ -34,7 +34,7 @@ file /usr/disk-img/test-img.ext3
 
 /usr/disk-img/test-img.ext3   /nfs-quota                  ext3    rw,loop,usrquota,grpquota       0       0
 
-# 5/ Mount /nfs-folder-quota
+# 5/ Mount /nfs-folder-quota as a /dev/loop(n) device
 
 sudo mount /nfs-quota
 
@@ -44,17 +44,18 @@ df -h
 
 cat /proc/mounts
 
-# obviously in: /etc/fstab, as edited before
+# obviously in: /etc/fstab, as edited before, reflected with:
+findmnt
 
-# Ownership for main nfs folder (nfs-quota) is: nobody:nogroup
+# Ownership for main nfs folder (nfs-quota) is: nobody:nogroup (Debian), nobody:nobody (RedHat)
 
-# 6/ Add quotagrp in the system: sudo groupadd quotagrp
+# 6/ Add quotagrp in the system: sudo groupadd grpquota
 
-# 7/ Select users that are part of this group: sudo usermod -a -G groupname username
+# 7/ Select users that are part of this group: sudo usermod -a groupname username
 
 # 8/ Inside the mounted point nfs-folder-quota, create a folder which will contain the permissions for the group:
 #    mkdir -p /nfs-quota/shared
-#    /quota/shared:$ sudo chown -R root:quotagrp
+#    /quota/shared:$ sudo chown -R root:grpquota
 #    /quota/shared:$ sudo chmod 2775 . ## this is for setgid (exec with group permissions, files with group ownership when created)
 #    ## You can also add sticky bit, avoiding users to remove others files: sudo chmod a+t .
 
@@ -62,16 +63,25 @@ cat /proc/mounts
 #    quotacheck -cug /nfs-quota
 #    quotacheck -avug
 #    ## Two files are created: aquota.group aquota.user
+#    refreshing: quotaoff -a ... quotaon -a
 
-# 10/ For each user, defining its quota:
-#     edquota -f /nfs-quota username
-#Disk quotas for user natasa (uid 1002):
+## Scenario: You can setup a quota for a group: edquota -g grpquota, and define there the limits, plus some individual edquota -u (per user)
+## For instance, you can setup a limit for everyone except for pepe, who can even have less, or more..
+
+# 10/ For each user, defining its quota individually:
+#     edquota -u /nfs-quota username
+#Disk quotas for user natasa (uid 1002): (Use either blocks or inodes)
+# blocks are calculated as: 1024=1M ... inodes means number of files
+# soft: warning message as from specified number
+# hard: maximum number
+
 #Filesystem                   blocks       soft       hard     inodes     soft     hard
-#/dev/loop1                    10000      10000      10000          5        0        0
+#/dev/loop1                        0      102400    112640          0        0        0
 
 # ## or in command line: setquota -u username 100 200 10 15 -a /dev/loop<corresponding number>
 
 # 11/ Turn on quotas defined:
+#     quotaoff /nfs-quota
 #     quotaon /nfs-quota
 
 # In case needed to turn off to make new changes: sudo quotaoff -avug
@@ -80,12 +90,83 @@ cat /proc/mounts
 
 ## PRINTING REPORTS ##
 
-# with the user logged in: type:
-# quota
+[root@02DI20161235444 shared]# quota pepe
+Disk quotas for user pepe (uid 1001):
+     Filesystem  blocks   quota   limit   grace   files   quota   limit   grace
+     /dev/loop0   10078   51200   56320               1       0       0
 
-# In the server itself, also this option:
-# repquota /nfs-quota (for all users)
+[root@02DI20161235444 server_config]# repquota -u /nfs-quota/
+*** Report for user quotas on device /dev/loop0
+Block grace time: 7days; Inode grace time: 7days
+                        Block limits                File limits
+User            used    soft    hard  grace    used  soft  hard  grace
+----------------------------------------------------------------------
+root      --   78287       0       0              4     0     0
+nobody    --       1       0       0              1     0     0
+pepe      --   10078   51200   56320              1     0     0
+
+# repquota /nfs-quota (for all users in grpquota)
 
 # report by group: repquota -g /nfs-quota
 
+[root@02DI20161235444 shared]# repquota -g /nfs-quota/
+*** Report for group quotas on device /dev/loop0
+Block grace time: 7days; Inode grace time: 7days
+                        Block limits                File limits
+Group           used    soft    hard  grace    used  soft  hard  grace
+----------------------------------------------------------------------
+root      --      12       0       0              1     0     0
+nobody    --       1       0       0              1     0     0
+grpquota  --   78275       0       0              3     0     0
 
+
+## SHARING : nfs-server (client running nfs-common):
+# edit:
+/etc/exports
+/nfs-folder	IP-client(rw,sync,no_root_squash,no_subtree_check)
+# or instead of IP, a network: 10.136.137.0/24
+
+exportfs -a
+
+# summary:
+exportfs -s
+
+# sharing this:
+[root@02DI20161235444 ip14aai]# showmount -e
+Export list for 02DI20161235444:
+/nfs-quota 10.136.137.120
+
+# client, mounting at boot client
+/etc/fstab
+ip_server:/nfs-folder	/mnt/nfs/nfs-folder	nfs auto,nofail,noatime,nolock,intr,tcp,actimeo=1080 0 0
+
+# manual mount:
+mount -t nfs IP_server:/nfs-folder /mnt/shared-folder
+
+## in case of timeout ... allow ports in the firewall:
+rpcinfo -p
+...
+
+[root@02DI20161235444 server_config]# firewall-cmd --permanent --add-port=111/tcp
+success
+[root@02DI20161235444 server_config]# firewall-cmd --permanent --add-port=34558/tcp
+success
+[root@02DI20161235444 server_config]# firewall-cmd --permanent --add-port=20048/tcp
+success
+[root@02DI20161235444 server_config]# firewall-cmd --permanent --add-port=2049/tcp
+success
+[root@02DI20161235444 server_config]# firewall-cmd --permanent --add-port=34915/tcp
+success
+[root@02DI20161235444 server_config]# firewall-cmd --reload
+success
+
+iptables --list
+
+Chain IN_public_allow (1 references)
+target     prot opt source               destination
+ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:ssh ctstate NEW
+ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:34558 ctstate NEW
+ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:mountd ctstate NEW
+ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:nfs ctstate NEW
+ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:34915 ctstate NEW
+ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:sunrpc ctstate NEW

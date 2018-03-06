@@ -13,7 +13,7 @@ systemctl status udisks2.service
            └─2673 /usr/lib/udisks2/udisksd --no-debug
 
 # edit conf file:
-/etc/rules.d/80-udisks.rules
+/etc/udev/rules.d/80-udisks.rules
 
 ENV{UDISKS_MOUNT_OPTIONS}="ro,noexec"
 ENV{UDISKS_MOUNT_OPTIONS_ALLOW}="noexec,nodev,nosuid,atime,noatime,nodiratime,ro,sync,dirsync"
@@ -26,4 +26,10 @@ sudo udevadm trigger
 
 sudo udevadm control --reload
 
+# for manual operations over block devices, use blockdev tool:
 
+blockdev
+
+# for removable media, eg: USB to be mounted read only:
+
+SUBSYSTEM=="block",ATTRS{removable}=="1",RUN{program}="/sbin/blockdev --setro %N"

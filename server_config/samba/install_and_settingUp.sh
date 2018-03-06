@@ -24,11 +24,11 @@ sudo nano -c /etc/samba/smb.conf
 # Adding a resource to be shared, for instance a folder:
 
 [Server_Downloads_Folder]
-path=/home/ip14aai/Downloads
-guest ok = yes
-writable = yes
-printable = no
-write list = @staff # only group staff can write in
+	path=/home/ip14aai/Downloads
+	guest ok = yes
+	writable = yes
+	printable = no
+	write list = @staff # only group staff can write in
 #force user = palisra # (to act as this user, even with a different user logon)
 #force group = ip14aai
 
