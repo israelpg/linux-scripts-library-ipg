@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# to check if a service is supported by libwrapper.so library / TCP Wrappers:
+# library dependency: ldd
+ldd <binary>
+
 ldd $(which sshd)
 
 israel@israel-N56JN:~/tests/24012018$ ldd $(which sshd)

@@ -42,11 +42,20 @@ Rule added (v6)
 
 # reconfigure package with changes: everything by default, except DB to use, which shall be HDB
 
-sudo dpkg-reconfigure sldap
+sudo dpkg-reconfigure slapd
 
 # checking Config:
+ip14aai@02DI20161542844:~$ ldapsearch -x -h localhost # or IP of the server
 
-ip14aai@02DI20161542844:~$ ldapsearch -x
+## LIST OF ARGUMENTS PASSING TO COMMANDS RELATED WITH LDAP ADMIN:
+-x basic auth instead of SASL
+-h to specify host
+-H uri of server (ldap://)
+-b searchbase
+-W prompt for single auth
+-f file (for modifications, add, deletion ...)
+
+ip14aai@02DI20161542844:~$ ldapsearch -x -h localhost # or IP of the server
 # extended LDIF
 #
 # LDAPv3
@@ -103,7 +112,7 @@ Create a child entry --> x Generic: Posix Group - Group: sales-group - Commit
 
 Create a child entry --> x Generic: User Account - Select sales-group as Group, home directory (does not need to match anything existing in server)
 
-To check everything is correct: ldapsearch -x
+To check everything is correct: ldapsearch -x -h localhost
 
 ### feature to export / configure / import a new user:
 
@@ -119,7 +128,24 @@ even automating the task.
 
 ###### ldaputils ######
 ### MANUALLY ADDING USER FROM SCRIPTS USING .ldif, even the initial one, like no phpldapadmin is used:
-# users.ldif :
+
+# Hierarchy: ou ... group ... users - see *.ldif files with examples for each
+
+# create-marketing-ou.ldif
+dn: ou=marketing-ou,dc=ip14aai,dc=com
+ou: marketing-ou
+description: Users of Marketing ou
+objectClass: organizationalUnit
+objectClass: top
+
+# create-marketing-group.ldif
+dn: cn=marketing-group,ou=marketing-ou,dc=ip14aai,dc=com
+cn: marketing-group
+objectClass: posixGroup
+objectClass: top
+gidNumber: 4001
+
+# users.ldif : (addig users to ou / group):
 dn: cn=Juan Berenguel,cn=sales-group,ou=sales,dc=ip14aai,dc=com
 cn: Juan Berenguel
 gidnumber: 500
@@ -136,7 +162,7 @@ uidnumber: 1000
 userpassword: {MD5}qUZSqpfHIRuolU3RWjz4OA==
 
 # then add user to ldap:
-ldap -W -D cn=admin,dc=ip14aai,dc=com -f users.ldif
+ldapadd -W -D cn=admin,dc=ip14aai,dc=com -f users.ldif
 
 # check entries now:
 ldapsearch -x -LLL -H ldap:/// -b dc=ip14aai,dc=com
@@ -204,11 +230,12 @@ replace: uid
 uid: fred67
 (press Ctrl+D)
 
-# or using a file with argument -f:
-sudo ldapmodify -f <file.ldif> ... with syntax as above
+## or using a file with argument -f:
+## to avoid SASL identification, use better regular auth with W option plus x
+ldapmodify -x -h localhost -D "cn=admin,dc=ip14aai,dc=com" -W -f modify_group_sales.ldif
 
 # see details for this particular user:
-
+# -H unencrypted ldap query
 ldapsearch -x -LLL -H ldap:/// -b dc=ip14aai,dc=com uid=fred67
 
 # Let's try to connect from client:
@@ -225,6 +252,14 @@ sudo auth-client-config -t nss -p lac_ldap
 
 # see the details under:
 /etc/auth-client-config/profile.d/ldap-auth-config
+
+#######################
+# Checking ldap from a client: ldap-utils:
+ldapsearch -H ldap://10.136.137.110 -x -LLL -b "dc=ip14aai,dc=com"
+
+# in case the dc info is unknown, it can be retrieved with:
+ldapsearch -H ldap://10.136.137.110 -x -LLL -b "" namingContexts
+# and then query as 
 
 # Using PAM for assisting with the creation of the home dir of the user who connects to server via this client:
 
@@ -249,4 +284,5 @@ getent passwd # users created in openldap server will be listed in the end ...
 
 su jberenguel
 
-
+## to check info about supported features enabled in our ldap server:
+ldapsearch -H ldap:// -x -s base -b "" -LLL "+"
