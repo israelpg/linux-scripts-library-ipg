@@ -18,9 +18,9 @@ echo "Checking availability of package $1"
 check_package $1
 if [ "$?" -eq 0 ]
 then
-	echo "Great, you can install package $1"
+	echo "Great, package $1 already installed"
 else
-	echo "Nope, you cannot install package $1"
+	echo "Nope, package $1 has not been installed yet"
 fi
 echo "Check logs in /tmp folder"
 

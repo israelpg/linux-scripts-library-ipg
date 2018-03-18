@@ -18,6 +18,7 @@ Unattended-Upgrade::Package-Blacklist {
 //	"libc6";
 //	"libc6-dev";
 //	"libc6-i686";
+	"virtualbox";
 };
 
 # To enable automatic updates, edit: /etc/apt/apt.conf.d/10periodic :

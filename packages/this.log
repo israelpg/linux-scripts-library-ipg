@@ -1,0 +1,12 @@
+ 3258 israel    20   0 1486924 353628 120940 S   0,0  2,9   4:29.81 chrome
+ 3258 israel    20   0 1489996 353820 120904 S   0,0  2,9   4:29.87 chrome
+ 3258 israel    20   0 1486924 353808 120892 S   0,0  2,9   4:29.94 chrome
+ 3258 israel    20   0 1489996 353748 120832 S   0,0  2,9   4:29.98 chrome
+top - 19:43:29 up  7:27,  1 user,  load average: 0,02, 0,16, 0,32
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  3,3 us,  0,9 sy,  0,0 ni, 95,4 id,  0,3 wa,  0,0 hi,  0,0 si,  0,0 st
+KiB Mem : 12183940 total,   333236 free,  7557424 used,  4293280 buff/cache
+KiB Swap: 11717628 total, 11694124 free,    23504 used.  3054108 avail Mem 
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 3258 israel    20   0 1486924 355612 120820 S   0,0  2,9   4:30.19 chrome

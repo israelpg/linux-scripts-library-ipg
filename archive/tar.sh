@@ -4,6 +4,10 @@
 
 tar -jcvf file.tar.bz2 folder_or_filename
 
+# just compress files created today:
+
+tar -jcvf file.tar.bz2 $(find . -type f -ctime -1)
+
 # to see files in the compressed file:
 
 tar -tvf file.tar.bz2
@@ -27,8 +31,8 @@ tar -xvf file.tar -C path/extraction_dir # extracts tar content in the specified
 tar -xvf file.tar file1.img file4.img # extracting specific files, not all of them
 
 # create a tar file excluding specific files:
-
 tar -cvf compressed.tar * --exclude "*.txt"
+
 # or using a file as list:
 tar -cvf compressed.tar * -X list # cat list --> file5.img file9.img
 
@@ -38,7 +42,7 @@ tar -rvf archive.tar file_to_append
 
 # Append a file, but only if timestamp is different that already in the compressed file:
 
-tar -uvf compressed.tar file1.img # file1.img will be append if timestamp is different within tar file 
+tar -uvf compressed.tar file1.img # file1.img will be append if timestamp is different within tar file
 
 # Concatenate two tar files: File2 will be append to file1
 
