@@ -13,6 +13,10 @@ lsmod | grep 'ppdev'
 
 sudo modprobe 8021q # after installing vlan package via apt
 
+# to remove a module:
+
+sudo modprobe -r 8021q
+
 # make it permanent on kernel boot:
 
 sudo su -c 'echo "8021q" >> /etc/modules'

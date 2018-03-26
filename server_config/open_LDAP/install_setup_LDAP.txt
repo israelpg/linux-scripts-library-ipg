@@ -44,17 +44,19 @@ Rule added (v6)
 
 sudo dpkg-reconfigure slapd
 
-# checking Config:
+# checking Config from the server itself:
 ip14aai@02DI20161542844:~$ ldapsearch -x -h localhost # or IP of the server
 
-## LIST OF ARGUMENTS PASSING TO COMMANDS RELATED WITH LDAP ADMIN:
+## LIST OF ARGUMENTS PASSING TO ldapsearch COMMAND:
 -x basic auth instead of SASL
 -h to specify host
 -H uri of server (ldap://)
+-D binddn (binding ldap directory)
 -b searchbase
 -W prompt for single auth
 -f file (for modifications, add, deletion ...)
 
+# an example for checking the whole ldap config from the server:
 ip14aai@02DI20161542844:~$ ldapsearch -x -h localhost # or IP of the server
 # extended LDIF
 #
@@ -87,11 +89,9 @@ result: 0 Success
 # numEntries: 2
 
 ### Now is time to install phpldapadmin, so that we can administer LDAP via browser
-
 sudo apt-get install phpldapadmin
 
 # Configuration: /etc/phpldapadmin/config.php
-
 # Modify these lines to appear like:
 162	// $config->custom->appearance['hide_template_warning'] = true;
 289	$servers->setValue('server','name','ip14aai LDAP Server');
@@ -102,7 +102,7 @@ sudo apt-get install phpldapadmin
 http://10.57.121.196/phpldapadmin
 
 
-## CREATING GROUP AND USERS:
+## CREATING GROUP AND USERS IN PHPLDAPADMIN:
 
 Click on domain: dc=ip14aai, dc=com
 
@@ -127,7 +127,7 @@ even automating the task.
 
 
 ###### ldaputils ######
-### MANUALLY ADDING USER FROM SCRIPTS USING .ldif, even the initial one, like no phpldapadmin is used:
+### MANUALLY ADDING USER FROM SCRIPTS USING .ldif, even the initial one, no phpldapadmin is used:
 
 # Hierarchy: ou ... group ... users - see *.ldif files with examples for each
 
@@ -162,7 +162,7 @@ uidnumber: 1000
 userpassword: {MD5}qUZSqpfHIRuolU3RWjz4OA==
 
 # then add user to ldap:
-ldapadd -W -D cn=admin,dc=ip14aai,dc=com -f users.ldif
+ldapadd -x -h locahost -D "cn=admin,dc=ip14aai,dc=com" -W -f users.ldif
 
 # check entries now:
 ldapsearch -x -LLL -H ldap:/// -b dc=ip14aai,dc=com
@@ -170,17 +170,6 @@ ldapsearch -x -LLL -H ldap:/// -b dc=ip14aai,dc=com
 # filtering by ou, for instance sales-ou:
 ldapsearch -x -LLL -H ldap:/// -b ou=sales-ou,dc=ip14aai,dc=com
 
-# for even more details in the search, provide the -W for entering LDAP Admin passwd:
-ldapsearch -LLL -W -D cn=admin,dc=ip14aai,dc=com -x -H ldap:/// -b ou=sales-ou,dc=ip14aai,dc=com
-
-# for listing only objects user account:
-ldapsearch -x -LLL -W -D cn=admin,dc=ip14aai,dc=com -H ldap:/// -b ou=sales-ou,dc=ip14aai,dc=com '(objectClass=inetOrgPerson)'
-
-# specific user:
-ldapsearch -x -LLL -W -D cn=admin,dc=ip14aai,dc=com -H ldap:/// -b ou=sales-ou,dc=ip14aai,dc=com '(|objectClass=inetOrgPerson)(uid=jberenguel))'
-
-# useful to redirect in an .ldif file to import afterwards when editing with parameters for a new user to be created:
-ldapsearch -x -LLL -W -D cn=admin,dc=ip14aai,dc=com -H ldap:/// -b ou=sales-ou,dc=ip14aai,dc=com '(|objectClass=inetOrgPerson)(uid=jberenguel))'
 
 ######## THE BEST FOR MANAGING LDAP FROM BASH:
 
@@ -255,7 +244,7 @@ sudo auth-client-config -t nss -p lac_ldap
 
 #######################
 # Checking ldap from a client: ldap-utils:
-ldapsearch -H ldap://10.136.137.110 -x -LLL -b "dc=ip14aai,dc=com"
+ldapsearch -x -H ldap://10.136.137.110 -LLL -b "dc=ip14aai,dc=com"
 
 # in case the dc info is unknown, it can be retrieved with:
 ldapsearch -H ldap://10.136.137.110 -x -LLL -b "" namingContexts

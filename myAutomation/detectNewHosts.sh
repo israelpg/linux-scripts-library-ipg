@@ -9,10 +9,10 @@
 
 function recordEntryDNS()
 {
-	hostAssignedIP=$(awk -F '.' '{print $4}' <<< "$host") # last 8 bits of IP address is kept
-	hostnameNoDomain=$(awk -F '.' '{print $1}' <<< "$hostnameChecking")
-	echo "$hostAssignedIP	IN	PTR	$hostnameChecking." >>/etc/bind/zones/db.10
-	echo "$hostnameNoDomain	IN	A	$host" >>/etc/bind/zones/db.ip14aai.com
+	hostAssignedIP=$(awk -F '.' '{print $4}' <<< "$hostIP2Deploy") # last 8 bits of IP address is kept
+	hostnameNoDomain=$(awk -F '.' '{print $1}' <<< "$hostname2Deploy")
+	echo "$hostAssignedIP   IN      PTR     $hostnameChecking." >>/etc/bind/zones/db.10
+        echo "$hostnameNoDomain IN      A       $host" >>/etc/bind/zones/db.ip14aai.com
 }
 
 function hostMonitoring()
@@ -64,46 +64,83 @@ function deployingManifests()
 
 }
 
+function deployHost()
+{
+        (
+       	# Defining log file for this host, which will only created if is a new client to be recorded/deployed
+       	# $1 is the argument with the host IP address, $2 hostname ... start deployment ...
+        logFile="$hostname2Deploy.$timestamp.log"
+       	pathLog=logs/$logFile
+        # recording the host in the db/file:
+        echo $hostname2Deploy >> /recordedHosts/recordedHosts.txt # hostname is now recorded
+        echo "Hostname: $hostname2Deploy has been recorded as new client with IP $hostIP2Deploy, therefore we proceed with puppet-agent installation if not installed yet" >> $pathLog
+        # First the id_rsa.pub server key is sent to the client in order to allow ssh autologin without password to be entered
+       	echo "Public server key sent to client allowing ssh autologin with root privileges"
+        scp /root/.ssh/id_rsa.pub root@$hostIP2Deploy:/root/.ssh/authorized_keys2
+        # Client is recorded in bind9 DNS zone files (db.10 and db.ip14aai.com):
+        recordEntryDNS
+        # Client is added in the list of Nagios3 monitored hosts, services defined in common template:
+        echo "Host is added in the list of clients to be monitored by Nagios3"
+        hostMonitoring
+        # calling function which starts puppet agent installation && deploy manifests:
+        installPuppetAgent
+        deployingManifests
+        ) 2>&1 | tee -a $pathLog
+}
+
 # starting script..
 
 timestamp=$(date +"%d-%m-%y")
 
-# Getting list of active hosts in our network:
+# program requests for prompt input from user:
+# first it displays a list of active hosts which are not recorded in database/file
+
 #activeHosts=$(fping -a -g 10.57.121.0/24 2>/dev/null) --> this is the real production code line
-activeHosts=$(fping 10.136.137.107 | awk '{ print $1 }') # temp solution to apply in only client machine used for testing purposes
+activeHosts=$(fping 10.136.137.95 | awk '{ print $1 }') # temp solution to apply in only client machine used for testing purposes
 
 # our file with hostnames recorded in the server: If recorded, no further installation is pushed
-recordedHosts=/recordedHosts/recordedHosts.txt
+recordedHosts=recordedHosts/recordedHosts.txt
+hostsToDeploy=toDeploy/$timestamp.newHosts.txt
+if [[ ! -f $hostsToDeploy ]]
+then
+    	touch $hostsToDeploy
+fi
+
 arrayDeployedHosts=()
 indexArrayDepl=0
+echo "$timestamp - Checking for new Hosts in the Network"
 
 for host in $activeHosts
 do
-	echo "$timestamp - Checking for new hosts in the network"
-	# getting just hostname removing last character .
-	hostnameChecking=$(nslookup 10.136.137.107 | awk '{print $4}' | rev | cut -c 2- | rev)
-	# Defining log file for this host, which will only created if is a new client to be recorded/deployed
-        logFile="$hostnameChecking.$timestamp.log"
-        pathLog=logs/$logFile
-	# cross-check the hostname with our file acting as a db for hostnames recorded in the server
-	counterCheck=$(cat $recordedHosts | grep $hostnameChecking | wc -l)
-	# If hostname is not recorded in our file returns 0 records, then installation of puppet + manifests deployment after cert is signed, plus record DNS entry in bind9
-	(if [ $counterCheck -eq 0 ]
-	then
-		echo $hostnameChecking >> /recordedHosts/recordedHosts.txt # hostname is now recorded
-		echo "Hostname: $hostnameChecking has been recorded as new client, therefore we proceed with puppet-agent installation if not installed yet" >> $pathLog
-		# First the id_rsa.pub server key is sent to the client in order to allow ssh autologin without password to be entered
-		echo "Public server key sent to client allowing ssh autologin with root privileges"
-		scp /root/.ssh/id_rsa.pub root@$host:/root/.ssh/authorized_keys2
-		# Client is recorded in bind9 DNS zone files (db.10 and db.ip14aai.com):
-		recordEntryDNS
-		# Client is added in the list of Nagios3 monitored hosts, services defined in common template:
-		echo "Host is added in the list of clients to be monitored by Nagios3"
-		hostMonitoring
-		# calling function which starts puppet agent installation && deploy manifests:
-		installPuppetAgent
-		deployingManifests
-	fi) 2>&1 | tee -a $pathLog # stdout in the screen, plus tee redirection to log file
+        # getting just hostname removing last character .
+        hostnameChecking=$(nslookup $host | awk '{print $4}' | tr -d '\n' | rev | cut -c 2- | rev)
+       	# cross-check the hostname with our file acting as a db for hostnames recorded in the server
+        counterCheck=$(cat $recordedHosts | grep $hostnameChecking | wc -l)
+       	# if not recorded, then is added in the list of candidates hostsToDeploy
+        if [[ $counterCheck -eq 0 ]]
+        then
+            	indexHosts=$(cat $hostsToDeploy | wc -l)
+                indexHosts=$(echo "$indexHosts+1" | bc)
+                echo "$indexHosts $host $hostnameChecking" >> $hostsToDeploy
+        fi
+done
+
+cat $hostsToDeploy
+tokenIndex=0
+while [[ $tokenIndex -eq 0 ]]
+do
+  	read -p "Please select one host from the above list by typing index number or q to exit: " indexSelected
+        validIndex=$(grep "^$indexSelected 10." $hostsToDeploy | wc -l)
+	if [[ $indexSelected == 'q' ]]
+        then
+          	tokenIndex=$(echo "$tokenIndex+1" | bc)
+        fi
+	if [[ $validIndex -eq 1 ]]
+        then
+		hostIP2Deploy=$(grep "^$indexSelected 10." $hostsToDeploy | awk '{print $2}')
+		hostname2Deploy=$(grep "^$indexSelected 10." $hostsToDeploy | awk '{print $3}')
+		deployHost
+        fi
 done
 
 numberHostsDeployed=${#arrayDeployedHosts[*]}
