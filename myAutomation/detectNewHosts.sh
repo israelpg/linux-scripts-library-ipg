@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Title: detectNewHosts.sh
-# Version: 1.0
+# Version: 22.0
 # Date: 19/09/2017 - Author: Israel Palomino Garcia
 # Description: This bash shell script detects new hostnames in our network missing puppet installation, then it pushes the installation of
 # the puppet client utilities. Once done, certificate request is signed, and manifests are deployed, including openLDAP.
@@ -73,7 +73,7 @@ function deployHost()
        	pathLog=logs/$logFile
         # recording the host in the db/file:
         echo $hostname2Deploy >> /recordedHosts/recordedHosts.txt # hostname is now recorded
-        echo "Hostname: $hostname2Deploy has been recorded as new client with IP $hostIP2Deploy, therefore we proceed with puppet-agent installation if not installed yet" >> $pathLog
+        echo -e "\e[0;32mHostname: $hostname2Deploy\e[0m has been recorded as new client with IP \e[0;32m$hostIP2Deploy\e[0m, therefore we proceed with puppet-agent installation if not installed yet" >> $pathLog
         # First the id_rsa.pub server key is sent to the client in order to allow ssh autologin without password to be entered
        	echo "Public server key sent to client allowing ssh autologin with root privileges"
         scp /root/.ssh/id_rsa.pub root@$hostIP2Deploy:/root/.ssh/authorized_keys2

@@ -90,3 +90,6 @@ seq 10 | grep '5' -A 3 # add 3 lines after the matching 5
 seq 10 | grep '5' -B 2 # before
 
 seq 10 | grep '5' -C 3 # 3 lines after and before
+
+# practical example on above point:
+cat filename.txt | grep -i 'israel' -A1 # it will display the occurence line, and the next one
