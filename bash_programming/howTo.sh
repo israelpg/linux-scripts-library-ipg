@@ -35,6 +35,9 @@ $0
 $1 # arg1
 $2 # arg2
 
+# pid of the script in execution:
+$$
+
 # Builtin variables:
 # There are some useful builtin variables, like
 echo "Last program's return value: $?"
@@ -82,7 +85,7 @@ thisFunction $var1
 
 # evaluate command in a function
 
-if [ $? == 0 ]
+if (( $? == 0 ))
 then
 	echo "Correct command"
 else
@@ -125,6 +128,23 @@ Operator syntax	Description
 <STRING1> < <STRING2>	True if <STRING1> sorts before <STRING2> lexicographically (pure ASCII, not current locale!). Remember to escape! Use \<
 <STRING1> > <STRING2>	True if <STRING1> sorts after <STRING2> lexicographically (pure ASCII, not current locale!). Remember to escape! Use \>
 
+## EVALUATING A VARIABLE:
+# In case we evaluate a number:
+
+if (( $COUNT > 10 ))
+
+# or:
+while (( COUNT > 10))
+do
+	echo -e "$COUNT \c"
+	sleep 1
+	(( COUNT -- ))
+done
+
+# In case we evaluate a text variable:
+
+if [[ $var1 == "this" ]]
+
 ## EXAMPLES OF OPERATORS:
 
 # argument not provided when calling function, or script itself (bash scriptname arg1):
@@ -158,6 +178,26 @@ then
 	touch $1/file1.txt
 fi
 
+## WHILE LOOPS:
+
+while (( COUNT > 10 ))
+do
+	# instructions
+done
+
+# reading line by line a file:
+while read line
+do
+
+done < /tmp/thisfile.txt
+# in case a command returns just one column with values, then you can use for --> for F in $(ls) do ... done
+
+# infinite while loop
+while true
+do
+	# instructions
+done
+
 # evaluating wheter the script is called with an argument for -i install or -v version-check
 # getopts is useful for this purpose, getopts: usage: getopts optstring name [arg]
 while getopts iv name
@@ -170,7 +210,7 @@ do
 done
 
 
-# LOOPS
+# FOR LOOPS
 
 for i in {1..10} # {1..10..2}
 do
@@ -182,10 +222,20 @@ for i in $namesList
 do
 	#instructions
 done
-
+# same as:
 while [ $token -eq 0 ]
 do
 	#instructions
+done
+
+# continue script .. but out of the loop:
+# example:
+
+for F in $(ls)
+do
+	[[ if ! -f $F ]] && continue # if the result of ls (this line in the loop) is not a file, continue out of loop
+	DT=$(stat $F | grep i 'access' | tail -1 | cut -d " " -f2) # if it is a file, then it gets the last access date
+	echo "The file $F is $(du -b $F | cut -f1) bytes and was last accessed $DT" # and prints the size and date
 done
 
 ## repeating command until successful resolution: e.g. calling function repeat with arg cmd="ls -lah": repeat $cmd

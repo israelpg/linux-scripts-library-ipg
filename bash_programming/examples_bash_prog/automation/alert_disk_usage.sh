@@ -2,8 +2,6 @@
 set -o errexit
 set -o nounset
 
-pepito
-
 while read line;
 do
 	filesystem=$(echo $line | awk '{print $1}')

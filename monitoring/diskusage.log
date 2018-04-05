@@ -1,0 +1,9 @@
+Date     IP address     Device    Capacity Used   Free   Percent Status
+04/01/18 192.168.0.240  /home/israel/.Private 357G     311G   28G    92%     You better check this disk
+04/01/18 192.168.0.240  /dev/sda4 124G     18G    101G   15%     Safe disk, plenty of space
+04/01/18 192.168.0.240  /dev/sda3 357G     311G   28G    92%     You better check this disk
+04/01/18 192.168.0.240  /dev/sda2 98M      3,6M   94M    4%      Safe disk, plenty of space
+04/01/18                /home/israel/.Private 357G     311G   28G    92%     You better check this disk
+04/01/18                /dev/sda4 124G     18G    101G   15%     Safe disk, plenty of space
+04/01/18                /dev/sda3 357G     311G   28G    92%     You better check this disk
+04/01/18                /dev/sda2 98M      3,6M   94M    4%      Safe disk, plenty of space

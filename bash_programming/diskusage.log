@@ -1,0 +1,5 @@
+
+04/02/18 192.168.0.240  /home/israel/.Private         357G     311G   29G    92%     You better check this disk ASAP
+04/02/18 192.168.0.240  /dev/sda4                     124G     18G    101G   15%     Safe disk, plenty of space
+04/02/18 192.168.0.240  /dev/sda3                     357G     311G   29G    92%     You better check this disk ASAP
+04/02/18 192.168.0.240  /dev/sda2                     98M      3,6M   94M    4%      Safe disk, plenty of space
