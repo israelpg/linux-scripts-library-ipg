@@ -14,7 +14,7 @@ sudo apt-get install nfs-kernel-server
 
 mkdir -p /nfs-folder
 
-sudo chown nobody:nogroup -R /nfs-folder
+sudo chown nobody:nogroup -R /nfs-folder # in red hat: nobody:nobody
 
 # 3/ edit /etc/exports
 #    add a line: /nfs-folder	IP-client(rw,sync,no_root_squash,no_subtree_check)

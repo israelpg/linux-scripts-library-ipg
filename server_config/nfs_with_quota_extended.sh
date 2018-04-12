@@ -49,44 +49,58 @@ findmnt
 
 # Ownership for main nfs folder (nfs-quota) is: nobody:nogroup (Debian), nobody:nobody (RedHat)
 
-# 6/ Add quotagrp in the system: sudo groupadd grpquota
+# 6/ Add grpquota in the system:
+sudo groupadd grpquota
 
-# 7/ Select users that are part of this group: sudo usermod -a groupname username
+# 7/ Select users that are part of this group:
+sudo usermod -a -G groupname username
+# or:
+sudo gpasswd -a username groupname
 
 # 8/ Inside the mounted point nfs-folder-quota, create a folder which will contain the permissions for the group:
-#    mkdir -p /nfs-quota/shared
-#    /quota/shared:$ sudo chown -R root:grpquota
-#    /quota/shared:$ sudo chmod 2775 . ## this is for setgid (exec with group permissions, files with group ownership when created)
-#    ## You can also add sticky bit, avoiding users to remove others files: sudo chmod a+t .
+mkdir -p /nfs-quota/shared
+#    /quota/shared:
+$ sudo chown -R root:grpquota
+#    /quota/shared:$ 
+sudo chmod 2775 . ## this is for setgid (exec with group permissions, files with group ownership when created)
+#    ## You can also add sticky bit, avoiding users to remove others files: 
+sudo chmod a+t .
 
 # 9/ Setting up quotas: Files for config and writing
-#    quotacheck -cug /nfs-quota
-#    quotacheck -avug
-#    ## Two files are created: aquota.group aquota.user
-#    refreshing: quotaoff -a ... quotaon -a
+# -c create -u user -g group, over main nfs-folder with nobody:nobody ownership, and mounted via /etc/fstab:
+quotacheck -cug /nfs-quota
+# activate verbose user group:
+quotacheck -avug
+# Two files are created: aquota.group aquota.user
+# refreshing all quota files:
+quotaoff -a
+quotaon -a
+
+# now the quotas can be setup
 
 ## Scenario: You can setup a quota for a group: edquota -g grpquota, and define there the limits, plus some individual edquota -u (per user)
 ## For instance, you can setup a limit for everyone except for pepe, who can even have less, or more..
 
 # 10/ For each user, defining its quota individually:
-#     edquota -u /nfs-quota username
+edquota -u /nfs-quota username
+
 #Disk quotas for user natasa (uid 1002): (Use either blocks or inodes)
-# blocks are calculated as: 1024=1M ... inodes means number of files
+# blocks are calculated as: 1024=1M ... inodes means number of files !!! IMPORTANT ABOUT BLOCKS AND NODES
 # soft: warning message as from specified number
 # hard: maximum number
-
-#Filesystem                   blocks       soft       hard     inodes     soft     hard
-#/dev/loop1                        0      102400    112640          0        0        0
+Filesystem                   blocks       soft       hard     inodes     soft     hard
+/dev/loop1                        0      102400    112640          0        0        0
 
 # ## or in command line: setquota -u username 100 200 10 15 -a /dev/loop<corresponding number>
 
 # 11/ Turn on quotas defined:
-#     quotaoff /nfs-quota
-#     quotaon /nfs-quota
+quotaoff /nfs-quota
+quotaon /nfs-quota
 
 # In case needed to turn off to make new changes: sudo quotaoff -avug
 
-# 12/ Quota for groups: edquota -g quotagrp ## or: ## setquota -g quotagrp 5 100 6 10 -a /dev/loop0
+# 12/ Quota for groups:
+edquota -g quotagrp ## or: ## setquota -g quotagrp 5 100 6 10 -a /dev/loop0
 
 ## PRINTING REPORTS ##
 
@@ -95,6 +109,7 @@ Disk quotas for user pepe (uid 1001):
      Filesystem  blocks   quota   limit   grace   files   quota   limit   grace
      /dev/loop0   10078   51200   56320               1       0       0
 
+# repquota /nfs-quota (for all users in grpquota)
 [root@02DI20161235444 server_config]# repquota -u /nfs-quota/
 *** Report for user quotas on device /dev/loop0
 Block grace time: 7days; Inode grace time: 7days
@@ -105,10 +120,7 @@ root      --   78287       0       0              4     0     0
 nobody    --       1       0       0              1     0     0
 pepe      --   10078   51200   56320              1     0     0
 
-# repquota /nfs-quota (for all users in grpquota)
-
 # report by group: repquota -g /nfs-quota
-
 [root@02DI20161235444 shared]# repquota -g /nfs-quota/
 *** Report for group quotas on device /dev/loop0
 Block grace time: 7days; Inode grace time: 7days
@@ -120,18 +132,17 @@ nobody    --       1       0       0              1     0     0
 grpquota  --   78275       0       0              3     0     0
 
 
-## SHARING : nfs-server (client running nfs-common):
-# edit:
+## SHARING : nfs-server folder
+# client needs to run nfs-common)
+# server edit its exports folder:
 /etc/exports
 /nfs-folder	IP-client(rw,sync,no_root_squash,no_subtree_check)
 # or instead of IP, a network: 10.136.137.0/24
-
 exportfs -a
 
 # summary:
 exportfs -s
-
-# sharing this:
+# or:
 [root@02DI20161235444 ip14aai]# showmount -e
 Export list for 02DI20161235444:
 /nfs-quota 10.136.137.120

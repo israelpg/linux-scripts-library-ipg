@@ -1,0 +1,29 @@
+Drop Zone: 
+Any incoming packets are dropped, if we use this drop zone. This is same as we use to add iptables -j drop. 
+If we use the drop rule, means there is no reply, only outgoing network connections will be available.
+
+Block Zone: 
+Block zone will deny the incoming network connections are rejected with an icmp-host-prohibited. 
+Only established connections within the server will be allowed.
+
+Public Zone: 
+To accept the selected connections we can define rules in public zone. 
+This will only allow the specific port to open in our server other connections will be dropped.
+
+External Zone: 
+This zone will act as router options with masquerading is enabled other connections will be dropped and 
+will not accept, only specified connection will be allowed.
+
+DMZ Zone: 
+If we need to allow access to some of the services to public, you can define in DMZ zone. 
+This too have the feature of only selected incoming connections are accepted.
+
+Work Zone: In this zone, we can define only internal networks i.e. private networks traffic are allowed.
+
+Home Zone: 
+This zone is specially used in home areas, we can use this zone to trust the other computers on networks 
+to not harm your computer as every zone. This too allow only the selected incoming connections.
+
+Internal Zone: This one is similar to work zone with selected allowed connections.
+
+Trusted Zone: If we set the trusted zone all the traffic are accepted.

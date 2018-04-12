@@ -3,7 +3,7 @@
 # sudo aulast: root audit
 sudo aulast
 
-# this command provides info about current and revious login sessions:
+# this command provides info about current and previous login sessions:
 last
 
 # this one provides info about last log session per user:

@@ -6,8 +6,6 @@ ls /etc/pam.d
 
 # common-password, for instance
 
-
-
 # something interesting is about ssh connections allowed in the system, for instance for a particular user when using putty,
 # limit number of sessions
 
@@ -24,14 +22,17 @@ username maxlogins 1
 
 # also how many files a user can open, etc ...
 
+### LOGIN in the system itself (interactive session)
+# same is applicable in terms of login in this system: use /etc/security/access.conf limits.conf time.conf (libraries must be loaded in /etc/pam.d/system-auth for red hat
 
-# concerning login, we can disable logins other than root in the system: just create file:
+# concerning login, we can also disable logins other than root in the system: just create file:
 
 touch /etc/nologin # as indicated in /etc/pam.d/login
 
+# not allowing a particular user to not login in interactive session: /sbin/nologin in shell
+chsh -s /sbin/nologin <username>
 
 # or using a file which contains a list of names not allowed to login: /etc/security/limits.conf:
-
 auth required pam listfile.so item=user sense=deny file=/etc/ssh/sshd.deny onerr=succeed
 # file /etc/ssh/ssd.deny (add usernames which cannot access the system via ssh, which is limited to access/login)
 
@@ -40,10 +41,10 @@ auth required pam listfile.so item=user sense=deny file=/etc/ssh/sshd.deny onerr
 # SUMMARY: With some examples/scenarios:
 
 # I have a server, and I want only a few users to be able to login via ssh:
-# create one group: sshlogin, and then edit /etc/ssh/sshd_config (adding line AllowGroups sshlogin
+# create one group: sshlogin, and then edit /etc/ssh/sshd_config adding line AllowGroups sshlogin
 # users that can access should be added to that group
 
-# We can also use the login within /etc/pam.d/login ... well, it refers to: /etc/security/limits.con, then create a file with users list
+# We can also use the login within /etc/pam.d/sshd ... well, it refers to: /etc/security/limits.conf, then create a file with users list
 
 # If we want only root to login: touch /etc/nologin
 

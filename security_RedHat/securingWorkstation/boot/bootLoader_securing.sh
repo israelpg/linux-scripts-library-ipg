@@ -2,14 +2,14 @@
 
 ### 1st you must protect the BIOS with a password
 
-### 2nd you must protect GRUB with a Password if this is used as a Boot Loader for our Linux Machine 
-# in two cases, if machine is only system or in a dual boot config with Win:
+### 2nd you must protect GRUB with a Password if this is used as a Boot Loader for our Linux Machine
+# in both cases, if Linux is the only system, or in a dual boot config with Win:
+# debian:
 sudo /sbin/grub-md5-crypt # it generates the hashed password for GRUB
+# in red hat: /sbin/grub2-setpassword:
+sudo grub-setpassword # — Generate the user.cfg file containing the hashed grub bootloader password.
 # edit the grub config file to add the password: /boot/grub/grub.conf:
 password --md5 <password-hash>
-
-# in red hat: /usr/sbin/grub2-setpassword:
-sudo grub-setpassword # — Generate the user.cfg file containing the hashed grub bootloader password.
 
 # secured, because:
 # to enter command line before grub loads our RH, you must first press p followed by the GRUB password
@@ -20,7 +20,7 @@ title DOS
 lock
 # but bear in mind, this only works in combination with a password line (with hash) / see above
 
-# you can add specific password for Win adding its own password --md5 <password-hash> line
+# you can add specific password for Win adding its own password --md5 <password-hash> line-win
 
 ### disable PROMPT while booting the system with Interactive Session:
 # this is: while the system is booting, you can press I to start an interactive session to start up each service one by one
