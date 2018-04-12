@@ -1,30 +1,36 @@
 #!/bin/bash
 
-filePID="/tmp/$(basename $0).pid"
-trap 'rm -f $filePID; ' EXIT
+timestamp=$(date +"%d-%m-%y")
+filenameLog=$timestamp.$(basename $0).log
+filePID="/tmp/$timestamp.$(basename $0).pid"
 
-if [[ -f  $filePID ]]
+# this first trap is to delete pid file when an exit occurs
+trap 'rm -f $filePID; ' EXIT
+# this trap is executed with a closing signal/term 15 executed, then it triggers exit with trap rm
+trap 'echo "$0 script is terminating via code 15 closing signal/term" ; exit 3' 15 2>&1 | tee -a $filenameLog
+
+echo "$timestamp" > $filenameLog
+
+if [[ ! -f  $filePID ]]
 then
-	rm $filePID
-else
 	touch $filePID
+	echo "File $filePID has been created" >> $filenameLog
+else
+	echo "" > $filePID
 fi
 
-echo "pid: $$ for this running script $0 is saved in file: $filePID"
+echo "pid: $$ for this running script $0 is saved in file: $filePID" >&1 | tee -a $filenameLog
 echo $$ > $filePID
 echo "Kill the pid $$ by running: kill -9 $$ or using the file as ref: kill -9 $ (cat $filePID)"
 
-filename=$(basename $0).log
-
 (
-while (( COUNT < 10 ))
+while (( COUNT < 50 ))
 do
 	sleep 1
 	let COUNT++
 	echo $COUNT
 done
-) 2>&1 | tee -a $filename
-
-
 echo "completed"
+) 2>&1 | tee -a $filenameLog
+
 exit 0

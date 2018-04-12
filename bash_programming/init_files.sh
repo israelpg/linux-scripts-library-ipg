@@ -17,7 +17,7 @@ alias c="clear"
 
 # for just a specific user, then better configure the file available under ~, eg:
 nano -c ~/.bashrc
-alias c="clear
+alias c="clear"
 
 # env variables, like PATH, to be defined individually at:
 ~/.bash_profile
