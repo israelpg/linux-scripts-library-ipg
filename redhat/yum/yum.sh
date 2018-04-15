@@ -16,9 +16,9 @@ yum info <package_name>
 
 yum search package-name
 
-# info about a package:
+# provides: check packages which provide certain functionality, eg: zip
 
-yum info package-name
+yum provides zip
 
 # update of a specific package:
 # 1st check update
@@ -62,7 +62,7 @@ sudo mkdir -p /mnt/redhat-install-disk
 
 sudo mount -o loop <file.iso> /mnt/redhat-install-disk
 
-cp /mnt/media.repo /etc/yum.repos.d/redhat-install-disk.repo
+cp /mnt/redhat-install-disk/media /etc/yum.repos.d/redhat-install-disk.repo
 
 # edit this file, pointing to mounted directory:
 
@@ -220,6 +220,8 @@ sudo yum-config-manager main \*
 
 ### ADDING NEW REPO:
 
+# manual, by editing file under yum config folder
+
 add file .repo under folder: /etc/yum.repos.d
 
 # via shell:
@@ -276,7 +278,9 @@ yum install --downloadonly --downloaddir=/root/mypackages/ httpd
 # edit /etc/yum.conf [main] global configuration: directive exclude=package_name
 # or installonlypkgs=package_name
 
-
+# installing an old version of a package:
+yum --showduplicates list available *mariadb*
+yum install <package_name>
 
 
 

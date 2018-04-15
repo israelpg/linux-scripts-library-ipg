@@ -27,7 +27,8 @@ sudo nano -c prueba
 }
 
 # file is prueba inside folder /var/log. 
-# rotate means max 3 copies, maxage 10 days, size max 2k, compression, if missing file is ok, generate it, do not rotate if empty, copy when creating new log file
+# rotate means max 3 copies, maxage 10 days, size max 2k, compression, if missing file is ok, generate it,
+# do not rotate if empty, copy when creating new log file
 
 # 3/ Create prueba file in the /var/log folder, and assign ownership and permissions:
 
