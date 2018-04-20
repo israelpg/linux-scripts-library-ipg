@@ -19,7 +19,10 @@ sudo usermod -s /sbin/nologin root
 /etc/ssh/sshd_config
 PermitRootLogin no
 
-
+# preventing root access via console tty:
+# /etc/securetty
+echo > /etc/securetty # with an empty file, now root cannot login, gmd, kdm, xdm ...
+# in any case, it does not prevent root login via ssh, or make a sudo
 
 
 

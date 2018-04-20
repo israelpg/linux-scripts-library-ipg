@@ -21,6 +21,9 @@ setfacl -m m::rx file
 
 setfacl -x g:staff file
 
+# getting the info about facl: access
+getafcl -a
+
 #Copying the ACL of one file to another
 
 getfacl file1 | setfacl --set-file=- file2

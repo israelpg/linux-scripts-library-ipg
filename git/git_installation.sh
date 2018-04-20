@@ -11,9 +11,12 @@ ip14aai@02DI20161542844:~$ git config --global user.name "ip14aai"
 ip14aai@02DI20161542844:~$ git config --global user.email "israelpg@gmail.com"
 ip14aai@02DI20161542844:~$ git config --list
 
-# manual configuration via file:
-
+# manual configuration of global vars via file instead of command line as above:
 ~/.gitconfig
+# cat ~/.gitconfig
+[user]
+	name = israelpg
+	email = israelpg@gmail.com
 
 # we need to create our stream/server and workspace environment/client:
 # Server Stream:
