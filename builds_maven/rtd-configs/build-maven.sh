@@ -1,6 +1,9 @@
 #!/bin/bash
+# Maven Arguments in shell script are passed by RTC build requested: RTC Build Properties --> Maven arguments
+# Example: (in RTC build property as default: runSonar / false), in build definition: -s ${runSonar}
 # Argument = -m mode -s sonar -d fetchDestination -w workspaceUUID -b buildresultUUID -p personalBuild -j javaEnvironment -r stagingRepoName -e skipErrors -t threads
 
+# instructions about arguments when calling this script:
 usage()
 {
 cat << EOF
@@ -104,6 +107,9 @@ do
 	esac
 done
 
+# exit 1 in case that fetch destination folder (source code) is not specified, or unexisting workspace UUID,
+# or build request UUID does not exist 
+# BRUUID seems to be auto-defined when launching build, RTC name: buildResultUUID, passed: -b ${buildResultUUID}
 if [[ -z $FD ]] || [[ -z $WUUID ]] || [[ -z $BRUUID ]]
 then
 	usage
@@ -113,15 +119,17 @@ fi
 if [ "$BUILD_OPTIONS" == "nosources" ]; then
 	echo "EXCLUDING source generation"
 	export GOALS="clean -Dmaxmemory=1g deploy"
-else
+else # default option, nothing is excluded, no -o argument passed when requesting build
 	echo "EXCLUDING nothing"
 	export GOALS="clean org.apache.maven.plugins:maven-javadoc-plugin:2.9.1:jar source:jar -Dmaxmemory=1g deploy"
 fi
 
+# this comes from build definition (RTC), when build is requested, some stuff like ANGULAR has default value
 echo starting build with parameters MODE=$MODE, SONAR=$SONAR, FD=$FD, WUUID=$WUUID, BRUUID=$BRUUID, PERS=$PERS, MAVEN_PARAMS=$MAVEN_PARAMS, JAVAVERS=$JAVAVERS, ANGULAR=$ANGULAR
 
-# Other environment variables
+# Other environment variables with Maven arguments, eg: -Dmagen.repo.local=$localRepo --> mvn repo with code, libs, that might be used during a build (summary: it adds functionalities)
 export MAVEN_OPTS="-Xmx6g -XX:MaxDirectMemorySize=1024m -Dmaven.test.failure.ignore=true -Duser.language=en -Dmaven.artifact.threads=3 -Dmaven.repo.local=$localRepo -XX:-DoEscapeAnalysis -Dcookie-secure=true"
+# environment variables in PATH, for Java, Oracle, JS ...
 export PATH=$NEWPATH:$JAVA_HOME/bin:$M2_HOME/bin:$ORACLE_HOME/bin:$NODE_JS_HOME/bin:$PATH
 export PLUGIN_GROUPID=eu.europa.ec.rdg.maven.plugin
 export PLUGIN_VERSION=2.20
@@ -147,7 +155,7 @@ case "$JAVAVERS" in
 		export MAVEN_OPTS="$MAVEN_OPTS -XX:MaxMetaspaceSize=1024m"
 		;;
 esac
-JAVA=$JAVA_HOME/bin/java
+JAVA=$JAVA_HOME/bin/java # this means that we can call hava command like: $JAVA (eg: $JAVA -version)
 
 # Angular configuration (default is Angular2)
 export NODE_LIBS=/ec/local/data/nodejs
@@ -158,7 +166,7 @@ case "$ANGULAR" in
 		alias ng='$NG_HOME/bin/ng'
 		export PATH=$NG_HOME/bin:$NODE_JS_HOME:$PATH
 		;;
-	*)
+	*) # this is angular2, default:
 		export NODE_JS_HOME=ec/local/sw/nodejs/node-v6.11.2-linux-x64
 		export NG_HOME=/ec/local/data/nodejs/lib/node_modules/@angular
 		alias ng='$NG_HOME/cli/bin/ng'
@@ -174,13 +182,18 @@ case "$MODE" in
 		export RTC_PROPS=/ec/local/sw/rtc-buildengine/config-dev1/config.properties
 		export KEY_FILE=/ec/local/sw//rtc-buildengine/config-dev1/keyFile
 		;;
-	staging) # RM - staging: RTD Nexus
+	staging) # RM - staging: RTD Nexus (default value for RM builds)
 		export M2_HOME=$M2_HOME_ROOT-rm
 		export EXTRA_REPO="-Drepository=staging"
+		# rm1, rm2 --> release management build engines (fetching their properties, keyFile)
 		export RTC_PROPS=/ec/local/sw/rtc-buildengine/config-rm1/config.properties
 		export KEY_FILE=/ec/local/sw/rtc-buildengine/config-rm1/keyFile
-		cd $FD # arg -d : dir where the build should start, eg: jagate --> /ec/local/data/build-workspaces/rm/jagate-core
+		# arg -d : dir where the build should start/source code:
+		# g: jagate --> /ec/local/data/build-workspaces/rm/jagate-core
+		cd $FD 
+		# finding all pom.xml files in source, and replace/sed SNAPSHOT for nothing
 		find . -name 'pom.xml' -exec sed -i 's/-SNAPSHOT//g' {} \;
+		# this also works: find . -type f -iname 'pom.xml' | xargs -I {} sed -i 's/-SNAPSHOT//g' {}
 		cd $MY_LOC
 		;;
 	release) # Final Build: Pushing to Digit's Nexus
@@ -195,9 +208,9 @@ case "$MODE" in
 		;;
 esac
 export MAVEN_OPTS="$M2_OPTS -Dmode=$MODE -DconfigFile=$RTC_PROPS -DsecretKeyFile=$KEY_FILE -Dteam.scm.fetchDestination=$FD -Dteam.scm.workspaceUUID=$WUUID -DbuildResultUUID=$BRUUID -Djava.io.tmpdir=/ec/local/data/temp $MAVEN_OPTS"
-export MAVEN_EXTRA_OPTS="-B"
+export MAVEN_EXTRA_OPTS="-B" # mvn real argument: batch processing
 echo Building with following maven options: $MAVEN_OPTS
-MVN="$M2_HOME/bin/mvn $MAVEN_PARAMS $EXTRA_REPO"
+MVN="$M2_HOME/bin/mvn $MAVEN_PARAMS $EXTRA_REPO" # $MVN will call the binary for maven with arguments, repo:staging
 MVN_SINGLE="$M2_HOME/bin/mvn $MAVEN_PARAMS"
 
 $JAVA -version
@@ -227,19 +240,26 @@ if [ "$MODE" == "release" ]; then
 	exit 0
 fi
 
+# Launching first MVN command passing args previously defined (j8, angular2, staging mode ...) !!!!!!!!!!
+# $PLUGIN_GROUP_ID=eu.europa.ec.rdg.maven.plugin / $PLUGIN_VERSION=2.20 # this plugin is specific of rtd
+# $MAVEN_EXTRA_OPTS="-B" ... this is a real mvn argument, not created via RTC. It means batch mode processing
 $MVN $PLUGIN_GROUPID:rdg-rtc-maven-plugin:$PLUGIN_VERSION:buildProgress -DprogressText="Setting build result's label" $MAVEN_EXTRA_OPTS
 $MVN $PLUGIN_GROUPID:rdg-rtc-maven-plugin:$PLUGIN_VERSION:buildLabel $MAVEN_EXTRA_OPTS
+
+# if return of last command (mvn) is different than 0, it means there is an error, then we exit 1
 if [ $? != 0 ]; then
 	exit 1
 fi
 
+# we launched again the mvn command via $MVN variable calling bin, with arguments
 $MVN $PLUGIN_GROUPID:rdg-rtc-maven-plugin:$PLUGIN_VERSION:buildProgress -DprogressText="Release Sanity Check" $MAVEN_EXTRA_OPTS
 $MVN $PLUGIN_GROUPID:rdg-utils-maven-plugin:$PLUGIN_VERSION:checkPom -DrepoManagerUrl=http://rtd-nexus.cc.cec.eu.int:8081 -DrepoManagerUser=j13b004 -DrepoManagerPass=dHo1aXE3Zw== -Drepo=rdg-releases $MAVEN_EXTRA_OPTS
 if [ $? != 0 ]; then
         exit 1
 fi
 
-
+## mode staging when RM builds: is not a PERSonal build by default, proceeding:
+# -DrepoManagerUrl mvn argument is specified by indicating nexus repository, to push build in there
 if [ "$MODE" == "staging" ] && [ "$PERS" != "true" ]; then
         $MVN $PLUGIN_GROUPID:rdg-rtc-maven-plugin:$PLUGIN_VERSION:buildProgress -DprogressText="Preparing staging repository" $MAVEN_EXTRA_OPTS
         $MVN $PLUGIN_GROUPID:rdg-utils-maven-plugin:$PLUGIN_VERSION:createRepo -DrepoManagerUrl=http://mons.cc.cec.eu.int:8081/nexus -DrepoManagerUser=rdg-build-user -DrepoManagerPass=cmRnLWJ1aWxkLXVzZXIx -DrepoPrefix=Staging -DrepoGroup=Stagings -DrepoName=$STAGE_REPO_NAME $MAVEN_EXTRA_OPTS
