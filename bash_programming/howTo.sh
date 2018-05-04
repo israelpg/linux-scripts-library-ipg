@@ -35,6 +35,25 @@ $0
 $1 # arg1
 $2 # arg2
 
+# 
+# echo "This script displays the arguments passed"
+# $# is the number of arguments passed when calling the script $0
+# command shift is used to move to next argument, which then will be $1, printed
+
+while [[ $# -ne 0 ]]
+do
+	echo $1
+	shift
+done
+
+# output:
+#[ip14aai@02DI20161235444 bash_programming]$ bash tests/passing.sh 10 20 30 40
+#This script displays the arguments passed
+#10
+#20
+#30
+#40
+
 # pid of the script in execution:
 $$
 
@@ -45,6 +64,12 @@ echo "Script's PID: $$"
 echo "Number of arguments passed to script: $#"
 echo "All arguments passed to script: $@"
 echo "Script's arguments separated into different variables: $1 $2..."
+
+## COMMANDS WITH VARIABLES:
+# command ${varName}
+dirname ${thisFile.txt}
+# another example:
+mkdir -p ${folder1}/${folder2}/${filename}
 
 # CONDITIONALS
 
@@ -103,7 +128,7 @@ Operator syntax 	Description
 -d <FILE> 	True, if <FILE> exists and is a directory.
 -c <FILE> 	True, if <FILE> exists and is a character special file.
 -b <FILE> 	True, if <FILE> exists and is a block special file.
-- p <FILE> 	True, if <FILE> exists and is a named pipe (FIFO)
+-p <FILE> 	True, if <FILE> exists and is a named pipe (FIFO)
 -S <FILE> 	True, if <FILE> exists and is a socket file.
 -L <FILE> 	True, if <FILE> exists and is a symbolic link.
 -h <FILE> 	True, if <FILE> exists and is a symbolic link.
@@ -144,6 +169,12 @@ done
 # In case we evaluate a text variable:
 
 if [[ $var1 == "this" ]]
+
+# evaluating a command result is usually $?, but we can also process a command directly in if:
+if [ `cat /var/log/alert.log | grep -i 'error' | wc -l` -gt 0 ] 
+then 
+	echo "There is at least one error" 
+fi
 
 ## EXAMPLES OF OPERATORS:
 

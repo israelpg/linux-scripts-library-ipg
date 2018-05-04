@@ -58,16 +58,16 @@ firewall-cmd --zone=public --remove-service=http --permanent
 firewall-cmd --reload
 
 # rich rule: controlling a system service
-firewall-cmd --add-rech-rule='rule family="ipv4" source address="10.136.137.0/24" service name="postgresql" accept' --permanent
+firewall-cmd --add-rich-rule='rule family="ipv4" source address="10.136.137.0/24" service name="postgresql" accept' --permanent
 firewall-cmd --reload
 firewall-cmd --list-all
 
 # following this rich rules, we can proceed blocking a service like ssh for a specific network range or IP:
-[root@02DI20161235444 firewall]# firewall-cmd --add-rich-rule='rule family="ipv4" source address="10.136.137.110" service name="ssh" reject' --permanent
+firewall-cmd --add-rich-rule='rule family="ipv4" source address="10.136.137.110" service name="ssh" reject' --permanent
 firewall-cmd --reload
 
 # to remove a rich rule:
-[root@02DI20161235444 firewall]# firewall-cmd --zone=public --remove-rich-rule='rule family="ipv4" source address="10.136.137.110" service name="ssh" reject' --permanent
+firewall-cmd --zone=public --remove-rich-rule='rule family="ipv4" source address="10.136.137.110" service name="ssh" reject' --permanent
 firewall-cmd --reload
 
 # blocking IP via rich rule:
