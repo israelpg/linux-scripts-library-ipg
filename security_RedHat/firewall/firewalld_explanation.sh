@@ -93,6 +93,7 @@ firewall-cmd --list-all
 # 1. Check masquerade is yes
 firewall-cmd --zone=external --query-masquerade
 yes
+# otherwise run: firewall-cmd --zone=external --add-masquerade (then --reload and --query-masquerade should return yes)
 firewall-cmd --zone=public --add-forward-port=port=22:proto=tcp:toport=2222:toaddr=10.136.137.120 --permanent
 firewall-cmd --reload
 firewall-cmd --zone=external --list-forward-ports
@@ -104,4 +105,11 @@ firewall-cmd --lockdown-on
 success
 firewall-cmd --reload
                                                                                               134,0-1       Bot
+## another masquerade example: NAT
+firewall-cmd --permanent --direct --passthrough ipv4 -t nat -I <PRE_public,POST_public> -s 10.0.0.3 -j <DNAT,SNAT> --to 192.168.1.5
+
+## REDIRECTING FROM TO:
+# example: Firewall allowing traffic from source to destination, and from specific port 8080 to another port 8090
+firewall-cmd --permanent --zone=public --add-rich-rule='rule family=ipv4 source address=10.0.0.0/24 destination address=192.168.1.0/24 port port=8080-8090 protocol=tcp accept'
+
 

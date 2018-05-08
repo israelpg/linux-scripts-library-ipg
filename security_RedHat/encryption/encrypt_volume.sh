@@ -39,17 +39,18 @@ shred -v -n 1 /dev/VG00/LV_home
 # or remove data: -z
 shred -v -n 1 -z /dev/VG00/LV_home
 
-# 5. Initialize device as encrypted LUCK volume which will use a passphrase:
+# 5. Initialize device as encrypted LUKS volume which will use a passphrase:
 
 cryptsetup --verbose --verify-passphrase luksFormat /dev/VG00/LV_home
 
-# 6. Open the newly Luck encrypted device with a mapping name (home):
+# 6. Open the newly LUKS encrypted device with a mapping name /dev/mapper (home):
 
 cryptsetup luksOpen /dev/VG00/LV_home home
 
-# 7. Make sure the device is present in the mapper:
+# 7. Make sure the device mapping name home is present in the /dev/mapper:
 
 ls -l /dev/mapper | grep home
+## right, now we can work directly with the mapping name instead of device name
 
 # 8. Create a filesystem (eg: ext3) in this device:
 
@@ -62,11 +63,11 @@ mount /dev/mapper/home /home
 df -h | grep home
 
 # 10. Add line to /etc/crypttab file: (this file is empty if no encrypted devices are defined and in use)
-# 	this line ensures that passphrase is requested when opening volume
+#     This line ensures that passphrase is requested when opening volume (use device name not mapper)
 
 home /dev/VG00/LV_home none
 
-# 11. Add line to /etc/fstab to mount the device with each boot:
+# 11. Add line to /etc/fstab to mount the device mapper with each boot:
 
 /dev/mapper/home /home ext3 defaults 1 2
 
@@ -87,6 +88,9 @@ shutdown -r now
 
 cryptsetup luksAddKey <device>
 # type current passwd, then type new passwd
+# example:
+cryptsetup luksAddKey /dev/VG00/LV_home # logically, this info concerning device name can be checked in the /etc/crypttab file, or checking
+# mounted device: df -h
 
 ## REMOVING A PASSPHRASE FROM AN ALREADY ENCRYPTED DEVICE:
 

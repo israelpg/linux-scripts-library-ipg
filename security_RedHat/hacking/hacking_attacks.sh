@@ -11,7 +11,7 @@
 # This may be complex, you may perhaps use the lack of GRUB password protection trying to boot from a Win
 # which is part of a dual boot system
 
-# 2/ Password Attach
+# 2/ Password Attack
 # A password set must be hashed in root shadow file /etc/shadow, otherwise hashed passwords are stored in
 # /etc/passwd
 
@@ -57,6 +57,8 @@ ypxfrd
 
 # 4/ Types of Attacks:
 DoS, DDoS (several machines attacking / bots)
+# IP Spoofing: This attack leads to DDOS. A hacker sends pings to a server, but indicates in the package that reply is to an unexisting IP address
+# The server collapses, because cannot close the TCP, then there are several requests, and crashes, file: ip_spoofing.sh
 
 Script Vulnerability Attacks:
 Webservers executing server-side scripts are vulnerable if not protected.
