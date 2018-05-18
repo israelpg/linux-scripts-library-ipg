@@ -54,8 +54,6 @@ yum remove package-name
 yum clean
 
 
-
-
 ### how to update being offline: Using the red hat installation disk copied in the system itself
 
 sudo mkdir -p /mnt/redhat-install-disk

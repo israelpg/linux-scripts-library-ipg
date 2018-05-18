@@ -71,7 +71,17 @@ echo 'hello this is cool' | grep -f pathfile
 # search for patterns recursively in a directory:
 
 grep 'pattern' . -R -n # R for recursive, n to print the line number
-
+# it displays different information, if we want to ls -lah the file itself, we need to remove stuff leaving only dir/filename, and use xargs for multiple files:
+[root@02DI20161235444 builds_maven]# grep 'wc -l' -R -n /home/ip14aai/git/workspace_linux_scripts/bash_utilities/
+/home/ip14aai/git/workspace_linux_scripts/bash_utilities/basic_stuff_utilities_everyday/check_du_remote_machines.sh:19:	numberLines=$(cat $logfile | wc -l)
+/home/ip14aai/git/workspace_linux_scripts/bash_utilities/basic_stuff_utilities_everyday/readLines_redirectionFile2.sh:4:numberLines=$(cat $File | wc -l)
+/home/ip14aai/git/workspace_linux_scripts/bash_utilities/wall_message_to_ttys_users/wall_extended_scripted_v2.sh:17:	number_lines=$(cat $check_user | wc -l)
+/home/ip14aai/git/workspace_linux_scripts/bash_utilities/xargs/count_lines.sh:3:find . -maxdepth 2 ! -type d -perm 644 -iname '*.c' -print0 | xargs -0 wc -l
+[root@02DI20161235444 builds_maven]# grep 'wc -l' -R -n /home/ip14aai/git/workspace_linux_scripts/bash_utilities/ | cut -d ':' -f 1 | xargs -I {} ls -lah {}
+-rw-rw-r--. 1 ip14aai ip14aai 1.5K Feb  8 14:10 /home/ip14aai/git/workspace_linux_scripts/bash_utilities/basic_stuff_utilities_everyday/check_du_remote_machines.sh
+-rw-rw-r--. 1 ip14aai ip14aai 257 Feb  8 14:10 /home/ip14aai/git/workspace_linux_scripts/bash_utilities/basic_stuff_utilities_everyday/readLines_redirectionFile2.sh
+-rw-rw-r--. 1 ip14aai ip14aai 896 Feb  8 14:10 /home/ip14aai/git/workspace_linux_scripts/bash_utilities/wall_message_to_ttys_users/wall_extended_scripted_v2.sh
+-rw-rw-r--. 1 ip14aai ip14aai 90 Feb  8 14:10 /home/ip14aai/git/workspace_linux_scripts/bash_utilities/xargs/count_lines.sh
 
 
 # Including and excluding files in a grep search:

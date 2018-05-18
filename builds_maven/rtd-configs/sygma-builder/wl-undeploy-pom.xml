@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>sygma-builder</artifactId>
+	<version>2.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>SyGMa :: Undeployer</name>
+	<parent>
+		<groupId>eu.europa.ec.rdg</groupId>
+		<artifactId>super</artifactId>
+		<version>1.11</version>
+	</parent>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.oracle.weblogic</groupId>
+				<artifactId>weblogic-maven-plugin</artifactId>
+				<configuration>
+					<script>
+connect('${weblogic.user}', '${weblogic.password}', '${weblogic.adminurl}')
+
+edit()
+startEdit()
+undeploy('sygma-application', timeout=360000)
+undeploy('sygma-it-plumber', timeout=360000)
+save()
+activate()
+
+disconnect()
+exit()
+					</script>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

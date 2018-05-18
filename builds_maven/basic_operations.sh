@@ -12,13 +12,35 @@ mvn archetype:generate
 
 mvn compile
 
-# unit tests to be executed:
+# example: project is date2408v1, with initial code, and pom.xml which handles the mvn build:
 
+pom.xml
+src
+
+# then mvn compile within folder ~/.m2/repository/date2408v1/
+
+pom.xml
+src/
+target/ # here the result of compiling, with the classes, and maven files with status in folder maven-status
+
+# unit test, run again in main folder for your repository/project
 mvn test
+
+# folders in target are now:
+classes, maven-status
+surefire-reports
+test-classes
 
 # then you package the sources (.jar):
 
 mvn package
+
+# .jar file (jar was specified as packaging option in the pom.xml), is in the main repository/project folder
+# example:
+date2408v1-1.0-SNAPSHOT.jar
+# plus folder:
+maven-archiver # and file in it:
+pom.properties # acting as log
 
 #####
 ##### in /src/main/ fror this project, you have the classes, and code in general

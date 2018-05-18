@@ -65,9 +65,12 @@ yum install --downloadonly --downloaddir=/root/mypackages/ sqllite
 [ip14aai@localhost security_RedHat]$ rpm -K /tmp/sqlite-3.7.17-8.el7.i686.rpm
 /tmp/sqlite-3.7.17-8.el7.i686.rpm: rsa sha1 (md5) pgp md5 OK
 
+# then install, still checking hash as a good practice:
+rpm -ivh /tmp/sqlite-3.7.17-8.el7.i686.rpm
 
 #### YUM
-## for automatic gpg check in yum, enable the option in /etc/yum.conf:
+## for automatic gpg check in yum, enable the option in 
+vim /etc/yum.conf:
 gpgcheck=1
 
 # --> this can be confirmed by checking yum configuration via:
@@ -77,4 +80,26 @@ gpgcheck = True
 # and proceed as usual
 
 sudo yum install <package-name>
+
+## Creating your own GPG Keys using the command line:
+
+gpg2 --gen-key
+# Select options, important to type your real name and email address
+# eg: Israel <israelpg@gmail.com>
+# gpg key is located here:
+/root/.gnupg/trustdb.gpg
+
+# displaying fingerprint:
+gpg2 --fingerprint israelpg@gmail.com
+
+pub   2048R/E2A6B6C7 2018-05-16
+      Key fingerprint = 54A7 4ABB E252 5C93 EAEA  C27A 1384 8826 E2A6 B6C7
+uid                  Israel (gpg key) <israelpg@gmail.com>
+sub   2048R/E0036804 2018-05-16
+
+# This is the id:
+E2A6B6C7
+# Normally append this at the beginning of the value: 0x
+0xE2A6B6C7
+
 

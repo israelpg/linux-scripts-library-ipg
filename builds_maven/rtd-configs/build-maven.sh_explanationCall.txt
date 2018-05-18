@@ -6,6 +6,9 @@ Arguments (options when calling the script):
 
 -s ${runSonar} -m ${buildType} -d ${team.scm.fetchDestination} -w ${team.scm.workspaceUUID} -b ${buildResultUUID} -j 8 -p ${personalBuild}
 
-Working Directory:
-
+# SCM fetch destination directory:
 ${team.scm.fetchDestination}/<app-name>
+# for sygma:
+/ec/local/data/sygma/build-workspaces/rm/sygma-full-build/sygma-builder
+
+# -w is related with RTD ID in terms of workspace, same for -b buildResultUUID

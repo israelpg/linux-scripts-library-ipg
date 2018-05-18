@@ -175,6 +175,11 @@ if [ `cat /var/log/alert.log | grep -i 'error' | wc -l` -gt 0 ]
 then 
 	echo "There is at least one error" 
 fi
+# or this:
+if [[ $(cat prueba.log | grep -i 'error') ]]
+then
+	echo "There is at least one error"
+fi
 
 ## EXAMPLES OF OPERATORS:
 

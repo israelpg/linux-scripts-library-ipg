@@ -131,6 +131,7 @@ echo starting build with parameters MODE=$MODE, SONAR=$SONAR, FD=$FD, WUUID=$WUU
 export MAVEN_OPTS="-Xmx6g -XX:MaxDirectMemorySize=1024m -Dmaven.test.failure.ignore=true -Duser.language=en -Dmaven.artifact.threads=3 -Dmaven.repo.local=$localRepo -XX:-DoEscapeAnalysis -Dcookie-secure=true"
 # environment variables in PATH, for Java, Oracle, JS ...
 export PATH=$NEWPATH:$JAVA_HOME/bin:$M2_HOME/bin:$ORACLE_HOME/bin:$NODE_JS_HOME/bin:$PATH
+# local repository for maven plugins:
 export PLUGIN_GROUPID=eu.europa.ec.rdg.maven.plugin
 export PLUGIN_VERSION=2.20
 
@@ -155,7 +156,7 @@ case "$JAVAVERS" in
 		export MAVEN_OPTS="$MAVEN_OPTS -XX:MaxMetaspaceSize=1024m"
 		;;
 esac
-JAVA=$JAVA_HOME/bin/java # this means that we can call hava command like: $JAVA (eg: $JAVA -version)
+JAVA=$JAVA_HOME/bin/java # this means that we can call Java command like: $JAVA (eg: $JAVA -version)
 
 # Angular configuration (default is Angular2)
 export NODE_LIBS=/ec/local/data/nodejs
@@ -241,8 +242,10 @@ if [ "$MODE" == "release" ]; then
 fi
 
 # Launching first MVN command passing args previously defined (j8, angular2, staging mode ...) !!!!!!!!!!
-# $PLUGIN_GROUP_ID=eu.europa.ec.rdg.maven.plugin / $PLUGIN_VERSION=2.20 # this plugin is specific of rtd
+# invoking a command line like "mvn prefix:goal" with plugin group ID, defined in settings.xml
+# PLUGIN_GROUP_ID=eu.europa.ec.rdg.maven.plugin, defined in maven settings.xml + $PLUGIN_VERSION=2.20 
 # $MAVEN_EXTRA_OPTS="-B" ... this is a real mvn argument, not created via RTC. It means batch mode processing
+# -DprogressText ... and all these kind of arguments, are related with RTD plugin, to link maven with Nexus
 $MVN $PLUGIN_GROUPID:rdg-rtc-maven-plugin:$PLUGIN_VERSION:buildProgress -DprogressText="Setting build result's label" $MAVEN_EXTRA_OPTS
 $MVN $PLUGIN_GROUPID:rdg-rtc-maven-plugin:$PLUGIN_VERSION:buildLabel $MAVEN_EXTRA_OPTS
 
@@ -253,6 +256,7 @@ fi
 
 # we launched again the mvn command via $MVN variable calling bin, with arguments
 $MVN $PLUGIN_GROUPID:rdg-rtc-maven-plugin:$PLUGIN_VERSION:buildProgress -DprogressText="Release Sanity Check" $MAVEN_EXTRA_OPTS
+# calling mvn with arguments for the Nexus repository
 $MVN $PLUGIN_GROUPID:rdg-utils-maven-plugin:$PLUGIN_VERSION:checkPom -DrepoManagerUrl=http://rtd-nexus.cc.cec.eu.int:8081 -DrepoManagerUser=j13b004 -DrepoManagerPass=dHo1aXE3Zw== -Drepo=rdg-releases $MAVEN_EXTRA_OPTS
 if [ $? != 0 ]; then
         exit 1
