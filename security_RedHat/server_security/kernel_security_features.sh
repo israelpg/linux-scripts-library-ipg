@@ -1,14 +1,52 @@
 #!/bin/bash
 
+# procfs within /proc/ handles security features at boot time, which can be managed in an interactive session using sysctl.conf 
+
 /etc/sysctl.conf
 
 # to see the kernel features:
 
 sysctl -a | grep -i 'icmp' # or filtering by any other kernel property/value
 
+# more professional using -r option as a regex:
+
+sysctl -ar 'icmp'
+sysctl -ar '^kernel\.domainname$' # starts with kernel, ends with domainname, using . as separator is special char, escape with \
+
 # when adding a new feature, eg: icmp blocking
-# via edit: /etc/sysctl.conf , reload with:
+# via edit: /etc/sysctl.conf 
+# or using command line:
+sysctl -w <feature_name=value>
+# reload with:
 sysctl -p
+
+# it is also possible to specify which file to reload (instead of default /etc/sysctl.conf) from the sysctl.d/*.conf files:
+sysctl -p /etc/sysctl.d/*.conf
+# list of conf files in /etc/sysctl.d/
+10-console-messages.conf
+10-ipv6-privacy.conf
+10-kernel-hardening.conf
+10-link-restrictions.conf
+10-magic-sysrq.conf
+10-network-security.conf
+10-ptrace.conf
+10-zeropage.conf
+30-baloo-inotify-limit.conf
+60-oracle.conf
+99-sysctl.conf
+cinelerra-cv.conf
+
+# or better reload everything, default /etc/sysctl.conf file and /etc/sysctl.d/*conf files with:
+
+sysctl -system -p
+
+# Best practice:
+# creating own conf files to structure security features:
+# example: domainname, by default none: **** this is just an example, this value is not needed, we use dns instead
+kernel.domainname = (none)
+
+echo 'kernel.domainname=ip14aai.com' | sudo tee /etc/sysctl.d/01-nis-domain-name.conf
+sysctl -system -p
 
 #### some features:
 

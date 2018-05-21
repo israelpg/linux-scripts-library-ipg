@@ -43,3 +43,8 @@ tar uf file2.jar images/new.gif
 # execute JAR file as execution: (ONLY IF THERE IS A MANIFEST!)
 
 java -jar file.jar
+
+# jar packaging into war:
+
+jar cvf web-archive-test.war .
+

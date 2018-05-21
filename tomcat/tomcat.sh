@@ -1,8 +1,9 @@
 #!/bin/bash
 
 # installing and configuring tomcat in CentOS:
-
+# in Debian packages are: tomcat8, and tomcat8-admin
 # Note: In CentOS 7 Tomcat is installed by default:
+
 [ip14aai@02DI20161235444 tests]$ rpm -qa tomcat
 tomcat-7.0.76-3.el7_4.noarch
 
@@ -39,6 +40,8 @@ to be a collaboration of the best-of-breed developers from around the world.
    CGroup: /system.slice/tomcat.service
            └─4127 /usr/lib/jvm/jre/bin/java -classpath /usr/share/tomcat/bin/bootstrap.jar:/usr/share/tomcat/bin/tomcat-juli.jar:/usr/share/java/commons-daemon.jar -Dcatalina.base=/usr/share/tomcat -Dcatalina.home=/usr/share/tomcat -Djava.endorsed.dirs= -Djava.io.tmpdir=/var/cache/tomcat/temp -Djava.util.logging.config.file=/usr/share/tomcat/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager org.apache.catalina.startup.Bootstrap start
 
+# in Debian, daemon: systemctl status tomcat8.service
+
 # service details can be modified then in file: /usr/lib/systemd/system/tomcat.service
 
 # accessing tomcat via browser, localhost using port 8080
@@ -56,15 +59,27 @@ Define a non-SSL HTTP/1.1 Connector on port 8080
                connectionTimeout="20000"
                redirectPort="8443" />
 
-# users management:
+# debian file: /etc/tomcat8/server.xml
+
+# users management: You need to define the role, and then the user with role(s) assigned:
 /etc/tomcat/tomcat-users.xml
+
+# Roles:
+# manager-gui — Access to the HTML interface.
+# manager-status — Access to the "Server Status" page only.
+# manager-script — Access to the tools-friendly plain text interface that is described in this document, and to the "Server Status" page.
+# manager-jmx — Access to JMX proxy interface and to the "Server Status" page.
+
 # define these lines:
 <tomcat-users>
-	<user username="admin" password="passwordliteral" roles="manager-gui,admin-gui"/>
+	<role rolename="manager-gui"/>
+	<user username="admin" password="passwordliteral" roles="manager-gui"/>
 </tomcat-users>
 
 # accessing the web interface with manager: For deploying apps, starting/stopping them, monitoring ...
-http://serverIP:8080/manager/html/
+http://serverIP:8080/manager/html/ # port could be different, defined in /etc/tomcat/server.xml
+# example for manager-gui localhost access:
+http://localhost:8080/manager/html
 
 # host manager: to add new hosts, to serve your applications from:
 http://serverIP:8080/host-manager/html/
