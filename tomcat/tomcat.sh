@@ -47,7 +47,7 @@ to be a collaboration of the best-of-breed developers from around the world.
 # accessing tomcat via browser, localhost using port 8080
 # port number can be modified in server.xml file under folder:
 /etc/tomcat/server.xml
-Define a non-SSL HTTP/1.1 Connector on port 8080
+#Define a non-SSL HTTP/1.1 Connector on port 8080
     -->
     <Connector port="8080" protocol="HTTP/1.1"
                connectionTimeout="20000"
@@ -61,6 +61,29 @@ Define a non-SSL HTTP/1.1 Connector on port 8080
 
 # debian file: /etc/tomcat8/server.xml
 
+# server.xml file has following structure / elements:
+# server: Tomcat itself, with default port 8005, does not process requests directly
+# service (Catalina): A container of one or several connectors
+# connector: To process requests via its port, eg: 8080 (accessible via browser)
+# engine: entry point for all requests, it manages: realm database for authentication, and hosts:
+<Host name="localhost"  appBase="webapps"
+            unpackWARs="true" autoDeploy="true">
+
+# Modifying original configuration:
+# change default host engine if needed:
+    <Engine name="Catalina" defaultHost="tomcat-ipg">
+# change host: Note that webapps is the folder in /var/lib/tomcat8 which stores the website documents
+<Host name="tomcat-ipg"  appBase="webapps"
+            unpackWARs="true" autoDeploy="true">
+# adapt logs:
+<Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
+               prefix="tomcat-ipg_access_log" suffix=".txt"
+               pattern="%h %l %u %t &quot;%r&quot; %s %b" />
+# copy user management files for localhost/files:
+-rw-r--r-- 1 root root     957 Mär 31  2017 host-manager.xml
+-rw-r--r-- 1 root root     947 Mär 31  2017 manager.xml
+# in: /etc/tomcat8/Catalina/tomcat-ipg
+
 # users management: You need to define the role, and then the user with role(s) assigned:
 /etc/tomcat/tomcat-users.xml
 
@@ -73,7 +96,8 @@ Define a non-SSL HTTP/1.1 Connector on port 8080
 # define these lines:
 <tomcat-users>
 	<role rolename="manager-gui"/>
-	<user username="admin" password="passwordliteral" roles="manager-gui"/>
+	<role rolename="admin-gui"/>
+        <user username="admin" password="Th1deruh" roles="manager-gui, admin-gui"/>
 </tomcat-users>
 
 # accessing the web interface with manager: For deploying apps, starting/stopping them, monitoring ...
@@ -83,6 +107,17 @@ http://localhost:8080/manager/html
 
 # host manager: to add new hosts, to serve your applications from:
 http://serverIP:8080/host-manager/html/
+
+# By default, server listener uses port 8005, here checking the socket:
+israel@israel-N56JN:~/git/workspace_linux_scripts/tomcat$ ss -ntl | grep 8005
+LISTEN     0      1         ::ffff:127.0.0.1:8005                    :::*
+
+# We can check listening port for the connector which processes the requests: (eg: 8088)
+netstat -tuplna | grep '8088'
+tcp        0      0 127.0.0.1:53153         127.0.0.1:8088          TIME_WAIT   -               
+tcp        0      0 127.0.0.1:53151         127.0.0.1:8088          TIME_WAIT   -               
+tcp6       0      0 :::8088                 :::*                    LISTEN      -               
+tcp6       0      0 127.0.0.1:8088          127.0.0.1:53155         TIME_WAIT   -
 
 ## NOTE: Tomcat is restricted to be managed only from the server machine itself (localhost)
 # In case is needed to access remotely for managing the server, modify this file:

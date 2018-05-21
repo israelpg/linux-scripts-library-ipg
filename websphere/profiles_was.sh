@@ -9,10 +9,15 @@
 
 # [NODE : Server1, Server2 ... handled by Node Agent ... ] --> Managed by Deployment Manager
 
+# Architecture example:
+# Cluster1 --> Node1 (Server_a, Server_b), Node2 (Server_c, Server_d)
+# Node1 and Node2 have both their own Node Agent, spawning processes, while servers handle Java server requests
+# The Deployment Manager handles the deployments for both nodes
+
 # The Node Agent is a process responsible for spawning and killing server processes, sync between 
 # the Deployment Manager and the node.
 
-# Servers are regular Java process responsible for serving J2EE requests (JSP, JSF, EJB, JMS ...)
+# Servers are regular Java processes responsible for serving J2EE requests (JSP, JSF, EJB, JMS ...)
 
 # Cluster: Composed by several nodes. In WebSphere, a node may be managed individually, but we can
 # also work by managing Cluster.
@@ -25,6 +30,7 @@
 # 4) Management -- Deployment Manager, Job Manager, and Admin Agent
 # 5) Secure proxy
 
+# PROFILE MANAGEMENT:
 ## profiles can be defined via GUI --> /opt/IBM/WebSphere/Appserver/bin/ProfileManagement/pmt.sh
 ## or using command line tool --> /opt/IBM/WebShpere/AppServer/bin/manageprofiles.sh
 
@@ -36,22 +42,27 @@ WAS_HOME=/opt/IBM/WebSphere/Appserver
 ls -lah /opt/IBM/WebSphere/Appserver/systemApps # default systemApps !!!!!
 # several *.ear files are displayed
 
-## CREATING A USER IN GUI: easy ... just complete name for server, node, ports, and so on ...
+## CREATING A SERVER USER PROFILE IN GUI (pmt.sh): easy ... just complete name for each server, node itself, ports, and so on ...
 # checking node configuration:
 cd /opt/IBM/WebSphere/Appserver/profiles/<Profile_name>
 
-### EXAMPLE FROM VIDEO: These are the parameters: (node name is used for administration)
-# hostname is the domain name (DNS) or IP address
+### EXAMPLE FROM VIDEO: These are the parameters: (node name is used for WAS internal administration)
+# hostname is the domain name (DNS) or IP address (same as for Apache, Tomcat, and so on)
 # serverName=server1, profile="AppSrv01", node="AppNode"
 
 # for instance, for profile "AppSrv01": this is the profile name for server1
 cd /opt/IBM/WebSphere/Appserver/profiles/AppSrv01
-# checking in this profile for node "AppNode" the list of deployed apps:
+# checking in this server profile for corresponding node "AppNode" the list of deployed apps:
 cd /opt/IBM/WebSphere/Appserver/profiles/AppSrv01/config/cells/localhostNode01Cell/nodes/AppNode
-# serverindex.xml file with the details for this node "AppNode" as follows:
+# serverindex.xml file with the details for this server within node "AppNode" as follows:
 <serverEntries ... serverName="server1" serverType="APPLICATION_SERVER">
 	<deployedApplications>query.ear/deployments/query</deployedApplications>
-	 # several tags like this below, one for each application deployed in the node
+	 # several tags like this below, one for each application deployed in the server within this node
+
+# We could create another server user profile within node AppNode, eg: AppSrv02
+# then info about deployments would be in serverindex.xml file in:
+/opt/IBM/WebSphere/Appserver/profiles/AppSrv02/config/cells/localhostNode01Cell/nodes/AppNode
+# notice that it is another server within the same node: AppNode
 
 ## Note: application binding ear files for installed apps by us are stored under folder:
 ls -lah /opt/IBM/WebSphere/Appserver/profiles/AppSrv01/config/cells/applications
@@ -64,7 +75,7 @@ cd /opt/IBM/WebSphere/Appserver/profiles/AppSrv01/config/cells/applications/quer
 <deploymentTarget xmi:type="appdeployment:ServerTarget" xmi:id="ServerTarget_18726373" name="server1" nodeName="AppNode"/>
 
 ## CONSOLE: Access for managing WAS server1 in our example:
-# back to serverindex.xml in the node configuration file for node name AppNode:
+# back to serverindex.xml in the node configuration file for node name AppNode in server profile AppSrv01:
 # /opt/IBM/WebSphere/Appserver/profiles/AppSrv01/config/cells/localhostNode01Cell/nodes/AppNode
 # there are some important lines concerning WAS node admin:
 <specialEndpoints xmi:id... endPointName="WC_adminhost">
@@ -80,8 +91,8 @@ http://HostNameOfserver:WC_adminhost/ibm/console
 http://HostNameOfserver:WC_adminhost/admin
 # same using https
 # or:
-http://localhost:10000/ibm/console
-https://localhost:10001/ibm/console
+http://localhost:10002/ibm/console
+https://localhost:10000/ibm/console
 
 # remember that server1 must be started via bin:
 cd /opt/IBM/WebSphere/AppServer/profiles/AppSrv01/bin
@@ -110,7 +121,7 @@ cd /opt/IBM/WebSphere/AppServer/profiles/AppSrv01/logs
 #    "Servers" --> "WebSphere application servers" --> Click on New .. 
 #    Select the Node to be on top of this server, type a server name, check default ports, finish
 #    
-#    To sync the server with its Node on top, you follow the "Messages", click on "Review": sync
+#    To sync the Server with its Node on top, you follow the "Messages", click on "Review": sync
 #
 # 4. The server can be started
 #
