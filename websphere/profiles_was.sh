@@ -42,28 +42,51 @@ WAS_HOME=/opt/IBM/WebSphere/Appserver
 ls -lah /opt/IBM/WebSphere/Appserver/systemApps # default systemApps !!!!!
 # several *.ear files are displayed
 
-## CREATING A SERVER USER PROFILE IN GUI (pmt.sh): easy ... just complete name for each server, node itself, ports, and so on ...
+## CREATING AN APPLICATION SERVER PROFILE IN GUI (pmt.sh): easy ... just complete name for each server, node, ports, and so on ...
 # checking node configuration:
 cd /opt/IBM/WebSphere/Appserver/profiles/<Profile_name>
 
 ### EXAMPLE FROM VIDEO: These are the parameters: (node name is used for WAS internal administration)
+# cell: localhostNode01Cell
 # hostname is the domain name (DNS) or IP address (same as for Apache, Tomcat, and so on)
-# serverName=server1, profile="AppSrv01", node="AppNode"
+# which will be controlled by each node agent (two of them), and on top, a DMGR
+# serverName=server1, profile="AppSrv01", node="AppNode", I have complemented creating the following:
+# AppNode: server1 - server3 (query.ear) cluster
+# AppNodeAlt: server2 - server4 (anotherapp.ear) another cluster
+# which will be controlled by each node agent (two of them), and on top, a DMGR
 
-# for instance, for profile "AppSrv01": this is the profile name for server1
+# First Cluster: query.ear
+# for instance, for app server profile "AppSrv01" within "localhostNode01Cell":
 cd /opt/IBM/WebSphere/Appserver/profiles/AppSrv01
-# checking in this server profile for corresponding node "AppNode" the list of deployed apps:
+# checking in this profile for corresponding node "AppNode" the list of deployed apps in the app server entry for "server1":
 cd /opt/IBM/WebSphere/Appserver/profiles/AppSrv01/config/cells/localhostNode01Cell/nodes/AppNode
 # serverindex.xml file with the details for this server within node "AppNode" as follows:
 <serverEntries ... serverName="server1" serverType="APPLICATION_SERVER">
 	<deployedApplications>query.ear/deployments/query</deployedApplications>
 	 # several tags like this below, one for each application deployed in the server within this node
 
-# We could create another server user profile within node AppNode, eg: AppSrv02
+# We could create another profile within same node "AppNode", eg: "AppSrv03"
 # then info about deployments would be in serverindex.xml file in:
-/opt/IBM/WebSphere/Appserver/profiles/AppSrv02/config/cells/localhostNode01Cell/nodes/AppNode
+/opt/IBM/WebSphere/Appserver/profiles/AppSrv03/config/cells/localhostNode01Cell/nodes/AppNode
 # notice that it is another server within the same node: AppNode
+<serverEntries ... serverName="server3" serverType="APPLICATION_SERVER">
+	<deployedApplications>anotherapp.ear/deployments/query</deployedApplications>
+	 # several tags like this below, one for each application deployed in the server within this node
 
+# Second cluster: anotherapp.ear
+# another server profile "AppSrv02", for another node "AppNodeAlt":
+cd /opt/IBM/WebSphere/Appserver/profiles/AppSrv02
+cd /opt/IBM/WebSphere/Appserver/profiles/AppSrv02/config/cells/localhostNode01Cell/nodes/AppNodeAlt
+<serverEntries ... serverName="server2" serverType="APPLICATION_SERVER">
+        <deployedApplications>query.ear/deployments/query</deployedApplications>
+
+# completing the cluster for app: anotherapp.ear
+cd /opt/IBM/WebSphere/Appserver/profiles/AppSrv04
+cd /opt/IBM/WebSphere/Appserver/profiles/AppSrv04/config/cells/localhostNode01Cell/nodes/AppNodeAlt
+<serverEntries ... serverName="server4" serverType="APPLICATION_SERVER">
+        <deployedApplications>anotherapp.ear/deployments/query</deployedApplications>
+
+########################################################################################
 ## Note: application binding ear files for installed apps by us are stored under folder:
 ls -lah /opt/IBM/WebSphere/Appserver/profiles/AppSrv01/config/cells/applications
 

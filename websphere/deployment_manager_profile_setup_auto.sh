@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Environment architecture:
+# Environment architecture: The cell is the main logical unit which contains the different nodes
 	 Cell01	->	Node01			node02
 			server1: Application 1	server2: Application 1 (App1_Cluster)
 			server3: Application 2	server4: Application 2 (App2_Cluster)
@@ -13,7 +13,7 @@
 			+ dmgr (Deployment Manager) / ENV03_dmgrProf (WAS profile)
 
 # The node is a physical machine, which may run several virtual servers, each with its own cpu, ram, disk ...
-# The cluster is composed of virtual servers which run in different nodes, in case one fails, the app runs in the other one.
+# The cluster is composed of virtual servers which run same app in different nodes, in case one server fails, the app runs in the other node/server.
 
 # PROFILE MANAGEMENT:
 # CREATING A DEPLOYMENT MANAGER PROFILE, USING MANAGERPROFILES.SH SCRIPT: (GUI can be used running pmt.sh)
@@ -29,7 +29,7 @@ INSTCONFSUCCESS
 # checking the logs to make sure:
 cat /opt/IBM/WebSphere/Appserver/logs/manageprofiles/Dmgr01_delete.log
 
-# profiles are normally created as such within folder:
+# profiles are normally created as such within default folder:
 /var/was8nd/profiles # was8nd may be different, depending on WAS version
 # remove files related with profile we want to drop:
 rm -Rf /var/was8nd/

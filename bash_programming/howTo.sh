@@ -65,6 +65,9 @@ echo "Number of arguments passed to script: $#"
 echo "All arguments passed to script: $@"
 echo "Script's arguments separated into different variables: $1 $2..."
 
+# IDENTIFY USER ID:
+userID=$(id -u)
+
 ## COMMANDS WITH VARIABLES:
 # command ${varName}
 dirname ${thisFile.txt}
