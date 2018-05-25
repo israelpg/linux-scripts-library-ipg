@@ -40,6 +40,10 @@ to be a collaboration of the best-of-breed developers from around the world.
    CGroup: /system.slice/tomcat.service
            └─4127 /usr/lib/jvm/jre/bin/java -classpath /usr/share/tomcat/bin/bootstrap.jar:/usr/share/tomcat/bin/tomcat-juli.jar:/usr/share/java/commons-daemon.jar -Dcatalina.base=/usr/share/tomcat -Dcatalina.home=/usr/share/tomcat -Djava.endorsed.dirs= -Djava.io.tmpdir=/var/cache/tomcat/temp -Djava.util.logging.config.file=/usr/share/tomcat/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager org.apache.catalina.startup.Bootstrap start
 
+
+### IMPORTANT, INSTALL ADMIN PACKAGE:
+yum install -y tomcat-7.0.76-3.el7_4.noarch
+
 # in Debian, daemon: systemctl status tomcat8.service
 
 # service details can be modified then in file: /usr/lib/systemd/system/tomcat.service
