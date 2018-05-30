@@ -3,7 +3,7 @@
 # Sample script to demonstrate the creation of an HTML report using shell scripting
 
 # exit in case of error, stop script execution
-set -o errexit
+#set -o errexit
 # error in case of non-declared var being used
 #set -o nounset
 
@@ -35,6 +35,7 @@ readonly date=$(date +"%d-%m-%y")
 # Web directory
 readonly WEB_DIR=/var/www/html
 readonly FILENAME=$date.report.html
+# checking if file already exists, then it would be deleted
 checkFileExists $FILENAME
 
 # vars declared:
@@ -86,7 +87,6 @@ background: orange;
 </HEAD>
 <BODY>" > $WEB_DIR/$FILENAME # creating the report file
 
-# testing lines
 echo "<h4>Last updated: <strong>$(date)</strong></h4>
 <div id='hostnamectl'>" >> $WEB_DIR/$FILENAME
 echo "<h3>Hostname Details:</h3>" >> $WEB_DIR/$FILENAME
@@ -114,30 +114,30 @@ else
 fi
 echo "</div>" >> $WEB_DIR/$FILENAME
 
-# detect iface which is active (RX > 0)
+# detect iface(s) which are active (RX > 0)
 echo "<h3>Main Interface Details:</h3>" >> $WEB_DIR/$FILENAME
-netstat -i > /tmp/listIfaces.log
-grep -vi 'lo' /tmp/listIfaces.log > /tmp/activeIface.log # removing lo (localhost) from active option
-sed -i '1,2d' /tmp/activeIface.log # removing header lines in file
+#netstat -i > /tmp/listIfaces.log
+#grep -vi 'lo' /tmp/listIfaces.log > /tmp/activeIface.log # removing lo (localhost) from active option
+#sed -i '1,2d' /tmp/activeIface.log # removing header lines in file
+netstat -i | grep -v 'lo' | tail -n +3 > /tmp/activeIface.log
 while read line;
 do
-       	rxTrans=$(echo $line | awk '{print $3}')
+       	rxTrans=$(echo $line | awk '{print $4}')
         if [[ $rxTrans -gt 0 ]]
         then
             	ifaceName=$(echo $line | awk '{print $1}')
+		echo "<div id='iface_info_${ifaceName}'>" >> $WEB_DIR/$FILENAME
+		while read line
+		do
+        		echo "$line<br/>" >> $WEB_DIR/$FILENAME
+		done < <(ifconfig $ifaceName)
+		echo "</div>" >> $WEB_DIR/$FILENAME
         fi
 done < /tmp/activeIface.log
-echo "<div id='iface_info'>" >> $WEB_DIR/$FILENAME
-while read line
-do
-	echo "$line<br/>" >> $WEB_DIR/$FILENAME
-done < <(ifconfig $ifaceName)
-echo "</div>" >> $WEB_DIR/$FILENAME
 
-# detect iface which is active (RX > 0)
 echo "<div id='loggedUsers'><h3>Logged in users:</h3>" >> $WEB_DIR/$FILENAME
-summaryLogs=$(w | grep -i 'users') # keeping just first summary line:
-echo "$summaryLogs<br/>" >> $WEB_DIR/$FILENAME
+#summaryLogs=$(w | grep -i 'users') # keeping just first summary line:
+#echo "$summaryLogs<br/>" >> $WEB_DIR/$FILENAME
 # now printing table with main header, and all lines related to login sessions:
 echo "<table border='1'>
 <tr><th class='titulo'>USER</th>
@@ -151,24 +151,24 @@ echo "<table border='1'>
 </tr>" >> $WEB_DIR/$FILENAME
 while read line;
 do
-echo "<tr><td align='center'>" >> $WEB_DIR/$FILENAME
-echo $line | awk '{print $1}' >> $WEB_DIR/$FILENAME
-echo "</td><td align='center'>" >> $WEB_DIR/$FILENAME
-echo $line | awk '{print $2}' >> $WEB_DIR/$FILENAME
-echo "<td align='center'>" >> $WEB_DIR/$FILENAME
-echo $line | awk '{print $3}' >> $WEB_DIR/$FILENAME
-echo "</td><td align='center'>" >> $WEB_DIR/$FILENAME
-echo $line | awk '{print $4}' >> $WEB_DIR/$FILENAME
-echo "<td align='center'>" >> $WEB_DIR/$FILENAME
-echo $line | awk '{print $5}' >> $WEB_DIR/$FILENAME
-echo "</td><td align='center'>" >> $WEB_DIR/$FILENAME
-echo $line | awk '{print $6}' >> $WEB_DIR/$FILENAME
-echo "<td align='center'>" >> $WEB_DIR/$FILENAME
-echo $line | awk '{print $7}' >> $WEB_DIR/$FILENAME
-echo "</td><td align='center'>" >> $WEB_DIR/$FILENAME
-echo $line | awk '{print $8}' >> $WEB_DIR/$FILENAME
-echo "</td></tr>" >> $WEB_DIR/$FILENAME
-done < <(w | grep -vi user) # redirecting command output except first line
+	echo "<tr><td align='center'>" >> $WEB_DIR/$FILENAME
+	echo $line | awk '{print $1}' >> $WEB_DIR/$FILENAME
+	echo "</td><td align='center'>" >> $WEB_DIR/$FILENAME
+	echo $line | awk '{print $2}' >> $WEB_DIR/$FILENAME
+	echo "<td align='center'>" >> $WEB_DIR/$FILENAME
+	echo $line | awk '{print $3}' >> $WEB_DIR/$FILENAME
+	echo "</td><td align='center'>" >> $WEB_DIR/$FILENAME
+	echo $line | awk '{print $4}' >> $WEB_DIR/$FILENAME
+	echo "<td align='center'>" >> $WEB_DIR/$FILENAME
+	echo $line | awk '{print $5}' >> $WEB_DIR/$FILENAME
+	echo "</td><td align='center'>" >> $WEB_DIR/$FILENAME
+	echo $line | awk '{print $6}' >> $WEB_DIR/$FILENAME
+	echo "<td align='center'>" >> $WEB_DIR/$FILENAME
+	echo $line | awk '{print $7}' >> $WEB_DIR/$FILENAME
+	echo "</td><td align='center'>" >> $WEB_DIR/$FILENAME
+	echo $line | awk '{print $8}' >> $WEB_DIR/$FILENAME
+	echo "</td></tr>" >> $WEB_DIR/$FILENAME
+done < <(w | tail -n +3) # redirecting command output except first line
 echo "</table></div>" >> $WEB_DIR/$FILENAME
 
 echo "<div id='infoUsers'><h4>Details about active users</h4>" >> $WEB_DIR/$FILENAME
@@ -342,7 +342,7 @@ do
 	do
 		#listFiles=$(find /home/$line -type f -size +500k ! -ipath "/home/$line/.*/*" | xargs -I {} du -sh {} 2>/dev/null)
 		echo "$file <br/>" >> $WEB_DIR/$FILENAME
-	done < <(find /home/$user -type f -size +500k ! -ipath "/home/$user/.*/*" | xargs -I {} du -sh {} 2>/dev/null)
+	done < <(find /home/$user -type f -size +100M ! -ipath "/home/$user/.*/*" | xargs -I {} du -sh {} | sort -nrk 1 | head -n 5 2>/dev/null)
 	echo "<br/>" >> $WEB_DIR/$FILENAME
 done < /tmp/usersHome.log
 
