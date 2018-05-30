@@ -15,7 +15,7 @@ mvn compile
 # example: project is date2408v1, with initial code, and pom.xml which handles the mvn build:
 
 pom.xml
-src
+src/
 
 # then mvn compile within folder ~/.m2/repository/date2408v1/
 
