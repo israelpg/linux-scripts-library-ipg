@@ -1,5 +1,11 @@
 #!/bin/bash
 
+set -o errexit
+set -o nounset
+
+# Setting a trap for exit in order to clean files when exiting script:
+#trap "rm ..." exit
+
 # By default the script examines the /var/log/secure file (RedHat logging file / access recorded):
 AUTHLOG=/var/log/secure
 
@@ -9,7 +15,7 @@ AUTHLOG=/var/log/secure
 # this is a wrong username line:
 # Feb 21 10:34:49 02DI20161235444 sshd[16393]: Failed password for invalid user pedro from 10.136.137.107 port 61297 ssh2
 
-#But if there is an argument $1, it means that this script was called passing an argument/filename different than secure
+# But if there is an argument $1, it means that this script was called passing an argument/filename different than /var/log/secure
 if [[ -n $1 ]]
 then
 	AUTHLOG=$1
@@ -19,10 +25,11 @@ fi
 # Reference: I will work with a variable LOG, which refers to a file in the tmp folder. When you redirect to LOG, you write in the file
 LOG=/tmp/checking_logins.$$.log
 
+# First filter, we drop from our log file, the lines where username was wrong
 # grep -v means that all lines except invalid will be redirected, we do not want attempt with only wrong username, no problem there, just concerned about wrong password for valid user
 grep -v 'invalid' $AUTHLOG > $LOG
 
-# fetching IPs from local machines commiting failed password: (Note: same IP might try with several valid users)
+# fetching IPs from local machines commiting failed password: (Note: same IP might have tried with several valid users)
 IPS_INTRUDERS=$(cat $LOG | grep -i 'failed password' | awk '{print $(NF-3)}' | sort | uniq)
 
 # Creating the list of users commiting failed password

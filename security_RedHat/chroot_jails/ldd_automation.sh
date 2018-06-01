@@ -13,43 +13,62 @@ $0 -<argument>
 
 h for help
 v for version
+i for installing script $0 in user's folder
 f for folder name to be created --> $0 -f <folder_name>
 EOF
 }
 
-# checking argument options when creating script $0:
-while getopts "h:v:f" OPTION
+# detecting user
+username=$(whoami)
+
+# checking options passed when calling script $0:
+while getopts "hvif:" OPTION
 do
 	case $OPTION in
 	h)	
 		usage
-		exit 1
+		exit 0
 		;;
 	v)
 		echo "$0 Version 1.0"
-		exit 1
+		exit 0
+		;;
+	i)
+		echo "Installing script $0 in user's bin folder..."
+		cp $0 /home/${username}/bin/
+		usage
+		exit 0
 		;;
 	f)
 		chrootFolder=$OPTARG
 		;;
+	*)
+		echo "Wrong option chosen"
+		usage
+		exit 1
+		;;
 	esac
 done
 
+if [[ $# -eq 0 ]]
+then
+	echo "No argument has been passed as folder name, exiting..."
+	usage
+	exit 1
+fi
+
+# if an argument has been passed script $0 continues
 # Creating file structure:
 if [[ ! -z $chrootFolder ]]
 then
 	if [[ ! -d $chrootFolder ]]
 	then
 		mkdir -p ${chrootFolder}/{bin,etc,lib,lib64} &&
-		echo "PS1='JAIL $ '" | tee ${chrootFolder}/etc/bash.bashrc
+		echo "PS1='JAIL $ '" > ${chrootFolder}/etc/bash.bashrc
 	else
 		echo "Folder ${chrootFolder} already exists, exiting script"
-		exit 1
+		exit 0
 	fi
-else
-	echo "Please, provide a valid folder name to be created"
-	usage
-	exit 1
 fi
 
 # binaries_array: List of binaries needed in our chroot folder

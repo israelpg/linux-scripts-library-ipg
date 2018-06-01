@@ -13,7 +13,7 @@
 			+ dmgr (Deployment Manager) / ENV03_dmgrProf (WAS profile)
 
 # The node is a physical machine, which may run several virtual servers, each with its own cpu, ram, disk ...
-# The cluster is composed of virtual servers which run same app in different nodes, in case one server fails, the app runs in the other node/server.
+# The cluster is composed of virtual servers across nodes which run same app in different nodes, in case one server fails, the app runs in the other node/server.
 
 # PROFILE MANAGEMENT:
 # CREATING A DEPLOYMENT MANAGER PROFILE, USING MANAGERPROFILES.SH SCRIPT: (GUI can be used running pmt.sh)
