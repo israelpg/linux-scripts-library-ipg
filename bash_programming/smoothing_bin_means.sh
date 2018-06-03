@@ -7,21 +7,40 @@
 set -o errexit
 set -o nounset
 
-arrayNumbers=(15,21,8,34,9,21,26,24,25,28,4,29,34)
+arrayNumbers=(15 21 8 34 9 21 26 24 25 28 4 29 34)
+arrayLength=${#arrayNumbers[*]}
+arraySorted=()
 
-# sorting numbers:
+# building array with sorted numbers:
+while read line
+do
+	arraySorted+=(${line})
+done < <(echo ${arrayNumbers[*]} | tr ' ' '\n' | sort -nk 1)
 
-sortedNumbers=$(echo ${arrayNumbers[*]} | tr ',' '\n' | sort -nk 1)
+echo "arraySorted elements --> ${arraySorted[*]} -- length --> ${#arraySorted[*]} elements"
 
-# sorted elements in an array:
-
-elementsArray=$(echo $sortedNumbers | tr ' ' ',')
-
-arrayNSorted=(`echo ${elementsArray}`)
-
-echo "echo ${arrayNSorted[*]} with ${#arrayNSorted[*]} elements"
-
-# bin depth:
+# bin depth and id for first Bin array:
 depth=4
+idBin=1
+count=0
 
+for (( i=0 ; i<${arrayLength} ; i++ ))
+do
+	if [[ $count < $depth ]]
+	then
+                eval "bin${idBin}+=(`echo ${arraySorted[$i]}`)"
+		let count++
+	else
+		let idBin++
+                eval "bin${idBin}+=(`echo ${arraySorted[$i]}`)"
+		count=1
+	fi
+done
 
+echo "testing ... bin1 --> ${bin1[*]} bin2 --> ${bin2[*]} bin3 --> ${bin3[*]} bin4 --> ${bin4[*]}"
+
+# displaying bin by bin with elements:
+#for (( i=1 ; i<=${idBin} ; i++ ))
+#do
+#	echo "Bin with id $i contains elements: ${bin$i[*]}"
+#done

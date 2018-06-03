@@ -340,6 +340,12 @@ read -r username pass uid gid comments homedir shell <<< $(cat /etc/passwd | gre
 echo -e "The username is: $username\n"
 ...
 
+# declaring a var which will be used to execute a binary in our system, instead of calling whole line
+# example:
+java=$(which java)
+# where returns and stores in var:
+/usr/bin/java
+
 # terminal with rich text: tput
 tput bold
 # reset:

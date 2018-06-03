@@ -34,9 +34,9 @@ account required pam_time.so
 # bin login or ssh *
 # allowing non-root users to just login within business hours:
 * ; * ; !root ; Al0830-1700
-# or:
+# or just login system-auth:
 login ; tty* ; ALL ; !root ; !Wk1730-0800
-# or:
+# or just sshd:
 sshd ; tty* ; john ; Wk0800-1730 # john can only connect via sshd during working hours
 
 ### setting limits
@@ -47,5 +47,4 @@ session required	pam_limits.so
 /etc/security/limits.conf
 #<domain>      <type>  <item>         <value>
 @office - maxlogins 4 # for user of group office, maxlogins=4 ... instead of @groupname can be username
-
 
