@@ -7,6 +7,11 @@
 
 # otherwise, this may compromise security, since an attacker may copy the /etc/passwd file, and try to crack the passwords in his own local machine
 
+# checking user status:
+passwd -S <username>
+# or:
+chage -l <username>
+
 # Defining global password generation when creating a user in the system with useradd:
 /etc/login.defs
 # plus other settings like MIN_LENGTH, expiration, SYS_MIN_UID, etc ...
