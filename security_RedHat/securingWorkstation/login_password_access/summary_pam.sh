@@ -9,3 +9,5 @@
 # 3. /etc/pam.d/login can define that a user gets inactive after n days # individual basis using chage or passwd commands
 #
 # 4. /etc/pam.d/passwd can define more rules than /etc/login.defs for password definitions, again, chage or passwd for individual basis 
+#
+# 5. It is also possible to define a filelist in pam for filtering a service, eg: vsftpd

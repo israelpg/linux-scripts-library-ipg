@@ -11,7 +11,7 @@ systemctl -H user@host enable <service.name> # this session will be via ssh as w
 # encrypted tranmission of files
 scp
 # examples
-scp user@host ~/tests/ # from remote machine to localhost
+scp user@host ~/tests/ /inThisFolder/ # from remote machine to localhost
 scp ~/test user@host:/destinationFolder/subfolder # from localhost to remote machine
 
 # encrypted secure FTP connection
