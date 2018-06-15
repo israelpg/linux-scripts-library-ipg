@@ -35,3 +35,7 @@ nmap -sO 10.57.122.197
 # 9) -O is for OS scan along with default port scan:
 
 nmap -O google.com
+
+# generating an xml with the information exported:
+# useful for importing it into Metasploit
+nmap -p 22 10.136.137.0/24 -oX nmap_network.xml

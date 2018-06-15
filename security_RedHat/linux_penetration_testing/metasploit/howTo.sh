@@ -1,13 +1,20 @@
 #!/bin/bash
 
+# Sources:
+# www.offensive-security.com/metasploit-unleashed
+# www.wonderhowto.com
+
 # Installation:
 # msfinstall script needs to be executed
 ./msfinstall
 
+# Make sure daemon postgresql.service is enabled and running
+systemctl status postgresql.service
+
 # execute console, use a non-root user (id -u ! 0):
 ./msfconsole
 
-# First time, start db, it setups the environment for you:
+# First time you must setup the environment:
 msf > msfdb start
 [*] exec: msfdb start
 
@@ -38,19 +45,134 @@ msf > back
 # clear screen:
 clear
 
-# displaying all exploits available:
+#### Workspaces in Metasploit:
+msf > workspace
+* default
+msf > workspace -a ipg-exploitation
+[*] Added workspace: ipg-exploitation
+msf > workspace
+  default
+* ipg-exploitation
+msf > 
+# you can delete a workspace with:
+msf > workspace -d <workspace_name>
+
+# search for workspace options:
+msf > workspace -h
+Usage:
+    workspace                  List workspaces
+    workspace -v               List workspaces verbosely
+    workspace [name]           Switch workspace
+    workspace -a [name] ...    Add workspace(s)
+    workspace -d [name] ...    Delete workspace(s)
+    workspace -D               Delete all workspaces
+    workspace -r <old> <new>   Rename workspace
+    workspace -h               Show this help information
+
+#### Importing and Scanning:
+# an xml with the hosts list can be imported
+$ nmap -p 22 10.136.137.0/24 -oX nmap_network.xml
+
+msf > db_import /home/ip14aai/tests/nmap_network.xml
+[*] Importing 'Nmap XML' data
+[*] Import: Parsing with 'Nokogiri v1.8.2'
+[*] Importing host 10.136.137.1
+[*] Importing host 10.136.137.25
+[*] Importing host 10.136.137.39
+[*] Importing host 10.136.137.72
+[*] Importing host 10.136.137.74
+[*] Importing host 10.136.137.75
+[*] Importing host 10.136.137.77
+[*] Importing host 10.136.137.82
+[*] Importing host 10.136.137.86
+[*] Importing host 10.136.137.103
+[*] Importing host 10.136.137.122
+[*] Successfully imported /home/ip14aai/tests/nmap_network.xml
+
+msf > hosts
+
+Hosts
+=====
+
+address         mac  name                                os_name  os_flavor  os_sp  purpose  info  comments
+-------         ---  ----                                -------  ---------  -----  -------  ----  --------
+10.136.137.1                                             Unknown                    device         
+10.136.137.25        p02di1136763rtd.net1.cec.eu.int     Unknown                    device         
+10.136.137.39        p02di135010768.net1.cec.eu.int      Unknown                    device         
+10.136.137.72        ginos-imac.net1.cec.eu.int          Unknown                    device         
+10.136.137.74        p02di135010869.net1.cec.eu.int      Unknown                    device         
+10.136.137.75        p02di141990040.net1.cec.eu.int      Unknown                    device         
+10.136.137.77        javiers-imac.net1.cec.eu.int        Unknown                    device         
+10.136.137.82        d02di1602131rtd.net1.cec.eu.int     Unknown                    device         
+10.136.137.86        staruro-virtualbox.net1.cec.eu.int  Unknown                    device         
+10.136.137.103       p02di1339945rtd.net1.cec.eu.int     Unknown                    device         
+10.136.137.122       02di20161235444.net1.cec.eu.int     Unknown                    device  
+
+# another option is using the internal msf nmap command for -A adding a host in the db:
+msf > db_nmap -A <IP>
+
+# hosts search filter options:
+# -c column, -S value
+msf > hosts -c address,os_flavor -S Linux
+
+# if we are using one exploit (e.g.: auxiliary tcp) we can -R run the exploit
+
+msf auxiliary(tcp) > hosts -c address,os_flavor -S Linux -R
+
+#### Backing up our Data as an xml file, so that can be imported again:
+msf > db_export -f xml /root/msfu/exported_1.xml
+
+#### displaying all exploits available:
 show exploits
 
 # search something in particular:
 search mysql
 
+# we can search directly by type, platform and regex for exploit:
+msf > search type:exploit platform:windows login
+
 # show details for a particular exploit:
 
 info <exploit_info>
 
-# use exploit:
+# use exploit and show its options:
 
 use <exploit>
+
+msf > use exploit/windows/mssql/mssql_linkcrawler
+msf exploit(windows/mssql/mssql_linkcrawler) > show options
+
+Module options (exploit/windows/mssql/mssql_linkcrawler):
+
+   Name                 Current Setting  Required  Description
+   ----                 ---------------  --------  -----------
+   DEPLOY               false            no        Deploy payload via the sysadmin links
+   DEPLOYLIST                            no        Comma seperated list of systems to deploy to
+   PASSWORD                              yes       The password for the specified username
+   RHOST                                 yes       The target address
+   RPORT                1433             yes       The target port (TCP)
+   SRVHOST              0.0.0.0          yes       The local host to listen on. This must be an address on the local machine or 0.0.0.0
+   SRVPORT              8080             yes       The local port to listen on.
+   SSL                  false            no        Negotiate SSL for incoming connections
+   SSLCert                               no        Path to a custom SSL certificate (default is randomly generated)
+   TDSENCRYPTION        false            yes       Use TLS/SSL for TDS data "Force Encryption"
+   URIPATH                               no        The URI to use for this exploit (default is random)
+   USERNAME             sa               no        The username to authenticate as
+   USE_WINDOWS_AUTHENT  false            yes       Use windows authentification (requires DOMAIN option set)
+
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   0   Automatic
+
+# set an option:
+# set <option>=<value>
+
+set RPORT 1455
+
+
 
 ## SCENARIO
 # Example: mysql-login exploit tool
@@ -203,3 +325,119 @@ Module options (auxiliary/scanner/ssh/ssh_version):
    RPORT    22               yes       The target port (TCP)
    THREADS  1                yes       The number of concurrent threads
    TIMEOUT  30               yes       Timeout for the SSH probe
+
+# then if version is not updated, it may have some holes
+
+
+#### Scenario: Scanning ports of a remote host:
+
+msf auxiliary(scanner/portscan/tcp) > set RHOSTS 10.136.137.77
+RHOSTS => 10.136.137.77
+msf auxiliary(scanner/portscan/tcp) > run
+
+[+] 10.136.137.77:        - 10.136.137.77:22 - TCP OPEN
+[+] 10.136.137.77:        - 10.136.137.77:80 - TCP OPEN
+[+] 10.136.137.77:        - 10.136.137.77:3283 - TCP OPEN
+[+] 10.136.137.77:        - 10.136.137.77:5900 - TCP OPEN
+
+# the same but using the hosts already imported in the DB (db_import) via xml file and -R running the exploit:
+# msf > auxiliary(scanner/portscan/tcp) > hosts -R
+# you can define just -c column address, or anything else, then -R run:
+msf auxiliary(scanner/portscan/tcp) > hosts -c address -R
+
+Hosts
+=====
+
+address
+-------
+10.136.137.1
+10.136.137.25
+10.136.137.39
+10.136.137.72
+10.136.137.74
+10.136.137.75
+10.136.137.77
+10.136.137.82
+10.136.137.86
+10.136.137.103
+10.136.137.122
+
+RHOSTS => file:/tmp/msf-db-rhosts-20180615-21823-46n64u
+
+msf auxiliary(scanner/portscan/tcp) > run # notice you are using command run as well !!!
+
+[+] 10.136.137.25:        - 10.136.137.25:21 - TCP OPEN
+[+] 10.136.137.25:        - 10.136.137.25:80 - TCP OPEN
+[+] 10.136.137.25:        - 10.136.137.25:79 - TCP OPEN
+[+] 10.136.137.25:        - 10.136.137.25:443 - TCP OPEN
+[+] 10.136.137.25:        - 10.136.137.25:515 - TCP OPEN
+[+] 10.136.137.25:        - 10.136.137.25:631 - TCP OPEN
+[+] 10.136.137.25:        - 10.136.137.25:4000 - TCP OPEN
+[+] 10.136.137.25:        - 10.136.137.25:5000 - TCP OPEN
+[+] 10.136.137.25:        - 10.136.137.25:5001 - TCP OPEN
+...
+...
+
+#### SERVICES: There is an option to scan services of remote hosts, with an internal command services
+services <host>
+
+# example:
+msf > services 10.136.137.77
+Services
+========
+
+host           port  proto  name  state  info
+----           ----  -----  ----  -----  ----
+10.136.137.77  22    tcp    ssh   open   
+
+# same is applicable while using a exploit like portscan, which gives more knowledge:
+msf auxiliary(scanner/portscan/tcp) > services 10.136.137.77
+Services
+========
+
+host           port  proto  name  state  info
+----           ----  -----  ----  -----  ----
+10.136.137.77  22    tcp    ssh   open   
+10.136.137.77  80    tcp          open   
+10.136.137.77  3283  tcp          open   
+10.136.137.77  5900  tcp          open
+
+# for all hosts in DB:
+msf > services
+Services
+========
+
+host            port  proto  name  state     info
+----            ----  -----  ----  -----     ----
+10.136.137.1    22    tcp    ssh   closed    
+10.136.137.25   22    tcp    ssh   closed    
+10.136.137.39   22    tcp    ssh   closed    
+10.136.137.72   22    tcp    ssh   closed    
+10.136.137.74   22    tcp    ssh   closed    
+10.136.137.75   22    tcp    ssh   closed    
+10.136.137.77   22    tcp    ssh   open      
+10.136.137.82   22    tcp    ssh   filtered  
+10.136.137.86   22    tcp    ssh   closed    
+10.136.137.103  22    tcp    ssh   closed    
+10.136.137.120  8088  tcp    http  open      Apache-Coyote/1.1
+10.136.137.122  22    tcp    ssh   open 
+
+# only ssh --> use -S filter:
+msf > services -S ssh
+
+# Exporting to a CSV file: -o output
+msf > services -S ssh -o /root/msfu/ssh_report_hosts.csv
+
+####################################### TIPS, KNOW ERRORS & SOLUTIONS
+
+## Scenario 1: I had metasploit working, after an update, cannot start postgresql.service
+# * If starting the daemon gives an error that data is empty, then initdb must be executed first:
+service postgresql initdb
+# Now try to start the daemon:
+systemctl start postgresql.service
+# Now try to init the db:
+# /opt/metasploit-framework/bin
+[ip14aai@02DI20161235444 bin]$ ./msfdb init
+Found a database at /home/ip14aai/.msf4/db, checking to see if it is started
+Starting database at /home/ip14aai/.msf4/db...success
+

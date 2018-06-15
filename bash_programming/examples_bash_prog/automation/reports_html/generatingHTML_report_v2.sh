@@ -45,7 +45,8 @@ function formatTotalLine()
 {
 	# adding class to <tr> where totals are specified (last line):
 	# get number of line where total is written
-	getNumberLine=$(cat $WEB_DIR/$FILENAME | grep -n 'total' | cut -c -2)
+	#getNumberLine=$(cat $WEB_DIR/$FILENAME | grep -n 'total' | cut -c -2)
+	getNumberLine=$(cat $WEB_DIR/$FILENAME | grep -n 'total' | cut -d ':' -f 1)
 	let getNumberLine-- #to get the <tr> line instead of the total itself
 	sed -i "s/total/TOTAL/" $WEB_DIR/$FILENAME
 	sed -i "$getNumberLine s/<tr>/<tr class='colored'>/" $WEB_DIR/$FILENAME

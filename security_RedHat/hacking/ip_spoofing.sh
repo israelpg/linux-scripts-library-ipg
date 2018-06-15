@@ -30,7 +30,7 @@ sysctl --system -p # --system for loading /etc/sysctl.d/*.conf file + -p for loa
 
 # Server/Router configuration: Allowing ip_forward in procfs / sysctl:
 
-sysctl -w 'net-ipv4.ip_forward=1'
+sysctl -w 'net.ipv4.ip_forward=1'
 sysctl --system -p
 # check with sysctl -ar 'ip_forward'
 
