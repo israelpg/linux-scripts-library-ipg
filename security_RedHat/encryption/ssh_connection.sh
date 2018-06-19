@@ -60,6 +60,11 @@ ssh pepe@10.57.122.192 "mkdir ~/.ssh ; cat >> ~/.ssh/known_hosts" < ~/.ssh/id_rs
 # -i identity file
 ssh-copy-id -i user@host # it will copy the .pub key to the remote host ~/.ssh/authorized_key or /root/.ssh/known_hosts
 
+# removing a host key added in known_hosts:
+ssh-keygen -R hostname
+# or:
+ssh-keygen -R 10.136.137.122
+
 # now when connecting from server to client, no password is required
 
 ssh natasa@10.57.122.192

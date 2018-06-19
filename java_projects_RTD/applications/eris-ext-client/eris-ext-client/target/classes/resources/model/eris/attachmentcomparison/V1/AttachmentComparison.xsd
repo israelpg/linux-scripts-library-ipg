@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://ec.europa.eu/rdg/eris/attachmentcomparison/V1"
+    xmlns="http://ec.europa.eu/rdg/eris/attachmentcomparison/V1"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    xmlns:document="http://ec.europa.eu/research/fp/model/document/V5"
+    elementFormDefault="qualified" version="1.0.0">
+    
+    <xs:import namespace="http://ec.europa.eu/research/fp/model/document/V5" schemaLocation="../../../common-model/document/V5/Document.xsd"/>
+    
+    <xs:element name="AttachmentComparisonRequest" type="AttachmentComparisonRequestType" />
+    
+    <xs:complexType name="AttachmentComparisonRequestType">
+        <xs:sequence>
+            <xs:element name="FirstAttachmentRef" type="document:DocumentAttachmentRefType"/>
+            <xs:element name="SecondAttachmentRef" type="document:DocumentAttachmentRefType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:annotation>
+        <xs:documentation>v1.0.0 - First version</xs:documentation>
+    </xs:annotation>
+</xs:schema>

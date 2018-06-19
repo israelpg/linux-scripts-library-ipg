@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<project name="delete CDM classes" basedir=".">
+
+	<target name="echo">
+		<echo message="Deleting CDM classes" />
+		<echo message="${basedir}" />
+	</target>
+
+	<target name="delete">
+
+		<dirset id="to_delete" dir="src/main/java/eu/europa/ec/">
+			<exclude name="**/v*s" />
+            <include name="rdg/efp/domain/event/v1_0" />
+            <include name="research/fp/model/**/v*" />
+		</dirset>
+		<pathconvert pathsep="${line.separator}" property="to_delete_string" refid="to_delete" />
+		<echo>${to_delete_string}</echo>
+
+		<delete includeemptydirs="true">
+			<fileset id="to_delete" dir="src/main/java/eu/europa/ec/">
+                <exclude name="**/v*s/*" />
+	            <include name="rdg/efp/domain/event/v1_0/*" />
+                <include name="research/fp/model/**/v*/*" />
+			</fileset>
+		</delete>
+
+		<deleteEmptyFolders dir="src/main/java/eu/europa/ec"/>
+		
+	</target>
+
+	<target name="run" depends="echo,delete" />
+
+	<!-- Find and delete empty folders under dir -->
+	<macrodef name="deleteEmptyFolders">
+	    <attribute name="dir"/>
+	    <sequential>
+	        <delete includeemptydirs="true">
+	            <fileset dir="@{dir}"  >
+	                <and>
+	                    <size value="0"/>
+	                    <type type="dir"/>
+	                </and>
+	            </fileset>
+	        </delete>
+	    </sequential>
+	</macrodef>	
+</project>

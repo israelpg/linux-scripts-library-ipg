@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="18" failures="0" name="eu.europa.ec.rdg.eris.services.attachmentcomparison.v1.ErisAttachmentComparisonClientTest" time="0.883" errors="0" skipped="0">
+  <properties>
+    <property name="team.scm.fetchDestination" value="/ec/local/data/build-workspaces/rm/eris-ext-client"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="/ec/local/sw/java/64/jdk1.8.0_144/jre/lib/amd64"/>
+    <property name="java.vm.version" value="25.144-b01"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="/ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=":"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="cookie-secure" value="true"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="/ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client"/>
+    <property name="mode" value="staging"/>
+    <property name="java.runtime.version" value="1.8.0_144-b01"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
+    <property name="maven.artifact.threads" value="3"/>
+    <property name="java.endorsed.dirs" value="/ec/local/sw/java/64/jdk1.8.0_144/jre/lib/endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="/ec/local/data/temp"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="os.name" value="Linux"/>
+    <property name="classworlds.conf" value="/ec/local/sw/maven/apache-maven-3.5.2-rm/bin/m2.conf"/>
+    <property name="maxmemory" value="1g"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="altDeploymentRepository" value="mons-staging::default::http://mons.cc.cec.eu.int:8081/nexus/content/repositories/Staging-eris-ext-client-5.15.3"/>
+    <property name="java.library.path" value="/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib"/>
+    <property name="maven.conf" value="/ec/local/sw/maven/apache-maven-3.5.2-rm/conf"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="secretKeyFile" value="/ec/local/sw/rtc-buildengine/config-rm1/keyFile"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="maven.test.failure.ignore" value="true"/>
+    <property name="maven.repo.local" value="/ec/local/data/mvn-repos/rm1"/>
+    <property name="os.version" value="2.6.32-696.18.7.el6.x86_64"/>
+    <property name="team.scm.workspaceUUID" value="__VZ3cC8jEeOZV6MCi94NUw"/>
+    <property name="library.jansi.path" value="/ec/local/sw/maven/apache-maven-3.5.2-rm/lib/jansi-native"/>
+    <property name="user.home" value="/home/user/build"/>
+    <property name="user.timezone" value="Europe/Luxembourg"/>
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="buildResultUUID" value="_GOr-wWpNEeiDS-bVRYfAoQ"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="repository" value="staging"/>
+    <property name="user.name" value="build"/>
+    <property name="java.class.path" value="/ec/local/sw/maven/apache-maven-3.5.2-rm/boot/plexus-classworlds-2.5.2.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="/ec/local/sw/java/64/jdk1.8.0_144/jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Drepository=staging clean javadoc:jar source:jar -Dmaxmemory=1g deploy -Pintegration-test-with-recreate-schema -Prtc-rm-0 -DaltDeploymentRepository=mons-staging::default::http://mons.cc.cec.eu.int:8081/nexus/content/repositories/Staging-eris-ext-client-5.15.3 -B -T 1"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_144"/>
+    <property name="java.ext.dirs" value="/ec/local/sw/java/64/jdk1.8.0_144/jre/lib/ext:/usr/java/packages/lib/ext"/>
+    <property name="securerandom.source" value="file:/dev/./urandom"/>
+    <property name="sun.boot.class.path" value="/ec/local/sw/java/64/jdk1.8.0_144/jre/lib/resources.jar:/ec/local/sw/java/64/jdk1.8.0_144/jre/lib/rt.jar:/ec/local/sw/java/64/jdk1.8.0_144/jre/lib/sunrsasign.jar:/ec/local/sw/java/64/jdk1.8.0_144/jre/lib/jsse.jar:/ec/local/sw/java/64/jdk1.8.0_144/jre/lib/jce.jar:/ec/local/sw/java/64/jdk1.8.0_144/jre/lib/charsets.jar:/ec/local/sw/java/64/jdk1.8.0_144/jre/lib/jfr.jar:/ec/local/sw/java/64/jdk1.8.0_144/jre/classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="/ec/local/sw/maven/apache-maven-3.5.2-rm"/>
+    <property name="file.separator" value="/"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="configFile" value="/ec/local/sw/rtc-buildengine/config-rm1/config.properties"/>
+    <property name="sun.cpu.isalist" value=""/>
+  </properties>
+  <testcase classname="eu.europa.ec.rdg.eris.services.attachmentcomparison.v1.ErisAttachmentComparisonClientTest" name="testComparisonClientWhenAttachmentComparisonRequestTypeIsNullShouldThrowErisClientException" time="0.378"/>
+  <testcase classname="eu.europa.ec.rdg.eris.services.attachmentcomparison.v1.ErisAttachmentComparisonClientTest" name="testComparisonClientWhenFirstAttachmentRefIsNullShouldThrowErisClientException" time="0.001"/>
+  <testcase classname="eu.europa.ec.rdg.eris.services.attachmentcomparison.v1.ErisAttachmentComparisonClientTest" name="testComparisonClientWhenPreviousDocumentIdIsNullShouldThrowErisClientException" time="0.003"/>
+  <testcase classname="eu.europa.ec.rdg.eris.services.attachmentcomparison.v1.ErisAttachmentComparisonClientTest" name="testComparisonClientWhenPreviousAttachmentNameIsNullShouldThrowErisClientException" time="0.001"/>
+  <testcase classname="eu.europa.ec.rdg.eris.services.attachmentcomparison.v1.ErisAttachmentComparisonClientTest" name="testComparisonClientWhenSecondAttachmentRefIsNullShouldThrowErisClientException" time="0.001"/>
+  <testcase classname="eu.europa.ec.rdg.eris.services.attachmentcomparison.v1.ErisAttachmentComparisonClientTest" name="testComparisonClientWhenCurrentDocumentIdIsNullShouldThrowErisClientExceptionV2" time="0.001"/>
+  <testcase classname="eu.europa.ec.rdg.eris.services.attachmentcomparison.v1.ErisAttachmentComparisonClientTest" name="testComparisonClientWhenCurrentAttachmentNameIsNullShouldThrowErisClientExceptionV2" time="0.001"/>
+  <testcase classname="eu.europa.ec.rdg.eris.services.attachmentcomparison.v1.ErisAttachmentComparisonClientTest" name="testComparisonClientWhenAllMandatoryParametersAreOkShouldEncryptThemV2" time="0.473"/>
+  <testcase classname="eu.europa.ec.rdg.eris.services.attachmentcomparison.v1.ErisAttachmentComparisonClientTest" name="testComparisonClientWhenAllParametersAreOkShouldEncryptThemV2" time="0.005"/>
+  <testcase classname="eu.europa.ec.rdg.eris.services.attachmentcomparison.v1.ErisAttachmentComparisonClientTest" name="testComparisonClientWhenCurrentDocumentIdIsNullShouldThrowErisClientException" time="0.001"/>
+  <testcase classname="eu.europa.ec.rdg.eris.services.attachmentcomparison.v1.ErisAttachmentComparisonClientTest" name="testComparisonClientWhenCurrentAttachmentNameIsNullShouldThrowErisClientException" time="0.001"/>
+  <testcase classname="eu.europa.ec.rdg.eris.services.attachmentcomparison.v1.ErisAttachmentComparisonClientTest" name="testComparisonClientWhenAllMandatoryParametersAreOkShouldEncryptThem" time="0.005"/>
+  <testcase classname="eu.europa.ec.rdg.eris.services.attachmentcomparison.v1.ErisAttachmentComparisonClientTest" name="testComparisonClientWhenAllParametersAreOkShouldEncryptThem" time="0.007"/>
+  <testcase classname="eu.europa.ec.rdg.eris.services.attachmentcomparison.v1.ErisAttachmentComparisonClientTest" name="testComparisonClientWhenAttachmentComparisonRequestTypeIsNullShouldThrowErisClientExceptionV2" time="0.001"/>
+  <testcase classname="eu.europa.ec.rdg.eris.services.attachmentcomparison.v1.ErisAttachmentComparisonClientTest" name="testComparisonClientWhenFirstAttachmentRefIsNullShouldThrowErisClientExceptionV2" time="0.001"/>
+  <testcase classname="eu.europa.ec.rdg.eris.services.attachmentcomparison.v1.ErisAttachmentComparisonClientTest" name="testComparisonClientWhenPreviousDocumentIdIsNullShouldThrowErisClientExceptionV2" time="0.001"/>
+  <testcase classname="eu.europa.ec.rdg.eris.services.attachmentcomparison.v1.ErisAttachmentComparisonClientTest" name="testComparisonClientWhenPreviousAttachmentNameIsNullShouldThrowErisClientExceptionV2" time="0.001"/>
+  <testcase classname="eu.europa.ec.rdg.eris.services.attachmentcomparison.v1.ErisAttachmentComparisonClientTest" name="testComparisonClientWhenSecondAttachmentRefIsNullShouldThrowErisClientExceptionV2" time="0.001"/>
+</testsuite>

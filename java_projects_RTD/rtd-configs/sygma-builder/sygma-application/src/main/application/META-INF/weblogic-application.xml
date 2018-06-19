@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wls:weblogic-application
+	xmlns:wls="http://xmlns.oracle.com/weblogic/weblogic-application"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.oracle.com/weblogic/weblogic-application http://xmlns.oracle.com/weblogic/weblogic-application/1.6/weblogic-application.xsd">
+	<!--weblogic-version:12.1.3-->
+	<wls:singleton-service>
+		<wls:class-name>eu.europa.ec.rdg.sygma.exercises.payment.utils.PaymentInitialisationSingletonService</wls:class-name>
+		<wls:name>PaymentInitialisationSingletonService</wls:name>
+	</wls:singleton-service>
+	<wls:library-ref>
+		<wls:library-name>ccm2-cache-api</wls:library-name>
+		<wls:exact-match>false</wls:exact-match>
+	</wls:library-ref>
+	<!-- work manager for REPA asynchronous tasks (could potentially be moved to reporting ejb module if required) -->
+	<wls:work-manager>
+		<wls:name>ReportingWorkManager</wls:name>
+	</wls:work-manager>
+	<wls:prefer-application-packages>
+		<wls:package-name>org.slf4j.*</wls:package-name>
+		<wls:package-name>org.apache.oro.*</wls:package-name>
+		<wls:package-name>org.apache.commons.lang.*</wls:package-name>
+	</wls:prefer-application-packages>
+</wls:weblogic-application>

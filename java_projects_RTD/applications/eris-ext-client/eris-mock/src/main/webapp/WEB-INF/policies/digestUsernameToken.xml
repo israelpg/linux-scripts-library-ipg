@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+	<sp:SymmetricBinding>
+		<wsp:Policy>
+			<sp:UsernameToken sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToRecipient">
+				<wsp:Policy>
+					<sp:HashPassword />
+					<sp:WssUsernameToken10 />
+				</wsp:Policy>
+			</sp:UsernameToken>
+		</wsp:Policy>
+	</sp:SymmetricBinding>
+	<sp:SupportingTokens>
+		<wsp:Policy>
+			<sp:UsernameToken sp:IncludeToken="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702/IncludeToken/AlwaysToRecipient">
+				<wsp:Policy>
+					<sp:HashPassword />
+					<sp:WssUsernameToken10 />
+				</wsp:Policy>
+			</sp:UsernameToken>
+		</wsp:Policy>
+	</sp:SupportingTokens>
+</wsp:Policy>

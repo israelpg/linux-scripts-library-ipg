@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+    xmlns:jaxws="http://java.sun.com/xml/ns/jaxws"
+    xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/jaxb http://www.oracle.com/xml/ns/jaxb/bindingschema_2_0.xsd http://java.sun.com/xml/ns/jaxws http://java.sun.com/xml/ns/jaxws/wsdl_customizationschema_2_0.xsd"
+    elementFormDefault="qualified" attributeFormDefault="unqualified" jaxb:extensionBindingPrefixes="xjc" jaxb:version="2.1">
+    <xs:annotation>
+        <xs:appinfo>
+            <jaxb:globalBindings choiceContentProperty="true">
+                <xjc:javaType name="java.sql.Timestamp" xmlType="xs:dateTime" adapter="eu.europa.ec.xml.adapters.TimestampAdapter" />
+                <xjc:javaType name="java.sql.Timestamp" xmlType="xs:date" adapter="eu.europa.ec.xml.adapters.TimestampDateAdapter" />
+                <xjc:serializable uid="0" />
+            </jaxb:globalBindings>
+            <jaxws:enableWrapperStyle>false</jaxws:enableWrapperStyle>
+        </xs:appinfo>
+    </xs:annotation>
+</xs:schema>

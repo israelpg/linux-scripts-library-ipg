@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://ec.europa.eu/research/fp/model" xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    targetNamespace="http://ec.europa.eu/research/fp/model"
+    elementFormDefault="qualified" version="1.0">
+
+    <xs:annotation>
+        <xs:documentation>
+            <h2>Introduction</h2>
+            This index schema acts as a container for all schemas related to the Event Driven Architecture. 
+            The schema does not define any types of its own. Instead, it's main purpose is for joint versioning and documentation of the set of contained schemas.
+        </xs:documentation>
+    </xs:annotation>
+    <xs:annotation>
+        <xs:documentation>Base stuff</xs:documentation>
+    </xs:annotation>
+</xs:schema>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wls:weblogic-web-app xmlns:wls="http://www.bea.com/ns/weblogic/weblogic-web-app" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.bea.com/ns/weblogic/weblogic-web-app http://www.bea.com/ns/weblogic/weblogic-web-app/1.0/weblogic-web-app.xsd">
+	<wls:session-descriptor>
+		<wls:cookie-path>/eris-mock</wls:cookie-path>
+	</wls:session-descriptor>
+	<wls:container-descriptor>
+		<wls:filter-dispatched-requests-enabled>true</wls:filter-dispatched-requests-enabled>
+		<wls:allow-all-roles>true</wls:allow-all-roles>
+	</wls:container-descriptor>
+	<wls:context-root>/eris-mock</wls:context-root>
+</wls:weblogic-web-app>

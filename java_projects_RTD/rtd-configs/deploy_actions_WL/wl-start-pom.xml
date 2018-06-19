@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>eris-builder</artifactId>
+	<version>5.8-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>ERIS :: WL start</name>
+	<parent>
+		<groupId>eu.europa.ec.rdg</groupId>
+		<artifactId>super</artifactId>
+		<version>1.11</version>
+	</parent>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.oracle.weblogic</groupId>
+				<artifactId>weblogic-maven-plugin</artifactId>
+				<configuration>
+					<script>
+connect('${weblogic.user}', '${weblogic.password}', '${weblogic.adminurl}')
+
+start('${weblogic.targets}','Cluster')
+state('${weblogic.targets}','Cluster')
+
+disconnect()
+exit()
+					</script>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

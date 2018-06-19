@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema xmlns="http://ec.europa.eu/research/fp/model" xmlns:ns1="http://ec.europa.eu/rdg/eris/attachmentcomparison/V1" 
+xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ec.europa.eu/research/fp/model">
+    <xs:annotation>
+        <xs:documentation>
+            This index file includes all other xsds
+        </xs:documentation>
+    </xs:annotation>
+
+    <!-- Use xjc to generate the stubs  -->  
+     <xs:import namespace="http://ec.europa.eu/rdg/eris/attachmentcomparison/V1" schemaLocation="eris/attachmentcomparison/V1/AttachmentComparison.xsd" />
+     
+</xs:schema>

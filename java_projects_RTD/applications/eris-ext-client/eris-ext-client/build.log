@@ -1,0 +1,353 @@
+[INFO] Scanning for projects...
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-xsd-import-maven-plugin/2.18/rdg-xsd-import-maven-plugin-2.18.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-xsd-import-maven-plugin/2.18/rdg-xsd-import-maven-plugin-2.18.pom (1.6 kB at 7.2 kB/s)
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/maven-plugins/2.18/maven-plugins-2.18.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/maven-plugins/2.18/maven-plugins-2.18.pom (5.5 kB at 392 kB/s)
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-xsd-import-maven-plugin/2.18/rdg-xsd-import-maven-plugin-2.18.jar
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-xsd-import-maven-plugin/2.18/rdg-xsd-import-maven-plugin-2.18.jar (32 kB at 1.6 MB/s)
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-weblogic-maven-plugin/2.18/rdg-weblogic-maven-plugin-2.18.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-weblogic-maven-plugin/2.18/rdg-weblogic-maven-plugin-2.18.pom (1.3 kB at 72 kB/s)
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-weblogic-maven-plugin/2.18/rdg-weblogic-maven-plugin-2.18.jar
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-weblogic-maven-plugin/2.18/rdg-weblogic-maven-plugin-2.18.jar (51 kB at 2.0 MB/s)
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-maven-plugin/2.18/rdg-maven-plugin-2.18.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-maven-plugin/2.18/rdg-maven-plugin-2.18.pom (1.3 kB at 56 kB/s)
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-maven-plugin/2.18/rdg-maven-plugin-2.18.jar
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-maven-plugin/2.18/rdg-maven-plugin-2.18.jar (17 kB at 839 kB/s)
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/maven-metadata.xml
+[INFO] Downloading from rdg-central: http://rtd-nexus.cc.cec.eu.int:8081/repository/maven-central/eu/europa/ec/rdg/maven/plugin/maven-metadata.xml
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/maven-metadata.xml (1.6 kB at 17 kB/s)
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building eris-ext-client 5.15.3
+[INFO] ------------------------------------------------------------------------
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/framework/framework-util/1.16/framework-util-1.16.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/framework/framework-util/1.16/framework-util-1.16.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/framework/framework-util/1.16/framework-util-1.16.pom (4.1 kB at 217 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/framework/framework/1.16/framework-1.16.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/framework/framework/1.16/framework-1.16.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/framework/framework/1.16/framework-1.16.pom (954 B at 80 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/super/1.14/super-1.14.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/super/1.14/super-1.14.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/super/1.14/super-1.14.pom (4.4 kB at 444 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/moap/1.8/moap-1.8.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/moap/1.8/moap-1.8.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/moap/1.8/moap-1.8.pom (15 kB at 1.3 MB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/framework/framework-security/1.16/framework-security-1.16.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/framework/framework-security/1.16/framework-security-1.16.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/framework/framework-security/1.16/framework-security-1.16.pom (1.4 kB at 119 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/digit/security/authorization-ejb/1.0/authorization-ejb-1.0.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/digit/security/authorization-ejb/1.0/authorization-ejb-1.0.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/digit/security/authorization-ejb/1.0/authorization-ejb-1.0.pom (1.5 kB at 116 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/digit/security/security-root/1.0/security-root-1.0.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/digit/security/security-root/1.0/security-root-1.0.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/digit/security/security-root/1.0/security-root-1.0.pom (7.5 kB at 575 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/digit/security/authorization-spi/1.0/authorization-spi-1.0.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/digit/security/authorization-spi/1.0/authorization-spi-1.0.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/digit/security/authorization-spi/1.0/authorization-spi-1.0.pom (738 B at 49 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/common-ext-client/1.4/common-ext-client-1.4.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/common-ext-client/1.4/common-ext-client-1.4.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/common-ext-client/1.4/common-ext-client-1.4.pom (1.4 kB at 107 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/common/common-model/15.5/common-model-15.5.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/common/common-model/15.5/common-model-15.5.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/common/common-model/15.5/common-model-15.5.pom (11 kB at 436 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/common/common/15.5/common-15.5.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/common/common/15.5/common-15.5.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/common/common/15.5/common-15.5.pom (2.8 kB at 71 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/common-ext-client/2.0/common-ext-client-2.0.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/common-ext-client/2.0/common-ext-client-2.0.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/common-ext-client/2.0/common-ext-client-2.0.pom (2.4 kB at 238 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/common-ext-client/1.7/common-ext-client-1.7.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/common-ext-client/1.7/common-ext-client-1.7.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/common-ext-client/1.7/common-ext-client-1.7.pom (1.4 kB at 116 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/super/1.17/super-1.17.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/super/1.17/super-1.17.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/super/1.17/super-1.17.pom (4.4 kB at 404 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/moap/1.11/moap-1.11.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/moap/1.11/moap-1.11.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/moap/1.11/moap-1.11.pom (14 kB at 1.2 MB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/digit/iam/ecas/client/ecas-weblogic-12.2.1-authprovider/4.19.3/ecas-weblogic-12.2.1-authprovider-4.19.3.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/digit/iam/ecas/client/ecas-weblogic-12.2.1-authprovider/4.19.3/ecas-weblogic-12.2.1-authprovider-4.19.3.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/digit/iam/ecas/client/ecas-weblogic-12.2.1-authprovider/4.19.3/ecas-weblogic-12.2.1-authprovider-4.19.3.pom (1.4 kB at 85 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/foundation/foundation-api/2.3.1/foundation-api-2.3.1.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/foundation/foundation-api/2.3.1/foundation-api-2.3.1.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/foundation/foundation-api/2.3.1/foundation-api-2.3.1.pom (1.0 kB at 23 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/super/2.0/super-2.0.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/super/2.0/super-2.0.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/super/2.0/super-2.0.pom (4.3 kB at 473 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/framework/framework-cache/1.20/framework-cache-1.20.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/framework/framework-cache/1.20/framework-cache-1.20.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/framework/framework-cache/1.20/framework-cache-1.20.pom (961 B at 107 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/framework/framework/1.20/framework-1.20.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/framework/framework/1.20/framework-1.20.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/framework/framework/1.20/framework-1.20.pom (1.0 kB at 102 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rtd/secunda/secunda-author/4.1.1/secunda-author-4.1.1.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rtd/secunda/secunda-author/4.1.1/secunda-author-4.1.1.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rtd/secunda/secunda-author/4.1.1/secunda-author-4.1.1.pom (411 B at 11 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/libs/hibernate/4.0.1/hibernate-4.0.1.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/libs/hibernate/4.0.1/hibernate-4.0.1.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/libs/hibernate/4.0.1/hibernate-4.0.1.pom (4.7 kB at 166 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/libs/google-toolkit-repack/18.0/google-toolkit-repack-18.0.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/libs/google-toolkit-repack/18.0/google-toolkit-repack-18.0.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/libs/google-toolkit-repack/18.0/google-toolkit-repack-18.0.pom (5.4 kB at 541 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/framework/framework-security/1.16/framework-security-1.16.jar
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/digit/security/authorization-ejb/1.0/authorization-ejb-1.0.jar
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/digit/security/authorization-spi/1.0/authorization-spi-1.0.jar
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/framework/framework-cache/1.20/framework-cache-1.20.jar
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/framework/framework-security/1.16/framework-security-1.16.jar
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/digit/security/authorization-ejb/1.0/authorization-ejb-1.0.jar
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/digit/security/authorization-spi/1.0/authorization-spi-1.0.jar
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/framework/framework-security/1.16/framework-security-1.16.jar (36 kB at 1.3 MB/s)
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/framework/framework-cache/1.20/framework-cache-1.20.jar
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/digit/security/authorization-ejb/1.0/authorization-ejb-1.0.jar (9.6 kB at 66 kB/s)
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/digit/security/authorization-spi/1.0/authorization-spi-1.0.jar (5.3 kB at 34 kB/s)
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/framework/framework-cache/1.20/framework-cache-1.20.jar (17 kB at 84 kB/s)
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ eris-ext-client ---
+[INFO] Deleting /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target
+[INFO] 
+[INFO] --- maven-javadoc-plugin:3.0.1:jar (default-cli) @ eris-ext-client ---
+[INFO] 
+Loading source files for package eu.europa.ec.rdg.eris.services.attachmentcomparison.v1...
+Loading source files for package eu.europa.ec.rdg.eris.document.common...
+Loading source files for package eu.europa.ec.rdg.eris.document.v4...
+Loading source files for package eu.europa.ec.rdg.eris.document.v4.util...
+Loading source files for package eu.europa.ec.rdg.eris.document.v5...
+Loading source files for package eu.europa.ec.rdg.eris.document.v5.util...
+Constructing Javadoc information...
+Standard Doclet version 1.8.0_144
+Building tree for all the packages and classes...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/services/attachmentcomparison/v1/AttachmentComparisonComponent.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/services/attachmentcomparison/v1/ErisAttachmentComparisonClientImpl.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/services/attachmentcomparison/v1/IErisAttachmentComparisonClient.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/AbstractAttachmentUtil.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/AbstractErisHttpClient.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/AbstractErisHttpClient.PARAMS.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/AttachmentDownloadWrapper.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/ContentDispositionUtil.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/ErisClientAuthenticationException.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/ErisClientAuthorizationException.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/ErisClientErrorCode.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/ErisClientException.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/ErisClientSecurityException.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/ErisEcasProxyTicketGenerator.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/ExceptionMapper.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/HeaderUtil.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/SchemaUtil.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/StringUtil.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/DocumentComponent.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/ErisHttpClientImpl.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/IDocumentManagementServiceRemote.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/IErisHttpClient.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/util/AttachmentUtil.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/DocumentComponent.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/ErisHttpClientImpl.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/IDocumentManagementServiceRemote.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/IErisHttpClient.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/util/AttachmentUtil.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/overview-frame.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/package-frame.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/package-summary.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/package-tree.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/package-frame.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/package-summary.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/package-tree.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/util/package-frame.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/util/package-summary.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/util/package-tree.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/package-frame.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/package-summary.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/package-tree.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/util/package-frame.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/util/package-summary.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/util/package-tree.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/services/attachmentcomparison/v1/package-frame.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/services/attachmentcomparison/v1/package-summary.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/services/attachmentcomparison/v1/package-tree.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/constant-values.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/serialized-form.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/services/attachmentcomparison/v1/class-use/AttachmentComparisonComponent.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/services/attachmentcomparison/v1/class-use/IErisAttachmentComparisonClient.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/services/attachmentcomparison/v1/class-use/ErisAttachmentComparisonClientImpl.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/class-use/ErisClientAuthorizationException.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/class-use/AbstractAttachmentUtil.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/class-use/StringUtil.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/class-use/ErisClientException.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/class-use/ErisClientErrorCode.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/class-use/AbstractErisHttpClient.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/class-use/AbstractErisHttpClient.PARAMS.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/class-use/ErisClientAuthenticationException.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/class-use/ContentDispositionUtil.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/class-use/AttachmentDownloadWrapper.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/class-use/HeaderUtil.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/class-use/ErisEcasProxyTicketGenerator.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/class-use/ExceptionMapper.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/class-use/ErisClientSecurityException.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/class-use/SchemaUtil.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/class-use/IDocumentManagementServiceRemote.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/class-use/DocumentComponent.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/class-use/ErisHttpClientImpl.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/class-use/IErisHttpClient.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/util/class-use/AttachmentUtil.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/class-use/IDocumentManagementServiceRemote.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/class-use/DocumentComponent.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/class-use/ErisHttpClientImpl.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/class-use/IErisHttpClient.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/util/class-use/AttachmentUtil.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/package-use.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/package-use.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/util/package-use.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/package-use.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/util/package-use.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/services/attachmentcomparison/v1/package-use.html...
+Building index for all the packages and classes...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/overview-tree.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/index-all.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/deprecated-list.html...
+Building index for all classes...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/allclasses-frame.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/allclasses-noframe.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/index.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/overview-summary.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/help-doc.html...
+1 warning
+[WARNING] Javadoc Warnings
+[WARNING] /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/src/main/java/eu/europa/ec/rdg/eris/document/common/AbstractErisHttpClient.java:297: warning: no @param for <T>
+[WARNING] protected <T> String getXML(T t) throws JAXBException {
+[WARNING] ^
+[INFO] Building jar: /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/eris-ext-client-5.15.3-javadoc.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:3.0.1:jar (default-cli) > generate-sources @ eris-ext-client >>>
+[INFO] 
+[INFO] <<< maven-source-plugin:3.0.1:jar (default-cli) < generate-sources @ eris-ext-client <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-source-plugin:3.0.1:jar (default-cli) @ eris-ext-client ---
+[INFO] Building jar: /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/eris-ext-client-5.15.3-sources.jar
+[INFO] 
+[INFO] --- build-helper-maven-plugin:1.7:parse-version (versions) @ eris-ext-client ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ eris-ext-client ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 4 resources to resources/model
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ eris-ext-client ---
+[INFO] Compiling 30 source files to /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/classes
+[WARNING] bootstrap class path not set in conjunction with -source 1.6
+/ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/src/main/java/eu/europa/ec/rdg/eris/document/common/ErisEcasProxyTicketGenerator.java:[11,37] [deprecation] EcasPgtExpiredException in eu.cec.digit.ecas.client.proxy has been deprecated
+[WARNING] /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/src/main/java/eu/europa/ec/rdg/eris/document/common/ErisEcasProxyTicketGenerator.java:[11,37] [deprecation] EcasPgtExpiredException in eu.cec.digit.ecas.client.proxy has been deprecated
+[WARNING] /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/src/main/java/eu/europa/ec/rdg/eris/document/common/ErisEcasProxyTicketGenerator.java:[11,37] [deprecation] EcasPgtExpiredException in eu.cec.digit.ecas.client.proxy has been deprecated
+[WARNING] /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/src/main/java/eu/europa/ec/rdg/eris/document/common/ErisEcasProxyTicketGenerator.java:[27,38] [deprecation] EcasPgtExpiredException in eu.cec.digit.ecas.client.proxy has been deprecated
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ eris-ext-client ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:testCompile (default-testCompile) @ eris-ext-client ---
+[INFO] Compiling 4 source files to /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ eris-ext-client ---
+[INFO] Surefire report directory: /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running eu.europa.ec.rdg.eris.services.attachmentcomparison.v1.ErisAttachmentComparisonClientTest
+14:24:31,870 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:31,873 ERROR [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - java.lang.IllegalArgumentException: The attachmentComparisonRequestType parameter is null. errorCode: 30111
+14:24:31,878 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:31,879 ERROR [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - java.lang.IllegalArgumentException: The attachmentComparisonRequestType.firstAttachmentRef variable is null. errorCode: 30111
+14:24:31,882 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:31,882 ERROR [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - java.lang.IllegalArgumentException: The attachmentComparisonRequestType.firstAttachmentRef.masterId variable is null. errorCode: 30111
+14:24:31,883 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:31,884 ERROR [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - java.lang.IllegalArgumentException: The attachmentComparisonRequestType.firstAttachmentRef.attachmentIdOrName.value variable is null. errorCode: 30111
+14:24:31,885 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:31,885 ERROR [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - java.lang.IllegalArgumentException: The attachmentComparisonRequestType.secondAttachmentRef variable is null. errorCode: 30111
+14:24:31,886 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:31,887 ERROR [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - java.lang.IllegalArgumentException: The attachmentComparisonRequestType.secondAttachmentRef.masterId variable is null. errorCode: 30111
+14:24:31,888 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:31,888 ERROR [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - java.lang.IllegalArgumentException: The attachmentComparisonRequestType.secondAttachmentRef.attachmentIdOrName.value variable is null. errorCode: 30111
+14:24:31,889 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:32,363 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:32,368 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:32,368 ERROR [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - java.lang.IllegalArgumentException: The attachmentComparisonRequestType.secondAttachmentRef.masterId variable is null. errorCode: 30111
+14:24:32,369 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:32,370 ERROR [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - java.lang.IllegalArgumentException: The attachmentComparisonRequestType.secondAttachmentRef.attachmentIdOrName.value variable is null. errorCode: 30111
+14:24:32,370 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:32,376 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:32,384 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:32,384 ERROR [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - java.lang.IllegalArgumentException: The attachmentComparisonRequestType parameter is null. errorCode: 30111
+14:24:32,385 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:32,386 ERROR [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - java.lang.IllegalArgumentException: The attachmentComparisonRequestType.firstAttachmentRef variable is null. errorCode: 30111
+14:24:32,388 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:32,388 ERROR [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - java.lang.IllegalArgumentException: The attachmentComparisonRequestType.firstAttachmentRef.masterId variable is null. errorCode: 30111
+14:24:32,389 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:32,390 ERROR [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - java.lang.IllegalArgumentException: The attachmentComparisonRequestType.firstAttachmentRef.attachmentIdOrName.value variable is null. errorCode: 30111
+14:24:32,391 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:32,391 ERROR [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - java.lang.IllegalArgumentException: The attachmentComparisonRequestType.secondAttachmentRef variable is null. errorCode: 30111
+Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.979 sec
+Running eu.europa.ec.rdg.eris.document.common.StringUtilTest
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec
+Running eu.europa.ec.rdg.eris.document.v4.util.AttachmentUtilTest
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.018 sec
+Running eu.europa.ec.rdg.eris.document.v5.util.AttachmentUtilTest
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.027 sec
+
+Results :
+
+Tests run: 48, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- rdg-xsd-import-maven-plugin:2.18:import (default) @ eris-ext-client ---
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-utils-maven-plugin/2.18/rdg-utils-maven-plugin-2.18.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-utils-maven-plugin/2.18/rdg-utils-maven-plugin-2.18.pom (1.2 kB at 102 kB/s)
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-utils-maven-plugin/2.18/rdg-utils-maven-plugin-2.18.jar
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-utils-maven-plugin/2.18/rdg-utils-maven-plugin-2.18.jar (64 kB at 4.9 MB/s)
+[INFO] resolved XSD dependency: eu.europa.ec.rdg.common:common-model:jar:15.5:compile
+[INFO] Unpacking /ec/local/data/mvn-repos/rm1/eu/europa/ec/rdg/common/common-model/15.5/common-model-15.5.jar to /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/xsd-unpacked/common-model with includes "[resources/model/**/*]" and excludes "[**/Index*.xsd]"
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ eris-ext-client ---
+[INFO] Building jar: /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/eris-ext-client-5.15.3.jar
+[INFO] 
+[INFO] --- maven-failsafe-plugin:2.12:integration-test (default) @ eris-ext-client ---
+[INFO] Failsafe report directory: /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/failsafe-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option UseSplitVerifier; support was removed in 8.0
+
+Results :
+
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-failsafe-plugin:2.12:verify (default) @ eris-ext-client ---
+[INFO] Failsafe report directory: /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/failsafe-reports
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ eris-ext-client ---
+[INFO] Installing /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/eris-ext-client-5.15.3.jar to /ec/local/data/mvn-repos/rm1/eu/europa/ec/rdg/eris/eris-ext-client/5.15.3/eris-ext-client-5.15.3.jar
+[INFO] Installing /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/pom.xml to /ec/local/data/mvn-repos/rm1/eu/europa/ec/rdg/eris/eris-ext-client/5.15.3/eris-ext-client-5.15.3.pom
+[INFO] Installing /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/eris-ext-client-5.15.3-javadoc.jar to /ec/local/data/mvn-repos/rm1/eu/europa/ec/rdg/eris/eris-ext-client/5.15.3/eris-ext-client-5.15.3-javadoc.jar
+[INFO] Installing /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/eris-ext-client-5.15.3-sources.jar to /ec/local/data/mvn-repos/rm1/eu/europa/ec/rdg/eris/eris-ext-client/5.15.3/eris-ext-client-5.15.3-sources.jar
+[INFO] 
+[INFO] --- maven-deploy-plugin:2.7:deploy (default-deploy) @ eris-ext-client ---
+[INFO] Using alternate deployment repository mons-staging::default::http://mons.cc.cec.eu.int:8081/nexus/content/repositories/Staging-eris-ext-client-5.15.3
+[INFO] Uploading to mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/repositories/Staging-eris-ext-client-5.15.3/eu/europa/ec/rdg/eris/eris-ext-client/5.15.3/eris-ext-client-5.15.3.jar
+[INFO] Uploaded to mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/repositories/Staging-eris-ext-client-5.15.3/eu/europa/ec/rdg/eris/eris-ext-client/5.15.3/eris-ext-client-5.15.3.jar (709 kB at 2.7 MB/s)
+[INFO] Uploading to mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/repositories/Staging-eris-ext-client-5.15.3/eu/europa/ec/rdg/eris/eris-ext-client/5.15.3/eris-ext-client-5.15.3.pom
+[INFO] Uploaded to mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/repositories/Staging-eris-ext-client-5.15.3/eu/europa/ec/rdg/eris/eris-ext-client/5.15.3/eris-ext-client-5.15.3.pom (5.9 kB at 160 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/repositories/Staging-eris-ext-client-5.15.3/eu/europa/ec/rdg/eris/eris-ext-client/maven-metadata.xml
+[INFO] Uploading to mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/repositories/Staging-eris-ext-client-5.15.3/eu/europa/ec/rdg/eris/eris-ext-client/maven-metadata.xml
+[INFO] Uploaded to mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/repositories/Staging-eris-ext-client-5.15.3/eu/europa/ec/rdg/eris/eris-ext-client/maven-metadata.xml (318 B at 11 kB/s)
+[INFO] Uploading to mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/repositories/Staging-eris-ext-client-5.15.3/eu/europa/ec/rdg/eris/eris-ext-client/5.15.3/eris-ext-client-5.15.3-javadoc.jar
+[INFO] Uploaded to mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/repositories/Staging-eris-ext-client-5.15.3/eu/europa/ec/rdg/eris/eris-ext-client/5.15.3/eris-ext-client-5.15.3-javadoc.jar (198 kB at 7.1 MB/s)
+[INFO] Uploading to mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/repositories/Staging-eris-ext-client-5.15.3/eu/europa/ec/rdg/eris/eris-ext-client/5.15.3/eris-ext-client-5.15.3-sources.jar
+[INFO] Uploaded to mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/repositories/Staging-eris-ext-client-5.15.3/eu/europa/ec/rdg/eris/eris-ext-client/5.15.3/eris-ext-client-5.15.3-sources.jar (31 kB at 340 kB/s)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 45.777 s
+[INFO] Finished at: 2018-06-07T14:24:45+02:00
+[INFO] Final Memory: 127M/1850M
+[INFO] ------------------------------------------------------------------------
+[WARNING] The requested profile "integration-test-with-recreate-schema" could not be activated because it does not exist.

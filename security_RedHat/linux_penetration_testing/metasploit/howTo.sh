@@ -57,6 +57,9 @@ msf >
 # you can delete a workspace with:
 msf > workspace -d <workspace_name>
 
+# using a specific workspace:
+msf > workspace ipg-exploitation
+
 # search for workspace options:
 msf > workspace -h
 Usage:
@@ -108,6 +111,14 @@ address         mac  name                                os_name  os_flavor  os_
 10.136.137.103       p02di1339945rtd.net1.cec.eu.int     Unknown                    device         
 10.136.137.122       02di20161235444.net1.cec.eu.int     Unknown                    device  
 
+# adding another host:
+host -a <IP>
+# you can edit the hostname:
+host -n <hostname> <IP>
+# example:
+host -a 10.136.137.32
+host -n d02di1341004inr.net1.cec.eu.int 10.136.137.32
+
 # another option is using the internal msf nmap command for -A adding a host in the db:
 msf > db_nmap -A <IP>
 
@@ -136,9 +147,8 @@ msf > search type:exploit platform:windows login
 info <exploit_info>
 
 # use exploit and show its options:
-
 use <exploit>
-
+# an example of usage above:
 msf > use exploit/windows/mssql/mssql_linkcrawler
 msf exploit(windows/mssql/mssql_linkcrawler) > show options
 
@@ -330,7 +340,7 @@ Module options (auxiliary/scanner/ssh/ssh_version):
 
 
 #### Scenario: Scanning ports of a remote host:
-
+# first we set RHOSTS with the target IP address
 msf auxiliary(scanner/portscan/tcp) > set RHOSTS 10.136.137.77
 RHOSTS => 10.136.137.77
 msf auxiliary(scanner/portscan/tcp) > run
@@ -402,6 +412,9 @@ host           port  proto  name  state  info
 10.136.137.77  3283  tcp          open   
 10.136.137.77  5900  tcp          open
 
+# using column specification -c and filtering by port number -p:
+msf > services -c port,proto,state -p 70-81
+
 # for all hosts in DB:
 msf > services
 Services
@@ -427,6 +440,20 @@ msf > services -S ssh
 
 # Exporting to a CSV file: -o output
 msf > services -S ssh -o /root/msfu/ssh_report_hosts.csv
+
+# Credentials: When scanning for services using credentials, it will be stored:
+# example: using exploit mysql_login:
+msf auxiliary(mysql_login) > run
+...
+msf auxiliary(mysql_login) > creds
+Credentials
+===========
+
+host 		port    user     pass    type     active
+----  		------  -------  ------  -------  -----
+10.136.137.32	3306	root		 password true
+
+[*] Found 1 credential.
 
 ####################################### TIPS, KNOW ERRORS & SOLUTIONS
 

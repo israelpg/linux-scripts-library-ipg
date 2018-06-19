@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>sygma-builder</artifactId>
+	<packaging>pom</packaging>
+	<name>SyGMa :: Project Builder</name>
+	<modules>
+		<module>sygma-assembler</module>
+		<module>../sygma-mod-utils</module> 
+		<module>../sygma-exercise-reporting</module>
+		<module>../sygma-mod-admin</module>
+ 		<module>sygma-application</module>
+	</modules>
+	<parent>
+		<groupId>eu.europa.ec.rdg</groupId>
+		<artifactId>moap</artifactId>
+		<version>2.0.2</version>
+	</parent>
+	<version>8.3.3</version>
+	<groupId>eu.europa.ec.rdg.sygma</groupId>
+</project>
+

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jaxb:bindings xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" 
+	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+	elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.1">
+	<jaxb:globalBindings choiceContentProperty="true">
+		<xjc:javaType name="java.sql.Timestamp" xmlType="xs:dateTime" adapter="eu.europa.ec.xml.adapters.TimestampAdapter" />
+		<xjc:javaType name="java.sql.Timestamp" xmlType="xs:date" adapter="eu.europa.ec.xml.adapters.TimestampDateAdapter" />
+		<xjc:serializable uid="0" />
+	</jaxb:globalBindings>
+</jaxb:bindings>

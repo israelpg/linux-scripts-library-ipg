@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="sygma_mock_web" version="2.5">
+
+	<display-name>ERIS Mock</display-name>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+
+	<servlet>
+		<servlet-name>DocumentManagementServiceV5_soaphttp</servlet-name>
+		<servlet-class>eu.europa.ec.rdg.eris.ws.impl.document_management.v5.DocumentManagementServiceV5Impl</servlet-class>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>DocumentManagementServiceV5_soaphttp</servlet-name>
+		<url-pattern>/v5/DocumentManagementService</url-pattern>
+	</servlet-mapping>
+
+</web-app>
