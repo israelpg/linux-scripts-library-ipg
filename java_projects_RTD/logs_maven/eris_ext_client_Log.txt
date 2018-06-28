@@ -1,0 +1,927 @@
+2018-06-07 14:21:18 [Jazz build engine] 
+2018-06-07 14:21:18 [Jazz build engine] Substituted the following configuration element property variables:
+2018-06-07 14:21:18 [Jazz build engine] 	com.ibm.team.build.cmdline : com.ibm.team.build.cmdline.arguments = -s ${runSonar} -m ${buildType} -d ${team.scm.fetchDestination} -w ${team.scm.workspaceUUID} -b ${buildResultUUID} -j 8 -p ${personalBuild}   -->   com.ibm.team.build.cmdline.arguments = -s false -m ${buildType} -d ${team.scm.fetchDestination} -w ${team.scm.workspaceUUID} -b ${buildResultUUID} -j 8 -p ${personalBuild}
+2018-06-07 14:21:18 [Jazz build engine] 	com.ibm.team.build.cmdline : com.ibm.team.build.cmdline.arguments = -s false -m ${buildType} -d ${team.scm.fetchDestination} -w ${team.scm.workspaceUUID} -b ${buildResultUUID} -j 8 -p ${personalBuild}   -->   com.ibm.team.build.cmdline.arguments = -s false -m ${buildType} -d ${team.scm.fetchDestination} -w __VZ3cC8jEeOZV6MCi94NUw -b ${buildResultUUID} -j 8 -p ${personalBuild}
+2018-06-07 14:21:18 [Jazz build engine] 	com.ibm.team.build.cmdline : com.ibm.team.build.cmdline.arguments = -s false -m ${buildType} -d ${team.scm.fetchDestination} -w __VZ3cC8jEeOZV6MCi94NUw -b ${buildResultUUID} -j 8 -p ${personalBuild}   -->   com.ibm.team.build.cmdline.arguments = -s false -m ${buildType} -d /ec/local/data/build-workspaces/rm/eris-ext-client -w __VZ3cC8jEeOZV6MCi94NUw -b ${buildResultUUID} -j 8 -p ${personalBuild}
+2018-06-07 14:21:18 [Jazz build engine] 	com.ibm.team.build.cmdline : com.ibm.team.build.cmdline.arguments = -s false -m ${buildType} -d /ec/local/data/build-workspaces/rm/eris-ext-client -w __VZ3cC8jEeOZV6MCi94NUw -b ${buildResultUUID} -j 8 -p ${personalBuild}   -->   com.ibm.team.build.cmdline.arguments = -s false -m staging -d /ec/local/data/build-workspaces/rm/eris-ext-client -w __VZ3cC8jEeOZV6MCi94NUw -b ${buildResultUUID} -j 8 -p ${personalBuild}
+2018-06-07 14:21:18 [Jazz build engine] 	com.ibm.team.build.cmdline : com.ibm.team.build.cmdline.arguments = -s false -m staging -d /ec/local/data/build-workspaces/rm/eris-ext-client -w __VZ3cC8jEeOZV6MCi94NUw -b ${buildResultUUID} -j 8 -p ${personalBuild}   -->   com.ibm.team.build.cmdline.arguments = -s false -m staging -d /ec/local/data/build-workspaces/rm/eris-ext-client -w __VZ3cC8jEeOZV6MCi94NUw -b _GOr-wWpNEeiDS-bVRYfAoQ -j 8 -p ${personalBuild}
+2018-06-07 14:21:18 [Jazz build engine] 	com.ibm.team.build.cmdline : com.ibm.team.build.cmdline.workingDir = ${team.scm.fetchDestination}/eris-ext-client   -->   com.ibm.team.build.cmdline.workingDir = /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client
+2018-06-07 14:21:18 [Jazz build engine] 	com.ibm.team.build.junit.publishing : com.ibm.team.build.junit.publishing.log = ${team.scm.fetchDestination}/eris-ext-client/target/junit   -->   com.ibm.team.build.junit.publishing.log = /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/junit
+2018-06-07 14:21:18 [Jazz build engine] 
+2018-06-07 14:21:18 [Jazz build engine] running on host: charleroi.cc.cec.eu.int
+2018-06-07 14:21:18 [Jazz build engine] Should build occur?
+2018-06-07 14:21:18 [Jazz build engine] Yes: Always build a user initiated request.
+2018-06-07 14:21:18 [Jazz build engine] Invoking pre-build participant "com.ibm.team.build.jazzscm"
+2018-06-07 14:21:18 [Jazz build engine] Accepting changes into workspace "RMBWS - SupSys - Eris External Client Workspace" ...
+2018-06-07 14:21:21 [Jazz build engine] Deleting fetch destination "/ec/local/data/build-workspaces/rm/eris-ext-client" before fetching ...
+2018-06-07 14:21:21 [Jazz build engine] Fetching files to fetch destination "/ec/local/data/build-workspaces/rm/eris-ext-client" ...
+2018-06-07 14:21:24 [Jazz build engine] Invoking build participant "com.ibm.team.build.cmdline"
+EXCLUDING nothing
+starting build with parameters MODE=staging, SONAR=false, FD=/ec/local/data/build-workspaces/rm/eris-ext-client, WUUID=__VZ3cC8jEeOZV6MCi94NUw, BRUUID=_GOr-wWpNEeiDS-bVRYfAoQ, PERS=${personalBuild}, MAVEN_PARAMS=, JAVAVERS=8, ANGULAR=angular2
+Building with following maven options: -Dmode=staging -DconfigFile=/ec/local/sw/rtc-buildengine/config-rm1/config.properties -DsecretKeyFile=/ec/local/sw/rtc-buildengine/config-rm1/keyFile -Dteam.scm.fetchDestination=/ec/local/data/build-workspaces/rm/eris-ext-client -Dteam.scm.workspaceUUID=__VZ3cC8jEeOZV6MCi94NUw -DbuildResultUUID=_GOr-wWpNEeiDS-bVRYfAoQ -Djava.io.tmpdir=/ec/local/data/temp -Xmx6g -XX:MaxDirectMemorySize=1024m -Dmaven.test.failure.ignore=true -Duser.language=en -Dmaven.artifact.threads=3 -Dmaven.repo.local=/ec/local/data/mvn-repos/rm1 -XX:-DoEscapeAnalysis -Dcookie-secure=true -XX:MaxMetaspaceSize=1024m
+java version "1.8.0_144"
+Java(TM) SE Runtime Environment (build 1.8.0_144-b01)
+Java HotSpot(TM) 64-Bit Server VM (build 25.144-b01, mixed mode)
+Apache Maven 3.5.2 (138edd61fd100ec658bfa2d307c43b76940a5d7d; 2017-10-18T09:58:13+02:00)
+Maven home: /ec/local/sw/maven/apache-maven-3.5.2-rm
+Java version: 1.8.0_144, vendor: Oracle Corporation
+Java home: /ec/local/sw/java/64/jdk1.8.0_144/jre
+Default locale: en_US, platform encoding: UTF-8
+OS name: "linux", version: "2.6.32-696.18.7.el6.x86_64", arch: "amd64", family: "unix"
+PATH=/ec/local/data/nodejs/lib/node_modules/@angular/cli/bin:ec/local/sw/nodejs/node-v6.11.2-linux-x64/bin::/ec/local/sw/java/64/jdk1.8.0_91/bin:/bin:/ec/sw/oracle/client/product/12.1.0.2/bin:/ec/local/sw/nodejs/node-v6.11.2-linux-x64/bin:/usr/local/bin:/bin:/usr/bin:/usr/sbin:/ec/local/sw/java/64/jdk1.8.0_144/bin:/ec/local/sw/maven/apache-maven-3.3.9-dev/bin:/ec/local/sw/nodejs/node-v6.11.2-linux-x64/bin:/ec/local/data/nodejs/bin:/ec/local/data/nodejs/lib/node_modules/@angular/cli/bin:/ec/sw/oracle/client/product/12.1.0.2/bin:/home/user/build/jazz/scmtools/eclipse:/home/user/build/bin
+Cleaning local repo for /eu/europa/ec
+[INFO] Scanning for projects...
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/super/3.0/super-3.0.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/super/3.0/super-3.0.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/super/3.0/super-3.0.pom (4.0 kB at 108 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/moap/2.0.2/moap-2.0.2.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/moap/2.0.2/moap-2.0.2.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/moap/2.0.2/moap-2.0.2.pom (16 kB at 669 kB/s)
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-rtc-maven-plugin/2.21/rdg-rtc-maven-plugin-2.21.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-rtc-maven-plugin/2.21/rdg-rtc-maven-plugin-2.21.pom (1.6 kB at 72 kB/s)
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/maven-plugins/2.21/maven-plugins-2.21.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/maven-plugins/2.21/maven-plugins-2.21.pom (5.4 kB at 340 kB/s)
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-rtc-maven-plugin/2.21/rdg-rtc-maven-plugin-2.21.jar
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-rtc-maven-plugin/2.21/rdg-rtc-maven-plugin-2.21.jar (65 kB at 2.1 MB/s)
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building eris-ext-client 5.15.3
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- rdg-rtc-maven-plugin:2.21:buildProgress (default-cli) @ eris-ext-client ---
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-utils-maven-plugin/2.21/rdg-utils-maven-plugin-2.21.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-utils-maven-plugin/2.21/rdg-utils-maven-plugin-2.21.pom (1.2 kB at 35 kB/s)
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/rtc-bundle/6.0.3/rtc-bundle-6.0.3.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/rtc-bundle/6.0.3/rtc-bundle-6.0.3.pom (2.6 kB at 105 kB/s)
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-utils-maven-plugin/2.21/rdg-utils-maven-plugin-2.21.jar
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-utils-maven-plugin/2.21/rdg-utils-maven-plugin-2.21.jar (64 kB at 2.9 MB/s)
+[INFO] configFile: /ec/local/sw/rtc-buildengine/config-rm1/config.properties
+[INFO] secretKeyFile: /ec/local/sw/rtc-buildengine/config-rm1/keyFile
+[INFO] RTC enabled, using property file /ec/local/sw/rtc-buildengine/config-rm1/config.properties
+log4j:WARN No appenders could be found for logger (com.ibm.team.repository.common.internal.util.InternalTeamPlatform).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+[INFO] logging in to https://s-cc-rwp01.net1.cec.eu.int:9443/jazz/ with j13b003
+[INFO] RTC buildprogress for build result _GOr-wWpNEeiDS-bVRYfAoQ set to: Setting build result's label
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 9.642 s
+[INFO] Finished at: 2018-06-07T14:21:38+02:00
+[INFO] Final Memory: 44M/616M
+[INFO] ------------------------------------------------------------------------
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building eris-ext-client 5.15.3
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- rdg-rtc-maven-plugin:2.21:buildLabel (default-cli) @ eris-ext-client ---
+[INFO] configFile: /ec/local/sw/rtc-buildengine/config-rm1/config.properties
+[INFO] secretKeyFile: /ec/local/sw/rtc-buildengine/config-rm1/keyFile
+[INFO] RTC enabled, using property file /ec/local/sw/rtc-buildengine/config-rm1/config.properties
+log4j:WARN No appenders could be found for logger (com.ibm.team.repository.common.internal.util.InternalTeamPlatform).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+[INFO] logging in to https://s-cc-rwp01.net1.cec.eu.int:9443/jazz/ with j13b003
+[INFO] Finished eu.europa.ec.rdg.maven.plugin.rtc.BuildLabelMojo, set label for _GOr-wWpNEeiDS-bVRYfAoQ to: eris-ext-client:5.15.3
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 12.812 s
+[INFO] Finished at: 2018-06-07T14:21:55+02:00
+[INFO] Final Memory: 37M/500M
+[INFO] ------------------------------------------------------------------------
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building eris-ext-client 5.15.3
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- rdg-rtc-maven-plugin:2.21:buildProgress (default-cli) @ eris-ext-client ---
+[INFO] configFile: /ec/local/sw/rtc-buildengine/config-rm1/config.properties
+[INFO] secretKeyFile: /ec/local/sw/rtc-buildengine/config-rm1/keyFile
+[INFO] RTC enabled, using property file /ec/local/sw/rtc-buildengine/config-rm1/config.properties
+log4j:WARN No appenders could be found for logger (com.ibm.team.repository.common.internal.util.InternalTeamPlatform).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+[INFO] logging in to https://s-cc-rwp01.net1.cec.eu.int:9443/jazz/ with j13b003
+[INFO] RTC buildprogress for build result _GOr-wWpNEeiDS-bVRYfAoQ set to: Release Sanity Check
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 9.822 s
+[INFO] Finished at: 2018-06-07T14:22:08+02:00
+[INFO] Final Memory: 37M/453M
+[INFO] ------------------------------------------------------------------------
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building eris-ext-client 5.15.3
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- rdg-utils-maven-plugin:2.21:checkPom (default-cli) @ eris-ext-client ---
+[INFO] Checking POM MavenProject: eu.europa.ec.rdg.eris:eris-ext-client:5.15.3 @ /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/pom.xml in repo rdg-releases
+log4j:WARN No appenders could be found for logger (org.apache.http.client.protocol.RequestAddCookies).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+[INFO] Project is clear!
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 5.469 s
+[INFO] Finished at: 2018-06-07T14:22:17+02:00
+[INFO] Final Memory: 15M/427M
+[INFO] ------------------------------------------------------------------------
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building eris-ext-client 5.15.3
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- rdg-rtc-maven-plugin:2.21:buildProgress (default-cli) @ eris-ext-client ---
+[INFO] configFile: /ec/local/sw/rtc-buildengine/config-rm1/config.properties
+[INFO] secretKeyFile: /ec/local/sw/rtc-buildengine/config-rm1/keyFile
+[INFO] RTC enabled, using property file /ec/local/sw/rtc-buildengine/config-rm1/config.properties
+log4j:WARN No appenders could be found for logger (com.ibm.team.repository.common.internal.util.InternalTeamPlatform).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+[INFO] logging in to https://s-cc-rwp01.net1.cec.eu.int:9443/jazz/ with j13b003
+[INFO] RTC buildprogress for build result _GOr-wWpNEeiDS-bVRYfAoQ set to: Preparing staging repository
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 11.317 s
+[INFO] Finished at: 2018-06-07T14:22:33+02:00
+[INFO] Final Memory: 39M/652M
+[INFO] ------------------------------------------------------------------------
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building eris-ext-client 5.15.3
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- rdg-utils-maven-plugin:2.21:createRepo (default-cli) @ eris-ext-client ---
+[INFO] Staging repository = Staging-eris-ext-client-5.15.3
+log4j:WARN No appenders could be found for logger (org.apache.http.client.protocol.RequestAddCookies).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+[INFO] Written Staging-eris-ext-client-5.15.3 into file /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/repo.txt
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 4.939 s
+[INFO] Finished at: 2018-06-07T14:22:42+02:00
+[INFO] Final Memory: 12M/310M
+[INFO] ------------------------------------------------------------------------
+Using Staging Repository:Staging-eris-ext-client-5.15.3
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building eris-ext-client 5.15.3
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- rdg-rtc-maven-plugin:2.21:buildProgress (default-cli) @ eris-ext-client ---
+[INFO] configFile: /ec/local/sw/rtc-buildengine/config-rm1/config.properties
+[INFO] secretKeyFile: /ec/local/sw/rtc-buildengine/config-rm1/keyFile
+[INFO] RTC enabled, using property file /ec/local/sw/rtc-buildengine/config-rm1/config.properties
+log4j:WARN No appenders could be found for logger (com.ibm.team.repository.common.internal.util.InternalTeamPlatform).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+[INFO] logging in to https://s-cc-rwp01.net1.cec.eu.int:9443/jazz/ with j13b003
+[INFO] RTC buildprogress for build result _GOr-wWpNEeiDS-bVRYfAoQ set to: Reset Snapshot
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 14.115 s
+[INFO] Finished at: 2018-06-07T14:23:00+02:00
+[INFO] Final Memory: 37M/421M
+[INFO] ------------------------------------------------------------------------
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building eris-ext-client 5.15.3
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- rdg-rtc-maven-plugin:2.21:snapshot (default-cli) @ eris-ext-client ---
+[INFO] configFile: /ec/local/sw/rtc-buildengine/config-rm1/config.properties
+[INFO] secretKeyFile: /ec/local/sw/rtc-buildengine/config-rm1/keyFile
+[INFO] RTC enabled, using property file /ec/local/sw/rtc-buildengine/config-rm1/config.properties
+log4j:WARN No appenders could be found for logger (com.ibm.team.repository.common.internal.util.InternalTeamPlatform).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+[INFO] logging in to https://s-cc-rwp01.net1.cec.eu.int:9443/jazz/ with j13b003
+[INFO] Created snapshot eris-ext-client-5.15.3 on workspace RMBWS - SupSys - Eris External Client Workspace
+[INFO] Created snapshot: eris-ext-client-5.15.3 for buildresult [UUID _GOr-wWpNEeiDS-bVRYfAoQ]
+[INFO] eu.europa.ec.rdg.maven.plugin.rtc.Snapshot replaced the snapshot by eris-ext-client-5.15.3 ([UUID _jiIDoGpNEeiDS-bVRYfAoQ])
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 11.207 s
+[INFO] Finished at: 2018-06-07T14:23:17+02:00
+[INFO] Final Memory: 38M/453M
+[INFO] ------------------------------------------------------------------------
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building eris-ext-client 5.15.3
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- rdg-rtc-maven-plugin:2.21:buildProgress (default-cli) @ eris-ext-client ---
+[INFO] configFile: /ec/local/sw/rtc-buildengine/config-rm1/config.properties
+[INFO] secretKeyFile: /ec/local/sw/rtc-buildengine/config-rm1/keyFile
+[INFO] RTC enabled, using property file /ec/local/sw/rtc-buildengine/config-rm1/config.properties
+log4j:WARN No appenders could be found for logger (com.ibm.team.repository.common.internal.util.InternalTeamPlatform).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+[INFO] logging in to https://s-cc-rwp01.net1.cec.eu.int:9443/jazz/ with j13b003
+[INFO] RTC buildprogress for build result _GOr-wWpNEeiDS-bVRYfAoQ set to: Generating build dependencies report
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 8.260 s
+[INFO] Finished at: 2018-06-07T14:23:29+02:00
+[INFO] Final Memory: 36M/502M
+[INFO] ------------------------------------------------------------------------
+[INFO] Scanning for projects...
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-report-maven-plugin/2.21/rdg-report-maven-plugin-2.21.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-report-maven-plugin/2.21/rdg-report-maven-plugin-2.21.pom (864 B at 3.9 kB/s)
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-report-maven-plugin/2.21/rdg-report-maven-plugin-2.21.jar
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-report-maven-plugin/2.21/rdg-report-maven-plugin-2.21.jar (19 kB at 479 kB/s)
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building eris-ext-client 5.15.3
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- rdg-report-maven-plugin:2.21:dependencies (default-cli) @ eris-ext-client ---
+[INFO] Internal dependencies:
+[INFO] eu.europa.ec.digit.iam.ecas.client:ecas-weblogic-12.2.1-authprovider:jar:4.19.3
+[INFO] eu.europa.ec.rdg:common-ext-client:jar:1.7
+[INFO] eu.europa.ec.rdg.common:common-model:jar:15.5
+[INFO] eu.europa.ec.rdg.foundation:foundation-api:jar:2.3.1
+[INFO] eu.europa.ec.rdg.framework:framework-util:jar:1.16
+[INFO] eu.europa.ec.rdg.libs:google-toolkit-repack:jar:18.0
+[INFO] eu.europa.ec.rdg.libs:hibernate:jar:4.0.1
+[INFO] eu.europa.ec.rtd.secunda:secunda-author:jar:4.1.1
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/digit/iam/ecas/client/ecas-weblogic-12.2.1-authprovider/maven-metadata.xml
+[INFO] Downloading from rdg-central: http://rtd-nexus.cc.cec.eu.int:8081/repository/maven-central/eu/europa/ec/digit/iam/ecas/client/ecas-weblogic-12.2.1-authprovider/maven-metadata.xml
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/digit/iam/ecas/client/ecas-weblogic-12.2.1-authprovider/maven-metadata.xml
+[WARNING] Could not apply configuration for rdg-deployment to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[WARNING] Could not apply configuration for mons-staging to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[WARNING] Could not apply configuration for rdg-central to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Number of application's worked threads is 8
+[INFO] Number of application's worked threads is 8
+[INFO] Number of application's worked threads is 8
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/digit/iam/ecas/client/ecas-weblogic-12.2.1-authprovider/maven-metadata.xml (718 B at 1.3 kB/s)
+[WARNING] Dependency RdgArtifact (groupId=eu.europa.ec.digit.iam.ecas.client, artifactId=ecas-weblogic-12.2.1-authprovider, classifier=, extension=jar, orgVersion=4.19.3) is not using the latest version 4.26.0
+[INFO] Downloading from rdg-central: http://rtd-nexus.cc.cec.eu.int:8081/repository/maven-central/eu/europa/ec/rdg/common-ext-client/maven-metadata.xml
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/common-ext-client/maven-metadata.xml
+[WARNING] Could not apply configuration for rdg-deployment to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[WARNING] Could not apply configuration for rdg-central to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Number of application's worked threads is 8
+[INFO] Number of application's worked threads is 8
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/common-ext-client/maven-metadata.xml
+[WARNING] Could not apply configuration for mons-staging to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Number of application's worked threads is 8
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/common-ext-client/maven-metadata.xml (361 B at 3.5 kB/s)
+[WARNING] Dependency RdgArtifact (groupId=eu.europa.ec.rdg, artifactId=common-ext-client, classifier=, extension=jar, orgVersion=1.7) is not using the latest version 2.1.2
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/common/common-model/maven-metadata.xml
+[INFO] Downloading from rdg-central: http://rtd-nexus.cc.cec.eu.int:8081/repository/maven-central/eu/europa/ec/rdg/common/common-model/maven-metadata.xml
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/common/common-model/maven-metadata.xml
+[WARNING] Could not apply configuration for mons-staging to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Number of application's worked threads is 8
+[WARNING] Could not apply configuration for rdg-deployment to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Number of application's worked threads is 8
+[WARNING] Could not apply configuration for rdg-central to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Number of application's worked threads is 8
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/common/common-model/maven-metadata.xml (360 B at 3.4 kB/s)
+[WARNING] Dependency RdgArtifact (groupId=eu.europa.ec.rdg.common, artifactId=common-model, classifier=, extension=jar, orgVersion=15.5) is not using the latest version 16.4
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/foundation/foundation-api/maven-metadata.xml
+[WARNING] Could not apply configuration for mons-staging to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Number of application's worked threads is 8
+[INFO] Downloading from rdg-central: http://rtd-nexus.cc.cec.eu.int:8081/repository/maven-central/eu/europa/ec/rdg/foundation/foundation-api/maven-metadata.xml
+[WARNING] Could not apply configuration for rdg-central to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Number of application's worked threads is 8
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/foundation/foundation-api/maven-metadata.xml
+[WARNING] Could not apply configuration for rdg-deployment to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Number of application's worked threads is 8
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/foundation/foundation-api/maven-metadata.xml (363 B at 790 B/s)
+[WARNING] Dependency RdgArtifact (groupId=eu.europa.ec.rdg.foundation, artifactId=foundation-api, classifier=, extension=jar, orgVersion=2.3.1) is not using the latest version 3.0
+[INFO] Downloading from rdg-central: http://rtd-nexus.cc.cec.eu.int:8081/repository/maven-central/eu/europa/ec/rdg/framework/framework-util/maven-metadata.xml
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/framework/framework-util/maven-metadata.xml
+[WARNING] Could not apply configuration for rdg-central to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Number of application's worked threads is 8
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/framework/framework-util/maven-metadata.xml
+[WARNING] Could not apply configuration for rdg-deployment to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Number of application's worked threads is 8
+[WARNING] Could not apply configuration for mons-staging to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Number of application's worked threads is 8
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/framework/framework-util/maven-metadata.xml (365 B at 2.6 kB/s)
+[INFO] Downloaded from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/framework/framework-util/maven-metadata.xml (344 B at 1.5 kB/s)
+[WARNING] Dependency RdgArtifact (groupId=eu.europa.ec.rdg.framework, artifactId=framework-util, classifier=, extension=jar, orgVersion=1.16) is not using the latest version 1.24
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/libs/google-toolkit-repack/maven-metadata.xml
+[WARNING] Could not apply configuration for mons-staging to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Downloading from rdg-central: http://rtd-nexus.cc.cec.eu.int:8081/repository/maven-central/eu/europa/ec/rdg/libs/google-toolkit-repack/maven-metadata.xml
+[INFO] Number of application's worked threads is 8
+[WARNING] Could not apply configuration for rdg-central to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Number of application's worked threads is 8
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/libs/google-toolkit-repack/maven-metadata.xml
+[WARNING] Could not apply configuration for rdg-deployment to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Number of application's worked threads is 8
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/libs/google-toolkit-repack/maven-metadata.xml (501 B at 5.2 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/libs/hibernate/maven-metadata.xml
+[WARNING] Could not apply configuration for mons-staging to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Number of application's worked threads is 8
+[INFO] Downloading from rdg-central: http://rtd-nexus.cc.cec.eu.int:8081/repository/maven-central/eu/europa/ec/rdg/libs/hibernate/maven-metadata.xml
+[WARNING] Could not apply configuration for rdg-central to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Number of application's worked threads is 8
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/libs/hibernate/maven-metadata.xml
+[WARNING] Could not apply configuration for rdg-deployment to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Number of application's worked threads is 8
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/libs/hibernate/maven-metadata.xml (626 B at 5.0 kB/s)
+[WARNING] Dependency RdgArtifact (groupId=eu.europa.ec.rdg.libs, artifactId=hibernate, classifier=, extension=jar, orgVersion=4.0.1) is not using the latest version 5.2.12.1
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rtd/secunda/secunda-author/maven-metadata.xml
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rtd/secunda/secunda-author/maven-metadata.xml
+[WARNING] Could not apply configuration for rdg-deployment to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[WARNING] Could not apply configuration for mons-staging to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Downloading from rdg-central: http://rtd-nexus.cc.cec.eu.int:8081/repository/maven-central/eu/europa/ec/rtd/secunda/secunda-author/maven-metadata.xml
+[INFO] Number of application's worked threads is 8
+[INFO] Number of application's worked threads is 8
+[WARNING] Could not apply configuration for rdg-central to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Number of application's worked threads is 8
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rtd/secunda/secunda-author/maven-metadata.xml (737 B at 6.1 kB/s)
+[WARNING] Dependency RdgArtifact (groupId=eu.europa.ec.rtd.secunda, artifactId=secunda-author, classifier=, extension=jar, orgVersion=4.1.1) is not using the latest version 4.2.1
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/digit/iam/ecas/client/ecas-weblogic-12.2.1-authprovider/4.19.3/ecas-weblogic-12.2.1-authprovider-4.19.3.jar
+[WARNING] Could not apply configuration for mons-staging to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Number of application's worked threads is 8
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/digit/iam/ecas/client/ecas-weblogic-12.2.1-authprovider/4.19.3/ecas-weblogic-12.2.1-authprovider-4.19.3.jar
+[WARNING] Could not apply configuration for rdg-deployment to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Number of application's worked threads is 8
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/digit/iam/ecas/client/ecas-weblogic-12.2.1-authprovider/4.19.3/ecas-weblogic-12.2.1-authprovider-4.19.3.jar (8.5 MB at 30 MB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/common-ext-client/1.7/common-ext-client-1.7.jar
+[WARNING] Could not apply configuration for mons-staging to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Number of application's worked threads is 8
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/common-ext-client/1.7/common-ext-client-1.7.jar
+[WARNING] Could not apply configuration for rdg-deployment to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Number of application's worked threads is 8
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/common-ext-client/1.7/common-ext-client-1.7.jar (50 kB at 534 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/common/common-model/15.5/common-model-15.5.jar
+[WARNING] Could not apply configuration for mons-staging to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Number of application's worked threads is 8
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/common/common-model/15.5/common-model-15.5.jar
+[WARNING] Could not apply configuration for rdg-deployment to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Number of application's worked threads is 8
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/common/common-model/15.5/common-model-15.5.jar (6.6 MB at 4.9 MB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/foundation/foundation-api/2.3.1/foundation-api-2.3.1.jar
+[WARNING] Could not apply configuration for mons-staging to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Number of application's worked threads is 8
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/foundation/foundation-api/2.3.1/foundation-api-2.3.1.jar
+[WARNING] Could not apply configuration for rdg-deployment to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Number of application's worked threads is 8
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/foundation/foundation-api/2.3.1/foundation-api-2.3.1.jar (48 kB at 878 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/framework/framework-util/1.16/framework-util-1.16.jar
+[WARNING] Could not apply configuration for mons-staging to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Number of application's worked threads is 8
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/framework/framework-util/1.16/framework-util-1.16.jar
+[WARNING] Could not apply configuration for rdg-deployment to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Number of application's worked threads is 8
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/framework/framework-util/1.16/framework-util-1.16.jar (682 kB at 19 MB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/libs/google-toolkit-repack/18.0/google-toolkit-repack-18.0.jar
+[WARNING] Could not apply configuration for mons-staging to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Number of application's worked threads is 8
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/libs/google-toolkit-repack/18.0/google-toolkit-repack-18.0.jar
+[WARNING] Could not apply configuration for rdg-deployment to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Number of application's worked threads is 8
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/libs/google-toolkit-repack/18.0/google-toolkit-repack-18.0.jar (4.7 MB at 16 MB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/libs/hibernate/4.0.1/hibernate-4.0.1.jar
+[WARNING] Could not apply configuration for mons-staging to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Number of application's worked threads is 8
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/libs/hibernate/4.0.1/hibernate-4.0.1.jar
+[WARNING] Could not apply configuration for rdg-deployment to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Number of application's worked threads is 8
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/libs/hibernate/4.0.1/hibernate-4.0.1.jar (7.2 MB at 31 MB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rtd/secunda/secunda-author/4.1.1/secunda-author-4.1.1.jar
+[WARNING] Could not apply configuration for mons-staging to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Number of application's worked threads is 8
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rtd/secunda/secunda-author/4.1.1/secunda-author-4.1.1.jar
+[WARNING] Could not apply configuration for rdg-deployment to wagon org.sonatype.maven.wagon.AhcWagon:Cannot find 'httpConfiguration' in class org.sonatype.maven.wagon.AhcWagon
+[INFO] Number of application's worked threads is 8
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rtd/secunda/secunda-author/4.1.1/secunda-author-4.1.1.jar (258 kB at 4.4 MB/s)
+[INFO] Dependency report written in /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/rdg-dependencies.xml
+[WARNING] ********************* W A R N I N G *********************
+[WARNING] Not all dependencies are using the latest version, check log and report.  The build will continue, but results can be impredictable
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 7.618 s
+[INFO] Finished at: 2018-06-07T14:23:39+02:00
+[INFO] Final Memory: 14M/500M
+[INFO] ------------------------------------------------------------------------
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building eris-ext-client 5.15.3
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- rdg-rtc-maven-plugin:2.21:buildResultPublish (default-cli) @ eris-ext-client ---
+[INFO] configFile: /ec/local/sw/rtc-buildengine/config-rm1/config.properties
+[INFO] secretKeyFile: /ec/local/sw/rtc-buildengine/config-rm1/keyFile
+[INFO] RTC enabled, using property file /ec/local/sw/rtc-buildengine/config-rm1/config.properties
+log4j:WARN No appenders could be found for logger (com.ibm.team.repository.common.internal.util.InternalTeamPlatform).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+[INFO] logging in to https://s-cc-rwp01.net1.cec.eu.int:9443/jazz/ with j13b003
+[INFO] RTC builddependency added file: rdg-dependencies.xml for buildresult [UUID _GOr-wWpNEeiDS-bVRYfAoQ]
+[INFO] Published file=/ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/rdg-dependencies.xml with label='RDG Dependencies' into build result _GOr-wWpNEeiDS-bVRYfAoQ
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 7.276 s
+[INFO] Finished at: 2018-06-07T14:23:48+02:00
+[INFO] Final Memory: 39M/673M
+[INFO] ------------------------------------------------------------------------
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building eris-ext-client 5.15.3
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- rdg-rtc-maven-plugin:2.21:buildProgress (default-cli) @ eris-ext-client ---
+[INFO] configFile: /ec/local/sw/rtc-buildengine/config-rm1/config.properties
+[INFO] secretKeyFile: /ec/local/sw/rtc-buildengine/config-rm1/keyFile
+[INFO] RTC enabled, using property file /ec/local/sw/rtc-buildengine/config-rm1/config.properties
+log4j:WARN No appenders could be found for logger (com.ibm.team.repository.common.internal.util.InternalTeamPlatform).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+[INFO] logging in to https://s-cc-rwp01.net1.cec.eu.int:9443/jazz/ with j13b003
+[INFO] RTC buildprogress for build result _GOr-wWpNEeiDS-bVRYfAoQ set to: Building and Deploying project
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 6.973 s
+[INFO] Finished at: 2018-06-07T14:23:57+02:00
+[INFO] Final Memory: 39M/627M
+[INFO] ------------------------------------------------------------------------
+EXECUTE=/ec/local/sw/maven/apache-maven-3.5.2-rm/bin/mvn -Drepository=staging clean javadoc:jar source:jar -Dmaxmemory=1g deploy -Pintegration-test-with-recreate-schema -Prtc-rm-0 -DaltDeploymentRepository=mons-staging::default::http://mons.cc.cec.eu.int:8081/nexus/content/repositories/Staging-eris-ext-client-5.15.3 -B -T 1
+[INFO] Scanning for projects...
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-xsd-import-maven-plugin/2.18/rdg-xsd-import-maven-plugin-2.18.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-xsd-import-maven-plugin/2.18/rdg-xsd-import-maven-plugin-2.18.pom (1.6 kB at 7.2 kB/s)
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/maven-plugins/2.18/maven-plugins-2.18.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/maven-plugins/2.18/maven-plugins-2.18.pom (5.5 kB at 392 kB/s)
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-xsd-import-maven-plugin/2.18/rdg-xsd-import-maven-plugin-2.18.jar
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-xsd-import-maven-plugin/2.18/rdg-xsd-import-maven-plugin-2.18.jar (32 kB at 1.6 MB/s)
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-weblogic-maven-plugin/2.18/rdg-weblogic-maven-plugin-2.18.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-weblogic-maven-plugin/2.18/rdg-weblogic-maven-plugin-2.18.pom (1.3 kB at 72 kB/s)
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-weblogic-maven-plugin/2.18/rdg-weblogic-maven-plugin-2.18.jar
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-weblogic-maven-plugin/2.18/rdg-weblogic-maven-plugin-2.18.jar (51 kB at 2.0 MB/s)
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-maven-plugin/2.18/rdg-maven-plugin-2.18.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-maven-plugin/2.18/rdg-maven-plugin-2.18.pom (1.3 kB at 56 kB/s)
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-maven-plugin/2.18/rdg-maven-plugin-2.18.jar
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-maven-plugin/2.18/rdg-maven-plugin-2.18.jar (17 kB at 839 kB/s)
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/maven-metadata.xml
+[INFO] Downloading from rdg-central: http://rtd-nexus.cc.cec.eu.int:8081/repository/maven-central/eu/europa/ec/rdg/maven/plugin/maven-metadata.xml
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/maven-metadata.xml (1.6 kB at 17 kB/s)
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building eris-ext-client 5.15.3
+[INFO] ------------------------------------------------------------------------
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/framework/framework-util/1.16/framework-util-1.16.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/framework/framework-util/1.16/framework-util-1.16.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/framework/framework-util/1.16/framework-util-1.16.pom (4.1 kB at 217 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/framework/framework/1.16/framework-1.16.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/framework/framework/1.16/framework-1.16.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/framework/framework/1.16/framework-1.16.pom (954 B at 80 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/super/1.14/super-1.14.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/super/1.14/super-1.14.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/super/1.14/super-1.14.pom (4.4 kB at 444 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/moap/1.8/moap-1.8.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/moap/1.8/moap-1.8.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/moap/1.8/moap-1.8.pom (15 kB at 1.3 MB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/framework/framework-security/1.16/framework-security-1.16.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/framework/framework-security/1.16/framework-security-1.16.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/framework/framework-security/1.16/framework-security-1.16.pom (1.4 kB at 119 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/digit/security/authorization-ejb/1.0/authorization-ejb-1.0.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/digit/security/authorization-ejb/1.0/authorization-ejb-1.0.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/digit/security/authorization-ejb/1.0/authorization-ejb-1.0.pom (1.5 kB at 116 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/digit/security/security-root/1.0/security-root-1.0.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/digit/security/security-root/1.0/security-root-1.0.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/digit/security/security-root/1.0/security-root-1.0.pom (7.5 kB at 575 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/digit/security/authorization-spi/1.0/authorization-spi-1.0.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/digit/security/authorization-spi/1.0/authorization-spi-1.0.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/digit/security/authorization-spi/1.0/authorization-spi-1.0.pom (738 B at 49 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/common-ext-client/1.4/common-ext-client-1.4.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/common-ext-client/1.4/common-ext-client-1.4.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/common-ext-client/1.4/common-ext-client-1.4.pom (1.4 kB at 107 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/common/common-model/15.5/common-model-15.5.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/common/common-model/15.5/common-model-15.5.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/common/common-model/15.5/common-model-15.5.pom (11 kB at 436 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/common/common/15.5/common-15.5.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/common/common/15.5/common-15.5.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/common/common/15.5/common-15.5.pom (2.8 kB at 71 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/common-ext-client/2.0/common-ext-client-2.0.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/common-ext-client/2.0/common-ext-client-2.0.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/common-ext-client/2.0/common-ext-client-2.0.pom (2.4 kB at 238 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/common-ext-client/1.7/common-ext-client-1.7.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/common-ext-client/1.7/common-ext-client-1.7.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/common-ext-client/1.7/common-ext-client-1.7.pom (1.4 kB at 116 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/super/1.17/super-1.17.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/super/1.17/super-1.17.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/super/1.17/super-1.17.pom (4.4 kB at 404 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/moap/1.11/moap-1.11.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/moap/1.11/moap-1.11.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/moap/1.11/moap-1.11.pom (14 kB at 1.2 MB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/digit/iam/ecas/client/ecas-weblogic-12.2.1-authprovider/4.19.3/ecas-weblogic-12.2.1-authprovider-4.19.3.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/digit/iam/ecas/client/ecas-weblogic-12.2.1-authprovider/4.19.3/ecas-weblogic-12.2.1-authprovider-4.19.3.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/digit/iam/ecas/client/ecas-weblogic-12.2.1-authprovider/4.19.3/ecas-weblogic-12.2.1-authprovider-4.19.3.pom (1.4 kB at 85 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/foundation/foundation-api/2.3.1/foundation-api-2.3.1.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/foundation/foundation-api/2.3.1/foundation-api-2.3.1.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/foundation/foundation-api/2.3.1/foundation-api-2.3.1.pom (1.0 kB at 23 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/super/2.0/super-2.0.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/super/2.0/super-2.0.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/super/2.0/super-2.0.pom (4.3 kB at 473 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/framework/framework-cache/1.20/framework-cache-1.20.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/framework/framework-cache/1.20/framework-cache-1.20.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/framework/framework-cache/1.20/framework-cache-1.20.pom (961 B at 107 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/framework/framework/1.20/framework-1.20.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/framework/framework/1.20/framework-1.20.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/framework/framework/1.20/framework-1.20.pom (1.0 kB at 102 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rtd/secunda/secunda-author/4.1.1/secunda-author-4.1.1.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rtd/secunda/secunda-author/4.1.1/secunda-author-4.1.1.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rtd/secunda/secunda-author/4.1.1/secunda-author-4.1.1.pom (411 B at 11 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/libs/hibernate/4.0.1/hibernate-4.0.1.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/libs/hibernate/4.0.1/hibernate-4.0.1.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/libs/hibernate/4.0.1/hibernate-4.0.1.pom (4.7 kB at 166 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/libs/google-toolkit-repack/18.0/google-toolkit-repack-18.0.pom
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/libs/google-toolkit-repack/18.0/google-toolkit-repack-18.0.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/libs/google-toolkit-repack/18.0/google-toolkit-repack-18.0.pom (5.4 kB at 541 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/framework/framework-security/1.16/framework-security-1.16.jar
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/digit/security/authorization-ejb/1.0/authorization-ejb-1.0.jar
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/digit/security/authorization-spi/1.0/authorization-spi-1.0.jar
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/groups/Stagings/eu/europa/ec/rdg/framework/framework-cache/1.20/framework-cache-1.20.jar
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/framework/framework-security/1.16/framework-security-1.16.jar
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/digit/security/authorization-ejb/1.0/authorization-ejb-1.0.jar
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/digit/security/authorization-spi/1.0/authorization-spi-1.0.jar
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/framework/framework-security/1.16/framework-security-1.16.jar (36 kB at 1.3 MB/s)
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/framework/framework-cache/1.20/framework-cache-1.20.jar
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/digit/security/authorization-ejb/1.0/authorization-ejb-1.0.jar (9.6 kB at 66 kB/s)
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/digit/security/authorization-spi/1.0/authorization-spi-1.0.jar (5.3 kB at 34 kB/s)
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/framework/framework-cache/1.20/framework-cache-1.20.jar (17 kB at 84 kB/s)
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ eris-ext-client ---
+[INFO] Deleting /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target
+[INFO] 
+[INFO] --- maven-javadoc-plugin:3.0.1:jar (default-cli) @ eris-ext-client ---
+[INFO] 
+Loading source files for package eu.europa.ec.rdg.eris.services.attachmentcomparison.v1...
+Loading source files for package eu.europa.ec.rdg.eris.document.common...
+Loading source files for package eu.europa.ec.rdg.eris.document.v4...
+Loading source files for package eu.europa.ec.rdg.eris.document.v4.util...
+Loading source files for package eu.europa.ec.rdg.eris.document.v5...
+Loading source files for package eu.europa.ec.rdg.eris.document.v5.util...
+Constructing Javadoc information...
+Standard Doclet version 1.8.0_144
+Building tree for all the packages and classes...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/services/attachmentcomparison/v1/AttachmentComparisonComponent.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/services/attachmentcomparison/v1/ErisAttachmentComparisonClientImpl.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/services/attachmentcomparison/v1/IErisAttachmentComparisonClient.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/AbstractAttachmentUtil.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/AbstractErisHttpClient.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/AbstractErisHttpClient.PARAMS.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/AttachmentDownloadWrapper.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/ContentDispositionUtil.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/ErisClientAuthenticationException.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/ErisClientAuthorizationException.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/ErisClientErrorCode.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/ErisClientException.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/ErisClientSecurityException.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/ErisEcasProxyTicketGenerator.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/ExceptionMapper.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/HeaderUtil.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/SchemaUtil.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/StringUtil.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/DocumentComponent.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/ErisHttpClientImpl.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/IDocumentManagementServiceRemote.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/IErisHttpClient.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/util/AttachmentUtil.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/DocumentComponent.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/ErisHttpClientImpl.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/IDocumentManagementServiceRemote.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/IErisHttpClient.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/util/AttachmentUtil.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/overview-frame.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/package-frame.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/package-summary.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/package-tree.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/package-frame.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/package-summary.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/package-tree.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/util/package-frame.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/util/package-summary.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/util/package-tree.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/package-frame.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/package-summary.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/package-tree.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/util/package-frame.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/util/package-summary.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/util/package-tree.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/services/attachmentcomparison/v1/package-frame.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/services/attachmentcomparison/v1/package-summary.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/services/attachmentcomparison/v1/package-tree.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/constant-values.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/serialized-form.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/services/attachmentcomparison/v1/class-use/AttachmentComparisonComponent.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/services/attachmentcomparison/v1/class-use/IErisAttachmentComparisonClient.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/services/attachmentcomparison/v1/class-use/ErisAttachmentComparisonClientImpl.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/class-use/ErisClientAuthorizationException.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/class-use/AbstractAttachmentUtil.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/class-use/StringUtil.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/class-use/ErisClientException.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/class-use/ErisClientErrorCode.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/class-use/AbstractErisHttpClient.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/class-use/AbstractErisHttpClient.PARAMS.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/class-use/ErisClientAuthenticationException.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/class-use/ContentDispositionUtil.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/class-use/AttachmentDownloadWrapper.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/class-use/HeaderUtil.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/class-use/ErisEcasProxyTicketGenerator.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/class-use/ExceptionMapper.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/class-use/ErisClientSecurityException.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/class-use/SchemaUtil.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/class-use/IDocumentManagementServiceRemote.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/class-use/DocumentComponent.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/class-use/ErisHttpClientImpl.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/class-use/IErisHttpClient.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/util/class-use/AttachmentUtil.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/class-use/IDocumentManagementServiceRemote.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/class-use/DocumentComponent.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/class-use/ErisHttpClientImpl.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/class-use/IErisHttpClient.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/util/class-use/AttachmentUtil.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/common/package-use.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/package-use.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v4/util/package-use.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/package-use.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/document/v5/util/package-use.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/eu/europa/ec/rdg/eris/services/attachmentcomparison/v1/package-use.html...
+Building index for all the packages and classes...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/overview-tree.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/index-all.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/deprecated-list.html...
+Building index for all classes...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/allclasses-frame.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/allclasses-noframe.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/index.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/overview-summary.html...
+Generating /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/apidocs/help-doc.html...
+1 warning
+[WARNING] Javadoc Warnings
+[WARNING] /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/src/main/java/eu/europa/ec/rdg/eris/document/common/AbstractErisHttpClient.java:297: warning: no @param for <T>
+[WARNING] protected <T> String getXML(T t) throws JAXBException {
+[WARNING] ^
+[INFO] Building jar: /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/eris-ext-client-5.15.3-javadoc.jar
+[INFO] 
+[INFO] >>> maven-source-plugin:3.0.1:jar (default-cli) > generate-sources @ eris-ext-client >>>
+[INFO] 
+[INFO] <<< maven-source-plugin:3.0.1:jar (default-cli) < generate-sources @ eris-ext-client <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-source-plugin:3.0.1:jar (default-cli) @ eris-ext-client ---
+[INFO] Building jar: /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/eris-ext-client-5.15.3-sources.jar
+[INFO] 
+[INFO] --- build-helper-maven-plugin:1.7:parse-version (versions) @ eris-ext-client ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ eris-ext-client ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 4 resources to resources/model
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ eris-ext-client ---
+[INFO] Compiling 30 source files to /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/classes
+[WARNING] bootstrap class path not set in conjunction with -source 1.6
+/ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/src/main/java/eu/europa/ec/rdg/eris/document/common/ErisEcasProxyTicketGenerator.java:[11,37] [deprecation] EcasPgtExpiredException in eu.cec.digit.ecas.client.proxy has been deprecated
+[WARNING] /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/src/main/java/eu/europa/ec/rdg/eris/document/common/ErisEcasProxyTicketGenerator.java:[11,37] [deprecation] EcasPgtExpiredException in eu.cec.digit.ecas.client.proxy has been deprecated
+[WARNING] /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/src/main/java/eu/europa/ec/rdg/eris/document/common/ErisEcasProxyTicketGenerator.java:[11,37] [deprecation] EcasPgtExpiredException in eu.cec.digit.ecas.client.proxy has been deprecated
+[WARNING] /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/src/main/java/eu/europa/ec/rdg/eris/document/common/ErisEcasProxyTicketGenerator.java:[27,38] [deprecation] EcasPgtExpiredException in eu.cec.digit.ecas.client.proxy has been deprecated
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ eris-ext-client ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:testCompile (default-testCompile) @ eris-ext-client ---
+[INFO] Compiling 4 source files to /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ eris-ext-client ---
+[INFO] Surefire report directory: /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running eu.europa.ec.rdg.eris.services.attachmentcomparison.v1.ErisAttachmentComparisonClientTest
+14:24:31,870 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:31,873 ERROR [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - java.lang.IllegalArgumentException: The attachmentComparisonRequestType parameter is null. errorCode: 30111
+14:24:31,878 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:31,879 ERROR [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - java.lang.IllegalArgumentException: The attachmentComparisonRequestType.firstAttachmentRef variable is null. errorCode: 30111
+14:24:31,882 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:31,882 ERROR [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - java.lang.IllegalArgumentException: The attachmentComparisonRequestType.firstAttachmentRef.masterId variable is null. errorCode: 30111
+14:24:31,883 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:31,884 ERROR [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - java.lang.IllegalArgumentException: The attachmentComparisonRequestType.firstAttachmentRef.attachmentIdOrName.value variable is null. errorCode: 30111
+14:24:31,885 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:31,885 ERROR [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - java.lang.IllegalArgumentException: The attachmentComparisonRequestType.secondAttachmentRef variable is null. errorCode: 30111
+14:24:31,886 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:31,887 ERROR [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - java.lang.IllegalArgumentException: The attachmentComparisonRequestType.secondAttachmentRef.masterId variable is null. errorCode: 30111
+14:24:31,888 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:31,888 ERROR [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - java.lang.IllegalArgumentException: The attachmentComparisonRequestType.secondAttachmentRef.attachmentIdOrName.value variable is null. errorCode: 30111
+14:24:31,889 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:32,363 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:32,368 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:32,368 ERROR [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - java.lang.IllegalArgumentException: The attachmentComparisonRequestType.secondAttachmentRef.masterId variable is null. errorCode: 30111
+14:24:32,369 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:32,370 ERROR [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - java.lang.IllegalArgumentException: The attachmentComparisonRequestType.secondAttachmentRef.attachmentIdOrName.value variable is null. errorCode: 30111
+14:24:32,370 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:32,376 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:32,384 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:32,384 ERROR [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - java.lang.IllegalArgumentException: The attachmentComparisonRequestType parameter is null. errorCode: 30111
+14:24:32,385 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:32,386 ERROR [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - java.lang.IllegalArgumentException: The attachmentComparisonRequestType.firstAttachmentRef variable is null. errorCode: 30111
+14:24:32,388 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:32,388 ERROR [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - java.lang.IllegalArgumentException: The attachmentComparisonRequestType.firstAttachmentRef.masterId variable is null. errorCode: 30111
+14:24:32,389 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:32,390 ERROR [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - java.lang.IllegalArgumentException: The attachmentComparisonRequestType.firstAttachmentRef.attachmentIdOrName.value variable is null. errorCode: 30111
+14:24:32,391 DEBUG [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - Targeting url: http://localhost:7001/eris-pdf-comparison/ws/v1/compareattachments
+14:24:32,391 ERROR [services.attachmentcomparison.v1.ErisAttachmentComparisonClientImpl] - java.lang.IllegalArgumentException: The attachmentComparisonRequestType.secondAttachmentRef variable is null. errorCode: 30111
+Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.979 sec
+Running eu.europa.ec.rdg.eris.document.common.StringUtilTest
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec
+Running eu.europa.ec.rdg.eris.document.v4.util.AttachmentUtilTest
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.018 sec
+Running eu.europa.ec.rdg.eris.document.v5.util.AttachmentUtilTest
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.027 sec
+
+Results :
+
+Tests run: 48, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- rdg-xsd-import-maven-plugin:2.18:import (default) @ eris-ext-client ---
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-utils-maven-plugin/2.18/rdg-utils-maven-plugin-2.18.pom
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-utils-maven-plugin/2.18/rdg-utils-maven-plugin-2.18.pom (1.2 kB at 102 kB/s)
+[INFO] Downloading from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-utils-maven-plugin/2.18/rdg-utils-maven-plugin-2.18.jar
+[INFO] Downloaded from rdg-deployment: http://rtd-nexus.cc.cec.eu.int:8081/repository/rdg-deployment/eu/europa/ec/rdg/maven/plugin/rdg-utils-maven-plugin/2.18/rdg-utils-maven-plugin-2.18.jar (64 kB at 4.9 MB/s)
+[INFO] resolved XSD dependency: eu.europa.ec.rdg.common:common-model:jar:15.5:compile
+[INFO] Unpacking /ec/local/data/mvn-repos/rm1/eu/europa/ec/rdg/common/common-model/15.5/common-model-15.5.jar to /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/xsd-unpacked/common-model with includes "[resources/model/**/*]" and excludes "[**/Index*.xsd]"
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ eris-ext-client ---
+[INFO] Building jar: /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/eris-ext-client-5.15.3.jar
+[INFO] 
+[INFO] --- maven-failsafe-plugin:2.12:integration-test (default) @ eris-ext-client ---
+[INFO] Failsafe report directory: /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/failsafe-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option UseSplitVerifier; support was removed in 8.0
+
+Results :
+
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-failsafe-plugin:2.12:verify (default) @ eris-ext-client ---
+[INFO] Failsafe report directory: /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/failsafe-reports
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ eris-ext-client ---
+[INFO] Installing /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/eris-ext-client-5.15.3.jar to /ec/local/data/mvn-repos/rm1/eu/europa/ec/rdg/eris/eris-ext-client/5.15.3/eris-ext-client-5.15.3.jar
+[INFO] Installing /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/pom.xml to /ec/local/data/mvn-repos/rm1/eu/europa/ec/rdg/eris/eris-ext-client/5.15.3/eris-ext-client-5.15.3.pom
+[INFO] Installing /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/eris-ext-client-5.15.3-javadoc.jar to /ec/local/data/mvn-repos/rm1/eu/europa/ec/rdg/eris/eris-ext-client/5.15.3/eris-ext-client-5.15.3-javadoc.jar
+[INFO] Installing /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/eris-ext-client-5.15.3-sources.jar to /ec/local/data/mvn-repos/rm1/eu/europa/ec/rdg/eris/eris-ext-client/5.15.3/eris-ext-client-5.15.3-sources.jar
+[INFO] 
+[INFO] --- maven-deploy-plugin:2.7:deploy (default-deploy) @ eris-ext-client ---
+[INFO] Using alternate deployment repository mons-staging::default::http://mons.cc.cec.eu.int:8081/nexus/content/repositories/Staging-eris-ext-client-5.15.3
+[INFO] Uploading to mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/repositories/Staging-eris-ext-client-5.15.3/eu/europa/ec/rdg/eris/eris-ext-client/5.15.3/eris-ext-client-5.15.3.jar
+[INFO] Uploaded to mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/repositories/Staging-eris-ext-client-5.15.3/eu/europa/ec/rdg/eris/eris-ext-client/5.15.3/eris-ext-client-5.15.3.jar (709 kB at 2.7 MB/s)
+[INFO] Uploading to mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/repositories/Staging-eris-ext-client-5.15.3/eu/europa/ec/rdg/eris/eris-ext-client/5.15.3/eris-ext-client-5.15.3.pom
+[INFO] Uploaded to mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/repositories/Staging-eris-ext-client-5.15.3/eu/europa/ec/rdg/eris/eris-ext-client/5.15.3/eris-ext-client-5.15.3.pom (5.9 kB at 160 kB/s)
+[INFO] Downloading from mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/repositories/Staging-eris-ext-client-5.15.3/eu/europa/ec/rdg/eris/eris-ext-client/maven-metadata.xml
+[INFO] Uploading to mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/repositories/Staging-eris-ext-client-5.15.3/eu/europa/ec/rdg/eris/eris-ext-client/maven-metadata.xml
+[INFO] Uploaded to mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/repositories/Staging-eris-ext-client-5.15.3/eu/europa/ec/rdg/eris/eris-ext-client/maven-metadata.xml (318 B at 11 kB/s)
+[INFO] Uploading to mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/repositories/Staging-eris-ext-client-5.15.3/eu/europa/ec/rdg/eris/eris-ext-client/5.15.3/eris-ext-client-5.15.3-javadoc.jar
+[INFO] Uploaded to mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/repositories/Staging-eris-ext-client-5.15.3/eu/europa/ec/rdg/eris/eris-ext-client/5.15.3/eris-ext-client-5.15.3-javadoc.jar (198 kB at 7.1 MB/s)
+[INFO] Uploading to mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/repositories/Staging-eris-ext-client-5.15.3/eu/europa/ec/rdg/eris/eris-ext-client/5.15.3/eris-ext-client-5.15.3-sources.jar
+[INFO] Uploaded to mons-staging: http://mons.cc.cec.eu.int:8081/nexus/content/repositories/Staging-eris-ext-client-5.15.3/eu/europa/ec/rdg/eris/eris-ext-client/5.15.3/eris-ext-client-5.15.3-sources.jar (31 kB at 340 kB/s)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 45.777 s
+[INFO] Finished at: 2018-06-07T14:24:45+02:00
+[INFO] Final Memory: 127M/1850M
+[INFO] ------------------------------------------------------------------------
+[WARNING] The requested profile "integration-test-with-recreate-schema" could not be activated because it does not exist.
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building eris-ext-client 5.15.3
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- rdg-rtc-maven-plugin:2.21:buildProgress (default-cli) @ eris-ext-client ---
+[INFO] configFile: /ec/local/sw/rtc-buildengine/config-rm1/config.properties
+[INFO] secretKeyFile: /ec/local/sw/rtc-buildengine/config-rm1/keyFile
+[INFO] RTC enabled, using property file /ec/local/sw/rtc-buildengine/config-rm1/config.properties
+log4j:WARN No appenders could be found for logger (com.ibm.team.repository.common.internal.util.InternalTeamPlatform).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+[INFO] logging in to https://s-cc-rwp01.net1.cec.eu.int:9443/jazz/ with j13b003
+[INFO] RTC buildprogress for build result _GOr-wWpNEeiDS-bVRYfAoQ set to: Publishing URLs for artefacts
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 7.226 s
+[INFO] Finished at: 2018-06-07T14:24:54+02:00
+[INFO] Final Memory: 39M/603M
+[INFO] ------------------------------------------------------------------------
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building eris-ext-client 5.15.3
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- rdg-rtc-maven-plugin:2.21:deploymentReport (default-cli) @ eris-ext-client ---
+[INFO] configFile: /ec/local/sw/rtc-buildengine/config-rm1/config.properties
+[INFO] secretKeyFile: /ec/local/sw/rtc-buildengine/config-rm1/keyFile
+[INFO] RTC enabled, using property file /ec/local/sw/rtc-buildengine/config-rm1/config.properties
+log4j:WARN No appenders could be found for logger (com.ibm.team.repository.common.internal.util.InternalTeamPlatform).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+[INFO] logging in to https://s-cc-rwp01.net1.cec.eu.int:9443/jazz/ with j13b003
+[INFO] Parsing build log /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/build.log for uploaded artefacts...
+[INFO] RTC builddependency added link: http://mons.cc.cec.eu.int:8081/nexus/content/repositories/Staging-eris-ext-client-5.15.3/eu/europa/ec/rdg/eris/eris-ext-client/5.15.3/eris-ext-client-5.15.3.jar for buildresult [UUID _GOr-wWpNEeiDS-bVRYfAoQ]
+[INFO] Published url=http://mons.cc.cec.eu.int:8081/nexus/content/repositories/Staging-eris-ext-client-5.15.3/eu/europa/ec/rdg/eris/eris-ext-client/5.15.3/eris-ext-client-5.15.3.jar with label='eris-ext-client-5.15.3.jar' into build result _GOr-wWpNEeiDS-bVRYfAoQ
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 7.233 s
+[INFO] Finished at: 2018-06-07T14:25:03+02:00
+[INFO] Final Memory: 39M/673M
+[INFO] ------------------------------------------------------------------------
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building eris-ext-client 5.15.3
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- rdg-rtc-maven-plugin:2.21:buildProgress (default-cli) @ eris-ext-client ---
+[INFO] configFile: /ec/local/sw/rtc-buildengine/config-rm1/config.properties
+[INFO] secretKeyFile: /ec/local/sw/rtc-buildengine/config-rm1/keyFile
+[INFO] RTC enabled, using property file /ec/local/sw/rtc-buildengine/config-rm1/config.properties
+log4j:WARN No appenders could be found for logger (com.ibm.team.repository.common.internal.util.InternalTeamPlatform).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+[INFO] logging in to https://s-cc-rwp01.net1.cec.eu.int:9443/jazz/ with j13b003
+[INFO] RTC buildprogress for build result _GOr-wWpNEeiDS-bVRYfAoQ set to: Collecting Unit Tests
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 8.541 s
+[INFO] Finished at: 2018-06-07T14:25:14+02:00
+[INFO] Final Memory: 41M/632M
+[INFO] ------------------------------------------------------------------------
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building eris-ext-client 5.15.3
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- rdg-report-maven-plugin:2.21:collectUnittests (default-cli) @ eris-ext-client ---
+[INFO] Collecting unit/integration tests for maven project MavenProject: eu.europa.ec.rdg.eris:eris-ext-client:5.15.3 @ /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/pom.xml
+[INFO] Target directory=/ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/junit
+[INFO] Source directory=/ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/surefire-reports
+[INFO] Failsafe Source directory=/ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/failsafe-reports
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 1.453 s
+[INFO] Finished at: 2018-06-07T14:25:18+02:00
+[INFO] Final Memory: 14M/532M
+[INFO] ------------------------------------------------------------------------
+2018-06-07 14:25:18 [Jazz build engine] Invoking post-build participant "com.ibm.team.build.junit.publishing"
+Published directory of JUnit log files: /ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/junit 
+1 warning(s) occurred when publishing JUnit logs:
+	/ec/local/data/build-workspaces/rm/eris-ext-client/eris-ext-client/target/junit/failsafe-summary.xml: Found unexpected element "failsafe-summary".
+2018-06-07 14:25:20 [Jazz build engine] Invoking post-build participant "com.ibm.team.build.autoDeliver"
+2018-06-07 14:25:32 [Jazz build engine] Delivering components...
+2018-06-07 14:25:33 [Jazz build engine] Post-build deliver complete.
+Summary of Post-build Deliver:
+   Build Workspace:
+      "RMBWS - SupSys - Eris External Client Workspace" (__VZ3cC8jEeOZV6MCi94NUw)
+   Deliver Target:
+      "RMBTS - Supporting Systems ++++ Target Build Stream +++ Release Management" (_D0RpgWnyEeKDvO0w1p4tqw)
+   Snapshot:
+      "eris-ext-client-5.15.3" (_jiIDoGpNEeiDS-bVRYfAoQ)
+   Added Components:
+      <none>
+   Replaced Components:
+      Component "eris-ext-client" (_XXuQwPNeEeGmurtKyrkyUQ) with baseline "RM - eris-ext-client-5.15.3 - iteration 01.02" (_DhXc4GpNEeiDS-bVRYfAoQ)
+   Removed Components:
+      <none>
+   Unchanged Components:
+      <none>
+2018-06-07 14:25:33 [Jazz build engine] The owner of the delivered snapshot "eris-ext-client-5.15.3" has been changed to the stream "RMBTS - Supporting Systems ++++ Target Build Stream +++ Release Management".

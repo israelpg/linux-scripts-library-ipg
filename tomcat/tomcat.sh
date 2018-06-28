@@ -73,16 +73,20 @@ yum install -y tomcat-7.0.76-3.el7_4.noarch
 <Host name="localhost"  appBase="webapps"
             unpackWARs="true" autoDeploy="true">
 
-# Modifying original configuration:
+##### Modifying original configuration:
+
 # change default host engine if needed:
-    <Engine name="Catalina" defaultHost="tomcat-ipg">
+<Engine name="Catalina" defaultHost="tomcat-ipg">
+
 # change host: Note that webapps is the folder in /var/lib/tomcat8 which stores the website documents
 <Host name="tomcat-ipg"  appBase="webapps"
             unpackWARs="true" autoDeploy="true">
+
 # adapt logs:
 <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
                prefix="tomcat-ipg_access_log" suffix=".txt"
                pattern="%h %l %u %t &quot;%r&quot; %s %b" />
+
 # copy user management files for localhost/files:
 -rw-r--r-- 1 root root     957 Mär 31  2017 host-manager.xml
 -rw-r--r-- 1 root root     947 Mär 31  2017 manager.xml
@@ -90,6 +94,8 @@ yum install -y tomcat-7.0.76-3.el7_4.noarch
 
 # users management: You need to define the role, and then the user with role(s) assigned:
 /etc/tomcat/tomcat-users.xml
+
+##################################################
 
 # Roles:
 # manager-gui — Access to the HTML interface.
@@ -122,6 +128,9 @@ tcp        0      0 127.0.0.1:53153         127.0.0.1:8088          TIME_WAIT   
 tcp        0      0 127.0.0.1:53151         127.0.0.1:8088          TIME_WAIT   -               
 tcp6       0      0 :::8088                 :::*                    LISTEN      -               
 tcp6       0      0 127.0.0.1:8088          127.0.0.1:53155         TIME_WAIT   -
+
+
+
 
 ## NOTE: Tomcat is restricted to be managed only from the server machine itself (localhost)
 # In case is needed to access remotely for managing the server, modify this file:

@@ -18,6 +18,13 @@ ip14aai@02DI20161542844:~$ git config --list
 	name = israelpg
 	email = israelpg@gmail.com
 
+### server - init .git folder (server is a bare):
+mkdir -p /home/ip14aai/project.git && cd /home/ip14aai/project.git
+git --bare init
+
+### client, initialize local repo (is not a bare):
+git init
+
 # we need to create our stream/server and workspace environment/client:
 # Server Stream:
 mkdir -p /git/stream_test1
