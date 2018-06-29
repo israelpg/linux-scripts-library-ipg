@@ -1,0 +1,232 @@
+#!/bin/bash -x
+
+#TEMP
+#RTCUSER=j13b004
+#RTCPWD=tz5iq7gb
+#WORKSPACE=/ec/local/data/jenkins-data/jobs/sygma-10-CI/workspace
+
+# Production
+export REPO=Production
+export RTCURI=https://s-cc-rwp01.net1.cec.eu.int:9443/jazz
+#export STAG_STREAM="SYG ::: DEV 10.0 (Jenkins +1)"
+#export MAINT_STREAM="SYG ::: PROD 7.2 Maintenance"
+#export CI_STREAM="SYG ::: DEV 10.0 (Jenkins +1)"
+#export CI_WS="Sygma10-CI"
+
+
+
+
+# Acceptance
+#export REPO=Acceptance
+#export STAG_STREAM="SYG ::: PROD 7.2 Staging"
+#export MAINT_STREAM="SYG ::: PROD 7.2 Maintenance"
+#export CI_STREAM="SYGMA CI"
+#export CI_WS="Sygma-CI"
+#export RTCURI=https://s-jazz-acc.net1.cec.eu.int:9443/jazz
+
+#Files
+export WORKITEMS_JSON_FILE=$(mktemp)
+export COMPARE_JSON_FILE=$(mktemp)
+export WS_JSON_FILE=$(mktemp)
+export ACCEPT_OUTPUT_FILE=$(mktemp)
+export PROPERTIES_FILE=${WORKSPACE}/build.properties
+export HTML_FILE=${WORKSPACE}/output.html
+
+rm -rf ${HTML_FILE} &> /dev/null
+rm -rf ${WORKSPACE}/${CI_WS}/.jazz5/.jazzlock &> /dev/null
+
+
+#scm daemon deregister ${WORKSPACE}/${CI_WS}
+scm login -u ${RTCUSER} -P ${RTCPWD}  -n ${REPO} -r ${RTCURI} -c &>/dev/null || { echo "ERROR: Not possible to login in RTC Server" >&2 ; exit 1 ; }
+
+
+#scm load -r ${REPO} -d ${WORKSPACE}/${CI_WS} "${CI_WS}" --allow --force --resync  || exit 1
+
+# List available workspaces
+scm list ws -m 250 -c ${RTCUSER} -r ${REPO} --json > ${WS_JSON_FILE}
+
+
+#export WORKITEMS=$(scm show pc --json | tee ${WORKITEMS_JSON} |  jq ".workspaces[0].components[].\"incoming-changes\"[].workitems[].id" 2>/dev/null | sort | uniq)
+#export WORKITEMS=$(cat ${WORKITEMS_JSON} |  jq ".workspaces[0].components[].\"incoming-changes\"[].workitems[].id" | sort | uniq)
+
+
+#scm accept -r ${REPO} -s "${CI_STREAM}" -t ${CI_WS}  | grep 'Missing change sets found' && exit 1
+
+
+#CHANGESETS="$(scm compare -r ${REPO} --json -I s -f o stream "CI_STREAM" workspace "${CI_WS}" | jq -c ".direction[].components[1].changesets[] | [ .uuid , .workitems[0].\"workitem-number\"|tostring ] | join(\":\")")"
+#CHANGESETS=${CHANGESETS//\"/}
+#WORKITEMS=$(echo ${CHANGESETS} | awk -F: '{print $2}' | sort | uniq)
+
+# Compare CI Stream agains CI Workspace and generate output in JSON
+#scm compare -r Production --json -I s -f o   stream "${CI_STREAM}" workspace "${CI_WS}"  |  jq ".direction[].components[] | select(.changesets != null) | \
+#{ (.name): [ .changesets[] | (.uuid + \":\" + (.workitems[0].\"workitem-number\"|tostring) + \":\" + .author.mail ) ] }" 2> /dev/null > ${COMPARE_JSON_FILE}
+
+
+# Resync Workspace
+cd ${WORKSPACE}/${CI_WS} && scm load -r ${REPO} "${CI_WS}" --resync
+
+# Generate changeset list
+scm compare -r Production --json -I s -f o   stream "${CI_STREAM}" workspace "${CI_WS}"  | \
+ jq -r  '.direction[].components[] | select(.changesets != null) |  .changesets[] | (.uuid + ":" + (.workitems[0]."workitem-number"|tostring) + ":" + .author.mail )' 2> /dev/null > ${COMPARE_JSON_FILE}
+
+# Accept all Changesets in CI stream before anyone delivers new changeset, to prevent accepting changes not validated
+scm accept -r ${REPO} -t "${CI_WS}" | tee ${WORKSPACE}/ci.accept.log
+cat ${WORKSPACE}/ci.accept.log  | grep -P "Missing change|would introduce too many conflic|still have conflicts after accept" && \
+echo "ERROR: Accepting all changes from ${CI_STREAM} into ${CI_WS}" && exit 1 
+ 
+#cat ${COMPARE_JSON_FILE}
+
+
+RECIPIENTS="$(cat ${COMPARE_JSON_FILE} | awk -F: '{print $3}' | sort | uniq)"
+echo "RECIPIENTS=${RECIPIENTS}${DEPENDS_ON_WI_LIST:+,}Rodrigo.JIMENEZ-RODGRIGUEZ@ext.ec.europa.eu" > ${PROPERTIES_FILE}
+
+
+echo "<h3>Jenkins Build <a href=\"${BUILD_URL}\">${JOB_NAME}#${BUILD_NUMBER}</a></h3>" > ${HTML_FILE}
+
+if [ ! -s ${COMPARE_JSON_FILE} ] ; then
+	echo "WARN: No changes detected ..."
+	echo "No new changes detected in ${CI_STREAM}" >> ${HTML_FILE}
+	exit 0
+fi
+
+
+
+
+IFS="
+"
+# For each Component
+#for component in $(cat ${COMPARE_JSON_FILE} | jq 'keys | join("")' 2>/dev/null | sed 's/\"//g') ; do
+
+#	echo "Analyzing Component: $component"
+	
+	# Add change owners for email notification
+	#RECIPIENTS="${RECIPIENTS}${RECIPIENTS:+ }$(cat ${COMPARE_JSON_FILE} | jq ".\"${component}\"[]" 2> /dev/null | sed 's/\"//g' | awk -F: '{print $3}' | sort | uniq)"
+	
+	cd ${WORKSPACE}/${CI_WS} && scm load -r ${REPO} "${CI_WS}" --force --resync
+	
+	
+	#for item in $(cat ${COMPARE_JSON_FILE} | jq ".\"${component}\"[]" 2> /dev/null | sed 's/\"//g' | awk -F: '{print $2}' | awk '!x[$0]++') ; do
+	for item in $(cat ${COMPARE_JSON_FILE} | awk -F: '{print $2}' | awk '!x[$0]++') ; do
+	
+		WI_WS="${CI_WS}-${item}"
+		
+		
+		#If new workitem -> create the workspace
+		if [ "$(cat ${WS_JSON_FILE} | jq ".[].name | match(\"${WI_WS}\")")" == "" ] ; then	
+			#scm create ws -r ${REPO} -s "${STAG_STREAM}" "${WI_WS}" || exit 1
+			rm -rf ${WORKSPACE}/${WI_WS} &> /dev/null
+			scm create ws -r ${REPO} -s "${CI_WS}" "${WI_WS}" || exit 1
+			#scm list ws -m 250 -c ${RTCUSER} -r ${REPO} --json > ${WS_JSON_FILE} & # Update list
+			scm load -r ${REPO} -d ${WORKSPACE}/${WI_WS} "${WI_WS}" --allow --force --resync  || exit 1
+			scm ws add-flowtargets -r ${REPO} "${WI_WS}" "${CI_STREAM}"
+			scm ws flowtarget -r ${REPO} --current b --default b "${WI_WS}" "${CI_STREAM}"
+		fi
+
+				
+		#cd ${WORKSPACE}/${WI_WS}/${component} || exit 1
+		cd ${WORKSPACE}/${WI_WS} || exit 1
+		
+		DEPENDS=false && NEXT=false && OK=false
+		
+		scm accept -r ${REPO} -W  -t "${WI_WS}" ${item} 2>&1 | tee ${ACCEPT_OUTPUT_FILE} 
+		cat ${ACCEPT_OUTPUT_FILE} | grep 'Missing change sets found' &> /dev/null && DEPENDS=true
+		cat ${ACCEPT_OUTPUT_FILE} | grep 'Accepting changes would introduce too many conflicts' &> /dev/null && NEXT=true
+		cat ${ACCEPT_OUTPUT_FILE} | grep 'Following workspaces still have conflicts after accept' &> /dev/null &&  NEXT=true
+		cat ${ACCEPT_OUTPUT_FILE} | grep 'The accept command completed successfully' &> /dev/null &&  OK=true
+		cat ${ACCEPT_OUTPUT_FILE} | grep 'Workspace unchanged' && echo "WARN: No changes for ${item}, why this item has been triggered ..." && OK=true
+		
+		DEPENDS_ON_WI_LIST="" && ACCEPTED_CS_LIST=""
+		
+		if "${NEXT}" ; then
+				echo "WARN: Conflicts has been generated in workspace after accepting item ${item}, Therefore item will not be validated"
+				cd ${WORKSPACE} && scm ws delete -r ${REPO} ${WI_WS} && rm -rf ${WORKSPACE}/${WI_WS}
+				continue
+		elif "${DEPENDS}" ; then
+			CHANGESETS="$(cat ${COMPARE_JSON_FILE} | grep ":${item}:"| awk -F: '{print $1}')"
+			#CHANGESETS="$(cat ${COMPARE_JSON_FILE} | jq ".\"$component\"[]" 2>/dev/null |sed 's/\"//g' | grep ":${item}:"| awk -F: '{print $1}')"
+			#CHANGESETS="$(cat ${WORKITEMS_JSON} |  jq  ".workspaces[].components[].\"incoming-changes\"[] | select(.workitems[].id==${item}) | .uuid")"
+			#CHANGESETS=${CHANGESETS//\"/} # Remove extra quotes
+			# Parse changeset by changeset to figure out which are the dependendants
+		
+			#for changeset in "${CHANGESETS}" ; do
+			DEPENDS_ON_CS_LIST="$(scm list missing-changesets -w ${WI_WS} --json -r ${REPO} ${CHANGESETS} | jq .changes[].uuid)"
+			DEPENDS_ON_CS_LIST=${DEPENDS_ON_CS//\"/} # Remove extra quotes
+		
+			# Option A
+			ACCEPTED_CS_LIST="$(scm accept -r ${REPO} -c --json --accept-missing-changesets -t "${WI_WS}" ${CHANGESETS} | jq .repos[0].workspaces[0].components[].changes[].uuid)"
+			ACCEPTED_CS_LIST=${ACCEPTED_CS_LIST//\"/} # Remove extra quotes
+			for changeset in ${DEPENDS_ON_CS_LIST} ; do
+			
+				# Figure out for which workitem this dependant changeset belongs to, If is not in the present in pending changes workitem list -> error
+				DEPENDS_ON_WI="$(cat ${COMPARE_JSON_FILE}| grep "${changeset}" | awk -F: '{print $2}')"
+				if [ -n "${DEPENDS_ON_WI}" ] ; then
+					[ "${DEPENDS_ON_WI}" != "${item}" -a "$(echo ${DEPENDS_ON_WI_LIST} | grep ${DEPENDS_ON_WI})" == "" ] && \
+					DEPENDS_ON_WI_LIST="${DEPENDS_ON_WI_LIST}${DEPENDS_ON_WI_LIST:+ }${DEPENDS_ON_WI}"
+				else
+					echo "ERROR: No WorkItem found for already accepted in workspace, and dependant changeset ${changeset}"
+					exit 1
+				fi
+			
+				# If changeset already commited in previous iterations skip item
+				#echo "${ACCEPTED_CS_LIST}" | grep  "${changeset}" && continue
+			done
+			
+			if [ -n "${DEPENDS_ON_WI_LIST}" ] ; then
+				#echo "<li>${item}, due to dependencies items ${DEPENDS_ON_WI_LIST} have been include in the workspace for the validation</li>" >> ${HTML_FILE}
+				echo "INFO: Due to dependencies in ${item}, items ${DEPENDS_ON_WI_LIST} has been include in Workspace ${WI_WS}"
+			else
+				echo "INFO: Changesets for item ${item} has been accepted."
+				#echo "<li><a >${item}</li>" >> ${HTML_FILE}
+			fi
+			
+		elif "${OK}" ; then	
+			echo "INFO: Changesets for item ${item} has been accepted."
+			#echo "<li><a >${item}</li>" >> ${HTML_FILE}
+		else 
+			echo "ERROR: Accepting changes for item ${item}" && exit 1
+		fi
+		
+		#[ "$(echo ${ITEMS_TO_BUILD} | grep ${item})" == "" ] && 
+		ITEMS_TO_BUILD="${ITEMS_TO_BUILD}${ITEMS_TO_BUILD:+ }${item}"				
+		
+	done	
+	#cd ${WORKSPACE}
+#done
+
+
+cat <<EOF >> ${HTML_FILE}
+<h3>Validation overview<h3>
+<font size=2>
+<ul>
+EOF
+
+
+IFS=" "
+for item in ${ITEMS_TO_BUILD} ; do
+
+	WI_WS="${CI_WS}-${item}"
+	
+	# If workspace has been deleted not run validation
+	[ ! -e ${WORKSPACE}/${WI_WS} ] && continue
+	
+	cd ${WORKSPACE}/${WI_WS}
+	echo "INFO: Validating Workitem ${item}"
+
+
+	CI_BUILD_OK=false
+	cd sygma-builder && mvn clean &> ${WORKSPACE}/${item}.log && CI_BUILD_OK=true || echo "ERROR: Running mvn clean install in Sygma Integration Workspace"
+
+	if ${CI_BUILD_OK} ; then
+		echo "<li>${item} <a href=\"${BUILD_URL}artifact/${item}.log\"><font color=\"green\" ><b>OK<b></font></a></li>" >> ${HTML_FILE}
+		echo "INFO: mvn clean install run succesfully in Sygma Integration Workspace <b>${CI_WS}-${item}</b>"
+		echo "INFO: Delivering changes to ${STAG_STREAM}" #&& scm deliver -r "${REPO}" -t "${STAG_STREAM}"
+	else
+		echo "<li>${item} <a href=\"${BUILD_URL}artifact/${item}.log\"><font color=\"red\" ><b>NOK<b></font></a></li>" >> ${HTML_FILE}
+		echo "INFO: mvn clean install DID not run succesfully in Sygma Integration Workspace <b>${CI_WS}-${item}</b>"
+	fi
+
+done
+
+echo "</ul></font>" >> ${HTML_FILE}
+exit 0
+

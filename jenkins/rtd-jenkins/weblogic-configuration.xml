@@ -1,0 +1,28 @@
+<config>
+	<weblogic-targets>
+		<weblogic-target>
+			<name>DEV></name>
+			<host>rotanev.cc.cec.eu.int</host>
+			<port>11020</port>
+			<login>empp_user</login>
+			<password>empp_user</password>
+			<authMode>BY_LOGIN</authMode>
+		</weblogic-target>
+                <weblogic-target>
+                        <name>INT</name>
+                        <host>bamberg.cc.cec.eu.int</host>
+                        <port>15020</port>
+                        <login>configread</login>
+                        <password>configread1</password>
+                        <authMode>BY_LOGIN</authMode>
+                </weblogic-target>
+                <weblogic-target>
+                        <name>DEV05</name>
+                        <host>shibataea.cc.cec.eu.int</host>
+                        <port>11520</port>
+                        <login>empp_user</login>
+                        <password>empp_user</password>
+                        <authMode>BY_LOGIN</authMode>
+                </weblogic-target>
+	</weblogic-targets>
+</config>

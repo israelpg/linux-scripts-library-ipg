@@ -1,0 +1,253 @@
+#!/bin/bash -x
+
+ 
+#TEMP
+#RTCUSER=j13b004
+#RTCPWD=tz5iq7gb
+RTCUSER=jimerod
+RTCPWD=Marzo2018.
+WORKSPACE=/ec/local/data/jenkins-data/jobs/sygma-request-build
+workItem=399296
+ 
+# Acceptance
+export REPO=Acceptance
+export STAG_STREAM="SYG ::: PROD 7.2 Staging"
+export TARGET_STREAM="SYG ::: PROD 7.2 Maintenance"
+export WS="Sygma-Release"
+export RTCURI=https://s-jazz-acc.net1.cec.eu.int:9443/jazz
+
+# Production
+#export REPO=Prod
+#export WS="SyGMaReleaseStream"
+#export RTCURI=https://s-cc-rwp01.net1.cec.eu.int:9443/jazz
+
+declare -a WI_LEFT
+export counter=0
+export TMPFILE=$(mktemp)
+export HTML_OUTPUT_FILE="output.html"
+export PROPERTIES_FILE="${JOB_NAME}-${BUILD_NUMBER}.properties"
+export COOKIES=${WORKSPACE}/cookies.txt
+export JSONOUTPUT=${WORKSPACE}/json.output
+export CURLPARAMS="-k  -b ${COOKIES} -H \"Accept: application/x-oslc-cm-change-request+json\""
+export OK=true
+export IFS="
+"
+
+# Cleanup
+rm -rf ${WORKSPACE}/output.txt ${WORKSPACE}/cookies.txt &> /dev/null
+
+# RTC HTTP form based Login
+curl -k -c ${COOKIES} ${RTCURI}/authenticated/identity &>/dev/null
+curl -k -L -b ${COOKIES} -c ${COOKIES} -d j_username=${RTCUSER} -d j_password=${RTCPWD} ${RTCURI}/authenticated/j_security_check &>/dev/null
+
+# RTC SCM CLI login
+scm login -u ${RTCUSER} -P ${RTCPWD}  -n ${REPO} -r ${RTCURI} -c &>/dev/null || { echo "ERROR: Not possible to login in RTC Server" >&2 ; exit 1 ; }
+
+# Fetch all Resolved items
+curl -k -o ${JSONOUTPUT} -b ${COOKIES} -H "Accept: application/x-oslc-cm-change-request+json" "${RTCURI}/oslc/workitems/${workItem}/rtc_cm:com.ibm.team.workitem.linktype.resolvesworkitem.resolves?oslc_cm.pageSize=100&_startIndex=0&oslc_cm.properties=rtc_cm:com.ibm.team.workitem.linktype.parentworkitem.children" 2> /dev/null 
+export ITEMS=$(jq ".[].\"rtc_cm:com.ibm.team.workitem.linktype.parentworkitem.children\"[].\"oslc_cm:label\" , .[].\"oslc_cm:label\"" ${JSONOUTPUT} | sed 's/\"//g' | sort)
+# Fetch Snapshot Name, from there obtain Relase and iteration
+export SNAPSHOT=$(curl -k -b ${COOKIES} -H "Accept: application/x-oslc-cm-change-request+json" "${RTCURI}/oslc/workitems/${workItem}?oslc_cm.properties=rtc_cm:eu.europa.ec.rdg.apt.attribute.snapshot" 2>/dev/null | jq ."\"rtc_cm:eu.europa.ec.rdg.apt.attribute.snapshot\"")
+export PLANNED_FOR=$(curl -k -b ${COOKIES} -H "Accept: application/x-oslc-cm-change-request+json" "${RTCURI}/oslc/workitems/${workItem}?oslc_cm.properties=rtc_cm:plannedFor" | jq ".\"rtc_cm:plannedFor\".\"rdf:resource\"")
+
+# Fetch target stream and validate name
+export TARGET_STREAM="$(curl -k -b ${COOKIES} -H "Accept: application/x-oslc-cm-change-request+json" "${RTCURI}/oslc/workitems/${workItem}?oslc_cm.properties=rtc_cm:eu.europa.ec.rdg.apt.attribute.sourcestream" 2> /dev/null | jq .\"rtc_cm:eu.europa.ec.rdg.apt.attribute.sourcestream\" | sed 's/\"//g')"
+
+if [ "$(scm list streams -m 250 -r ${REPO} --json | jq ".[] | select(.name == \"${TARGET_STREAM}\")")" == "" ]  ; then
+	echo "ERROR: Stream ${TARGET_STREAM} not found."
+	exit 1
+fi
+
+export RELEASE=$(echo ${SNAPSHOT} | grep -o -P "[0-9]+\.[0-9]+((\.[0-9]+)*)?")
+export ITERATION=$(echo ${SNAPSHOT} | grep -o -P it[0-9]+)
+
+
+# Select source Stream depending on Version.
+if [ "${RELEASE#9.2}" != "${RELEASE}" ] ; then
+	export STAG_STREAM=${STAG_STREAM_9.2}
+elif [ "${RELEASE#10.0}" != "${RELEASE}" ] ; then 
+	export STAG_STREAM=${STAG_STREAM_10.0}
+else
+	echo "ERROR: Source stream for Release ${RELEASE} not defined"
+    #exit 1
+fi
+
+
+# Store values in properties file to be included in email.
+echo "RELEASE=${RELEASE}" > ${PROPERTIES_FILE}
+echo "ITERATION=${ITERATION}" >> ${PROPERTIES_FILE}
+echo "SNAPSHOT=${SNAPSHOT}" >> ${PROPERTIES_FILE}
+
+
+# Prepare workspace
+echo "INFO: Preparing Workspace making sure that points to the correct component versions from maintenance Stream"
+#scm workspace change-target "${WS}" "${STAG_STREAM}" &>/dev/null || { echo "ERROR: Not possible to change flow target to ${STAG_STREAM} of ${WS}" >&2 && exit 1; }
+#scm workspace replace-component --all "${WS}" stream "${TARGET_STREAM}" &>/dev/null || { echo "ERROR: Not possible to set the components from ${TARGET_STREAM} in WS ${WS}" >&2 && exit 1; }
+
+# For testing
+#scm workspace replace-component --all "${WS}" snapshot "SyGMa-9.0.9-it01" 
+
+#scm load -r ${REPO} --force --resync "${WS}" &>/dev/null || { echo "ERROR: Not possible to sync workspace ${WS}" >&2 && exit 1; }
+
+
+# Prepare the json fileto update planned for on all resolved workitems
+cat > ${TMPFILE} <<EOF
+{
+ "rtc_cm:plannedFor":
+  {
+   "rdf:resource":"${PLANNED_FOR}"
+  }
+}
+EOF
+
+
+export COMPARE_JSON_OUTPUT_FILE=$(mktemp)
+export COMPARE_JSON_FILE=$(mktemp)
+export ACCEPT_OUTPUT_FILE=$(mktemp)
+#export COMPARE_JSON_FILE=/tmp/tmp.ucsw8nhY1T
+
+# Generate changeset list
+scm compare -r ${REPO} --json -I s -f o   stream "${STAG_STREAM}" stream "${TARGET_STREAM}"  > ${COMPARE_JSON_OUTPUT_FILE}
+jq -r  '.direction[].components[] | select(.changesets != null) |  .changesets[] | (.uuid + ":" + (.workitems[0]."workitem-number"|tostring) + ":" + .author.mail )' ${COMPARE_JSON_OUTPUT_FILE} 2> /dev/null > ${COMPARE_JSON_FILE} || exit 1
+jq -r  '.direction[].components[].baselines[] | select(.changesets != null) |  .changesets[] | (.uuid + ":" + (.workitems[0]."workitem-number"|tostring) + ":" + .author.mail )'  ${COMPARE_JSON_OUTPUT_FILE} 2> /dev/null >> ${COMPARE_JSON_FILE} || exit 1
+  
+
+# Accept all changesets linked to the workitems present in the Staging stream accept them
+echo "<ul>" > ${HTML_OUTPUT_FILE}
+for item in ${ITEMS} ; do
+	
+    ID=$(echo $item  | awk -F": " '{print $1}')
+    TITLE=$(echo $item  | awk -F": " '{print $2}')
+    PLANNEDFOR=$(curl -k  -b ${COOKIES} -H "Accept: application/x-oslc-cm-change-request+json" "${RTCURI}/oslc/workitems/${ID}/rtc_cm:plannedFor" 2>/dev/null | jq ".\"dc:identifier\"")
+	CHANGESETS="$(cat ${COMPARE_JSON_FILE} | grep ":${ID}:"| awk -F: '{print $1}')"
+    
+    # Check planned for value, should match with the current release
+    [ "${PLANNEDFOR/${RELEASE}/}" == "${PLANNEDFOR}"  ] && \
+    	echo "WARN: Planned Release value \"${PLANNEDFOR}\" of Work Item ${ID} does not match with the current release \"SyGMa ${RELEASE}"\"
+    
+    
+    #Update "Planned For" field To the correct Value
+    curl -D - -k -b ${COOKIES} -H "Content-Type: application/x-oslc-cm-change-request+json" \
+    -H "Accept: application/json" -X PUT --data-binary @${TMPFILE} \
+    ${RTCURI}/resource/itemName/com.ibm.team.workitem.WorkItem/${ID} &> /dev/null
+    
+	
+	DEPENDS=false && NEXT=false && OK=false
+
+	scm accept -r ${REPO} -W  -t "${WS}" ${ID} 2>&1 | tee ${ACCEPT_OUTPUT_FILE} 
+	cat ${ACCEPT_OUTPUT_FILE} | grep 'Missing change sets found' &> /dev/null && DEPENDS=true
+	cat ${ACCEPT_OUTPUT_FILE} | grep 'Accepting changes would introduce too many conflicts' &> /dev/null && NEXT=true
+	cat ${ACCEPT_OUTPUT_FILE} | grep 'Following workspaces still have conflicts after accept' &> /dev/null &&  NEXT=true
+	cat ${ACCEPT_OUTPUT_FILE} | grep 'The accept command completed successfully' &> /dev/null &&  OK=true
+	cat ${ACCEPT_OUTPUT_FILE} | grep 'Workspace unchanged' && echo "WARN: No changes for ${ID}, why this item has been requested ..." && OK=true
+		
+	DEPENDS_ON_WI_LIST="" && ACCEPTED_CS_LIST=""
+		
+	if "${NEXT}" ; then
+		echo "ERROR: Conflicts has been generated in workspace after accepting item ${ID}"
+		exit 1
+	elif "${DEPENDS}" ; then
+		CHANGESETS="$(cat ${COMPARE_JSON_FILE} | grep ":${ID}:"| awk -F: '{print $1}')"
+		DEPENDS_ON_CS_LIST="$(scm list missing-changesets -w ${WS} --json -r ${REPO} ${CHANGESETS} | jq .changes[].uuid | sed 's/\"//g')"
+		ACCEPTED_CS_LIST="$(scm accept -r ${REPO} -c --json --accept-missing-changesets -t ${WS} ${CHANGESETS} | jq .repos[0].workspaces[0].components[].changes[].uuid | sed 's/\"//g')"
+		for changeset in ${DEPENDS_ON_CS_LIST} ; do
+			
+			# Figure out for which workitem this dependant changeset belongs to, If is not in the present in pending changes workitem list -> error
+			DEPENDS_ON_WI="$(cat ${COMPARE_JSON_FILE}| grep "${changeset}" | awk -F: '{print $2}')"
+			if [ -n "${DEPENDS_ON_WI}" ] ; then
+				[ "${DEPENDS_ON_WI}" != "${itemId}" -a "$(echo ${DEPENDS_ON_WI_LIST} | grep ${DEPENDS_ON_WI})" == "" ] && \
+				DEPENDS_ON_WI_LIST="${DEPENDS_ON_WI_LIST}${DEPENDS_ON_WI_LIST:+ }${DEPENDS_ON_WI}"
+			else
+				echo "ERROR: No WorkItem found for already accepted in workspace, and dependant changeset ${changeset}"
+				exit 1
+			fi
+		done
+			
+		if [ -n "${DEPENDS_ON_WI_LIST}" ] ; then
+			echo "INFO: Due to dependencies in ${ID}, items ${DEPENDS_ON_WI_LIST} has been include in the build"
+		else
+			echo "INFO: Changesets for item ${ID} has been accepted."
+		fi
+			
+	elif "${OK}" ; then	
+		echo "INFO: Changesets for item ${item} has been accepted."
+	else 
+		echo "ERROR: Accepting changes for item ${item}" && exit 1
+	fi
+	
+	
+	echo "<li><a href=\"${RTCURI}/web/projects/SyGMa#action=com.ibm.team.workitem.viewWorkItem&id=${ID}\">${item}</a></li>" >> ${HTML_OUTPUT_FILE}
+	
+	# Search for missing Changesets, if so states mark proccess as failure, so is exited after all items are parsed
+    #output=$(mktemp)
+    #if [ "${CHANGESETS}" != "" ] ; then
+    #	echo ${CHANGESETS} | xargs scm accept -r ${REPO} -t "${WS}" -c &> ${output}
+    #   if [ "$(cat ${output} | grep 'Missing change sets found')" != "" ] ; then
+    # 		echo "WARN: Item ${ID} has missing-changesets: "
+    #		scm list missing-changesets -w ${WS} -r ${REPO} ${CHANGESETS}
+    #   	WI_LEFT[${counter}]=${ID}
+    #  	    counter=$((counter+1))
+    #	elif [ "$(cat ${output} | grep 'Workspace unchanged')" != "" ] ; then
+ #			echo "WARN: No change sets to accept for ${ID}"
+  #  	fi
+  #  else
+   # 	echo "WARN: No changesets linked to WorkItem ${ID}"
+    #fi
+done
+
+echo "</ul>" >> ${HTML_OUTPUT_FILE}
+
+# Second try for dependant WorkItems
+#LENGTH=${#WI_LEFT[*]}
+#while [ ${LENGTH} -gt 0 ] && ${OK} ; do
+#	counter=0
+#    for ID in ${WI_LEFT[*]} ; do
+#    	scm  changeset locate -v -w "${STAG_STREAM}" -r ${REPO} -W ${ID} | tail -n +2 | awk -F '[()]' '{print $2}' |\
+#        xargs scm accept -r ${REPO} -t "${WS}" -c 2>&1 | { grep "Missing change sets found" &>/dev/null || unset WS_LEFT[${counter}]; }
+#        counter=$((counter+1))
+#    done
+#	if [ "${LENGTH}" != "${#WI_LEFT[*]}" ] ; then
+#		LENGTH=${#WI_LEFT[*]}
+#	else
+#    	OK=false
+#	fi
+#done
+
+#IFS=" "
+#[ ${#WI_LEFT[*]} -gt 0 ] && echo "ERROR: Items: ${WI_LEFT[*]} has dependant workitems that are not present in the list" >&2 && exit 1
+
+
+
+
+# Update poms if first iteration
+cd ${WORKSPACE}/sygma-builder
+[ "${ITERATION/it01/}" != "${ITERATION}" ] && mvn versions:set -DnewVersion="${RELEASE}-SNAPSHOT" -DprocessAllModules && mvn versions:commit
+
+# Maven compilation
+mvn clean install || { echo "ERROR: Running mvn clean install" && exit 1; }
+
+# Deliver pom modifications to the Staging stream
+cd ${WORKSPACE}
+if [ "${ITERATION/it01/}" != "${ITERATION}" ] ; then 
+	find . -name pom.xml | xargs scm checkin -W ${workItem}
+	scm deliver -s ${WS} -t ${STAG_STREAM} -W ${workItem} || exit 1
+fi
+
+# Change Flow target to Maintenance
+#scm workspace change-target "${WS}" "${TARGET_STREAM}" >/dev/null || { echo "ERROR: Not possible to change flow target to ${TARGET_STREAM} Stream" >&2 && exit 1; }
+
+# Deliver items to maintenance stream
+#for item in $ITEMS ; do
+#    scm deliver -s ${WS} -t ${TARGET_STREAM} -W $item >/dev/null || \
+#    	{ echo "ERROR: Not possible to deliver WorkItem $item into ${TARGET_STREAM} Stream" >&2 && exit 1; }
+#done
+
+# Deliver pom modification if required
+#[ "${ITERATION/it01/}" != "${ITERATION}" ] && scm deliver -s ${WS} -W ${workItem}
+
+# Create Snapshot in Target Stream
+scm create snapshot -r ${REPO} -n "${SNAPSHOT}" ${WS} >/dev/null || { echo "WARN: Not possible to create Snapshot ${SNAPSHOT}" && exit 1; }
+
+scm deliver -s ${WS} -t ${TARGET_STREAM} 
+
+exit 0
