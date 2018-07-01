@@ -57,15 +57,28 @@ done
 # pid of the script in execution:
 $$
 
+# to check execution of last command in the script:
+$?
+
+if [[ $? -eq 0 ]]
+then
+	echo "Successful"
+	exit 0
+else
+	echo "Wrong" # $? = 1
+	exit 1
+fi
+
+# Summary:
 # Builtin variables:
 # There are some useful builtin variables, like
-echo "Last program's return value: $?"
+echo "Last program's return value: $? where 0 is successul execution, 1 is wrong execution"
 echo "Script's PID: $$"
 echo "Number of arguments passed to script: $#"
 echo "All arguments passed to script: $@"
 echo "Script's arguments separated into different variables: $1 $2..."
 
-# IDENTIFY USER ID:
+# IDENTIFY USER ID: (e.g.: root = 0)
 userID=$(id -u)
 
 ## COMMANDS WITH VARIABLES:
@@ -111,7 +124,7 @@ function thisFunction()
 thisFunction value1
 thisFunction $var1
 
-# evaluate command in a function
+# evaluate command in a function, what returns its execution:
 
 if (( $? == 0 ))
 then

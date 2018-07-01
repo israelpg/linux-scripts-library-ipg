@@ -37,8 +37,16 @@ mkdir -p ~/git/stream_test1 ; cd ~/git/stream_test1
 # initialize the repository you have just created:
 git init
 
+
+##### Git flow:
+
+# git pull --rebase create files, edit files, remove files --> add --> commit or unstage with git reset HEAD filename --> git push
+
+
 # add files you created or copied to git, and then you will be able to commit the changes, initial baseline, etc ... :
-git add .
+git add --all
+# or by filenames:
+git add file1 file2
 
 # In server, you make init, and a git add .
 
@@ -46,6 +54,10 @@ git add .
 
 
 # client
+git add --all
+git commit -m "commit from local repo"
+
+# or commit/add in the same line:
 # commit message to be created:
 git commit -m "Initial Commit" -a
 # careful, -a will apply same commit message to all added/modified files, better specify file by file:
@@ -74,6 +86,8 @@ git clone stream_test1 stream_test1_b # in the cloned folder we have the actual 
 # now we have the folder with the content, sync with client
 
 # PULL from client ... a change which is in the Server:
+
+git pull --rebase # better --rebase, so that git does not merge commits from your local repo, and you can keep track manually
 
 # 1. After cloning server core.bare to work tree, we have a work key/stream, add here files (git add .)
 # 2. Commit changes
@@ -114,5 +128,39 @@ D	pepito.txt
 D	pull_this_from_server.txt
 D	pull_this_too.txt
 
+#### real scenario with my linux scripts library in Git:
 
+srael@israel-N56JN:~/git/workspace_linux_scripts/git$ sudo git pull --rebase
+error: Cannot pull with rebase: You have unstaged changes.
+israel@israel-N56JN:~/git/workspace_linux_scripts/git$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   ../bash_programming/howTo.sh
+
+no changes added to commit (use "git add" and/or "git commit -a")
+# if you add changes:
+git add --all
+# then you need to commit for later on push to remote branch, or you can unstage changes:
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   ../bash_programming/howTo.sh
+
+israel@israel-N56JN:~/git/workspace_linux_scripts/git$ sudo git reset HEAD ../bash_programming/howTo.sh
+Unstaged changes after reset:
+M	bash_programming/howTo.sh
+# now you can edit this file, then add again (staging), so that you can commit, and push
+israel@israel-N56JN:~/git/workspace_linux_scripts/git$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   ../bash_programming/howTo.sh
+
+no changes added to commit (use "git add" and/or "git commit -a")
 
