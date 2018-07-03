@@ -129,7 +129,8 @@ tcp        0      0 127.0.0.1:53151         127.0.0.1:8088          TIME_WAIT   
 tcp6       0      0 :::8088                 :::*                    LISTEN      -               
 tcp6       0      0 127.0.0.1:8088          127.0.0.1:53155         TIME_WAIT   -
 
-
+# or using: 
+lsof -P | grep '8080'
 
 
 ## NOTE: Tomcat is restricted to be managed only from the server machine itself (localhost)
@@ -142,7 +143,7 @@ tcp6       0      0 127.0.0.1:8088          127.0.0.1:53155         TIME_WAIT   
 </Context>
 
 ### VIRTUALHOSTS:
-# default virtualhost defined for localhost in server.xml:
+# default virtualhost (name VH) defined for localhost in server.xml:
 <Host name="localhost"  appBase="webapps"
             unpackWARs="true" autoDeploy="true">
 </Host>
