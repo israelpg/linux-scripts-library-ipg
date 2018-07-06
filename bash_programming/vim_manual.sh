@@ -28,3 +28,8 @@ map <F2> i#!/bin/bash<ESC>o#This file was created on <ESC>:r!date "+\%x" <ESC> b
 /etc/profile.d/vimrc
 # reference this file in the /etc/vim/vimrc config file
 
+# copy line:
+yy
+
+# paste copied line:
+p
