@@ -23,7 +23,25 @@ origin	https://github.com/israelpg/linux-scripts-library-ipg (push)
 # it is possible to change the url of the remote repository (stream): eg: with origin
 git remote set-url origin https://github.com/user/repo.git
 
-# cloning a workspace (local):
+# you can use the different branches in the remote repository:
+# for instance, in mloz: rm-utils, the master branch, but also my own branch
+# display branches:
+git branch
+* master
+release/utils-israel-branch 
+
+# select which branch to use:
+git checkout master
+# or:
+git checkout release/utils/israel-branch
+
+# deleting a branch:
+# locally:
+git branch -d release/utils-israel-branch
+# remotely, obviously same name as local:
+git push origin --delete release/utils-israel-branch
+
+#cloning a workspace (local):
 git clone https://github.com/israelpg/linux-scripts-library-ipg /localFolder # destination folder must be empty
 
 # push and pull changes:
@@ -64,6 +82,20 @@ git show --pretty="format:" --name-only -r COMMIT_ID
 
 ## CHECKING DIFF BETWEEN LOCAL WORKSPACE/REPO AND REMOTE/STREAM:
 git diff origin/master # note: origin/master is a shorthand for refs/remotes/origin/master
+
+# STATUS:
+# untracked: there are some changes, but not added via git add
+# tracked: changes have been added with git add, not yet committed
+# commited: changes have been commited, just requires a push
+
+# CHANGING STATUS
+# after tracked (git add filename):
+git rm --cached filename
+# or reset to leave it untracked and edit changes:
+git reset filename
+
+# more powerful is deleting all untracked files with a clean:
+git clean -f
 
 # removing a file from workspace, and stream:
 rm <filename>

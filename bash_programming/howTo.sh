@@ -197,9 +197,7 @@ then
 	echo "There is at least one error"
 fi
 
-## EXAMPLES OF OPERATORS:
-
-# argument not provided when calling function, or script itself (bash scriptname arg1):
+## EXAMPLES OF OPERATORS: argument not provided when calling function, or script itself (bash scriptname arg1):
 
 if [ -z $1 ]
 then
