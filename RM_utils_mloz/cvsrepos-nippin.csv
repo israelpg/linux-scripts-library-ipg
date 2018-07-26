@@ -1,0 +1,11 @@
+:ext:hudson@cvs.gfdi.be:/cvs/rep/nippin_app|NippinCommonTools|nippin_common_tools_release_dev
+:ext:hudson@cvs.gfdi.be:/cvs/rep/nippin_app|NippinCommonWS|nippin_common_ws_release_dev
+:ext:hudson@cvs.gfdi.be:/cvs/rep/nippin_app|soapParser|nippin-soapParser_release_dev
+:ext:hudson@cvs.gfdi.be:/cvs/rep/tar_team|carenet_common_modules|carenet_common_modules_release_dev
+:ext:hudson@cvs.gfdi.be:/cvs/rep/tar_team|chapter4_dbsam_modules|ch4_dbsam_release_dev
+:ext:hudson@cvs.gfdi.be:/cvs/rep/tar_team|chapter4_flowView_modules|ch4_flowView_release_dev
+:ext:hudson@cvs.gfdi.be:/cvs/rep/tar_team|chapter4_modules|ch4_release_dev
+:ext:hudson@cvs.gfdi.be:/cvs/rep/tar_team|dmg_atos_robots_modules|dmg_atos_robots_modules_release_dev
+:ext:hudson@cvs.gfdi.be:/cvs/rep/tar_team|efact_modules|efact_modules_release_dev
+:ext:hudson@cvs.gfdi.be:/cvs/rep/tar_team|mycarenet_modules|mycarenet_release_dev
+:ext:hudson@cvs.gfdi.be:/cvs/rep/wsoa_app|wsoa_fwk_modules|wsoa_fwk_release_dev

@@ -1,0 +1,15 @@
+hudson = hudson <hudson@m-team.be>
+m999jte = Julien Terwagne <m999jte@m-team.be>
+m999mbe = Marc Belleville <m999mbe@m-team.be>
+m999mha = Mezzianne Haji <m999mha@m-team.be>
+m999msi = Marwan Singer <m999msi@m-team.be>
+m999obu = Olivier Beauchampet <m999obu@m-team.be>
+m999bgo = Blaise Gosselin <m999bgo@m-team.be>
+m999rhi = Remy Hilbert <m999rhi@m-team.be>
+m999vmu = Vincent Mathieu <m999vmu@m-team.be>
+m999pvm = m999pvm <m999pvm@m-team.be>
+m999pdw = m999pwd <m999pwd@m-team.be>
+m999jmo = Jean-Pierre Mordenga <m999jmo@m-team.be>
+m999aab = m999aab <m999aab@m-team.be>
+m999bad = m999bad <m999bad@m-team.be>
+m999agh = m999agh <m999agh@m-team.be>

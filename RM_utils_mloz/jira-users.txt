@@ -1,0 +1,33 @@
+m501hyvm|Marco Huyvaert|welcome01|marco.huyvaert@oz.be
+m501abud|Dominique Buytaert|welcome01|dominique.buytaert@oz.be
+m501vdwv|Vincent van de Walle|welcome01|Vincent.van.de.walle@oz.be
+m501nisa|Aline Nissenne|welcome01|Aline.Nissenne@oz.be
+m501gooc|Caroline Goole|welcome01|caroline.goole@oz.be
+m501ajap|Pim Janssen|welcome01|pim.janssen@oz.be
+m501khuk|Kristel Huet|welcome01|kristel.huet@oz.be
+m501zpoa|Ann-Sophie Pollet|welcome01|ann-sophie.pollet@oz.be
+m501avgr|Robin Van Gehuchten|welcome01|robin.Van.gehuchten@oz.be
+m501vdbl|lieve Van den Bussche|welcome01|lieve.Van.den.Bussche@oz.be
+m501gysh|Ha-Na-Lee Gysen|welcome01|ha-na-lee.gysen@oz.be
+m501malb|Bart Malfait|welcome01|bart.malfait@oz.be
+c506yves|Yves Leynen|welcome01|Yves.Leynen@omnimut.be
+m509rbac|Raymond BACCAERT|welcome01|Raymond.BACCAERT@partenamut.be
+m509clee|Caroline LEJEUNE|welcome01|Caroline.LEJEUNE@partenamut.be
+m515hoen|Leonie Hoenen|welcome01|leonie.hoenen@freie.be
+m515take|Tamara Kessler|welcome01|tamara.kessler@freie.be
+m526ever|Evelyne Verspeelt|welcome01|Evelyne.Verspeelt@partena-partners.be
+m526wvca|Wim Vancauwenberghe|welcome01|Wim.Vancauwenberghe@partena-ziekenfonds.be
+m526mrot|Marijke Rottiers|welcome01|Marijke.Rottiers@partena-ziekenfonds.be
+m526cvre|Catherine Vercruysse|welcome01|Catherine.Vercruysse@partena-ziekenfonds.be
+m526elle|Ellen De Vriese|welcome01|Ellen.DeVriese@partena-kinderopvang.be
+m526mvet|Marianne Van Eeckhout|welcome01|Marianne.VanEeckhout@partena-hulpinhuis.be
+m526ldht|Liesbet Dhondt|welcome01|Liesbet.Dhondt@partena-ziekenfonds.be
+m526sdez|Stefaan De Zutter|welcome01|Stefaan.DeZutter@partena-ziekenfonds.be
+m526pcla|Peggy Claeys|welcome01|Peggy.Claeys@partena-ziekenfonds.be
+m999fdht|Frederik Dhondt|welcome01|frederik.dhondt@infoveiligheid.be
+m235bruc|Christian Bruyninckx|welcome01|christianbruyninckx@hospiplus.be
+m506pger|Pierre Gerardy|welcome01|pierre.gerardy@omnimut.be
+m506nmoo|Nathalie Moors|welcome01|nathalie.moors@omnimut.be
+m506pblo|Philippe Blond|welcome01|philippe.blond@omnimut.be
+m506jtab|Jessica Taburet|welcome01|jessica.taburet@omnimut.be
+m200osab|Ornella Sabatino|welcome01|Ornella.SABATINO@union-neutre.be

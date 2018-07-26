@@ -1,0 +1,5 @@
+m506pger|Pierre Gerardy|welcome01|pierre.gerardy@omnimut.be
+m506nmoo|Nathalie Moors|welcome01|nathalie.moors@omnimut.be
+m506pblo|Philippe Blond|welcome01|philippe.blond@omnimut.be
+m506jtab|Jessica Taburet|welcome01|jessica.taburet@omnimut.be
+m200osab|Ornella Sabatino|welcome01|Ornella.SABATINO@union-neutre.be
