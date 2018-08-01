@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Websphere MQ Cheat Sheet for System Administrators | Benjamin Cane</title>
+<meta property="og:title" content="Websphere MQ Cheat Sheet for System Administrators | Benjamin Cane" />
+<meta name="description" content="A simple cheat sheet that shows commands every sysadmin managing WebSphere MQ could use">
+<meta property="og:description" content="A simple cheat sheet that shows commands every sysadmin managing WebSphere MQ could use" />
+<meta property="og:type" content="article" />
+<meta name="keywords" content="ibm, linkedin, linux, listener, mq, queue manager, scripts, system administrators, websphere mq, websphere mq cheat sheet, ">
+<meta property="og:type:article:author" content="https://plus.google.com/+BenjaminCane" \>
+<meta property="og:url" content="http://bencane.com/2013/04/22/websphere-mq-cheat-sheet-for-system-administrators/" />
+<meta name="author" content="Benjamin Cane">
+<link rel="author" href="https://plus.google.com/+BenjaminCane" \>
+<meta property="og:image" content="http://bencane.com/img/thumbnails/shell.png" />
+<meta property="og:site_name" content="Benjamin Cane" />
+
+<link href="/static/css/bootstrap2.css" rel="stylesheet">
+
+<link href="/static/css/clean-blog2.css" rel="stylesheet">
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+<script type='text/javascript' src='//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js' data-shr-siteid='098ec2a3913f9ec74de565aa3ec3d741' data-cfasync='false' async='async'></script>
+
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-3378969-11', 'auto');
+    ga('send', 'pageview');
+    </script>
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-0946238287085890",
+        enable_page_level_ads: true
+      });
+    </script>
+
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+<div class="container-fluid">
+
+<div class="navbar-header page-scroll">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<a class="navbar-brand" href="https://bencane.com">Benjamin Cane</a>
+</div>
+
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+<ul class="nav navbar-nav navbar-right">
+<li>
+ <a href="/"><i class="fa fa-home"></i> Home</a>
+</li>
+<li>
+<a href="/archive.html"><i class="fa fa-archive"></i> Articles</a>
+</li>
+<li>
+<a href="https://github.com/madflojo"><i class="fa fa-github"></i> Projects</a>
+</li>
+</ul>
+</div>
+
+</div>
+
+</nav>
+
+
+<header class="intro-header" style="background-image: url('/static/img/post-bg.jpg')">
+<div class="container">
+<div class="row">
+<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+<div class="post-heading">
+<h1>Websphere MQ Cheat Sheet for System Administrators</h1>
+<h2 class="subheading">A simple cheat sheet that shows commands every sysadmin managing WebSphere MQ could use</h2>
+<span class="meta">
+Written by <a href="https://twitter.com/madflojo">Benjamin Cane</a> on 2013-04-22&nbsp;| 2 min read</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+
+<article>
+<div class="container">
+<div class="row">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0946238287085890" data-ad-slot="5617960684" data-ad-format="auto"></ins>
+<script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+<p></p>
+</div>
+<div class="row">
+<div class="col-lg-8 col-md-8 col-sm-10">
+<p>IBM's Websphere MQ is a middle-ware application that allows two applications to pass messages back and forth without having to integrate with each-other directly. Websphere MQ is a fairly popular application in the enterprise especially for those running many java based programs.</p>
+<p>Today's article is a copy of my personal Websphere MQ cheat sheet. This cheat sheet is geared more from a System Administrators prospective and doesn't touch much on creating or altering queues or channels, but should provide a good head start for those who need to just get something restarted.</p>
+<p>This cheat sheet is split into two parts, the first being the Linux command line based commands and the second being the MQ CLI based commands.</p>
+<p><em>Where the command starts with REPLACE will require replacing the information with information from your system</em></p>
+<h2>Linux Command Line Commands</h2>
+<p>The majority of these commands are run as the mqm (or equivalent) user. By default these commands are in <code>/opt/mqm/bin</code> which I would advise adding to the mqm users PATH.</p>
+<h4>Create a Queue Manager</h4>
+<div class="highlight"><pre><code>$ crtmqm REPLACE_QMGR_NAME
+
+</code></pre></div>
+<h4>Delete a Queue Manager</h4>
+<div class="highlight"><pre><code>$ dltmqm REPLACE_QMGR_NAME
+
+</code></pre></div>
+<h4>Start Queue Manager</h4>
+<div class="highlight"><pre><code>$ strmqm REPLACE_QMGR_NAME
+
+</code></pre></div>
+<h4>Stopping Queue Manager</h4>
+<h5>Wait for queue manager to shutdown</h5>
+<div class="highlight"><pre><code>$ endmqm -w REPLACE_QMGR_NAME
+
+</code></pre></div>
+<h5>End Immediately</h5>
+<div class="highlight"><pre><code>$ endmqm -i REPLACE_QMGR_NAME
+
+</code></pre></div>
+<h4>Start Queue Manager (Init Script)</h4>
+<p>By default Websphere MQ does not ship with an init script, you can add this functionality via a <a href="http://www-01.ibm.com/support/docview.wss?uid=swg24016554">support pac (MSL1)</a> provided by IBM.</p>
+<div class="highlight"><pre><code>$ service ibm.com-WebSphere_MQ start
+
+</code></pre></div>
+<h4>Stopping Queue Manager (Init Script)</h4>
+<div class="highlight"><pre><code>$ service ibm.com-WebSphere_MQ stop
+
+</code></pre></div>
+<h4>Start MQ Listener</h4>
+<div class="highlight"><pre><code>$ echo "start LISTENER(SYSTEM.DEFAULT.LISTENER.TCP)" | runmqsc REPLACE_QMGR_NAME
+
+</code></pre></div>
+<h4>Stop MQ Listener</h4>
+<div class="highlight"><pre><code>$ echo "stop LISTENER(SYSTEM.DEFAULT.LISTENER.TCP)" | runmqsc REPLACE_QMGR_NAME
+
+</code></pre></div>
+<h4>Display Queue Managers &amp; Status</h4>
+<div class="highlight"><pre><code>$ dspmq
+
+</code></pre></div>
+<h4>Set MQ Privileges</h4>
+<p>In order for a Unix user to start utilizing MQ they must have the appropriate privileges. You can find the available privileges in <a href="http://publib.boulder.ibm.com/infocenter/wmqv6/v6r0/index.jsp?topic=%2Fcom.ibm.mq.amqzag.doc%2Ffa15980_.htm">IBM's Documentation</a>.</p>
+<h5>Set MQ Privileges By User</h5>
+<div class="highlight"><pre><code>$ setmqaut -m REPLACE_QMGR_NAME -t qmgr -p REPLACE_USER REPLACE_PLUS_OR_MINUS_PRIVILEGE
+
+</code></pre></div>
+<h5>Set MQ Privileges By Groups</h5>
+<div class="highlight"><pre><code>$ setmqaut -m REPLACE_QMGR_NAME -t qmgr -g REPLACE_GROUP REPLACE_PLUS_OR_MINUS_PRIVILEGE
+
+</code></pre></div>
+<h4>Display MQ Privileges</h4>
+<h5>Display MQ Privileges By Users</h5>
+<div class="highlight"><pre><code>$ dspmqaut -m REPLACE_QMGR_NAME -t qmgr -p REPLACE_USER
+
+</code></pre></div>
+<h5>Display MQ Privileges By Groups</h5>
+<div class="highlight"><pre><code>$ dspmqaut -m REPLACE_QMGR_NAME -t qmgr -g REPLACE_GROUP
+
+</code></pre></div>
+<h4>Lookup MQ Error Numbers</h4>
+<div class="highlight"><pre><code>$ mqrc REPLACE_ERROR_NUM
+
+</code></pre></div>
+<h4>MQ Sample Scripts</h4>
+<p>Within the MQ release by IBM there is a package that contains sample scripts for MQ. There are about 3 of these sample scripts that I have found pretty useful.</p>
+<h5>Pop (GET) Messages off a queue</h5>
+<div class="highlight"><pre><code>$ amqsget REPLACE_Q_NAME REPLACE_QMGR_NAME
+
+</code></pre></div>
+<p>This command will remove messages from the queue, only use this if you no longer want the messages in the queue.</p>
+<h5>Browse Messages in a queue</h5>
+<div class="highlight"><pre><code>$ amqsbcg REPLACE_Q_NAME REPLACE_QMGR_NAME
+
+</code></pre></div>
+<h5>Open a Queue for writing</h5>
+<div class="highlight"><pre><code>$ amqsput REPLACE_Q_NAME REPLACE_QMGR_NAME
+
+</code></pre></div>
+<p>When you find yourself with a system that is connected to a repository but doesn't see new messages you can try opening the queue for writing with amqsput to "refresh" the connectivity. You do not have to write anything to the queue. Simply open the queue and press <code>ctrl+d</code> without typing any additional characters.</p>
+<h4>Open Websphere MQ CLI</h4>
+<div class="highlight"><pre><code>$ runmqsc REPLACE_QMGR_NAME
+
+</code></pre></div>
+<h2>Websphere MQ CLI Commands</h2>
+<p>The following commands are to be run directly from the MQ command line interface.</p>
+<h4>Start MQ Listener</h4>
+<div class="highlight"><pre><code>start LISTENER(SYSTEM.DEFAULT.LISTENER.TCP)
+
+</code></pre></div>
+<h4>Stop MQ Listener</h4>
+<div class="highlight"><pre><code>stop LISTENER(SYSTEM.DEFAULT.LISTENER.TCP)
+
+</code></pre></div>
+<h4>Disable Channel Authentication</h4>
+<div class="highlight"><pre><code>alter qmgr chlauth(disabled)
+
+</code></pre></div>
+<p>Channel Authentication is new as of MQ 7.0. If your systems don't use it you can simply turn it off.</p>
+<h4>Display Queues</h4>
+<h5>All Queues</h5>
+<div class="highlight"><pre><code>display queue(*)
+
+</code></pre></div>
+<h5>Specific Queues</h5>
+<div class="highlight"><pre><code>display queue(REPLACE_Q_NAME)
+
+</code></pre></div>
+<h5>Short hand</h5>
+<div class="highlight"><pre><code>dis q(REPLACE_Q_NAME)
+
+</code></pre></div>
+<h4>Display Local Queues only</h4>
+<h5>All Queues</h5>
+<div class="highlight"><pre><code>display qlocal(*)
+
+</code></pre></div>
+<h5>Specific Queue</h5>
+<div class="highlight"><pre><code>display qlocal(REPLACE_Q_NAME)
+
+</code></pre></div>
+<h5>Short hand</h5>
+<div class="highlight"><pre><code>dis ql(REPLACE_Q_NAME)
+
+</code></pre></div>
+<h4>Display Alias Queues only</h4>
+<h5>All Queues</h5>
+<div class="highlight"><pre><code>display qalias(*)
+
+</code></pre></div>
+<h5>Specific Queue</h5>
+<div class="highlight"><pre><code>display qalias(REPLACE_Q_NAME)
+
+</code></pre></div>
+<h5>Short hand</h5>
+<div class="highlight"><pre><code>dis qa(REPLACE_Q_NAME)
+
+</code></pre></div>
+<h4>Display Cluster Queues only</h4>
+<h5>All Queues</h5>
+<div class="highlight"><pre><code>display qcluster(*)
+
+</code></pre></div>
+<h5>Specific Queue</h5>
+<div class="highlight"><pre><code>display qcluster(REPLACE_Q_NAME)
+
+</code></pre></div>
+<h5>Short hand</h5>
+<div class="highlight"><pre><code>dis qc(REPLACE_Q_NAME)
+
+</code></pre></div>
+<h4>Display Channels</h4>
+<h5>All Channels</h5>
+<div class="highlight"><pre><code>display channel(*)
+
+</code></pre></div>
+<h5>Specific Channel</h5>
+<div class="highlight"><pre><code>display channel(REPLACE_CHANNEL_NAME)
+
+</code></pre></div>
+<h5>Short hand</h5>
+<div class="highlight"><pre><code>dis channel(REPLACE_CHANNEL_NAME)
+
+</code></pre></div>
+<h4>Display Channel Status</h4>
+<h5>All Channels</h5>
+<div class="highlight"><pre><code>display chstatus(*)
+
+</code></pre></div>
+<h5>Specific Channel</h5>
+<div class="highlight"><pre><code>display chstatus(REPLACE_CHANNEL_NAME)
+
+</code></pre></div>
+<h5>Short hand</h5>
+<div class="highlight"><pre><code>dis chstatus(REPLACE_CHANNEL_NAME)
+
+</code></pre></div>
+<h4>Display Local Queue Manager Information</h4>
+<div class="highlight"><pre><code>display qmgr
+
+</code></pre></div>
+<h4>Display Cluster Queue Manager Information</h4>
+<div class="highlight"><pre><code>display clusqmgr(REPLACE_CLUSQMGR_NAME)
+
+</code></pre></div>
+<h4>Show number of INPUT and OUTPUT threads open</h4>
+<div class="highlight"><pre><code>display qstatus(REPLACE_Q_NAME) IPPROCS OPPROCS
+
+</code></pre></div>
+<h4>Find Process ID of Processes Accessing Queue</h4>
+<div class="highlight"><pre><code>display qstatus(REPLACE_Q_NAME) TYPE(HANDLE) ALL
+
+</code></pre></div>
+<h4>Refresh Cluster Queue Manager</h4>
+<div class="highlight"><pre><code>refresh cluster(REPLACE_CLUSQMGR_NAME)
+
+</code></pre></div>
+<h4>Start Channel</h4>
+<div class="highlight"><pre><code>start channel(REPLACE_CHANNEL_NAME)</code></pre></div>
+<hr class="hr"> 
+<div class="shareaholic-canvas" data-app="share_buttons" data-app-id="632299"></div>
+<div align="center">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0946238287085890" data-ad-slot="6955093086" data-ad-format="auto"></ins>
+<script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+</div>
+</div>
+<div class="col-lg-4 visible-lg col-md-4 visible-md">
+<div class="row">
+
+<img src="/static/img/benc380x250.png" alt="Picture of Benjamin Cane" class="img-thumbnail img-responsive" />
+<p></p>
+<div class="well">
+Benjamin's specialty is keeping the lights on for mission critical systems. He is currently building applications that enable high concurrency financial transactions.
+<p>Recently Benjamin published his first book; <a href="http://amzn.com/1785283553" target="_blank">Red Hat Enterprise Linux Troubleshooting Guide</a>.
+In addition to writing, he has several Open Source projects focused on making Ops easier. These projects include <a href="https://automatron.io" target="_blank">Automatron</a>, a project enabling auto-healing infrastructure for the masses.</p>
+<hr class="hr">
+<ul class="list-inline text-center">
+<li>
+<a href="https://twitter.com/madflojo">
+<span class="fa-stack fa-lg">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</li>
+<li>
+<a href="https://www.linkedin.com/in/bencane">
+<span class="fa-stack fa-lg">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</li>
+<li>
+<a href="https://github.com/madflojo">
+<span class="fa-stack fa-lg">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-github fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="row">
+<h4>Publications</h4>
+<div class="well">
+<div class="row">
+<div class="col-md-6">
+<center>
+<a href="http://amzn.com/1785283553" target="_blank"><img src="/static/img/RHELTroubleshootingCover.jpg" class="img-thumbnail img-responsive" border=0/></a>
+</center>
+</div>
+<div class="col-md-6">
+<a href="https://www.amazon.com/dp/1785283553/" class="btn btn-block btn-primary" role="button" target="_blank">Paperback</a> <a href="https://www.amazon.com/Red-Enterprise-Linux-Troubleshooting-Guide-ebook/dp/B016OQOOAK" class="btn btn-block btn-primary" role="button" target="_blank">Kindle</a>
+</div>
+</div>
+<p>Identify, capture and resolve common issues faced by Red Hat Enterprise Linux administrators using best practices and advanced troubleshooting techniques</p>
+<h5>What people are saying:</h5>
+<blockquote>Excellent, excellent resource for practical guidance on how to troubleshoot a wide variety of problems on Red Hat Linux. I particularly enjoyed how the author made sure to provide solid background and practical examples. I have a lot of experience on Red Hat but still came away with some great practical tools to add to my toolkit. - Amazon Review</blockquote>
+</div>
+</div>
+<div class="row">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0946238287085890" data-ad-slot="3549001080" data-ad-format="auto"></ins>
+<script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+</div>
+</div>
+</div>
+</div>
+</article>
+<hr>
+
+<footer>
+<div class="container">
+<div class="row">
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<p class="copyright text-muted">Copyright &copy; Benjamin Cane 2017 | <i class="fa fa-twitter"></i> <a href="https://twitter.com/madflojo">Twitter</a> | <i class="fa fa-rss"></i> <a href="http://feed.bencane.com">RSS</a> | <i class="fa fa-envelope"></i> <a href="http://bencane.us7.list-manage1.com/subscribe?u=52bad2a14ba3306a494c9739f&id=848cc53f28">Mail Feed</a></p>
+</div>
+</div>
+</div>
+</footer>
+
+<script src="/static/js/jquery.js"></script>
+
+<script src="/static/js/bootstrap.min.js"></script>
+
+<script src="/static/js/clean-blog.min.js"></script>
+
+<script src="/static/js/jscroll.min.js"></script>
+<script>
+    $(function() {
+      $(".scroll").jScroll({speed : "fast"});
+    });
+    </script>
+</body>
+</html>

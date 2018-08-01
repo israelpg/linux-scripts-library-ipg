@@ -1,0 +1,19 @@
++ IFS='|'
++ read -r repo jenkins
++ [[ /home/israel/git/svn-repos != /home/israel/git/svn-repos ]]
++ project=bcmBatchRepository
++ svnroot=http://svn.sdlc.gfdi.be/svn/FOA
++ echo 'Converting bcmBatchRepository ...'
+Converting bcmBatchRepository ...
++ [[ -d bcmBatchRepository ]]
++ rm -rf bcmBatchRepository
++ [[ ! -f /home/israel/localDev/authors-dmg ]]
++ getAuthors
++ java -jar /home/israel/localDev/svn-migration-scripts.jar authors http://svn.sdlc.gfdi.be/svn/FOA/trunk/integration/bcmBatchRepository
+About to create the authors file.
+svn: E170013: Unable to connect to a repository at URL 'http://svn.sdlc.gfdi.be/svn/FOA/trunk/integration/bcmBatchRepository'
+svn: E215004: No more credentials or we tried too many times.
+Authentication failed
+Could not communicate with Subversion: check the URL of the repository, the username and the password are all valid
++ cat /home/israel/localDev/authors-dmg-TMP-9588.txt
++ exit 0
