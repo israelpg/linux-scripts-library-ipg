@@ -130,7 +130,7 @@ loginSVN
 # Start processing CSV repo file:
 echo "Executing script $0 with PID $PID launched on $TIMESTAMP by $UID"
 
-# repo will contain the line with: SVN/repo_name/project_name/module_name if module_name is applicable, it can be just repo/project
+# repo will contain the line with: SVN/repo_name/project_name/modules_folder_name if modules folder is applicable, it can be just repo/project
 # jenkins will contain the jenkins job name for that project, or module if applicable
 while IFS='|' read -r repo jenkins;
 do
@@ -142,17 +142,9 @@ do
     # SVN repository name , e.g.: FOA
     svnroot="${repo%/trunk/*}" 
     
-    # SVN project name, e.g.: Nippin, or project/module: big_leap_project/wcm_ws_modules
-    project="${repo##*trunk}"  
+    # SVN project name, e.g.: Nippin, or project/modules_folder: big_leap_project/wcm_ws_modules
+    project="${repo##*trunk/}"  
     
-    # checking if we will clone/migrate a project as a whole, or just a module folder:
-    checkModule=$(echo $project | awk -F '/' '{print $2}' | wc -w)
-    if [[ ${checkModule} -gt 0 ]] # if module to be migrated not whole project
-    then
-        module=$(echo $project | awk -F '/' '{print $2}')
-        project=$(echo $project | awk -F '/' '{print $1}')
-    fi
-
     echo "Converting $project ..."
 
     if [[ -d ${project} ]]; then
@@ -183,11 +175,15 @@ do
         
     echo "Cleaning Subversion repository from Git"
     java -Dfile.encoding=utf-8 -jar "$EXECUTION_DIR/svn-migration-scripts.jar" clean-git --force
-       
-    echo "Convert git-svn tag branches to real tags"
-    for tag in `git branch --all | grep "tags/" | sed 's_remotes/origin/tags/__'`; do
-        git tag -a -m"$tag" ${tag} remotes/origin/tags/${tag}
-    done
+    
+    # Synchronization SVN / Git: I sugggest to apply this in a second script!
+    # update authors file
+    git config snv.authorsfile ${AUTHORS_DIR}/${project-authors}.txt
+    # fetching new SVN commits
+    git svn fetch
+
+    echo "Cleaning Subversion repository from Git"
+    java -Dfile.encoding=utf-8 -jar "$EXECUTION_DIR/svn-migration-scripts.jar" clean-git --force
 
     echo "Git: Adding code and initial commit for pushing changes"
     git add --all
