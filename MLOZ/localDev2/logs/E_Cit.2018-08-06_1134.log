@@ -1,0 +1,55 @@
+Converting SVN project E_Cit into Git local repository...
+Getting Authors for E_Cit...
+About to create the authors file.
+svn clone for project E_Cit in progress...
+Initialized empty Git repository in /home/israel/git/svn-repos-v_1_2/E_Cit/.git/
+r6141 = ed34403a574b8b21e761492c2f4d546baca1c6c5 (refs/remotes/origin/trunk)
+	A	DecodeAndUnzip.esql
+	A	EcitMainFlow_Compute.esql
+	A	.project
+	A	MainFlow.msgflow
+	A	SaveInMsg_Compute.esql
+	A	SaveInMsg.subflow
+r6142 = 67cb4494cb9365ddfe0abb5de026634eaa303b7c (refs/remotes/origin/trunk)
+	A	pom.xml
+r6143 = f3e5f102409f4deac8dbfcc61722e635db2ca65e (refs/remotes/origin/trunk)
+	M	pom.xml
+r6309 = 34dad37e19ab95242d2fac7ce7216ed1bf418390 (refs/remotes/origin/trunk)
+	D	EcitMainFlow_Compute.esql
+	M	DecodeAndUnzip.esql
+	M	.project
+	A	be/mteam/nippin/esb/async/in/SimplifiedAsync_xml_CreateResponse.esql
+	M	MainFlow.msgflow
+	A	GenericCatalogPost.xsd
+	A	Nippin_CreateEmail.esql
+	M	SaveInMsg_Compute.esql
+	A	CatalogFiles_Compute.esql
+	M	SaveInMsg.subflow
+	A	SendMail.subflow
+	A	CatalogFiles.subflow
+W: -empty_dir: trunk/E_Cit/EcitMainFlow_Compute.esql
+W: +empty_dir: trunk/E_Cit/be/mteam/nippin/esb/async/ides/out
+r6310 = 8a6f204c424e9e61accb5a3107088d3cf60d18d6 (refs/remotes/origin/trunk)
+	M	pom.xml
+r6316 = 963100564e0be18a1d8e7949aee9e239321710a6 (refs/remotes/origin/trunk)
+	M	pom.xml
+r6317 = 4a8abf36a6d7c617a980556d1b72636f8b7b6806 (refs/remotes/origin/trunk)
+	M	pom.xml
+r6318 = 5d40754532c1c2e14f914821efeb9c1cb565c560 (refs/remotes/origin/trunk)
+	M	pom.xml
+r6319 = af50833f025ddb400ccd89f9cc4b006ceaf41568 (refs/remotes/origin/trunk)
+	M	pom.xml
+r6321 = d523b292a7c0f1851c1cea68e78036884262c284 (refs/remotes/origin/trunk)
+	M	pom.xml
+r8092 = 90efccdec33b5d97e7de0b3a31f8574daf5a32ec (refs/remotes/origin/trunk)
+	M	pom.xml
+r8093 = 9754340a933cab682651a4491f1eff8b4e8699cd (refs/remotes/origin/trunk)
+	M	pom.xml
+r8095 = 51f53bfb0e596d08882af2b6343a8084795c6bdd (refs/remotes/origin/trunk)
+Checked out HEAD:
+  http://svn.sdlc.gfdi.be/svn/Nippin_app/trunk/E_Cit r8095
+creating empty directory: be/mteam/nippin/esb/async/ides/out
+E_Cit cloned/fetched ...
+Generating a .gitignore file based on Subversion's metadata
+All projects specified under file svnrepo-test-1nippin-project.csv have been cloned
+Logs available under folder /logs

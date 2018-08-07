@@ -10,9 +10,6 @@
 # For SVN the project is big_leap_project (dealt as so in version 1.1)
 # In version 1.2, the project is wcm_ws_modules, which is actually built via Jenkins job, and not the whole SVN project
 # 
-# svn log -q  file:///home/m999hfo/Documents/svn/dmg-modules | grep '(no author)' | cut -f 1 -d' '  | xargs -n1 svnadmin setrevprop /home/m999hfo/Documents/svn/dmg-modules  svn:author xxx.txt -r
-# HAND-END
-
 # File Structure:
 # 
 # Execution Directory: (Git repo will be created in another directory) 
@@ -20,7 +17,6 @@
 #	cloneStatus.sh
 #	syncSVN2git.sh 
 #	svn-migration-scripts.jar
-#	authors-dmg.txt (This will be generated)
 #	/authors
 #	/svn-repos-csv (Directory which contains all SVN csv repos files)
 #       /logs
@@ -28,6 +24,8 @@
 # Git Root Directory, e.g.: /home/israel/git/svn-repos (If doesn't exist, script will create it)
 #
 
+# Functions Declaration
+#
 # Instructions
 usage()
 {
@@ -36,8 +34,9 @@ Script $0 help instructions:
 $0 -h for help
 $0 -v for version number
 $0 -l for listing CSV repo files
-$0 -c for checking SVN to Git Status
-$0 -f <filename> for passing a CSV repo filename as argument. Example: conversvn2git.sh -f svn-nippin.csv
+$0 -c for checking SVN to Git Clone Status and latest Sync date
+$0 -f <filename> for passing a CSV repo filename as argument. Example: convertvn2git.sh -f svn-nippin.csv
+$0 -s <project> Sync & Push: To sync SVN/Git cloned fetching latest commits and pushing remotely: convertsvn2git.sh -s CHAP4
 EOF
 }
 
@@ -63,7 +62,7 @@ fi
 }
 
 # hvl are options, do not have colon at the end, whereas f has colon : (expects an argument: filename)
-while getopts "hvlcf:" OPTION
+while getopts "hvlcf:s:" OPTION
 do
 	case $OPTION in
 	h)
@@ -88,8 +87,13 @@ do
 		;;
 	f)
 		filename=$OPTARG
-		echo "Script $0 called passing CSV repo filename: $filename"
+		echo "Script $0 called passing CSV filename with repos to clone: $filename"
 		echo "Checking if file exists..."
+		;;
+	s)
+		syncName=$OPTARG
+		echo "Script $0 called passing CSV filename $syncName to sync cloned repos in batch mode"
+		echo "Checking if each repo/project exists and has already been cloned... only cloned repo/projects are synced"
 		;;
 	*)
 		echo "No valid option passed when calling script $0"
@@ -103,7 +107,6 @@ PID=$(echo "$$")
 ROOT_UID=0 # to check in case we require to run script as root
 TIMESTAMP=$(date +%F_%H%M)
 LOGFILE="$TIMESTAMP.svnrepos.log"
-PUSH_TO_BITBUCKET=0
 EXECUTION_DIR="$PWD"
 AUTHORS_DIR="$EXECUTION_DIR/authors"
 # Define the Git directory:
@@ -118,85 +121,147 @@ then
     exit 1
 fi
 
-# Checking if CSV file with list of SVN repos exists in the CSV directory
-
-if [[ -f ${SVN_CSV_DIR}/${filename} ]]
+# For option -f : Checking if CSV file with list of SVN repos exists in the CSV directory
+# only those which have not been cloned yet will be processed in batch mode (while loop)
+if [[ -n ${filename} ]]
 then
-    echo "File $filename is a valid option, proceeding..."
-    SVN_CSV_FILE="$SVN_CSV_DIR/$filename"
-else
-    echo "Filename $filename does not exist in dir $SVN_CVS_DIR"
-    echo "Listing available CSV repo files:"
-    ls -lah svn-repos-csv/
-    echo "$0 -f <filename> for passing a CSV repo filename as argument. Example: conversvn2git.sh -f svn-nippin.csv"
-    exit 0
-fi
+	if [[ -f ${SVN_CSV_DIR}/${filename} ]]; then
+    	echo "File $filename is a valid option, proceeding..."
+    	SVN_CSV_FILE="$SVN_CSV_DIR/$filename"
+   
+		# checking if SVN credentials have been input
+        if [[ -z ${usernameSVN} && -z ${passwordSVN} ]]
+        then
+            loginSVN
+        fi
+ 
+    	# Create output dir if not exists
+    	if [[ ! -d ${GIT_ROOT_DIR} ]]
+    	then
+        	mkdir -p ${GIT_ROOT_DIR}
+    	fi
 
-# Create output dir if not exists
-if [[ ! -d ${GIT_ROOT_DIR} ]]
-then
-    mkdir -p ${GIT_ROOT_DIR}
-fi
+		if [[ ${PWD} != ${GIT_ROOT_DIR} ]]
+    	then
+	    	cd "$GIT_ROOT_DIR"
+    	fi	
 
-cd ${GIT_ROOT_DIR}
+    	# Start processing CSV repo file:
+    	echo "Executing script $0 [cloning batch process] with PID $PID launched on $TIMESTAMP by $UID"
 
-# checking if SVN credentials have been input
-if [[ -z ${usernameSVN} && -z ${passwordSVN} ]]
-then
-    loginSVN
-fi
+    	while IFS='|' read -r repo jenkins;
+    	do
+   			# SVN repository name , e.g.: FOA
+   			svnroot="${repo%/trunk/*}"
 
-# Start processing CSV repo file:
-echo "Executing script $0 with PID $PID launched on $TIMESTAMP by $UID"
+   			# SVN project name, e.g.: Nippin, or project/modules_folder: big_leap_project/wcm_ws_modules
+   			project="${repo##*trunk/}"
+ 
+  			LOGFILE="$project.clone.$TIMESTAMP.log"
+   			(
+    		echo "Converting SVN project $project into Git local repository..."
 
-# repo will contain the line with: SVN/repo_name/project_name/modules_folder_name if modules folder is applicable, it can be just repo/project
-# jenkins will contain the jenkins job name for that project, or module if applicable
-(
-while IFS='|' read -r repo jenkins;
-do
-    if [[ ${PWD} != ${GIT_ROOT_DIR} ]]
-    then	
-	cd "$GIT_ROOT_DIR"
-    fi
+    		if [[ -d ${project} ]]; then
+            	echo "Project $project was already cloned or attempted to be cloned, re-executing cloning operation..."
+            	rm -rf ${project}
+    		fi
 
-    # SVN repository name , e.g.: FOA
-    svnroot="${repo%/trunk/*}" 
-    
-    # SVN project name, e.g.: Nippin, or project/modules_folder: big_leap_project/wcm_ws_modules
-    project="${repo##*trunk/}"  
-    
-    echo "Converting SVN project $project into Git local repository..."
+    		if [[ ! -f ${AUTHORS_DIR}/${project}-authors.txt} ]]; then
+        		getAuthors
+    		fi
 
-    if [[ -d ${project} ]]; then
-        echo "Project $project was already cloned or attempted to be cloned, re-executing cloning operation..."
-	rm -rf ${project}
-    fi
+    		echo "svn clone for project $project in progress..."
+    		git svn clone --authors-file="$AUTHORS_DIR/$projectLog-authors.txt" --trunk="trunk/$project" --branches="branches/$project" \
+    		--tags="tags/$project" ${svnroot} ${project}
 
-    if [[ ! -f ${AUTHORS_DIR}/${project}-authors.txt} ]]; then
-	getAuthors
-    fi
-
-    echo "svn clone for project $project in progress..."
-    git svn clone --authors-file="$AUTHORS_DIR/$projectLog-authors.txt" --trunk="trunk/$project" --branches="branches/$project" \
-    --tags="tags/$project" ${svnroot} ${project}
-    
-    # If cloning operation is interrupted due to the size of the repository, execute a fetch command
-    if [[ $? -ne 0 ]]
-    then
-	echo "Fetching SVN repository for $project..."
-	cd $project
-	git svn fetch
-    fi
-
-    echo "$project cloned/fetched ..."	
-    cd "$project"
+    		# If cloning operation is interrupted due to the size of the repository, execute a fetch command
+    		if [[ $? -ne 0 ]]
+    		then
+        		echo "Fetching SVN repository for $project..."
+        		cd $project
+        		git svn fetch
+    		fi
 	
-    echo "Generating a .gitignore file based on Subversion's metadata"
-    git svn show-ignore >> .gitignore
-        
-    echo "All projects specified under file $filename have been cloned"
-    echo "Logs available under folder /logs"
-    exit 0
+	    	echo "$project cloned/fetched ..."  
+    		cd "$project"
 
-done <"$SVN_CSV_FILE"
-) 2>&1 | tee -a "$EXECUTION_DIR/logs/$LOGFILE"
+    		echo "Generating a .gitignore file based on Subversion's metadata"
+    		git svn show-ignore >> .gitignore
+
+    		echo "All projects specified under file $filename have been cloned"
+    		echo "Logs available here: /logs/$LOGFILE"
+    		exit 0
+
+    		) 2>&1 | tee -a "$EXECUTION_DIR/logs/$LOGFILE"
+		done <"$SVN_CSV_FILE"
+    else
+   		echo "Filename $syncName does not exist in dir $SVN_CVS_DIR"
+   		echo "Listing available CSV repo files:"
+   		ls -lah svn-repos-csv/
+   		echo "$0 -f <filename> for passing a CSV repo filename as argument. Example: conversvn2git.sh -f svn-nippin.csv"
+   		exit 0
+	fi
+fi
+
+# For option -s <filename>: Checking for each listed repo if it has been cloned, if so then sync batch processing
+if [[ -n ${syncName} ]]
+then 
+	if [[ -f ${SVN_CSV_DIR}/${syncName} ]]
+	then
+		echo "Sync file $syncName is a valid option, proceeding..."
+    	SYNC_FILE="$SVN_CSV_DIR/$syncName"
+		echo "Checking for repos already cloned..."
+    	# checking if SVN credentials have been input
+    	if [[ -z ${usernameSVN} && -z ${passwordSVN} ]]
+    	then
+        	loginSVN
+    	fi
+	
+		if [[ ${PWD} != ${GIT_ROOT_DIR} ]]
+    	then
+    		cd "$GIT_ROOT_DIR"
+   	 	fi
+
+		while IFS='|' read -r repo jenkins;
+    	do
+			(
+			# SVN repository name , e.g.: FOA
+        	svnroot="${repo%/trunk/*}"
+
+        	# SVN project name, e.g.: Nippin, or project/modules_folder: big_leap_project/wcm_ws_modules
+        	project="${repo##*trunk/}"
+
+			checkProject=$(find ~/git/svn-repos-v_1_2/ -maxdepth 2 | grep '${project}')
+
+			# if project was cloned, can be synced:
+			if [[ -n ${checkProject} ]]
+			then
+				echo "Project $project will be synced..."
+				
+        		LOGFILE="$project.sync.$TIMESTAMP.log"
+				# getAuthors done if already cloned, but is always good to check for updates (new authors)
+	    		getAuthors
+
+				cd ${GIT_ROOT_DIR}/${projec}
+    			# update Git repository's remote branches
+				echo "Updating Git repository's remote branches for project $project..."
+    			git svn fetch $usernameSVN $passwordSVN || echo "Error while updating Git repository's remote branches" ; exit 1
+
+    			echo "# sync with the fetched commits, rebase fetched commits onto local branches, matching remote counterparts..."
+    			java -Dfile.encoding=utf-8 -jar "$EXECUTION_DIR/svn-migration-scripts.jar" sync-rebase $usernameSVN $passwordSVN
+    			if [[ $? -ne 0 ]]
+				then
+    				echo "Error during sync-rebase fetching commits onto local branches"
+    				exit 1
+				fi
+			fi
+			) 2>&1 | tee -a "$EXECUTION_DIR/logs/$LOGFILE"
+    	done <"$SYNC_FILE"
+	else    
+		echo "The CSV sync file $syncName does not exist !" 
+    	echo "$0 -l <filename> for listing valid CSV repo files"
+    	exit 1
+	fi
+fi
+
+echo "$0 execution with PID $PID launched on $TIMESTAMP by $UID has been completed."

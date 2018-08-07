@@ -1,0 +1,2 @@
+The project PEPE has not been cloned yet, you need to clone repo/project first:
+./convertsvn2git.sh -f <filename> containing repo

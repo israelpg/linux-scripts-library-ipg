@@ -1,10 +1,15 @@
 #!/bin/bash
 
-#find svn-repos-csv/ -type f | xargs -I {} cat {} > /tmp/completeRepoList.txt
+# Script Name: cloneStatus.sh
+# Version: 1.0
+# Author: Israel (RM Team)
+# Rationale: This script finds all csv files containing SVN repos details, and reports whether have been cloned or not
+# All CSV files shall be located in the same folder "svn-repos-csv" within execution directory
+# All Git repositories already cloned are in the same directory, specified as a string in one variable
 
 echo -e "\e[31;43m***** SVN Repositories Cloned Status *****\e[0m"
 echo ""
-printf "%-15s %-60s %-60s %-15s %-s\n" "SVN REPO" "PROJECT NAME" "JENKINS JOB" "CLONED STATUS";
+printf "\e[1;34m%-20s %-50s %-60s %-15s %-s\e[m\n" "SVN REPO" "PROJECT NAME" "JENKINS JOB" "CLONED STATUS";
 echo ""
 
 while read line
@@ -22,5 +27,10 @@ do
 	clonedStatus="NO"
     fi
 
-    printf "%-15s %-60s %-60s %-15s %-s\n" "$SVNrepoName" "$projectName" "$jenkinsJob" "$clonedStatus";
-done< <(find svn-repos-csv/ -type f | xargs -I {} cat {} | uniq | sort -nk1)
+    if [[ $clonedStatus == "OK" ]]
+    then
+    	printf "\e[0;32m%-20s %-50s %-60s %-15s %-s\e[m\n" "$SVNrepoName" "$projectName" "$jenkinsJob" "$clonedStatus";
+    else
+    	printf "%-20s %-50s %-60s %-15s %-s\n" "$SVNrepoName" "$projectName" "$jenkinsJob" "$clonedStatus";
+    fi
+done< <(find svn-repos-csv/ -type f | xargs -I {} cat {} | sort -nk1)
