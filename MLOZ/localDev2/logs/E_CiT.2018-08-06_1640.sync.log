@@ -1,9 +1,0 @@
-Getting Authors for ...
-awk: cmd. line:1: (FILENAME=- FNR=1) fatal: attempt to access field -1
-Success, the selected project has been previously cloned
-Syncing project E_CiT...
-./convertsvn2git.sh: line 68: cd: /home/israel/git/svn-repos-v_1_2/E_CiT: No such file or directory
-fatal: Not a git repository (or any of the parent directories): .git
-Unable to find .git directory
- at /usr/lib/git-core/git-svn line 347.
-Error while updating Git repository's remote branches

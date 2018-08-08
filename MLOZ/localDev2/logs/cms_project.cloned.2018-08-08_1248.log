@@ -1,0 +1,3037 @@
+Converting SVN project cms_project into Git local repository...
+Project cms_project was already cloned or attempted to be cloned, re-executing cloning operation...
+Getting Authors for cms_project...
+About to create the authors file.
+svn clone for project cms_project in progress...
+Initialized empty Git repository in /home/israel/git/svn-repos-v_1_2/cms_project/.git/
+	A	.classpath
+	A	.project
+	A	db2/MySQL_create_user_cmsadmin.txt
+	A	db2/testlog
+	A	db2/DB2_CMS_UPGRADESITE_V1_V2_500.txt
+	A	db2/DB2_CMS_UPGRADESITE_V1_V2_501.txt
+	A	db2/DB2_CMS_DATA_CMSPROD_DEV_MIGRATION_100505.txt
+	A	db2/WEBCPTA1.IXF
+	A	db2/DB2_CMS_STRUCTURE501.txt
+	A	db2/createlocalsites.txt
+	A	db2/importbenevita.txt
+	A	db2/DB2_CMS_UPGRADESITE_V2.x_V3.0.txt
+	A	db2/DB2_CMS_UPGRADESITE_V1_V2_xxx.txt
+	A	db2/DB2_CMS_2.1.txt
+	A	db2/transfert_ PROD_DEV.txt
+	A	db2/DB2_CMS_2.6.txt
+	A	db2/exportbenevita.txt
+	A	db2/updatelink.txt
+	A	db2/test
+	A	db2/DB2_CMS_DATA_GLOB.txt
+	A	db2/DB2_CMS_NEWSITE.txt
+	A	db2/Copy of DB2_CMS_UPGRADESITE_V2.x_V3.0.txt
+	A	db2/Copy (2) of DB2_CMS_UPGRADESITE_V2.x_V3.0.txt
+	A	db2/DB2_CMS_UPGRADESITE_V1_V2_515.txt
+	A	db2/DB2_CMS_STRUCTURE_mysql.txt
+	A	db2/DB2_Migration_old.txt
+	A	db2/DB2_Migration_Clob.txt
+	A	db2/DB2_CMS_LOCALTEST_NEWSITE.txt
+	A	db2/DB2_CMS_UPGRADESITE_V1_V2.txt
+	A	db2/DB2_CMS_UPGRADESITE_V2.3_V2.5.txt
+	A	db2/DB2_CMS_UPGRADESITE_V2_V2.6.txt
+	A	db2/DB2_CMS_STRUCTURE.txt
+	A	db2/DB2_CMS_UPGRADESITE_V2.5_V2.6.txt
+	A	db2/DB2_CMS_DATA_INTERNET_MIGRATION_100505.txt
+	A	db2/DB2_CMS_NEWSITE501.txt
+	A	db2/DB2_CMS_SCHEMA_GRANT_PRIVILEDGE.txt
+	A	src/gfdi/server/internet/cms/DocumentBaseContentList.java
+	A	src/gfdi/server/internet/cms/DocumentCriteria.java
+	A	src/gfdi/server/internet/cms/ConstantBF.java
+	A	src/gfdi/server/internet/cms/DocumentAccessor.java
+	A	src/gfdi/server/internet/cms/Licence.java
+	A	src/gfdi/server/internet/cms/CounterAccessor.java
+	A	src/gfdi/server/internet/cms/SiteMapQO.java
+	A	src/gfdi/server/internet/cms/DocumentBaseContent.java
+	A	src/gfdi/server/internet/cms/SiteMapBF.java
+	A	src/gfdi/server/internet/cms/DataNodeList.java
+	A	src/gfdi/server/internet/cms/ConstantAccessor.java
+	A	src/gfdi/server/internet/cms/MetaDataList.java
+	A	src/gfdi/server/internet/cms/PermissionSite.java
+	A	src/gfdi/server/internet/cms/Test.java
+	A	src/gfdi/server/internet/cms/Authentication.java
+	A	src/gfdi/server/internet/cms/DataNode.java
+	A	src/gfdi/server/internet/cms/PropertiesAccessor.java
+	A	src/gfdi/server/internet/cms/MetaData.java
+	A	src/gfdi/server/internet/cms/PropTemplateBF.java
+	A	src/gfdi/server/internet/cms/SiteMapCriteria.java
+	A	src/gfdi/server/internet/cms/SiteMapAccessor.java
+	A	src/gfdi/server/internet/cms/SettingBF.java
+	A	src/gfdi/server/internet/cms/LinkFinder.java
+	A	src/gfdi/server/internet/cms/PropAppBF.java
+	A	src/gfdi/server/internet/cms/IwaitingDialog.java
+	A	src/gfdi/server/internet/cms/tool/EncryptLicenceKey.java
+	A	src/gfdi/server/internet/cms/tool/ChangeStringInClob.java
+	A	src/gfdi/server/internet/cms/tool/MigrateDocData.java
+	A	src/gfdi/server/internet/cms/tool/EncryptLicenceKeyHearis.java
+	A	src/gfdi/server/internet/cms/tool/StatCMS.java
+	A	src/gfdi/server/internet/cms/LinkQO.java
+	A	src/gfdi/server/internet/cms/PropTemplateAccessor.java
+	A	src/gfdi/server/internet/cms/SettingAccessor.java
+	A	src/gfdi/server/internet/cms/Url.java
+	A	src/gfdi/server/internet/cms/DocumentCriteriaCMS.java
+	A	src/gfdi/server/internet/cms/DocumentBaseList.java
+	A	src/gfdi/server/internet/cms/BinaryStreamServlet.java
+	A	src/gfdi/server/internet/cms/DocumentFinder.java
+	A	src/gfdi/server/internet/cms/DocumentPK.java
+	A	src/gfdi/server/internet/cms/DocumentFinderCMS.java
+	A	src/gfdi/server/internet/cms/DocumentBase.java
+	A	src/gfdi/server/internet/cms/DocumentList.java
+	A	src/gfdi/server/internet/cms/DocumentQO.java
+	A	src/gfdi/server/internet/cms/BrokenInternLink.java
+	A	src/gfdi/server/internet/cms/Document.java
+	A	src/gfdi/server/internet/cms/AuthenticationJspCaller.java
+	A	src/gfdi/server/internet/cms/PermissionFinder.java
+	A	src/gfdi/server/internet/cms/ExternLink.java
+	A	src/gfdi/server/internet/cms/PermissionList.java
+	A	src/gfdi/server/internet/cms/SyndicFolder.java
+	A	src/gfdi/server/internet/cms/DocumentBF.java
+	A	src/gfdi/server/internet/cms/CounterBF.java
+	A	src/gfdi/server/internet/cms/CMSFilter.java
+	A	src/gfdi/server/internet/cms/Permission.java
+	A	src/gfdi/server/internet/cms/ConstantQO.java
+	A	src/gfdi/server/internet/cms/SiteMapFinder.java
+	A	src/gfdi/server/internet/cms/SiteMapFinderCMS.java
+	A	src/gfdi/client/internet/cms/AuthenticationPanel.java
+	A	src/gfdi/client/internet/cms/DocumentDialogPanelBack.java
+	A	src/gfdi/client/internet/cms/ManageVariablesDialog.java
+	A	src/gfdi/client/internet/cms/DocumentBrowserPanel.java
+	A	src/gfdi/client/internet/cms/FolderPermissionPanel.java
+	A	src/gfdi/client/internet/cms/DocumentGridPanel.java
+	A	src/gfdi/client/internet/cms/GeneralSettingsPanel.java
+	A	src/gfdi/client/internet/cms/DocumentDialogPanel.java
+	A	src/gfdi/client/internet/cms/CopyDocDialog.java
+	A	src/gfdi/client/internet/cms/DocumentBrouwserReducedPanel.java
+	A	src/gfdi/client/internet/cms/ButtletUpdate.java
+	A	src/gfdi/client/internet/cms/SecurityPanel.java
+	A	src/gfdi/client/internet/cms/AboutPanel.java
+	A	src/gfdi/client/internet/cms/FolderDialog.java
+	A	src/gfdi/client/internet/cms/SitePermissionDialog.java
+	A	src/gfdi/client/internet/cms/AuthenticationDialog.java
+	A	src/gfdi/client/internet/cms/ManageVariablesPanel.java
+	A	src/gfdi/client/internet/cms/FolderDocumentViewerNoneConsistentListDialog.java
+	A	src/gfdi/client/internet/cms/SyndicFolderPanel.java
+	A	src/gfdi/client/internet/cms/Tester.java
+	A	src/gfdi/client/internet/cms/FinderFolderCriteriaDialog.java
+	A	src/gfdi/client/internet/cms/DocumentPermissionDialog.java
+	A	src/gfdi/client/internet/cms/AccessSecurityDialog.java
+	A	src/gfdi/client/internet/cms/FinderCriteriaPanel.java
+	A	src/gfdi/client/internet/cms/PluginDialog.java
+	A	src/gfdi/client/internet/cms/PluginPanel.java
+	A	src/gfdi/client/internet/cms/WaitingDialog.java
+	A	src/gfdi/client/internet/cms/DocumentBrowser.java
+	A	src/gfdi/client/internet/cms/CopyFolderDialog.java
+	A	src/gfdi/client/internet/cms/SecurityDialog.java
+	A	src/gfdi/client/internet/cms/LoginDialog_notused.java
+	A	src/gfdi/client/internet/cms/SitePermissionPanel.java
+	A	src/gfdi/client/internet/cms/DocumentDialog.java
+	A	src/gfdi/client/internet/cms/DocumentPanel.java
+	A	WebContent/mysql.jar
+	A	WebContent/TableColumnDlg.htm
+	A	WebContent/style.css
+	A	WebContent/mime.types
+	A	WebContent/Close.htm
+	A	WebContent/cms.js
+	A	WebContent/tips4update.htm
+	A	WebContent/log4j-1.2.8.jar
+	A	WebContent/init.properties
+	A	WebContent/DocumentPermissionDialog.htm
+	A	WebContent/plugin/jre-1_5_0_03-windows-i586-p.exe
+	A	WebContent/plugin/j2re-1_4_0_01-windows-i586.exe
+	A	WebContent/plugin/j2re-1_3_1_01a-win.exe
+	A	WebContent/previewframeset.htm
+	A	WebContent/ImageDlg.htm
+	A	WebContent/index.jsp
+	A	WebContent/db2jcc.jar
+	A	WebContent/TableDlg.htm
+	A	WebContent/ExtendDlg.htm
+	A	WebContent/standardcmsparagraphestyle.css
+	A	WebContent/internet_cms_applet.jar
+	A	WebContent/log4j.properties
+	A	WebContent/cms.vbs
+	A	WebContent/cmsFCKoff.js
+	A	WebContent/img/UI_OM_top_left_corner.gif
+	A	WebContent/img/UI_bold.gif
+	A	WebContent/img/UI_EnlargeImage.gif
+	A	WebContent/img/UI_image.gif
+	A	WebContent/img/UI_UpLoadOld.gif
+	A	WebContent/img/UI_Language.gif
+	A	WebContent/img/upload.gif
+	A	WebContent/img/corner_topLeft.gif
+	A	WebContent/img/UI_globe.gif
+	A	WebContent/img/checked.gif
+	A	WebContent/img/UI_redo.gif
+	A	WebContent/img/corner_bottomLeft.gif
+	A	WebContent/img/Copy of corner_topRight.gif
+	A	WebContent/img/UI_attachement.gif
+	A	WebContent/img/UI_viewHTML.gif
+	A	WebContent/img/UI_attachement_article.gif
+	A	WebContent/img/UI_pasteHTML.gif
+	A	WebContent/img/explorer.gif
+	A	WebContent/img/settings.gif
+	A	WebContent/img/UI_LoadHTML.gif
+	A	WebContent/img/UI_note.gif
+	A	WebContent/img/site.gif
+	A	WebContent/img/bookmark.gif
+	A	WebContent/img/Copy of corner_topLeft.gif
+	A	WebContent/img/Copy of corner_bottomLeft.gif
+	A	WebContent/img/finder.gif
+	A	WebContent/img/lock1.gif
+	A	WebContent/img/lock2.gif
+	A	WebContent/img/UI_subscript.gif
+	A	WebContent/img/UI_outdent.gif
+	A	WebContent/img/UI_superscript.gif
+	A	WebContent/img/UI_underline.gif
+	A	WebContent/img/updated.gif
+	A	WebContent/img/UI_new.gif
+	A	WebContent/img/UI_note_rrr.gif
+	A	WebContent/img/UI_info.gif
+	A	WebContent/img/unchecked.gif
+	A	WebContent/img/inprogress.gif
+	A	WebContent/img/UI_save.gif
+	A	WebContent/img/UI_backcolor.gif
+	A	WebContent/img/deletered.gif
+	A	WebContent/img/delete.gif
+	A	WebContent/img/UI_italic.gif
+	A	WebContent/img/UI_leftalign.gif
+	A	WebContent/img/renamefolder.gif
+	A	WebContent/img/folderclosed.gif
+	A	WebContent/img/publish.gif
+	A	WebContent/img/folderopened.gif
+	A	WebContent/img/UI_HR.gif
+	A	WebContent/img/shortcutfolder.gif
+	A	WebContent/img/UI_anchor.gif
+	A	WebContent/img/UI_OM_expand.gif
+	A	WebContent/img/UI_form-copy.gif
+	A	WebContent/img/UI_Language_small.gif
+	A	WebContent/img/UI_paste.gif
+	A	WebContent/img/corner_bottomRight.gif
+	A	WebContent/img/entiresite.gif
+	A	WebContent/img/loading.gif
+	A	WebContent/img/UI_indent.gif
+	A	WebContent/img/UI_numberlist.gif
+	A	WebContent/img/brokenlinks.gif
+	A	WebContent/img/UI_note_green.gif
+	A	WebContent/img/UI_Table.gif
+	A	WebContent/img/UI_rightalign.gif
+	A	WebContent/img/newfolder.gif
+	A	WebContent/img/brunner.jpg
+	A	WebContent/img/UI_centeralign.gif
+	A	WebContent/img/Copy of corner_bottomRight.gif
+	A	WebContent/img/UI_open.gif
+	A	WebContent/img/deletefolder.gif
+	A	WebContent/img/UI_UpLoadOld1.gif
+	A	WebContent/img/UI_tool_vertical.gif
+	A	WebContent/img/warn.gif
+	A	WebContent/img/UI_note_bleu.gif
+	A	WebContent/img/login_btn.gif
+	A	WebContent/img/UI_bulletlist.gif
+	A	WebContent/img/UI_UpLoad.gif
+	A	WebContent/img/preview.gif
+	A	WebContent/img/UI_abc.gif
+	A	WebContent/img/preloading.gif
+	A	WebContent/img/cancel.gif
+	A	WebContent/img/UI_InterLine.gif
+	A	WebContent/img/new.gif
+	A	WebContent/img/Copy of login_btn.gif
+	A	WebContent/img/UI_note_red.gif
+	A	WebContent/img/cool.gif
+	A	WebContent/img/UI_LoadHTMLblack.gif
+	A	WebContent/img/refresh.gif
+	A	WebContent/img/accept.gif
+	A	WebContent/img/UI_OM_top_right_corner.gif
+	A	WebContent/img/UI_form-strike.gif
+	A	WebContent/img/back.gif
+	A	WebContent/img/pix.gif
+	A	WebContent/img/open.gif
+	A	WebContent/img/shortcutdoc.gif
+	A	WebContent/img/UI_undo.gif
+	A	WebContent/img/UI_fontcolor.gif
+	A	WebContent/img/UI_tool-cut.gif
+	A	WebContent/img/UI_justifyalign.gif
+	A	WebContent/img/copying.gif
+	A	WebContent/img/corner_topRight.gif
+	A	WebContent/ViewHTMLDlg.htm
+	A	WebContent/webcontrol/toolbar.htc
+	A	WebContent/webcontrol/multipage.htc
+	A	WebContent/webcontrol/images/folder.gif
+	A	WebContent/webcontrol/images/folderopen.gif
+	A	WebContent/webcontrol/images/root.gif
+	A	WebContent/webcontrol/images/html.gif
+	A	WebContent/webcontrol/tabstrip.htc
+	A	WebContent/webcontrol/toolbarbackup.htc
+	A	WebContent/webcontrol/treeimages/rminus.gif
+	A	WebContent/webcontrol/treeimages/tminus.gif
+	A	WebContent/webcontrol/treeimages/white.gif
+	A	WebContent/webcontrol/treeimages/plus.gif
+	A	WebContent/webcontrol/treeimages/f.gif
+	A	WebContent/webcontrol/treeimages/i.gif
+	A	WebContent/webcontrol/treeimages/fplus.gif
+	A	WebContent/webcontrol/treeimages/l.gif
+	A	WebContent/webcontrol/treeimages/minus.gif
+	A	WebContent/webcontrol/treeimages/rtl/rminus.gif
+	A	WebContent/webcontrol/treeimages/rtl/tminus.gif
+	A	WebContent/webcontrol/treeimages/rtl/white.gif
+	A	WebContent/webcontrol/treeimages/rtl/plus.gif
+	A	WebContent/webcontrol/treeimages/rtl/f.gif
+	A	WebContent/webcontrol/treeimages/rtl/i.gif
+	A	WebContent/webcontrol/treeimages/rtl/fplus.gif
+	A	WebContent/webcontrol/treeimages/rtl/l.gif
+	A	WebContent/webcontrol/treeimages/rtl/minus.gif
+	A	WebContent/webcontrol/treeimages/rtl/lplus.gif
+	A	WebContent/webcontrol/treeimages/rtl/fminus.gif
+	A	WebContent/webcontrol/treeimages/rtl/r.gif
+	A	WebContent/webcontrol/treeimages/rtl/t.gif
+	A	WebContent/webcontrol/treeimages/rtl/rplus.gif
+	A	WebContent/webcontrol/treeimages/rtl/lminus.gif
+	A	WebContent/webcontrol/treeimages/rtl/tplus.gif
+	A	WebContent/webcontrol/treeimages/lplus.gif
+	A	WebContent/webcontrol/treeimages/fminus.gif
+	A	WebContent/webcontrol/treeimages/r.gif
+	A	WebContent/webcontrol/treeimages/t.gif
+	A	WebContent/webcontrol/treeimages/rplus.gif
+	A	WebContent/webcontrol/treeimages/tplus.gif
+	A	WebContent/webcontrol/treeimages/lminus.gif
+	A	WebContent/webcontrol/_notes/dwSiteColumnsMe.xml
+	A	WebContent/webcontrol/treeview.htc
+	A	WebContent/webcontrol/samples.css
+	A	WebContent/standardcmsparagraphestyle.xml
+	A	WebContent/NoteDlg.htm
+	A	WebContent/sites/Euromut/titre-prat-belgique-fr.gif
+	A	WebContent/sites/Euromut/005.jpg
+	A	WebContent/sites/Euromut/atompt.jpg
+	A	WebContent/sites/Euromut/titre-srv-services-oblig-fr.gif
+	A	WebContent/sites/Euromut/Thumbs.db
+	A	WebContent/sites/Mloz/ReadMe.pdf
+	A	WebContent/sites/Mloz/déclaration d_incapacité indépendants.rtf
+	A	WebContent/sites/Mloz/Déclaration d'impôts 2002.pdf
+	A	WebContent/sites/Mloz/jjmethodbrits.jpg
+	A	WebContent/sites/Common/baby showcve.jpg
+	A	WebContent/sites/Local/testup/t/happy2.gif
+	A	WebContent/sites/Local/testup/happy2.gif
+	A	WebContent/sites/Local/testup/happy3.gif
+	A	WebContent/sites/Local/testup/happy2006.gif
+	A	WebContent/sites/Local/geert.txt
+	A	WebContent/sites/Local/geert(1).txt
+	A	WebContent/sites/Local/UI_note_green.gif
+	A	WebContent/sites/Local/catalog_test.txt
+	A	WebContent/sites/Local/catalog.txt
+	A	WebContent/sites/Local/catalog(1).txt
+	A	WebContent/sites/Local/baby showcve.jpg
+	A	WebContent/sites/Local/catalog(2).txt
+	A	WebContent/sites/Local/catalog(3).txt
+	A	WebContent/sites/Local/flash/map.swf
+	A	WebContent/sites/Local/Copying1.gif
+	A	WebContent/sites/Local/analysev25.doc
+	A	WebContent/sites/Local/baby showcve(1).jpg
+	A	WebContent/sites/Local/catalog(4).txt
+	A	WebContent/sites/Local/test2/test21/UI_note_green.gif
+	A	WebContent/sites/Local/test2/catalog.txt
+	A	WebContent/sites/Local/test2/UI_note_rrr.gif
+	A	WebContent/sites/Local/catalog[2].txt
+	A	WebContent/sites/Local/test4/UI_note_bleu.gif
+	A	WebContent/sites/Local/New Folder2/titi.doc
+	A	WebContent/sites/Local/M999CV1.ws
+	A	WebContent/sites/Local/UI_note_bleu.gif
+	A	WebContent/sites/Local/AC-brochure2003-entoto.pdf
+	A	WebContent/sites/Local/face.jpg
+	A	WebContent/WEB-INF/lib/cos.jar
+	A	WebContent/WEB-INF/lib/mysql.jar
+	A	WebContent/WEB-INF/lib/db2jcc.jar
+	A	WebContent/WEB-INF/lib/eidlib.jar
+	A	WebContent/WEB-INF/lib/db2java.jar
+	A	WebContent/WEB-INF/lib/jdom.jar
+	A	WebContent/WEB-INF/lib/xpasearch.jar
+	A	WebContent/WEB-INF/lib/db2jcc_javax.jar
+	A	WebContent/WEB-INF/lib/db2jcc_license_cu.jar
+	A	WebContent/WEB-INF/lib/activation.jar
+	A	WebContent/WEB-INF/lib/jt400.jar
+	A	WebContent/WEB-INF/lib/mail.jar
+	A	WebContent/WEB-INF/lib/internet_searchengine.jar
+	A	WebContent/WEB-INF/lib/log4j-1.2.8.jar
+	A	WebContent/WEB-INF/web.xml
+	A	WebContent/AnchorDlg.htm
+	A	WebContent/db2jcc_javax.jar
+	A	WebContent/db2jcc_license_cu.jar
+	A	WebContent/jsp/LinkDlg.jsp
+	A	WebContent/jsp/icomFCKeditor/editor/dialog/fck_link/icom_fck_link.js
+	A	WebContent/jsp/icomFCKeditor/editor/dialog/fck_image/icom_fck_image.js
+	A	WebContent/jsp/icomFCKeditor/editor/dialog/common/icom_fck_dialog_common.js
+	A	WebContent/jsp/icomFCKeditor/editor/plugins/cmscommands/paste.gif
+	A	WebContent/jsp/icomFCKeditor/editor/plugins/cmscommands/UI_viewHTML_1.gif
+	A	WebContent/jsp/icomFCKeditor/editor/plugins/cmscommands/UI_UpLoad.gif
+	A	WebContent/jsp/icomFCKeditor/editor/plugins/cmscommands/UI_break.gif
+	A	WebContent/jsp/icomFCKeditor/editor/plugins/cmscommands/style2.gif
+	A	WebContent/jsp/icomFCKeditor/editor/plugins/cmscommands/UI_resetStyles.gif
+	A	WebContent/jsp/icomFCKeditor/editor/plugins/cmscommands/fckplugin.js
+	A	WebContent/jsp/icomFCKeditor/editor/plugins/cmscommands/paste_1.gif
+	A	WebContent/jsp/icomFCKeditor/editor/plugins/cmscommands/UI_viewHTML.gif
+	A	WebContent/jsp/icomFCKeditor/editor/plugins/cmscommands/UI_pasteHTML.gif
+	A	WebContent/jsp/icomFCKeditor/editor/plugins/cmscommands/UI_viewHTM_0.gif
+	A	WebContent/jsp/icomFCKeditor/editor/plugins/cmscommands/source.gif
+	A	WebContent/jsp/icomFCKeditor/editor/plugins/cmscommands/UI_UpLoad1.gif
+	A	WebContent/jsp/icomFCKeditor/editor/plugins/cmscommands/UI_break1.gif
+	A	WebContent/jsp/icomFCKeditor/editor/plugins/cmscommands/UI_break2.gif
+	A	WebContent/jsp/icomFCKeditor/editor/plugins/cmscommands/UI_resetStyles1.gif
+	A	WebContent/jsp/icomFCKeditor/editor/plugins/cmscommands/UI_resetStyles2.gif
+	A	WebContent/jsp/icomFCKeditor/editor/plugins/cmscommands/UI_resetStyles3.gif
+	A	WebContent/jsp/icomFCKeditor/editor/plugins/cmscommands/UI_resetStyles4.gif
+	A	WebContent/jsp/icomFCKeditor/editor/plugins/cmscommands/UI_resetStyles5.gif
+	A	WebContent/jsp/icomFCKeditor/editor/plugins/cmscommands/wordpaste.gif
+	A	WebContent/jsp/icomFCKeditor/editor/plugins/cmscommands/UI_resetStyles6.gif
+	A	WebContent/jsp/icomFCKeditor/editor/plugins/cmscommands/normal2.gif
+	A	WebContent/jsp/icomFCKeditor/editor/skins/default/fck_editor.css
+	A	WebContent/jsp/icomFCKeditor/editor/skins/default/images/toolbar.start.gif
+	A	WebContent/jsp/icomFCKeditor/editor/skins/default/images/toolbar.expand.gif
+	A	WebContent/jsp/icomFCKeditor/editor/skins/default/images/toolbar.separator.gif
+	A	WebContent/jsp/icomFCKeditor/editor/skins/default/images/toolbar.collapse.gif
+	A	WebContent/jsp/icomFCKeditor/editor/skins/default/images/toolbar.buttonarrow.gif
+	A	WebContent/jsp/icomFCKeditor/editor/skins/default/images/toolbar.end.gif
+	A	WebContent/jsp/icomFCKeditor/editor/skins/default/images/toolbar.arrowright.gif
+	A	WebContent/jsp/icomFCKeditor/editor/skins/default/fck_strip.gif
+	A	WebContent/jsp/icomFCKeditor/editor/skins/default/fck_dialog.css
+	A	WebContent/jsp/icomFCKeditor/fckconfig_origin.js
+	A	WebContent/jsp/icomFCKeditor/icom_fckconfig.js
+	A	WebContent/jsp/icomFCKeditor_modif_only for info/editor/_source/internals/fckcommands.js
+	A	WebContent/jsp/icomFCKeditor_modif_only for info/editor/_source/internals/fcktablehandler.js
+	A	WebContent/jsp/icomFCKeditor_modif_only for info/editor/_source/internals/fck_contextmenu.js
+	A	WebContent/jsp/icomFCKeditor_modif_only for info/editor/_source/commandclasses/fcktablecommand.js
+	A	WebContent/jsp/icomFCKeditor_modif_only for info/editor/_source/classes/fcktoolbarspecialcombo.js
+	A	WebContent/jsp/icomFCKeditor_modif_only for info/editor/_source/classes/fcktoolbarstylecombo.js
+	A	WebContent/jsp/icomFCKeditor_modif_only for info/editor/dialog/fck_paste.html
+	A	WebContent/jsp/icomFCKeditor_modif_only for info/editor/dialog/fck_link.html
+	A	WebContent/jsp/icomFCKeditor_modif_only for info/editor/dialog/fck_image.html
+	A	WebContent/jsp/icomFCKeditor_modif_only for info/editor/dialog/fck_tablecell.html
+	A	WebContent/jsp/icomFCKeditor_modif_only for info/editor/lang/en.js
+	A	WebContent/jsp/icomFCKeditor_modif_only for info/editor/js/fckeditorcode_gecko.js
+	A	WebContent/jsp/icomFCKeditor_modif_only for info/editor/js/fckeditorcode_ie.js
+	A	WebContent/jsp/uploadbinaryfile.jsp
+	A	WebContent/jsp/NoteDlg.jsp
+	A	WebContent/jsp/checkldapconnection.jsp
+	A	WebContent/jsp/allvariables.jsp
+	A	WebContent/jsp/plugin/local/openmetatags.jsp
+	A	WebContent/jsp/plugin/benevita/openmetatags_generated.jsp
+	A	WebContent/jsp/plugin/benevita/openmetatags_hart.jsp
+	A	WebContent/jsp/plugin/benevita/openmetatags_lpt.jsp
+	A	WebContent/jsp/plugin/benevita/openmetatags_startdate_enddate.jsp
+	A	WebContent/jsp/plugin/benevita/openmetatags_diabetes.jsp
+	A	WebContent/jsp/plugin/benevita/openmetatags_alcohol.jsp
+	A	WebContent/jsp/plugin/benevita/openmetatags_domestic_accident.jsp
+	A	WebContent/jsp/plugin/benevita/openmetatags_lungcancer.jsp
+	A	WebContent/jsp/plugin/benevita/openmetatags_vaccinations.jsp
+	A	WebContent/jsp/plugin/benevita/openmetatags_status.jsp
+	A	WebContent/jsp/plugin/benevita/openmetatags_stress.jsp
+	A	WebContent/jsp/plugin/benevita/openmetatags_cancer_general.jsp
+	A	WebContent/jsp/plugin/benevita/openmetatags_breastcancer.jsp
+	A	WebContent/jsp/tools/testfolderpermission.jsp
+	A	WebContent/jsp/tools/debug.jsp
+	A	WebContent/jsp/tools/change_string_indoc.jsp
+	A	WebContent/jsp/tools/importexport_document_v26.jsp
+	A	WebContent/jsp/tools/catalogtestDEV.jsp
+	A	WebContent/jsp/tools/createDefaultMetadata.jsp
+	A	WebContent/jsp/tools/importexport_v26.jsp
+	A	WebContent/jsp/tools/migrationStylesTag.jsp
+	A	WebContent/jsp/tools/testconnection.jsp
+	A	WebContent/jsp/tools/catalognewCVE.jsp
+	A	WebContent/jsp/sitemaproot.jsp
+	A	WebContent/jsp/about.jsp
+	A	WebContent/jsp/UpLoadDlg.jsp
+	A	WebContent/jsp/login/login.jsp
+	A	WebContent/jsp/login/img/login_btn.gif
+	A	WebContent/jsp/login/img/pix.gif
+	A	WebContent/jsp/login/img/corner_topLeft.gif
+	A	WebContent/jsp/login/img/corner_bottomLeft.gif
+	A	WebContent/jsp/login/img/corner_topRight.gif
+	A	WebContent/jsp/login/img/corner_bottomRight.gif
+	A	WebContent/jsp/FCKeditor/fckeditor.afp
+	A	WebContent/jsp/FCKeditor/fcktemplates.xml
+	A	WebContent/jsp/FCKeditor/fckeditor.pl
+	A	WebContent/jsp/FCKeditor/fckeditor.js
+	A	WebContent/jsp/FCKeditor/editor/_source/fckeditorapi.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fckplugins.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fckselection.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fckdebug.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fckxhtml.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fckselection_gecko.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fckcodeformatter.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fck_1.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fckdialog.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fcktools.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fckcommands.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fckxhtmlentities.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fcktablehandler_ie.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fcktoolbaritems.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fckxhtml_gecko.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fckconfig.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fckdialog_gecko.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fck_1_gecko.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fcktools_gecko.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fckxhtml_ie.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fcktools_ie.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fck.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fckundo_ie.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fcktablehandler.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fcktablehandler_gecko.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fckbrowserinfo.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fck_2.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fckregexlib.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fckselection_ie.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fckurlparams.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fck_contextmenu.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fck_2_gecko.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fck_1_ie.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fckdialog_ie.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fckundo_gecko.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fck_2_ie.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fcktoolbarset.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fcklanguagemanager.js
+	A	WebContent/jsp/FCKeditor/editor/_source/internals/fckdocumentprocessor.js
+	A	WebContent/jsp/FCKeditor/editor/_source/fckjscoreextensions.js
+	A	WebContent/jsp/FCKeditor/editor/_source/fckconstants.js
+	A	WebContent/jsp/FCKeditor/editor/_source/commandclasses/fck_othercommands.js
+	A	WebContent/jsp/FCKeditor/editor/_source/commandclasses/fcktextcolorcommand.js
+	A	WebContent/jsp/FCKeditor/editor/_source/commandclasses/fcknamedcommand.js
+	A	WebContent/jsp/FCKeditor/editor/_source/commandclasses/fckpasteplaintextcommand.js
+	A	WebContent/jsp/FCKeditor/editor/_source/commandclasses/fckspellcheckcommand_gecko.js
+	A	WebContent/jsp/FCKeditor/editor/_source/commandclasses/fcktablecommand.js
+	A	WebContent/jsp/FCKeditor/editor/_source/commandclasses/fckpastewordcommand.js
+	A	WebContent/jsp/FCKeditor/editor/_source/commandclasses/fckspellcheckcommand_ie.js
+	A	WebContent/jsp/FCKeditor/editor/_source/commandclasses/fckfitwindow.js
+	A	WebContent/jsp/FCKeditor/editor/_source/commandclasses/fckstylecommand.js
+	A	WebContent/jsp/FCKeditor/editor/_source/classes/fcktoolbarfontformatcombo.js
+	A	WebContent/jsp/FCKeditor/editor/_source/classes/fcktoolbarspecialcombo.js
+	A	WebContent/jsp/FCKeditor/editor/_source/classes/fckmenuitem.js
+	A	WebContent/jsp/FCKeditor/editor/_source/classes/fcktoolbarbreak_ie.js
+	A	WebContent/jsp/FCKeditor/editor/_source/classes/fckstyledef_gecko.js
+	A	WebContent/jsp/FCKeditor/editor/_source/classes/fckicon.js
+	A	WebContent/jsp/FCKeditor/editor/_source/classes/fcktoolbarfontscombo.js
+	A	WebContent/jsp/FCKeditor/editor/_source/classes/fcktoolbarbuttonui.js
+	A	WebContent/jsp/FCKeditor/editor/_source/classes/fckstyledef_ie.js
+	A	WebContent/jsp/FCKeditor/editor/_source/classes/fcktoolbarbutton.js
+	A	WebContent/jsp/FCKeditor/editor/_source/classes/fckplugin.js
+	A	WebContent/jsp/FCKeditor/editor/_source/classes/fckmenublockpanel.js
+	A	WebContent/jsp/FCKeditor/editor/_source/classes/fckpanel.js
+	A	WebContent/jsp/FCKeditor/editor/_source/classes/fckspecialcombo.js
+	A	WebContent/jsp/FCKeditor/editor/_source/classes/fcktoolbar.js
+	A	WebContent/jsp/FCKeditor/editor/_source/classes/fcktoolbarstylecombo.js
+	A	WebContent/jsp/FCKeditor/editor/_source/classes/fckevents.js
+	A	WebContent/jsp/FCKeditor/editor/_source/classes/fcktoolbarfontsizecombo.js
+	A	WebContent/jsp/FCKeditor/editor/_source/classes/fckiecleanup.js
+	A	WebContent/jsp/FCKeditor/editor/_source/classes/fckxml_gecko.js
+	A	WebContent/jsp/FCKeditor/editor/_source/classes/fckcontextmenu.js
+	A	WebContent/jsp/FCKeditor/editor/_source/classes/fckstylesloader.js
+	A	WebContent/jsp/FCKeditor/editor/_source/classes/fckeditingarea.js
+	A	WebContent/jsp/FCKeditor/editor/_source/classes/fckxml_ie.js
+	A	WebContent/jsp/FCKeditor/editor/_source/classes/fcktoolbarpanelbutton.js
+	A	WebContent/jsp/FCKeditor/editor/_source/classes/fckstyledef.js
+	A	WebContent/jsp/FCKeditor/editor/_source/classes/fckmenublock.js
+	A	WebContent/jsp/FCKeditor/editor/_source/classes/fcktoolbarbreak_gecko.js
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_flash/fck_flash_preview.html
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_flash/fck_flash.js
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_link.html
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_form.html
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_about/lgpl.html
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_about/logo_fredck.gif
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_about/logo_fckeditor.gif
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_about.html
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_anchor.html
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_replace.html
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_button.html
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_template.html
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_paste.html
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_specialchar.html
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_select.html
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_colorselector.html
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_image/fck_image.js
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_image/fck_image_preview.html
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_find.html
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_universalkey.html
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_image.html
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_table.html
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_tablecell.html
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_textfield.html
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_docprops.html
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_link/fck_link.js
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_radiobutton.html
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_flash.html
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_hiddenfield.html
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_source.html
+	A	WebContent/jsp/FCKeditor/editor/dialog/common/moz-bindings.xml
+	A	WebContent/jsp/FCKeditor/editor/dialog/common/fck_dialog_common.css
+	A	WebContent/jsp/FCKeditor/editor/dialog/common/fck_dialog_common.js
+	A	WebContent/jsp/FCKeditor/editor/dialog/common/images/locked.gif
+	A	WebContent/jsp/FCKeditor/editor/dialog/common/images/reset.gif
+	A	WebContent/jsp/FCKeditor/editor/dialog/common/images/unlocked.gif
+	A	WebContent/jsp/FCKeditor/editor/dialog/common/fcknumericfield.htc
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_smiley.html
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_template/images/template1.gif
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_template/images/template2.gif
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_template/images/template3.gif
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_listprop.html
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_select/fck_select.js
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_textarea.html
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_universalkey/keyboard_layout.gif
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_universalkey/00.gif
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_universalkey/data.js
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_universalkey/dialogue.js
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_universalkey/diacritic.js
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_universalkey/fck_universalkey.css
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_universalkey/multihexa.js
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_spellerpages/spellerpages/spellChecker.js
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_spellerpages/spellerpages/controlWindow.js
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_spellerpages/spellerpages/controls.html
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_spellerpages/spellerpages/spellchecker.html
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_spellerpages/spellerpages/blank.html
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_spellerpages/spellerpages/server-scripts/spellchecker.cfm
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_spellerpages/spellerpages/server-scripts/spellchecker.php
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_spellerpages/spellerpages/server-scripts/spellchecker.pl
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_spellerpages/spellerpages/spellerStyle.css
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_spellerpages/spellerpages/wordWindow.js
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_spellerpages.html
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_checkbox.html
+	A	WebContent/jsp/FCKeditor/editor/dialog/fck_docprops/fck_document_preview.html
+	A	WebContent/jsp/FCKeditor/editor/fckeditor.original.html
+	A	WebContent/jsp/FCKeditor/editor/lang/fo.js
+	A	WebContent/jsp/FCKeditor/editor/lang/bs.js
+	A	WebContent/jsp/FCKeditor/editor/lang/cs.js
+	A	WebContent/jsp/FCKeditor/editor/lang/en-au.js
+	A	WebContent/jsp/FCKeditor/editor/lang/km.js
+	A	WebContent/jsp/FCKeditor/editor/lang/es.js
+	A	WebContent/jsp/FCKeditor/editor/lang/ko.js
+	A	WebContent/jsp/FCKeditor/editor/lang/eu.js
+	A	WebContent/jsp/FCKeditor/editor/lang/hu.js
+	A	WebContent/jsp/FCKeditor/editor/lang/no.js
+	A	WebContent/jsp/FCKeditor/editor/lang/sk.js
+	A	WebContent/jsp/FCKeditor/editor/lang/vi.js
+	A	WebContent/jsp/FCKeditor/editor/lang/en-uk.js
+	A	WebContent/jsp/FCKeditor/editor/lang/ms.js
+	A	WebContent/jsp/FCKeditor/editor/lang/uk.js
+	A	WebContent/jsp/FCKeditor/editor/lang/zh-cn.js
+	A	WebContent/jsp/FCKeditor/editor/lang/ro.js
+	A	WebContent/jsp/FCKeditor/editor/lang/pt-br.js
+	A	WebContent/jsp/FCKeditor/editor/lang/ru.js
+	A	WebContent/jsp/FCKeditor/editor/lang/nb.js
+	A	WebContent/jsp/FCKeditor/editor/lang/bn.js
+	A	WebContent/jsp/FCKeditor/editor/lang/el.js
+	A	WebContent/jsp/FCKeditor/editor/lang/en.js
+	A	WebContent/jsp/FCKeditor/editor/lang/ar.js
+	A	WebContent/jsp/FCKeditor/editor/lang/gl.js
+	A	WebContent/jsp/FCKeditor/editor/lang/_translationstatus.txt
+	A	WebContent/jsp/FCKeditor/editor/lang/_getfontformat.html
+	A	WebContent/jsp/FCKeditor/editor/lang/fr.js
+	A	WebContent/jsp/FCKeditor/editor/lang/et.js
+	A	WebContent/jsp/FCKeditor/editor/lang/nl.js
+	A	WebContent/jsp/FCKeditor/editor/lang/hr.js
+	A	WebContent/jsp/FCKeditor/editor/lang/mn.js
+	A	WebContent/jsp/FCKeditor/editor/lang/pl.js
+	A	WebContent/jsp/FCKeditor/editor/lang/th.js
+	A	WebContent/jsp/FCKeditor/editor/lang/it.js
+	A	WebContent/jsp/FCKeditor/editor/lang/sl.js
+	A	WebContent/jsp/FCKeditor/editor/lang/lt.js
+	A	WebContent/jsp/FCKeditor/editor/lang/sr-latn.js
+	A	WebContent/jsp/FCKeditor/editor/lang/lv.js
+	A	WebContent/jsp/FCKeditor/editor/lang/zh.js
+	A	WebContent/jsp/FCKeditor/editor/lang/ca.js
+	A	WebContent/jsp/FCKeditor/editor/lang/en-ca.js
+	A	WebContent/jsp/FCKeditor/editor/lang/pt.js
+	A	WebContent/jsp/FCKeditor/editor/lang/da.js
+	A	WebContent/jsp/FCKeditor/editor/lang/sr.js
+	A	WebContent/jsp/FCKeditor/editor/lang/tr.js
+	A	WebContent/jsp/FCKeditor/editor/lang/fa.js
+	A	WebContent/jsp/FCKeditor/editor/lang/bg.js
+	A	WebContent/jsp/FCKeditor/editor/lang/de.js
+	A	WebContent/jsp/FCKeditor/editor/lang/sv.js
+	A	WebContent/jsp/FCKeditor/editor/lang/ja.js
+	A	WebContent/jsp/FCKeditor/editor/lang/he.js
+	A	WebContent/jsp/FCKeditor/editor/lang/fi.js
+	A	WebContent/jsp/FCKeditor/editor/lang/hi.js
+	A	WebContent/jsp/FCKeditor/editor/lang/eo.js
+	A	WebContent/jsp/FCKeditor/editor/plugins/placeholder/lang/fr.js
+	A	WebContent/jsp/FCKeditor/editor/plugins/placeholder/lang/de.js
+	A	WebContent/jsp/FCKeditor/editor/plugins/placeholder/lang/pl.js
+	A	WebContent/jsp/FCKeditor/editor/plugins/placeholder/lang/it.js
+	A	WebContent/jsp/FCKeditor/editor/plugins/placeholder/lang/en.js
+	A	WebContent/jsp/FCKeditor/editor/plugins/placeholder/placeholder.gif
+	A	WebContent/jsp/FCKeditor/editor/plugins/placeholder/fck_placeholder.html
+	A	WebContent/jsp/FCKeditor/editor/plugins/placeholder/fckplugin.js
+	A	WebContent/jsp/FCKeditor/editor/plugins/autogrow/fckplugin.js
+	A	WebContent/jsp/FCKeditor/editor/plugins/tablecommands/fckplugin.js
+	A	WebContent/jsp/FCKeditor/editor/plugins/simplecommands/fckplugin.js
+	A	WebContent/jsp/FCKeditor/editor/images/arrow_ltr.gif
+	A	WebContent/jsp/FCKeditor/editor/images/arrow_rtl.gif
+	A	WebContent/jsp/FCKeditor/editor/images/spacer.gif
+	A	WebContent/jsp/FCKeditor/editor/images/smiley/msn/omg_smile.gif
+	A	WebContent/jsp/FCKeditor/editor/images/smiley/msn/lightbulb.gif
+	A	WebContent/jsp/FCKeditor/editor/images/smiley/msn/envelope.gif
+	A	WebContent/jsp/FCKeditor/editor/images/smiley/msn/angel_smile.gif
+	A	WebContent/jsp/FCKeditor/editor/images/smiley/msn/cry_smile.gif
+	A	WebContent/jsp/FCKeditor/editor/images/smiley/msn/thumbs_down.gif
+	A	WebContent/jsp/FCKeditor/editor/images/smiley/msn/tounge_smile.gif
+	A	WebContent/jsp/FCKeditor/editor/images/smiley/msn/regular_smile.gif
+	A	WebContent/jsp/FCKeditor/editor/images/smiley/msn/devil_smile.gif
+	A	WebContent/jsp/FCKeditor/editor/images/smiley/msn/confused_smile.gif
+	A	WebContent/jsp/FCKeditor/editor/images/smiley/msn/sad_smile.gif
+	A	WebContent/jsp/FCKeditor/editor/images/smiley/msn/shades_smile.gif
+	A	WebContent/jsp/FCKeditor/editor/images/smiley/msn/wink_smile.gif
+	A	WebContent/jsp/FCKeditor/editor/images/smiley/msn/whatchutalkingabout_smile.gif
+	A	WebContent/jsp/FCKeditor/editor/images/smiley/msn/teeth_smile.gif
+	A	WebContent/jsp/FCKeditor/editor/images/smiley/msn/heart.gif
+	A	WebContent/jsp/FCKeditor/editor/images/smiley/msn/embaressed_smile.gif
+	A	WebContent/jsp/FCKeditor/editor/images/smiley/msn/cake.gif
+	A	WebContent/jsp/FCKeditor/editor/images/smiley/msn/broken_heart.gif
+	A	WebContent/jsp/FCKeditor/editor/images/smiley/msn/thumbs_up.gif
+	A	WebContent/jsp/FCKeditor/editor/images/smiley/msn/kiss.gif
+	A	WebContent/jsp/FCKeditor/editor/images/smiley/msn/angry_smile.gif
+	A	WebContent/jsp/FCKeditor/editor/images/anchor.gif
+	A	WebContent/jsp/FCKeditor/editor/fckdialog.html
+	A	WebContent/jsp/FCKeditor/editor/skins/office2003/fck_editor.css
+	A	WebContent/jsp/FCKeditor/editor/skins/office2003/images/toolbar.start.gif
+	A	WebContent/jsp/FCKeditor/editor/skins/office2003/images/toolbar.expand.gif
+	A	WebContent/jsp/FCKeditor/editor/skins/office2003/images/toolbar.separator.gif
+	A	WebContent/jsp/FCKeditor/editor/skins/office2003/images/toolbar.collapse.gif
+	A	WebContent/jsp/FCKeditor/editor/skins/office2003/images/toolbar.buttonarrow.gif
+	A	WebContent/jsp/FCKeditor/editor/skins/office2003/images/toolbar.end.gif
+	A	WebContent/jsp/FCKeditor/editor/skins/office2003/images/toolbar.arrowright.gif
+	A	WebContent/jsp/FCKeditor/editor/skins/office2003/images/toolbar.bg.gif
+	A	WebContent/jsp/FCKeditor/editor/skins/office2003/fck_strip.gif
+	A	WebContent/jsp/FCKeditor/editor/skins/office2003/fck_dialog.css
+	A	WebContent/jsp/FCKeditor/editor/skins/default/fck_editor.css
+	A	WebContent/jsp/FCKeditor/editor/skins/default/images/toolbar.start.gif
+	A	WebContent/jsp/FCKeditor/editor/skins/default/images/toolbar.expand.gif
+	A	WebContent/jsp/FCKeditor/editor/skins/default/images/toolbar.separator.gif
+	A	WebContent/jsp/FCKeditor/editor/skins/default/images/toolbar.collapse.gif
+	A	WebContent/jsp/FCKeditor/editor/skins/default/images/toolbar.buttonarrow.gif
+	A	WebContent/jsp/FCKeditor/editor/skins/default/images/toolbar.end.gif
+	A	WebContent/jsp/FCKeditor/editor/skins/default/images/toolbar.arrowright.gif
+	A	WebContent/jsp/FCKeditor/editor/skins/default/fck_strip.gif
+	A	WebContent/jsp/FCKeditor/editor/skins/default/fck_dialog.css
+	A	WebContent/jsp/FCKeditor/editor/skins/silver/fck_editor.css
+	A	WebContent/jsp/FCKeditor/editor/skins/silver/images/toolbar.start.gif
+	A	WebContent/jsp/FCKeditor/editor/skins/silver/images/toolbar.expand.gif
+	A	WebContent/jsp/FCKeditor/editor/skins/silver/images/toolbar.separator.gif
+	A	WebContent/jsp/FCKeditor/editor/skins/silver/images/toolbar.collapse.gif
+	A	WebContent/jsp/FCKeditor/editor/skins/silver/images/toolbar.buttonbg.gif
+	A	WebContent/jsp/FCKeditor/editor/skins/silver/images/toolbar.buttonarrow.gif
+	A	WebContent/jsp/FCKeditor/editor/skins/silver/images/toolbar.end.gif
+	A	WebContent/jsp/FCKeditor/editor/skins/silver/images/toolbar.arrowright.gif
+	A	WebContent/jsp/FCKeditor/editor/skins/silver/fck_strip.gif
+	A	WebContent/jsp/FCKeditor/editor/skins/silver/fck_dialog.css
+	A	WebContent/jsp/FCKeditor/editor/skins/_fckviewstrips.html
+	A	WebContent/jsp/FCKeditor/editor/css/behaviors/disablehandles.htc
+	A	WebContent/jsp/FCKeditor/editor/css/behaviors/hiddenfield.gif
+	A	WebContent/jsp/FCKeditor/editor/css/behaviors/showtableborders.htc
+	A	WebContent/jsp/FCKeditor/editor/css/behaviors/hiddenfield.htc
+	A	WebContent/jsp/FCKeditor/editor/css/images/fck_anchor.gif
+	A	WebContent/jsp/FCKeditor/editor/css/images/fck_flashlogo.gif
+	A	WebContent/jsp/FCKeditor/editor/css/images/fck_pagebreak.gif
+	A	WebContent/jsp/FCKeditor/editor/css/fck_internal.css
+	A	WebContent/jsp/FCKeditor/editor/css/fck_editorarea.css
+	A	WebContent/jsp/FCKeditor/editor/css/fck_showtableborders_gecko.css
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/frmresourcetype.html
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/Folder.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/FolderOpened32.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/spacer.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/Folder32.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/FolderUp.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/ButtonArrow.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/FolderOpened.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/default.icon.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/dll.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/js.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/swt.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/bmp.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/txt.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/avi.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/32/default.icon.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/32/dll.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/32/js.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/32/swt.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/32/bmp.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/32/txt.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/32/avi.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/32/jpg.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/32/exe.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/32/rdp.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/32/htm.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/32/ai.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/32/vsd.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/32/swf.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/32/mp3.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/32/xml.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/32/mdb.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/32/fla.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/32/zip.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/32/ppt.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/32/html.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/32/gif.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/32/doc.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/32/cs.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/32/xls.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/32/pdf.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/jpg.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/exe.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/rdp.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/htm.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/ai.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/vsd.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/swf.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/mp3.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/xml.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/mdb.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/fla.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/zip.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/ppt.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/html.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/gif.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/doc.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/cs.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/xls.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/images/icons/pdf.gif
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/browser.html
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/frmfolders.html
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/frmcreatefolder.html
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/browser.css
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/frmupload.html
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/js/fckxml.js
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/js/common.js
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/connectors/lasso/config.lasso
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/connectors/lasso/connector.lasso
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/connectors/perl/io.pl
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/connectors/perl/upload_fck.pl
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/connectors/perl/basexml.pl
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/connectors/perl/util.pl
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/connectors/perl/commands.pl
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/connectors/perl/connector.cgi
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/connectors/test.html
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/connectors/asp/util.asp
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/connectors/asp/commands.asp
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/connectors/asp/config.asp
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/connectors/asp/io.asp
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/connectors/asp/class_upload.asp
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/connectors/asp/connector.asp
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/connectors/asp/basexml.asp
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/connectors/cfm/config.cfm
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/connectors/cfm/connector.cfm
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/connectors/php/connector.php
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/connectors/php/basexml.php
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/connectors/php/util.php
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/connectors/php/commands.php
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/connectors/php/config.php
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/connectors/php/io.php
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/connectors/py/connector.py
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/connectors/aspx/connector.aspx
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/frmactualfolder.html
+	A	WebContent/jsp/FCKeditor/editor/filemanager/browser/default/frmresourceslist.html
+	A	WebContent/jsp/FCKeditor/editor/filemanager/upload/lasso/upload.lasso
+	A	WebContent/jsp/FCKeditor/editor/filemanager/upload/lasso/config.lasso
+	A	WebContent/jsp/FCKeditor/editor/filemanager/upload/test.html
+	A	WebContent/jsp/FCKeditor/editor/filemanager/upload/asp/upload.asp
+	A	WebContent/jsp/FCKeditor/editor/filemanager/upload/asp/config.asp
+	A	WebContent/jsp/FCKeditor/editor/filemanager/upload/asp/io.asp
+	A	WebContent/jsp/FCKeditor/editor/filemanager/upload/asp/class_upload.asp
+	A	WebContent/jsp/FCKeditor/editor/filemanager/upload/cfm/upload.cfm
+	A	WebContent/jsp/FCKeditor/editor/filemanager/upload/cfm/config.cfm
+	A	WebContent/jsp/FCKeditor/editor/filemanager/upload/php/util.php
+	A	WebContent/jsp/FCKeditor/editor/filemanager/upload/php/upload.php
+	A	WebContent/jsp/FCKeditor/editor/filemanager/upload/php/config.php
+	A	WebContent/jsp/FCKeditor/editor/filemanager/upload/aspx/upload.aspx
+	A	WebContent/jsp/FCKeditor/editor/js/fckeditorcode_gecko.js
+	A	WebContent/jsp/FCKeditor/editor/js/fckeditorcode_ie.js
+	A	WebContent/jsp/FCKeditor/editor/fckdebug.html
+	A	WebContent/jsp/FCKeditor/editor/fckeditor.html
+	A	WebContent/jsp/FCKeditor/editor/fckblank.html
+	A	WebContent/jsp/FCKeditor/fckeditor.lasso
+	A	WebContent/jsp/FCKeditor/fckeditor.asp
+	A	WebContent/jsp/FCKeditor/_testcases/001.html
+	A	WebContent/jsp/FCKeditor/_testcases/010.html
+	A	WebContent/jsp/FCKeditor/_testcases/002.html
+	A	WebContent/jsp/FCKeditor/_testcases/003.html
+	A	WebContent/jsp/FCKeditor/_testcases/testcases.css
+	A	WebContent/jsp/FCKeditor/_testcases/004.html
+	A	WebContent/jsp/FCKeditor/_testcases/005.html
+	A	WebContent/jsp/FCKeditor/_testcases/006.html
+	A	WebContent/jsp/FCKeditor/_testcases/007.html
+	A	WebContent/jsp/FCKeditor/_testcases/008.html
+	A	WebContent/jsp/FCKeditor/_testcases/009.html
+	A	WebContent/jsp/FCKeditor/_testcases/sampleposteddata.asp
+	A	WebContent/jsp/FCKeditor/license.txt
+	A	WebContent/jsp/FCKeditor/fckeditor.php
+	A	WebContent/jsp/FCKeditor/fckeditor.py
+	A	WebContent/jsp/FCKeditor/_whatsnew.html
+	A	WebContent/jsp/FCKeditor/_samples/_plugins/samples/fckplugin.js
+	A	WebContent/jsp/FCKeditor/_samples/_plugins/findreplace/replace.gif
+	A	WebContent/jsp/FCKeditor/_samples/_plugins/findreplace/lang/fr.js
+	A	WebContent/jsp/FCKeditor/_samples/_plugins/findreplace/lang/it.js
+	A	WebContent/jsp/FCKeditor/_samples/_plugins/findreplace/lang/en.js
+	A	WebContent/jsp/FCKeditor/_samples/_plugins/findreplace/find.html
+	A	WebContent/jsp/FCKeditor/_samples/_plugins/findreplace/find.gif
+	A	WebContent/jsp/FCKeditor/_samples/_plugins/findreplace/fckplugin.js
+	A	WebContent/jsp/FCKeditor/_samples/_plugins/findreplace/replace.html
+	A	WebContent/jsp/FCKeditor/_samples/lasso/sample01.lasso
+	A	WebContent/jsp/FCKeditor/_samples/lasso/sample02.lasso
+	A	WebContent/jsp/FCKeditor/_samples/lasso/sample03.lasso
+	A	WebContent/jsp/FCKeditor/_samples/lasso/sample04.lasso
+	A	WebContent/jsp/FCKeditor/_samples/lasso/sampleposteddata.lasso
+	A	WebContent/jsp/FCKeditor/_samples/perl/sample01.cgi
+	A	WebContent/jsp/FCKeditor/_samples/perl/sample02.cgi
+	A	WebContent/jsp/FCKeditor/_samples/perl/sample03.cgi
+	A	WebContent/jsp/FCKeditor/_samples/perl/sample04.cgi
+	A	WebContent/jsp/FCKeditor/_samples/perl/sampleposteddata.cgi
+	A	WebContent/jsp/FCKeditor/_samples/asp/sample01.asp
+	A	WebContent/jsp/FCKeditor/_samples/asp/sample02.asp
+	A	WebContent/jsp/FCKeditor/_samples/asp/sample03.asp
+	A	WebContent/jsp/FCKeditor/_samples/asp/sample04.asp
+	A	WebContent/jsp/FCKeditor/_samples/asp/sampleposteddata.asp
+	A	WebContent/jsp/FCKeditor/_samples/sampleslist.html
+	A	WebContent/jsp/FCKeditor/_samples/html/sample11_frame.html
+	A	WebContent/jsp/FCKeditor/_samples/html/sample01.html
+	A	WebContent/jsp/FCKeditor/_samples/html/sample10.html
+	A	WebContent/jsp/FCKeditor/_samples/html/sample02.html
+	A	WebContent/jsp/FCKeditor/_samples/html/sample06.config.js
+	A	WebContent/jsp/FCKeditor/_samples/html/sample11.html
+	A	WebContent/jsp/FCKeditor/_samples/html/sample03.html
+	A	WebContent/jsp/FCKeditor/_samples/html/sample04.html
+	A	WebContent/jsp/FCKeditor/_samples/html/sample05.html
+	A	WebContent/jsp/FCKeditor/_samples/html/sample06.html
+	A	WebContent/jsp/FCKeditor/_samples/html/sample07.html
+	A	WebContent/jsp/FCKeditor/_samples/html/sample08.html
+	A	WebContent/jsp/FCKeditor/_samples/html/sampleposteddata.asp
+	A	WebContent/jsp/FCKeditor/_samples/html/sample09.html
+	A	WebContent/jsp/FCKeditor/_samples/html/sampleposteddata.html
+	A	WebContent/jsp/FCKeditor/_samples/cfm/sample01.cfm
+	A	WebContent/jsp/FCKeditor/_samples/cfm/sample02_mx.cfm
+	A	WebContent/jsp/FCKeditor/_samples/afp/sampleposteddata.afp
+	A	WebContent/jsp/FCKeditor/_samples/afp/fck.afpa.code
+	A	WebContent/jsp/FCKeditor/_samples/afp/sample01.afp
+	A	WebContent/jsp/FCKeditor/_samples/afp/fck.afpa
+	A	WebContent/jsp/FCKeditor/_samples/default.html
+	A	WebContent/jsp/FCKeditor/_samples/php/sampleposteddata.php
+	A	WebContent/jsp/FCKeditor/_samples/php/sample01.php
+	A	WebContent/jsp/FCKeditor/_samples/php/sample02.php
+	A	WebContent/jsp/FCKeditor/_samples/php/sample03.php
+	A	WebContent/jsp/FCKeditor/_samples/php/sample04.php
+	A	WebContent/jsp/FCKeditor/_samples/py/sampleposteddata.py
+	A	WebContent/jsp/FCKeditor/_samples/py/sample01.py
+	A	WebContent/jsp/FCKeditor/_samples/sample.css
+	A	WebContent/jsp/FCKeditor/fckconfig.js
+	A	WebContent/jsp/FCKeditor/fckeditor.cfc
+	A	WebContent/jsp/FCKeditor/fckstyles.xml
+	A	WebContent/jsp/FCKeditor/_documentation.html
+	A	WebContent/jsp/FCKeditor/htaccess.txt
+	A	WebContent/jsp/FCKeditor/fckeditor.cfm
+	A	WebContent/jsp/stylexml.jsp
+	A	WebContent/jsp/brokenlinks.jsp
+	A	WebContent/jsp/js/documentDialogLaunch.js
+	A	WebContent/jsp/js/browserinfo.js
+	A	WebContent/jsp/js/appletLaunch.js
+	A	WebContent/jsp/js/buttletUpdateLaunch.js
+	A	WebContent/jsp/js/documentPermissionDialogLaunch.js
+	A	WebContent/jsp/js/versionAndResources.js
+	A	WebContent/jsp/DocumentFormFCKoff.jsp
+	A	WebContent/jsp/testing/systemprop.jsp
+	A	WebContent/jsp/testing/color.html
+	A	WebContent/jsp/testing/BrowseResource2.htm
+	A	WebContent/jsp/testing/atena/wouter/index.jsp
+	A	WebContent/jsp/testing/atena/wouter/functions.jsp
+	A	WebContent/jsp/testing/atena/wouter/header.jsp
+	A	WebContent/jsp/testing/atena/wouter/styles/atena.css
+	A	WebContent/jsp/testing/atena/wouter/styles/_notes/dwsync.xml
+	A	WebContent/jsp/testing/atena/wouter/images/logo.jpg
+	A	WebContent/jsp/testing/atena/wouter/date.jsp
+	A	WebContent/jsp/testing/atena/wouter/footer.jsp
+	A	WebContent/jsp/testing/atena/wouter/controler_std.jsp
+	A	WebContent/jsp/testing/customform.jsp
+	A	WebContent/jsp/testing/mutapi_css2/test.html
+	A	WebContent/jsp/testing/mutapi_css2/openmetatags.jsp
+	A	WebContent/jsp/testing/mutapi_css2/functions_std_3600.jsp
+	A	WebContent/jsp/testing/mutapi_css2/searchengine.jsp
+	A	WebContent/jsp/testing/mutapi_css2/displaydoc.jsp
+	A	WebContent/jsp/testing/mutapi_css2/css/stylesheet.css
+	A	WebContent/jsp/testing/mutapi_css2/css/css2_stylesheet_tmplt_container.css
+	A	WebContent/jsp/testing/mutapi_css2/css/stylesheet_print.css
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/Bs_gfdi_TreeElement.class.js
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/Bs_gfdi_Tree.class.js
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/readme.txt
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98_big/minus1.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98_big/minus2.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98_big/minus3.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98_big/minus4.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98_big/Thumbs.db
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98_big/folderOpen.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98_big/empty.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98_big/plus1.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98_big/folderClosed.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98_big/plus2.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98_big/plus3.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98_big/leaf.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98_big/plus4.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98_big/line1.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98_big/line2.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98_big/line3.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/winXp/page.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/winXp/empty.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/winXp/join.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/winXp/controlPanel.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/winXp/plus1.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/winXp/myComputer.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/winXp/plus2.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/winXp/folderClosed.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/winXp/plus3.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/winXp/networkDriveDisconnected.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/winXp/plus4.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/winXp/myDocuments.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/winXp/plusbottom.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/winXp/line1.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/winXp/desktop.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/winXp/line2.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/winXp/line3.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/winXp/folder.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/winXp/minus1.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/winXp/minus2.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/winXp/minus3.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/winXp/minus4.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/winXp/minusbottom.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/winXp/Thumbs.db
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/winXp/cd.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/winXp/line.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/winXp/folderOpen.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/winXp/networkDriveConnected.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/winXp/leaf.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/winXp/dot1.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/winXp/volume.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/winXp/base.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/Thumbs.db
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98_noFolder/minus1.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98_noFolder/minus2.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98_noFolder/minus3.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98_noFolder/minus4.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98_noFolder/Thumbs.db
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98_noFolder/folderOpen.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98_noFolder/empty.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98_noFolder/plus1.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98_noFolder/folderClosed.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98_noFolder/plus2.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98_noFolder/plus3.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98_noFolder/leaf.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98_noFolder/plus4.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98_noFolder/line1.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98_noFolder/line2.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98_noFolder/line3.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/10.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/11.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/folderOpen.gif_____
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/folderOpen.gif__
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/folderOpen.gif_
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/_folderOpen.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/empty.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/plus1.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/html.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/folderClosed.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/plus2.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/plus3.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/orange/folderOpen.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/orange/Thumbs.db
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/orange/folderClosed.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/plus4.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/line1.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/line2.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/line3.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/minus1.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/minus2.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/minus3.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/minus4.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/Thumbs.db
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/exclamation1.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/exclamation2.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/folderOpen.gif___
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/folderOpen.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/orangeLight/folderOpen.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/orangeLight/Thumbs.db
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/orangeLight/folderClosed.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/2.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/3.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/_folderClosed.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/5.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/6.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/leaf.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/8.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98blue/9.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/green/icon_tree_minus_green_no.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/green/Thumbs.db
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/green/icon_tree_minus_green_ro.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/green/icon_tree_plus_green_no.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/green/icon_tree_plus_green_ro.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/icon_tree_warning.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/white/icon_tree_minus_white_no.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/white/Thumbs.db
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/white/icon_tree_minus_white_ro.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/white/icon_tree_plus_white_no.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/white/icon_tree_plus_white_ro.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/icon_tree_chkblur.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/Thumbs.db
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/blue/minus1.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/blue/minus2.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/blue/minus3.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/blue/minus4.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/blue/Thumbs.db
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/blue/empty.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/blue/plus1_over.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/blue/plus2_over.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/blue/plus3_over.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/blue/plus4_over.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/blue/plus1.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/blue/plus2.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/blue/plus3.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/blue/plus4.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/blue/minus1_over.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/blue/minus2_over.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/blue/line1.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/blue/minus3_over.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/blue/line2.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/blue/minus4_over.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/blue/line3.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_minus_red_ro.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_minus_white_no.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_chkblur.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/fixed_icons/Thumbs.db
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_minus_white_ro.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_plus_green_no.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_chkactive.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_plus_green_ro.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_warning.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_minus_green_no.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_plus_red_no.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_minus_green_ro.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_plus_red_ro.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_plus_white_no.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_minus_red_no.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_plus_white_ro.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/red/icon_tree_minus_red_ro.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/red/icon_tree_plus_red_no.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/red/Thumbs.db
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/red/icon_tree_plus_red_ro.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/red/icon_tree_minus_red_no.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/bobby/icon_tree_chkactive.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/runningDots.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98/minus1.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98/minus2.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98/minus3.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98/minus4.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98/Thumbs.db
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98/exclamation1.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98/exclamation2.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98/folderOpen.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98/empty.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98/plus1.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98/folderClosed.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98/plus2.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98/plus3.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98/plus4.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98/leaf.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98/line1.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98/line2.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/components/tree/img/win98/line3.gif
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/core/lang/Bs_Array.class.js
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/core/lang/Bs_Cookie.lib.js
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/core/util/Bs_StopWatch.class.js
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/core/util/Bs_XmlParser.class.js
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/core/util/Bs_TitleToTooltip.lib.js
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/core/util/Bs_Wddx.class.js
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/core/util/Bs_String.lib.js
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/core/util/Bs_CsvUtil.class.js
+	A	WebContent/jsp/testing/mutapi_css2/blueshoes/core/util/Bs_Number.lib.js
+	A	WebContent/jsp/testing/mutapi_css2/index_old.jsp
+	A	WebContent/jsp/testing/mutapi_css2/resetcache.jsp
+	A	WebContent/jsp/testing/mutapi_css2/index.jsp
+	A	WebContent/jsp/testing/mutapi_css2/functions.jsp
+	A	WebContent/jsp/testing/mutapi_css2/catalog.jsp
+	A	WebContent/jsp/testing/mutapi_css2/images/TEMPLATE_01_r1_c1.jpg
+	A	WebContent/jsp/testing/mutapi_css2/images/btn_zoek.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/TEMPLATE-tab01.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/TEMPLATE-tab02.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/TEMPLATE-tab03.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/TEMPLATE_01_r4_c20.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/corner_topLeft.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/pijlke_klein_onder.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/corner_bottomLeft.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/linker_navigatie_achtergrond.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/TEMPLATE_01_r1_c13.jpg
+	A	WebContent/jsp/testing/mutapi_css2/images/pijlke_klein.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/navigiatie_rij1_acthergrond.jpg
+	A	WebContent/jsp/testing/mutapi_css2/images/TEMPLATE_01_r1_c16.jpg
+	A	WebContent/jsp/testing/mutapi_css2/images/top_navigatie_acthergrond.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/taal_achtergrond_old.jpg
+	A	WebContent/jsp/testing/mutapi_css2/images/test/body_top_sitemap.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/test/body_top_search.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/login_btn.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/taal_achtergrond.jpg
+	A	WebContent/jsp/testing/mutapi_css2/images/spacer.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/Thumbs.db
+	A	WebContent/jsp/testing/mutapi_css2/images/TEMPLATE_01_r4_c12.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/TEMPLATE_01_r4_c15.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-iq.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-ir.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-ug.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-mo.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-is.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-mp.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-it.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-uk.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-mt.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-mu.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-mw.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-bb.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-mx.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-my.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-bd.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-be.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-mz.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-us.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-bh.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-uy.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-yu.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-fi.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-bm.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-na.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-bn.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-bo.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/de-uk.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-br.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-fo.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-bs.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-ng.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-ni.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-jm.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-fr.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-vc.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-jo.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-nl.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/de-be.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-jp.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-za.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-ve.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-by.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-no.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-vi.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-ro.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-ca.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-zm.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-ru.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-nz.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-gb.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-ch.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-cl.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-ke.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-zw.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-cn.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-co.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-sa.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-sb.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-cr.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-se.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-cu.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-gr.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-sg.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-gt.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-gu.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-cy.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-si.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-kr.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-cz.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-sk.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-kw.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-kz.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-sr.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-de.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-lb.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-dk.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-pa.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-hk.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-do.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-pe.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-hn.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-lk.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-ph.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-hr.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-pk.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/de-de.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-pl.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-th.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-hu.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-00.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/Thumbs.db
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-lt.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-lv.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-pr.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-pt.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-ae.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-tr.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-ec.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-ag.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-tt.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-py.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-ee.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-tw.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-eg.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-id.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-ie.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-am.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-ma.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-ao.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-qa.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-ar.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-il.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-at.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-au.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-ua.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-in.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/flags/f0-es.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/navigatie_rij2_achtergrond.jpg
+	A	WebContent/jsp/testing/mutapi_css2/images/TEMPLATE_01_r4_c17.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/TEMPLATE_achtergrond.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/TEMPLATE_01_r4_c18.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/TEMPLATE_01_r4_c19.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/rechter_navigatie_titel.jpg
+	A	WebContent/jsp/testing/mutapi_css2/images/pijlke_klein_links.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/pix.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/corner_topRight.gif
+	A	WebContent/jsp/testing/mutapi_css2/images/corner_bottomRight.gif
+	A	WebContent/jsp/testing/mutapi_css2/functions_ctm.jsp
+	A	WebContent/jsp/testing/mutapi_css2/css2/images/tabs2-big-ct_cve.gif
+	A	WebContent/jsp/testing/mutapi_css2/css2/images/tabs2-big-hl.gif
+	A	WebContent/jsp/testing/mutapi_css2/css2/images/tabs3-big.gif
+	A	WebContent/jsp/testing/mutapi_css2/css2/images/submenu.gif
+	A	WebContent/jsp/testing/mutapi_css2/css2/images/tabs2-big-ct.gif
+	A	WebContent/jsp/testing/mutapi_css2/css2/images/tabs2-big_cve_paper.gif
+	A	WebContent/jsp/testing/mutapi_css2/css2/images/branch2.gif
+	A	WebContent/jsp/testing/mutapi_css2/css2/images/tabs2-big_cve_paper2.gif
+	A	WebContent/jsp/testing/mutapi_css2/css2/images/submenu-rt.gif
+	A	WebContent/jsp/testing/mutapi_css2/css2/images/tabs2-big_cve.gif
+	A	WebContent/jsp/testing/mutapi_css2/css2/images/dropmenu.gif
+	A	WebContent/jsp/testing/mutapi_css2/css2/images/tabs2-big.gif
+	A	WebContent/jsp/testing/mutapi_css2/css2/csshover.htc
+	A	WebContent/jsp/testing/mutapi_css2/index_3600.jsp
+	A	WebContent/jsp/testing/mutapi_css2/utilities/printfriendly.htm
+	A	WebContent/jsp/testing/mutapi_css2/utilities/js/loaddatacenter_frame.js
+	A	WebContent/jsp/testing/mutapi_css2/utilities/js/loaddatacenter.js
+	A	WebContent/jsp/testing/mutapi_css2/utilities/js/css2_tmplt_container.js
+	A	WebContent/jsp/testing/mutapi_css2/utilities/printfriendly_old.htm
+	A	WebContent/jsp/testing/mutapi_css2/controler_std.jsp
+	A	WebContent/jsp/testing/mutapi_css2/functions_std.jsp
+	A	WebContent/jsp/testing/mutapi_css2/ajax.jsp
+	A	WebContent/jsp/testing/_testjsp/index_old.jsp
+	A	WebContent/jsp/testing/_testjsp/resetcache.jsp
+	A	WebContent/jsp/testing/_testjsp/index.jsp
+	A	WebContent/jsp/testing/_testjsp/openmetatags.jsp
+	A	WebContent/jsp/testing/_testjsp/functions.jsp
+	A	WebContent/jsp/testing/_testjsp/catalog.jsp
+	A	WebContent/jsp/testing/_testjsp/displaydoc.jsp
+	A	WebContent/jsp/testing/_testjsp/functions_ctm.jsp
+	A	WebContent/jsp/testing/_testjsp/searchengine.jsp
+	A	WebContent/jsp/testing/_testjsp/functions_v3.5.0.0.jsp
+	A	WebContent/jsp/testing/_testjsp/controler_std.jsp
+	A	WebContent/jsp/testing/_testjsp/functions_std.jsp
+	A	WebContent/jsp/testing/_testjsp/index_before_CSS2.jsp
+	A	WebContent/jsp/testing/doclist.jsp
+	A	WebContent/jsp/testing/dgc/resetcache.jsp
+	A	WebContent/jsp/testing/dgc/index.jsp
+	A	WebContent/jsp/testing/dgc/functions.jsp
+	A	WebContent/jsp/testing/dgc/catalog.jsp
+	A	WebContent/jsp/testing/dgc/displaydoc.jsp
+	A	WebContent/jsp/testing/dgc/functions_ctm.jsp
+	A	WebContent/jsp/testing/dgc/controler_std.jsp
+	A	WebContent/jsp/testing/dgc/functions_std.jsp
+	A	WebContent/jsp/testing/editortest1.htm
+	A	WebContent/jsp/testing/SN500CMS.css
+	A	WebContent/jsp/testing/testmime1.jsp
+	A	WebContent/jsp/testing/downloadbehaviour.htm
+	A	WebContent/jsp/testing/testmime2.jsp
+	A	WebContent/jsp/testing/TableDlg.htm
+	A	WebContent/jsp/testing/test.htm
+	A	WebContent/jsp/testing/526/templateArticleBU.jsp
+	A	WebContent/jsp/testing/526/templateFreeContent.jsp
+	A	WebContent/jsp/testing/526/templateNews.jsp
+	A	WebContent/jsp/testing/526/templateLink.jsp
+	A	WebContent/jsp/testing/526/template_old.jsp
+	A	WebContent/jsp/testing/526/template.jsp
+	A	WebContent/jsp/testing/526/templateArticleFrames.jsp
+	A	WebContent/jsp/testing/526/testcve.jsp
+	A	WebContent/jsp/testing/526/templateArticleold.jsp
+	A	WebContent/jsp/testing/526/templateArticle.jsp
+	A	WebContent/jsp/testing/526/templateGlossary.jsp
+	A	WebContent/jsp/testing/526/templateTeaser.jsp
+	A	WebContent/jsp/testing/526/templateFAQ.jsp
+	A	WebContent/jsp/testing/TestApplet.htm
+	A	WebContent/jsp/testing/index_020505.jsp
+	A	WebContent/jsp/testing/527/Copy of templateFreeContent.jsp
+	A	WebContent/jsp/testing/527/templateFreeContent.jsp
+	A	WebContent/jsp/testing/527/templateNews.jsp
+	A	WebContent/jsp/testing/527/templateLink.jsp
+	A	WebContent/jsp/testing/527/templateArticle.jsp
+	A	WebContent/jsp/testing/527/templateGlossary.jsp
+	A	WebContent/jsp/testing/527/templateTeaser.jsp
+	A	WebContent/jsp/testing/527/templateFAQ.jsp
+	A	WebContent/jsp/testing/testwelcom.htm
+	A	WebContent/jsp/testing/table.htm
+	A	WebContent/jsp/testing/my.jsp
+	A	WebContent/jsp/testing/odgezinszorg526/index.jsp
+	A	WebContent/jsp/testing/odgezinszorg526/search.txt
+	A	WebContent/jsp/testing/odgezinszorg526/search_od.txt
+	A	WebContent/jsp/testing/odgezinszorg526/displaydoc.jsp
+	A	WebContent/jsp/testing/506i/searchKeyword.jsp
+	A	WebContent/jsp/testing/506i/login/login.jsp
+	A	WebContent/jsp/testing/iframetst.htm
+	A	WebContent/jsp/testing/styleold.css
+	A	WebContent/jsp/testing/bulletindented.htm
+	A	WebContent/jsp/testing/temp_copyfolder/DocumentBrowserPanel.java
+	A	WebContent/jsp/testing/temp_copyfolder/DocumentBF.java
+	A	WebContent/jsp/testing/removesession.jsp
+	A	WebContent/jsp/testing/export_site.htm
+	A	WebContent/jsp/testing/teststartup.jsp
+	A	WebContent/jsp/testing/testwindow.htm
+	A	WebContent/jsp/testing/testalert.htm
+	A	WebContent/jsp/testing/testmime3.htm
+	A	WebContent/jsp/testing/testmime4.htm
+	A	WebContent/jsp/testing/AZMM/testVMfinder.jsp
+	A	WebContent/jsp/testing/AZMM/finder_origin.jsp
+	A	WebContent/jsp/testing/AZMM/test.jsp
+	A	WebContent/jsp/testing/02062004appdev.pdf
+	A	WebContent/jsp/testing/iframetst2.htm
+	A	WebContent/jsp/testing/Ceci est un doc word.doc
+	A	WebContent/jsp/testing/iframetst3.htm
+	A	WebContent/jsp/testing/DocumentBrowser.htm
+	A	WebContent/jsp/testing/testinterval.htm
+	A	WebContent/jsp/testing/TestEditor.htm
+	A	WebContent/jsp/testing/testmimeword.jsp
+	A	WebContent/jsp/testing/wwwhearis/index2605.jsp
+	A	WebContent/jsp/testing/wwwhearis/index_new301.jsp
+	A	WebContent/jsp/testing/wwwhearis/template2605.properties
+	A	WebContent/jsp/testing/wwwhearis/index301.jsp
+	A	WebContent/jsp/testing/wwwhearis/template.properties
+	A	WebContent/jsp/testing/testolddisplaydoc.jsp
+	A	WebContent/jsp/testing/radio.htm
+	A	WebContent/jsp/testing/DocumentFormbug.htm
+	A	WebContent/jsp/testing/testconn.jsp
+	A	WebContent/jsp/testing/DocumentForm.htm
+	A	WebContent/jsp/testing/test3.htm
+	A	WebContent/jsp/testing/testlpt.jsp
+	A	WebContent/jsp/testing/testconnbasic.jsp
+	A	WebContent/jsp/testing/sitetst.jsp
+	A	WebContent/jsp/testing/test4.htm
+	A	WebContent/jsp/testing/test5.htm
+	A	WebContent/jsp/testing/test6.htm
+	A	WebContent/jsp/testing/test7.htm
+	A	WebContent/jsp/testing/test8.htm
+	A	WebContent/jsp/testing/login.htm
+	A	WebContent/jsp/testing/browseresource.htm
+	A	WebContent/jsp/testing/getdoc.jsp
+	A	WebContent/jsp/testing/DocumentFormV2.htm
+	A	WebContent/jsp/testing/DocumentFormV3.htm
+	A	WebContent/jsp/testing/mutdev/template_new.properties
+	A	WebContent/jsp/testing/mutdev/index.jsp
+	A	WebContent/jsp/testing/mutdev/functions.jsp
+	A	WebContent/jsp/testing/mutdev/acessibleTreenode_onDemand/text1.txt
+	A	WebContent/jsp/testing/mutdev/acessibleTreenode_onDemand/text2.txt
+	A	WebContent/jsp/testing/mutdev/functions_ctm.jsp
+	A	WebContent/jsp/testing/mutdev/controler_std.jsp
+	A	WebContent/jsp/testing/mutdev/PermissionSite.java
+	A	WebContent/jsp/testing/mutdev/functions_std.jsp
+	A	WebContent/jsp/testing/500/DocumentForm2.jsp
+	A	WebContent/jsp/testing/500/test500.jsp
+	A	WebContent/jsp/testing/500/Copy (2) of DocumentForm.jsp
+	A	WebContent/jsp/testing/500/ DocumentForm_bad.jsp
+	A	WebContent/jsp/testing/500/DocumentForm_good.jsp
+	A	WebContent/jsp/testing/500/cve_FCKoffstyle112.css
+	A	WebContent/jsp/testing/500/Representation_externe_500.jsp
+	A	WebContent/jsp/testing/500/style112.css
+	A	WebContent/jsp/testing/500/DocumentForm.jsp
+	A	WebContent/jsp/testing/testdisplaydocbak.jsp
+	A	WebContent/jsp/testing/index_sitemapsizing.jsp
+	A	WebContent/jsp/testing/testdir.jsp
+	A	WebContent/jsp/testing/rightclick.htm
+	A	WebContent/jsp/testing/_0 modified files for domain changes/dir1/fck_image.js
+	A	WebContent/jsp/testing/_0 modified files for domain changes/dir1/fck_link.html
+	A	WebContent/jsp/testing/_0 modified files for domain changes/dir1/fck_dialog_common.js
+	A	WebContent/jsp/testing/_0 modified files for domain changes/dir1/fck_image.html
+	A	WebContent/jsp/testing/_0 modified files for domain changes/dir1/DocumentDialog.jsp
+	A	WebContent/jsp/testing/_0 modified files for domain changes/dir1/fck_link.js
+	A	WebContent/jsp/testing/_0 modified files for domain changes/uploadbinaryfile.jsp
+	A	WebContent/jsp/testing/_0 modified files for domain changes/DocumentBrowser.jsp
+	A	WebContent/jsp/testing/_0 modified files for domain changes/DocumentForm.jsp
+	A	WebContent/jsp/testing/_0 modified files for domain changes/cms.js
+	A	WebContent/jsp/testing/_0 modified files for domain changes/com/fredck/FCKeditor/FCKeditorConfigurations.java
+	A	WebContent/jsp/testing/_0 modified files for domain changes/com/fredck/FCKeditor/FCKeditor.java
+	A	WebContent/jsp/testing/_0 modified files for domain changes/com/fredck/FCKeditor/connector/ConnectorServlet.java
+	A	WebContent/jsp/testing/_0 modified files for domain changes/com/fredck/FCKeditor/connector/package.html
+	A	WebContent/jsp/testing/_0 modified files for domain changes/com/fredck/FCKeditor/uploader/SimpleUploaderServlet.java
+	A	WebContent/jsp/testing/_0 modified files for domain changes/com/fredck/FCKeditor/uploader/package.html
+	A	WebContent/jsp/testing/_0 modified files for domain changes/com/fredck/FCKeditor/package.html
+	A	WebContent/jsp/testing/TestLinkDlg.htm
+	A	WebContent/jsp/testing/DocumentFormbug.txt
+	A	WebContent/jsp/testing/testwbr.htm
+	A	WebContent/jsp/testing/testheader.jsp
+	A	WebContent/jsp/testing/charset.jsp
+	A	WebContent/jsp/testing/css/DocumentFormFCKoff070507.jsp
+	A	WebContent/jsp/testing/css/test_stylesheet.css
+	A	WebContent/jsp/testing/css/test_stylesheet2.css
+	A	WebContent/jsp/testing/css/styletst.css
+	A	WebContent/jsp/testing/css/test_stylesheet_plusTMPLT.css
+	A	WebContent/jsp/testing/css/style.css
+	A	WebContent/jsp/testing/css/test_stylesheet_withoutcmsstyles.css
+	A	WebContent/jsp/testing/css/style070507.css
+	A	WebContent/jsp/testing/clipboard_clear.htm
+	A	WebContent/jsp/testing/testpopup.jsp
+	A	WebContent/jsp/testing/codecompletion.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/HPage.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/index_ready_for_prod.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/doclistMailings.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/templateWelcome.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/header.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/templateLink.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/NieuwGewijzigd.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/doclistHR.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/to put into the sub dir/template.properties
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/to put into the sub dir/web.xml
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/to put into the sub dir/init.properties
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/HPage.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/doclistMailings.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/templateWelcome.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/templateFreeContent.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/templateNews.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/templateLink.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/Copy of oiseaubleu.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/foule515.jpg
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/suchen_on.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/home_off.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/hilfe_on.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/ihr_versicherungsschutz_off.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/home_on.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/ihr_versicherungsschutz_on.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/drucken_on.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/freietxtblanc.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/Freie.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/ihr_gesundheit_off.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/wir_uber_uns_off.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/pointille.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/logo.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/faq_off.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/kontakt_on.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/links_off.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/Copy of freietxtblanc.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/120_91.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/links_on.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/mains515.jpg
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/oiseaubleuback.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/Freie_photo.jpg
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/suchen_off.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/oiseaubleu3.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/oiseaubleu4.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/hilfe_off.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/oiseaubleu5.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/Thumbs.db
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/fond_sous_menu.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/drucken_off.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/fur_off.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/carre_off.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/fond.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/krankenkassetxtbleu.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/fur_on.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/carre_on.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/carre.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/ihr_gesundheit_on.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/oiseaubleu.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/versicherung_off.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/wir_uber_uns_on.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/pix6blanc_large.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/versicherung_on.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/faq_on.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/pixelbleufonce.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/kontakt_off.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/freietxtblanc.jpg
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/pix7blanc_haut.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/pixbleu.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/trame.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/images/fond_menu.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/template.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/style.css
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/templateArticle.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/templateGlossary.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/templateTeaser.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/preview/templateFAQ.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/header.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/NieuwGewijzigd.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/doclistHR.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/ready_for_prod_526i_V3.0.txt
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/css/stylesheet.css
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/css/stylesheet_templ1.css
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/css/stylesheet_print.css
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/css/stylesheet_tmpl2.css
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/doclistDocumentenDetail.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/index.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/content.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/btn_zoek.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/E-net4.png
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/TEMPLATE_01_r1_c1.jpg
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/E-net5.png
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/TEMPLATE-tab01.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/TEMPLATE-tab02.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/TEMPLATE-tab03.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/TEMPLATE_01_r4_c20.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/linker_navigatie_achtergrond.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/TEMPLATE_01_r1_c13.jpg
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/pijlke_klein.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/navigiatie_rij1_acthergrond.jpg
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/TEMPLATE_01_r1_c16.jpg
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/top_navigatie_acthergrond.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/taal_achtergrond_old.jpg
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/taal_achtergrond.jpg
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/spacer.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/Thumbs.db
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/AG00086_.GIF
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/TEMPLATE_01_r4_c12.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/E-net.png
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/TEMPLATE_01_r4_c15.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-iq.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-ir.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-ug.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-mo.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-is.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-mp.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-it.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-uk.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-mt.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-mu.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-mw.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-bb.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-mx.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-my.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-bd.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-be.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-mz.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-us.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-bh.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-uy.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-yu.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-fi.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-bm.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-na.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-bn.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-bo.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/de-uk.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-br.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-fo.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-bs.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-ng.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-ni.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-jm.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-fr.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-vc.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-jo.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-nl.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/de-be.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-jp.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-za.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-ve.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-by.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-no.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-vi.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-ro.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-ca.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-zm.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-ru.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-nz.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-gb.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-ch.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-cl.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-ke.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-zw.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-cn.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-co.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-sa.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-sb.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-cr.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-se.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-cu.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-gr.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-sg.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-gt.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-gu.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-cy.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-si.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-kr.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-cz.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-sk.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-kw.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-kz.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-sr.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-de.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-lb.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-dk.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-pa.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-hk.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-do.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-pe.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-hn.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-lk.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-ph.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-hr.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-pk.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/de-de.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-pl.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-th.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-hu.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-00.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/Thumbs.db
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-lt.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-lv.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-pr.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-pt.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-ae.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-tr.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-ec.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-ag.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-tt.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-py.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-ee.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-tw.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-eg.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-id.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-ie.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-am.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-ma.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-ao.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-qa.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-ar.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-il.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-at.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-au.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-ua.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-in.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/flags/f0-es.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/navigatie_rij2_achtergrond.jpg
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/TEMPLATE_01_r4_c17.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/TEMPLATE_01_r4_c18.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/TEMPLATE_achtergrond.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/TEMPLATE_01_r4_c19.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/E-letter.png
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/pijlke_klein_links.gif
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/Kop_Links.png
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/E-net2.png
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/images/E-net3.png
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/Folder.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/doclistNew.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/Folder_Lijst.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/HR-Nieuws.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/doclistTools.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/TopMarquee.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/to copy for prod 526i CMS V3.0/doclistDocumenten.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/templateGlossary.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/displaydoc_V3.0.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/templateFAQ.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/displaydoc_prod2.6.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/doclistDocumentenDetail.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/index.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/displaydoc_for_compare.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/templateFreeContent.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/templateNews.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/displaydoc_ready_for_prod.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/content.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/doclistNew.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/template.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/index_V3.0.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/templateArticle.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/templateTeaser.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/HR-Nieuws.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/index_prod2.6.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/doclistTools.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/TopMarquee.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/doclistDocumenten.jsp
+	A	WebContent/jsp/testing/migrationV3.0/526i/index_for_compare.jsp
+	A	WebContent/jsp/testing/migrationV3.0/DocumentForm.jsp
+	A	WebContent/jsp/testing/partenastudent/index_v26.jsp
+	A	WebContent/jsp/testing/partenastudent/template2605.properties
+	A	WebContent/jsp/testing/partenastudent/template_new301.properties
+	A	WebContent/jsp/testing/partenastudent/template301.properties
+	A	WebContent/jsp/testing/partenastudent/index_v301.jsp
+	A	WebContent/jsp/testing/testloader.jsp
+	A	WebContent/jsp/testing/testsize.htm
+	A	WebContent/jsp/testing/_999_extranet/testsourcebullet500.html
+	A	WebContent/jsp/testing/_999_extranet/displaydoc.jsp
+	A	WebContent/jsp/testing/_999_extranet/testviewhtml500.html
+	A	WebContent/jsp/testing/_999_extranet/testsource500.html
+	A	WebContent/jsp/testing/_999_extranet/functions_std_dev.jsp
+	A	WebContent/jsp/testing/_999_extranet/functions_std.jsp
+	A	WebContent/jsp/testing/_samples/samplePrivateField2.jsp
+	A	WebContent/jsp/testing/testformats.jsp
+	A	WebContent/jsp/testing/testevent.htm
+	A	WebContent/jsp/testing/hearis/Authentication.java
+	A	WebContent/jsp/testing/hearis/DocumentDialog.htm
+	A	WebContent/jsp/testing/hearis/DocumentBrowser.jsp
+	A	WebContent/jsp/testing/hearis/DocumentPermissionDialog.htm
+	A	WebContent/jsp/testing/501i/loaddatacenter3610.js
+	A	WebContent/jsp/testing/501i/testNieuws_501icve.jsp
+	A	WebContent/jsp/testing/501i/template_501i.properties
+	A	WebContent/jsp/testing/501i/loaddatacenter.js
+	A	WebContent/jsp/testing/501i/template.properties
+	A	WebContent/jsp/testing/501i/template_t.properties
+	A	WebContent/jsp/testing/501i/template_mutdev.properties
+	A	WebContent/jsp/testing/501i/ozBeans.jar
+	A	WebContent/jsp/testing/501i/template_v3.6.0.0.properties
+	A	WebContent/jsp/testing/501i/testNieuwsi.jsp
+	A	WebContent/jsp/testing/testtable.htm
+	A	WebContent/jsp/DocumentBrowser.jsp
+	A	WebContent/jsp/UpLoad.jsp
+	A	WebContent/jsp/permissionlist.jsp
+	A	WebContent/jsp/preview/templateWelcome.jsp
+	A	WebContent/jsp/preview/templateFreeContent.jsp
+	A	WebContent/jsp/preview/templateNews.jsp
+	A	WebContent/jsp/preview/images/Copy of oiseaubleu.gif
+	A	WebContent/jsp/preview/images/foule515.jpg
+	A	WebContent/jsp/preview/images/suchen_on.gif
+	A	WebContent/jsp/preview/images/home_off.gif
+	A	WebContent/jsp/preview/images/hilfe_on.gif
+	A	WebContent/jsp/preview/images/ihr_versicherungsschutz_off.gif
+	A	WebContent/jsp/preview/images/home_on.gif
+	A	WebContent/jsp/preview/images/ihr_versicherungsschutz_on.gif
+	A	WebContent/jsp/preview/images/drucken_on.gif
+	A	WebContent/jsp/preview/images/freietxtblanc.gif
+	A	WebContent/jsp/preview/images/Freie.gif
+	A	WebContent/jsp/preview/images/ihr_gesundheit_off.gif
+	A	WebContent/jsp/preview/images/wir_uber_uns_off.gif
+	A	WebContent/jsp/preview/images/pointille.gif
+	A	WebContent/jsp/preview/images/logo.gif
+	A	WebContent/jsp/preview/images/faq_off.gif
+	A	WebContent/jsp/preview/images/kontakt_on.gif
+	A	WebContent/jsp/preview/images/Copy of freietxtblanc.gif
+	A	WebContent/jsp/preview/images/links_off.gif
+	A	WebContent/jsp/preview/images/120_91.gif
+	A	WebContent/jsp/preview/images/links_on.gif
+	A	WebContent/jsp/preview/images/mains515.jpg
+	A	WebContent/jsp/preview/images/oiseaubleuback.gif
+	A	WebContent/jsp/preview/images/Freie_photo.jpg
+	A	WebContent/jsp/preview/images/suchen_off.gif
+	A	WebContent/jsp/preview/images/oiseaubleu3.gif
+	A	WebContent/jsp/preview/images/oiseaubleu4.gif
+	A	WebContent/jsp/preview/images/hilfe_off.gif
+	A	WebContent/jsp/preview/images/oiseaubleu5.gif
+	A	WebContent/jsp/preview/images/fond_sous_menu.gif
+	A	WebContent/jsp/preview/images/drucken_off.gif
+	A	WebContent/jsp/preview/images/fur_off.gif
+	A	WebContent/jsp/preview/images/carre_off.gif
+	A	WebContent/jsp/preview/images/fond.gif
+	A	WebContent/jsp/preview/images/krankenkassetxtbleu.gif
+	A	WebContent/jsp/preview/images/fur_on.gif
+	A	WebContent/jsp/preview/images/carre_on.gif
+	A	WebContent/jsp/preview/images/carre.gif
+	A	WebContent/jsp/preview/images/ihr_gesundheit_on.gif
+	A	WebContent/jsp/preview/images/oiseaubleu.gif
+	A	WebContent/jsp/preview/images/versicherung_off.gif
+	A	WebContent/jsp/preview/images/wir_uber_uns_on.gif
+	A	WebContent/jsp/preview/images/pix6blanc_large.gif
+	A	WebContent/jsp/preview/images/versicherung_on.gif
+	A	WebContent/jsp/preview/images/faq_on.gif
+	A	WebContent/jsp/preview/images/pixelbleufonce.gif
+	A	WebContent/jsp/preview/images/kontakt_off.gif
+	A	WebContent/jsp/preview/images/freietxtblanc.jpg
+	A	WebContent/jsp/preview/images/pix7blanc_haut.gif
+	A	WebContent/jsp/preview/images/pixbleu.gif
+	A	WebContent/jsp/preview/images/trame.gif
+	A	WebContent/jsp/preview/images/fond_menu.gif
+	A	WebContent/jsp/preview/standardcmsparagraphestyle.css
+	A	WebContent/jsp/preview/template.jsp
+	A	WebContent/jsp/preview/style.css
+	A	WebContent/jsp/preview/templateArticle.jsp
+	A	WebContent/jsp/preview/templateGlossary.jsp
+	A	WebContent/jsp/preview/templateTeaser.jsp
+	A	WebContent/jsp/preview/templateTransaction.jsp
+	A	WebContent/jsp/preview/templateFAQ.jsp
+	A	WebContent/jsp/openmetatags.jsp
+	A	WebContent/jsp/redirectresetdocumentcache.jsp
+	A	WebContent/jsp/redirectresetcache.jsp
+	A	WebContent/jsp/displaydoc.jsp
+	A	WebContent/jsp/DocumentDialog.jsp
+	A	WebContent/jsp/DocumentForm.jsp
+	A	WebContent/jsp/mutapi/openmetatags.jsp
+	A	WebContent/jsp/mutapi/displaydoc.jsp
+	A	WebContent/jsp/mutapi/searchengine.jsp
+	A	WebContent/jsp/mutapi/css/stylesheet.css
+	A	WebContent/jsp/mutapi/css/stylesheet_print.css
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/Bs_gfdi_TreeElement.class.js
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/Bs_gfdi_Tree.class.js
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/readme.txt
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98_big/minus1.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98_big/folderOpen.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98_big/minus2.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98_big/empty.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98_big/minus3.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98_big/minus4.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98_big/plus1.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98_big/folderClosed.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98_big/plus2.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98_big/plus3.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98_big/leaf.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98_big/plus4.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98_big/line1.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98_big/line2.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98_big/line3.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/winXp/folder.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/winXp/page.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/winXp/minus1.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/winXp/minus2.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/winXp/minus3.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/winXp/minus4.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/winXp/minusbottom.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/winXp/cd.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/winXp/line.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/winXp/folderOpen.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/winXp/empty.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/winXp/join.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/winXp/controlPanel.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/winXp/plus1.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/winXp/myComputer.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/winXp/folderClosed.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/winXp/plus2.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/winXp/networkDriveConnected.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/winXp/networkDriveDisconnected.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/winXp/plus3.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/winXp/leaf.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/winXp/myDocuments.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/winXp/plus4.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/winXp/volume.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/winXp/line1.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/winXp/plusbottom.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/winXp/line2.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/winXp/desktop.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/winXp/line3.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/winXp/base.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98_noFolder/minus1.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98_noFolder/folderOpen.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98_noFolder/minus2.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98_noFolder/empty.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98_noFolder/minus3.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98_noFolder/minus4.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98_noFolder/plus1.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98_noFolder/folderClosed.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98_noFolder/plus2.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98_noFolder/plus3.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98_noFolder/leaf.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98_noFolder/plus4.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98_noFolder/line1.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98_noFolder/line2.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98_noFolder/line3.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/10.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/11.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/folderOpen.gif_____
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/folderOpen.gif__
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/_folderOpen.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/folderOpen.gif_
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/empty.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/plus1.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/html.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/plus2.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/folderClosed.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/plus3.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/orange/folderOpen.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/orange/folderClosed.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/plus4.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/line1.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/line2.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/line3.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/minus1.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/minus2.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/minus3.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/minus4.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/exclamation1.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/exclamation2.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/folderOpen.gif___
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/folderOpen.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/orangeLight/folderOpen.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/orangeLight/folderClosed.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/2.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/3.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/_folderClosed.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/5.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/6.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/leaf.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/8.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98blue/9.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/green/icon_tree_minus_green_no.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/green/icon_tree_minus_green_ro.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/green/icon_tree_plus_green_no.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/green/icon_tree_plus_green_ro.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/icon_tree_warning.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/white/icon_tree_minus_white_no.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/white/icon_tree_minus_white_ro.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/white/icon_tree_plus_white_no.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/white/icon_tree_plus_white_ro.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/icon_tree_chkblur.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/blue/minus1.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/blue/minus2.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/blue/minus3.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/blue/minus4.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/blue/empty.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/blue/plus1_over.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/blue/plus2_over.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/blue/plus3_over.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/blue/plus4_over.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/blue/plus1.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/blue/plus2.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/blue/plus3.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/blue/plus4.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/blue/minus1_over.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/blue/line1.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/blue/minus2_over.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/blue/minus3_over.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/blue/line2.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/blue/minus4_over.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/blue/line3.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_minus_red_ro.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_warning.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_minus_green_no.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_minus_white_no.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_plus_red_no.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_chkblur.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_minus_green_ro.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_minus_white_ro.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_plus_red_ro.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_plus_green_no.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_plus_white_no.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_chkactive.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_minus_red_no.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_plus_green_ro.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_plus_white_ro.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/red/icon_tree_minus_red_ro.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/red/icon_tree_plus_red_no.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/red/icon_tree_plus_red_ro.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/red/icon_tree_minus_red_no.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/bobby/icon_tree_chkactive.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/runningDots.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98/minus1.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98/minus2.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98/minus3.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98/minus4.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98/exclamation1.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98/exclamation2.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98/folderOpen.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98/empty.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98/plus1.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98/folderClosed.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98/plus2.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98/plus3.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98/plus4.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98/leaf.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98/line1.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98/line2.gif
+	A	WebContent/jsp/mutapi/blueshoes/components/tree/img/win98/line3.gif
+	A	WebContent/jsp/mutapi/blueshoes/core/lang/Bs_Array.class.js
+	A	WebContent/jsp/mutapi/blueshoes/core/lang/Bs_Cookie.lib.js
+	A	WebContent/jsp/mutapi/blueshoes/core/util/Bs_StopWatch.class.js
+	A	WebContent/jsp/mutapi/blueshoes/core/util/Bs_XmlParser.class.js
+	A	WebContent/jsp/mutapi/blueshoes/core/util/Bs_TitleToTooltip.lib.js
+	A	WebContent/jsp/mutapi/blueshoes/core/util/Bs_Wddx.class.js
+	A	WebContent/jsp/mutapi/blueshoes/core/util/Bs_String.lib.js
+	A	WebContent/jsp/mutapi/blueshoes/core/util/Bs_CsvUtil.class.js
+	A	WebContent/jsp/mutapi/blueshoes/core/util/Bs_Number.lib.js
+	A	WebContent/jsp/mutapi/index_old.jsp
+	A	WebContent/jsp/mutapi/resetdocumentcache.jsp
+	A	WebContent/jsp/mutapi/resetcache.jsp
+	A	WebContent/jsp/mutapi/index.jsp
+	A	WebContent/jsp/mutapi/functions.jsp
+	A	WebContent/jsp/mutapi/catalog.jsp
+	A	WebContent/jsp/mutapi/images/TEMPLATE_01_r1_c1.jpg
+	A	WebContent/jsp/mutapi/images/btn_zoek.gif
+	A	WebContent/jsp/mutapi/images/TEMPLATE-tab01.gif
+	A	WebContent/jsp/mutapi/images/TEMPLATE-tab02.gif
+	A	WebContent/jsp/mutapi/images/TEMPLATE-tab03.gif
+	A	WebContent/jsp/mutapi/images/TEMPLATE_01_r4_c20.gif
+	A	WebContent/jsp/mutapi/images/corner_topLeft.gif
+	A	WebContent/jsp/mutapi/images/pijlke_klein_onder.gif
+	A	WebContent/jsp/mutapi/images/corner_bottomLeft.gif
+	A	WebContent/jsp/mutapi/images/linker_navigatie_achtergrond.gif
+	A	WebContent/jsp/mutapi/images/TEMPLATE_01_r1_c13.jpg
+	A	WebContent/jsp/mutapi/images/pijlke_klein.gif
+	A	WebContent/jsp/mutapi/images/navigiatie_rij1_acthergrond.jpg
+	A	WebContent/jsp/mutapi/images/TEMPLATE_01_r1_c16.jpg
+	A	WebContent/jsp/mutapi/images/top_navigatie_acthergrond.gif
+	A	WebContent/jsp/mutapi/images/taal_achtergrond_old.jpg
+	A	WebContent/jsp/mutapi/images/login_btn.gif
+	A	WebContent/jsp/mutapi/images/test/body_top_sitemap.gif
+	A	WebContent/jsp/mutapi/images/test/body_top_search.gif
+	A	WebContent/jsp/mutapi/images/taal_achtergrond.jpg
+	A	WebContent/jsp/mutapi/images/spacer.gif
+	A	WebContent/jsp/mutapi/images/TEMPLATE_01_r4_c12.gif
+	A	WebContent/jsp/mutapi/images/TEMPLATE_01_r4_c15.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-iq.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-ir.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-ug.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-mo.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-is.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-mp.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-it.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-uk.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-mt.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-mu.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-mw.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-bb.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-mx.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-my.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-bd.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-be.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-mz.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-us.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-bh.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-uy.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-yu.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-fi.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-bm.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-na.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-bn.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-bo.gif
+	A	WebContent/jsp/mutapi/images/flags/de-uk.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-br.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-fo.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-bs.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-ng.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-ni.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-jm.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-fr.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-vc.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-jo.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-nl.gif
+	A	WebContent/jsp/mutapi/images/flags/de-be.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-jp.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-za.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-ve.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-by.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-no.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-vi.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-ro.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-ca.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-zm.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-ru.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-nz.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-gb.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-ch.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-cl.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-ke.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-zw.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-cn.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-co.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-sa.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-sb.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-cr.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-se.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-cu.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-gr.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-sg.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-gt.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-gu.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-cy.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-si.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-kr.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-cz.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-sk.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-kw.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-kz.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-sr.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-de.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-lb.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-dk.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-pa.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-hk.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-do.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-pe.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-hn.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-lk.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-ph.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-hr.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-pk.gif
+	A	WebContent/jsp/mutapi/images/flags/de-de.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-pl.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-th.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-hu.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-00.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-lt.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-lv.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-pr.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-pt.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-ae.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-tr.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-ec.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-ag.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-tt.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-py.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-ee.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-tw.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-eg.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-id.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-ie.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-am.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-ma.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-ao.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-qa.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-ar.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-il.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-at.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-au.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-ua.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-in.gif
+	A	WebContent/jsp/mutapi/images/flags/f0-es.gif
+	A	WebContent/jsp/mutapi/images/navigatie_rij2_achtergrond.jpg
+	A	WebContent/jsp/mutapi/images/TEMPLATE_01_r4_c17.gif
+	A	WebContent/jsp/mutapi/images/TEMPLATE_achtergrond.gif
+	A	WebContent/jsp/mutapi/images/TEMPLATE_01_r4_c18.gif
+	A	WebContent/jsp/mutapi/images/TEMPLATE_01_r4_c19.gif
+	A	WebContent/jsp/mutapi/images/pijlke_klein_links.gif
+	A	WebContent/jsp/mutapi/images/pix.gif
+	A	WebContent/jsp/mutapi/images/corner_topRight.gif
+	A	WebContent/jsp/mutapi/images/corner_bottomRight.gif
+	A	WebContent/jsp/mutapi/functions_ctm.jsp
+	A	WebContent/jsp/mutapi/utilities/printfriendly.htm
+	A	WebContent/jsp/mutapi/utilities/js/loaddatacenter_frame.js
+	A	WebContent/jsp/mutapi/utilities/js/loaddatacenter.js
+	A	WebContent/jsp/mutapi/utilities/printfriendly_old.htm
+	A	WebContent/jsp/mutapi/controler_std.jsp
+	A	WebContent/jsp/mutapi/functions_std.jsp
+	A	WebContent/jsp/log4jreload.jsp
+	A	WebContent/jsp/finder.jsp
+	A	WebContent/jsp/BrowseResource.jsp
+	A	WebContent/jsp/filemanager.jsp
+	A	WebContent/jsp/checkautouploaddir.jsp
+	A	WebContent/jsp/datanodelist.jsp
+	A	WebContent/jsp/resetlogin.jsp
+	A	WebContent/jsp/preview.jsp
+	A	WebContent/TableRowDlg.htm
+	A	WebContent/security.htm
+	A	WebContent/META-INF/MANIFEST.MF
+	A	WebContent/UpLoadDlg.htm
+	A	WebContent/previewcontent.htm
+	A	WebContent/TableCellDlg.htm
+	A	WebContent/server.xml
+	A	WebContent/index.html
+	A	WebContent/db2java.zip
+	A	WebContent/jt400.jar
+	A	WebContent/internet_searchengine.jar
+	A	deploy/mysql.jar
+	A	deploy/0_update_DEV_CMS_dgc.bat
+	A	deploy/1_sign_dbjar.bat
+	A	deploy/_CREATE_jars_and_sign.bat
+	A	deploy/createLicencejar.bat
+	A	deploy/mime.types
+	A	deploy/keystore.jks
+	A	deploy/createmutdev.bat
+	A	deploy/init.properties
+	A	deploy/log4j-1.2.8.jar
+	A	deploy/db2jcc.jar
+	A	deploy/0000_update_PROD_MUT_intranet.bat
+	A	deploy/0_update_DEV_CMS_dev2_withCMS_basic_resourcesCMSDEV2.bat
+	A	deploy/000_update_PROD_CMS_internet.bat
+	A	deploy/_backup/updatecmsprod.bat
+	A	deploy/_backup/update_internet1server_mutprod.bat
+	A	deploy/_backup/update_internet3server_mutprod.bat
+	A	deploy/_backup/2_update_181105_internetDEVserver_cmsintra.bat
+	A	deploy/_backup/update_internet5server_mutprod.bat
+	A	deploy/_backup/update_100505_internetDEVserver_cmsprod.bat
+	A	deploy/_backup/0_ updatecmsintra_VMware_DEV.bat
+	A	deploy/_backup/000_update_211205_intranetPRODserver_cmsprod.bat
+	A	deploy/_backup/updatecmsdev.bat
+	A	deploy/_backup/update_100505_internet1server_mutprod.bat
+	A	deploy/_backup/update_240305__internet3server_mutprod_only_jar.bat
+	A	deploy/_backup/update_220305__internet3server_mutprod.bat
+	A	deploy/_backup/update_110505_internet5server_mutprod.bat
+	A	deploy/_backup/updatemutprod.bat
+	A	deploy/_backup/update_100505_internetDEV_basic_server_mutprod.bat
+	A	deploy/_backup/000_update_DEV_jar_preview&release_basic_server_mutprod.bat
+	A	deploy/_backup/updateDEVmutintra.bat
+	A	deploy/_backup/update_240305_internet3server_cmsprod_only_jar.bat
+	A	deploy/_backup/1_update_181105_internetDEVserver_cmsprod.bat
+	A	deploy/_backup/update_220305_internet3server_cmsprod.bat
+	A	deploy/_backup/00_ update_DEV_mutdev_internet_cms_jar.bat
+	A	deploy/_backup/4_update_jar_preview&release_181105_internetDEV_jsp_server_mutprod.bat
+	A	deploy/_backup/create_signApplet_DEVcmsprod.bat
+	A	deploy/_backup/update_100505_internetDEV_jsp_server_mutprod.bat
+	A	deploy/_backup/sign jars.bat
+	A	deploy/_backup/updateDEVcmsintra.bat
+	A	deploy/_backup/000_update_211205_internetPRODserver_cmsprod.bat
+	A	deploy/_backup/update_110505__internet3server_mutprod.bat
+	A	deploy/_backup/update_internet1server_cmsprod.bat
+	A	deploy/_backup/update_internet3server_cmsprod.bat
+	A	deploy/_backup/update_internet5server_cmsprod.bat
+	A	deploy/_backup/00_ update_DEV_mutprod_internet_cms_jar.bat
+	A	deploy/_backup/3_update_jar_preview&release_181105_internetDEV_basic_server_mutprod.bat
+	A	deploy/_backup/0_ update_DEV_cmsdev.bat
+	A	deploy/_backup/update_100505_internet1server_cmsprod.bat
+	A	deploy/_backup/update_110505_internet3server_cmsprod.bat
+	A	deploy/_backup/updatemutdev.bat
+	A	deploy/_backup/update_110505_internet5server_cmsprod.bat
+	A	deploy/_backup/updatemut999prod.bat
+	A	deploy/_backup/update_temp_for_internet3server_mutprod.bat
+	A	deploy/internet_cms.jar
+	A	deploy/template.properties
+	A	deploy/internet_cms_applet_unsigned.jar
+	A	deploy/00_update_DEV_MUT_dev.bat
+	A	deploy/test_verify.bat
+	A	deploy/000_update_PROD_CMS_dgc.bat
+	A	deploy/helponiniandexternjar.txt
+	A	deploy/temp.bat
+	A	deploy/createcmsdev.bat
+	A	deploy/internet_cms_applet.jar
+	A	deploy/0_update_DEV_CMS_interIntranet.bat
+	A	deploy/0000_update_PROD_MUT_dgc.bat
+	A	deploy/icom_licence.bat
+	A	deploy/00_update_DEV_MUT_interIntranet.bat
+	A	deploy/icom_licence.jar
+	A	deploy/xpasearch.jar
+	A	deploy/gfdi_ebusiness_foundation.jar
+	A	deploy/db2jcc_license_cu.jar
+	A	deploy/db2jcc_javax.jar
+	A	deploy/test.txt
+	A	deploy/000_update_PROD_CMS_intranet.bat
+	A	deploy/java.policy.applet
+	A	deploy/licence.mf
+	A	deploy/test_sign.bat
+	A	deploy/test_sign_other.bat
+	A	deploy/scheduled tasks/0000_schedule_PROD_MUT_internet.bat
+	A	deploy/scheduled tasks/0_schedule_DEV_CMS_interIntranet.bat
+	A	deploy/scheduled tasks/00_schedule_DEV_MUT_interIntranet.bat
+	A	deploy/scheduled tasks/000_schedule_PROD_CMS_intranet.bat
+	A	deploy/scheduled tasks/0000_schedule_PROD_MUT_intranet.bat
+	A	deploy/scheduled tasks/env_param.bat
+	A	deploy/scheduled tasks/000_schedule_PROD_CMS_internet.bat
+	A	deploy/0000_update_PROD_MUT_internet.bat
+	A	deploy/db2java.zip
+	A	deploy/keys/keystore.jks.qer
+	A	deploy/keys/GFDI1.crt
+	A	deploy/keys/primary_CA_normalised_PEM.txt
+	A	deploy/keys/GFDI2.crt
+	A	deploy/keys/GFDI3.crt
+	A	deploy/keys/certreq.arm
+	A	deploy/keys/404F285D_0.p7c
+	A	deploy/keys/certreq22.arm
+	A	deploy/keys/keystore.jks
+	A	deploy/keys/gfdi24A71.bdr
+	A	deploy/keys/GFDI.p7c
+	A	deploy/keys/404F24BF_0.p7c
+	A	deploy/keys/404F2732_0.p7c
+	A	deploy/keys/certreq1.arm
+	A	deploy/keys/certiposttrust.p7b
+	A	deploy/keys/certreq2.arm
+	A	deploy/keys/certreq3.arm
+	A	deploy/keys/certipostprimary.p7b
+	A	deploy/keys/NC_Primary+Root.p7b
+	A	deploy/keys/gfdi.p12
+	A	deploy/keys/QC_Primary+Root.p7b
+	A	deploy/keys/gfdi24A71.crq
+	A	deploy/keys/root_CA_normalisd_PEM.txt
+	A	deploy/jt400.jar
+	A	deploy/web.xml
+	A	deploy/internet_searchengine.jar
+r3124 = 7535d46b3b14390e8099fed78d13bd9f7d0fe85f (refs/remotes/origin/trunk)
+	M	WebContent/style.css
+	M	WebContent/jsp/UpLoadDlg.jsp
+	M	WebContent/jsp/DocumentFormFCKoff.jsp
+	M	WebContent/jsp/DocumentForm.jsp
+r3152 = a3c3a8dda9c8e79e06de69d9f52fe66c751b8430 (refs/remotes/origin/trunk)
+	M	WebContent/cmsFCKoff.js
+r3153 = 520c5a58f090824d070698465f612b984c85b999 (refs/remotes/origin/trunk)
+	A	img/UI_OM_top_left_corner.gif
+	A	img/UI_bold.gif
+	A	img/UI_EnlargeImage.gif
+	A	img/UI_image.gif
+	A	img/UI_UpLoadOld.gif
+	A	img/UI_Language.gif
+	A	img/upload.gif
+	A	img/corner_topLeft.gif
+	A	img/UI_globe.gif
+	A	img/checked.gif
+	A	img/UI_redo.gif
+	A	img/corner_bottomLeft.gif
+	A	img/Copy of corner_topRight.gif
+	A	img/UI_attachement.gif
+	A	img/UI_viewHTML.gif
+	A	img/UI_attachement_article.gif
+	A	img/UI_pasteHTML.gif
+	A	img/explorer.gif
+	A	img/settings.gif
+	A	img/UI_LoadHTML.gif
+	A	img/UI_note.gif
+	A	img/site.gif
+	A	img/bookmark.gif
+	A	img/Copy of corner_topLeft.gif
+	A	img/Copy of corner_bottomLeft.gif
+	A	img/finder.gif
+	A	img/lock1.gif
+	A	img/lock2.gif
+	A	img/UI_subscript.gif
+	A	img/UI_outdent.gif
+	A	img/UI_superscript.gif
+	A	img/UI_underline.gif
+	A	img/updated.gif
+	A	img/UI_new.gif
+	A	img/UI_note_rrr.gif
+	A	img/UI_info.gif
+	A	img/unchecked.gif
+	A	img/inprogress.gif
+	A	img/UI_save.gif
+	A	img/UI_backcolor.gif
+	A	img/deletered.gif
+	A	img/delete.gif
+	A	img/UI_italic.gif
+	A	img/UI_leftalign.gif
+	A	img/renamefolder.gif
+	A	img/folderclosed.gif
+	A	img/publish.gif
+	A	img/folderopened.gif
+	A	img/UI_HR.gif
+	A	img/shortcutfolder.gif
+	A	img/UI_anchor.gif
+	A	img/UI_OM_expand.gif
+	A	img/UI_form-copy.gif
+	A	img/UI_Language_small.gif
+	A	img/UI_paste.gif
+	A	img/corner_bottomRight.gif
+	A	img/entiresite.gif
+	A	img/loading.gif
+	A	img/UI_indent.gif
+	A	img/UI_numberlist.gif
+	A	img/brokenlinks.gif
+	A	img/UI_note_green.gif
+	A	img/UI_Table.gif
+	A	img/UI_rightalign.gif
+	A	img/newfolder.gif
+	A	img/brunner.jpg
+	A	img/UI_centeralign.gif
+	A	img/Copy of corner_bottomRight.gif
+	A	img/UI_open.gif
+	A	img/deletefolder.gif
+	A	img/UI_UpLoadOld1.gif
+	A	img/UI_tool_vertical.gif
+	A	img/warn.gif
+	A	img/UI_note_bleu.gif
+	A	img/login_btn.gif
+	A	img/UI_bulletlist.gif
+	A	img/UI_UpLoad.gif
+	A	img/preview.gif
+	A	img/Thumbs.db
+	A	img/UI_abc.gif
+	A	img/preloading.gif
+	A	img/cancel.gif
+	A	img/UI_InterLine.gif
+	A	img/new.gif
+	A	img/Copy of login_btn.gif
+	A	img/UI_note_red.gif
+	A	img/cool.gif
+	A	img/UI_LoadHTMLblack.gif
+	A	img/refresh.gif
+	A	img/accept.gif
+	A	img/UI_OM_top_right_corner.gif
+	A	img/UI_form-strike.gif
+	A	img/back.gif
+	A	img/pix.gif
+	A	img/open.gif
+	A	img/shortcutdoc.gif
+	A	img/UI_undo.gif
+	A	img/UI_fontcolor.gif
+	A	img/UI_tool-cut.gif
+	A	img/UI_justifyalign.gif
+	A	img/copying.gif
+	A	img/corner_topRight.gif
+r3155 = 8a48263c6c742474490df452aeeb54bc96bd6c8d (refs/remotes/origin/trunk)
+	M	WebContent/WEB-INF/web.xml
+r3156 = 4a18d1e3d2eb3e1c8bf710850af8aa613afe9a1d (refs/remotes/origin/trunk)
+	M	.project
+	A	WebContent/jsp/tools/getstylesheets.jsp
+	A	WebContent/jsp/testing/css/mm_travel2_modif.css
+r3157 = 8e9d24945ab5184105d8ae05b692ba2d475eddac (refs/remotes/origin/trunk)
+	M	WebContent/cms.js
+r3158 = 3f1e798f5a7947d345c1363ddc4132260e1ae174 (refs/remotes/origin/trunk)
+	M	WebContent/cms.js
+r3160 = 7562c30653149d4354243b24159f1457c2e59a81 (refs/remotes/origin/trunk)
+	A	WebContent/jsp/testing/_testjsp/functions_std_testinfofoldername.jsp
+r3207 = 30f595882e69b5b4ce1a8efda7e2d34c197605bb (refs/remotes/origin/trunk)
+	M	WebContent/cmsFCKoff.js
+r3299 = 83fab8c035760df3dba7ebd0f300bbf7db0626d9 (refs/remotes/origin/trunk)
+	M	WebContent/jsp/redirectresetdocumentcache.jsp
+r3387 = 77173e5be472626a3dd9c5970d57268844e2a8dd (refs/remotes/origin/trunk)
+	M	WebContent/jsp/DocumentBrowser.jsp
+r3388 = 8720ec9939d114585bae8a364676a863dd12b434 (refs/remotes/origin/trunk)
+	M	src/gfdi/server/internet/cms/CMSFilter.java
+r3402 = 28a00f6cb516574964bbddbccef06584a1826da9 (refs/remotes/origin/trunk)
+	A	WebContent/jsp/tools/statistiekfolderlist.jsp
+	A	WebContent/jsp/tools/statistiekmetadatalist.jsp
+r3491 = c382dfa8228beb17b7a16be3bf978cc65f6bcdf8 (refs/remotes/origin/trunk)
+	M	WebContent/jsp/tools/testfolderpermission.jsp
+	M	WebContent/jsp/DocumentBrowser.jsp
+r3549 = 427ff78c2ce068d53d5e35c0c9ada17826a9f120 (refs/remotes/origin/trunk)
+	A	WebContent/jsp/tools/testimportdoc.jsp
+	A	WebContent/jsp/tools/testimportbinfile.jsp
+	A	WebContent/jsp/testing/_999_extranet/treeview2.html
+	A	WebContent/jsp/testing/_999_extranet/subscribeajax.jsp
+	A	WebContent/jsp/testing/_999_extranet/treeview21.jsp
+	A	WebContent/jsp/testing/_999_extranet/treeview22.jsp
+	A	WebContent/jsp/testing/_999_extranet/treeview23.jsp
+	A	WebContent/jsp/testing/_999_extranet/subscribe.js
+	A	WebContent/jsp/testing/_999_extranet/treeviewtest.html
+	A	WebContent/jsp/testing/_999_extranet/treeview.html
+	A	WebContent/jsp/testing/_999_extranet/cms.js
+	A	WebContent/jsp/testing/_999_extranet/fckeditorcode_ie.js
+	A	WebContent/jsp/testing/_999_extranet/ajax2.jsp
+	A	WebContent/jsp/testing/_999_extranet/GIN213.xml
+	A	WebContent/jsp/testing/_999_extranet/CFR801.xml
+	A	WebContent/jsp/testing/_999_extranet/add_try_catch_onselection_fckeditorcode_ie.js
+	A	WebContent/jsp/testing/_999_extranet/GRA915.xml
+	A	WebContent/jsp/testing/_999_extranet/treeview2.jsp
+	A	WebContent/jsp/testing/_999_extranet/testfoldersubscribe.jsp
+	A	WebContent/jsp/testing/_999_extranet/subscribe.jsp
+	A	WebContent/jsp/testing/_999_extranet/ajax.jsp
+r3550 = 2140719569d2eea0de638bd80cd65d2ab9929e5d (refs/remotes/origin/trunk)
+	M	WebContent/cms.js
+r3573 = 83490b7c93664a9fcd3a000fdc8f3ef6e1c8416c (refs/remotes/origin/trunk)
+	M	WebContent/cms.js
+r3578 = 3f902cfb3e4b00aea82dcf617495db5de7d1af43 (refs/remotes/origin/trunk)
+	M	WebContent/jsp/tools/testimportbinfile.jsp
+r3868 = f7bba5bf5855b05a757296b74e11c85dd3b88c92 (refs/remotes/origin/trunk)
+	M	WebContent/jsp/tools/change_string_indoc.jsp
+	A	WebContent/jsp/tools/getinfo_doc.jsp
+r3869 = e7a670a782a4d2f6b009f749954a4bf0ee22d2f2 (refs/remotes/origin/trunk)
+	M	WebContent/WEB-INF/lib/jt400.jar
+r3924 = f9908cc84f85c115da7a9690170b06eb6c02547c (refs/remotes/origin/trunk)
+	M	src/gfdi/server/internet/cms/SettingBF.java
+r4352 = 83590d6d885a78faaa64146dff8d7648d84d3532 (refs/remotes/origin/trunk)
+	M	src/gfdi/server/internet/cms/Authentication.java
+r4353 = e9a6ad7e5e462741f1976bf8340bf2b8ac533029 (refs/remotes/origin/trunk)
+	A	db2/migrate_internetDBv9/setup_internet_to_DBv8.bat
+	A	db2/migrate_internetDBv9/setup_internet_to_DBv9.bat
+	A	db2/migrate_internetDBv9/jarDB8/db2jcc.jar
+	A	db2/migrate_internetDBv9/jarDB8/db2java.jar
+	A	db2/migrate_internetDBv9/jarDB8/db2jcc_javax.jar
+	A	db2/migrate_internetDBv9/jarDB8/db2jcc_license_cu.jar
+	A	db2/migrate_internetDBv9/jarDB9/db2jcc.jar
+	A	db2/migrate_internetDBv9/jarDB9/db2java.jar
+	A	db2/migrate_internetDBv9/jarDB9/db2jcc_javax.jar
+	A	db2/migrate_internetDBv9/jarDB9/db2jcc_license_cu.jar
+	A	db2/migrate_internetDBv9/prepaire_init_properties.bat
+r4354 = 6d81ca7e939c1f6c29862533fd591d62086f4df4 (refs/remotes/origin/trunk)
+	M	WebContent/jsp/tools/testimportbinfile.jsp
+	A	WebContent/jsp/tools/importbinfile_GFDIEXTRA_DEV_PROD.jsp
+r4355 = b8c932a6d6005f9624640b1e39666652b08cd40d (refs/remotes/origin/trunk)
+	A	db2/DB2_CMS_UPGRADESITE_V3.x_V4.0.txt
+	A	src/gfdi/server/internet/cms/batch/AlertSendSubscribedDocs.java
+	A	src/gfdi/server/internet/cms/SubscribeCriteria.java
+	M	src/gfdi/server/internet/cms/PermissionSite.java
+	M	src/gfdi/server/internet/cms/MetaData.java
+	M	src/gfdi/server/internet/cms/SettingAccessor.java
+	A	src/gfdi/server/internet/cms/SubscribeAcessor.java
+	M	src/gfdi/server/internet/cms/DocumentFinderCMS.java
+	A	src/gfdi/server/internet/cms/SubscribeFinder.java
+	A	src/gfdi/server/internet/cms/SubscribePK.java
+	A	src/gfdi/server/internet/cms/SubscribeList.java
+	M	src/gfdi/server/internet/cms/DocumentQO.java
+	M	src/gfdi/server/internet/cms/PermissionFinder.java
+	A	src/gfdi/server/internet/cms/Subscribe.java
+	A	src/gfdi/server/internet/cms/SubscribeQO.java
+	M	src/gfdi/server/internet/cms/DocumentBF.java
+	A	src/gfdi/server/internet/cms/SubscribeBF.java
+	M	src/gfdi/client/internet/cms/DocumentBrowserPanel.java
+	A	src/gfdi/client/internet/cms/SubscribePanel.java
+	M	WebContent/cms.js
+	M	WebContent/cmsFCKoff.js
+	M	WebContent/jsp/js/versionAndResources.js
+	A	WebContent/jsp/mutapi/subscribe/geCMS_recipientPattern_old.jsp
+	A	WebContent/jsp/mutapi/subscribe/geCMS_recipientPattern_test.jsp
+	A	WebContent/jsp/mutapi/subscribe/geCMS_subscribeController_std.jsp
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/Bs_gfdi_TreeElement.class.js
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/Bs_gfdi_Tree.class.js
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/readme.txt
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98_big/minus1.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98_big/folderOpen.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98_big/minus2.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98_big/empty.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98_big/minus3.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98_big/minus4.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98_big/plus1.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98_big/folderClosed.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98_big/plus2.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98_big/plus3.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98_big/leaf.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98_big/plus4.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98_big/line1.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98_big/line2.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98_big/line3.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/winXp/folder.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/winXp/page.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/winXp/minus1.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/winXp/minus2.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/winXp/minus3.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/winXp/minus4.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/winXp/minusbottom.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/winXp/cd.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/winXp/line.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/winXp/folderOpen.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/winXp/empty.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/winXp/join.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/winXp/controlPanel.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/winXp/plus1.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/winXp/myComputer.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/winXp/folderClosed.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/winXp/plus2.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/winXp/networkDriveConnected.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/winXp/networkDriveDisconnected.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/winXp/plus3.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/winXp/leaf.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/winXp/myDocuments.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/winXp/plus4.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/winXp/volume.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/winXp/line1.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/winXp/plusbottom.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/winXp/line2.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/winXp/desktop.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/winXp/line3.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/winXp/base.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98_noFolder/minus1.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98_noFolder/folderOpen.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98_noFolder/minus2.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98_noFolder/empty.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98_noFolder/minus3.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98_noFolder/minus4.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98_noFolder/plus1.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98_noFolder/folderClosed.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98_noFolder/plus2.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98_noFolder/plus3.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98_noFolder/leaf.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98_noFolder/plus4.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98_noFolder/line1.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98_noFolder/line2.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98_noFolder/line3.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/10.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/11.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/folderOpen.gif_____
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/folderOpen.gif__
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/_folderOpen.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/folderOpen.gif_
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/empty.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/plus1.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/html.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/plus2.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/folderClosed.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/plus3.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/orange/folderOpen.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/orange/folderClosed.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/plus4.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/line1.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/line2.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/line3.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/minus1.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/minus2.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/minus3.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/minus4.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/exclamation1.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/exclamation2.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/folderOpen.gif___
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/folderOpen.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/orangeLight/folderOpen.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/orangeLight/folderClosed.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/2.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/3.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/_folderClosed.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/5.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/6.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/leaf.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/8.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98blue/9.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/green/icon_tree_minus_green_no.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/green/icon_tree_minus_green_ro.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/green/icon_tree_plus_green_no.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/green/icon_tree_plus_green_ro.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/icon_tree_warning.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/white/icon_tree_minus_white_no.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/white/icon_tree_minus_white_ro.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/white/icon_tree_plus_white_no.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/white/icon_tree_plus_white_ro.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/icon_tree_chkblur.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/blue/minus1.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/blue/minus2.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/blue/minus3.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/blue/minus4.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/blue/empty.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/blue/plus1_over.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/blue/plus2_over.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/blue/plus3_over.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/blue/plus4_over.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/blue/plus1.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/blue/plus2.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/blue/plus3.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/blue/plus4.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/blue/minus1_over.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/blue/line1.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/blue/minus2_over.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/blue/minus3_over.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/blue/line2.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/blue/minus4_over.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/blue/line3.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_minus_red_ro.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_warning.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_minus_green_no.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_minus_white_no.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_plus_red_no.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_chkblur.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_minus_green_ro.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_minus_white_ro.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_plus_red_ro.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_plus_green_no.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_plus_white_no.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_chkactive.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_minus_red_no.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_plus_green_ro.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/fixed_icons/icon_tree_plus_white_ro.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/red/icon_tree_minus_red_ro.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/red/icon_tree_plus_red_no.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/red/icon_tree_plus_red_ro.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/red/icon_tree_minus_red_no.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/bobby/icon_tree_chkactive.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/runningDots.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98/minus1.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98/minus2.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98/minus3.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98/minus4.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98/exclamation1.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98/exclamation2.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98/folderOpen.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98/empty.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98/plus1.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98/folderClosed.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98/plus2.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98/plus3.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98/plus4.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98/leaf.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98/line1.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98/line2.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/tree/img/win98/line3.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/checkbox/Bs_Checkbox.class.js
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/checkbox/readme.txt
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/checkbox/img/win2k_noBorder/enabled_2.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/checkbox/img/win2k_noBorder/disabled_0.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/checkbox/img/win2k_noBorder/enabled_0.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/checkbox/img/win2k_noBorder/enabled_1.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/checkbox/img/trueFalse/enabled_2.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/checkbox/img/trueFalse/enabled_0.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/checkbox/img/trueFalse/enabled_1.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/checkbox/img/win2k/enabled_2.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/checkbox/img/win2k/disabled_0.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/checkbox/img/win2k/disabled_1.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/checkbox/img/win2k/disabled_2.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/checkbox/img/win2k/enabled_0.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/checkbox/img/win2k/enabled_1.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/checkbox/img/bobby/enabled_2.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/checkbox/img/bobby/enabled_0_over.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/checkbox/img/bobby/enabled_1_over.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/checkbox/img/bobby/disabled_0.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/checkbox/img/bobby/enabled_2_over.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/checkbox/img/bobby/disabled_1.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/checkbox/img/bobby/disabled_2.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/checkbox/img/bobby/enabled_0.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/checkbox/img/bobby/enabled_1.gif
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/checkbox/examples/example1.html
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/checkbox/examples/example2.html
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/checkbox/examples/benchmark_noFramework.html
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/checkbox/examples/example1_noFramework.html
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/checkbox/examples/example2_noFramework.html
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/components/checkbox/examples/benchmark.html
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/core/lang/Bs_Misc.lib.js
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/core/lang/Bs_Array.class.js
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/core/lang/Bs_Cookie.lib.js
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/core/util/Bs_StopWatch.class.js
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/core/util/Bs_XmlParser.class.js
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/core/util/Bs_TitleToTooltip.lib.js
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/core/util/Bs_Wddx.class.js
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/core/util/Bs_String.lib.js
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/core/util/Bs_CsvUtil.class.js
+	A	WebContent/jsp/mutapi/subscribe/blueshoes/core/util/Bs_Number.lib.js
+	A	WebContent/jsp/mutapi/subscribe/geCMS_recipientPattern.jsp
+	A	WebContent/jsp/mutapi/subscribe/geCMS_subscribe.jsp
+	A	WebContent/jsp/mutapi/subscribe/js/geCMS_subscribe.js
+	A	WebContent/jsp/mutapi/subscribe/geCMS_subscribeajax.jsp
+	M	WebContent/jsp/mutapi/displaydoc.jsp
+	A	deploy/batch/samplegok_batchPROD_v4.0.bat
+	A	deploy/batch/launch_batchDEV_CMSv4.0.bat
+	M	deploy/0_update_DEV_CMS_dev2_withCMS_basic_resourcesCMSDEV2.bat
+	A	deploy/installation CMS4.0/installprocedure.txt
+r4356 = 6579292fe2b6312595403b43dc452488d0957aeb (refs/remotes/origin/trunk)
+	M	WebContent/jsp/finder.jsp
+r4357 = bead95a250d0dea5ddaa5b82c1f2df80829774c6 (refs/remotes/origin/trunk)
+	A	deploy/batch/launch_batchINTRANET_CMSv4.0.bat
+r4397 = 147c03edae367a49a5c1c89e8393f5e980459b60 (refs/remotes/origin/trunk)
+	M	deploy/internet_cms.jar
+	M	deploy/internet_cms_applet_unsigned.jar
+	M	deploy/internet_cms_applet.jar
+r4398 = 6c2c4b58d5026166b8f480401c880e6d260a8fdf (refs/remotes/origin/trunk)
+	M	deploy/0000_update_PROD_MUT_intranet.bat
+	M	deploy/0_update_DEV_CMS_dev2_withCMS_basic_resourcesCMSDEV2.bat
+	M	deploy/000_update_PROD_CMS_intranet.bat
+	M	deploy/jt400.jar
+r4399 = 29a1e45fbf4de7c667a928f07d0747b1aa07145f (refs/remotes/origin/trunk)
+	M	WebContent/internet_cms_applet.jar
+r4400 = 4e696ddab5882a104a1c09351840300580954dc8 (refs/remotes/origin/trunk)
+	M	WebContent/jsp/tools/importbinfile_GFDIEXTRA_DEV_PROD.jsp
+	A	WebContent/jsp/testing/_999_extranet/test new layoutsite/search.jsp
+	A	WebContent/jsp/testing/_999_extranet/test new layoutsite/faq.jsp
+	A	WebContent/jsp/testing/_999_extranet/test new layoutsite/advancedSearch_originCD.jsp
+	A	WebContent/jsp/testing/_999_extranet/test new layoutsite/domains.jsp
+	A	WebContent/jsp/testing/_999_extranet/test new layoutsite/advancedSearch.jsp
+	A	WebContent/jsp/testing/_999_extranet/test new layoutsite/displaydoc.jsp
+	A	WebContent/jsp/testing/_999_extranet/test new layoutsite/previewGFDI.jsp
+	A	WebContent/jsp/testing/_999_extranet/test new layoutsite/previewGFDI2.jsp
+	A	WebContent/jsp/testing/_999_extranet/test new layoutsite/breadCrumbTrail_testcve.jsp
+	A	WebContent/jsp/testing/_999_extranet/test new layoutsite/templateArticle.jsp
+	A	WebContent/jsp/testing/_999_extranet/test new layoutsite/search_originCD.jsp
+	M	WebContent/jsp/mutapi/subscribe/geCMS_subscribeajax.jsp
+r4401 = d1df33a27a5001c5c99b479e74205a066295d810 (refs/remotes/origin/trunk)
+	M	WebContent/mime.types
+	A	WebContent/jsp/testing/_0 modified files for domain changes/displaydoc.jsp
+	D	WebContent/jsp/testing/_999_extranet/GIN213.xml
+	D	WebContent/jsp/testing/_999_extranet/CFR801.xml
+	D	WebContent/jsp/testing/_999_extranet/GRA915.xml
+	A	WebContent/jsp/testing/501i/501.html
+	A	WebContent/jsp/testing/501i/501t2.html
+W: -empty_dir: trunk/cms_project/WebContent/jsp/testing/_999_extranet/CFR801.xml
+W: -empty_dir: trunk/cms_project/WebContent/jsp/testing/_999_extranet/GIN213.xml
+W: -empty_dir: trunk/cms_project/WebContent/jsp/testing/_999_extranet/GRA915.xml
+r4402 = 32824f89efff1fef5fe4229ac4d1c8081d4c0680 (refs/remotes/origin/trunk)
+	M	src/gfdi/server/internet/cms/PermissionSite.java
+	M	src/gfdi/server/internet/cms/DocumentQO.java
+	M	src/gfdi/server/internet/cms/SubscribeBF.java
+	M	src/gfdi/client/internet/cms/ButtletUpdate.java
+r4406 = 03e1d6b163b60ddcc5ce038ca139242b5b0ca136 (refs/remotes/origin/trunk)
+	M	src/gfdi/server/internet/cms/batch/AlertSendSubscribedDocs.java
+r4508 = ccefe75261b236d4534f8d6ceec3725c591dcbab (refs/remotes/origin/trunk)
+	M	src/gfdi/server/internet/cms/batch/AlertSendSubscribedDocs.java
+r4612 = dbeec63372c968e925aab90d64cde2760defcbbe (refs/remotes/origin/trunk)
+	M	src/gfdi/server/internet/cms/BinaryStreamServlet.java
+r4613 = c527df94f84626e59c67785f81187c3ddc20fa42 (refs/remotes/origin/trunk)
+	M	src/gfdi/server/internet/cms/batch/AlertSendSubscribedDocs.java
+r4738 = aff4cfed5e72fd0ab6b6d9af27cb6c40766059cd (refs/remotes/origin/trunk)
+	M	src/gfdi/server/internet/cms/SubscribeBF.java
+r4739 = f90a977c4e0102376e0e98e28237e99abf214b19 (refs/remotes/origin/trunk)
+	M	src/gfdi/server/internet/cms/SubscribeBF.java
+r4767 = 9013c9c34e9092bce8ae3ff45ac5c117b7962b0a (refs/remotes/origin/trunk)
+	M	src/gfdi/server/internet/cms/batch/AlertSendSubscribedDocs.java
+r4768 = ef5789ef729bf6255005da54bf4610fa64819381 (refs/remotes/origin/trunk)
+	A	WebContent/jsp/tools/statistiekglobal.jsp
+r4820 = 94c0f1085149cc26f198fe782f9ff5f35720f112 (refs/remotes/origin/trunk)
+	M	src/gfdi/server/internet/cms/batch/AlertSendSubscribedDocs.java
+r4922 = ddd5e4e80e71629f0a359d104daa83a8eaf873f4 (refs/remotes/origin/trunk)
+	M	WebContent/jsp/tools/statistiekglobal.jsp
+	A	WebContent/jsp/tools/statistieksubscribelist.jsp
+	A	WebContent/jsp/testing/400/displaydoc_new.jsp
+	A	WebContent/jsp/testing/400/displaydoc_old.jsp
+	A	WebContent/jsp/testing/500/testdoc.html
+	A	WebContent/jsp/testing/_0 modified files for domain changes/com/catalog_old.jsp
+	A	WebContent/jsp/testing/_0 modified files for domain changes/com/catalog.jsp
+	A	WebContent/jsp/testing/_0 modified files for domain changes/com/displaydocold.jsp
+	A	WebContent/jsp/testing/_0 modified files for domain changes/com/displaydoc.jsp
+	D	WebContent/jsp/mutapi/subscribe/geCMS_recipientPattern_old.jsp
+	D	WebContent/jsp/mutapi/subscribe/geCMS_recipientPattern_test.jsp
+W: -empty_dir: trunk/cms_project/WebContent/jsp/mutapi/subscribe/geCMS_recipientPattern_old.jsp
+W: -empty_dir: trunk/cms_project/WebContent/jsp/mutapi/subscribe/geCMS_recipientPattern_test.jsp
+r5103 = 69c647bfdef2cd2fae7449d03f8888034f26466b (refs/remotes/origin/trunk)
+	M	WebContent/jsp/FCKeditor/editor/_source/internals/fck_1_ie.js
+	M	WebContent/jsp/FCKeditor/editor/js/fckeditorcode_ie.js
+r5186 = 433a2b60dfbdb4699fe53559b340762df891f56b (refs/remotes/origin/trunk)
+	M	WebContent/jsp/FCKeditor/editor/_source/internals/fck_1_ie.js
+	M	WebContent/jsp/FCKeditor/editor/js/fckeditorcode_ie.js
+r5188 = 1b122daa0ce2793b7c2e8e55ce0630f7f4d290d0 (refs/remotes/origin/trunk)
+	A	deploy/batch/launch_batchINTERNET_CMSv4.0.bat
+r5232 = 6836f678e6452a0b25a48895b339d87c4457cb95 (refs/remotes/origin/trunk)
+	M	WebContent/jsp/FCKeditor/editor/js/fckeditorcode_ie.js
+	A	WebContent/jsp/testing/501i/base.css
+r5235 = 79df01930045a13a45bc33931aeb689cc922ae31 (refs/remotes/origin/trunk)
+	M	WebContent/jsp/FCKeditor/editor/_source/internals/fck_1_ie.js
+r5239 = 1e8347ae0ab2d1e60560b2e723e04d6468fd197a (refs/remotes/origin/trunk)
+	M	WebContent/cmsFCKoff.js
+	M	WebContent/jsp/FCKeditor/editor/js/fckeditorcode_ie.js
+r5324 = a4abd3a8859a1c8aca83de86fe124d53134fdb13 (refs/remotes/origin/trunk)
+	A	WebContent/jsp/tools/changedatanode.jsp
+	A	WebContent/jsp/tools/checksitemaptree.jsp
+r5325 = cb0da358a072dc9b3920037c8522258a0b7b94e5 (refs/remotes/origin/trunk)
+	M	src/gfdi/server/internet/cms/SiteMapBF.java
+	M	src/gfdi/server/internet/cms/SiteMapAccessor.java
+	M	src/gfdi/client/internet/cms/DocumentBrowserPanel.java
+r5352 = 8effef2ae5ae17e95782cda625ae2e41b759a201 (refs/remotes/origin/trunk)
+	M	WebContent/jsp/js/versionAndResources.js
+r5353 = 8aa704c0e98790c8422c955d9f4ba2b8d2c9d123 (refs/remotes/origin/trunk)
+	M	WebContent/cmsFCKoff.js
+	M	WebContent/jsp/tools/changedatanode.jsp
+	M	WebContent/jsp/tools/checksitemaptree.jsp
+	M	WebContent/jsp/FCKeditor/editor/_source/internals/fck_2.js
+	M	WebContent/jsp/FCKeditor/editor/js/fckeditorcode_ie.js
+r5358 = eb1010c4ab38960a2cec686eb7dc03323a43a3cf (refs/remotes/origin/trunk)
+	A	deploy/installation CMS4.0/systeminit.properties
+	A	deploy/installation CMS4.0/template.properties
+r5480 = 16de4d5f3d7e0695031d130b5d7a74181fbdbdb2 (refs/remotes/origin/trunk)
+	M	WebContent/cms.js
+	M	WebContent/cmsFCKoff.js
+r5709 = 29abd39c649562a50475bfcce2d41a133fd1db35 (refs/remotes/origin/trunk)
+	M	src/gfdi/server/internet/cms/BinaryStreamServlet.java
+r5779 = c949c4dc873f6fbdf2734d1e0114b235caf3b04f (refs/remotes/origin/trunk)
+	M	src/gfdi/server/internet/cms/batch/AlertSendSubscribedDocs.java
+r5780 = e186f90bef3f8025a90f6bee11348552b06ec36b (refs/remotes/origin/trunk)
+	M	WebContent/jsp/tools/statistieksubscribelist.jsp
+	M	WebContent/jsp/testing/501i/base.css
+	A	WebContent/jsp/testing/501i/font.html
+	M	deploy/batch/launch_batchINTRANET_CMSv4.0.bat
+	M	deploy/batch/launch_batchINTERNET_CMSv4.0.bat
+r6010 = f050a1cb9fa148cb30063919cbea260097bb3323 (refs/remotes/origin/trunk)
+	M	WebContent/log4j.properties
+	M	WebContent/WEB-INF/lib/activation.jar
+	M	WebContent/jsp/tools/importbinfile_GFDIEXTRA_DEV_PROD.jsp
+	A	WebContent/jsp/testing/526/displaydoc.jsp
+	M	WebContent/jsp/finder.jsp
+	M	deploy/0_update_DEV_CMS_dev2_withCMS_basic_resourcesCMSDEV2.bat
+	M	deploy/000_update_PROD_CMS_internet.bat
+	M	deploy/000_update_PROD_CMS_intranet.bat
+r6530 = 2828a7902881ae8acfcc179dd98d1e201c25fc14 (refs/remotes/origin/trunk)
+	M	src/gfdi/server/internet/cms/SiteMapQO.java
+	M	src/gfdi/server/internet/cms/PermissionSite.java
+	M	src/gfdi/server/internet/cms/PropertiesAccessor.java
+	M	src/gfdi/server/internet/cms/Authentication.java
+	M	src/gfdi/server/internet/cms/PropTemplateBF.java
+	M	src/gfdi/server/internet/cms/PropAppBF.java
+	M	src/gfdi/server/internet/cms/DocumentQO.java
+	M	src/gfdi/server/internet/cms/PermissionFinder.java
+	M	src/gfdi/client/internet/cms/ButtletUpdate.java
+	M	src/gfdi/client/internet/cms/DocumentBrowser.java
+	M	WebContent/internet_cms_applet.jar
+	M	WebContent/jsp/tools/change_string_indoc.jsp
+	M	WebContent/jsp/tools/migrationStylesTag.jsp
+	M	WebContent/jsp/tools/testimportdoc.jsp
+	M	WebContent/jsp/tools/testimportbinfile.jsp
+	M	WebContent/jsp/tools/catalogtestDEV.jsp
+	M	WebContent/jsp/tools/getinfo_doc.jsp
+	M	WebContent/jsp/tools/catalognewCVE.jsp
+	M	WebContent/jsp/js/versionAndResources.js
+	M	deploy/internet_cms.jar
+	M	deploy/internet_cms_applet_unsigned.jar
+	M	deploy/internet_cms_applet.jar
+r6531 = ff521f7ec37aeab99bfda492205f3afd3b1ee2a2 (refs/remotes/origin/trunk)
+	A	WebContent/jsp/tools/testurlencode.jsp
+r6838 = 530ef056c2b9d5ba90979ee0e634f311654b0656 (refs/remotes/origin/trunk)
+	A	deploy/batch/launch_batchINTERNET_CMSv4.0_JOBSS.bat
+r6862 = 4838d7ddf8563e188337492135cd776d75c3957e (refs/remotes/origin/trunk)
+	M	WebContent/jsp/DocumentBrowser.jsp
+r6893 = 12ae37ab3edf2f595293de71dd687e066df801bb (refs/remotes/origin/trunk)
+	M	src/gfdi/client/internet/cms/ButtletUpdate.java
+	M	WebContent/jsp/js/versionAndResources.js
+	M	deploy/internet_cms.jar
+	M	deploy/internet_cms_applet_unsigned.jar
+	M	deploy/internet_cms_applet.jar
+r6894 = 918138ce12471ee6fa37f02f66f62a3a0ab9c2e2 (refs/remotes/origin/trunk)
+	M	WebContent/init.properties
+	M	WebContent/internet_cms_applet.jar
+r6895 = 50637b0ba0dee0b435ffaf8677ed511076e175fa (refs/remotes/origin/trunk)
+	M	WebContent/jsp/tools/statistieksubscribelist.jsp
+r7400 = 9d7854111912654ac26c7bcdcf0ec2ad444e5e80 (refs/remotes/origin/trunk)
+	M	WebContent/jsp/mutapi/displaydoc.jsp
+r8328 = a9557ba6b945bc9d6150a6818472141f7894f09c (refs/remotes/origin/trunk)
+	M	WebContent/jsp/mutapi/displaydoc.jsp
+r8329 = 06e6dfccd67e8ceba1a82f24756e0833bcb24d13 (refs/remotes/origin/trunk)
+	A	WebContent/jsp/tools/change_string_indoc_without_linked_url.jsp
+r8649 = 39f324686b81fde5474de83828c5775c066b9b19 (refs/remotes/origin/trunk)
+	A	WebContent/jsp/tools/statistiekpublished.jsp
+r8658 = 08108fc3bb8a67f71e1849e31f0370a518ad15a2 (refs/remotes/origin/trunk)
+	A	WebContent/jsp/tools/getservername.jsp
+r8775 = 7dfdef1d161af21627efce70ce8146e56c016a61 (refs/remotes/origin/trunk)
+	M	WebContent/jsp/mutapi/functions_std.jsp
+r8776 = f5e9adae58fa08d8cf576e7f13c11b6d2f2397a8 (refs/remotes/origin/trunk)
+	M	WebContent/jsp/mutapi/displaydoc.jsp
+	M	WebContent/jsp/mutapi/functions_std.jsp
+r8777 = 9b406317cedb5f552737893dd2b86ac646fef747 (refs/remotes/origin/trunk)
+	M	WebContent/jsp/js/versionAndResources.js
+	M	deploy/1_sign_dbjar.bat
+r8793 = ed4685170a63ecbaa067f44b5fc3f143f44dfb73 (refs/remotes/origin/trunk)
+	M	deploy/batch/launch_batchINTRANET_CMSv4.0.bat
+r8794 = 92db2a4fa9bddd58af591b72d588a3803cb46582 (refs/remotes/origin/trunk)
+	A	WebContent/jsp/testing/_999_extranet/search/advancedSearch_mut999_gfdi.jsp
+	A	WebContent/jsp/testing/_999_extranet/search/search_test.jsp
+	A	WebContent/jsp/testing/_999_extranet/search/advancedSearch_new_prod.jsp
+	A	WebContent/jsp/testing/_999_extranet/search/search_mut999_gfdi_extranet.jsp
+	A	WebContent/jsp/testing/_999_extranet/search/search_prod.jsp
+	A	WebContent/jsp/testing/_999_extranet/search/advancedSearch_mut999_gfdi_extranet.jsp
+	A	WebContent/jsp/testing/_999_extranet/search/search_mut999_gfdi.jsp
+	A	WebContent/jsp/testing/_999_extranet/search/advancedSearch_prod.jsp
+	A	deploy/_backup/_CREATE_sign.bat
+r8795 = 667490b8efe7746c45fd5cd44e434bbf8f7c59e9 (refs/remotes/origin/trunk)
+	M	deploy/0_update_DEV_CMS_dgc.bat
+	M	deploy/0000_update_PROD_MUT_intranet.bat
+	M	deploy/00_update_DEV_MUT_dev.bat
+	M	deploy/000_update_PROD_CMS_dgc.bat
+	M	deploy/0_update_DEV_CMS_interIntranet.bat
+	M	deploy/00_update_DEV_MUT_interIntranet.bat
+	M	deploy/0000_update_PROD_MUT_internet.bat
+r8796 = a962f6ad7d2fa61b0cbe3e3382d855b6653c62cb (refs/remotes/origin/trunk)
+	D	WebContent/db2jcc_javax.jar
+	D	WebContent/db2jcc_license_cu.jar
+	M	WebContent/db2jcc.jar
+	M	WebContent/WEB-INF/lib/db2jcc.jar
+	M	WebContent/WEB-INF/lib/db2java.jar
+	M	WebContent/db2java.zip
+	D	deploy/db2jcc_license_cu.jar
+	D	deploy/db2jcc_javax.jar
+	M	deploy/db2jcc.jar
+	M	deploy/db2java.zip
+W: -empty_dir: trunk/cms_project/WebContent/db2jcc_javax.jar
+W: -empty_dir: trunk/cms_project/WebContent/db2jcc_license_cu.jar
+W: -empty_dir: trunk/cms_project/deploy/db2jcc_javax.jar
+W: -empty_dir: trunk/cms_project/deploy/db2jcc_license_cu.jar
+r8797 = a7a73027852ca7e023edf0e42c781d74dacfdacf (refs/remotes/origin/trunk)
+	M	deploy/0_update_DEV_CMS_dgc.bat
+r8798 = 5b6064f04d16795db361fe2f063c24fc690c7810 (refs/remotes/origin/trunk)
+	A	WebContent/jsp/testing/_00_test_sept08_jira/test_sept08_jira_geCMS_subscribe.js
+r8799 = 264088e30623522af51392bfafb0ca3a2e7f0023 (refs/remotes/origin/trunk)
+	M	WebContent/jsp/tools/testconnection.jsp
+r8871 = 40f9d4e2b8558e93ad4f2a25c59a34a67b417cbe (refs/remotes/origin/trunk)
+	M	WebContent/jsp/tools/testconnection.jsp
+r8872 = 8fe24f6f52e89ed005a9fb79df2bbcf79c693beb (refs/remotes/origin/trunk)
+	M	src/gfdi/server/internet/cms/PermissionSite.java
+	M	src/gfdi/server/internet/cms/Test.java
+	M	src/gfdi/server/internet/cms/MetaData.java
+	M	src/gfdi/server/internet/cms/DocumentCriteriaCMS.java
+	M	src/gfdi/server/internet/cms/BinaryStreamServlet.java
+	M	src/gfdi/server/internet/cms/DocumentBF.java
+	M	src/gfdi/client/internet/cms/DocumentGridPanel.java
+	M	src/gfdi/client/internet/cms/FinderCriteriaPanel.java
+	M	WebContent/internet_cms_applet.jar
+	M	WebContent/jsp/js/versionAndResources.js
+	M	WebContent/jsp/displaydoc.jsp
+	M	WebContent/jsp/mutapi/index_old.jsp
+	M	WebContent/jsp/mutapi/functions_std.jsp
+	M	deploy/0000_update_PROD_MUT_intranet.bat
+	M	deploy/0_update_DEV_CMS_dev2_withCMS_basic_resourcesCMSDEV2.bat
+	M	deploy/internet_cms.jar
+	M	deploy/internet_cms_applet_unsigned.jar
+	M	deploy/internet_cms_applet.jar
+	M	deploy/0_update_DEV_CMS_interIntranet.bat
+	M	deploy/000_update_PROD_CMS_intranet.bat
+r8876 = c468fa59878803cac8eedd7b0594d1cb3bf5ce93 (refs/remotes/origin/trunk)
+	A	deploy/__makejavadoc.bat
+r8883 = de27649ebfac068c90278b9341ee72a1089acf68 (refs/remotes/origin/trunk)
+	A	WebContent/jsp/tools/getinfo_doc_cmsapi.jsp
+r9477 = 66a4396c503bb6cc06fd2af0b0bd266e8fd2059e (refs/remotes/origin/trunk)
+	A	WebContent/jsp/tools/export_doc_todrive.jsp
+r9478 = cf6cf6ef8ac9a39f7174a96c0c5ecf09822014c3 (refs/remotes/origin/trunk)
+	M	src/gfdi/server/internet/cms/Authentication.java
+r17966 = 5f7658abd0fb69b1a94229aebe4766ff75662f83 (refs/remotes/origin/trunk)
+	A	WebContent/jsp/tools/cmsUpdateDocumentViewers.jsp
+r18360 = 5a95e37786f4fc4040276ebdbd4380054e790341 (refs/remotes/origin/trunk)
+	M	WebContent/jsp/tools/cmsUpdateDocumentViewers.jsp
+	A	WebContent/jsp/tools/documentInfo.jsp
+r20745 = 2a3d7c7594d327da9cc608330946c13a9c6e0571 (refs/remotes/origin/trunk)
+Checked out HEAD:
+  http://svn.sdlc.gfdi.be/svn/FOA/trunk/cms_project r20745
+cms_project cloned/fetched ...
+Generating a .gitignore file based on Subversion's metadata
+Logs for project cms_project are available here: /logs/cms_project.cloned.2018-08-08_1248.log

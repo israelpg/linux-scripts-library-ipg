@@ -1,0 +1,16 @@
++ echo 'Project cms_project will be synced...'
+Project cms_project will be synced...
++ getAuthors
++ echo 'Getting Authors for cms_project...'
+Getting Authors for cms_project...
+++ echo cms_project
+++ awk -F / '{print $(NF-1)}'
++ projectLog=cms_project
++ java -jar /home/israel/localDev2/svn-migration-scripts.jar authors http://svn.sdlc.gfdi.be/svn/FOA/trunk/cms_project m999ipa '$Catalun65'
+About to create the authors file.
++ [[ 0 -ne 0 ]]
++ echo 'Updating Git repository'\''s remote branches for project cms_project...'
+Updating Git repository's remote branches for project cms_project...
++ echo '# sync with the fetched commits, rebase fetched commits onto local branches, matching remote counterparts...'
+# sync with the fetched commits, rebase fetched commits onto local branches, matching remote counterparts...
++ listProjects=("${listProjects[@]}" "$project")
