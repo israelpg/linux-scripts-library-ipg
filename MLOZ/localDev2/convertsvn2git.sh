@@ -15,11 +15,10 @@
 # Execution Directory: (Git repo will be created in another directory) 
 # 	convertsvn2git.sh
 #	cloneStatus.sh
-#	syncSVN2git.sh 
 #	svn-migration-scripts.jar
 #	/authors
+#   /logs
 #	/svn-repos-csv (Directory which contains all SVN csv repos files)
-#       /logs
 # 
 # Git Root Directory, e.g.: /home/israel/git/svn-repos (If doesn't exist, script will create it)
 #
@@ -35,8 +34,8 @@ $0 -h for help
 $0 -v for version number
 $0 -l for listing CSV repo files
 $0 -c for checking SVN to Git Clone Status and latest Sync date
-$0 -f <filename> for passing a CSV repo filename as argument. Example: convertvn2git.sh -f svn-nippin.csv
-$0 -s <project> Sync & Push: To sync SVN/Git cloned repos, fetching latest commits and pushing remotely: convertsvn2git.sh -s CHAP4
+$0 -f <filename> :: CLONE :: passing a CSV repo filename as argument. Example: convertvn2git.sh -f svn-nippin.csv
+$0 -s <filename> :: Sync&Push :: SVN/Git cloned repos, fetching latest commits & pushing to remote Bitbucket: convertsvn2git.sh -s CHAP4
 EOF
 }
 
@@ -87,8 +86,8 @@ do
 		;;
 	f)
 		filename=$OPTARG
-		echo "Script $0 called passing CSV filename with repos to clone: $filename"
-		echo "Checking if file exists..."
+		echo "Script $0 called passing argument CSV filename: $filename"
+		echo "Checking if file exists and contains valid SVN repos..."
 		;;
 	s)
 		syncName=$OPTARG
@@ -157,7 +156,7 @@ then
 
    			# SVN project name, e.g.: Nippin, or project/modules_folder: big_leap_project/wcm_ws_modules
    			project="${repo##*trunk/}"
- 
+            listProjects=(${listProjects[@]} ${project})
   			LOGFILE="$project.cloned.$TIMESTAMP.log"
    			(
     		echo "Converting SVN project $project into Git local repository..."
@@ -172,7 +171,7 @@ then
     		fi
 
     		echo "svn clone for project $project in progress..."
-    		git svn clone --authors-file="$AUTHORS_DIR/$projectLog-authors.txt" --trunk="trunk/$project" --branches="branches/$project" \
+    		git svn clone --prefix="" --authors-file="$AUTHORS_DIR/$projectLog-authors.txt" --trunk="trunk/$project" --branches="branches/$project" \
     		--tags="tags/$project" ${svnroot} ${project}
 
     		# If cloning operation is interrupted due to the size of the repository, execute a fetch command
@@ -189,7 +188,6 @@ then
     		echo "Generating a .gitignore file based on Subversion's metadata"
     		git svn show-ignore >> .gitignore
 
-			listProjects+="$project"
     		echo "Logs for project $project are available here: /logs/$LOGFILE"
     		exit 0
 
@@ -200,7 +198,7 @@ then
 		echo "${listProjects[*]}"
 		echo ""
     else
-   		echo "Filename $syncName does not exist in dir $SVN_CVS_DIR"
+   		echo "Filename $filename does not exist in dir $SVN_CSV_DIR"
    		echo "Listing available CSV repo files:"
    		ls -lah ${SVN_CSV_DIR}
    		echo "$0 -f <filename> for passing a CSV repo filename as argument. Example: conversvn2git.sh -f svn-nippin.csv"
@@ -235,35 +233,43 @@ then
         	project="${repo##*trunk/}"
 
 			# if project was cloned, can be synced:
-			checkProject=$(find ~/git/svn-repos-v_1_2/ -maxdepth 2 | grep ${project})
+			checkProject=$(find ${GIT_ROOT_DIR} -maxdepth 2 | grep ${project})
 			
 			if [[ -n ${checkProject} ]]
 			then
+				cd ${GIT_ROOT_DIR}/${project}
 				LOGFILE="$project.synced.$TIMESTAMP.log"
+				listProjects=(${listProjects[@]} ${project})
 				(
 				echo "Project $project will be synced..."
 				# getAuthors done if already cloned, but is always good to check for updates (new authors)
 	    		getAuthors
 				
-				#cd ${GIT_ROOT_DIR}/${projec}
     			# update Git repository's remote branches
 				echo "Updating Git repository's remote branches for project $project..."
-    			#git svn fetch $usernameSVN $passwordSVN || echo "Error while updating Git repository's remote branches" ; exit 1
+    			git svn fetch 
+				if [[ $? -eq 0 ]]; then
+					echo "New SVN commits successfully fetched"
+				else
+					echo "Error updating Git repository's remote branches"
+					exit 1
+				fi
 
-    			echo "# sync with the fetched commits, rebase fetched commits onto local branches, matching remote counterparts..."
-    			#java -Dfile.encoding=utf-8 -jar "$EXECUTION_DIR/svn-migration-scripts.jar" sync-rebase $usernameSVN $passwordSVN
-    			#if [[ $? -ne 0 ]]
-				#then
-    			#	echo "Error during sync-rebase fetching commits onto local branches"
-    			#	exit 1
-				#fi
-				
-				listProjects=(${listProjects[@]} ${project})
+				echo "sync-rebase fetching commits onto local branches..."
+    			java -Dfile.encoding=utf-8 -jar "$EXECUTION_DIR/svn-migration-scripts.jar" sync-rebase $usernameSVN $passwordSVN
+    			if [[ $? -ne 0 ]]
+				then
+    				echo "Error during sync-rebase fetching commits onto local branches"
+    				exit 1
+				fi
+				echo "and here the bitbucket push!!!"
+            	echo "Sync log for project $project available here: /logs/$LOGFILE"
+            exit 0
 				) 2>&1 | tee -a "$EXECUTION_DIR/logs/$LOGFILE"
 			fi
     	done <"$SYNC_FILE"
 		
-		echo "All cloned projects specified under file $filename have been synced"
+		echo "All cloned projects specified under file $syncName have been synced"
         echo "Projects synced are listed below:"
         echo "${listProjects[*]}"
         echo ""

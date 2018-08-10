@@ -9,7 +9,7 @@
 
 echo -e "\e[31;43m***** SVN Repositories Cloned Status *****\e[0m"
 echo ""
-printf "\e[1;34m%-20s %-50s %-60s %-15s %-s\e[m\n" "SVN REPO" "PROJECT NAME" "JENKINS JOB" "CLONED STATUS";
+printf "\e[1;34m%-20s %-45s %-55s %-15s %-15s %-s\e[m\n" "SVN REPO" "PROJECT NAME" "JENKINS JOB" "CLONED STATUS" "CLONED DATE";
 echo ""
 
 while read line
@@ -23,14 +23,16 @@ do
     if [[ `find ${GIT_ROOT_DIR} -maxdepth 2 -type d | grep ${projectName}` ]]
     then
 	clonedStatus="OK"
+	clonedDate=$(ls -lah ${GIT_ROOT_DIR} | grep ${projectName} | awk '{print $6,$7,$8}')
     else
 	clonedStatus="NO"
+	clonedDate=""
     fi
 
     if [[ $clonedStatus == "OK" ]]
     then
-    	printf "\e[0;32m%-20s %-50s %-60s %-15s %-s\e[m\n" "$SVNrepoName" "$projectName" "$jenkinsJob" "$clonedStatus";
+    	printf "\e[0;32m%-20s %-45s %-55s %-15s %-15s %-s\e[m\n" "$SVNrepoName" "$projectName" "$jenkinsJob" "$clonedStatus" "$clonedDate";
     else
-    	printf "%-20s %-50s %-60s %-15s %-s\n" "$SVNrepoName" "$projectName" "$jenkinsJob" "$clonedStatus";
+    	printf "%-20s %-45s %-55s %-15s %-15s %-s\n" "$SVNrepoName" "$projectName" "$jenkinsJob" "$clonedStatus" "$clonedDate";
     fi
 done< <(find svn-repos-csv/ -type f | xargs -I {} cat {} | sort -nk1)

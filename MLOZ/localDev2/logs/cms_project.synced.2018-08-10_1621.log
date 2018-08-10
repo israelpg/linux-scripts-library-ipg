@@ -1,0 +1,34 @@
++ echo 'Project cms_project will be synced...'
+Project cms_project will be synced...
++ getAuthors
++ echo 'Getting Authors for cms_project...'
+Getting Authors for cms_project...
+++ echo cms_project
+++ awk -F / '{print $(NF-1)}'
++ projectLog=cms_project
++ java -jar /home/israel/localDev2/svn-migration-scripts.jar authors http://svn.sdlc.gfdi.be/svn/FOA/trunk/cms_project m999ipa '$Catalun65'
+About to create the authors file.
++ [[ 0 -ne 0 ]]
++ echo 'Updating Git repository'\''s remote branches for project cms_project...'
+Updating Git repository's remote branches for project cms_project...
++ git svn fetch
++ echo 'New SCN commits successfully fetched'
+New SCN commits successfully fetched
++ exit 1
++ echo 'Project cms_project will be synced...'
+Project cms_project will be synced...
++ getAuthors
++ echo 'Getting Authors for cms_project...'
+Getting Authors for cms_project...
+++ echo cms_project
+++ awk -F / '{print $(NF-1)}'
++ projectLog=cms_project
++ java -jar /home/israel/localDev2/svn-migration-scripts.jar authors http://svn.sdlc.gfdi.be/svn/FOA/trunk/cms_project m999ipa '$Catalun65'
+About to create the authors file.
++ [[ 0 -ne 0 ]]
++ echo 'Updating Git repository'\''s remote branches for project cms_project...'
+Updating Git repository's remote branches for project cms_project...
++ git svn fetch
++ echo 'New SCN commits successfully fetched'
+New SCN commits successfully fetched
++ exit 1
