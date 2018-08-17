@@ -1,0 +1,35 @@
+The scripts collection has the following rationale:
+
+The CSV files containing SVN repositories list are executed in two steps:
+
+	1. With argument -f <filename> the main script clones the repositories specified in the file.
+		You can list the repositories list files by using argument -l
+
+  	* To see if a repo has already been cloned, use argument -c to check Status of all repos listed in csv files
+
+Tricks applied:
+
+clone requires argument --prefix=""
+
+Otherwise the .git file structure is created with folder origin, which is not applicable and lead to errors.
+
+For instance, this is correct:
+
+israel@W9980173 ~/git/svn-repos-v_1_2 $ cat cms_project/.git/config 
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[svn-remote "svn"]
+	url = http://svn.sdlc.gfdi.be/svn/FOA
+	fetch = trunk/cms_project:refs/remotes/trunk
+	branches = branches/cms_project/*:refs/remotes/*
+	tags = tags/cms_project/*:refs/remotes/tags/*
+
+When clone operation does not specify prefix as an empty value, you must copy trunk or tags one folder up in the hierarchy, and
+edit the .git/config file accordingly (This is a manual step not configured in this set of scripts)
+
+SSH : When executing script, make sure the ssh agent keeps the passphrase, and is not requested more than once (first project):
+Add in file: .ssh/config:
+AddKeysToAgent yes
