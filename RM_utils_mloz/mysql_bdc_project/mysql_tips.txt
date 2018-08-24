@@ -1,0 +1,25 @@
+SQL STATEMENTS:
+
+# To get the release_id:
+
+SELECT DATE_FORMAT("2018-06-15", "D%y%m")
+
+Output: D1806
+
+# For getting value from CURRENT_DATE:
+
+SELECT DATE_FORMAT(CURRENT_DATE, "D%y%m")
+
+# query between dates:
+
+mysql> select * from version where type=8 AND (modificationdate between '2018-08-01 06:00:00' and '2018-08-31 23:59:59');
+
+# copy table content into another table:
+
+INSERT versionTest SELECT * FROM version;
+
+# populating table with a select to another table, and hardcoded value as well:
+
+mysql> INSERT INTO releaseTrack
+    -> SELECT '1808',project_id,type,version,modificationdate FROM version
+    -> WHERE type=8;

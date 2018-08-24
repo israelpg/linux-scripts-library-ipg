@@ -1,0 +1,8 @@
+mysql> INSERT INTO releaseTrack
+    -> SELECT '1808',project_id,type,version,modificationdate FROM version
+    -> WHERE type=8;
+Query OK, 158 rows affected (0.00 sec)
+Records: 158  Duplicates: 0  Warnings: 0
+
+
+update versionTest set version='180304.10',modificationdate=CURRENT_TIMESTAMP() where project_id = 1652 and type=8;
