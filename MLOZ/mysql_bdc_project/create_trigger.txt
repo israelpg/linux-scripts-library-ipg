@@ -21,8 +21,7 @@ BEGIN
     DECLARE month INT(2) ZEROFILL;
 	DECLARE generatedYear INT(2) ZEROFILL;
     DECLARE generatedMonth INT(2) ZEROFILL;
-	DECLARE january INT(2) ZEROFILL;
-	SET @january := 01;
+	SET @january := 1;
 
 	SELECT MAX(release_id)
     INTO @releaseID
@@ -33,7 +32,7 @@ BEGIN
 
     IF (@month = 12) THEN
        	SET @generatedYear := @year+1;
-		SET @generatedMonth := @january;
+		SET @generatedMonth := CONCAT(0,@january);
     ELSE
        	SET @generatedYear := @year;
         SET @generatedMonth := @month+1;

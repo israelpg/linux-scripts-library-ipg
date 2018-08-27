@@ -1,15 +1,15 @@
 mysql> CREATE TABLE releaseTrack (release_id SMALLINT(20) NOT NULL, project_id SMALLINT(20) NOT NULL, env_type SMALLINT(20) NOT NULL, version VARCHAR(50) NOT NULL, date DATETIME NOT NULL, PRIMARY KEY (project_id,env_type,version));
 
-mysql> desc releaseTrack;
-+------------+-------------+------+-----+---------+-------+
-| Field      | Type        | Null | Key | Default | Extra |
-+------------+-------------+------+-----+---------+-------+
-| release_id | date		   | NO   |     | NULL    |       | 
-| project_id | bigint(20)  | NO   | PRI | NULL    |       | 
-| env_type   | bigint(20)  | NO   | PRI | NULL    |       | 
-| version    | varchar(50) | NO   | PRI |         |       | 
-| date       | datetime    | NO   |     | NULL    |       | 
-+------------+-------------+------+-----+---------+-------+
+mysql> desc releaseTrackTest;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| release_id | smallint(20) | NO   |     | NULL    |       | 
+| project_id | smallint(20) | NO   | PRI | NULL    |       | 
+| env_type   | smallint(20) | NO   | PRI | NULL    |       | 
+| version    | varchar(50)  | NO   | PRI | NULL    |       | 
+| date       | datetime     | NO   |     | NULL    |       | 
++------------+--------------+------+-----+---------+-------+
 5 rows in set (0.00 sec)
 
 RATIONALE :
