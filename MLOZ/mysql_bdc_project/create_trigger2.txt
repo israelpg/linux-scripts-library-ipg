@@ -1,19 +1,6 @@
-# Simple example with manual release_id insertion :
-DELIMITER |
-CREATE TRIGGER after_update_versionTest
-    AFTER UPDATE ON versionTest
-    FOR EACH ROW
-BEGIN
-    INSERT INTO releaseTrackTest
-	SET release_id='1809',project_id=NEW.project_id,env_type=NEW.type,version=NEW.version,date=NEW.modificationdate;
-END;
-|
-DELIMITER ;
-
-# First trigger implemented checks whether previous integ/ref versions to be updated in Versions table are in PROD or not, otherwise versions are 
-# moved to next release
-# Example: Project 4050 had version 1.50.1 planned for release 1808, recorded in INT and REF. Finally was not deployed in PROD. These INT/REF
-# versions are moved to release 1809 by updating corresponding release_id field.
+# The trigger #2 implemented following #1:
+# This trigger will insert the new version in the select environment type
+# The generated release_id corresponds to the next release
 
 DELIMITER |
 CREATE TRIGGER after_update_versionTest
@@ -25,10 +12,6 @@ BEGIN
     DECLARE generatedYear INT(2) ZEROFILL;
     DECLARE generatedMonth INT(2) ZEROFILL;
     SET @january := 1;
-
-    SELECT project_id
-    INTO @checkProject
-    FROM releaseTrackTest WHERE project_id=OLD.project_id AND version=OLD.version AND env_type=11;
 
     SELECT MAX(release_id)
     INTO @releaseID
@@ -50,14 +33,13 @@ BEGIN
 
     SET @generatedRelease := CONCAT(@generatedYear,@generatedMonth);
 
-    IF (@checkProject IS NULL) THEN
-        UPDATE releaseTrackTest
-        SET release_id = @generatedRelease
-        WHERE project_id=NEW.project_id AND release_id = @releaseID AND env_type IN (14,8);
-    END IF;
+    INSERT INTO releaseTrackTest
+    SET release_id = @generatedRelease, project_id=NEW.project_id, env_type=NEW.type, version=NEW.version, date=NEW.modificationdate;    
 END;
 |
 DELIMITER ;
+
+
 
 
 mysql> show grants for CURRENT_USER();
