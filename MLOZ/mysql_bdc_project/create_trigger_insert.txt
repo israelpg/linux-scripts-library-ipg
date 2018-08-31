@@ -1,6 +1,6 @@
 DELIMITER |
-CREATE TRIGGER after_update_versionTest
-    AFTER UPDATE ON versionTest
+CREATE TRIGGER after_insert_version_track
+    AFTER INSERT ON versionTest
     FOR EACH ROW
 BEGIN
     DECLARE year INT(2) ZEROFILL;
@@ -30,11 +30,8 @@ BEGIN
 
         SET @generatedRelease := CONCAT(@generatedYear,@generatedMonth);
 
-        CALL sp_check_previous_versions(@generatedRelease, OLD.project_id);
-
-        INSERT INTO releaseTrackTest
-        SET release_id = @generatedRelease, project_id=NEW.project_id, env_type=NEW.type, version=NEW.version, date=NEW.modificationdate;  
-    END IF;  
+        CALL sp_common_triggers_track(@generatedRelease, NEW.project_id, NEW.type, NEW.version, NEW.modificationdate); 
+    END IF;
 END;
 |
 DELIMITER ;

@@ -1,0 +1,21 @@
+DELIMITER |
+CREATE PROCEDURE sp_check_previous_versions(IN generatedRelease SMALLINT(20), projectID SMALLINT(20))
+BEGIN
+    SET @previousRelease := generatedRelease-1;
+
+    SELECT MAX(release_id)
+    INTO @lastProdRelease
+    FROM releaseTrackTest
+    WHERE project_id = projectID 
+    AND env_type = 11;
+
+    IF (@lastProdRelease < @previousRelease) THEN
+        UPDATE releaseTrackTest
+        SET release_id = generatedRelease
+        WHERE project_id = projectID 
+        AND release_id > @lastProdRelease
+        AND env_type IN (14,8);
+    END IF;
+END;
+|
+DELIMITER ;
