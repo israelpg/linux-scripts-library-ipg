@@ -1,35 +1,78 @@
 The scripts collection has the following rationale:
 
-The CSV files containing SVN repositories list are executed in two steps:
+File Structure
 
-	1. With argument -f <filename> the main script clones the repositories specified in the file.
-		You can list the repositories list files by using argument -l
+drwxrwxr-x 2 israel israel    4096 Sep  4 10:16 authors
+-rwxr-xr-x 1 israel israel    1641 Aug 17 11:08 cloneStatus.sh
+-rwxrwxr-x 1 israel israel    7486 Aug 17 11:08 convertsvn2git.sh
+drwxrwxr-x 2 israel israel    4096 Sep  4 10:23 logs
+-rw-rw-r-- 1 israel israel    1362 Aug 17 14:36 releaseNotes.txt
+-rw-rw-r-- 1 israel israel 4819754 Aug 17 11:08 svn-migration-scripts.jar
+drwxrwxr-x 2 israel israel    4096 Aug 17 11:08 svn-repos
+drwxrwxr-x 2 israel israel    4096 Sep  4 10:09 svn-repos-csv
 
-  	* To see if a repo has already been cloned, use argument -c to check Status of all repos listed in csv files
+Requisites:
 
+1) The Bitbucket project must be manually created, then repos will be created and pushed to project/repos from this script.
+
+2) The CSV files containing SVN repositories list with associated Jenkins shall be structured as follows:
+
+   http://svn.sdlc.gfdi.be/svn/FOA/trunk/foa_modules | foa_release_dev
+	
+Execution steps:
+
+1. List the available CSV files containing repos lists with argument -l :
+
+	./convertsvn2git -l 
+
+2. With argument -f <filename> the main script clones the repositories specified in the CSV repos file, onto a local Git repo located
+   under directory specified within code variable: GIT_ROOT_DIR 
+   (one option is to specify folder svn-repos at same level as script as long as it has been initialized as a Git repo)
+
+	./convertsvn2git -f <filename.csv>
+
+3. Once cloned, the script reports some statistics, plus logs, and the option to list the repos listed under CSV files which are cloned
+
+    ./cloneStatus.sh
+
+
+########################################################################################################################################
+* Important Note about SVN to GIT:  TAGS, BRANCHES, TRUNKS ... since the SVN structure at MLOZ does not follow the logical approach:
+
+project/trunk
+project/branches
+project/tags
+
+but instead it uses: /trunk/project1 .. project2 .. (and same for branches and tags), the clone cannot proceed as suggested by Atlassian
+
+This structure is not cloned to Git, but it keeps the modules structure within the project, and the commits history
+########################################################################################################################################
+	
 Tricks applied:
 
-clone requires argument --prefix=""
+1) clone requires argument --prefix=""
 
-Otherwise the .git file structure is created with folder origin, which is not applicable and lead to errors.
+   Otherwise the .git file structure is created with folder origin, which is not applicable and lead to errors.
 
-For instance, this is correct:
+   For instance, this is correct:
 
-israel@W9980173 ~/git/svn-repos-v_1_2 $ cat cms_project/.git/config 
-[core]
-	repositoryformatversion = 0
-	filemode = true
-	bare = false
-	logallrefupdates = true
-[svn-remote "svn"]
-	url = http://svn.sdlc.gfdi.be/svn/FOA
-	fetch = trunk/cms_project:refs/remotes/trunk
-	branches = branches/cms_project/*:refs/remotes/*
-	tags = tags/cms_project/*:refs/remotes/tags/*
+   israel@W9980173 ~/git/svn-repos-v_1_2 $ cat cms_project/.git/config 
+	[core]
+		repositoryformatversion = 0
+		filemode = true
+		bare = false
+		logallrefupdates = true
+	[svn-remote "svn"]
+		url = http://svn.sdlc.gfdi.be/svn/FOA
+		fetch = trunk/cms_project:refs/remotes/trunk
+		branches = branches/cms_project/*:refs/remotes/*
+		tags = tags/cms_project/*:refs/remotes/tags/*
 
-When clone operation does not specify prefix as an empty value, you must copy trunk or tags one folder up in the hierarchy, and
-edit the .git/config file accordingly (This is a manual step not configured in this set of scripts)
+	When clone operation does not specify prefix as an empty value, you must copy trunk or tags one folder up in the hierarchy, and
+	edit the .git/config file accordingly (This is a manual step not configured in this set of scripts)
 
-SSH : When executing script, make sure the ssh agent keeps the passphrase, and is not requested more than once (first project):
+2) SSH passphrase for pushing projects to Bitbucket: The Bitbucket project must be manually created ! 
+
+When executing script, make sure the ssh agent keeps the passphrase, and is not requested more than once (first project):
 Add in file: .ssh/config:
 AddKeysToAgent yes
