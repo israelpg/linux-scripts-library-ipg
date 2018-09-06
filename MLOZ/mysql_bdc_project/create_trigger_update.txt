@@ -13,33 +13,33 @@ BEGIN
     INTO @releaseID
     FROM releaseTrackTest WHERE env_type=11;
 
-    IF (NEW.type IN(14,8) and NEW.version <> 'EMPTY') THEN
-        SET @year := LEFT(@releaseID,length(@releaseID)-2);
-        SET @month := RIGHT(@releaseID,length(@releaseID)-2);
+    SET @year := LEFT(@releaseID,length(@releaseID)-2);
+    SET @month := RIGHT(@releaseID,length(@releaseID)-2);
 
-        IF (@month = 12) THEN
-            SET @generatedYear := @year+1;
-            SET @generatedMonth := CONCAT(0,@january);
-        ELSE
-            SET @generatedYear := @year;
-            SET @generatedMonth := @month+1;
-            IF (@generatedMonth < 10) THEN
-                SET @generatedMonth := CONCAT(0,@generatedMonth);
-            END IF;
+    IF (@month = 12) THEN
+        SET @generatedYear := @year+1;
+        SET @generatedMonth := CONCAT(0,@january);
+    ELSE
+        SET @generatedYear := @year;
+        SET @generatedMonth := @month+1;
+        IF (@generatedMonth < 10) THEN
+            SET @generatedMonth := CONCAT(0,@generatedMonth);
         END IF;
+    END IF;
 
-        SET @generatedRelease := CONCAT(@generatedYear,@generatedMonth);
+    SET @generatedRelease := CONCAT(@generatedYear,@generatedMonth);
 
+    IF (NEW.type IN(14,8) and NEW.version <> 'EMPTY') THEN
         CALL sp_check_previous_versions(@generatedRelease, OLD.project_id);
-
         CALL sp_common_triggers_track(@generatedRelease, NEW.project_id, NEW.type, NEW.version, NEW.modificationdate); 
-    
     ELSEIF (NEW.type IN(11) and NEW.version <> 'EMPTY') THEN
         SELECT release_id
         INTO @releaseHotfixSpecific
-        FROM releaseTrackTest WHERE project_id = NEW.project_id AND env_type IN(6,13) AND version = NEW.version;
+        FROM releaseTrackTest WHERE project_id = NEW.project_id AND env_type IN(13,6) AND version = NEW.version;
         
         IF (@releaseHotfixSpecific IS NULL) THEN
+            CALL sp_check_previous_versions(@generatedRelease, OLD.project_id);
+
             SELECT release_id
             INTO @nextRelease
             FROM releaseTrackTest WHERE project_id = NEW.project_id AND env_type = 8 AND version = NEW.version;
@@ -48,7 +48,6 @@ BEGIN
         ELSE
             CALL sp_common_triggers_track(@releaseID, NEW.project_id, NEW.type, NEW.version, NEW.modificationdate);
         END IF;
-    
     ELSEIF (NEW.type IN(13,6) and NEW.version <> 'EMPTY') THEN
         CALL sp_common_triggers_track(@releaseID, NEW.project_id, NEW.type, NEW.version, NEW.modificationdate);                 
     END IF;
