@@ -1,0 +1,16 @@
++ checkProject http://svn.sdlc.gfdi.be/svn/FOA/trunk/foa_modules
+++ echo http://svn.sdlc.gfdi.be/svn/FOA/trunk/foa_modules
+++ awk -F '|' '{print $2}'
++ jenkinsJob=
+++ echo http://svn.sdlc.gfdi.be/svn/FOA/trunk/foa_modules
+++ awk -F '|' '{print $1}'
++ SVNrepoLine=http://svn.sdlc.gfdi.be/svn/FOA/trunk/foa_modules
+++ echo http://svn.sdlc.gfdi.be/svn/FOA/trunk/foa_modules
+++ awk -F / '{print $5}'
++ SVNrepoName=FOA
++ projectName=foa_modules
+++ find /home/israel/git/svn-repos-v_1_2 -maxdepth 2 -type d
+++ grep foa_modules
++ [[ -n '' ]]
++ clonedStatus=NO
++ [[ NO == \O\K ]]

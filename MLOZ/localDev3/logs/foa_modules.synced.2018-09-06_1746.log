@@ -1,0 +1,67 @@
++ [[ -d foa_modules ]]
++ echo 'Project foa_modules was already cloned, syncing operation will be executed...'
+Project foa_modules was already cloned, syncing operation will be executed...
++ echo 'Updating authors list for foa_modules ...'
+Updating authors list for foa_modules ...
++ getAuthors
++ echo 'Updating Authors list for project foa_modules...'
+Updating Authors list for project foa_modules...
+++ echo foa_modules
+++ awk -F / '{print $(NF-1)}'
++ projectLog=foa_modules
++ java -jar /home/israel/git/workspace_linux_scripts/MLOZ/localDev3/svn-migration-scripts.jar authors http://svn.sdlc.gfdi.be/svn/FOA/trunk/foa_modules m999ipa '$Catalun65'
+About to create the authors file.
++ [[ 0 -ne 0 ]]
++ echo 'List of authors completed under file: /home/israel/git/workspace_linux_scripts/MLOZ/localDev3/authors/foa_modules-authors.txt'
+List of authors completed under file: /home/israel/git/workspace_linux_scripts/MLOZ/localDev3/authors/foa_modules-authors.txt
++ echo 'Fetching latest SVN commits for project foa_modules in progress...'
+Fetching latest SVN commits for project foa_modules in progress...
++ cd foa_modules
++ git svn fetch
++ [[ 0 -eq 0 ]]
++ echo 'Synchronize with the fetched commits...'
+Synchronize with the fetched commits...
++ java -Dfile.encoding=utf-8 -jar /home/israel/git/workspace_linux_scripts/MLOZ/localDev3/svn-migration-scripts.jar sync-rebase
+Current branch master is up to date.
++ [[ -z '' ]]
++ java -Dfile.encoding=utf-8 -jar /home/israel/git/workspace_linux_scripts/MLOZ/localDev3/svn-migration-scripts.jar clean-git --force
+# Creating annotated tags...
+# Creating local branches...
+Creating the local branch 'origin/master' for Subversion branch 'refs/remotes/origin/master'.
+Branch origin/master set up to track remote branch master from origin.
+# Checking for obsolete tags...
+svn: warning: W160013: URL 'http://svn.sdlc.gfdi.be/svn/FOA/tags/foa_modules' non-existent in revision 41665
+svn: E200009: Could not list all targets because some targets don't exist
+No obsolete tags to remove.
+# Checking for obsolete branches...
+svn: warning: W160013: URL 'http://svn.sdlc.gfdi.be/svn/FOA/branches/foa_modules' non-existent in revision 41665
+svn: E200009: Could not list all targets because some targets don't exist
+Deleting Git branch 'origin/master' not in Subversion.
+Deleted branch origin/master (was cd70167).
+# Cleaning tag names
+# Cleaning branch names
++ echo 'Push to Bitbucket remote repository:'
+Push to Bitbucket remote repository:
+++ echo foa_modules
+++ awk -F / '{print $(NF)}'
++ project=foa_modules
++ git add --all
++ git commit -m 'Syncing Git repo with latest SVN commits'
+On branch master
+Your branch and 'origin/master' have diverged,
+and have 10 and 1 different commit each, respectively.
+  (use "git pull" to merge the remote branch into yours)
+nothing to commit, working directory clean
++ git push -u origin master --tags
+To ssh://git@git.sdlc.gfdi.be:7999/IS/foa_modules.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'ssh://git@git.sdlc.gfdi.be:7999/IS/foa_modules.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
++ echo 'error when pushing changes to Bitbucketm check logs !'
+error when pushing changes to Bitbucketm check logs !
++ echo 'Logs for project foa_modules are available here: /logs/foa_modules.synced.2018-09-06_1746.log'
+Logs for project foa_modules are available here: /logs/foa_modules.synced.2018-09-06_1746.log

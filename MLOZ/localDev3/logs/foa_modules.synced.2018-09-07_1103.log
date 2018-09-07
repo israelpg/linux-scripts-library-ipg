@@ -1,0 +1,42 @@
++ checkProject http://svn.sdlc.gfdi.be/svn/FOA/trunk/foa_modules
++ =http://svn.sdlc.gfdi.be/svn/FOA/trunk/foa_modules
+syncsvn2git.sh: line 34: =http://svn.sdlc.gfdi.be/svn/FOA/trunk/foa_modules: No such file or directory
+++ echo
+++ awk -F '|' '{print $2}'
++ jenkinsJob=
+++ echo
+++ awk -F '|' '{print $1}'
++ SVNrepoLine=
+++ echo
+++ awk -F / '{print $5}'
++ SVNrepoName=
++ projectName=
+++ find /home/israel/git/svn-repos-v_1_2 -maxdepth 2 -type d
+++ grep
+Usage: grep [OPTION]... PATTERN [FILE]...
+Try 'grep --help' for more information.
++ [[ -n '' ]]
++ clonedStatus=NO
++ [[ -n NO=OK ]]
++ echo 'Project foa_modules was already cloned, syncing operation will be executed:'
+Project foa_modules was already cloned, syncing operation will be executed:
++ echo 'git pull origin master --rebase in progress...'
+git pull origin master --rebase in progress...
++ git pull origin master --rebase
+fatal: Not a git repository (or any of the parent directories): .git
++ [[ 128 -ne 0 ]]
++ echo 'Error during pull --rebase operation !'
+Error during pull --rebase operation !
++ errorSyncing=1
++ [[ -z 1 ]]
++ [[ -z 1 ]]
++ [[ -z '' ]]
++ echo 'clean-git operation in progress...'
+clean-git operation in progress...
++ java -Dfile.encoding=utf-8 -jar /home/israel/git/workspace_linux_scripts/MLOZ/localDev3/svn-migration-scripts.jar clean-git --force
+fatal: Not a git repository (or any of the parent directories): .git
+Command must be run from within a Git repository
++ errorSync=1
++ echo 'Notice that errors related with branches or tags not found are due to use sub-repo (repo/trunk/subrepo) instead of repo/trunk.'
+Notice that errors related with branches or tags not found are due to use sub-repo (repo/trunk/subrepo) instead of repo/trunk.
++ [[ -z 1 ]]

@@ -1,0 +1,85 @@
++ checkProject http://svn.sdlc.gfdi.be/svn/EC/doh/trunk/doh_modules
+++ echo http://svn.sdlc.gfdi.be/svn/EC/doh/trunk/doh_modules
+++ awk -F '|' '{print $2}'
++ jenkinsJob=
+++ echo http://svn.sdlc.gfdi.be/svn/EC/doh/trunk/doh_modules
+++ awk -F '|' '{print $1}'
++ SVNrepoLine=http://svn.sdlc.gfdi.be/svn/EC/doh/trunk/doh_modules
+++ echo http://svn.sdlc.gfdi.be/svn/EC/doh/trunk/doh_modules
+++ awk -F / '{print $5}'
++ SVNrepoName=EC
++ projectName=doh_modules
+++ find /home/israel/git/svn-repos-v_1_2 -maxdepth 2 -type d
+++ grep doh_modules
++ [[ -n /home/israel/git/svn-repos-v_1_2/doh_modules
+/home/israel/git/svn-repos-v_1_2/doh_modules/doh_common
+/home/israel/git/svn-repos-v_1_2/doh_modules/doh_web
+/home/israel/git/svn-repos-v_1_2/doh_modules/.git
+/home/israel/git/svn-repos-v_1_2/doh_modules/doh_external
+/home/israel/git/svn-repos-v_1_2/doh_modules/doh_persist ]]
++ cd /home/israel/git/svn-repos-v_1_2/doh_modules
+++ git branch --all
+++ grep trunk
++ [[ -n   remotes/trunk ]]
++ clonedStatus=OK
++ [[ OK == \O\K ]]
++ echo 'Project doh_modules was already cloned, syncing operation will be executed:'
+Project doh_modules was already cloned, syncing operation will be executed:
++ listProjects=(${listProjects[@]} ${project})
++ cd /home/israel/git/svn-repos-v_1_2/doh_modules
++ echo 'git pull origin master --rebase in progress...'
+git pull origin master --rebase in progress...
++ git pull origin master --rebase
+Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
++ [[ 1 -ne 0 ]]
++ echo 'Error during pull --rebase operation !'
+Error during pull --rebase operation !
++ errorSyncing=1
++ [[ -z 1 ]]
++ [[ -z 1 ]]
++ [[ -z '' ]]
++ echo 'clean-git operation in progress...'
+clean-git operation in progress...
++ java -Dfile.encoding=utf-8 -jar /home/israel/git/workspace_linux_scripts/MLOZ/localDev3/svn-migration-scripts.jar clean-git --force
+# Creating annotated tags...
+# Creating local branches...
+Creating the local branch 'origin/master' for Subversion branch 'refs/remotes/origin/master'.
+Branch origin/master set up to track remote branch master from origin.
+# Checking for obsolete tags...
+svn: warning: W160013: URL 'http://svn.sdlc.gfdi.be/svn/EC/doh/tags/doh_modules' non-existent in revision 4091
+svn: E200009: Could not list all targets because some targets don't exist
+No obsolete tags to remove.
+# Checking for obsolete branches...
+svn: warning: W160013: URL 'http://svn.sdlc.gfdi.be/svn/EC/doh/branches/doh_modules' non-existent in revision 4091
+svn: E200009: Could not list all targets because some targets don't exist
+Deleting Git branch 'origin/master' not in Subversion.
+Deleted branch origin/master (was b14463a).
+# Cleaning tag names
+# Cleaning branch names
++ errorSync=1
++ echo 'Notice that errors related with branches or tags not found are due to use sub-repo (repo/trunk/subrepo) instead of repo/trunk.'
+Notice that errors related with branches or tags not found are due to use sub-repo (repo/trunk/subrepo) instead of repo/trunk.
++ echo 'Push to Bitbucket remote repository:'
+Push to Bitbucket remote repository:
+++ echo doh_modules
+++ awk -F / '{print $(NF)}'
++ project=doh_modules
++ git add --all
++ git commit -m 'Syncing Git repo with latest SVN commits'
+On branch master
+Your branch is up-to-date with 'origin/master'.
+nothing to commit, working directory clean
++ git push -u origin master --tags
+Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
++ echo 'error when pushing changes to Bitbucketm check logs !'
+error when pushing changes to Bitbucketm check logs !
++ echo 'Logs for project doh_modules are available here: /logs/doh_modules.synced.2018-09-07_1253.log'
+Logs for project doh_modules are available here: /logs/doh_modules.synced.2018-09-07_1253.log
