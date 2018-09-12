@@ -1,0 +1,91 @@
+mysql> show tables;
++---------------+
+| Tables_in_bdc |
++---------------+
+| Application   | 
+| HwType        | 
+| Link          | 
+| Node          | 
+| OsType        | 
+| Project       | 
+| Server        | 
+| dependency    | 
+| environment   | 
+| mailRecipient | 
+| rootversion   | 
+| scmType       | 
+| serverStreams | 
+| version       | 
+| versionType   | 
++---------------+
+15 rows in set (0.00 sec)
+
+mysql> desc Project;
++----------------+--------------+------+-----+---------+-------+
+| Field          | Type         | Null | Key | Default | Extra |
++----------------+--------------+------+-----+---------+-------+
+| id             | bigint(20)   | NO   | PRI | 0       |       | 
+| name           | varchar(100) | NO   | UNI |         |       | 
+| artifactId     | varchar(50)  | NO   |     |         |       | 
+| groupId        | varchar(50)  | NO   |     |         |       | 
+| scmDirectory   | varchar(100) | NO   |     |         |       | 
+| scmType        | bigint(11)   | YES  |     | NULL    |       | 
+| type           | varchar(10)  | NO   |     |         |       | 
+| description    | varchar(255) | YES  |     | NULL    |       | 
+| application_id | bigint(20)   | NO   | MUL | 0       |       | 
+| realName       | varchar(100) | NO   |     |         |       | 
+| realArtifactId | varchar(100) | YES  |     | NULL    |       | 
+| jiraName       | varchar(20)  | YES  |     | NULL    |       | 
+| scmPath        | varchar(255) | YES  |     | NULL    |       | 
+| scmModule      | varchar(255) | YES  |     | NULL    |       | 
++----------------+--------------+------+-----+---------+-------+
+14 rows in set (0.00 sec)
+
+
+
+mysql> desc version;
++------------------+-------------+------+-----+---------+-------+
+| Field            | Type        | Null | Key | Default | Extra |
++------------------+-------------+------+-----+---------+-------+
+| project_id       | bigint(20)  | NO   | PRI | 0       |       | 
+| type             | bigint(20)  | NO   | PRI | 0       |       | 
+| version          | varchar(50) | YES  |     | NULL    |       | 
+| modificationdate | datetime    | YES  |     | NULL    |       | 
++------------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+
+mysql> desc versionType;
++----------------+--------------+------+-----+---------+-------+
+| Field          | Type         | Null | Key | Default | Extra |
++----------------+--------------+------+-----+---------+-------+
+| id             | bigint(20)   | NO   | PRI | 0       |       | 
+| name           | varchar(100) | NO   | UNI |         |       | 
+| translationKey | varchar(100) | NO   | UNI |         |       | 
+| displayorder   | int(11)      | YES  |     | NULL    |       | 
+| refoundation   | int(11)      | YES  |     | NULL    |       | 
+| serverref_id   | bigint(20)   | YES  |     | NULL    |       | 
++----------------+--------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+
+mysql> select * from versionType;      
++----+-----------------------------+------------------------------+--------------+--------------+--------------+
+| id | name                        | translationKey               | displayorder | refoundation | serverref_id |
++----+-----------------------------+------------------------------+--------------+--------------+--------------+
+|  1 | OLD In Production           | version.type.production      |           10 |            0 |         NULL | 
+|  2 | OLD Next Corrective Package | version.type.corrective      |           20 |            0 |         NULL | 
+|  3 | OLD Next Release            | version.type.release         |           40 |            0 |         NULL | 
+|  4 | OLD Development Stable      | version.type.dev             |           50 |            0 |         NULL | 
+|  5 | OLD Integration Build       | version.type.integration     |           60 |            0 |         NULL | 
+|  9 | Darwin                      | version.type.rfnd_dev        |          150 |            1 |         NULL | 
+|  8 | Next Release                | version.type.rfnd_rel        |          120 |            1 |           80 | 
+| 11 | Production                  | version.type.rfnd_prod       |          100 |            1 |           95 | 
+| 10 | Integration ITG/FIT         | version.type.rfnd_int        |          140 |            0 |         NULL | 
+| 12 | Future Release (+ n)        | version.type.rfnd_corrective |          110 |            1 |         NULL | 
+|  6 | Specific Release            | version.type.specific        |          125 |            1 |         NULL | 
+| 14 | Integration                 | version.type.rfnd_integ      |          122 |            1 |         NULL | 
+| 13 | HotFix                      | version.type.rfnd_prepilot   |          130 |            1 |           84 | 
+| 15 | Test-Nippin-Mind V2         | version.type.rfnd_mindv2     |          170 |            1 |         NULL | 
+| 16 | Teams Cont. Intg.           | version.type.ci              |          180 |            1 |         NULL | 
++----+-----------------------------+------------------------------+--------------+--------------+--------------+

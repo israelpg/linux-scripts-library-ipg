@@ -5,12 +5,12 @@ BEGIN
 
     SELECT MAX(release_id)
     INTO @lastProdRelease
-    FROM releaseTrackTest
+    FROM releaseTrack
     WHERE project_id = projectID 
     AND env_type = 11;
 
     IF (@lastProdRelease < @previousRelease) THEN
-        UPDATE releaseTrackTest
+        UPDATE releaseTrack
         SET release_id = generatedRelease
         WHERE project_id = projectID 
         AND release_id > @lastProdRelease

@@ -1,7 +1,7 @@
 DELIMITER |
 CREATE PROCEDURE sp_common_triggers_track(IN generatedRelease SMALLINT(20), projectID SMALLINT(20), typeID SMALLINT(20), versionID VARCHAR(50), dateField DATETIME)
 BEGIN
-    INSERT INTO releaseTrackTest
+    INSERT INTO releaseTrack
     SET release_id=generatedRelease, project_id=projectID, env_type=typeID, version=versionID, date=dateField;
 END;
 |

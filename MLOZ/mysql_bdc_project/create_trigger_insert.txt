@@ -1,6 +1,6 @@
 DELIMITER |
 CREATE TRIGGER after_insert_version_track
-    AFTER INSERT ON versionTest
+    AFTER INSERT ON version
     FOR EACH ROW
 BEGIN
     DECLARE year INT(2) ZEROFILL;
@@ -9,11 +9,11 @@ BEGIN
     DECLARE generatedMonth INT(2) ZEROFILL;
     SET @january := 1;
 
-    IF (NEW.type IN(14,8,11) and NEW.version <> 'EMPTY') THEN
-        SELECT MAX(release_id)
-        INTO @releaseID
-        FROM releaseTrackTest WHERE env_type=11;
+    SELECT MAX(release_id)
+    INTO @releaseID
+    FROM releaseTrack WHERE env_type=11;
 
+    IF (NEW.type IN(14,8) and NEW.version <> 'EMPTY') THEN
         SET @year := LEFT(@releaseID,length(@releaseID)-2);
         SET @month := RIGHT(@releaseID,length(@releaseID)-2);
 
@@ -29,8 +29,9 @@ BEGIN
         END IF;
 
         SET @generatedRelease := CONCAT(@generatedYear,@generatedMonth);
-
         CALL sp_common_triggers_track(@generatedRelease, NEW.project_id, NEW.type, NEW.version, NEW.modificationdate); 
+    ELSEIF (NEW.type IN(11) and NEW.version <> 'EMPTY') THEN
+        CALL sp_common_triggers_track(@releaseID, NEW.project_id, NEW.type, NEW.version, NEW.modificationdate);
     END IF;
 END;
 |

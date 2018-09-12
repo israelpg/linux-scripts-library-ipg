@@ -1,0 +1,3 @@
+hudson = hudson <hudson@mycompany.com>
+m999ajs = m999ajs <m999ajs@mycompany.com>
+m999mdh = m999mdh <m999mdh@mycompany.com>

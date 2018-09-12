@@ -1,6 +1,6 @@
 DELIMITER |
 CREATE TRIGGER after_update_version_track
-    AFTER UPDATE ON versionTest
+    AFTER UPDATE ON version
     FOR EACH ROW
 BEGIN
     DECLARE year INT(2) ZEROFILL;
@@ -11,7 +11,7 @@ BEGIN
 
     SELECT MAX(release_id)
     INTO @releaseID
-    FROM releaseTrackTest WHERE env_type=11;
+    FROM releaseTrack WHERE env_type=11;
 
     SET @year := LEFT(@releaseID,length(@releaseID)-2);
     SET @month := RIGHT(@releaseID,length(@releaseID)-2);
@@ -35,14 +35,14 @@ BEGIN
     ELSEIF (NEW.type IN(11) and NEW.version <> 'EMPTY') THEN
         SELECT release_id
         INTO @releaseHotfixSpecific
-        FROM releaseTrackTest WHERE project_id = NEW.project_id AND env_type IN(13,6) AND version = NEW.version;
+        FROM releaseTrack WHERE project_id = NEW.project_id AND env_type IN(13,6) AND version = NEW.version;
         
         IF (@releaseHotfixSpecific IS NULL) THEN
             CALL sp_check_previous_versions(@generatedRelease, OLD.project_id);
 
             SELECT release_id
             INTO @nextRelease
-            FROM releaseTrackTest WHERE project_id = NEW.project_id AND env_type = 8 AND version = NEW.version;
+            FROM releaseTrack WHERE project_id = NEW.project_id AND env_type = 8 AND version = NEW.version;
             
             CALL sp_common_triggers_track(@nextRelease, NEW.project_id, NEW.type, NEW.version, NEW.modificationdate);            
         ELSE
