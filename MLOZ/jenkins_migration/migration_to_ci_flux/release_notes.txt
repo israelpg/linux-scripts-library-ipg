@@ -1,0 +1,23 @@
+How the script works?
+
+The script is always to be executed in ci-release server, transferring jobs to ci-ebus. There is another script for transferring to ci-flux.
+
+SCENARIOS:
+
+1) Batch Mode processing scenario:
+
+Executing the script in batch mode, passing argument -b
+
+./transferJenkinsJobs.sh -b
+
+The script will fetch data from servers, output result in log files within tmp/ folder.
+
+The reason behind using files is because we only need to make a call to the server, get necessary data, and manipulate the files in ci-release.
+
+There is a crossmatch between the whole list of jobs in ci-release and ci-ebus, obtaining list of pending jobs to be migrated.
+
+These jobs will be processed (transferred) to ci-ebus, as long as the corresponding Git repo is remotely available on Bitbucket:
+Meaning the clonesvn2git.sh has cloned SVN to Git, and pushed to remote repo.
+
+
+
