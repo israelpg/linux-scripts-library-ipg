@@ -1,0 +1,99 @@
+---
+- hosts: PreProdNode_GFDI_30A_RFND
+  user: root
+  vars:
+    was_app_name: CATA_30_MBR1
+    was_cluster_name: CATA_30
+    owner: was6cpk
+    group: was6group
+    default_port: 21120
+    path: /data/cata/{{ was_app_name }}
+
+    vhost: RfndCorpack_vhost
+
+    dataSources:
+    - authDataAlias: udbicpk597/dbcatcpk
+      authDataPassword: cpk20090204
+      currentSchema: ADM
+      databaseName: CAT030
+      driverType: '4'
+      jndiName: jdbc/DCADM03X
+      name: DCADM03X
+      portNumber: '50004'
+      serverName: db2-corpak03.jablux.gfdi.be
+      typeds: universal
+      user: dbcatcpk
+      webSphereDefaultIsolationLevel: '2'
+
+    - authDataAlias: udbicpk597/dbcatcpk
+      authDataPassword: cpk20090204
+      currentSchema: IDX
+      databaseName: CAT030
+      driverType: '4'
+      jndiName: jdbc/DCIDX03X
+      name: DCIDX03X
+      portNumber: '50004'
+      serverName: db2-corpak03.jablux.gfdi.be
+      typeds: universal
+      user: dbcatcpk
+      webSphereDefaultIsolationLevel: '1'
+
+
+    systemProperties:
+    - name: doccenter.scheduler.enabled
+      value: true
+    - name: doccenter.scheduler.threads
+      value: '1'
+    - name: doccenter.script.folderref.recheck.delay
+      value: '-1'
+    - name: net.sf.ehcache.skipUpdateCheck
+      value: true
+
+    directories:
+    - "{{ path }}/work/logs"
+    - /data/cata/cpk
+    - /data/cata/cpk/03X
+    - /data/cata/cpk/03X/chunks
+    - /data/cata/cpk/03X/config
+    - /data/cata/cpk/03X/config/dbspecific
+    - /data/cata/cpk/03X/config/dbspecific/DCIDX03X
+    - /data/cata/cpk/03X/dccache
+    - /data/cata/cpk/03X/logs
+    - /data/cata/cpk/03X/work
+
+  roles:
+  - base_was
+
+  # Post Install
+  tasks:
+  - name: Copy dbspecific.zip
+    copy: src="files/CATA/dbspecific.zip" dest="/data/cata/cpk/03X/config/dbspecific.zip"
+      owner={{ owner }} group={{ group }} mode=0644
+    register: dbspecific_zip
+    tags: files
+    notify: reset_acl
+
+  - name: Extract dbspecific.zip if uploaded
+    when: dbspecific_zip.changed
+    unarchive: src="/data/cata/cpk/03X/config/dbspecific.zip"
+      dest="/data/cata/cpk/03X/config/dbspecific/DCIDX03X/"
+      owner={{ owner }} group={{ group }} mode=u=rwX,g=rX,o=rX copy=no
+    tags: files
+    notify: reset_acl
+
+  - name: Copy dbdefault.zip
+    copy: src="files/CATA/dbdefault.zip" dest="/data/cata/cpk/03X/config/dbdefault.zip"
+      owner={{ owner }} group={{ group }} mode=0644
+    register: dbdefault_zip
+    tags: files
+    notify: reset_acl
+
+  - name: Extract dbdefault.zip if uploaded
+    when: dbdefault_zip.changed
+    unarchive: src="/data/cata/cpk/03X/config/dbdefault.zip"
+      dest="/data/cata/cpk/03X/config/"
+      owner={{ owner }} group={{ group }} mode=u=rwX,g=rX,o=rX copy=no creates="/data/cata/cpk/03X/config/dbdefault"
+    tags: files
+    notify: reset_acl
+
+  

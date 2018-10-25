@@ -1,0 +1,114 @@
+---
+- hosts: ProdNode_AIRBUS_500aA_RFND
+  user: root
+  vars:
+    was_app_name: JADER_500a_MBR1
+    was_cluster_name: JADER_500a
+    owner: was6u500
+    group: was6group
+    default_port: 21040
+    path: /data/jade/{{ was_app_name }}
+
+    vhost: RfndProd{{ dc }}_vhost
+
+    systemProperties:
+    - name: client.encoding.override
+      value: 'UTF-8'
+    - name: file.encoding
+      value: 'UTF-8'
+    - name: jade2.jobs.JADE2_SERVER
+      value: true
+    - name: jade2.jobs.RFND_GRP500a
+      value: true
+    - name: net.sf.ehcache.skipUpdateCheck
+      value: true
+    - name: jade2.jobs.509
+      value: true
+
+    dataSources:
+    - authDataAlias: AIRBUS/JRDE509
+      authDataPassword: ojizu509
+      dataTruncation: 'false'
+      databaseName: AIRBUS
+      dateFormat: iso
+      jndiName: jdbc/JADE2_509
+      libraries: '*LIBL'
+      name: JADE2_509
+      naming: system
+      serverName: airbus.jablux.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE509
+      extendedDynamic: false
+      package: DSJ2509
+      packageLibrary: JADEBUS509
+      packageCriteria: select
+      connectionPool:
+         connectionTimeout: 30
+         maxConnections: 50
+         minConnections: 15
+         reapTime: 300
+         agedTimeout: 0 
+
+    - authDataAlias: AIRBUS/JRDE988
+      authDataPassword: poqij988
+      dataTruncation: 'false'
+      databaseName: AIRBUS
+      dateFormat: iso
+      jndiName: jdbc/JADE2_999
+      libraries: '*LIBL'
+      name: JADE2_999
+      naming: system
+      serverName: airbus.jablux.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE988
+      extendedDynamic: false
+      package: DSJ2999
+      packageLibrary: JADEBUS999
+      packageCriteria: select
+      connectionPool:
+         connectionTimeout: 30
+         maxConnections: 50
+         minConnections: 15
+         reapTime: 300
+         agedTimeout: 0 
+
+    - authDataAlias: udbiorc597/dborc509
+      authDataPassword: 509mlksq
+      clientRerouteAlternateServerName: s598lp2dbrf02.jablux.cpc998.be
+      clientRerouteAlternatePortNumber: 50004
+      currentSchema: ORC509
+      enableSeamlessFailover: 1
+      databaseName: RFN500
+      driverType: '4'
+      jndiName: jdbc/BPE_509
+      name: BPE_509
+      portNumber: '50004'
+      serverName: s598lp1dbrf02.jablux.cpc998.be
+      typeds: universal
+      user: dborc509
+      webSphereDefaultIsolationLevel: '2'
+
+    - authDataAlias: udbiorc597/dborc999
+      authDataPassword: 988ozpir
+      clientRerouteAlternateServerName: s598lp2dbrf02.jablux.cpc998.be
+      clientRerouteAlternatePortNumber: 50004
+      currentSchema: ORC999
+      enableSeamlessFailover: 1
+      databaseName: RFN500
+      driverType: '4'
+      jndiName: jdbc/BPE_999
+      name: BPE_999
+      portNumber: '50004'
+      serverName: s598lp1dbrf02.jablux.cpc998.be
+      typeds: universal
+      user: dborc999
+      webSphereDefaultIsolationLevel: '2'
+
+    directories:
+    - '{{ path }}/work/jobs'
+
+  roles:
+  - base_was
+

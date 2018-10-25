@@ -1,0 +1,59 @@
+---
+- hosts:  integBCM01
+  user: root
+  vars:
+    owner: tomcat
+    group: tomcat
+
+  tasks:
+  - name: create root directory bcmpchBatch
+    file: path="/data/bcmpchBatch" state=directory mode=0775
+  - name: create  conf sub directory for bcmpchBatch
+    file: path="/data/bcmpchBatch/conf" state=directory mode=0755
+  - name: create webapps sub directory for bcmpchBatch
+    file: path="/data/bcmpchBatch/webapps" state=directory mode=0755
+  - name: create temp sub directory for bcmpchBatch
+    file: path="/data/bcmpchBatch/temp" state=directory mode=0755
+  - name: create logs sub directory for bcmpchBatch
+    file: path="/data/bcmpchBatch/logs" state=directory mode=0755
+  - name: create work sub directory for bcmpchBatch
+    file: path="/data/bcmpchBatch/work" state=directory mode=0755
+  - name: create bin sub directory for bcmpchBatch
+    file: path="/data/bcmpchBatch/bin" state=directory mode=0755
+  - name: create link bcmpchBatch
+    file: src="/data/bcmpchBatch" dest="/usr/share/tomcat/bcmpchBatch" state=link
+  - name: create workdir sub directory for bcmpchBatch
+    file: path="/data/bcmpchBatch/workdir" state=directory mode=0755
+    
+  - name: create mteam directory for bcmpchBatch
+    file: path="/mteam" state=directory mode=0775  
+  - name: create bcmpch sub directory for bcmpchBatch
+    file: path="/mteam/bcmpch" state=directory mode=0775  
+  - name: create link wpprintdocs
+    file: src="/eBusiness/wppdocs" dest="/mteam/bcmpch/wpprintdocs" state=link
+  - name: create link bcmpch
+    file: src="/eBusiness/bcmpch" dest="/mteam/bcmpch/bcmpch-mft" state=link
+  - name: create /mteam/bcmpch/mq-configuration directory for bcmpchBatch
+    file: path="/mteam/bcmpch/mq-configuration" state=directory mode=0775  
+  - name: create link workdir
+    file: src="/data/bcmpchBatch/workdir" dest="/mteam/bcmpch/workdir" state=link
+              
+  - name: Copy logback-bcmpch-batch-config.xml
+    copy: src="files/bcmpchBatch/logback-bcmpch-batch-config.xml" dest="/data/bcmpchBatch/conf/logback-bcmpch-batch-config.xml"
+      owner={{ owner }} group={{ group }} mode=0644
+  - name: Copy web.xml
+    copy: src="files/bcmpchBatch/web.xml" dest="/data/bcmpchBatch/conf/web.xml"
+      owner={{ owner }} group={{ group }} mode=0644
+  - name: Copy server.xml
+    copy: src="files/bcmpchBatch/server.xml" dest="/data/bcmpchBatch/conf/server.xml"
+      owner={{ owner }} group={{ group }} mode=0644
+  - name: Copy tomcat.conf
+    copy: src="files/bcmpchBatch/tomcat.conf" dest="/data/bcmpchBatch/conf/tomcat.conf"
+      owner={{ owner }} group={{ group }} mode=0644
+  - name: Copy bcmpch-batch-application.properties
+    copy: src="files/bcmpchBatch/bcmpch-batch-application.properties" dest="/mteam/bcmpch/bcmpch-batch-application.properties"
+      owner={{ owner }} group={{ group }} mode=0644
+      
+  - name: Copy binding file
+    copy: src="files/bcmpchBatch/bindings" dest="/mteam/bcmpch/mq-configuration/.bindings"
+      owner={{ owner }} group={{ group }} mode=0644

@@ -1,0 +1,89 @@
+---
+- hosts: ProdNode_AIRBUS_500I_RFND
+  user: root
+  vars:
+    was_app_name: CLIENTS_998
+    owner: was6u500
+    group: was6group
+    default_port: 21040
+    path: /data/clients/{{ was_app_name }}
+
+    vhost: RfndProd{{ dc }}_vhost
+    host_aliases:
+# temporary
+    - hostname: rfnd998.jablux.cpc998.be
+      port: 80
+# current production
+    - hostname: rfapps.jablux.cpc998.be
+      port: 80
+    - hostname: rfweb.jablux.cpc998.be
+      port: 80
+# JadeR 200
+    - hostname: s298lp{{ dc }}wsrf01.jablux.cpc998.be
+      port: 21040
+    - hostname: s298lp{{ dc }}wsrf02.jablux.cpc998.be
+      port: 21040
+    - hostname: s298lp{{ dc }}wsrf03.jablux.cpc998.be
+      port: 21040
+    - hostname: s298lp{{ dc }}wsrf04.jablux.cpc998.be
+      port: 21040
+# Catalog 200
+    - hostname: s298lp{{ dc }}wsrf05.jablux.cpc998.be
+      port: 21040
+    - hostname: s298lp{{ dc }}wsrf06.jablux.cpc998.be
+      port: 21040
+# Integrator 200
+    - hostname: s298lp{{ dc }}wsrf07.jablux.cpc998.be
+      port: 21160
+# JadeR 500
+    - hostname: s598lp{{ dc }}wsrf01.jablux.cpc998.be
+      port: 21040
+    - hostname: s598lp{{ dc }}wsrf02.jablux.cpc998.be
+      port: 21040
+    - hostname: s598lp{{ dc }}wsrf03.jablux.cpc998.be
+      port: 21040
+    - hostname: s598lp{{ dc }}wsrf04.jablux.cpc998.be
+      port: 21040
+    - hostname: s598lp{{ dc }}wsrf05.jablux.cpc998.be
+      port: 21040
+    - hostname: s598lp{{ dc }}wsrf06.jablux.cpc998.be
+      port: 21040
+# Catalog 500      
+    - hostname: s598lp{{ dc }}wsrf07.jablux.cpc998.be
+      port: 21040
+    - hostname: s598lp{{ dc }}wsrf08.jablux.cpc998.be
+      port: 21040
+# MDIS & Integrator 500
+    - hostname: s598lp{{ dc }}wsrf09.jablux.cpc998.be
+      port: 21040
+    - hostname: s598lp{{ dc }}wsrf09.jablux.cpc998.be
+      port: 21160
+
+    systemProperties:
+    - name: client.encoding.override
+      value: 'UTF-8'
+    - name: file.encoding
+      value: 'UTF-8'
+
+    dataSources:
+    - authDataAlias: AIRBUS/M998JADEWS
+      authDataPassword: md1spr0d
+      dataTruncation: 'false'
+      databaseName: AIRBUS
+      dateFormat: iso
+      jndiName: jdbc/MDIS_RfndProd{{ dc }}
+      libraries: 'JADEPRF'
+      name: MDIS_RfndProd
+      naming: system
+      serverName: airbus.jablux.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: M998JADEWS
+      extendedDynamic: 'false'
+      package: DSMDIS
+      packageLibrary: QGPL
+      packageCriteria: select
+
+  roles:
+  - base_was
+

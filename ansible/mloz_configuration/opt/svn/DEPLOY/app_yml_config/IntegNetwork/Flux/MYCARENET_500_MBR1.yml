@@ -1,0 +1,92 @@
+---
+- hosts: IntegNode_500A_FLUX
+  user: root
+  vars:
+    was_app_name: MYCARENET_500_MBR1
+    was_cluster_name: MYCARENET_500
+    default_port: 21200
+    owner: was6u500
+    group: was6group
+    path: /data/mycarenet/{{ was_app_name }}
+
+    vhost: MYCARENET_500_vhost
+    host_aliases:
+    - hostname: mycarenet-integ.integ.gfdi.be
+      port: 443
+    - hostname: s998li2wsrp01.integ.gfdi.be
+      port: 443
+    - hostname: s598li2wsfl01.integ.gfdi.be
+      port: 21200
+    - hostname: s598li2wsfl01.integ.gfdi.be
+      port: 21201
+
+    dataSources:
+    - authDataAlias: AS400/JCARE500
+      authDataPassword: MAQID31
+      dataTruncation: 'false'
+      databaseName: INTEGGFDI
+      dateFormat: iso
+      jndiName: jdbc/CARENET_AS400_RC
+      libraries: '*LIBL'
+      name: AS400MCT_500
+      naming: system
+      serverName: integ.integ.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JCARE500
+
+    - authDataAlias: lnxdb2/dbmct500
+      authDataPassword: 19jun091541
+      clientRerouteAlternatePortNumber: 50004
+      clientRerouteAlternateServerName: s000li2dbfl01.integ.gfdi.be
+      currentSchema: CARE
+      enableSeamlessFailover: 1
+      databaseName: MCT500
+      driverType: 4
+      jndiName: jdbc/CARENET_LINUX_RC
+      name: LNXMCT_500
+      portNumber: 50004
+      serverName: s000li2dbfl01.integ.gfdi.be
+      typeds: universal
+      user: dbmct500
+      webSphereDefaultIsolationLevel: 2
+      connectionPool:
+        maxConnections: 100
+        minConnections: 5
+
+# not used for the moment, but keep for later
+#    jmscf:
+#    - jndiName: jms/mqConnectionFactory 
+#      qmgrName: NQM5FL1
+#      qmgrSvrconnChannel: MTEAM.CLIENT.SVRCONN
+#      connectionNameList: s598li2iib03.integ.gfdi.be(16500)
+#      authDataAlias: JMSCF/uqmfl500
+#      user: uqmfl500
+#      authDataPassword: Welcome01
+#      name: MYCARENET_mqConnectionFactory
+
+#    jmsq:
+#    - jndiName: jms/MYCARENET_EXTENTED_IN
+#      queueName: QA.MYCARENET.EXTENDED.IN
+
+    resourceEnvEntries:
+    - name: CarenetConfig
+      jndiName: config/CarenetConfig
+      customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/carenet.properties"
+
+    systemProperties:
+    - name: spring.profiles.active
+      value: was
+    - name: file.encoding
+      value: ISO-8859-15
+    - name: mule.encoding
+      value: ISO-8859-15
+
+    resourceFiles:
+    - files/MYCARENET/carenet.properties
+
+  roles:
+  - base_was

@@ -1,0 +1,13 @@
+---
+- hosts: RefNodeapps501
+  user: root
+  vars:
+    default_port: 21280
+    group: was6group
+    owner: was6u500
+    path: /data/esign/{{ was_app_name }}
+    was_app_name: ESIGN_apps5_MBR1
+    was_cluster_name: ESIGN_apps5
+
+  roles:
+  - base_was

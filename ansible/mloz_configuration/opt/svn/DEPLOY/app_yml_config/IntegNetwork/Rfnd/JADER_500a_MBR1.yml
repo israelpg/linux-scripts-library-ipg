@@ -1,0 +1,269 @@
+---
+- hosts: IntegNode_500B_RFND
+  user: root
+  vars:
+    was_app_name: JADER_500a_MBR1
+    was_cluster_name: JADER_500a
+    owner: was6u500
+    group: was6group
+    default_port: 21040
+    path: /data/jade/{{ was_app_name }}
+
+    vhost: RfndInteg_vhost
+    host_aliases:
+    - hostname: "{{ ansible_fqdn }}" 
+      port: "{{ default_port }}"
+
+    systemProperties:
+    - name: jade2.jobs.JADE2_SERVER
+      value: true
+    - name: jade2.jobs.RFND_GRP500a
+      value: true
+    - name: net.sf.ehcache.skipUpdateCheck
+      value: true
+    - name: jade2.jobs.500
+      value: true
+    - name: jade2.jobs.501
+      value: true
+    - name: jade2.jobs.506
+      value: true
+    - name: jade2.jobs.509
+      value: true
+    - name: jade2.jobs.515
+      value: true
+    - name: jade2.jobs.526
+      value: true
+    - name: jade2.jobs.999
+      value: true
+
+    dataSources:
+    - authDataAlias: AS400/JRDE500
+      authDataPassword: fcnie500
+      dataTruncation: 'false'
+      databaseName: INTEGGFDI
+      dateFormat: iso
+      jndiName: jdbc/JADE2_500
+      libraries: '*LIBL'
+      name: JADE2_500
+      naming: system
+      serverName: integ.integ.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE500
+      extendedDynamic: false
+      package: DSJ2500
+      packageLibrary: JADEBUS500
+      packageCriteria: select
+
+    - authDataAlias: AS400/JRDE501
+      authDataPassword: nidqf501
+      dataTruncation: 'false'
+      databaseName: INTEGGFDI
+      dateFormat: iso
+      jndiName: jdbc/JADE2_501
+      libraries: '*LIBL'
+      name: JADE2_501
+      naming: system
+      serverName: integ.integ.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE501
+      extendedDynamic: false
+      package: DSJ2501
+      packageLibrary: JADEBUS501
+      packageCriteria: select
+
+    - authDataAlias: AS400/JRDE506
+      authDataPassword: dmkfj506
+      dataTruncation: 'false'
+      databaseName: INTEGGFDI
+      dateFormat: iso
+      jndiName: jdbc/JADE2_506
+      libraries: '*LIBL'
+      name: JADE2_506
+      naming: system
+      serverName: integ.integ.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE506
+      extendedDynamic: false
+      package: DSJ2506
+      packageLibrary: JADEBUS506
+      packageCriteria: select
+
+    - authDataAlias: AS400/JRDE509
+      authDataPassword: ojizu509
+      dataTruncation: 'false'
+      databaseName: INTEGGFDI
+      dateFormat: iso
+      jndiName: jdbc/JADE2_509
+      libraries: '*LIBL'
+      name: JADE2_509
+      naming: system
+      serverName: integ.integ.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE509
+      extendedDynamic: false
+      package: DSJ2509
+      packageLibrary: JADEBUS509
+      packageCriteria: select
+
+    - authDataAlias: AS400/JRDE515
+      authDataPassword: porkf515
+      dataTruncation: 'false'
+      databaseName: INTEGGFDI
+      dateFormat: iso
+      jndiName: jdbc/JADE2_515
+      libraries: '*LIBL'
+      name: JADE2_515
+      naming: system
+      serverName: integ.integ.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE515
+      extendedDynamic: false
+      package: DSJ2515
+      packageLibrary: JADEBUS515
+      packageCriteria: select
+
+    - authDataAlias: AS400/JRDE526
+      authDataPassword: qmepo526
+      dataTruncation: 'false'
+      databaseName: INTEGGFDI
+      dateFormat: iso
+      jndiName: jdbc/JADE2_526
+      libraries: '*LIBL'
+      name: JADE2_526
+      naming: system
+      serverName: integ.integ.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE526
+      extendedDynamic: false
+      package: DSJ2526
+      packageLibrary: JADEBUS526
+      packageCriteria: select
+
+    - authDataAlias: AS400/JRDE988
+      authDataPassword: poqij988
+      dataTruncation: 'false'
+      databaseName: INTEGGFDI
+      dateFormat: iso
+      jndiName: jdbc/JADE2_999
+      libraries: '*LIBL'
+      name: JADE2_999
+      naming: system
+      serverName: integ.integ.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE988
+      extendedDynamic: false
+      package: DSJ2999
+      packageLibrary: JADEBUS999
+      packageCriteria: select
+
+    - authDataAlias: lnxdb2/dborc500
+      authDataPassword: 500lkjds
+      currentSchema: ORC500
+      enableSeamlessFailover: 0
+      databaseName: RFN500
+      driverType: '4'
+      jndiName: jdbc/BPE_500
+      name: BPE_500
+      portNumber: '50004'
+      serverName: s598li2dbrf02.integ.gfdi.be
+      typeds: universal
+      user: dborc500
+      webSphereDefaultIsolationLevel: '2'
+
+    - authDataAlias: lnxdb2/dborc501
+      authDataPassword: 501fdqks
+      currentSchema: ORC501
+      enableSeamlessFailover: 0
+      databaseName: RFN500
+      driverType: '4'
+      jndiName: jdbc/BPE_501
+      name: BPE_501
+      portNumber: '50004'
+      serverName: s598li2dbrf02.integ.gfdi.be
+      typeds: universal
+      user: dborc501
+      webSphereDefaultIsolationLevel: '2'
+
+    - authDataAlias: lnxdb2/dborc506
+      authDataPassword: 506fmlfs
+      currentSchema: ORC506
+      enableSeamlessFailover: 0
+      databaseName: RFN500
+      driverType: '4'
+      jndiName: jdbc/BPE_506
+      name: BPE_506
+      portNumber: '50004'
+      serverName: s598li2dbrf02.integ.gfdi.be
+      typeds: universal
+      user: dborc506
+      webSphereDefaultIsolationLevel: '2'
+
+    - authDataAlias: lnxdb2/dborc509
+      authDataPassword: 509mlksq
+      currentSchema: ORC509
+      enableSeamlessFailover: 0
+      databaseName: RFN500
+      driverType: '4'
+      jndiName: jdbc/BPE_509
+      name: BPE_509
+      portNumber: '50004'
+      serverName: s598li2dbrf02.integ.gfdi.be
+      typeds: universal
+      user: dborc509
+      webSphereDefaultIsolationLevel: '2'
+
+    - authDataAlias: lnxdb2/dborc515
+      authDataPassword: 515lqskj
+      currentSchema: ORC515
+      enableSeamlessFailover: 0
+      databaseName: RFN500
+      driverType: '4'
+      jndiName: jdbc/BPE_515
+      name: BPE_515
+      portNumber: '50004'
+      serverName: s598li2dbrf02.integ.gfdi.be
+      typeds: universal
+      user: dborc515
+      webSphereDefaultIsolationLevel: '2'
+
+    - authDataAlias: lnxdb2/dborc526
+      authDataPassword: 526azpeo
+      currentSchema: ORC526
+      enableSeamlessFailover: 0
+      databaseName: RFN500
+      driverType: '4'
+      jndiName: jdbc/BPE_526
+      name: BPE_526
+      portNumber: '50004'
+      serverName: s598li2dbrf02.integ.gfdi.be
+      typeds: universal
+      user: dborc526
+      webSphereDefaultIsolationLevel: '2'
+
+    - authDataAlias: lnxdb2/dborc999
+      authDataPassword: 988ozpir
+      currentSchema: ORC999
+      enableSeamlessFailover: 0
+      databaseName: RFN500
+      driverType: '4'
+      jndiName: jdbc/BPE_999
+      name: BPE_999
+      portNumber: '50004'
+      serverName: s598li2dbrf02.integ.gfdi.be
+      typeds: universal
+      user: dborc999
+      webSphereDefaultIsolationLevel: '2'
+
+    directories:
+    - '{{ path }}/work/jobs'
+
+  roles:
+  - base_was
+

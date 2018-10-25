@@ -1,0 +1,23 @@
+---
+- hosts: PreProdNodetest
+  user: root
+  vars:
+    was_app_name: ORCRPG_test
+    owner: was6tst
+    group: was6group
+    default_port: 21220
+    path: /data/orcrpg/{{ was_app_name }}
+
+    resourceEnvEntries:
+    - customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/server-config.xml"
+      jndiName: config/OrcrpgConfig
+      name: ConfigServer
+
+    resourceFiles:
+    - files/ORCRPG/server-config.xml
+
+  roles:
+  - base_was

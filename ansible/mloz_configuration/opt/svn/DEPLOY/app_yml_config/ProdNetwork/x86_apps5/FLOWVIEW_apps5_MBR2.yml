@@ -1,0 +1,94 @@
+---
+- hosts: jabluxProdNodeapps502
+  user: root
+  vars:
+    was_app_name: FLOWVIEW_apps5_MBR2
+    was_cluster_name: FLOWVIEW_apps5
+    default_port: 21320
+    owner: was6u500
+    group: was6group
+    path: /data/flowview/{{ was_app_name }}
+
+    host_aliases:
+    - hostname: flowview5xx.jablux.cpc998.be
+      port: 443
+    - hostname: flowview5xx-p-web1.jablux.cpc998.be
+      port: 443
+    - hostname: flowview5xx-drp-web1.jablux.cpc998.be
+      port: 443
+    - hostname: flowview5xx-p-web2.jablux.cpc998.be
+      port: 443
+    - hostname: flowview5xx-drp-web2.jablux.cpc998.be
+      port: 443
+    - hostname: node-p-apps501.jablux.cpc998.be
+      port: 21320
+    - hostname: s998jplnx068.jablux.cpc998.be
+      port: 21320
+    - hostname: node-p-apps502.jablux.cpc998.be
+      port: 21320
+    - hostname: s998jplnx070.jablux.cpc998.be
+      port: 21320
+    - hostname: node-drp-apps501.jablux.cpc998.be
+      port: 21320
+    - hostname: s998jplnx069.jablux.cpc998.be
+      port: 21320
+    - hostname: node-drp-apps502.jablux.cpc998.be
+      port: 21320
+    - hostname: s998jplnx071.jablux.cpc998.be
+      port: 21320
+    dataSources:
+    - authDataAlias: AIRBUS/JCARE500
+      authDataPassword: MAQID31
+      dataTruncation: 'false'
+      databaseName: AIRBUS
+      dateFormat: iso
+      jndiName: jdbc/IIBLOG_AS400_RC
+      libraries: '*LIBL'
+      name: AS400IIBLOG_5xx
+      naming: system
+      serverName: airbus.jablux.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JCARE500
+      websphereDefaultIsolationLevel: 2
+
+    - authDataAlias: udbidmg5/dbmct500
+      authDataPassword: 19jun091541
+      user: dbmct500
+      name: LNXIBLOG_5xx
+      jndiName: jdbc/IIBLOG_LINUX_RC
+      serverName: iobe-prod-db2-01.jablux.cpc998.be
+      portNumber: 50016
+      clientRerouteAlternateServerName: iobe-prod-db2-02.jablux.cpc998.be
+      clientRerouteAlternatePortNumber: 50016
+      databaseName: MCT500
+      typeds: universal
+      currentSchema: CARE
+      webSphereDefaultIsolationLevel: 2
+      driverType: 4
+    - authDataAlias: udbidmg5/dbmct500
+      authDataPassword: 19jun091541
+      user: dbmct500
+      name: LNXIBLOG2_5xx
+      jndiName: jdbc/IIBLOG_LINUX_RC_2
+      serverName: iobe-prod-db2-02.jablux.cpc998.be
+      portNumber: 50016
+      databaseName: MCT500
+      typeds: universal
+      currentSchema: CARE
+      webSphereDefaultIsolationLevel: 2
+      driverType: 4
+
+    resourceEnvEntries:
+    - name: IIBLOGConfig
+      jndiName: config/iibLogViewConfig
+      customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/iib_logView.properties"
+
+    resourceFiles:
+    - files/FLOWVIEW/iib_logView.properties
+
+  roles:
+  - base_was

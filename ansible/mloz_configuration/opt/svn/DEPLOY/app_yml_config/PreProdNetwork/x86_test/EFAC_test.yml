@@ -1,0 +1,135 @@
+---
+- hosts: PreProdNodetest
+  user: root
+  vars:
+    was_app_name: EFAC_test
+    owner: was6tst
+    group: was6group
+    default_port: 21060
+    path: /data/efac/{{ was_app_name }}
+
+    dataSources:
+    - access: all
+      authDataAlias: TEST/JCARE500
+      authDataPassword: wait
+      beginTranForResultSetScrollingAPIs: 'false'
+      beginTranForVendorAPIs: 'false'
+      bidiImplicitReordering: 'true'
+      bidiNumericOrdering: 'false'
+      bigDecimal: 'true'
+      blockCriteria: '2'
+      blockSize: '32'
+      connectionSharing: '1'
+      cursorHold: 'false'
+      cursorSensitivity: asensitive
+      dataCompression: 'true'
+      dataTruncation: 'true'
+      driver: toolbox
+      enableMultithreadedAccessDetection: 'false'
+      errorDetectionModel: ExceptionMapping
+      errors: basic
+      extendedDynamic: 'false'
+      extendedMetaData: 'false'
+      freeResourcesOnClose: 'false'
+      fullOpen: 'false'
+      holdInputLocators: 'true'
+      holdStatements: 'false'
+      isolationLevelSwitchingSupport: 'false'
+      jmsOnePhaseOptimization: 'false'
+      jndiName: jdbc/EFAC_AS400_RO_RC
+      lazyClose: 'false'
+      lobThreshold: '0'
+      loginTimeout: '0'
+      maximumPrecision: '31'
+      maximumScale: '31'
+      metaDataSource: '1'
+      minimumDivideScale: '0'
+      name: AS400_RO_EFAC_500
+      naming: sql
+      nonTransactionalDataSource: 'false'
+      packageAdd: 'true'
+      packageCCSID: '13488'
+      packageCache: 'false'
+      packageCriteria: default
+      packageError: warning
+      packageLibrary: QGPL
+      preTestSQLString: SELECT CURRENT SQLID FROM SYSIBM.SYSDUMMY1
+      prefetch: 'true'
+      prompt: 'false'
+      queryOptimizeGoal: '0'
+      reauthentication: 'false'
+      remarks: system
+      rollbackCursorHold: 'false'
+      savePasswordWhenSerialized: '{xor}OT4zLDo='
+      secure: 'false'
+      serverName: test.gfdi.be
+      serverTraceCategories: '0'
+      sort: hex
+      threadUsed: 'true'
+      translateBinary: 'false'
+      translateBoolean: 'true'
+      translateHex: character
+      trueAutoCommit: 'false'
+      typeds: toolbox
+      user: JCARE500
+      validateNewConnection: 'false'
+      validateNewConnectionRetryCount: '100'
+      validateNewConnectionRetryInterval: '3'
+    - authDataAlias: TEST/JCARE500
+      authDataPassword: wait
+      dataTruncation: 'false'
+      databaseName: TESTGFDI
+      dateFormat: iso
+      jndiName: jdbc/EFAC_AS400_RC
+      libraries: '*LIBL'
+      name: AS400EFAC_500
+      naming: system
+      serverName: test.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JCARE500
+    - authDataAlias: udbich4597/dbmcttst
+      authDataPassword: tst20120410
+      clientRerouteAlternatePortNumber: '50020'
+      clientRerouteAlternateServerName: db2-nippin02.jablux.gfdi.be
+      currentSchema: CARE
+      databaseName: MCT500
+      driverType: '4'
+      jndiName: jdbc/EFAC_LINUX_RC
+      name: LNXEFAC_500
+      portNumber: '50020'
+      serverName: db2-nippin01.jablux.gfdi.be
+      typeds: universal
+      user: dbmcttst
+      webSphereDefaultIsolationLevel: '2'
+      connectionPool:
+        maxConnections: 50
+        minConnections: 5
+
+    host_aliases:
+    - hostname: efac-test.jablux.gfdi.be
+      port: '443'
+
+    resourceEnvEntries:
+    - customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/efac.properties"
+      jndiName: config/efacConfig
+      name: EFACConfig
+    - customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/soapParser.properties"
+      jndiName: config/soapParserConfig
+      name: EfacSoapParser
+
+    resourceFiles:
+    - files/EFAC/efac.properties
+    - files/EFAC/soapParser.properties
+    - files/EFAC/aesSymetric2013prod.key
+
+
+
+  roles:
+  - base_was

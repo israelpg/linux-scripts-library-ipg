@@ -1,0 +1,44 @@
+---
+- name: Push WAS script {{ was_app_name }}
+  template: src=was_script.py dest=/data/wsadmin/servers/was_{{ was_app_name }}.py
+  tags: was_script
+
+- name: Launch WAS script
+  shell: "{{ base_wsadmin_sh }} -f /data/wsadmin/servers/was_{{ was_app_name }}.py > {{ ibmim_install_folder_logs }}/was_{{ was_app_name }}.log"
+  tags: was_script
+  notify:
+    - update_node_variables
+    - restart_NodeAgent
+    - sync_nodes
+
+- name: Create necessary directories
+  when: directories is defined
+  with_items: directories
+  file: dest={{ item }} state=directory owner={{ owner }} group={{ group }}
+  notify: reset_acl
+  tags: files
+
+- name: Create lib directory
+  file: dest={{ path }}/lib state=directory owner={{ owner }} group={{ group }}
+
+- name: Push share Libraries config_jndi jar
+  copy: src="config_jndi-0.0.4.jar" dest="{{ path }}/lib/config_jndi.jar" owner={{ owner }} group={{ group }} mode=0644
+  tags: config_jndi
+
+## copy JKS files
+- name: Push "*.jks" (binary) files
+  with_items: resourceFiles
+  when: resourceFiles is defined and item[-4:] == ".jks"
+  copy: src="{{ item }}" dest="{{ path }}/resources/{{ item | basename }}"
+    owner={{ owner }} group={{ group }} mode=0644 backup=yes
+  notify: reset_acl
+  tags: files
+
+## copy not jks files
+- name: Push not "*.jks" (template) files
+  with_items: resourceFiles
+  when: resourceFiles is defined and item[-4:] != ".jks"
+  template: src="{{ item }}" dest="{{ path }}/resources/{{ item | basename }}"
+    owner={{ owner }} group={{ group }} mode=0644 backup=yes
+  notify: reset_acl
+  tags: files

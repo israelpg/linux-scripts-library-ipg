@@ -1,0 +1,4 @@
+---
+- name: autofs running and enabled at boot
+  when: ansible_os_family == 'RedHat'
+  service: name=autofs state=started enabled=yes

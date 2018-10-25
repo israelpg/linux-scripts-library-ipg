@@ -1,0 +1,98 @@
+---
+- hosts: PreProdNode_TEST_500A_FLUX
+  user: root
+  vars:
+    was_app_name: NIPCOMT_TEST_MBR1
+    was_cluster_name: NIPCOMT_TEST
+    default_port: 21280
+    owner: was6tst
+    group: was6group
+    path: /data/nipcomt/{{ was_app_name }}
+
+    dataSources: False
+
+    vhost: NCT_Test_vhost
+    host_aliases:
+    - hostname: nct-test.jablux.gfdi.be
+      port: 443
+    - hostname: s999lq2wsrp01.jablux.gfdi.be
+      port: 443
+    - hostname: s999lq2wsfl07.jablux.gfdi.be
+      port: 21280
+    - hostname: s999lq2wsfl07.jablux.gfdi.be
+      port: 21281
+
+    jmscf:
+    - jndiName: jms/mqIIBConnectionFactory 
+      qmgrName: IQM3FL1
+      qmgrSvrconnChannel: MTEAM.CLIENT.SVRCONN
+      connectionNameList: s999lq2iib02.jablux.gfdi.be(16300)
+      authDataAlias: JMSCF/uqmfl500
+      user: uqmfl500
+      authDataPassword: Welcome01
+      name: NCT_mqConnectionFactory
+
+    jmsq:
+    - jndiName: jms/QA.INAMI.MODEL.BIM_BATCH.REQ
+      queueName: QA.INAMI.MODEL.BIM_BATCH.REQ
+      advancedProperties:
+        useRFH2: 'false'
+
+    - jndiName: jms/QA.NIPPIN.ASYNC.GENERIC.OUT
+      queueName: QA.NIPPIN.ASYNC.GENERIC.OUT
+
+    - jndiName: jms/QA.NIPPIN.ASYNC.GENERIC.OUT.BIG
+      queueName: QA.NIPPIN.ASYNC.GENERIC.OUT.BIG
+
+    - jndiName: jms/QA.NIPPIN.ASYNC.GENERIC.REQ
+      queueName: QA.NIPPIN.ASYNC.GENERIC.REQ
+
+    - jndiName: jms/QA.NIPPIN.ASYNC.GENERIC.RESP
+      queueName: QA.NIPPIN.ASYNC.GENERIC.RESP
+
+    - jndiName: jms/QA.NIPPIN.ASYNC.NCT.DB.IN
+      queueName: QA.NIPPIN.ASYNC.NCT.DB.IN
+
+    - jndiName: jms/QA.NIPPIN.ASYNC.NCT.DB.OUT
+      queueName: QA.NIPPIN.ASYNC.NCT.DB.OUT
+
+    dataSources:
+    - authDataAlias: udbitst597/dbmcttst
+      authDataPassword: tst20120410
+      clientRerouteAlternatePortNumber: 50004
+      clientRerouteAlternateServerName: s999lq2dbfl02.jablux.gfdi.be
+      currentSchema: CARE
+      databaseName: MCT500
+      enableSeamlessFailover: 1
+      driverType: 4
+      jndiName: jdbc/NCT_LINUX_RC
+      name: LNXNCT_500
+      portNumber: 50004
+      serverName: s999lq2dbfl01.jablux.gfdi.be
+      typeds: universal
+      user: dbmcttst
+      webSphereDefaultIsolationLevel: 2
+      connectionPool:
+        maxConnections: 50
+        minConnections: 5
+
+    resourceEnvEntries:
+    - name: NippinCommonToolsForJNDI
+      jndiName: config/NippinCommonToolsConfig
+      customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/NippinCommonToolsConfig.properties"
+
+    resourceFiles:
+    - files/NCT/aesSymetric2013prod.key
+    - files/NCT/NippinCommonToolsConfig.properties
+    - files/NCT/Assu_Async.csv
+    - files/NCT/eAttest_CrossChecks.csv
+    - files/NCT/eAttest_Rules.csv
+    - files/NCT/eAttest_XPath.csv
+    - files/NCT/eFact_Rules.csv
+    - files/NCT/managedFlowsFile.properties
+
+  roles:
+  - base_was

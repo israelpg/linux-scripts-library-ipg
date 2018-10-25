@@ -1,0 +1,150 @@
+---
+- hosts: ProdNode_AIRBUS_500bD_RFND
+  user: root
+  vars:
+    was_app_name: JADER_500b_MBR2
+    was_cluster_name: JADER_500b
+    owner: was6u500
+    group: was6group
+    default_port: 21040
+    path: /data/jade/{{ was_app_name }}
+
+    vhost: RfndProd{{ dc }}_vhost
+
+    systemProperties:
+    - name: client.encoding.override
+      value: 'UTF-8'
+    - name: file.encoding
+      value: 'UTF-8'
+    - name: net.sf.ehcache.skipUpdateCheck
+      value: true
+    - name: jade2.jobs.501
+      value: true
+
+    dataSources:
+    - authDataAlias: AIRBUS/JRDE500
+      authDataPassword: fcnie500
+      dataTruncation: 'false'
+      databaseName: AIRBUS
+      dateFormat: iso
+      jndiName: jdbc/JADE2_500
+      libraries: '*LIBL'
+      name: JADE2_500
+      naming: system
+      serverName: airbus.jablux.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE500
+      extendedDynamic: false
+      package: DSJ2500
+      packageLibrary: JADEBUS500
+      packageCriteria: select
+      connectionPool:
+         connectionTimeout: 30
+         maxConnections: 60
+         minConnections: 1
+         reapTime: 300
+         agedTimeout: 0 
+
+    - authDataAlias: AIRBUS/JRDE501
+      authDataPassword: nidqf501
+      dataTruncation: 'false'
+      databaseName: AIRBUS
+      dateFormat: iso
+      jndiName: jdbc/JADE2_501
+      libraries: '*LIBL'
+      name: JADE2_501
+      naming: system
+      serverName: airbus.jablux.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE501
+      extendedDynamic: false
+      package: DSJ2501
+      packageLibrary: JADEBUS501
+      packageCriteria: select
+      connectionPool:
+         connectionTimeout: 30
+         maxConnections: 60
+         minConnections: 1
+         reapTime: 300
+         agedTimeout: 0 
+
+    - authDataAlias: AIRBUS/JRDE515
+      authDataPassword: porkf515
+      dataTruncation: 'false'
+      databaseName: AIRBUS
+      dateFormat: iso
+      jndiName: jdbc/JADE2_515
+      libraries: '*LIBL'
+      name: JADE2_515
+      naming: system
+      serverName: airbus.jablux.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE515
+      extendedDynamic: false
+      package: DSJ2515
+      packageLibrary: JADEBUS515
+      packageCriteria: select
+      connectionPool:
+         connectionTimeout: 30
+         maxConnections: 60
+         minConnections: 1
+         reapTime: 300
+         agedTimeout: 0 
+
+    - authDataAlias: udbiorc597/dborc500
+      authDataPassword: 500lkjds
+      clientRerouteAlternateServerName: s598lp2dbrf02.jablux.cpc998.be
+      clientRerouteAlternatePortNumber: 50004
+      currentSchema: ORC500
+      enableSeamlessFailover: 1
+      databaseName: RFN500
+      driverType: '4'
+      jndiName: jdbc/BPE_500
+      name: BPE_500
+      portNumber: '50004'
+      serverName: s598lp1dbrf02.jablux.cpc998.be
+      typeds: universal
+      user: dborc500
+      webSphereDefaultIsolationLevel: '2'
+
+    - authDataAlias: udbiorc597/dborc501
+      authDataPassword: 501fdqks
+      clientRerouteAlternateServerName: s598lp2dbrf02.jablux.cpc998.be
+      clientRerouteAlternatePortNumber: 50004
+      currentSchema: ORC501
+      enableSeamlessFailover: 1
+      databaseName: RFN500
+      driverType: '4'
+      jndiName: jdbc/BPE_501
+      name: BPE_501
+      portNumber: '50004'
+      serverName: s598lp1dbrf02.jablux.cpc998.be
+      typeds: universal
+      user: dborc501
+      webSphereDefaultIsolationLevel: '2'
+
+    - authDataAlias: udbiorc597/dborc515
+      authDataPassword: 515lqskj
+      clientRerouteAlternateServerName: s598lp2dbrf02.jablux.cpc998.be
+      clientRerouteAlternatePortNumber: 50004
+      currentSchema: ORC515
+      enableSeamlessFailover: 1
+      databaseName: RFN500
+      driverType: '4'
+      jndiName: jdbc/BPE_515
+      name: BPE_515
+      portNumber: '50004'
+      serverName: s598lp1dbrf02.jablux.cpc998.be
+      typeds: universal
+      user: dborc515
+      webSphereDefaultIsolationLevel: '2'
+
+    directories:
+    - '{{ path }}/work/jobs'
+
+  roles:
+  - base_was
+

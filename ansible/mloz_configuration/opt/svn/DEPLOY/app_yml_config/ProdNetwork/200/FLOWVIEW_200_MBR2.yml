@@ -1,0 +1,97 @@
+---
+- hosts: ProdNode_AIRBUS_200B_FLUX
+  user: root
+  vars:
+    was_app_name: FLOWVIEW_200_MBR2
+    was_cluster_name: FLOWVIEW_200
+    default_port: 21280
+    owner: was6u200
+    group: was6group
+    path: /data/flowview/{{ was_app_name }}
+
+    vhost: FLOWVIEW_200_vhost
+    host_aliases:
+    - hostname: flowview2xx.jablux.cpc998.be
+      port: 443
+    - hostname: s298lp{{ dc }}wsrp01.jablux.cpc998.be
+      port: 443
+    - hostname: s298lp{{ dc }}wsrp02.jablux.cpc998.be
+      port: 443
+    - hostname: s298lp{{ dc }}wsfl01.jablux.cpc998.be
+      port: 21280
+    - hostname: s298lp{{ dc }}wsfl02.jablux.cpc998.be
+      port: 21280
+    - hostname: s298lp{{ dc }}wsfl01.jablux.cpc998.be
+      port: 21281
+    - hostname: s298lp{{ dc }}wsfl02.jablux.cpc998.be
+      port: 21281
+
+    dataSources:
+    - authDataAlias: AIRBUS/JCARE200
+      authDataPassword: AKELD52
+      dataTruncation: 'false'
+      databaseName: AIRBUS
+      dateFormat: iso
+      jndiName: jdbc/IIBLOG_AS400_RC
+      libraries: '*LIBL'
+      name: AS400IIBLOG_2xx
+      naming: system
+      serverName: airbus.jablux.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JCARE200
+      connectionPool:
+         maxConnections: 50
+         minConnections: 5
+
+    - authDataAlias: udbidmg2/dbmct200
+      authDataPassword: 3006beatit
+      clientRerouteAlternatePortNumber: 50008
+      clientRerouteAlternateServerName: "{{ standby2 }}"
+      currentSchema: CARE
+      enableSeamlessFailover: 1
+      databaseName: MCT200
+      driverType: 4
+      jndiName: jdbc/IIBLOG_LINUX_RC_2
+      name: LNXIBLOG2_2xx
+      portNumber: 50008
+      serverName: "{{ primary2 }}"
+      typeds: universal
+      user: dbmct200
+      webSphereDefaultIsolationLevel: 2
+      connectionPool:
+        maxConnections: 50
+        minConnections: 5
+
+    - authDataAlias: udbidmg2/dbmct200
+      authDataPassword: 3006beatit
+      clientRerouteAlternatePortNumber: 50008
+      clientRerouteAlternateServerName: "{{ standby }}"
+      currentSchema: CARE
+      enableSeamlessFailover: 1
+      databaseName: MCT200
+      driverType: 4
+      jndiName: jdbc/IIBLOG_LINUX_RC
+      name: LNXIBLOG_2xx
+      portNumber: 50008
+      serverName: "{{ primary }}"
+      typeds: universal
+      user: dbmct200
+      webSphereDefaultIsolationLevel: 2
+      connectionPool:
+        maxConnections: 50
+        minConnections: 5
+
+    resourceEnvEntries:
+    - name: IIBLOGConfig
+      jndiName: config/iibLogViewConfig
+      customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/iib_logView.properties"
+
+    resourceFiles:
+    - files/FLOWVIEW/iib_logView.properties
+
+  roles:
+  - base_was

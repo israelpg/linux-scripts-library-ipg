@@ -1,0 +1,113 @@
+---
+- hosts: PreProdNode_OZONEGFDI_500fA_RFND
+  user: root
+  vars:
+    was_app_name: JADER_500f516_MBR1
+    was_cluster_name: JADER_500f516
+    owner: was6u500
+    group: was6group
+    default_port: 21080
+    path: /data/jade/{{ was_app_name }}
+
+    vhost: RfndOzone_vhost
+    host_aliases:
+    - hostname: "{{ ansible_fqdn }}"
+      port: "{{ default_port }}"
+
+    dataSources:
+    - authDataAlias: OZONE/JRDE500
+      authDataPassword: fcnie500
+      dataTruncation: 'false'
+      databaseName: OZONEGFDI
+      dateFormat: iso
+      jndiName: jdbc/JADE2_500
+      libraries: '*LIBL'
+      name: JADE2_500
+      naming: system
+      serverName: ozone.jablux.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE500
+      extendedDynamic: false
+      package: DSJ2500
+      packageLibrary: JADEBUS500
+      packageCriteria: select
+
+    - authDataAlias: OZONE/JRDE509
+      authDataPassword: ojizu509
+      dataTruncation: 'false'
+      databaseName: OZONEGFDI
+      dateFormat: iso
+      jndiName: jdbc/JADE2_509
+      libraries: '*LIBL'
+      name: JADE2_509
+      naming: system
+      serverName: ozone.jablux.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE509
+      extendedDynamic: false
+      package: DSJ2509
+      packageLibrary: JADEBUS509
+      packageCriteria: select
+
+    - authDataAlias: OZONE/JRDE516
+      authDataPassword: qcezn516
+      dataTruncation: 'false'
+      databaseName: OZONEGFDI
+      dateFormat: iso
+      jndiName: jdbc/JADE2_516
+      libraries: '*LIBL'
+      name: JADE2_516
+      naming: system
+      serverName: ozone.jablux.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE516
+      extendedDynamic: false
+      package: DSJ2516
+      packageLibrary: JADEBUS516
+      packageCriteria: select
+
+    - authDataAlias: udbiozone97/dborc500
+      authDataPassword: 500lkjds
+      currentSchema: ORC500
+      databaseName: ORC500
+      driverType: '4'
+      jndiName: jdbc/BPE_500
+      name: BPE_500
+      portNumber: '50004'
+      serverName: s509lq2dbrf04.jablux.gfdi.be
+      typeds: universal
+      user: dborc500
+      webSphereDefaultIsolationLevel: '2'
+
+    - authDataAlias: udbiozone97/dborc509
+      authDataPassword: 509mlksq
+      currentSchema: ORC509
+      databaseName: ORC500
+      driverType: '4'
+      jndiName: jdbc/BPE_509
+      name: BPE_509
+      portNumber: '50004'
+      serverName: s509lq2dbrf04.jablux.gfdi.be
+      typeds: universal
+      user: dborc509
+      webSphereDefaultIsolationLevel: '2'
+
+    - authDataAlias: udbiozone97/dborc516
+      authDataPassword: 516mqlke
+      currentSchema: ORC516
+      databaseName: ORC500
+      driverType: '4'
+      jndiName: jdbc/BPE_516
+      name: BPE_516
+      portNumber: '50004'
+      serverName: s509lq2dbrf04.jablux.gfdi.be
+      typeds: universal
+      user: dborc516
+      webSphereDefaultIsolationLevel: '2'
+
+  roles:
+  - base_was
+

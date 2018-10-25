@@ -1,0 +1,61 @@
+---
+- hosts: PreProdNodetest
+  user: root
+  vars:
+    was_app_name: CHAP4_test
+    owner: was6tst
+    group: was6group
+    default_port: 21080
+    path: /data/chap4/{{ was_app_name }}
+
+    dataSources:
+    - authDataAlias: TEST/JCARE500
+      authDataPassword: wait
+      dataTruncation: 'false'
+      databaseName: TESTGFDI
+      dateFormat: iso
+      jndiName: jdbc/CH4_AS400_RC
+      libraries: '*LIBL'
+      name: AS400CH4_500
+      naming: system
+      serverName: test.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JCARE500
+    - authDataAlias: udbich4597/dbmcttst
+      authDataPassword: tst20120410
+      clientRerouteAlternatePortNumber: '50020'
+      clientRerouteAlternateServerName: db2-nippin02.jablux.gfdi.be
+      currentSchema: CARE
+      databaseName: MCT500
+      driverType: '4'
+      jndiName: jdbc/CH4_LINUX_RC
+      name: LNXCH4_500
+      portNumber: '50020'
+      serverName: db2-nippin01.jablux.gfdi.be
+      typeds: universal
+      user: dbmcttst
+      webSphereDefaultIsolationLevel: '2'
+      connectionPool:
+        maxConnections: 50
+        minConnections: 5
+
+    resourceEnvEntries:
+    - name: ConfigServer
+      jndiName: config/ConfigServer
+      customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/ch4.properties"
+
+    resourceFiles:
+    - files/CHAP4/ch4.properties
+
+    systemProperties:
+    - name: com.ibm.websphere.webservices.DisableIBMJAXWSEngine
+      value: true
+    - name: spring.profiles.active
+      value: was
+
+  roles:
+  - base_was

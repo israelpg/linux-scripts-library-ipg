@@ -1,0 +1,91 @@
+---
+- hosts: ProdNode_AIRBUS_200A_FLUX
+  user: root
+  vars:
+    was_app_name: NCSS_200_MBR1
+    was_cluster_name: NCSS_200
+    default_port: 21360
+    owner: was6u200
+    group: was6group
+    path: /data/ncss/{{ was_app_name }}
+
+    dataSources: False
+
+    vhost: NCSS_200_vhost
+    host_aliases:
+    - hostname: ncss2xx.jablux.cpc998.be
+      port: 443
+    - hostname: s298lp{{ dc }}wsrp01.jablux.cpc998.be
+      port: 443
+    - hostname: s298lp{{ dc }}wsrp02.jablux.cpc998.be
+      port: 443
+    - hostname: "{{ ansible_fqdn }}"
+      port: 21360
+    - hostname: "{{ ansible_fqdn }}"
+      port: 21361
+
+#    jmscf:
+#    - jndiName: jms/mqIIBConnectionFactory 
+#      qmgrName: PQM2FL1
+#      qmgrSvrconnChannel: MTEAM.CLIENT.SVRCONN
+#      connectionNameList: s298lp1iib01.jablux.cpc998.be(16200),s298lp1iib02.jablux.cpc998.be(16200)
+#      authDataAlias: JMSCF/uqmfl200
+#      user: uqmfl200
+#      authDataPassword: Welcome01
+#      name: NCT_mqConnectionFactory
+
+#    jmsq:
+#    - jndiName: jms/QA.INAMI.MODEL.BIM_BATCH.REQ
+#      queueName: QA.INAMI.MODEL.BIM_BATCH.REQ
+#      advancedProperties:
+#        useRFH2: 'false'
+
+#    - jndiName: jms/QA.NIPPIN.ASYNC.GENERIC.OUT
+#      queueName: QA.NIPPIN.ASYNC.GENERIC.OUT
+
+#    - jndiName: jms/QA.NIPPIN.ASYNC.GENERIC.REQ
+#      queueName: QA.NIPPIN.ASYNC.GENERIC.REQ
+
+#    - jndiName: jms/QA.NIPPIN.ASYNC.GENERIC.RESP
+#      queueName: QA.NIPPIN.ASYNC.GENERIC.RESP
+
+#    - jndiName: jms/QA.NIPPIN.ASYNC.NCT.DB.IN
+#      queueName: QA.NIPPIN.ASYNC.NCT.DB.IN
+
+#    - jndiName: jms/QA.NIPPIN.ASYNC.NCT.DB.OUT
+#      queueName: QA.NIPPIN.ASYNC.NCT.DB.OUT
+
+#    dataSources:
+#    - authDataAlias: udbidmg2/dbmct200
+#      authDataPassword: 3006beatit
+#      clientRerouteAlternatePortNumber: 50008
+#      clientRerouteAlternateServerName: "{{ standby }}"
+#      currentSchema: CARE
+#      databaseName: MCT200
+#      enableSeamlessFailover: 1
+#      driverType: 4
+#      jndiName: jdbc/NCT_LINUX_RC
+#      name: LNXNCT_200
+#      portNumber: 50008
+#      serverName: "{{ primary }}"
+#      typeds: universal
+#      user: dbmct200
+#      webSphereDefaultIsolationLevel: 2
+#      connectionPool:
+#        maxConnections: 50
+#        minConnections: 5
+
+    resourceEnvEntries:
+    - name: NippinCommonSynchServicesForJNDI
+      jndiName: config/NCSSConfig
+      customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/application.properties"
+
+    resourceFiles:
+    - files/NCSS/aesSymetric2013prod.key
+    - files/NCSS/application.properties
+
+  roles:
+  - base_was

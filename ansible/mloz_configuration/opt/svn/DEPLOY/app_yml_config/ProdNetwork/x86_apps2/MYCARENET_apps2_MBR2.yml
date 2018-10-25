@@ -1,0 +1,28 @@
+---
+- hosts: jabluxProdNodeapps202
+  user: root
+  vars:
+    was_app_name: MYCARENET_apps2_MBR2
+    was_cluster_name: MYCARENET_apps2
+    default_port: 22120
+    group: was6group
+    owner: was6u200
+    path: /data/mycarenet/{{ was_app_name }}
+
+    resourceEnvEntries:
+    - customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/carenet.properties"
+      jndiName: config/CarenetConfig
+      name: CarenetConfig
+
+    resourceFiles:
+    - files/MYCARENET/carenet.properties
+
+    systemProperties:
+    - name: spring.profiles.active
+      value: was
+
+  roles:
+  - base_was

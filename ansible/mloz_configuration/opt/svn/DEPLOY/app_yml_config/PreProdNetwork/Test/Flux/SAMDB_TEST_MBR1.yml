@@ -1,0 +1,50 @@
+---
+- hosts: PreProdNode_TEST_500A_FLUX
+  user: root
+  vars:
+    was_app_name: SAMDB_TEST_MBR1
+    was_cluster_name: SAMDB_TEST
+    default_port: 21240
+    owner: was6tst
+    group: was6group
+    path: /data/samdb/{{ was_app_name }}
+
+    vhost: SAMDB_Test_vhost
+    host_aliases:
+    - hostname: samdb-test.jablux.gfdi.be
+      port: 80
+    - hostname: s999lq2wsrp01.jablux.gfdi.be
+      port: 80
+    - hostname: s999lq2wsfl07.jablux.gfdi.be
+      port: 21240
+    - hostname: s999lq2wsfl07.jablux.gfdi.be
+      port: 21241
+
+    dataSources:
+    - authDataAlias: TEST/JCARE500
+      authDataPassword: wait
+      dataTruncation: 'false'
+      databaseName: TESTGFDI
+      dateFormat: iso
+      jndiName: jdbc/DBSAM_AS400_RC
+      libraries: '*LIBL'
+      name: AS400DBSAM_500
+      naming: system
+      serverName: test.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JCARE500
+
+    resourceEnvEntries:
+    - name: SamdbRessourceConfig
+      jndiName: config/dbsamConfig
+      customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/ch4_dbsam.properties"
+
+    resourceFiles:
+    - files/SAMDB/ch4_dbsam.properties
+
+  roles:
+  - base_was

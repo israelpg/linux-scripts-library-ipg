@@ -1,0 +1,100 @@
+---
+- hosts: ProdNode_AIRBUS_500A_EB
+  user: root
+  
+  roles:
+  - base_was  
+  
+  vars:
+    was_app_name: BCMPCH_500a_MBR1
+    was_cluster_name:  BCMPCH_500a
+    default_port: 21640
+    group: was6group
+    owner: was6u500
+    path: /data/pch/{{ was_app_name }}
+
+    systemProperties:
+    - name: logback.configurationFile
+      value: "{{ path }}/resources/logback.xml"
+    - name: spring.profiles.active
+      value: bcmpch.managed
+    - name: bcmpch.environment
+      value: PROD   
+    - name: jms.login
+      value: mqm
+    - name: scriptura.listener.concurrency.setting
+      value: 1-4
+    
+    vhost: BCMPCH_500_vhost
+    host_aliases:
+    - hostname:   s598lp1wseb01.jablux.cpc998.be  
+      port: 21640
+    - hostname:   s598lp1wseb02.jablux.cpc998.be
+      port: 21640
+    - hostname:   s598lp1wseb01.jablux.cpc998.be  
+      port: 21680
+    - hostname:   s598lp1wseb02.jablux.cpc998.be
+      port: 21680
+    - hostname: bcmpch.jablux.cpc998.be
+      port: 80
+    - hostname: bcmpch.jablux.cpc998.be
+      port: 21680
+    - hostname: bcmpch.jablux.cpc998.be
+      port: 21640
+      
+    jmscf:
+    - jndiName: jms/BCMPCH_mqConnectionFactory
+      qmgrName: PQM5EB1
+      qmgrSvrconnChannel: MTEAM.CLIENT.SVRCONN
+      connectionNameList: s598lp1iib01.jablux.cpc998.be(15500),s598lp1iib02.jablux.cpc998.be(15500)
+      authDataAlias: JMSCF/uqmeb500
+      user: uqmeb500
+      authDataPassword: n3touc3p4s4s4
+      name: BCMPCH_mqConnectionFactory
+      connectionPool:
+        minConnections: 1
+        maxConnections: 100
+      sessionPool:
+        minConnections: 1
+        maxConnections: 10
+
+    dataSources:
+      - authDataAlias: udbbl2105/dbpch500
+        user: dbpch500
+        authDataPassword: 500jdfqh
+        currentSchema: BCMPCH
+        enableSeamlessFailover: 1
+        databaseName: FIN500
+        driverType: 4
+        jndiName: jdbc/BCMPCH
+        name: BCMPCH
+        serverName: s598lp1dbfn01.jablux.cpc998.be
+        portNumber: 50004
+        clientRerouteAlternateServerName: s598lp2dbfn01.jablux.cpc998.be
+        clientRerouteAlternatePortNumber: 50004
+        typeds: universal
+        webSphereDefaultIsolationLevel: 2
+        enableRowsetSupport: 1
+        connectionPool:
+           minConnections: 1
+           maxConnections: 10
+
+    resourceFiles:
+    - files/BCMPCH/logback.xml
+
+  roles:
+  - base_was
+
+  tasks:
+  - name: create mteam directory 
+    file: path="/mteam" state=directory owner={{ owner }} group={{ group }} mode=0775  
+  - name: create bcmpch sub directory for bcmpchBatch
+    file: path="/mteam/bcmpch" state=directory owner={{ owner }} group={{ group }} mode=0777
+  - name: create pdf-work-scriptura directory 
+    file: path="/data/pch/pdf-work-scriptura" state=directory owner={{ owner }} group={{ group }} mode=0775  
+  - name: create link wpprintdocs
+    file: src="/eBusiness/wppdocs" dest="/mteam/bcmpch/wpprintdocs" state=link
+  - name: create link bcmpch
+    file: src="/eBusiness/bcmpch" dest="/mteam/bcmpch/bcmpch-share" state=link
+  - name: create link pdf-work-scriptura
+    file: src="/data/pch/pdf-work-scriptura" dest="/mteam/bcmpch/pdf-work-scriptura" state=link

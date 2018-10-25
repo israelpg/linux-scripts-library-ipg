@@ -1,0 +1,114 @@
+---
+- hosts:  PreProdNode_TEST_500A_EB
+  user: root
+
+  vars:
+    was_app_name: ZOOMIT_TEST_MBR1
+    was_cluster_name:  ZOOMIT_TEST
+    default_port: 21120
+    owner: wasserver
+    group: was6group
+    path: /data/zoomit/{{ was_app_name }}
+
+    vhost: ZOOMIT_500_vhost
+    host_aliases:
+    - hostname: s999lq2wseb01.jablux.gfdi.be
+      port: 80
+    - hostname: s999lq2wseb01.jablux.gfdi.be
+      port: 21120
+
+
+    systemProperties:
+      - name: logback.configurationFile
+        value: "{{ path }}/resources/logback.xml"
+      - name: com.ibm.ws.classloader.strict
+        value: "true"
+      - name: user.timezone
+        value: Europe/Brussels
+      - name: spring.profiles.active
+        value: prod
+      - name: zoomit.configuration.file
+        value: "{{ path }}/resources/zoomit.properties"
+
+    jmscf:
+      - jndiName: jms/ZOOMIT_mqConnectionFactory
+        qmgrName: IQM3EB1
+        qmgrSvrconnChannel: MTEAM.ADMIN.SVRCONN
+        connectionNameList: s999lq2iib01.jablux.gfdi.be(15301)
+        authDataAlias: JMSCF/uqmeb500
+        user: uqmeb500
+        authDataPassword: Welcome01
+        name: ZOOMIT_mqConnectionFactory
+        connectionPool:
+          minConnections: 1
+          maxConnections: 100
+        sessionPool:
+          minConnections: 1
+          maxConnections: 10
+
+    jmsq:
+      - jndiName: jms/QA.ZOOMIT.DOCUMENT.INSERT
+        queueName: QA.ZOOMIT.DOCUMENT.INSERT
+      - jndiName: jms/QA.ZOOMIT.CANDIDATE.EBP.REQ
+        queueName: QA.ZOOMIT.CANDIDATE.EBP.REQ
+      - jndiName: jms/QA.ZOOMIT.DLVREPORT.EBP.REQ
+        queueName: QA.ZOOMIT.DLVREPORT.EBP.REQ
+      - jndiName: jms/QA.ZOOMIT.NDCDLVREPORT.EBP.REQ
+        queueName: QA.ZOOMIT.NDCDLVREPORT.EBP.REQ
+      - jndiName: jms/QA.ZOOMIT.OPTDLVREPORT.EBP.REQ
+        queueName: QA.ZOOMIT.OPTDLVREPORT.EBP.REQ
+      - jndiName: jms/QA.ZOOMIT.OPTSTATS.EBP.REQ
+        queueName: QA.ZOOMIT.OPTSTATS.EBP.REQ
+      - jndiName: jms/QA.ZOOMIT.DOCSTATS.EBP.REQ
+        queueName: QA.ZOOMIT.DOCSTATS.EBP.REQ
+      - jndiName: jms/QA.ZOOMIT.UNREADDOC.EBP.REQ
+        queueName: QA.ZOOMIT.UNREADDOC.EBP.REQ
+      - jndiName: jms/QA.ZOOMIT.REPRINTEDDOC.EBP.REQ
+        queueName: QA.ZOOMIT.REPRINTEDDOC.EBP.REQ
+      - jndiName: jms/QA.ZOOMIT.STATUS
+        queueName: QA.ZOOMIT.STATUS
+      - jndiName: jms/QA.ZOOMIT.FORCED.OPTIN.REQ
+        queueName: QA.ZOOMIT.FORCED.OPTIN.REQ
+      - jndiName: jms/QA.ZOOMIT.STATUS.EBP.REQ
+        queueName: QA.ZOOMIT.STATUS.EBP.REQ
+      - jndiName: jms/QA.ZOOMIT.FORCED.OPTOUT.REQ
+        queueName: QA.ZOOMIT.FORCED.OPTOUT.REQ
+
+    resourceFiles:
+      - files/ZOOMIT/logback.xml
+      - files/ZOOMIT/zoomit.properties
+
+    dataSources:
+      - authDataAlias: udbbl2105/dbzootst
+        user: dbzootst
+        authDataPassword: OI3uy2xK
+        currentSchema: ZOOMIT
+        enableSeamlessFailover: 1
+        databaseName: EBU500
+        driverType: 4
+        jndiName: jdbc/ZOOMIT
+        name: ZOOMIT
+        portNumber: 50004
+        serverName: s999lq2dbeb01.jablux.gfdi.be 
+        typeds: universal
+        webSphereDefaultIsolationLevel: 2
+        enableRowsetSupport: 1
+        connectionPool:
+           minConnections: 1
+           maxConnections: 10
+
+  roles:
+  - base_was
+
+#  tasks:
+#  - name: create symlinks /data/pdfmap
+#    file: src=/eBusiness/pdfmap dest=/data/pdfmap state=link force=True
+#    tags: files
+
+#  - name: create same symlinks on IIB
+#    file: src=/eBusiness/pdfmap dest=/data/pdfmap state=link force=True
+#    delegate_to: "{{ item }}"
+#    with_items:
+#    - s598lr2iib01.ref.cpc998.be
+#    - s598lr2iib02.ref.cpc998.be
+#    tags: files

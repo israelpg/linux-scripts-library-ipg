@@ -1,0 +1,89 @@
+---
+- hosts: RefNode_REF_500I_RFND
+  user: root
+  vars:
+    was_app_name: CLIENTS_998
+    owner: was6u500
+    group: was6group
+    default_port: 21040
+    path: /data/clients/{{ was_app_name }}
+
+    systemProperties:
+    - name: client.encoding.override
+      value: 'UTF-8'
+    - name: file.encoding
+      value: 'UTF-8'
+
+    vhost: RfndRef_vhost
+    host_aliases:
+# temporary
+    - hostname: rfnd998.ref.cpc998.be
+      port: 80
+# current ref
+    - hostname: rfapps.ref.cpc998.be
+      port: 80
+    - hostname: rfweb.ref.cpc998.be
+      port: 80
+# JadeR 200
+    - hostname: s298lr2wsrf01.ref.cpc998.be
+      port: 21040
+    - hostname: s298lr2wsrf02.ref.cpc998.be
+      port: 21040
+    - hostname: s298lr2wsrf03.ref.cpc998.be
+      port: 21040
+    - hostname: s298lr2wsrf04.ref.cpc998.be
+      port: 21040
+# Catalog 200
+    - hostname: s298lr2wsrf05.ref.cpc998.be
+      port: 21040
+    - hostname: s298lr2wsrf06.ref.cpc998.be
+      port: 21040
+# Integrator 200
+    - hostname: s298lr2wsrf07.ref.cpc998.be
+      port: 21160
+# JadeR 500
+    - hostname: s598lr2wsrf01.ref.cpc998.be
+      port: 21040
+    - hostname: s598lr2wsrf02.ref.cpc998.be
+      port: 21040
+    - hostname: s598lr2wsrf03.ref.cpc998.be
+      port: 21040
+    - hostname: s598lr2wsrf04.ref.cpc998.be
+      port: 21040
+    - hostname: s598lr2wsrf05.ref.cpc998.be
+      port: 21040
+    - hostname: s598lr2wsrf06.ref.cpc998.be
+      port: 21040
+# Catalog 500      
+    - hostname: s598lr2wsrf07.ref.cpc998.be
+      port: 21040
+    - hostname: s598lr2wsrf08.ref.cpc998.be
+      port: 21040
+# MDIS & Integrator 500
+    - hostname: s598lr2wsrf09.ref.cpc998.be
+      port: 21040
+    - hostname: s598lr2wsrf09.ref.cpc998.be
+      port: 21160
+
+    dataSources:
+    - authDataAlias: REF/M998JADEWS
+      authDataPassword: md1spr0d
+      dataTruncation: 'false'
+      databaseName: REFGFDI
+      dateFormat: iso
+      jndiName: jdbc/MDIS_RfndRef
+      libraries: 'JADEPRF'
+      name: MDIS_RfndRef
+      naming: system
+      serverName: ref.ref.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: M998JADEWS
+      extendedDynamic: 'false'
+      package: DSMDIS
+      packageLibrary: QGPL
+      packageCriteria: select
+
+  roles:
+  - base_was
+

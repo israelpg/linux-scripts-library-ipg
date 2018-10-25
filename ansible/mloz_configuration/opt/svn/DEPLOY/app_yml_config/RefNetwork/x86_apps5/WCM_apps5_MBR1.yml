@@ -1,0 +1,146 @@
+---
+- hosts: RefNodeapps501
+  user: root
+  vars:
+    was_app_name: WCM_apps5_MBR1
+    was_cluster_name: WCM_apps5
+    default_port: 21140
+    group: was6group
+    owner: was6u500
+    path: /data/wcm/{{ was_app_name }}
+
+    web_conf:
+      web_servers:
+      - s998jrlnx061.ref.cpc998.be
+
+      server_name: wcm5xx-ref.ref.cpc998.be
+      rewrite_current_version: 0.0.79.1
+      rewrite_previous_version: 0.0.78.17
+
+    systemProperties:
+    - name: WCM_CONFIG_LOCATION
+      value: file://{{ path }}/resources/wcm_config_ref.xml
+    - name: com.ibm.websphere.webservices.DisableIBMJAXWSEngine
+      value: true
+    - name: javax.xml.parsers.DocumentBuilderFactory
+      value: org.apache.xerces.jaxp.DocumentBuilderFactoryImpl
+    - name: javax.xml.parsers.SAXParserFactory
+      value: org.apache.xerces.jaxp.SAXParserFactoryImpl
+    - name: javax.xml.xpath.XPathFactory
+      value: org.apache.xpath.jaxp.XPathFactoryImpl
+    - name: javax.xml.transform.TransformerFactory
+      value: org.apache.xalan.processor.TransformerFactoryImpl
+    - name: javax.xml.bind.context.factory
+      value: com.sun.xml.bind.v2.ContextFactory
+
+    dataSources:
+    - authDataAlias: REF/WCM500
+      user: WCM500
+      authDataPassword: SELD7Q47
+      dataTruncation: 'false'
+      databaseName: REFGFDI
+      dateFormat: iso
+      jndiName: jdbc/WCM_DS500
+      libraries: '*LIBL'
+      name: WCM_DS500
+      naming: system
+      serverName: ref.ref.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+    - authDataAlias: REF/WCM501
+      user: WCM501
+      authDataPassword: VVPS3R4Q
+      dataTruncation: 'false'
+      databaseName: REFGFDI
+      dateFormat: iso
+      jndiName: jdbc/WCM_DS501
+      libraries: '*LIBL'
+      name: WCM_DS501
+      naming: system
+      serverName: ref.ref.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+    - authDataAlias: REF/WCM506
+      user: WCM506
+      authDataPassword: AZU7RR2P
+      dataTruncation: 'false'
+      databaseName: REFGFDI
+      dateFormat: iso
+      jndiName: jdbc/WCM_DS506
+      libraries: '*LIBL'
+      name: WCM_DS506
+      naming: system
+      serverName: ref.ref.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+    - authDataAlias: REF/WCM509
+      user: WCM509
+      authDataPassword: XDR3YJK1
+      dataTruncation: 'false'
+      databaseName: REFGFDI
+      dateFormat: iso
+      jndiName: jdbc/WCM_DS509
+      libraries: '*LIBL'
+      name: WCM_DS509
+      naming: system
+      serverName: ref.ref.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+    - authDataAlias: REF/WCM515
+      user: WCM515
+      authDataPassword: QWCV48FG
+      dataTruncation: 'false'
+      databaseName: REFGFDI
+      dateFormat: iso
+      jndiName: jdbc/WCM_DS515
+      libraries: '*LIBL'
+      name: WCM_DS515
+      naming: system
+      serverName: ref.ref.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+    - authDataAlias: REF/WCM516
+      user: WCM516
+      authDataPassword: NHG1RE2D
+      dataTruncation: 'false'
+      databaseName: REFGFDI
+      dateFormat: iso
+      jndiName: jdbc/WCM_DS516
+      libraries: '*LIBL'
+      name: WCM_DS516
+      naming: system
+      serverName: ref.ref.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+    - authDataAlias: REF/WCM526
+      user: WCM526
+      authDataPassword: VGDP7Z6S
+      dataTruncation: 'false'
+      databaseName: REFGFDI
+      dateFormat: iso
+      jndiName: jdbc/WCM_DS526
+      libraries: '*LIBL'
+      name: WCM_DS526
+      naming: system
+      serverName: ref.ref.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+    - authDataAlias: REF/WCM527
+      user: WCM527
+      authDataPassword: ADF2PIEW
+      dataTruncation: 'false'
+      databaseName: REFGFDI
+      dateFormat: iso
+      jndiName: jdbc/WCM_DS527
+      libraries: '*LIBL'
+      name: WCM_DS527
+      naming: system
+      serverName: ref.ref.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+
+    resourceFiles:
+    - files/WCM500/wcm_config_ref.xml
+
+  roles:
+  - base_was

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:config xmlns:tns="http://be.gfdi.fwk" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://be.gfdi.fwk application-config.xsd">
+  <application name="WCM_WS" version="DEV"/>
+  <default>
+    <environment host="localhost" port="8080" contextPath="apps2_{{ mbrx }}">
+      <as400 systemname="airbus.jablux.cpc998.be"/>
+      <!-- JNDI mode -->
+      <jdbc libname="*LIBL" url="" driverClassName="com.ibm.as400.access.AS400JDBCDriver"/>
+      <hibernate dialect="be.gfdi.fwk.server.hibernate.DB2400Dialect" show_sql="true"/>
+    </environment>
+  </default>
+  <!-- =========================================================== -->
+  <!-- Environments -->
+  <!-- =========================================================== -->
+  <environments>
+    <environment name="200">
+      <as400 username="WCM200" password="KDH4QTZN"/>
+      <jdbc username="WCM200" password="KDH4QTZN" />
+      <services>
+        <interceptors>
+          <interceptor name="fwk_perfInterceptor"/>
+        </interceptors>
+      </services>
+    </environment>
+    <environment name="203">
+      <as400 username="WCM203" password="NSTZ5QY8"/>
+      <jdbc username="WCM203" password="NSTZ5QY8" />
+      <services>
+        <interceptors>
+          <interceptor name="fwk_perfInterceptor"/>
+        </interceptors>
+      </services>
+    </environment>
+    <environment name="206">
+      <as400 username="WCM206" password="FSGQBX7E"/>
+      <jdbc username="WCM206" password="FSGQBX7E" />
+      <services>
+        <interceptors>
+          <interceptor name="fwk_perfInterceptor"/>
+        </interceptors>
+      </services>
+    </environment>
+    <environment name="216">
+      <as400 username="WCM216" password="PMQYXND7"/>
+      <jdbc username="WCM216" password="PMQYXND7" />
+      <services>
+        <interceptors>
+          <interceptor name="fwk_perfInterceptor"/>
+        </interceptors>
+      </services>
+    </environment>
+    <environment name="226">
+      <as400 username="WCM226" password="E8SVFGG5"/>
+      <jdbc username="WCM226" password="E8SVFGG5" />
+      <services>
+        <interceptors>
+          <interceptor name="fwk_perfInterceptor"/>
+        </interceptors>
+      </services>
+    </environment>
+    <environment name="228">
+      <as400 username="WCM228" password="RS7PMQ8Z"/>
+      <jdbc username="WCM228" password="RS7PMQ8Z" />
+      <services>
+        <interceptors>
+          <interceptor name="fwk_perfInterceptor"/>
+        </interceptors>
+      </services>
+    </environment>
+    <environment name="232">
+      <as400 username="WCM232" password="ADFQPME4"/>
+      <jdbc username="WCM232" password="ADFQPME4" />
+      <services>
+        <interceptors>
+          <interceptor name="fwk_perfInterceptor"/>
+        </interceptors>
+      </services>
+    </environment>
+    <environment name="235">
+      <as400 username="WCM235" password="ARFGRTI8"/>
+      <jdbc username="WCM235" password="ARFGRTI8" />
+      <services>
+        <interceptors>
+          <interceptor name="fwk_perfInterceptor"/>
+        </interceptors>
+      </services>
+    </environment> 
+    <environment name="282">
+      <as400 username="WCM282" password="RW0LZL73"/>
+      <jdbc username="WCM282" password="RW0LZL73" />
+      <services>
+        <interceptors>
+          <interceptor name="fwk_perfInterceptor"/>
+        </interceptors>
+      </services>
+    </environment>
+  </environments>
+</tns:config>

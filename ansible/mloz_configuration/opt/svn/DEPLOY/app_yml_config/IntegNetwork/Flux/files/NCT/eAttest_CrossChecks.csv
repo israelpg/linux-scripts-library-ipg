@@ -1,0 +1,9 @@
+soap-kmehr;/send/CommonInput/InputReference;;/SendTransactionRequest/request/id;[^.]*$;155;SOAP id does not match kmehr message id
+soap-kmehr;/send/CommonInput/Origin/CareProvider/Nihii/Value;;/SendTransactionRequest/request/author/hcparty/id@S,ID-HCPARTY;;155;SOAP care provider does not match kmehr care provider
+soap-kmehr;/send/Routing/ReferenceDate;;/SendTransactionRequest/request/date;;155;SOAP date does not match kmehr message date
+soap-kmehr;/send/Routing/CareReceiver/Ssin/;;/SendTransactionRequest/kmehrmessage/folder/patient/id@S,ID-PATIENT;;155;SOAP patient id does not match kmehr message patient id
+soap-kmehr;/send/Routing/CareReceiver/Mutuality/;;/SendTransactionRequest/kmehrmessage/folder/patient/insurancymembership/id@S,ID-INSURANCE;;155;SOAP insurance id does not match kmehr message insurance id
+soap-kmehr;/send/Routing/CareReceiver/RegNrWithMut;;/SendTransactionRequest/kmehrmessage/folder/patient/insurancymembership/membership;;155;SOAP insurance membership does not match kmehr message insurance membership
+kmehr-kmehr;/SendTransactionRequest/request/date;;/SendTransactionRequest/kmehrmessage/header/date;;156;Request date does not match kmehrmessage header date
+kmehr-kmehr;/SendTransactionRequest/request/author/hcparty/id@S,ID-HCPARTY;;/SendTransactionRequest/kmehrmessage/header/sender/hcparty/id@S,ID-HCPARTY;;156;Request author id does not match kmehrmessage header author id
+kmehr-kmehr;/SendTransactionRequest/request/date;;/SendTransactionRequest/kmehrmessage/folder/transaction>cd=cgd/item>cd=documentidentity/content/date;;156;Request date does not match kmehrmessage transaction cgd item documentidentity date

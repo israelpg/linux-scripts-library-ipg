@@ -1,0 +1,58 @@
+transaction;;1,1;;
+/*
+	||
+	cd;tariff;1,1;S,CD-TRANSACTION-MYCARENET;<
+	|
+	example;tariff;1,1;S,CD-TRANSACTION-MYCARENET;
+	||
+	
+	author;;1,1;;
+	/*
+	*/
+	
+	item;;1,1;;
+	/*
+		id;;1,1;S,ID-KMEHR;
+		cd;encounterdatetime;1,1;S,CD-ITEM;<
+		content;;1,1;;
+		/*
+			date;;1,1;;
+		*/
+	*/
+	
+	
+	item;;1,;;
+	/*
+		id;;1,1;S,ID-KMEHR;
+		cd;claim;1,1;S,CD-ITEM;<
+		content;;1,1;;
+		/*
+			cd;;1,1;S,CD-NIHDI;<
+		*/
+		content;;0,1;;
+		/*
+			cd;;1,1;S,CD-ISO-3950;<
+		*/
+		content;;0,1;;
+		/*
+			cd;;1,1;S,CD-NIHDI-RELATEDSERVICE;<
+		*/
+	*/
+	
+	item;;0,1;;
+	/*
+		id;;1,1;S,ID-KMEHR;
+		cd;justification;1,1;S,CD-ITEM;<
+		content;;1,1;;
+		/*
+			cd;;1,1;S,CD-MYCARENET-JUSTIFICATION;<
+		*/
+	*/
+*/
+
+
+
+
+
+
+

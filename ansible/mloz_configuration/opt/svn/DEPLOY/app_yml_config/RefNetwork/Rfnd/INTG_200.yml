@@ -1,0 +1,63 @@
+---
+- hosts: RefNode_REF_200G_RFND
+  user: root
+  vars:
+    was_app_name: INTG_200
+    default_port: 21160
+    path: /data/intg/{{ was_app_name }}
+    group: was6group
+    owner: was6u200
+
+    vhost: RfndRef_vhost
+    
+    systemProperties:
+    - name: intg.jndi.prefix
+      value: jndi
+    - name: net.sf.ehcache.skipUpdateCheck
+      value: true
+    - name: client.encoding.override
+      value: 'UTF-8'
+    - name: file.encoding
+      value: 'UTF-8'
+
+    dataSources:
+    - authDataAlias: refiint297/dbint200
+      authDataPassword: 200ljfqk
+      currentSchema: INTG
+      enableSeamlessFailover: 0
+      databaseName: RFN200
+      driverType: '4'
+      jndiName: jdbc/INTG_200
+      name: INTG_200
+      portNumber: '50004'
+      serverName: s298lr2dbrf02.ref.cpc998.be
+      typeds: universal
+      user: dbint200
+      webSphereDefaultIsolationLevel: '2'
+
+    - authDataAlias: REF/INTG200
+      authDataPassword: rq200vni
+      dataTruncation: 'false'
+      databaseName: REFGFDI
+      dateFormat: iso
+      extendedDynamic: 'false'
+      jndiName: jdbc/JADE2_200
+      libraries: '*LIBL'
+      name: JADE2_200
+      naming: system
+      package: DSJ2200
+      packageCriteria: select
+      packageLibrary: JADEBUS200
+      serverName: ref.ref.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: INTG200
+      connectionPool:
+         connectionTimeout: 30
+         maxConnections: 50
+         minConnections: 15
+         reapTime: 300
+         agedTimeout: 0 
+
+  roles:
+  - base_was

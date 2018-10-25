@@ -1,0 +1,22 @@
+---
+- name: Create other_config directory
+  file: path=/opt/WebSphere85/IBMHttpServer/other_config state=directory
+  when: web_conf.web_servers is defined
+  with_items: web_conf.web_servers
+  delegate_to: "{{ item }}"
+
+- name: Check httpd.conf is configured
+  lineinfile: dest=/opt/WebSphere85/IBMHttpServer/conf/httpd.conf regexp="^#?{{ item.1.regexp }}" line="{{ item.1.line }}" backup=yes
+  when: web_conf.web_servers is defined
+  with_nested:
+  - web_conf.web_servers
+  - web_configurations
+  delegate_to: "{{ item.0 }}"
+  notify: httpd_restart
+
+- name: Push http other config file
+  template: src=other_conf_vhost.j2 dest=/opt/WebSphere85/IBMHttpServer/other_config/{{web_conf.filename}}.conf backup=yes
+  when: web_conf.web_servers is defined and web_conf.filename is defined
+  with_items: web_conf.web_servers
+  delegate_to: "{{ item }}"
+  notify: httpd_restart

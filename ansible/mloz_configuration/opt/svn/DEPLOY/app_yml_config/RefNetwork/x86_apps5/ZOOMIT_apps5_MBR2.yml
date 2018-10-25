@@ -1,0 +1,88 @@
+---
+- hosts: RefNodeapps502
+  user: root
+  vars:
+    default_port: 21240
+    group: was6group
+    owner: was6u500
+    path: /data/zoomit/{{ was_app_name }}
+    was_app_name: ZOOMIT_apps5_MBR2
+    was_cluster_name: ZOOMIT_apps5
+
+    systemProperties:
+    - name: zoomit.configuration.file
+      value: "{{ path }}/resources/zoomit_500.properties"
+    - name: logback.configurationFile
+      value: "{{ path }}/resources/logback.xml"
+    - name: spring.profiles.active
+      value: prod
+
+    host_aliases:
+    - hostname: zoomit5xx.ref.cpc998.be
+      port: 80
+
+    dataSources:
+    - authDataAlias: udbzoo105/dbzoo500     # pools des connexions: min = 25, max = 250
+      user: dbzoo500
+      authDataPassword: RKUrMKnR
+      currentSchema: ZOOMIT
+      databaseName: EBU500
+      driverType: 4
+      jndiName: jdbc/ZOOMIT_500
+      name: ZOOMIT_500
+      portNumber: 50004
+      serverName: s998jrlnx083.ref.cpc998.be
+      webSphereDefaultIsolationLevel: 2
+      typeds: universal
+
+    jmscf:
+    - jndiName: jms/ZOOMIT_mqConnectionFactory
+      qmgrName: QM.EB.500
+      qmgrSvrconnChannel: MTEAM.ADMIN.SVRCONN
+      connectionNameList: s998jrlnx080.ref.cpc998.be(14500),s998jrlnx081.ref.cpc998.be(14500)
+      authDataAlias: JMSCF/uqmeb500
+      user: uqmeb500
+      authDataPassword: n3touc3p4s4s4
+      name: ZOOMIT_JMS_Connection_Factory
+      connectionPool:
+        minConnections: 25
+        maxConnections: 200
+      sessionPool:
+        minConnections: 10
+        maxConnections: 40
+
+    jmsq:
+    - jndiName: jms/QA.ZOOMIT.DOCUMENT.INSERT
+      queueName: QA.ZOOMIT.DOCUMENT.INSERT
+      qmgr: QM.EB.500
+    - jndiName: jms/QA.ZOOMIT.CANDIDATE.EBP.REQ
+      queueName: QA.ZOOMIT.CANDIDATE.EBP.REQ
+      qmgr: QM.EB.500
+    - jndiName: jms/QA.ZOOMIT.DLVREPORT.EBP.REQ
+      queueName: QA.ZOOMIT.DLVREPORT.EBP.REQ
+      qmgr: QM.EB.500
+    - jndiName: jms/QA.ZOOMIT.NDCDLVREPORT.EBP.REQ
+      queueName: QA.ZOOMIT.NDCDLVREPORT.EBP.REQ
+      qmgr: QM.EB.500
+    - jndiName: jms/QA.ZOOMIT.OPTDLVREPORT.EBP.REQ
+      queueName: QA.ZOOMIT.OPTDLVREPORT.EBP.REQ
+      qmgr: QM.EB.500
+    - jndiName: jms/QA.ZOOMIT.OPTSTATS.EBP.REQ
+      queueName: QA.ZOOMIT.OPTSTATS.EBP.REQ
+      qmgr: QM.EB.500
+    - jndiName: jms/QA.ZOOMIT.DOCSTATS.EBP.REQ
+      queueName: QA.ZOOMIT.DOCSTATS.EBP.REQ
+      qmgr: QM.EB.500
+    - jndiName: jms/QA.ZOOMIT.UNREADDOC.EBP.REQ
+      queueName: QA.ZOOMIT.UNREADDOC.EBP.REQ
+      qmgr: QM.EB.500
+    - jndiName: jms/QA.ZOOMIT.REPRINTEDDOC.EBP.REQ
+      queueName: QA.ZOOMIT.REPRINTEDDOC.EBP.REQ
+      qmgr: QM.EB.500
+
+    resourceFiles:
+    - files/ZOOMIT/zoomit_500.properties
+    - files/ZOOMIT/logback.xml
+
+  roles:
+  - base_was

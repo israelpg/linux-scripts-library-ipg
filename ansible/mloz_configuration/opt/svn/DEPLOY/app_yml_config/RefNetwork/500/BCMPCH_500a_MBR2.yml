@@ -1,0 +1,87 @@
+---
+- hosts:  RefNode_REF_500B_EB
+  user: root
+  vars:
+    was_app_name: BCMPCH_500a_MBR2
+    was_cluster_name:  BCMPCH_500a
+    default_port: 21640
+    owner: was6u500
+    group: was6group
+    path: /data/pch/{{ was_app_name }}
+
+    systemProperties:
+    - name: logback.configurationFile
+      value: "{{ path }}/resources/logback.xml"
+    - name: spring.profiles.active
+      value: bcmpch.managed
+    - name: bcmpch.environment
+      value: REF   
+    - name: jms.login
+      value: mqm
+    - name: scriptura.listener.concurrency.setting
+      value: 1-4
+
+    vhost: BCMPCH_500_vhost
+    host_aliases:
+    - hostname: s598lr2wseb01.ref.cpc998.be  
+      port: 21640
+    - hostname: s598lr2wseb02.ref.cpc998.be  
+      port: 21640
+
+    jmscf:
+    - jndiName: jms/BCMPCH_mqConnectionFactory
+      qmgrName: RQM5EB1
+      qmgrSvrconnChannel: MTEAM.CLIENT.SVRCONN
+      connectionNameList: s598lr2iib01.ref.cpc998.be(15500),s598lr2iib02.ref.cpc998.be(15500)
+      authDataAlias: JMSCF/uqmeb500
+      user: uqmeb500
+      authDataPassword: n3touc3p4s4s4
+      name: BCMPCH_mqConnectionFactory
+      connectionPool:
+        minConnections: 1
+        maxConnections: 100
+      sessionPool:
+        minConnections: 1
+        maxConnections: 10
+
+
+            
+    dataSources:
+      - authDataAlias: udbbl25105/dbpch500
+        user: dbpch500
+        authDataPassword: 500lzeir
+        currentSchema: BCMPCH
+        databaseName: FIN500
+        driverType: 4
+        jndiName: jdbc/BCMPCH
+        name: BCMPCH_REF
+        portNumber: 50004
+        serverName: s598lr2dbfn01.ref.cpc998.be
+        typeds: universal
+        webSphereDefaultIsolationLevel: 2
+        enableRowsetSupport: 1
+        connectionPool:
+           minConnections: 1
+           maxConnections: 10         
+
+    resourceFiles:
+    - files/BCMPCH/logback.xml
+    
+  roles:
+  - base_was
+
+
+
+  tasks:
+  - name: create mteam directory 
+    file: path="/mteam" state=directory owner={{ owner }} group={{ group }} mode=0775  
+  - name: create bcmpch sub directory for bcmpchBatch
+    file: path="/mteam/bcmpch" state=directory owner={{ owner }} group={{ group }} mode=0777
+  - name: create pdf-work-scriptura directory 
+    file: path="/data/pch/pdf-work-scriptura" state=directory owner={{ owner }} group={{ group }} mode=0775  
+  - name: create link wpprintdocs
+    file: src="/eBusiness/wppdocs" dest="/mteam/bcmpch/wpprintdocs" state=link
+  - name: create link bcmpch
+    file: src="/eBusiness/bcmpch" dest="/mteam/bcmpch/bcmpch-share" state=link
+  - name: create link pdf-work-scriptura
+    file: src="/data/pch/pdf-work-scriptura" dest="/mteam/bcmpch/pdf-work-scriptura" state=link

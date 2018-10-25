@@ -1,0 +1,13 @@
+---
+- hosts: jabluxProdNodeapps502
+  user: root
+  vars:
+    default_port: 21240
+    group: was6group
+    owner: was6u500
+    path: /data/zoomit/{{ was_app_name }}
+    was_app_name: ZOOMIT_apps5_MBR2
+    was_cluster_name: ZOOMIT_apps5
+
+  roles:
+  - base_was

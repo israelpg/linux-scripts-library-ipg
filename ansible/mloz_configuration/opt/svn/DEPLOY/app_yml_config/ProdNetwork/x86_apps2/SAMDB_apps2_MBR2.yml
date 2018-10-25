@@ -1,0 +1,44 @@
+---
+- hosts: jabluxProdNodeapps202
+  user: root
+  vars:
+    was_app_name: SAMDB_apps2_MBR2
+    was_cluster_name: SAMDB_apps2
+    default_port: 22020
+    owner: was6u200
+    group: was6group
+    path: /data/samdb/{{ was_app_name }}
+
+    host_aliases:
+    - hostname: samdb200.jablux.cpc998.be
+      port: 80
+
+    dataSources:
+    - authDataAlias: AIRBUS/JCARE200
+      user: JCARE200
+      authDataPassword: AKELD52
+      name: AS400DBSAM_2xx
+      jndiName: jdbc/DBSAM_AS400_RC
+      serverName: airbus.jablux.cpc998.be
+      typeds: toolbox
+      dataTruncation: 'false'
+      databaseName: AIRBUS
+      dateFormat: iso
+      libraries: '*LIBL'
+      naming: system
+      timeFormat: iso
+      websphereDefaultIsolationLevel: 2
+
+    resourceEnvEntries:
+    - name: SamdbRessourceConfig
+      jndiName: config/dbsamConfig
+      customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/ch4_dbsam-PROD200.properties"
+
+    resourceFiles:
+    - files/SAMDB/ch4_dbsam-PROD200.properties
+
+  roles:
+  - base_was

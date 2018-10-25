@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><tns:config xmlns:tns="http://be.gfdi.fwk" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://be.gfdi.fwk application-config.xsd ">
+
+	<application name="ddd" version="1021.28_20101222_2"/>
+
+	<default>
+		<environment host="rfweb.ref.cpc998.be" port="80" contextPath="ddd500">
+			<as400 systemname="REF" />
+			<jdbc libname="*LIBL" url="" driverClassName="com.ibm.as400.access.AS400JDBCDriver" />
+			<!-- Default Config for DB2 UDB -->
+			<jdbc profile="bpe" url="" username="" password="" driverClassName="com.ibm.db2.jcc.DB2Driver" />	
+			<hibernate dialect="be.gfdi.fwk.server.hibernate.DB2400Dialect" show_sql="false" />
+			<security enforceAuthentication="false" /> 	
+		</environment>
+	</default>
+
+	<!-- =========================================================== -->
+	<!-- Environments                                                -->
+	<!-- =========================================================== -->
+
+	<environments>
+		<environment name="500" host="rfweb.ref.cpc998.be" port="80" contextPath="ddd500" >
+			<as400 systemname="REF" username="JDDD500" password="cvzqn500" />
+			<jdbc username="JDDD500" password="cvzqn500" />
+			<security enforceAuthentication="false" />
+			<services>
+				<interceptors><interceptor name="fwk_securityInterceptor"/></interceptors>
+			</services>
+		</environment>
+		<environment name="501" host="rfweb.ref.cpc998.be" port="80" contextPath="ddd500" >
+			<as400 systemname="REF" username="JDDD501" password="mpoiu501" />
+			<jdbc username="JDDD501" password="mpoiu501" />
+			<security enforceAuthentication="false" />
+			<services>
+				<interceptors><interceptor name="fwk_securityInterceptor"/></interceptors>
+			</services>
+		</environment>
+		<environment name="506" host="rfweb.ref.cpc998.be" port="80" contextPath="ddd500" >
+			<as400 systemname="REF" username="JDDD506" password="qpoer506" />
+			<jdbc username="JDDD506" password="qpoer506" />
+			<security enforceAuthentication="false" />
+			<services>
+				<interceptors><interceptor name="fwk_securityInterceptor"/></interceptors>
+			</services>
+		</environment>
+		<environment name="509" host="rfweb.ref.cpc998.be" port="80" contextPath="ddd500" >
+			<as400 systemname="REF" username="JDDD509" password="yhnbg509" />
+			<jdbc username="JDDD509" password="yhnbg509" />
+			<security enforceAuthentication="false" />
+			<services>
+				<interceptors><interceptor name="fwk_securityInterceptor"/></interceptors>
+			</services>
+		</environment>
+		<environment name="515" host="rfweb.ref.cpc998.be" port="80" contextPath="ddd500" >
+			<as400 systemname="REF" username="JDDD515" password="kioer515" />
+			<jdbc username="JDDD515" password="kioer515" />
+			<security enforceAuthentication="false" />
+			<services>
+				<interceptors><interceptor name="fwk_securityInterceptor"/></interceptors>
+			</services>
+		</environment>
+		<environment name="526" host="rfweb.ref.cpc998.be" port="80" contextPath="ddd500" >
+			<as400 systemname="REF" username="JDDD526" password="vxery526" />
+			<jdbc username="JDDD526" password="vxery526" />
+			<security enforceAuthentication="false" />
+			<services>
+				<interceptors><interceptor name="fwk_securityInterceptor"/></interceptors>
+			</services>
+		</environment>
+	</environments>
+
+</tns:config>

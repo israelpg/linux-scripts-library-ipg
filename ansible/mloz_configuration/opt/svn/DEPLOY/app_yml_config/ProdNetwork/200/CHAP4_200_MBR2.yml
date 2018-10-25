@@ -1,0 +1,120 @@
+---
+- hosts: ProdNode_AIRBUS_200B_FLUX
+  user: root
+  vars:
+    was_app_name: CHAP4_200_MBR2
+    was_cluster_name: CHAP4_200
+    default_port: 21040
+    owner: was6u200
+    group: was6group
+    path: /data/chap4/{{ was_app_name }}
+
+    vhost: CHAP4_200_vhost
+    host_aliases:
+    - hostname: chap42xx.jablux.cpc998.be
+      port: 443
+    - hostname: s298lp{{ dc }}wsrp01.jablux.cpc998.be
+      port: 443
+    - hostname: s298lp{{ dc }}wsrp02.jablux.cpc998.be
+      port: 443
+    - hostname: s298lp{{ dc }}wsfl01.jablux.cpc998.be
+      port: 21040
+    - hostname: s298lp{{ dc }}wsfl02.jablux.cpc998.be
+      port: 21040
+    - hostname: s298lp{{ dc }}wsfl01.jablux.cpc998.be
+      port: 21041
+    - hostname: s298lp{{ dc }}wsfl02.jablux.cpc998.be
+      port: 21041
+
+    dataSources:
+    - authDataAlias: AIRBUS/JCARE200
+      authDataPassword: AKELD52
+      dataTruncation: 'false'
+      databaseName: AIRBUS
+      dateFormat: iso
+      jndiName: jdbc/CH4_AS400_RC
+      libraries: '*LIBL'
+      name: AS400CH4_200
+      naming: system
+      serverName: airbus.jablux.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JCARE200
+      connectionPool:
+         maxConnections: 50
+         minConnections: 5
+
+    - authDataAlias: udbidmg2/dbmct200
+      authDataPassword: 3006beatit
+      clientProgramName: CHAP4
+      clientRerouteAlternatePortNumber: 50008
+      clientRerouteAlternateServerName: "{{ standby }}"
+      currentSchema: CARE
+      enableSeamlessFailover: 1
+      databaseName: MCT200
+      driverType: 4
+      jndiName: jdbc/CH4_LINUX_RC
+      name: LNXCH4_200
+      portNumber: 50008
+      serverName: "{{ primary }}"
+      typeds: universal
+      user: dbmct200
+      webSphereDefaultIsolationLevel: 2
+      connectionPool:
+        maxConnections: 50
+        minConnections: 5
+
+#    jmscf:
+#    - jndiName: jms/mqIIBConnectionFactory 
+#      qmgrName: PQM2FL1
+#      qmgrSvrconnChannel: MTEAM.CLIENT.SVRCONN
+#      connectionNameList: s298lp1iib01.jablux.cpc998.be(16200),s298lp1iib02.jablux.cpc998.be(16200)
+#      authDataAlias: JMSCF/uqmfl200
+#      user: uqmfl200
+#      authDataPassword: Welcome01
+#      name: CHAP4_mqConnectionFactory
+
+#    jmsq:
+#    - jndiName: jms/CHAP4_ASK_AGREEMENT_REQUEST
+#      queueName: QA.NIPPIN.CHIV.AGREEMENT.REQUEST
+#      advancedProperties:
+#        useRFH2: 'false'
+
+#    - jndiName: jms/CHAP4_ASK_AGREEMENT_RESPONSE
+#      queueName: QA.NIPPIN.CHIV.AGREEMENT.RESPONSE
+
+#    - jndiName: jms/CHAP4_CONSULTATION_REQUEST
+#      queueName: QA.NIPPIN.CHIV.CONSULTATION.REQUEST
+#      advancedProperties:
+#        useRFH2: 'false'
+
+#    - jndiName: jms/CHAP4_CONSULTATION_RESPONSE
+#      queueName: QA.NIPPIN.CHIV.CONSULTATION.RESPONSE
+
+#    - jndiName: jms/CHAP4_MEDICAL_RECORD_REQUEST
+#      queueName: QA.NIPPIN.CHIV.RECORD
+#      advancedProperties:
+#        useRFH2: 'false'
+
+#    - jndiName: jms/CHAP4_INTG_MC_IN
+#      queueName: QA.INTG_MC_IN
+#      advancedProperties:
+#        useRFH2: 'false'
+
+    resourceEnvEntries:
+    - name: Chapter4Config
+      jndiName: config/ConfigServer
+      customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/ch4.properties"
+
+    systemProperties:
+    - name: spring.profiles.active
+      value: was
+
+    resourceFiles:
+    - files/CHAP4/ch4.properties
+
+  roles:
+  - base_was

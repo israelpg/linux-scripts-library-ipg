@@ -1,0 +1,62 @@
+---
+- hosts: jabluxProdNodeapps501
+  user: root
+  vars:
+    was_app_name: DPZ_apps5_MBR1
+    was_cluster_name: DPZ_apps5
+    default_port: 21040
+    group: was6group
+    owner: was6u500
+    path: /data/dpz/{{ was_app_name }}
+
+    mqjms:
+    - authDataAlias: AIRBUS/JDPZ500
+      authDataPassword: wait
+      jndiName: jms/DPZ_QCF_RC
+      name: DPZ_QCF_500
+      qmgrHostname: ref.ref.cpc998.be
+      qmgrName: QM.500
+      qmgrPortNumber: '14500'
+      qmgrSvrconnChannel: SYSTEM.DEF.SVRCONN
+
+    resourceEnvEntries:
+    - customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/server-config.xml"
+      jndiName: config/ConfigServer
+      name: ConfigServer
+    - customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/careunit.properties"
+      jndiName: config/CareUnitConfig
+      name: CareUnitConfig
+    - customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/wssecurityin.properties"
+      jndiName: config/CertificateConfig
+      name: CertificateConfig
+    - customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/wssecurityout.properties"
+      jndiName: config/KeystoreConfig
+      name: KeystoreConfig
+    - customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/flowList.properties"
+      jndiName: config/FlowListConfig
+      name: FlowListConfig
+
+    resourceFiles:
+    - files/DPZ/careunit.properties
+    - files/DPZ/flowList.properties
+    - files/DPZ/server-config.xml
+    - files/DPZ/wssecurityin.properties
+    - files/DPZ/wssecurityout.properties
+
+  roles:
+  - base_was

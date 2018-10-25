@@ -1,0 +1,102 @@
+---
+- hosts: PreProdNode_BETA_500A_RFND
+  user: root
+  vars:
+    was_app_name: CATA_BETA_MBR1
+    was_cluster_name: CATA_BETA
+    owner: was6bet
+    group: was6group
+    default_port: 21120
+    path: /data/cata/{{ was_app_name }}
+
+    vhost: RfndBeta_vhost
+    host_aliases:
+    - hostname: s999lq2wsrf05.jablux.gfdi.be
+      port: 21120
+
+    dataSources:
+    - authDataAlias: udbibet597/dbcatbet
+      authDataPassword: bet20090204
+      currentSchema: ADM
+      databaseName: CAT500
+      driverType: '4'
+      jndiName: jdbc/DCADM5XX
+      name: DCADM5XX
+      portNumber: '50004'
+      serverName: s999lq2dbrf03.jablux.gfdi.be
+      typeds: universal
+      user: dbcatbet
+      webSphereDefaultIsolationLevel: '1'
+
+    - authDataAlias: udbibet597/dbcatbet
+      authDataPassword: bet20090204
+      currentSchema: IDX
+      databaseName: CAT500
+      driverType: '4'
+      jndiName: jdbc/DCIDX5XX
+      name: DCIDX5XX
+      portNumber: '50004'
+      serverName: s999lq2dbrf03.jablux.gfdi.be
+      typeds: universal
+      user: dbcatbet
+      webSphereDefaultIsolationLevel: '1'
+
+
+    systemProperties:
+    - name: doccenter.scheduler.enabled
+      value: true
+    - name: doccenter.scheduler.threads
+      value: '1'
+    - name: doccenter.script.folderref.recheck.delay
+      value: '-1'
+    - name: net.sf.ehcache.skipUpdateCheck
+      value: true
+
+    directories:
+    - "{{ path }}/work/logs"
+    - /data/cata/bet
+    - /data/cata/bet/5XX
+    - /data/cata/bet/5XX/chunks
+    - /data/cata/bet/5XX/config
+    - /data/cata/bet/5XX/config/dbspecific
+    - /data/cata/bet/5XX/config/dbspecific/DCIDX5XX
+    - /data/cata/bet/5XX/dccache
+    - /data/cata/bet/5XX/logs
+    - /data/cata/bet/5XX/work
+
+  roles:
+  - base_was
+
+  # Post Install
+  tasks:
+  - name: Copy dbspecific.zip
+    copy: src="files/CATA/dbspecific.zip" dest="/data/cata/bet/5XX/config/dbspecific.zip"
+      owner={{ owner }} group={{ group }} mode=0644
+    register: dbspecific_zip
+    tags: files
+    notify: reset_acl
+
+  - name: Extract dbspecific.zip if uploaded
+    when: dbspecific_zip.changed
+    unarchive: src="/data/cata/bet/5XX/config/dbspecific.zip"
+      dest="/data/cata/bet/5XX/config/dbspecific/DCIDX5XX/"
+      owner={{ owner }} group={{ group }} mode=u=rwX,g=rX,o=rX copy=no
+    tags: files
+    notify: reset_acl
+
+  - name: Copy dbdefault.zip
+    copy: src="files/CATA/dbdefault.zip" dest="/data/cata/bet/5XX/config/dbdefault.zip"
+      owner={{ owner }} group={{ group }} mode=0644
+    register: dbdefault_zip
+    tags: files
+    notify: reset_acl
+
+  - name: Extract dbdefault.zip if uploaded
+    when: dbdefault_zip.changed
+    unarchive: src="/data/cata/bet/5XX/config/dbdefault.zip"
+      dest="/data/cata/bet/5XX/config/"
+      owner={{ owner }} group={{ group }} mode=u=rwX,g=rX,o=rX copy=no creates="/data/cata/bet/5XX/config/dbdefault"
+    tags: files
+    notify: reset_acl
+
+  

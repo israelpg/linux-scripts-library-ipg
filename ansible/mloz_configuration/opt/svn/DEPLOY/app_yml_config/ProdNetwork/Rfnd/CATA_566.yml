@@ -1,0 +1,130 @@
+---
+- hosts: ProdNode_AIRBUS_566A_RFND
+  user: root
+  vars:
+    was_app_name: CATA_566
+    owner: was6u566
+    group: was6group
+    default_port: 21080
+    path: /data/cata/{{ was_app_name }}
+
+    vhost: RfndTrn{{ dc }}_vhost
+
+    dataSources:
+    - authDataAlias: udbicat597/dbcat500
+      authDataPassword: 500qkjcb
+      clientRerouteAlternateServerName: s598lp2dbrf02.jablux.cpc998.be
+      clientRerouteAlternatePortNumber: 50004
+      currentSchema: ADM
+      enableSeamlessFailover: 1
+      databaseName: CAT500
+      driverType: '4'
+      jndiName: jdbc/DCADM566
+      name: DCADM566
+      portNumber: '50004'
+      serverName: s598lp2dbrf02.jablux.cpc998.be
+      typeds: universal
+      user: dbcat500
+      webSphereDefaultIsolationLevel: '1'
+      connectionPool:
+        maxConnections: 80
+        minConnections: 20
+
+    - authDataAlias: udbicat597/dbcat500
+      authDataPassword: 500qkjcb
+      clientRerouteAlternateServerName: s598lp2dbrf02.jablux.cpc998.be
+      clientRerouteAlternatePortNumber: 50004
+      currentSchema: IDX
+      enableSeamlessFailover: 1
+      databaseName: CAT500
+      driverType: '4'
+      jndiName: jdbc/DCIDX566
+      name: DCIDX566
+      portNumber: '50004'
+      serverName: s598lp2dbrf02.jablux.cpc998.be
+      typeds: universal
+      user: dbcat500
+      webSphereDefaultIsolationLevel: '1'
+      connectionPool:
+        maxConnections: 80
+        minConnections: 20
+
+
+    systemProperties:
+    - name: client.encoding.override
+      value: 'UTF-8'
+    - name: file.encoding
+      value: 'UTF-8'
+    - name: doccenter.scheduler.enabled
+      value: true
+    - name: doccenter.scheduler.threads
+      value: '1'
+    - name: doccenter.script.folderref.recheck.delay
+      value: '1000'
+    - name: net.sf.ehcache.skipUpdateCheck
+      value: true
+
+    directories:
+    - "{{ path }}/work/logs"
+    - /data/cata/trn
+    - /data/cata/trn/566
+    - /data/cata/trn/566/chunks
+    - /data/cata/trn/566/config
+    - /data/cata/trn/566/config/dbspecific
+    - /data/cata/trn/566/config/dbspecific/DCIDX566
+    - /data/cata/trn/566/dccache
+    - /data/cata/trn/566/logs
+    - /data/cata/trn/566/work
+
+  roles:
+  - base_was
+
+  # Post Install
+  tasks:
+  - name: create symlinks /data/cata/trn/566/chunks/chunk01 -> /import/centerabis
+    file: src=/import/centerabis dest=/data/cata/trn/566/chunks/chunk01 state=link
+    tags: links
+
+  - name: create symlinks /data/cata/trn/566/chunks/chunk02 -> /import/centerabis
+    file: src=/import/centerabis dest=/data/cata/trn/566/chunks/chunk02 state=link
+    tags: links
+
+  - name: create symlinks /data/cata/trn/566/chunks/chunk03 -> /import/centerabis
+    file: src=/import/centerabis dest=/data/cata/trn/566/chunks/chunk03 state=link
+    tags: links
+
+  - name: create symlinks /data/cata/trn/566/chunks/chunk_cm -> /import/centerabis
+    file: src=/import/centerabis dest=/data/cata/trn/566/chunks/chunk_cm state=link
+    tags: links
+
+  - name: Copy dbspecific.zip
+    copy: src="files/CATA/dbspecific.zip" dest="/data/cata/trn/566/config/dbspecific.zip"
+      owner={{ owner }} group={{ group }} mode=0644
+    register: dbspecific_zip
+    tags: files
+    notify: reset_acl
+
+  - name: Extract dbspecific.zip if uploaded
+    when: dbspecific_zip.changed
+    unarchive: src="/data/cata/trn/566/config/dbspecific.zip"
+      dest="/data/cata/trn/566/config/dbspecific/DCIDX566/"
+      owner={{ owner }} group={{ group }} mode=u=rwX,g=rX,o=rX copy=no
+    tags: files
+    notify: reset_acl
+
+  - name: Copy dbdefault.zip
+    copy: src="files/CATA/dbdefault.zip" dest="/data/cata/trn/566/config/dbdefault.zip"
+      owner={{ owner }} group={{ group }} mode=0644
+    register: dbdefault_zip
+    tags: files
+    notify: reset_acl
+
+  - name: Extract dbdefault.zip if uploaded
+    when: dbdefault_zip.changed
+    unarchive: src="/data/cata/trn/566/config/dbdefault.zip"
+      dest="/data/cata/trn/566/config/"
+      owner={{ owner }} group={{ group }} mode=u=rwX,g=rX,o=rX copy=no creates="/data/cata/trn/566/config/dbdefault"
+    tags: files
+    notify: reset_acl
+
+  

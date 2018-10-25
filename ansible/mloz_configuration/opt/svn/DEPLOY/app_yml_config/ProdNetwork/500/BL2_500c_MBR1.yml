@@ -1,0 +1,191 @@
+---
+- hosts: ProdNode_AIRBUS_500A_EB
+  user: root
+  vars:
+    was_app_name: BL2_500c_MBR1
+    was_cluster_name: BL2_500c
+    default_port: 21240
+    group: was6group
+    owner: was6u500
+    path: /data/bl2/{{ was_app_name }}
+
+    systemProperties:
+    - name: logback.configurationFile
+      value: "{{ path }}/resources/logback.xml"
+    - name: spring.profiles.active
+      value: prod,openam-security,active.mca.document.url
+    - name: com.ibm.ws.classloader.strict
+      value: "true"
+    - name: user.timezone
+      value: Europe/Brussels
+    - name: opendj.baseuri
+      value: http://s000lpopendj01.m-team.be:8389/mteam/  
+    - name: opendj.username
+      value: sa_openam
+    - name: opendj.password
+      value: jjbCCvT8vjEQPutj9BMU
+    - name: openam.baseuri
+      value: https://s000lpopenam01.m-team.be/login
+    - name: openam.username
+      value: amadmin
+    - name: openam.password
+      value: l4P0utre2B4m4k0
+    - name: openam.cookiename
+      value: ssoPROD
+    - name: openam.cookieexpiryinmillis
+      value: 7200000
+    - name: openam.policyapplicationname
+      value: MCA
+    - name: zoomIt.basePath
+      value: http://zoomit.jablux.cpc998.be/zoomit_web/services/rest/ZoomitManager
+    - name: wcm.basepath
+      value: http://wcm500.jablux.cpc998.be/current/rest/
+    - name: wcm.basicauth.509
+      value: Basic R09LNTA5OmdjcGM1MDk=
+    - name: wcm.basicauth.526
+      value: Basic R09LNTI2OmdjcGM1MjY=
+    - name: com.ibm.ws.classloader.zipFileCacheSize
+      value: 5000
+    - name: prefsCenter.basePath
+      value: http://prefscenter.jablux.cpc998.be/prefsCenter/
+    - name: doccleReceiver.basePath
+      value: http://doccle.jablux.cpc998.be/doccle_web/
+
+    host_aliases:
+    - hostname: api-mloz.jablux.cpc998.be
+      port: 21160
+    - hostname: api-mloz.jablux.cpc998.be
+      port: 21200
+    - hostname: api-mloz.jablux.cpc998.be
+      port: 21240
+    - hostname: api-mloz.m-team.be
+      port: 21160
+    - hostname: api-mloz.m-team.be
+      port: 21200
+    - hostname: api-mloz.m-team.be
+      port: 21240
+
+    jmscf:
+    - jndiName: jms/MCA_mqConnectionFactory
+      qmgrName: PQM5EB1
+      qmgrSvrconnChannel: MTEAM.ADMIN.SVRCONN
+      connectionNameList: s598lp1iib01.jablux.cpc998.be(15501),s598lp1iib02.jablux.cpc998.be(15501),s598lp2iib03.jablux.cpc998.be(15501),s598lp2iib04.jablux.cpc998.be(15501)
+      authDataAlias: JMSCF/uqmeb500
+      user: uqmeb500
+      authDataPassword: n3touc3p4s4s4
+      name: MCA_mqConnectionFactory
+      connectionPool:
+        minConnections: 25
+        maxConnections: 200
+      sessionPool:
+        minConnections: 10
+        maxConnections: 40
+
+    jmsq:
+    - jndiName: jms/MCA_PERSON_IN
+      queueName: QA.MCA.PERSON.IN
+    - jndiName: jms/MCA_OUT
+      queueName: QA.MCA.OUT
+    - jndiName: jms/MCA_INSURANCE_IN
+      queueName: QA.MCA.INSURANCE.IN
+    - jndiName: jms/MCA_FAMILY_IN
+      queueName: QA.MCA.FAMILY.IN
+    - jndiName: jms/MCA_INDEMNITY_IN
+      queueName: QA.MCA.INDEMNITY.IN
+    - jndiName: jms/MCA_DISPENSATION_IN
+      queueName: QA.MCA.DISPENSATION.IN
+    - jndiName: jms/MCA_HEALTHCARE_IN
+      queueName: QA.MCA.HEALTHCARE.IN
+    - jndiName: jms/MCA_REPLY
+      queueName: QA.MCA.REPLY
+    - jndiName: jms/MCA_FINANCIAL_IN
+      queueName: QA.MCA.FINANCIAL.IN
+    - jndiName: jms/MCA_ACTION_IN
+      queueName: QA.MCA.ACTION.IN
+    - jndiName: jms/MCA_INFOBOX_IN
+      queueName: QA.MCA.INFOBOX.IN
+    - jndiName: jms/MCA_DOCUMENT_REPLY
+      queueName: QA.MCA.DOCUMENT.REPLY
+    - jndiName: jms/MCA_PROCURATION_IN
+      queueName: QA.MCA.PROCURATION.IN
+    - jndiName: jms/MCA_MEDICAL_AGREEMENT_IN
+      queueName: QA.MCA.MEDICAL_AGREEMENT.IN
+    - jndiName: jms/MCA_TASKS_IN
+      queueName: QA.MCA.DGC_TASK.IN
+    - jndiName: jms/MCA_ONLINE_ACCOUNT_IN
+      queueName: QA.MCA.ONLINE_ACCOUNT.IN
+    - jndiName:  jms/MCA_CARE_PROVIDER_IN
+      queueName: QA.MCA.CARE_PROVIDER.IN
+    - jndiName: jms/MCA_SIGNAL_IN 
+      queueName: QA.MCA.SIGNAL.IN 
+    - jndiName: jms/MCA_DMG_IN
+      queueName: QA.MCA.DMG.IN
+    - jndiName: jms/MCA_SECURITY
+      queueName: QA.MCA.SECURITY.IN
+    - jndiName: jms/MCA_FEEDBACK_IN 
+      queueName: QA.MCA.FEEDBACK.IN 
+    - jndiName: jms/MCA_EMPLOYEE_IN 
+      queueName: QA.MCA.EMPLOYEE.IN 
+    - jndiName: jms/MCA_MEMBER_SERVICES_IN
+      queueName: QA.MCA.MEMBER_SERVICES.IN 
+    - jndiName: jms/MCA_INSURANCE_COUNTER_IN 
+      queueName: QA.MCA.INSURANCE_COUNTER.IN 
+    - jndiName: jms/MCA_ADDRESS_IN
+      queueName: QA.MCA.ADDRESS.IN
+    - jndiName: jms/MCA_TASK_HISTORY_IN
+      queueName: QA.MCA.TASK.IN
+    - jndiName: jms/MCA_PERSON_CARE_IN
+      queueName: QA.MCA.PERSON_CARE.IN
+    - jndiName:  jms/MCA_MEDICAL_IN
+      queueName: QA.MCA.MEDICAL.IN
+
+    dataSources:
+    - authDataAlias: udbbl2105/dbdil500     # pools des connexions: min = 25, max = 250
+      authDataPassword: f8ty5j1z
+      clientRerouteAlternateServerName: s598lp2dbeb02.jablux.cpc998.be
+      clientRerouteAlternatePortNumber: 50004
+      currentSchema: DIL
+      enableSeamlessFailover: 1
+      databaseName: EBU500
+      driverType: 4
+      jndiName: jdbc/MCA_DIL
+      name: MCA_DIL
+      portNumber: 50004
+      serverName: s598lp1dbeb01.jablux.cpc998.be
+      typeds: universal
+      user: dbdil500
+      webSphereDefaultIsolationLevel: 2
+      enableRowsetSupport: 1
+      retrieveMessagesFromServerOnGetMessage: true
+      deferPrepares: true
+      blockingReadConnectionTimeout: 900
+      queryDataSize: 262143
+      statementCacheSize: 10000
+      fetchSize: 1000
+      connectionPool:
+         minConnections: 10
+         maxConnections: 100
+         connectionTimeout: 30
+         reapTime: 7200
+         agedTimeout: 330 
+         
+    resourceFiles:
+    - files/BL2/logback.xml
+
+  roles:
+  - base_was
+
+# Post Install
+  tasks:
+  - name: push postscript
+    template: src=files/BL2/postscript.py dest=/data/wsadmin/servers/was_{{ was_app_name }}_postscript.py
+      owner={{ owner }} group={{ group }} mode=0644 backup=yes
+    tags: postscripts
+
+  - name: Exec postscript
+    shell: "{{ base_wsadmin_sh }} -f /data/wsadmin/servers/was_{{ was_app_name }}_postscript.py >> {{ ibmim_install_folder_logs }}/was_{{ was_app_name }}.log"
+    tags: postscripts
+    notify:
+    - update_node_variables
+    - restart_NodeAgent
+    - sync_nodes

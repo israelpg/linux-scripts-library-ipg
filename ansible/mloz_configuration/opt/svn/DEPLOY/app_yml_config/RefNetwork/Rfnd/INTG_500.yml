@@ -1,0 +1,63 @@
+---
+- hosts: RefNode_REF_500I_RFND
+  user: root
+  vars:
+    was_app_name: INTG_500
+    default_port: 21160
+    path: /data/intg/{{ was_app_name }}
+    group: was6group
+    owner: was6u500
+
+    vhost: RfndRef_vhost
+
+    systemProperties:
+    - name: intg.jndi.prefix
+      value: jndi
+    - name: net.sf.ehcache.skipUpdateCheck
+      value: true
+    - name: client.encoding.override
+      value: 'UTF-8'
+    - name: file.encoding
+      value: 'UTF-8'
+
+    dataSources:
+    - authDataAlias: refiint597/dbint500
+      authDataPassword: 500fkghu
+      currentSchema: INTG
+      enableSeamlessFailover: 0
+      databaseName: RFN500
+      driverType: '4'
+      jndiName: jdbc/INTG_500
+      name: INTG_500
+      portNumber: '50004'
+      serverName: s598lr2dbrf02.ref.cpc998.be
+      typeds: universal
+      user: dbint500
+      webSphereDefaultIsolationLevel: '2'
+
+    - authDataAlias: REF/INTG500
+      authDataPassword: ms500eop
+      dataTruncation: 'false'
+      databaseName: REFGFDI
+      dateFormat: iso
+      extendedDynamic: 'false'
+      jndiName: jdbc/JADE2_500
+      libraries: '*LIBL'
+      name: JADE2_500
+      naming: system
+      package: DSJ2500
+      packageCriteria: select
+      packageLibrary: JADEBUS500
+      serverName: ref.ref.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: INTG500
+      connectionPool:
+         connectionTimeout: 30
+         maxConnections: 50
+         minConnections: 15
+         reapTime: 300
+         agedTimeout: 0 
+
+  roles:
+  - base_was

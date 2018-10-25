@@ -1,0 +1,121 @@
+---
+- hosts: ProdNode_AIRBUS_500H_RFND
+  user: root
+  vars:
+    was_app_name: CATA_500_MBR2
+    was_cluster_name: CATA_500
+    owner: was6u500
+    group: was6group
+    default_port: 21040
+    path: /data/cata/{{ was_app_name }}
+
+    vhost: RfndProd{{ dc }}_vhost
+
+    dataSources:
+    - authDataAlias: udbicat597/dbcat500
+      authDataPassword: 500qkjcb
+      clientRerouteAlternateServerName: s598lp2dbrf01.jablux.cpc998.be
+      clientRerouteAlternatePortNumber: 50004
+      currentSchema: ADM
+      enableSeamlessFailover: 1
+      databaseName: CAT500
+      driverType: '4'
+      jndiName: jdbc/DCADM5XX
+      name: DCADM5XX
+      portNumber: '50004'
+      serverName: s598lp1dbrf01.jablux.cpc998.be
+      typeds: universal
+      user: dbcat500
+      webSphereDefaultIsolationLevel: '2'
+      connectionPool:
+         connectionTimeout: 30
+         maxConnections: 80
+         minConnections: 20
+         reapTime: 300
+         agedTimeout: 0 
+
+    - authDataAlias: udbicat597/dbcat500
+      authDataPassword: 500qkjcb
+      clientRerouteAlternateServerName: s598lp2dbrf01.jablux.cpc998.be
+      clientRerouteAlternatePortNumber: 50004
+      currentSchema: IDX
+      enableSeamlessFailover: 1
+      databaseName: CAT500
+      driverType: '4'
+      jndiName: jdbc/DCIDX5XX
+      name: DCIDX5XX
+      portNumber: '50004'
+      serverName: s598lp1dbrf01.jablux.cpc998.be
+      typeds: universal
+      user: dbcat500
+      webSphereDefaultIsolationLevel: '1'
+      connectionPool:
+         connectionTimeout: 30
+         maxConnections: 80
+         minConnections: 20
+         reapTime: 300
+         agedTimeout: 0 
+
+
+    systemProperties:
+    - name: client.encoding.override
+      value: 'UTF-8'
+    - name: file.encoding
+      value: 'UTF-8'
+    - name: doccenter.scheduler.enabled
+      value: false
+    - name: doccenter.scheduler.threads
+      value: '0'
+    - name: doccenter.script.folderref.recheck.delay
+      value: '-1'
+    - name: net.sf.ehcache.skipUpdateCheck
+      value: true
+
+    directories:
+    - "{{ path }}/work/logs"
+    - /data/cata/prd
+    - /data/cata/prd/500
+    - /data/cata/prd/500/chunks
+    - /data/cata/prd/500/config
+    - /data/cata/prd/500/config/dbspecific
+    - /data/cata/prd/500/config/dbspecific/DCIDX5XX
+    - /data/cata/prd/500/dccache
+    - /data/cata/prd/500/logs
+    - /data/cata/prd/500/work
+
+  roles:
+  - base_was
+
+  # Post Install
+  tasks:
+  - name: Copy dbspecific.zip
+    copy: src="files/CATA/dbspecific.zip" dest="/data/cata/prd/500/config/dbspecific.zip"
+      owner={{ owner }} group={{ group }} mode=0644
+    register: dbspecific_zip
+    tags: files
+    notify: reset_acl
+
+  - name: Extract dbspecific.zip if uploaded
+    when: dbspecific_zip.changed
+    unarchive: src="/data/cata/prd/500/config/dbspecific.zip"
+      dest="/data/cata/prd/500/config/dbspecific/DCIDX5XX/"
+      owner={{ owner }} group={{ group }} mode=u=rwX,g=rX,o=rX copy=no
+    tags: files
+    notify: reset_acl
+
+  - name: Copy dbdefault.zip
+    copy: src="files/CATA/dbdefault.zip" dest="/data/cata/prd/500/config/dbdefault.zip"
+      owner={{ owner }} group={{ group }} mode=0644
+    register: dbdefault_zip
+    tags: files
+    notify: reset_acl
+
+  - name: Extract dbdefault.zip if uploaded
+    when: dbdefault_zip.changed
+    unarchive: src="/data/cata/prd/500/config/dbdefault.zip"
+      dest="/data/cata/prd/500/config/"
+      owner={{ owner }} group={{ group }} mode=u=rwX,g=rX,o=rX copy=no creates="/data/cata/prd/500/config/dbdefault"
+    tags: files
+    notify: reset_acl
+
+  

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d %-5p %-50.50c: %m%n"/>
+        </Console>
+
+        <RollingFile name="sync-log-debug"
+                     fileName="${magnolia.logs.dir}/magnolia-debug.log"
+                     filePattern="${magnolia.logs.dir}/magnolia-debug-%i.log"
+                     append="true">
+            <PatternLayout pattern="%-5p %c %d{dd.MM.yyyy HH:mm:ss} -- %m%n"/>
+            <ThresholdFilter level="DEBUG"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="1MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingFile>
+        <Async name="log-debug">
+            <AppenderRef ref="sync-log-debug"/>
+        </Async>
+
+        <!-- Log Error-->
+
+        <RollingFile name="sync-log-error"
+                     fileName="${magnolia.logs.dir}/magnolia-error.log"
+                     filePattern="${magnolia.logs.dir}/magnolia-error-%i.log"
+                     append="true">
+            <PatternLayout pattern="%-5p %c %d{dd.MM.yyyy HH:mm:ss} -- %m%n"/>
+            <ThresholdFilter level="ERROR"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="1MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingFile>
+        <Async name="log-error">
+            <AppenderRef ref="sync-log-error"/>
+        </Async>
+
+        <RollingFile name="sync-log-activation"
+                     fileName="${magnolia.logs.dir}/magnolia-activation.log"
+                     filePattern="${magnolia.logs.dir}/magnolia-activation-%i.log"
+                     append="true">
+            <PatternLayout pattern="%-5p %c %d{dd.MM.yyyy HH:mm:ss} -- %m%n"/>
+            <ThresholdFilter level="ERROR"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="1MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingFile>
+        <Async name="log-activation">
+            <AppenderRef ref="sync-log-activation"/>
+        </Async>
+
+
+        <File name="log-bootstrap" fileName="${magnolia.logs.dir}/bootstrap.log">
+            <PatternLayout pattern="%-5p %d{dd.MM.yyyy HH:mm:ss}  %m%n"/>
+        </File>
+        <RollingFile name="sync-log-access"
+                     fileName="${magnolia.logs.dir}/magnolia-access.log"
+                     filePattern="${magnolia.logs.dir}/magnolia-access-%i.log"
+                     append="true">
+            <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss}%m%n"/>
+            <ThresholdFilter level="ERROR"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="1MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingFile>
+        <Async name="log-access">
+            <AppenderRef ref="sync-log-access"/>
+        </Async>
+        <RollingFile name="sync-log-audit"
+                     fileName="${magnolia.logs.dir}/magnolia-audit.log"
+                     filePattern="${magnolia.logs.dir}/magnolia-audit-%i.log"
+                     append="true">
+            <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss}%m%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="1MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingFile>
+        <Async name="log-audit">
+            <AppenderRef ref="sync-log-audit"/>
+        </Async>
+        <RollingFile name="sync-log-form"
+                     fileName="${magnolia.logs.dir}/magnolia-form.log"
+                     filePattern="${magnolia.logs.dir}/magnolia-form-%i.log"
+                     append="true">
+            <PatternLayout pattern="%d{dd.MM.yyyy HH:mm:ss}%m%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="1MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingFile>
+        <Async name="log-form">
+            <AppenderRef ref="sync-log-form"/>
+        </Async>
+
+        <!--Appernder pour les log BL2-->
+        <RollingFile name="sync-log-bigleap"
+                     fileName="${magnolia.logs.dir}/bigleap2-tarce.log"
+                     filePattern="${magnolia.logs.dir}/bigleap2-tarce-%i.log"
+                     append="true">
+            <PatternLayout pattern="%-5p %c %d{dd.MM.yyyy HH:mm:ss} -- %m%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="1MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingFile>
+        <Async name="log-bigleap">
+            <AppenderRef ref="sync-log-bigleap"/>
+        </Async>
+
+
+        <!--Appernder pour les log jcr query-->
+        <RollingFile name="sync-log-perf-repo-query"
+                     fileName="${magnolia.logs.dir}/perf-repo-query.log"
+                     filePattern="${magnolia.logs.dir}/perf-repo-query-%i.log"
+                     append="true">
+            <PatternLayout pattern="%-5p %c %d{dd.MM.yyyy HH:mm:ss} -- %m%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="1MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="5"/>
+        </RollingFile>
+        <Async name="log-perf-repo-query">
+            <AppenderRef ref="sync-log-perf-repo-query"/>
+        </Async>
+
+    </Appenders>
+
+    <Loggers>
+        <!-- Magnolia categories -->
+        <Logger name="info.magnolia" level="INFO"/>
+
+
+        <!-- Bigleap logger-->
+        <Logger name="org.apache.cxf.interceptor" level="debug" additivity="false">
+            <AppenderRef ref="log-bigleap"/>
+        </Logger>
+
+        <!-- JCR query -->
+        <Logger name="org.apache.jackrabbit.core.query" level="debug" additivity="false">
+            <AppenderRef ref="log-perf-repo-query"/>
+        </Logger>
+
+        <!-- Activation - additivity is true so logs also go to sub-categories' appenders -->
+        <Logger name="info.magnolia.cms.exchange" level="INFO" additivity="true">
+            <AppenderRef ref="log-activation"/>
+        </Logger>
+        <Logger name="info.magnolia.module.activation" level="INFO" additivity="true">
+            <AppenderRef ref="log-activation"/>
+        </Logger>
+
+        <!-- bootstrapping -->
+        <Logger name="info.magnolia.importexport.Bootstrapper" level="INFO" additivity="true">
+            <AppenderRef ref="log-bootstrap"/>
+        </Logger>
+
+        <!-- Custom log categories - additivity is false so logs only go to the appenders configured here -->
+        <Logger name="log-access" additivity="false">
+            <AppenderRef ref="log-access"/>
+        </Logger>
+        <Logger name="log-audit" additivity="false">
+            <AppenderRef ref="log-audit"/>
+        </Logger>
+        <Logger name="log-form" additivity="false">
+            <AppenderRef ref="log-form"/>
+        </Logger>
+
+        <!-- External libraries -->
+        <Logger name="org" level="WARN"/>
+        <Logger name="org.apache.jackrabbit" level="WARN"/>
+
+        <!-- Reflections library spoils logs with hundreds of harmless warnings; tries to look into native libs but none of its DefaultUrlTypes can handle them. -->
+        <Logger name="org.reflections" level="ERROR"/>
+        <Logger name="com" level="WARN"/>
+        <Logger name="net" level="WARN"/>
+        <Logger name="freemarker" level="WARN"/>
+        <Logger name="httpclient" level="WARN"/>
+        <Logger name="openwfe.org.log" level="WARN"/>
+        <Logger name="openwfe" level="WARN"/>
+
+        <Root level="INFO">
+            <AppenderRef ref="log-error"/>
+            <!--<AppenderRef ref="log-debug"/>-->
+            <!--  debug  -->
+            <!--<AppenderRef ref="console"/>-->
+            <!--  enable this too to get mail notifications  -->
+            <!--
+              <AppenderRef ref="mail" />
+            -->
+        </Root>
+    </Loggers>
+
+</Configuration>

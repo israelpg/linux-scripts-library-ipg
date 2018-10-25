@@ -1,0 +1,41 @@
+---
+- hosts: IntegNode_500A_RFND
+  user: root
+  vars:
+    was_app_name: CLIENTS_998
+    owner: was6u500
+    group: was6group
+    default_port: 21040
+    path: /data/clients/{{ was_app_name }}
+
+    vhost: RfndInteg_vhost
+    host_aliases:
+    - hostname: rfapps.integ.gfdi.be
+      port: 80
+    - hostname: rfweb.integ.gfdi.be
+      port: 80
+    - hostname: "{{ ansible_fqdn }}" 
+      port: "{{ default_port }}"
+
+    dataSources:
+    - authDataAlias: AS400/M998JADEWS
+      authDataPassword: md1spr0d
+      dataTruncation: 'false'
+      databaseName: INTEGGFDI
+      dateFormat: iso
+      jndiName: jdbc/MDIS_RfndInteg
+      libraries: 'JADEPRF'
+      name: MDIS_RfndInteg
+      naming: system
+      serverName: integ.integ.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: M998JADEWS
+      extendedDynamic: 'false'
+      package: DSMDIS
+      packageLibrary: QGPL
+      packageCriteria: select
+
+  roles:
+  - base_was
+

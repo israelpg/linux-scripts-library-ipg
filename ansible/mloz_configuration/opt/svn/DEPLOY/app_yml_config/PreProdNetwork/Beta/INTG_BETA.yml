@@ -1,0 +1,55 @@
+---
+- hosts: PreProdNode_BETA_500A_RFND
+  user: root
+  vars:
+    was_app_name: INTG_BETA
+    owner: was6bet
+    group: was6group
+    default_port: 21160
+    path: /data/intg/{{ was_app_name }}
+
+    vhost: RfndBeta_vhost
+    host_aliases:
+    - hostname: s999lq2wsrf05.jablux.gfdi.be
+      port: 21160
+
+    systemProperties:
+    - name: intg.jndi.prefix
+      value: jndi
+    - name: net.sf.ehcache.skipUpdateCheck
+      value: true
+
+    dataSources:
+    - authDataAlias: udbibet597/dbintbet
+      authDataPassword: bet20090204
+      currentSchema: INTG
+      databaseName: RFN500
+      driverType: '4'
+      jndiName: jdbc/INTG_500
+      name: INTG_500
+      portNumber: '50004'
+      serverName: s999lq2dbrf03.jablux.gfdi.be
+      typeds: universal
+      user: dbintbet
+      webSphereDefaultIsolationLevel: '2'
+
+    - authDataAlias: BETA/INTG500
+      authDataPassword: GTNI500
+      dataTruncation: 'false'
+      databaseName: GFDIDB2
+      dateFormat: iso
+      extendedDynamic: 'false'
+      jndiName: jdbc/JADE2_500
+      libraries: '*LIBL'
+      name: JADE2_500
+      naming: system
+      package: DSJ2500
+      packageCriteria: select
+      packageLibrary: JADEBUS500
+      serverName: s444b58a.jablux.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: INTG500
+
+  roles:
+  - base_was

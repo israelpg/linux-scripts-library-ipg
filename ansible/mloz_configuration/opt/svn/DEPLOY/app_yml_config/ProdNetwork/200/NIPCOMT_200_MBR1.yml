@@ -1,0 +1,104 @@
+---
+- hosts: ProdNode_AIRBUS_200A_FLUX
+  user: root
+  vars:
+    was_app_name: NIPCOMT_200_MBR1
+    was_cluster_name: NIPCOMT_200
+    default_port: 21320
+    owner: was6u200
+    group: was6group
+    path: /data/nipcomt/{{ was_app_name }}
+
+    dataSources: False
+
+    vhost: NCT_200_vhost
+    host_aliases:
+    - hostname: nct2xx.jablux.cpc998.be
+      port: 443
+    - hostname: s298lp{{ dc }}wsrp01.jablux.cpc998.be
+      port: 443
+    - hostname: s298lp{{ dc }}wsrp02.jablux.cpc998.be
+      port: 443
+    - hostname: s298lp{{ dc }}wsfl01.jablux.cpc998.be
+      port: 21320
+    - hostname: s298lp{{ dc }}wsfl02.jablux.cpc998.be
+      port: 21320
+    - hostname: s298lp{{ dc }}wsfl01.jablux.cpc998.be
+      port: 21321
+    - hostname: s298lp{{ dc }}wsfl02.jablux.cpc998.be
+      port: 21321
+
+    jmscf:
+    - jndiName: jms/mqIIBConnectionFactory 
+      qmgrName: PQM2FL1
+      qmgrSvrconnChannel: MTEAM.CLIENT.SVRCONN
+      connectionNameList: s298lp1iib01.jablux.cpc998.be(16200),s298lp1iib02.jablux.cpc998.be(16200)
+      authDataAlias: JMSCF/uqmfl200
+      user: uqmfl200
+      authDataPassword: Welcome01
+      name: NCT_mqConnectionFactory
+
+    jmsq:
+    - jndiName: jms/QA.INAMI.MODEL.BIM_BATCH.REQ
+      queueName: QA.INAMI.MODEL.BIM_BATCH.REQ
+      advancedProperties:
+        useRFH2: 'false'
+
+    - jndiName: jms/QA.NIPPIN.ASYNC.GENERIC.OUT
+      queueName: QA.NIPPIN.ASYNC.GENERIC.OUT
+
+    - jndiName: jms/QA.NIPPIN.ASYNC.GENERIC.OUT.BIG
+      queueName: QA.NIPPIN.ASYNC.GENERIC.OUT.BIG
+
+    - jndiName: jms/QA.NIPPIN.ASYNC.GENERIC.REQ
+      queueName: QA.NIPPIN.ASYNC.GENERIC.REQ
+
+    - jndiName: jms/QA.NIPPIN.ASYNC.GENERIC.RESP
+      queueName: QA.NIPPIN.ASYNC.GENERIC.RESP
+
+    - jndiName: jms/QA.NIPPIN.ASYNC.NCT.DB.IN
+      queueName: QA.NIPPIN.ASYNC.NCT.DB.IN
+
+    - jndiName: jms/QA.NIPPIN.ASYNC.NCT.DB.OUT
+      queueName: QA.NIPPIN.ASYNC.NCT.DB.OUT
+
+    dataSources:
+    - authDataAlias: udbidmg2/dbmct200
+      authDataPassword: 3006beatit
+      clientRerouteAlternatePortNumber: 50008
+      clientRerouteAlternateServerName: "{{ standby }}"
+      currentSchema: CARE
+      databaseName: MCT200
+      enableSeamlessFailover: 1
+      driverType: 4
+      jndiName: jdbc/NCT_LINUX_RC
+      name: LNXNCT_200
+      portNumber: 50008
+      serverName: "{{ primary }}"
+      typeds: universal
+      user: dbmct200
+      webSphereDefaultIsolationLevel: 2
+      connectionPool:
+        maxConnections: 50
+        minConnections: 5
+
+    resourceEnvEntries:
+    - name: NippinCommonToolsForJNDI
+      jndiName: config/NippinCommonToolsConfig
+      customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/NippinCommonToolsConfig.properties"
+
+    resourceFiles:
+    - files/NCT/aesSymetric2013prod.key
+    - files/NCT/NippinCommonToolsConfig.properties
+    - files/NCT/Assu_Async.csv
+    - files/NCT/eAttest_CrossChecks.csv
+    - files/NCT/eAttest_Rules.csv
+    - files/NCT/eAttest_XPath.csv
+    - files/NCT/eFact_Rules.csv
+    - files/NCT/managedFlowsFile.properties
+
+  roles:
+  - base_was

@@ -1,0 +1,114 @@
+---
+- hosts: PreProdNode_TEST_500A_RFND
+  user: root
+  vars:
+    was_app_name: CATA_TEST_MBR1
+    was_cluster_name: CATA_TEST
+    owner: wasserver
+    group: was6group
+    default_port: 21040
+    path: /data/cata/{{ was_app_name }}
+
+    vhost: RfndTest_vhost
+    host_aliases:
+    - hostname: "{{ ansible_fqdn }}"
+      port: "{{ default_port }}"
+
+    dataSources:
+    - authDataAlias: udbitst597/dbcattst
+      authDataPassword: tst20090204
+      clientRerouteAlternatePortNumber: '50004'
+      clientRerouteAlternateServerName: s999lq2dbrf02.jablux.gfdi.be
+      currentSchema: ADM
+      databaseName: CAT500
+      enableSeamlessFailover: 1
+      driverType: '4'
+      jndiName: jdbc/DCADM5XX
+      name: DCADM5XX
+      portNumber: '50004'
+      serverName: s999lq2dbrf01.jablux.gfdi.be
+      typeds: universal
+      user: dbcattst
+      webSphereDefaultIsolationLevel: '1'
+      connectionPool:
+        maxConnections: 80
+        minConnections: 20
+
+    - authDataAlias: udbitst597/dbcattst
+      authDataPassword: tst20090204
+      clientRerouteAlternatePortNumber: '50004'
+      clientRerouteAlternateServerName: s999lq2dbrf02.jablux.gfdi.be
+      currentSchema: IDX
+      databaseName: CAT500
+      enableSeamlessFailover: 1
+      driverType: '4'
+      jndiName: jdbc/DCIDX5XX
+      name: DCIDX5XX
+      portNumber: '50004'
+      serverName: s999lq2dbrf01.jablux.gfdi.be
+      typeds: universal
+      user: dbcattst
+      webSphereDefaultIsolationLevel: '1'
+      connectionPool:
+        maxConnections: 80
+        minConnections: 20
+
+
+    systemProperties:
+    - name: doccenter.scheduler.enabled
+      value: true
+    - name: doccenter.scheduler.threads
+      value: '1'
+    - name: doccenter.script.folderref.recheck.delay
+      value: '-1'
+    - name: net.sf.ehcache.skipUpdateCheck
+      value: true
+
+    directories:
+    - "{{ path }}/work/logs"
+    - /data/cata/tst
+    - /data/cata/tst/5XX
+    - /data/cata/tst/5XX/chunks
+    - /data/cata/tst/5XX/config
+    - /data/cata/tst/5XX/config/dbspecific
+    - /data/cata/tst/5XX/config/dbspecific/DCIDX5XX
+    - /data/cata/tst/5XX/dccache
+    - /data/cata/tst/5XX/logs
+    - /data/cata/tst/5XX/work
+
+  roles:
+  - base_was
+
+  # Post Install
+  tasks:
+  - name: Copy dbspecific.zip
+    copy: src="files/CATA/dbspecific.zip" dest="/data/cata/tst/5XX/config/dbspecific.zip"
+      owner={{ owner }} group={{ group }} mode=0644
+    register: dbspecific_zip
+    tags: files
+    notify: reset_acl
+
+  - name: Extract dbspecific.zip if uploaded
+    when: dbspecific_zip.changed
+    unarchive: src="/data/cata/tst/5XX/config/dbspecific.zip"
+      dest="/data/cata/tst/5XX/config/dbspecific/DCIDX5XX/"
+      owner={{ owner }} group={{ group }} mode=u=rwX,g=rX,o=rX copy=no
+    tags: files
+    notify: reset_acl
+
+  - name: Copy dbdefault.zip
+    copy: src="files/CATA/dbdefault.zip" dest="/data/cata/tst/5XX/config/dbdefault.zip"
+      owner={{ owner }} group={{ group }} mode=0644
+    register: dbdefault_zip
+    tags: files
+    notify: reset_acl
+
+  - name: Extract dbdefault.zip if uploaded
+    when: dbdefault_zip.changed
+    unarchive: src="/data/cata/tst/5XX/config/dbdefault.zip"
+      dest="/data/cata/tst/5XX/config/"
+      owner={{ owner }} group={{ group }} mode=u=rwX,g=rX,o=rX copy=no creates="/data/cata/tst/5XX/config/dbdefault"
+    tags: files
+    notify: reset_acl
+
+  

@@ -1,0 +1,173 @@
+---
+- hosts: ProdNode_AIRBUS_200B_EB
+  user: root
+  vars:
+    was_app_name: WCM_200b_MBR2
+    was_cluster_name: WCM_200b
+    default_port: 21080
+    group: was6group
+    owner: was6u200
+    path: /data/wcm/{{ was_app_name }}
+
+    web_conf:
+      filename: WCM_200
+      web_servers:
+      - s298lp{{ dc }}wsrp01.jablux.cpc998.be
+      - s298lp{{ dc }}wsrp02.jablux.cpc998.be
+
+      server_name: wcm200.jablux.cpc998.be
+      rewrite_current_version: 0.0.79.1.41
+      rewrite_previous_version: 0.0.79.1.37
+
+    vhost: WCM_200_vhost
+    host_aliases:
+    - hostname: wcm200.jablux.cpc998.be
+      port: 80
+    - hostname: s298lp{{ dc }}wsrp01.jablux.cpc998.be
+      port: 80
+    - hostname: s298lp{{ dc }}wsrp02.jablux.cpc998.be
+      port: 80
+    - hostname: "{{ ansible_fqdn }}" 
+      port: "{{ default_port }}"
+
+    systemProperties:
+    - name: WCM_CONFIG_LOCATION
+      value: file://{{ path }}/resources/wcm_config.xml
+    - name: com.ibm.websphere.webservices.DisableIBMJAXWSEngine
+      value: true
+    - name: javax.xml.parsers.DocumentBuilderFactory
+      value: org.apache.xerces.jaxp.DocumentBuilderFactoryImpl
+    - name: javax.xml.parsers.SAXParserFactory
+      value: org.apache.xerces.jaxp.SAXParserFactoryImpl
+    - name: javax.xml.xpath.XPathFactory
+      value: org.apache.xpath.jaxp.XPathFactoryImpl
+    - name: javax.xml.transform.TransformerFactory
+      value: org.apache.xalan.processor.TransformerFactoryImpl
+    - name: javax.xml.bind.context.factory
+      value: com.sun.xml.bind.v2.ContextFactory
+
+    dataSources:
+    - authDataAlias: AS400/WCM200
+      authDataPassword: KDH4QTZN
+      dataTruncation: 'false'
+      databaseName: AIRBUS
+      dateFormat: iso
+      jndiName: jdbc/WCM_DS200
+      libraries: '*LIBL'
+      name: WCM_DS200
+      naming: system
+      serverName: airbus.jablux.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: WCM200
+    - authDataAlias: AS400/WCM203
+      authDataPassword: NSTZ5QY8
+      dataTruncation: 'false'
+      databaseName: AIRBUS
+      dateFormat: iso
+      jndiName: jdbc/WCM_DS203
+      libraries: '*LIBL'
+      name: WCM_DS203
+      naming: system
+      serverName: airbus.jablux.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: WCM203
+    - authDataAlias: AS400/WCM206
+      authDataPassword: FSGQBX7E
+      dataTruncation: 'false'
+      databaseName: AIRBUS
+      dateFormat: iso
+      jndiName: jdbc/WCM_DS206
+      libraries: '*LIBL'
+      name: WCM_DS206
+      naming: system
+      serverName: airbus.jablux.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: WCM206
+    - authDataAlias: AS400/WCM216
+      authDataPassword: PMQYXND7
+      dataTruncation: 'false'
+      databaseName: AIRBUS
+      dateFormat: iso
+      jndiName: jdbc/WCM_DS216
+      libraries: '*LIBL'
+      name: WCM_DS216
+      naming: system
+      serverName: airbus.jablux.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: WCM216
+    - authDataAlias: AS400/WCM226
+      authDataPassword: E8SVFGG5
+      dataTruncation: 'false'
+      databaseName: AIRBUS
+      dateFormat: iso
+      jndiName: jdbc/WCM_DS226
+      libraries: '*LIBL'
+      name: WCM_DS226
+      naming: system
+      serverName: airbus.jablux.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: WCM226
+    - authDataAlias: AS400/WCM228
+      authDataPassword: RS7PMQ8Z
+      dataTruncation: 'false'
+      databaseName: AIRBUS
+      dateFormat: iso
+      jndiName: jdbc/WCM_DS228
+      libraries: '*LIBL'
+      name: WCM_DS228
+      naming: system
+      serverName: airbus.jablux.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: WCM228
+    - authDataAlias: AS400/WCM232
+      authDataPassword: ADFQPME4
+      dataTruncation: 'false'
+      databaseName: AIRBUS
+      dateFormat: iso
+      jndiName: jdbc/WCM_DS232
+      libraries: '*LIBL'
+      name: WCM_DS232
+      naming: system
+      serverName: airbus.jablux.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: WCM232
+    - authDataAlias: AS400/WCM235
+      authDataPassword: ARFGRTI8
+      dataTruncation: 'false'
+      databaseName: AIRBUS
+      dateFormat: iso
+      jndiName: jdbc/WCM_DS235
+      libraries: '*LIBL'
+      name: WCM_DS235
+      naming: system
+      serverName: airbus.jablux.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: WCM235
+    - authDataAlias: AS400/WCM282
+      authDataPassword: RW0LZL73
+      dataTruncation: 'false'
+      databaseName: AIRBUS
+      dateFormat: iso
+      jndiName: jdbc/WCM_DS282
+      libraries: '*LIBL'
+      name: WCM_DS282
+      naming: system
+      serverName: airbus.jablux.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: WCM282
+
+
+    resourceFiles:
+    - files/WCM/wcm_config.xml
+
+  roles:
+  - base_was

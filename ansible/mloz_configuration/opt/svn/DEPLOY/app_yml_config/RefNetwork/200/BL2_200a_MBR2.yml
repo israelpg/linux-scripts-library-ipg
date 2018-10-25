@@ -1,0 +1,188 @@
+---
+- hosts: RefNode_REF_200B_EB
+  user: root
+  vars:
+    was_app_name: BL2_200a_MBR2
+    was_cluster_name: BL2_200a
+    default_port: 21120
+    group: was6group
+    owner: was6u200
+    path: /data/bl2/{{ was_app_name }}
+
+    systemProperties:
+    - name: logback.configurationFile
+      value: "{{ path }}/resources/logback.xml"
+    - name: spring.profiles.active
+      value: ref,mocked-security,active.mca.document.url
+    - name: com.ibm.ws.classloader.strict
+      value: "true"
+    - name: user.timezone
+      value: Europe/Brussels
+    - name: opendj.baseuri
+      value: http://s000lropendj20.m-team.be:8389/mteam/
+    - name: opendj.username
+      value: sa_openam
+    - name: opendj.password
+      value: zEaXAvsc/J/YPSfivqM=
+    - name: openam.baseuri
+      value: http://s000lr2opam03.ref.cpc998.be:8080/login
+    - name: openam.username
+      value: mteamagent
+    - name: openam.password
+      value:  l4P0utre2B4m4k0
+    - name: openam.cookiename
+      value: ssoREFMNZ
+    - name: openam.cookieexpiryinmillis
+      value: 7200000
+    - name: openam.policyapplicationname
+      value: MCA
+    - name: zoomIt.basePath
+      value: http://zoomit.ref.cpc998.be/zoomit_web/services/rest/ZoomitManager
+    - name: com.ibm.ws.classloader.zipFileCacheSize
+      value: 5000
+    - name: prefsCenter.basePath
+      value: http://prefscenter.ref.cpc998.be/prefsCenter/
+    - name: doccleReceiver.basePath
+      value: http://doccle.ref.cpc998.be/doccle_web/
+
+    vhost: BL2_200_vhost
+    host_aliases:
+    - hostname: api-mnnz.ref.cpc998.be
+      port: 80
+    - hostname: api-mnnz-mocked.ref.cpc998.be
+      port: 80
+    - hostname:  s298lr2wseb01.ref.cpc998.be
+      port: 21120
+    - hostname: s298lr2wseb02.ref.cpc998.be
+      port: 21120
+    - hostname:  s298lr2wseb01.ref.cpc998.be
+      port: 21160
+    - hostname: s298lr2wseb02.ref.cpc998.be
+      port: 21160
+
+
+    jmscf:
+    - jndiName: jms/MCA_mqConnectionFactory
+      qmgrName: RQM2EB1
+      qmgrSvrconnChannel: MTEAM.CLIENT.SVRCONN
+      connectionNameList: s298lr2iib01.ref.cpc998.be(15200),s298lr2iib02.ref.cpc998.be(15200)
+      authDataAlias: JMSCF/uqmeb200
+      user: uqmeb200
+      authDataPassword: n3touc3p4s4s4
+      name: MCA_mqConnectionFactory
+      connectionPool:
+        minConnections: 25
+        maxConnections: 400
+      sessionPool:
+        minConnections: 10
+        maxConnections: 40
+
+    jmsq:
+    - jndiName: jms/MCA_PERSON_IN
+      queueName: QA.MCA.PERSON.IN
+    - jndiName: jms/MCA_OUT
+      queueName: QA.MCA.OUT
+    - jndiName: jms/MCA_INSURANCE_IN
+      queueName: QA.MCA.INSURANCE.IN
+    - jndiName: jms/MCA_FAMILY_IN
+      queueName: QA.MCA.FAMILY.IN
+    - jndiName: jms/MCA_INDEMNITY_IN
+      queueName: QA.MCA.INDEMNITY.IN
+    - jndiName: jms/MCA_DISPENSATION_IN
+      queueName: QA.MCA.DISPENSATION.IN
+    - jndiName: jms/MCA_HEALTHCARE_IN
+      queueName: QA.MCA.HEALTHCARE.IN
+    - jndiName: jms/MCA_REPLY
+      queueName: QA.MCA.REPLY
+    - jndiName: jms/MCA_FINANCIAL_IN
+      queueName: QA.MCA.FINANCIAL.IN
+    - jndiName: jms/MCA_ACTION_IN
+      queueName: QA.MCA.ACTION.IN
+    - jndiName: jms/MCA_INFOBOX_IN
+      queueName: QA.MCA.INFOBOX.IN
+    - jndiName: jms/MCA_DOCUMENT_REPLY
+      queueName: QA.MCA.DOCUMENT.REPLY
+    - jndiName: jms/MCA_PROCURATION_IN
+      queueName: QA.MCA.PROCURATION.IN
+    - jndiName: jms/MCA_MEDICAL_AGREEMENT_IN
+      queueName: QA.MCA.MEDICAL_AGREEMENT.IN
+    - jndiName: jms/MCA_TASKS_IN
+      queueName: QA.MCA.DGC_TASK.IN
+    - jndiName: jms/MCA_ONLINE_ACCOUNT_IN
+      queueName: QA.MCA.ONLINE_ACCOUNT.IN
+    - jndiName: jms/MCA_CARE_PROVIDER_IN
+      queueName: QA.MCA.CARE_PROVIDER.IN
+    - jndiName: jms/MCA_SIGNAL_IN 
+      queueName: QA.MCA.SIGNAL.IN   
+    - jndiName: jms/MCA_DMG_IN
+      queueName: QA.MCA.DMG.IN
+    - jndiName: jms/MCA_SECURITY_IN
+      queueName: QA.MCA.SECURITY.IN
+    - jndiName: jms/MCA_FEEDBACK_IN 
+      queueName: QA.MCA.FEEDBACK.IN
+    - jndiName: jms/MCA_EMPLOYEE_IN 
+      queueName: QA.MCA.EMPLOYEE.IN 
+    - jndiName: jms/MCA_MEMBER_SERVICES_IN
+      queueName: QA.MCA.MEMBER_SERVICES.IN 
+    - jndiName: jms/MCA_INSURANCE_COUNTER_IN 
+      queueName: QA.MCA.INSURANCE_COUNTER.IN 
+    - jndiName: jms/MCA_ADDRESS_IN
+      queueName: QA.MCA.ADDRESS.IN
+    - jndiName: jms/MCA_TASK_HISTORY_IN
+      queueName: QA.MCA.TASK.IN
+    - jndiName: jms/MCA_PERSON_CARE_IN
+      queueName: QA.MCA.PERSON_CARE.IN
+    - jndiName:  jms/MCA_MEDICAL_IN
+      queueName: QA.MCA.MEDICAL.IN
+    - jndiName:  jms/MCA_INSURANCE_CONTACT_PERSON_IN
+      queueName: QA.MCA.INSURANCE_CONTACT_PERSON.IN
+
+    dataSources:
+    - authDataAlias: udbbl2105/dbdil200     # pools des connexions: min = 25, max = 250
+      authDataPassword: 200MindZD
+      currentSchema: DIL
+      enableSeamlessFailover: 1
+      databaseName: EBU200
+      driverType: 4
+      jndiName: jdbc/MCA_DIL
+      name: MCA_DIL
+      portNumber: 50004
+      serverName: s298lr2dbeb01.ref.cpc998.be
+      typeds: universal
+      user: dbdil200
+      webSphereDefaultIsolationLevel: 2
+      enableRowsetSupport: 1
+      deferPrepares: true
+      blockingReadConnectionTimeout: 900
+      queryDataSize: 262143
+      fetchSize: 1000   
+      retrieveMessagesFromServerOnGetMessage: true
+      statementCacheSize: 10000 
+      connectionPool:
+         minConnections: 5
+         maxConnections: 100
+         connectionTimeout: 30
+         reapTime: 7200
+         agedTimeout: 330 
+           
+
+    resourceFiles:
+    - files/BL2/logback.xml
+
+  roles:
+  - base_was
+
+# Post Install
+  tasks:
+  - name: push postscript
+    template: src=files/BL2/postscript.py dest=/data/wsadmin/servers/was_{{ was_app_name }}_postscript.py
+      owner={{ owner }} group={{ group }} mode=0644 backup=yes
+    tags: postscripts
+
+  - name: Exec postscript
+    shell: "{{ base_wsadmin_sh }} -f /data/wsadmin/servers/was_{{ was_app_name }}_postscript.py >> {{ ibmim_install_folder_logs }}/was_{{ was_app_name }}.log"
+    tags: postscripts
+    notify:
+    - update_node_variables
+#    - restart_NodeAgent
+    - sync_nodes

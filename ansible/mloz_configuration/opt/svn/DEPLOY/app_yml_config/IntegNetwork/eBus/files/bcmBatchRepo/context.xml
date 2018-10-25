@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!-- The contents of this file will be loaded for each web application -->
+<Context>
+
+    <!-- Default set of monitored resources -->
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+
+    <!-- Uncomment this to disable session persistence across Tomcat restarts -->
+    <!--
+    <Manager pathname="" />
+    -->
+
+    <!-- Uncomment this to enable Comet connection tacking (provides events
+         on session expiration as well as webapp lifecycle) -->
+    <!--
+    <Valve className="org.apache.catalina.valves.CometConnectionManagerValve" />
+    -->
+<Resource
+                name="jms/bcm"
+                auth="Container"
+                type="com.ibm.mq.jms.MQQueueConnectionFactory"
+                factory="com.ibm.mq.jms.MQQueueConnectionFactoryFactory"
+                description="BCM JMS Queue Connection Factory"
+                HOST="s598li2iib03.integ.gfdi.be"
+                PORT="15500"
+                CHAN="MTEAM.CLIENT.SVRCONN"
+                TRAN="1"
+                QMGR="NQM5EB1"/>
+
+<Resource
+                name="jms/indeminityEndInc509"
+                auth="Container"
+                type="com.ibm.mq.jms.MQQueue"
+                factory="com.ibm.mq.jms.MQQueueFactory"
+                description="BCM Notification 509 Indeminity End of Incacity JMS Queue"
+                QU="QA.BCM.509.NOTIFICATION.INDEMNITY.ENDINC"/>
+
+<Resource
+                name="jms/indeminityEndInc501"
+                auth="Container"
+                type="com.ibm.mq.jms.MQQueue"
+                factory="com.ibm.mq.jms.MQQueueFactory"
+                description="BCM Notification 501 Indeminity End of Incacity JMS Queue"
+                QU="QA.BCM.501.NOTIFICATION.INDEMNITY.ENDINC"/>
+
+<Resource
+                name="jms/indeminityEndInc526"
+                auth="Container"
+                type="com.ibm.mq.jms.MQQueue"
+                factory="com.ibm.mq.jms.MQQueueFactory"
+                description="BCM Notification 526 Indeminity End of Incacity JMS Queue"
+                QU="QA.BCM.526.NOTIFICATION.INDEMNITY.ENDINC"/>
+
+<Resource 
+                name="jdbc/DB2AS400509" 
+				auth="Container"
+                factory="com.zaxxer.hikari.HikariJNDIFactory"
+                type="javax.sql.DataSource"
+                minimumIdle="5" 
+                maximumPoolSize="10"
+                connectionTimeout="300000"
+                driverClassName="com.ibm.as400.access.AS400JDBCDriver"
+                username="DGC509"
+                password="dcpc509"
+                maxIdle="10"
+                maxActive="200"
+                maxWait="5"
+                removeAbandoned="true"
+                removeAbandonedTimeout="1200"
+                jdbcUrl="jdbc:as400://10.197.121.111;naming=system"/>
+
+<Resource 
+                name="jdbc/DB2AS400501" 
+				auth="Container"
+                factory="com.zaxxer.hikari.HikariJNDIFactory"
+                type="javax.sql.DataSource"
+                minimumIdle="5" 
+                maximumPoolSize="10"
+                connectionTimeout="300000"
+                driverClassName="com.ibm.as400.access.AS400JDBCDriver"
+                username="DGC501"
+                password="dcpc501"
+                maxIdle="10"
+                maxActive="200"
+                maxWait="5"
+                removeAbandoned="true"
+                removeAbandonedTimeout="1200"
+                jdbcUrl="jdbc:as400://10.197.121.111;naming=system"/>
+
+<Resource
+                name="jdbc/DB2AS400526" auth="Container"
+                factory="com.zaxxer.hikari.HikariJNDIFactory"
+                type="javax.sql.DataSource"
+                minimumIdle="5" 
+                maximumPoolSize="10"
+                connectionTimeout="300000"
+                driverClassName="com.ibm.as400.access.AS400JDBCDriver"
+                username="DGC526"
+                password="dcpc526"
+                maxIdle="10"
+                maxActive="200"
+                maxWait="5"
+                removeAbandoned="true"
+                removeAbandonedTimeout="1200"
+                jdbcUrl="jdbc:as400://10.197.121.111;naming=system"/>
+
+<Resource 
+                name="jms/smsDelayedPayersWritter509" 
+                auth="Container" 
+                type="com.ibm.mq.jms.MQQueue" 
+                factory="com.ibm.mq.jms.MQQueueFactory" 
+                description="BCM Notification 509 - SMS Delayed Payers - JMS Queue" 
+                QU="QA.BCM.509.NOTIFICATION.DELAYED_PAYERS"/> 
+
+<Resource
+                name="jms/smsDelayedPayersWritter526"
+                auth="Container"
+                type="com.ibm.mq.jms.MQQueue"
+                factory="com.ibm.mq.jms.MQQueueFactory"
+                description="BCM Notification 526 - SMS Delayed Payers - JMS Queue"
+                QU="QA.BCM.526.NOTIFICATION.DELAYED_PAYERS"/>
+
+<Resource
+                name="jms/efdrEmailWriter509"
+                auth="Container"
+                type="com.ibm.mq.jms.MQQueue"
+                factory="com.ibm.mq.jms.MQQueueFactory"
+                description="BCM Notification 509 - EMAIL E-FDR - JMS Queue"
+                QU="QA.BCM.509.NOTIFICATION.EFDR"/>
+
+<Resource
+                name="jms/efdrEmailWriter526"
+                auth="Container"
+                type="com.ibm.mq.jms.MQQueue"
+                factory="com.ibm.mq.jms.MQQueueFactory"
+                description="BCM Notification 526 - SMS eFDR - JMS Queue"
+                QU="QA.BCM.526.NOTIFICATION.EFDR"/>
+
+</Context>

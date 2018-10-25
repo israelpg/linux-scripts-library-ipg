@@ -1,0 +1,56 @@
+---
+- hosts: ProdNode_AIRBUS_566A_RFND
+  user: root
+  vars:
+    was_app_name: CLIENTS_566
+    owner: was6u566
+    group: was6group
+    default_port: 21200
+    path: /data/clients/{{ was_app_name }}
+
+    vhost: RfndTrn{{ dc }}_vhost
+    host_aliases:
+# temporary
+    - hostname: rfnd566.jablux.cpc998.be
+      port: 80
+# JadeR 566
+    - hostname: s998lp{{ dc }}wsrf01.jablux.cpc998.be
+      port: 21040
+# Catalog 566      
+    - hostname: s998lp{{ dc }}wsrf01.jablux.cpc998.be
+      port: 21080
+# Integrator 566
+    - hostname: s998lp{{ dc }}wsrf01.jablux.cpc998.be
+      port: 21120
+# MDIS 566
+    - hostname: s998lp{{ dc }}wsrf01.jablux.cpc998.be
+      port: 21200
+
+    systemProperties:
+    - name: client.encoding.override
+      value: 'UTF-8'
+    - name: file.encoding
+      value: 'UTF-8'
+
+    dataSources:
+    - authDataAlias: AIRBUS/M998JADEWS
+      authDataPassword: md1spr0d
+      dataTruncation: 'false'
+      databaseName: AIRBUS
+      dateFormat: iso
+      jndiName: jdbc/MDIS_RfndTrn{{ dc }}
+      libraries: 'JADEPRF'
+      name: MDIS_RfndTrn
+      naming: system
+      serverName: airbus.jablux.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: M998JADEWS
+      extendedDynamic: 'false'
+      package: DSMDIS
+      packageLibrary: QGPL
+      packageCriteria: select
+
+  roles:
+  - base_was
+

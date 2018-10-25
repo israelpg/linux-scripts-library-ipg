@@ -1,0 +1,94 @@
+---
+- hosts: ProdNode_AIRBUS_500A_EB
+  user: root
+  
+  roles:
+  - base_was  
+  
+  vars:
+    was_app_name: BCM_500_MBR1
+    was_cluster_name:  BCM_500
+    default_port: 21400
+    group: was6group
+    owner: was6u500
+    path: /data/bcm/{{ was_app_name }}
+
+    systemProperties:
+    - name: logback.configurationFile
+      value: "{{ path }}/resources/logback.xml"
+    
+    vhost: BCM_500_vhost
+    host_aliases:
+    - hostname:  bcmnotifications.jablux.cpc998.be  
+      port: 21400
+    - hostname:  bcmnotifications.jablux.cpc998.be  
+      port: 80
+    - hostname:  bcmnotifications.m-team.be
+      port: 21400
+    - hostname:  bcmnotifications.m-team.be
+      port: 443
+    - hostname:  bcmnotifications.jablux.cpc998.be  
+      port: 21401
+    - hostname:  bcmnotifications.m-team.be
+      port: 21401
+    - hostname:  bcmNotifications.jablux.cpc998.be 
+      port: 80
+                  
+    jmscf:
+    - jndiName: jms/BCM_mqConnectionFactory
+      qmgrName: PQM5EB1
+      qmgrSvrconnChannel: MTEAM.CLIENT.SVRCONN
+      connectionNameList: s598lp1iib01.jablux.cpc998.be(15500),s598lp1iib02.jablux.cpc998.be(15500)
+      authDataAlias: JMSCF/uqmeb500
+      user: uqmeb500
+      authDataPassword: n3touc3p4s4s4
+      name: BCM_mqConnectionFactory
+      connectionPool:
+        minConnections: 1
+        maxConnections: 100
+      sessionPool:
+        minConnections: 1
+        maxConnections: 10
+
+    jmsq:
+    - jndiName: jms/BCM.JOB.REPLY
+      queueName: QA.BCM.JOB.REPLY 
+
+    - jndiName: jms/BCM.NOTIFICATION
+      queueName: QA.BCM.NOTIFICATION
+
+    - jndiName: jms/BCM.SMS.STATUS
+      queueName: QA.BCM.SMS.STATUS
+
+            
+    dataSources:
+      - authDataAlias: udbbl2105/dbbcm500
+        user: dbbcm500
+        authDataPassword: vmgvWEk4
+        currentSchema: BCM
+        enableSeamlessFailover: 1
+        databaseName: FIN500
+        driverType: 4
+        jndiName: jdbc/BCM
+        name: BCM
+        serverName: s598lp1dbfn01.jablux.cpc998.be
+        portNumber: 50004
+        clientRerouteAlternateServerName: s598lp2dbfn01.jablux.cpc998.be
+        clientRerouteAlternatePortNumber: 50004
+        typeds: universal
+        webSphereDefaultIsolationLevel: 2
+        enableRowsetSupport: 1
+        connectionPool:
+           minConnections: 1
+           maxConnections: 10
+
+    resourceFiles:
+    - files/BCM/logback.xml
+    - files/BCM/bcmJms.properties
+    
+  roles:
+  - base_was
+
+  tasks:
+  - name: create symlinks /data/bcm/BCM_500
+    file: src=/data/bcm/BCM_500_MBR1 dest=/data/bcm/BCM_500 state=link force=True

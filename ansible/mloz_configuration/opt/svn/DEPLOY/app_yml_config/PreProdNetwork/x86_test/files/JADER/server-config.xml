@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:config xmlns:tns="http://be.gfdi.fwk"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://be.gfdi.fwk application-config.xsd ">
+
+	<application name="JadeR" version="local.config.test"/>
+
+	<default>
+		<environment host="localhost" port="8080" contextPath="jade2_web">
+			<as400 systemname="S44G5036" />
+			<!-- <jdbc libname="*LIBL" url="jdbc:as400://${as400.systemName};naming=system;libraries=${jdbc.libName};date 
+				format=iso;prompt=false" driverClassName="com.ibm.as400.access.AS400JDBCDriver" 
+				/> -->
+			<jdbc libname="*LIBL"
+				url="jdbc:as400://${as400.systemName};naming=system;libraries=${jdbc.libName},LIBCXREF;date format=iso;prompt=false"
+				driverClassName="com.ibm.as400.access.AS400JDBCDriver" />
+
+
+			<!-- Default Config for DB2 UDB -->
+			<jdbc profile="bpe"
+				url="jdbc:db2://procomdb.jablux.gfdi.be:50000/JBPM${envName}"
+				username="db2inst1" password="pro20in1" driverClassName="com.ibm.db2.jcc.DB2Driver" />
+
+			<!--<jdbc profile="bpe" driverClassName="com.ibm.db2.jcc.DB2Driver" /> -->
+
+			<hibernate dialect="be.gfdi.fwk.server.hibernate.DB2400Dialect"
+				show_sql="false" />
+			<security enforceAuthentication="false" />
+
+		</environment>
+	</default>
+
+	<!-- =========================================================== -->
+	<!-- Environments -->
+	<!-- =========================================================== -->
+
+	<environments>
+	<environment name="500" host="rftest.jablux.gfdi.be" port="80" contextPath="JADE2_SERVER_local.config.test" >
+		<as400 systemname="TEST" username="JRDE500" password="P2DE500" />
+		<jdbc url="" libname="JADEBUS500" username="JRDE500" password="P2DE500" />
+		<security enforceAuthentication="false" />
+		<services>
+			<interceptors><interceptor name="fwk_securityInterceptor"/></interceptors>
+		</services>
+		<jobs>
+			<jmsScheduler enabled="true" />
+			<autoStarter enabled="true" />
+		</jobs>
+		
+		<cluster>
+			<cache network="peerDiscovery=automatic,multicastGroupAddress=239.1.106.94,multicastGroupPort=21050,timeToLive=1" />
+			<jobMasterNode systemProperty="jade2.jobs.500" />
+		</cluster>
+		
+		<catalog>
+			<auth 
+				username="JRDE500" 
+				password="P2DE500" 
+			/>
+			<url 
+				host="rftest.jablux.gfdi.be"
+				port="80"
+				contextPath="catalog/500"
+			/>
+			<db name="DCIDX5XX"/>
+		</catalog>
+	</environment>
+
+	<environment name="501" host="rftest.jablux.gfdi.be" port="80" contextPath="JADE2_SERVER_local.config.test" >
+		<as400 systemname="TEST" username="JRDE501" password="P2DE501" />
+		<jdbc url="" libname="JADEBUS501" username="JRDE501" password="P2DE501" />
+		<security enforceAuthentication="false" />
+		<services>
+			<interceptors><interceptor name="fwk_securityInterceptor"/></interceptors>
+		</services>
+		<jobs>
+			<jmsScheduler enabled="true" />
+			<autoStarter enabled="true" />
+		</jobs>
+		
+		<cluster>
+			<cache network="peerDiscovery=automatic,multicastGroupAddress=239.1.106.94,multicastGroupPort=21050,timeToLive=1" />
+			<jobMasterNode systemProperty="jade2.jobs.501" />
+		</cluster>
+		
+		<catalog>
+			<auth 
+				username="JRDE501" 
+				password="P2DE501" 
+			/>
+			<url 
+				host="rftest.jablux.gfdi.be"
+				port="80"
+				contextPath="catalog/500"
+			/>
+			<db name="DCIDX5XX"/>
+		</catalog>
+	</environment>
+
+	<environment name="527" host="rftest.jablux.gfdi.be" port="80" contextPath="JADE2_SERVER_local.config.test" >
+		<as400 systemname="TEST" username="JRDE527" password="P2DE527" />
+		<jdbc url="" libname="JADEBUS527" username="JRDE527" password="P2DE527" />
+		<security enforceAuthentication="false" />
+		<services>
+			<interceptors><interceptor name="fwk_securityInterceptor"/></interceptors>
+		</services>
+		<jobs>
+			<jmsScheduler enabled="true" />
+			<autoStarter enabled="true" />
+		</jobs>
+		
+		<cluster>
+			<cache network="peerDiscovery=automatic,multicastGroupAddress=239.1.106.94,multicastGroupPort=21050,timeToLive=1" />
+			<jobMasterNode systemProperty="jade2.jobs.527" />
+		</cluster>
+		
+		<catalog>
+			<auth 
+				username="JRDE527" 
+				password="P2DE527" 
+			/>
+			<url 
+				host="rftest.jablux.gfdi.be"
+				port="80"
+				contextPath="catalog/500"
+			/>
+			<db name="DCIDX5XX"/>
+		</catalog>
+	</environment>
+
+	</environments>
+
+</tns:config>

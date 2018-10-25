@@ -1,0 +1,39 @@
+---
+- hosts: PreProdNode_TEST_500A_RFND
+  user: root
+  vars:
+    was_app_name: CLIENTS_TEST
+    owner: wasserver
+    group: was6group
+    default_port: 21120
+    path: /data/clients/{{ was_app_name }}
+
+    vhost: RfndTest_vhost
+    host_aliases:
+    - hostname: rftest.jablux.gfdi.be
+      port: 80
+    - hostname: "{{ ansible_fqdn }}"
+      port: "{{ default_port }}"
+
+    dataSources:
+    - authDataAlias: TEST/M998JADEWS
+      authDataPassword: mdistest
+      dataTruncation: 'false'
+      databaseName: TESTGFDI
+      dateFormat: iso
+      jndiName: jdbc/MDIS_RfndTest
+      libraries: 'JADEPRF'
+      name: MDIS_RfndTest
+      naming: system
+      serverName: test.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: M998JADEWS
+      extendedDynamic: 'false'
+      package: DSMDIS
+      packageLibrary: QGPL
+      packageCriteria: select
+
+  roles:
+  - base_was
+

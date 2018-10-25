@@ -1,0 +1,64 @@
+---
+- hosts: PreProdNode_TEST_500A_RFND
+  user: root
+  vars:
+    was_app_name: INTG_TEST
+    owner: wasserver
+    group: was6group
+    default_port: 21160
+    path: /data/intg/{{ was_app_name }}
+
+    vhost: RfndTest_vhost
+    host_aliases:
+    - hostname: "{{ ansible_fqdn }}"
+      port: "{{ default_port }}"
+
+    systemProperties:
+    - name: intg.jndi.prefix
+      value: jndi
+    - name: net.sf.ehcache.skipUpdateCheck
+      value: true
+
+    dataSources:
+    - authDataAlias: udbitst597/dbinttst
+      authDataPassword: tst20090204
+      clientRerouteAlternatePortNumber: '50004'
+      clientRerouteAlternateServerName: s999lq2dbrf02.jablux.gfdi.be
+      currentSchema: INTG
+      databaseName: RFN500
+      enableSeamlessFailover: 1
+      driverType: '4'
+      jndiName: jdbc/INTG_500
+      name: INTG_500
+      portNumber: '50004'
+      serverName: s999lq2dbrf01.jablux.gfdi.be
+      typeds: universal
+      user: dbinttst
+      webSphereDefaultIsolationLevel: '2'
+      connectionPool:
+        maxConnections: 60
+        minConnections: 1
+
+    - authDataAlias: TEST/INTG500
+      authDataPassword: GTNI500
+      dataTruncation: 'false'
+      databaseName: TESTGFDI
+      dateFormat: iso
+      extendedDynamic: 'false'
+      jndiName: jdbc/JADE2_500
+      libraries: '*LIBL'
+      name: JADE2_500
+      naming: system
+      package: DSJ2500
+      packageCriteria: select
+      packageLibrary: JADEBUS500
+      serverName: test.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: INTG500
+      connectionPool:
+        maxConnections: 60
+        minConnections: 1
+
+  roles:
+  - base_was

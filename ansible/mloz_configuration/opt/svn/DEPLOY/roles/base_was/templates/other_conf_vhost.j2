@@ -1,0 +1,20 @@
+{% if web_conf %}
+<VirtualHost 0.0.0.0:80>
+{% if web_conf.server_name %}
+    ServerName {{web_conf.server_name}}
+{% endif %}
+{% if web_conf.server_aliases %}
+    ServerAlias {{web_conf.server_aliases}}
+{% endif %}
+
+{% if web_conf.rewrite_current_version or web_conf.rewrite_previous_version %}
+    RewriteEngine on
+{% endif %}
+{% if web_conf.rewrite_current_version %}
+    RewriteRule ^/{{ CurrentVersionRewrite }}/(.*) /{{ web_conf.rewrite_current_version }}/$1 [PT]
+{% endif %}
+{% if web_conf.rewrite_previous_version %}
+    RewriteRule ^/{{ PreviousVersionRewrite }}/(.*) /{{ web_conf.rewrite_previous_version }}/$1 [PT]
+{% endif %}
+</VirtualHost>
+{% endif %}

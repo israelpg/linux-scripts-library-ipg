@@ -1,0 +1,117 @@
+---
+- hosts: PreProdNode_TEST_500A_FLUX
+  user: root
+  vars:
+    was_app_name: DMG_TEST_MBR1
+    was_cluster_name: DMG_TEST
+    default_port: 21080
+    owner: was6tst
+    group: was6group
+    path: /data/dmg/{{ was_app_name }}
+
+    vhost: DMG_Test_vhost
+    host_aliases:
+    - hostname: dmg-test.jablux.gfdi.be
+      port: 443
+    - hostname: s999lq2wsrp01.jablux.gfdi.be
+      port: 443
+    - hostname: s999lq2wsfl07.jablux.gfdi.be
+      port: 21080
+    - hostname: s999lq2wsfl07.jablux.gfdi.be
+      port: 21081
+
+    dataSources:
+    - authDataAlias: TEST/JCARE500
+      authDataPassword: wait
+      dataTruncation: 'false'
+      databaseName: TESTGFDI
+      dateFormat: iso
+      jndiName: jdbc/DMG_AS400_RC
+      libraries: '*LIBL'
+      name: AS400DMG_500
+      naming: system
+      serverName: test.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JCARE500
+
+    - authDataAlias: udbitst597/dbmcttst
+      authDataPassword: tst20120410
+      clientRerouteAlternatePortNumber: 50004
+      clientRerouteAlternateServerName: s999lq2dbfl02.jablux.gfdi.be
+      currentSchema: CARE
+      enableSeamlessFailover: 1
+      databaseName: MCT500
+      driverType: 4
+      jndiName: jdbc/DMG_LINUX_RC
+      name: LNXGDMG_500
+      portNumber: 50004
+      serverName: s999lq2dbfl01.jablux.gfdi.be
+      typeds: universal
+      user: dbmcttst
+      webSphereDefaultIsolationLevel: 2
+      statementCacheSize: 500
+      connectionPool:
+        maxConnections: 50
+        minConnections: 5
+
+    jmscf:
+    - jndiName: jms/mqIIBConnectionFactory 
+      qmgrName: IQM3FL1
+      qmgrSvrconnChannel: MTEAM.CLIENT.SVRCONN
+      connectionNameList: s999lq2iib02.jablux.gfdi.be(16300)
+      authDataAlias: JMSCF/uqmfl500
+      user: uqmfl500
+      authDataPassword: Welcome01
+      name: DMG_mqConnectionFactory
+      connectionPool:
+        minConnections: 1
+        maxConnections: 20
+
+    jmsq:
+    - jndiName: jms/DMG_CONSULT_IN
+      queueName: QA.DMG.CONSULT.IN
+      advancedProperties:
+        useRFH2: 'false'
+    - jndiName: jms/DMG_CONSULT_OUT
+      queueName: QA.DMG.CONSULT.OUT
+    - jndiName: jms/DMG_CONSULT_LIST_IN
+      queueName: QA.DMG.CONSULT.LIST.IN
+      advancedProperties:
+        useRFH2: 'false'
+    - jndiName: jms/DMG_CONSULT_LIST_OUT
+      queueName: QA.DMG.CONSULT.LIST.OUT
+    - jndiName: jms/DMG_NOTIFY_IN
+      queueName: QA.DMG.NOTIFY.IN
+      advancedProperties:
+        useRFH2: 'false'
+    - jndiName: jms/DMG_NOTIFY_OUT
+      queueName: QA.DMG.NOTIFY.OUT
+    - jndiName: jms/DMG_CLOSURE_OUT
+      queueName: QA.DMG.CLOSURE.OUT
+    - jndiName: jms/DMG_PROLONG_OUT
+      queueName: QA.DMG.PROLONG.OUT
+    - jndiName: jms/DMG_SUBSCRIPTION_IN
+      queueName: QA.DMG.SUBSCRIPTION.IN
+      advancedProperties:
+        useRFH2: 'false'
+    - jndiName: jms/DMG_SUBSCRIPTION_OUT
+      queueName: QA.DMG.SUBSCRIPTION.OUT
+
+    resourceEnvEntries:
+    - name: DMGConfig
+      jndiName: config/dmgConfig
+      customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/dmg.properties"
+
+    systemProperties:
+    - name: spring.profiles.active
+      value: was
+
+    resourceFiles:
+    - files/DMG/dmg.properties
+
+  roles:
+  - base_was

@@ -1,0 +1,48 @@
+---
+- hosts:  integGOK20
+  user: root
+  vars:
+    owner: tomcat
+    group: tomcat
+
+  tasks:
+
+  - name: create root directory notif
+    file: path="/opt/tomcat/notif" state=directory mode=0775
+  - name: create  conf sub directory for notif
+    file: path="/opt/tomcat/notif/conf" state=directory mode=0755
+  - name: create  conf/log4j sub directory for notif
+    file: path="/opt/tomcat/notif/conf/log4j" state=directory mode=0755
+  - name: create webapps sub directory for notif
+    file: path="/opt/tomcat/notif/webapps" state=directory mode=0755
+  - name: create temp sub directory for notif
+    file: path="/opt/tomcat/notif/temp" state=directory mode=0755
+  - name: create logs sub directory for notif
+    file: path="/opt/tomcat/notif/logs" state=directory mode=0755
+  - name: create work sub directory for notif
+    file: path="/opt/tomcat/notif/work" state=directory mode=0755
+  - name: create conf/Catalina sub directory for notif
+    file: path="/opt/tomcat/notif/conf/Catalina" state=directory mode=0755
+  - name: create conf/Catalina/localhost sub directory for notif
+    file: path="/opt/tomcat/notif/conf/Catalina/localhost" state=directory mode=0755
+    
+
+  - name: Copy server.xml for notif
+    copy: src="files/Notificare/server.xml" dest="/opt/tomcat/notif/conf/server.xml"
+      owner={{ owner }} group={{ group }} mode=0640
+
+  - name: Copy web.xml for notif
+    copy: src="files/Notificare/web.xml" dest="/opt/tomcat/notif/conf/web.xml"
+      owner={{ owner }} group={{ group }} mode=0640
+
+  - name: Copy context.xml for notif
+    copy: src="files/Notificare/context.xml" dest="/opt/tomcat/notif/conf/context.xml"
+      owner={{ owner }} group={{ group }} mode=0640
+
+  - name: Copy env.properties for notif
+    copy: src="files/Notificare/env.properties" dest="/opt/tomcat/notif/conf/Catalina/localhost/env.properties"
+      owner={{ owner }} group={{ group }} mode=0640
+
+  - name: Copy notificare-platform.xml for notif
+    copy: src="files/Notificare/notificare-platform.xml" dest="/opt/tomcat/notif/conf/Catalina/localhost/notificare-platform.xml"
+      owner={{ owner }} group={{ group }} mode=0640

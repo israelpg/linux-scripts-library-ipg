@@ -1,0 +1,61 @@
+---
+- hosts: RefNodeapps501
+  user: root
+  vars:
+    was_app_name: CHAP4_apps5_MBR1
+    was_cluster_name: CHAP4_apps5
+    default_port: 21100
+    owner: was6u500
+    group: was6group
+    path: /data/chap4/{{ was_app_name }}
+
+    dataSources:
+    - authDataAlias: REF/JCARE500
+      authDataPassword: MAQID31
+      dataTruncation: 'false'
+      databaseName: REFGFDI
+      dateFormat: iso
+      jndiName: jdbc/CH4_AS400_RC
+      libraries: '*LIBL'
+      name: AS400CH4_500
+      naming: system
+      serverName: ref.ref.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JCARE500
+    - authDataAlias: udbidmg597/dbmct500
+      authDataPassword: 19jun091541
+      clientProgramName: CHAP4
+      clientRerouteAlternatePortNumber: 50004
+      clientRerouteAlternateServerName: iobe-pil-db2-02.ref.cpc998.be
+      currentSchema: CARE
+      databaseName: MCT500
+      driverType: 4
+      jndiName: jdbc/CH4_LINUX_RC
+      name: LNXCH4_500
+      portNumber: 50004
+      serverName: iobe-pil-db2-01.ref.cpc998.be
+      typeds: universal
+      user: dbmct500
+      webSphereDefaultIsolationLevel: 2
+      connectionPool:
+        maxConnections: 50
+        minConnections: 5
+
+    resourceEnvEntries:
+    - name: CarenetConfig
+      jndiName: config/CarenetConfig
+      customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/ch4.properties"
+
+    systemProperties:
+    - name: spring.profiles.active
+      value: was
+
+    resourceFiles:
+    - files/CHAP4/ch4.properties
+
+  roles:
+  - base_was

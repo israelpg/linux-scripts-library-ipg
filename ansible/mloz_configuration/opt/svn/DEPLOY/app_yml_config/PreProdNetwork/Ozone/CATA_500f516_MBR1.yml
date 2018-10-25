@@ -1,0 +1,101 @@
+---
+- hosts: PreProdNode_OZONEGFDI_500fA_RFND
+  user: root
+  vars:
+    was_app_name: CATA_500f516_MBR1
+    was_cluster_name: CATA_500f516
+    owner: was6u500
+    group: was6group
+    default_port: 21120
+    path: /data/cata/{{ was_app_name }}
+
+    vhost: RfndOzone_vhost
+    host_aliases:
+    - hostname: "{{ ansible_fqdn }}"
+      port: "{{ default_port }}"
+
+    dataSources:
+    - authDataAlias: udbiozone97/dbcat500
+      authDataPassword: ertgf23
+      currentSchema: ADM
+      databaseName: CAT500
+      driverType: '4'
+      jndiName: jdbc/DCADM5XX
+      name: DCADM5XX
+      portNumber: '50004'
+      serverName: s509lq2dbrf03.jablux.gfdi.be
+      typeds: universal
+      user: dbcat500
+      webSphereDefaultIsolationLevel: '2'
+
+    - authDataAlias: udbiozone97/dbcat500
+      authDataPassword: ertgf23
+      currentSchema: IDX
+      databaseName: CAT500
+      driverType: '4'
+      jndiName: jdbc/DCIDX5XX
+      name: DCIDX5XX
+      portNumber: '50004'
+      serverName: s509lq2dbrf03.jablux.gfdi.be
+      typeds: universal
+      user: dbcat500
+      webSphereDefaultIsolationLevel: '1'
+
+
+    systemProperties:
+    - name: doccenter.scheduler.enabled
+      value: false
+    - name: doccenter.scheduler.threads
+      value: '0'
+    - name: doccenter.script.folderref.recheck.delay
+      value: '-1'
+    - name: net.sf.ehcache.skipUpdateCheck
+      value: true
+
+    directories:
+    - "{{ path }}/work/logs"
+    - /data/cata/ozone
+    - /data/cata/ozone/500
+    - /data/cata/ozone/500/chunks
+    - /data/cata/ozone/500/config
+    - /data/cata/ozone/500/config/dbspecific
+    - /data/cata/ozone/500/config/dbspecific/DCIDX5XX
+    - /data/cata/ozone/500/dccache
+    - /data/cata/ozone/500/logs
+    - /data/cata/ozone/500/work
+
+  roles:
+  - base_was
+
+  # Post Install
+  tasks:
+  - name: Copy dbspecific.zip
+    copy: src="files/CATA/dbspecific.zip" dest="/data/cata/ozone/500/config/dbspecific.zip"
+      owner={{ owner }} group={{ group }} mode=0644
+    register: dbspecific_zip
+    tags: files
+    notify: reset_acl
+
+  - name: Extract dbspecific.zip if uploaded
+    when: dbspecific_zip.changed
+    unarchive: src="/data/cata/ozone/500/config/dbspecific.zip"
+      dest="/data/cata/ozone/500/config/dbspecific/DCIDX5XX/"
+      owner={{ owner }} group={{ group }} mode=u=rwX,g=rX,o=rX copy=no
+    tags: files
+    notify: reset_acl
+
+  - name: Copy dbdefault.zip
+    copy: src="files/CATA/dbdefault.zip" dest="/data/cata/ozone/500/config/dbdefault.zip"
+      owner={{ owner }} group={{ group }} mode=0644
+    register: dbdefault_zip
+    tags: files
+    notify: reset_acl
+
+  - name: Extract dbdefault.zip if uploaded
+    when: dbdefault_zip.changed
+    unarchive: src="/data/cata/ozone/500/config/dbdefault.zip"
+      dest="/data/cata/ozone/500/config/"
+      owner={{ owner }} group={{ group }} mode=u=rwX,g=rX,o=rX copy=no creates="/data/cata/ozone/500/config/dbdefault"
+    tags: files
+    notify: reset_acl
+

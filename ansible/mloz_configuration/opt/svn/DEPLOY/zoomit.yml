@@ -1,0 +1,11 @@
+---
+- name: Zoomit Setup
+  hosts: RefNode_REF_500A_EB
+  remote_user: mqm
+
+  vars:
+    remoteDir: "~/rmsetup/{{ ansible_date_time.date }}"
+
+  roles:
+  - zoomit
+ 

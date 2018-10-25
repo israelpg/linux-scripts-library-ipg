@@ -1,0 +1,142 @@
+---
+- hosts: RefNode_REF_500aA_RFND
+  user: root
+  vars:
+    was_app_name: JADER_500a_MBR1
+    was_cluster_name: JADER_500a
+    owner: was6u500
+    group: was6group
+    default_port: 21040
+    path: /data/jade/{{ was_app_name }}
+
+    vhost: RfndRef_vhost
+
+    systemProperties:
+    - name: jade2.jobs.JADE2_SERVER
+      value: true
+    - name: jade2.jobs.RFND_GRP500a
+      value: true
+    - name: net.sf.ehcache.skipUpdateCheck
+      value: true
+    - name: jade2.jobs.509
+      value: true
+    - name: client.encoding.override
+      value: 'UTF-8'
+    - name: file.encoding
+      value: 'UTF-8'
+
+    dataSources:
+    - authDataAlias: REF/JRDE509
+      authDataPassword: ojizu509
+      dataTruncation: 'false'
+      databaseName: REFGFDI
+      dateFormat: iso
+      jndiName: jdbc/JADE2_509
+      libraries: '*LIBL'
+      name: JADE2_509
+      naming: system
+      serverName: ref.ref.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE509
+      extendedDynamic: false
+      package: DSJ2509
+      packageLibrary: JADEBUS509
+      packageCriteria: select
+      connectionPool:
+         connectionTimeout: 30
+         maxConnections: 50
+         minConnections: 15
+         reapTime: 300
+         agedTimeout: 0 
+
+    - authDataAlias: REF/JRDE526
+      authDataPassword: qmepo526
+      dataTruncation: 'false'
+      databaseName: REFGFDI
+      dateFormat: iso
+      jndiName: jdbc/JADE2_526
+      libraries: '*LIBL'
+      name: JADE2_526
+      naming: system
+      serverName: ref.ref.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE526
+      extendedDynamic: false
+      package: DSJ2526
+      packageLibrary: JADEBUS526
+      packageCriteria: select
+
+    - authDataAlias: REF/JRDE988
+      authDataPassword: poqij988
+      dataTruncation: 'false'
+      databaseName: REFGFDI
+      dateFormat: iso
+      jndiName: jdbc/JADE2_999
+      libraries: '*LIBL'
+      name: JADE2_999
+      naming: system
+      serverName: ref.ref.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE988
+      extendedDynamic: false
+      package: DSJ2999
+      packageLibrary: JADEBUS999
+      packageCriteria: select
+      connectionPool:
+         connectionTimeout: 30
+         maxConnections: 50
+         minConnections: 15
+         reapTime: 300
+         agedTimeout: 0 
+
+    - authDataAlias: refiorc597/dborc509
+      authDataPassword: 509mlksq
+      currentSchema: ORC509
+      enableSeamlessFailover: 0
+      databaseName: RFN500
+      driverType: '4'
+      jndiName: jdbc/BPE_509
+      name: BPE_509
+      portNumber: '50004'
+      serverName: s598lr2dbrf02.ref.cpc998.be
+      typeds: universal
+      user: dborc509
+      webSphereDefaultIsolationLevel: '2'
+
+    - authDataAlias: refiorc597/dborc526
+      authDataPassword: 526azpeo
+      currentSchema: ORC526
+      enableSeamlessFailover: 0
+      databaseName: RFN500
+      driverType: '4'
+      jndiName: jdbc/BPE_526
+      name: BPE_526
+      portNumber: '50004'
+      serverName: s598lr2dbrf02.ref.cpc998.be
+      typeds: universal
+      user: dborc526
+      webSphereDefaultIsolationLevel: '2'
+
+    - authDataAlias: refiorc597/dborc999
+      authDataPassword: 988ozpir
+      currentSchema: ORC999
+      enableSeamlessFailover: 0
+      databaseName: RFN500
+      driverType: '4'
+      jndiName: jdbc/BPE_999
+      name: BPE_999
+      portNumber: '50004'
+      serverName: s598lr2dbrf02.ref.cpc998.be
+      typeds: universal
+      user: dborc999
+      webSphereDefaultIsolationLevel: '2'
+
+    directories:
+    - '{{ path }}/work/jobs'
+
+  roles:
+  - base_was
+

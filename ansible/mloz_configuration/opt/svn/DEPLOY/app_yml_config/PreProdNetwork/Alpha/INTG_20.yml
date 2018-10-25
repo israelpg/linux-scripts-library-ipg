@@ -1,0 +1,52 @@
+---
+- hosts: PreProdNode_GFDI_20A_RFND
+  user: root
+  vars:
+    was_app_name: INTG_20
+    default_port: 21160
+    path: /data/intg/{{ was_app_name }}
+    group: was6group
+    owner: was6alf
+
+    vhost: RfndAlpha_vhost
+
+    systemProperties:
+    - name: intg.jndi.prefix
+      value: jndi
+    - name: net.sf.ehcache.skipUpdateCheck
+      value: true
+
+    dataSources:
+    - authDataAlias: udbialf597/dbintalf
+      authDataPassword: alf20090204
+      currentSchema: INTG
+      databaseName: RFN020
+      driverType: '4'
+      jndiName: jdbc/INTG_020
+      name: INTG_020
+      portNumber: '50028'
+      serverName: s999ld2dbdv01.teams.gfdi.be
+      typeds: universal
+      user: dbintalf
+      webSphereDefaultIsolationLevel: '2'
+
+    - authDataAlias: ALPHA/INTG020
+      authDataPassword: GTNI020
+      dataTruncation: 'false'
+      databaseName: GFDIDB2
+      dateFormat: iso
+      extendedDynamic: 'false'
+      jndiName: jdbc/JADE2_020
+      libraries: '*LIBL'
+      name: JADE2_020
+      naming: system
+      package: DSJ2020
+      packageCriteria: select
+      packageLibrary: JADEBUS020
+      serverName: s44g5036.jablux.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: INTG020
+
+  roles:
+  - base_was

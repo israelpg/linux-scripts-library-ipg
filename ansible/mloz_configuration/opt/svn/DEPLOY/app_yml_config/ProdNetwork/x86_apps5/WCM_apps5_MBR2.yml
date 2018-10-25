@@ -1,0 +1,55 @@
+---
+- hosts: jabluxProdNodeapps502
+  user: root
+  vars:
+    default_port: 22140
+    group: was6group
+    owner: was6u500
+    path: /data/wcm/{{ was_app_name }}
+    was_app_name: WCM_apps5_MBR2
+    was_cluster_name: WCM_apps5
+
+    host_aliases:
+    - hostname: wcm500.jablux.cpc998.be
+      port: '80'
+
+    web_conf:
+      web_servers:
+      - s998jplnx022.jablux.cpc998.be
+      - s998jplnx023.jablux.cpc998.be
+      - s998jplnx024.jablux.cpc998.be
+      - s998jplnx025.jablux.cpc998.be
+
+      server_name: wcm500.jablux.cpc998.be
+      rewrite_current_version: 0.0.79.1
+      rewrite_previous_version: 0.0.78.17
+
+    resourceEnvEntries:
+    - name: WcmConfig
+      jndiName: config/WcmConfig
+      customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/wcm_config_ref.xml"
+
+    resourceFiles:
+    - wcm_config_ref.xml
+
+    systemProperties:
+    - name: WCM_CONFIG_LOCATION
+      value: file://{{ path }}/resources/wcm_config_ref.xml
+    - name: com.ibm.websphere.webservices.DisableIBMJAXWSEngine
+      value: true
+    - name: javax.xml.parsers.DocumentBuilderFactory
+      value: org.apache.xerces.jaxp.DocumentBuilderFactoryImpl
+    - name: javax.xml.parsers.SAXParserFactory
+      value: org.apache.xerces.jaxp.SAXParserFactoryImpl
+    - name: javax.xml.xpath.XPathFactory
+      value: org.apache.xpath.jaxp.XPathFactoryImpl
+    - name: javax.xml.transform.TransformerFactory
+      value: org.apache.xalan.processor.TransformerFactoryImpl
+    - name: javax.xml.bind.context.factory
+      value: com.sun.xml.bind.v2.ContextFactory
+
+  roles:
+  - base_was

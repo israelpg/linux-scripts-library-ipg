@@ -1,0 +1,13 @@
+---
+- name: Create base directories
+  file: path={{ item }} state=directory
+  with_items:
+    - /data/install_log
+    - /data/wsadmin/share/procs
+    - /data/wsadmin/datasources
+    - /data/wsadmin/datasources/config
+    - /data/wsadmin/servers
+
+- name: Copy base scripts
+  copy: src={{ item.src }} dest={{ item.dst }} mode=0644 backup=yes
+  with_items: upload_scripts

@@ -1,0 +1,138 @@
+---
+- hosts: PreProdNodetest
+  user: root
+  vars:
+    was_app_name: JADER_test_MBR1
+    was_cluster_name: JADER_test
+    owner: was6tst
+    group: was6group
+    default_port: 21140
+    path: /data/jade/{{ was_app_name }}
+
+    dataSources:
+    - authDataAlias: TEST/JRDE500
+      authDataPassword: P2DE500
+      dataTruncation: 'false'
+      databaseName: TESTGFDI
+      dateFormat: iso
+      jndiName: jdbc/JADE2_500
+      libraries: '*LIBL'
+      name: JADE2_500
+      naming: system
+      serverName: test.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE500
+    - authDataAlias: TEST/JRDE501
+      authDataPassword: P2DE501
+      dataTruncation: 'false'
+      databaseName: TESTGFDI
+      dateFormat: iso
+      jndiName: jdbc/JADE2_501
+      libraries: '*LIBL'
+      name: JADE2_501
+      naming: system
+      serverName: test.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE501
+    - authDataAlias: TEST/JRDE527
+      authDataPassword: P2DE527
+      dataTruncation: 'false'
+      databaseName: TESTGFDI
+      dateFormat: iso
+      jndiName: jdbc/JADE2_527
+      libraries: '*LIBL'
+      name: JADE2_527
+      naming: system
+      serverName: test.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE527
+    - authDataAlias: TEST/JRDE599
+      authDataPassword: P2DE599
+      dataTruncation: 'false'
+      databaseName: TESTGFDI
+      dateFormat: iso
+      jndiName: jdbc/JADE2_599
+      libraries: '*LIBL'
+      name: JADE2_599
+      naming: system
+      serverName: test.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE599
+    - authDataAlias: udbitst97/dborctst
+      authDataPassword: tst20090204
+      clientRerouteAlternatePortNumber: '50004'
+      clientRerouteAlternateServerName: db2-test04.jablux.gfdi.be
+      currentSchema: ORC500
+      databaseName: ORC500
+      driverType: '4'
+      jndiName: jdbc/BPE_500
+      name: BPE_500
+      portNumber: '50004'
+      serverName: db2-test03.jablux.gfdi.be
+      typeds: universal
+      user: dborctst
+      webSphereDefaultIsolationLevel: '2'
+    - authDataAlias: udbitst97/dborctst
+      authDataPassword: tst20090204
+      clientRerouteAlternatePortNumber: '50004'
+      clientRerouteAlternateServerName: db2-test04.jablux.gfdi.be
+      currentSchema: ORC501
+      databaseName: ORC500
+      driverType: '4'
+      jndiName: jdbc/BPE_501
+      name: BPE_501
+      portNumber: '50004'
+      serverName: db2-test03.jablux.gfdi.be
+      typeds: universal
+      user: dborctst
+      webSphereDefaultIsolationLevel: '2'
+    - authDataAlias: udbitst97/dborctst
+      authDataPassword: tst20090204
+      clientRerouteAlternatePortNumber: '50004'
+      clientRerouteAlternateServerName: db2-test04.jablux.gfdi.be
+      currentSchema: ORC527
+      databaseName: ORC500
+      driverType: '4'
+      jndiName: jdbc/BPE_527
+      name: BPE_527
+      portNumber: '50004'
+      serverName: db2-test03.jablux.gfdi.be
+      typeds: universal
+      user: dborctst
+      webSphereDefaultIsolationLevel: '2'
+    - authDataAlias: udbitst97/dborctst
+      authDataPassword: tst20090204
+      clientRerouteAlternatePortNumber: '50004'
+      clientRerouteAlternateServerName: db2-test04.jablux.gfdi.be
+      currentSchema: ORC599
+      databaseName: ORC500
+      driverType: '4'
+      jndiName: jdbc/BPE_599
+      name: BPE_599
+      portNumber: '50004'
+      serverName: db2-test03.jablux.gfdi.be
+      typeds: universal
+      user: dborctst
+      webSphereDefaultIsolationLevel: '2'
+
+    resourceEnvEntries:
+    - customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/server-config.xml"
+      jndiName: config/ConfigServer
+      name: ConfigServer
+
+    resourceFiles:
+    - files/JADER/server-config.xml
+
+    systemProperties:
+    - name: net.sf.ehcache.skipUpdateCheck
+      value: true
+
+  roles:
+  - base_was

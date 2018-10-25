@@ -1,0 +1,116 @@
+---
+- hosts: RefNode_REF_200F_RFND
+  user: root
+  vars:
+    was_app_name: CATA_200_MBR2
+    was_cluster_name: CATA_200
+    default_port: 21040
+    path: /data/cata/{{ was_app_name }}
+    owner: was6u200
+    group: was6group
+
+    vhost: RfndRef_vhost
+    
+    dataSources:
+    - authDataAlias: reficat297/dbcat200
+      authDataPassword: 200opioj
+      currentSchema: ADM
+      enableSeamlessFailover: 0
+      databaseName: CAT200
+      driverType: '4'
+      jndiName: jdbc/DCADM2XX
+      name: DCADM2XX
+      portNumber: '50004'
+      serverName: s298lr2dbrf01.ref.cpc998.be
+      typeds: universal
+      user: dbcat200
+      webSphereDefaultIsolationLevel: '2'
+      connectionPool:
+         connectionTimeout: 30
+         maxConnections: 80
+         minConnections: 20
+         reapTime: 300
+         agedTimeout: 0 
+
+    - authDataAlias: reficat297/dbcat200
+      authDataPassword: 200opioj
+      currentSchema: IDX
+      enableSeamlessFailover: 0
+      databaseName: CAT200
+      driverType: '4'
+      jndiName: jdbc/DCIDX2XX
+      name: DCIDX2XX
+      portNumber: '50004'
+      serverName: s298lr2dbrf01.ref.cpc998.be
+      typeds: universal
+      user: dbcat200
+      webSphereDefaultIsolationLevel: '1'
+      connectionPool:
+         connectionTimeout: 30
+         maxConnections: 80
+         minConnections: 20
+         reapTime: 300
+         agedTimeout: 0 
+
+    systemProperties:
+    - name: doccenter.scheduler.enabled
+      value: false
+    - name: doccenter.scheduler.threads
+      value: '0'
+    - name: doccenter.script.folderref.recheck.delay
+      value: '-1'
+    - name: net.sf.ehcache.skipUpdateCheck
+      value: true
+    - name: client.encoding.override
+      value: 'UTF-8'
+    - name: file.encoding
+      value: 'UTF-8'
+
+    directories:
+    - "{{ path }}/work/logs"
+    - /data/cata/ref
+    - /data/cata/ref/200
+    - /data/cata/ref/200/chunks
+    - /data/cata/ref/200/config
+    - /data/cata/ref/200/config/dbspecific
+    - /data/cata/ref/200/config/dbspecific/DCIDX2XX
+    - /data/cata/ref/200/dccache
+    - /data/cata/ref/200/logs
+    - /data/cata/ref/200/work
+
+  roles:
+  - base_was
+
+  # Post Install
+  tasks:
+  - name: Copy dbspecific.zip
+    copy: src="files/CATA/dbspecific.zip" dest="/data/cata/ref/200/config/dbspecific.zip"
+      owner={{ owner }} group={{ group }} mode=0644
+    register: dbspecific_zip
+    tags: files
+    notify: reset_acl
+
+  - name: Extract dbspecific.zip if uploaded
+    when: dbspecific_zip.changed
+    unarchive: src="/data/cata/ref/200/config/dbspecific.zip"
+      dest="/data/cata/ref/200/config/dbspecific/DCIDX2XX/"
+      owner={{ owner }} group={{ group }} mode=u=rwX,g=rX,o=rX copy=no
+    tags: files
+    notify: reset_acl
+
+  - name: Copy dbdefault.zip
+    copy: src="files/CATA/dbdefault.zip" dest="/data/cata/ref/200/config/dbdefault.zip"
+      owner={{ owner }} group={{ group }} mode=0644
+    register: dbdefault_zip
+    tags: files
+    notify: reset_acl
+
+  - name: Extract dbdefault.zip if uploaded
+    when: dbdefault_zip.changed
+    unarchive: src="/data/cata/ref/200/config/dbdefault.zip"
+      dest="/data/cata/ref/200/config/"
+      owner={{ owner }} group={{ group }} mode=u=rwX,g=rX,o=rX copy=no creates="/data/cata/ref/200/config/dbdefault"
+    tags: files
+    notify: reset_acl
+
+  

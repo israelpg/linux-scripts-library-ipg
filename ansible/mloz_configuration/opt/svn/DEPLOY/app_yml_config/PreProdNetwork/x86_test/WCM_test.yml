@@ -1,0 +1,15 @@
+---
+- hosts: PreProdNodetest
+  user: root
+  vars:
+    was_app_name: 
+    owner: was6tst
+    group: was6group
+    default_port: 21100
+    path: /data/wcm/{{ was_app_name }}
+    
+    resourceFiles:
+    - files/WCM/server-config.xml
+
+  roles:
+  - base_was

@@ -1,0 +1,26 @@
+---
+- hosts: RefNode_REF_200G_RFND
+  user: root
+  vars:
+    was_app_name: BMD_200
+    default_port: 21200
+    group: was6group
+    owner: was6u200
+    path: /data/bmd/{{ was_app_name }}
+
+    dataSources:
+    - authDataAlias: udbibmdr/dbbmd200
+      authDataPassword: bmd20121219
+      currentSchema: MONDB200
+      databaseName: BMD
+      driverType: '4'
+      jndiName: jdbc/MONDB
+      name: BMD200
+      portNumber: '50004'
+      serverName: db2-bmd.ref.cpc998.be
+      typeds: universal
+      user: dbbmd200
+      webSphereDefaultIsolationLevel: '2'
+
+  roles:
+  - base_was

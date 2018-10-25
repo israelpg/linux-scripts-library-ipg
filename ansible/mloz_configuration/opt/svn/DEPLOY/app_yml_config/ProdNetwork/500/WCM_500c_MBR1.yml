@@ -1,0 +1,146 @@
+---
+- hosts: ProdNode_AIRBUS_500A_EB
+  user: root
+  vars:
+    was_app_name: WCM_500c_MBR1
+    was_cluster_name: WCM_500c
+    default_port: 21120
+    group: was6group
+    owner: was6u500
+    path: /data/wcm/{{ was_app_name }}
+
+    web_conf:
+      filename: WCM_500
+      web_servers:
+      - s598lp{{ dc }}wsrp01.jablux.cpc998.be
+      - s598lp{{ dc }}wsrp02.jablux.cpc998.be
+      
+      server_name: wcm500.jablux.cpc998.be
+      rewrite_current_version: 0.0.79.1.41
+      rewrite_previous_version: 0.0.79.1.37
+
+    vhost: WCM_500_vhost
+    host_aliases:
+    - hostname: wcm500.jablux.cpc998.be
+      port: 80
+    - hostname: s598lp{{ dc }}wsrp01.jablux.cpc998.be
+      port: 80
+    - hostname: s598lp{{ dc }}wsrp02.jablux.cpc998.be
+      port: 80
+    - hostname: "{{ ansible_fqdn }}" 
+      port: "{{ default_port }}"
+
+    systemProperties:
+    - name: WCM_CONFIG_LOCATION
+      value: file://{{ path }}/resources/wcm_config.xml
+    - name: com.ibm.websphere.webservices.DisableIBMJAXWSEngine
+      value: true
+    - name: javax.xml.parsers.DocumentBuilderFactory
+      value: org.apache.xerces.jaxp.DocumentBuilderFactoryImpl
+    - name: javax.xml.parsers.SAXParserFactory
+      value: org.apache.xerces.jaxp.SAXParserFactoryImpl
+    - name: javax.xml.xpath.XPathFactory
+      value: org.apache.xpath.jaxp.XPathFactoryImpl
+    - name: javax.xml.transform.TransformerFactory
+      value: org.apache.xalan.processor.TransformerFactoryImpl
+    - name: javax.xml.bind.context.factory
+      value: com.sun.xml.bind.v2.ContextFactory
+
+    dataSources:
+    - authDataAlias: AS400/WCM500
+      user: WCM500
+      authDataPassword: SELD7Q47
+      dataTruncation: 'false'
+      databaseName: AIRBUS
+      dateFormat: iso
+      jndiName: jdbc/WCM_DS500
+      libraries: '*LIBL'
+      name: WCM_DS500
+      naming: system
+      serverName: airbus.jablux.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+    - authDataAlias: AS400/WCM501
+      user: WCM501
+      authDataPassword: VVPS3R4Q
+      dataTruncation: 'false'
+      databaseName: AIRBUS
+      dateFormat: iso
+      jndiName: jdbc/WCM_DS501
+      libraries: '*LIBL'
+      name: WCM_DS501
+      naming: system
+      serverName: airbus.jablux.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+    - authDataAlias: AS400/WCM506
+      user: WCM506
+      authDataPassword: AZU7RR2P
+      dataTruncation: 'false'
+      databaseName: AIRBUS
+      dateFormat: iso
+      jndiName: jdbc/WCM_DS506
+      libraries: '*LIBL'
+      name: WCM_DS506
+      naming: system
+      serverName: airbus.jablux.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+    - authDataAlias: AS400/WCM509
+      user: WCM509
+      authDataPassword: XDR3YJK1
+      dataTruncation: 'false'
+      databaseName: AIRBUS
+      dateFormat: iso
+      jndiName: jdbc/WCM_DS509
+      libraries: '*LIBL'
+      name: WCM_DS509
+      naming: system
+      serverName: airbus.jablux.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+    - authDataAlias: AS400/WCM515
+      user: WCM515
+      authDataPassword: QWCV48FG
+      dataTruncation: 'false'
+      databaseName: AIRBUS
+      dateFormat: iso
+      jndiName: jdbc/WCM_DS515
+      libraries: '*LIBL'
+      name: WCM_DS515
+      naming: system
+      serverName: airbus.jablux.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+    - authDataAlias: AS400/WCM516
+      user: WCM516
+      authDataPassword: NHG1RE2D
+      dataTruncation: 'false'
+      databaseName: AIRBUS
+      dateFormat: iso
+      jndiName: jdbc/WCM_DS516
+      libraries: '*LIBL'
+      name: WCM_DS516
+      naming: system
+      serverName: airbus.jablux.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+    - authDataAlias: AS400/WCM526
+      user: WCM526
+      authDataPassword: VGDP7Z6S
+      dataTruncation: 'false'
+      databaseName: AIRBUS
+      dateFormat: iso
+      jndiName: jdbc/WCM_DS526
+      libraries: '*LIBL'
+      name: WCM_DS526
+      naming: system
+      serverName: airbus.jablux.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      
+    resourceFiles:
+    - files/WCM/wcm_config.xml
+
+  roles:
+  - base_was

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context reloadable="false">
+	<Resource name="jdbc/ms-datasource" auth="Container" type="javax.sql.DataSource"
+			  driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+			  url="jdbc:sqlserver://DB535SQLINTNOTIFICARE.MUTWORLD.BE;databaseName=DB535_Notificare_Int"
+			  username="UserNotificare" password="IO5np3ti5"
+			  maxTotal="50" maxIdle="10" maxWaitMillis="-1" />
+
+	<Resource name="jdbc/DB2-400-509" auth="Container" type="javax.sql.DataSource"
+			  driverClassName="com.ibm.as400.access.AS400JDBCDriver"
+		      url="jdbc:as400://integ.gfdi.be;extended dynamic=true;package=jbpkg;package cache=false;naming=system;errors=full;date format=iso"
+		      username="GOK509" password="GCPC509"
+			  maxTotal="40" maxIdle="10" maxWaitMillis="20000" />
+
+	<Resource name="jdbc/DB2-400-526" auth="Container" type="javax.sql.DataSource"
+			  driverClassName="com.ibm.as400.access.AS400JDBCDriver"
+		      url="jdbc:as400://integ.gfdi.be;extended dynamic=true;package=jbpkg;package cache=false;naming=system;errors=full;date format=iso"
+		      username="GOK526" password="GCPC526"
+			  maxTotal="40" maxIdle="10" maxWaitMillis="20000" />
+
+</Context>

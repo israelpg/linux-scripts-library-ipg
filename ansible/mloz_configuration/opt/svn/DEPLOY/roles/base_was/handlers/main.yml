@@ -1,0 +1,23 @@
+---
+- name: update_node_variables
+  shell: "{{ base_wsadmin_sh }} -f /data/wsadmin/servers/updateNodeVariables.py > {{ ibmim_install_folder_logs }}/updateNodeVariables.log chdir=/data/wsadmin/servers"
+  when: not nonotify
+
+- name: restart_NodeAgent
+  shell: " echo -e 'y\ny\n' | {{ base_chdir }}/stopNode.sh ; {{ base_chdir }}/startNode.sh"
+  ignore_errors: yes
+  when: not nonotify
+
+- name: sync_nodes
+  shell: "{{ base_wsadmin_sh }} -f /data/wsadmin/servers/sync_nodes.py > {{ ibmim_install_folder_logs }}/sync_nodes.log"
+  ignore_errors: yes
+  when: not nonotify
+
+- name: reset_acl
+  shell: "sh {{ base_data_location }}/set_acl.sh chdir={{ base_data_location }}"
+  ignore_errors: yes
+
+- name: httpd_restart
+  command: "/opt/WebSphere85/IBMHttpServer/bin/apachectl restart"
+  with_items: web_conf.web_servers
+  delegate_to: "{{ item }}"

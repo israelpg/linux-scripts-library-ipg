@@ -1,0 +1,45 @@
+---
+- hosts: PreProdNode_GFDI_20A_RFND
+  user: root
+  vars:
+    was_app_name: CLIENTS_20
+    owner: was6alf
+    group: was6group
+    default_port: 21040
+    path: /data/clients/{{ was_app_name }}
+
+    vhost: RfndAlpha_vhost
+    host_aliases:
+    - hostname: rfalpha.jablux.gfdi.be
+      port: 80
+    - hostname: s999lq2wsrf01.jablux.gfdi.be
+      port: 21040
+    - hostname: s999lq2wsrf01.jablux.gfdi.be
+      port: 21080
+    - hostname: s999lq2wsrf01.jablux.gfdi.be
+      port: 21120
+    - hostname: s999lq2wsrf01.jablux.gfdi.be
+      port: 21160
+
+    dataSources:
+    - authDataAlias: ALPHA/S999JADEWS
+      authDataPassword: JADEWS
+      dataTruncation: 'false'
+      databaseName: GFDIDB2
+      dateFormat: iso
+      jndiName: jdbc/MDIS_RfndAlpha
+      libraries: 'JADEPRF'
+      name: MDIS_RfndAlpha
+      naming: system
+      serverName: s44g5036.jablux.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: S999JADEWS
+      extendedDynamic: 'false'
+      package: DSMDIS
+      packageLibrary: QGPL
+      packageCriteria: select
+
+  roles:
+  - base_was
+

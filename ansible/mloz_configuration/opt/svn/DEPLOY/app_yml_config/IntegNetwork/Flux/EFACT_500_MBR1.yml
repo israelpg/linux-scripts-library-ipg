@@ -1,0 +1,183 @@
+---
+- hosts: IntegNode_500A_FLUX
+  user: root
+  vars:
+    was_app_name: EFACT_500_MBR1
+    was_cluster_name: EFACT_500
+    default_port: 21160
+    owner: was6u500
+    group: was6group
+    path: /data/efact/{{ was_app_name }}
+
+    vhost: EFACT_500_vhost
+    host_aliases:
+    - hostname: efac-integ.integ.gfdi.be
+      port: 443
+    - hostname: s998li2wsrp01.integ.gfdi.be
+      port: 443
+    - hostname: s598li2wsfl01.integ.gfdi.be
+      port: 21160
+    - hostname: s598li2wsfl01.integ.gfdi.be
+      port: 21161
+
+    dataSources:
+    - authDataAlias: AS400/JCARE500
+      authDataPassword: MAQID31
+      dataTruncation: 'false'
+      databaseName: INTEGGFDI
+      dateFormat: iso
+      jndiName: jdbc/EFAC_AS400_RC
+      libraries: '*LIBL'
+      name: AS400EFACT_500
+      naming: system
+      serverName: integ.integ.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JCARE500
+
+    - authDataAlias: AS400/JCARE500
+      authDataPassword: MAQID31
+      dataTruncation: 'false'
+      databaseName: INTEGGFDI
+      dateFormat: iso
+      jndiName: jdbc/EFAC_AS400_RO_RC
+      libraries: '*LIBL'
+      name: AS400_RO_EFACT_500
+      naming: system
+      serverName: integ.integ.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JCARE500
+
+    - authDataAlias: lnxdb2/dbmct500
+      authDataPassword: 19jun091541
+      clientRerouteAlternatePortNumber: 50004
+      clientRerouteAlternateServerName: s000li2dbfl01.integ.gfdi.be
+      currentSchema: CARE
+      enableSeamlessFailover: 1
+      databaseName: MCT500
+      driverType: 4
+      jndiName: jdbc/EFAC_LINUX_RC
+      name: LNXEFACT_500
+      portNumber: 50004
+      serverName: s000li2dbfl01.integ.gfdi.be
+      typeds: universal
+      user: dbmct500
+      webSphereDefaultIsolationLevel: 2
+      connectionPool:
+        maxConnections: 50
+        minConnections: 5
+
+    jmscf:
+    - jndiName: jms/mqIIBConnectionFactory 
+      qmgrName: NQM5FL1
+      qmgrSvrconnChannel: MTEAM.CLIENT.SVRCONN
+      connectionNameList: s598li2iib03.integ.gfdi.be(16500)
+      authDataAlias: JMSCF/uqmfl500
+      user: uqmfl500
+      authDataPassword: Welcome01
+      name: EFACT_mqConnectionFactory
+
+    - jndiName: jms/mqConnectionFactory
+      qmgrName: QM.500
+      qmgrSvrconnChannel: SYSTEM.DEF.SVRCONN
+      connectionNameList: integ.integ.gfdi.be(14500)
+      authDataAlias: AS400/JCARE500
+      user: JCARE500
+      authDataPassword: MAQID31
+      name: EFACT_JMS_Connection_Factory
+
+    - jndiName: jms/mqConnectionFactory_ro
+      qmgrName: QM.500
+      qmgrSvrconnChannel: SYSTEM.DEF.SVRCONN
+      connectionNameList: integ.integ.gfdi.be(14500)
+      authDataAlias: AS400/JCARE500
+      user: JCARE500
+      authDataPassword: MAQID31
+      name: EFACT_JMS_Connection_Factory_RO
+
+    jmsq:
+    - jndiName: jms/EFAC_IN
+      queueName: QA.EFAC_IN
+      advancedProperties:
+        useRFH2: 'false'
+
+    - jndiName: jms/EFAC_OUT
+      queueName: QA.EFAC_OUT
+
+    - jndiName: jms/QA.NIPPIN.ASYNC.GENERIC.OUT
+      queueName: QA.NIPPIN.ASYNC.GENERIC.OUT
+      advancedProperties:
+        useRFH2: 'false'
+
+    - jndiName: jms/QA.NIPPIN.LOGS
+      queueName: QA.INAMI.MODEL.LOGS
+      advancedProperties:
+        useRFH2: 'false'
+
+    - jndiName: jms/QA.INAMI.MODEL.ENCRYPT.REQ
+      queueName: QA.INAMI.MODEL.ENCRYPT.REQ
+      advancedProperties:
+        useRFH2: 'false'
+
+    - jndiName: jms/QA.INAMI.MODEL.ENCRYPT.RESP
+      queueName: QA.INAMI.MODEL.ENCRYPT.RESP
+      advancedProperties:
+        useRFH2: 'false'
+
+    resourceEnvEntries:
+    - name: EFACTConfig
+      jndiName: config/efacConfig
+      customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/efact.properties"
+    - name: EfactSoapParser
+      jndiName: config/soapParserConfig
+      customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/soapParser.properties"
+
+    systemProperties:
+    - name: spring.profiles.active
+      value: was
+
+    resourceFiles:
+    - files/EFACT/efact.properties
+    - files/EFACT/soapParser.properties
+    - files/EFACT/aesSymetric2013prod.key
+
+  roles:
+  - base_was
+
+  tasks:
+  - name: add security.provider.12 properties
+    lineinfile: dest=/opt/WebSphere85/AppServer/java/jre/lib/security/java.security
+      regexp="^security\.provider\.12.*$"
+      line="security.provider.12=org.bouncycastle.jce.provider.BouncyCastleProvider"
+      insertafter="security.provider.11.*"
+      backup=yes
+
+  - name: copy bcprov-jdk16-1.45.jar
+    copy: src=files/EFACT/bcprov-jdk16-1.45.jar
+      dest=/opt/WebSphere85/AppServer/java/jre/lib/ext/bcprov-jdk16-1.45.jar
+      backup=yes
+
+  - name: copy local_policy.jar and US_export_policy.jar
+    copy: src=files/EFACT/{{ item }}
+      dest=/opt/WebSphere85/AppServer/java/jre/lib/security/{{ item }}
+      backup=yes
+    with_items:
+    - local_policy.jar
+    - US_export_policy.jar
+
+  - name: check if resources/soapParserSEQUENCE.txt exists for EFAC
+    stat: path={{ path }}/resources/soapParserSEQUENCE.txt
+    register: st
+    tags: files
+
+  - name: create resources/soapParserSEQUENCE.txt if does not exist
+    when: not st.stat.exists
+    lineinfile: dest="{{ path }}/resources/soapParserSEQUENCE.txt" create=yes group={{ group }} mode=0644 owner={{ owner }} line="0"
+    tags: files

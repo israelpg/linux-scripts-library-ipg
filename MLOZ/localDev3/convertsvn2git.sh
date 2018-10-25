@@ -109,7 +109,7 @@ EXECUTION_DIR="$PWD"
 AUTHORS_DIR="$EXECUTION_DIR/authors"
 # Define the Git directory:
 GIT_ROOT_DIR="/home/israel/git/svn-repos-v_1_2"
-GITPROJECT="IS"
+GITPROJECT="NIP"
 # In this directory are stored the different csv files, one for each SVN project
 SVN_CSV_DIR="$EXECUTION_DIR/svn-repos-csv"
 

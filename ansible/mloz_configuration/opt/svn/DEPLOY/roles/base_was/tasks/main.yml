@@ -1,0 +1,8 @@
+---
+- include: init.yml tags=init,scripts
+
+- include: system.yml tags=system,sys,linux
+
+- include: was.yml tags=was
+
+- include: web.yml tags=web_conf,web,http_alias

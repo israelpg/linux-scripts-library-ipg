@@ -1,0 +1,110 @@
+---
+- hosts: PreProdNode_TEST_500A_FLUX
+  user: root
+  vars:
+    was_app_name: CHAP4_TEST_MBR1
+    was_cluster_name: CHAP4_TEST
+    default_port: 21040
+    owner: was6tst
+    group: was6group
+    path: /data/chap4/{{ was_app_name }}
+
+    vhost: CHAP4_Test_vhost
+    host_aliases:
+    - hostname: chap4-test.jablux.gfdi.be
+      port: 443
+    - hostname: s999lq2wsrp01.jablux.gfdi.be
+      port: 443
+    - hostname: s999lq2wsfl07.jablux.gfdi.be
+      port: 21040
+    - hostname: s999lq2wsfl07.jablux.gfdi.be
+      port: 21041
+
+    dataSources:
+    - authDataAlias: TEST/JCARE500
+      authDataPassword: wait
+      dataTruncation: 'false'
+      databaseName: TESTGFDI
+      dateFormat: iso
+      jndiName: jdbc/CH4_AS400_RC
+      libraries: '*LIBL'
+      name: AS400CH4_500
+      naming: system
+      serverName: test.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JCARE500
+
+    - authDataAlias: udbitst597/dbmcttst
+      authDataPassword: tst20120410
+      clientRerouteAlternatePortNumber: 50004
+      clientRerouteAlternateServerName: s999lq2dbfl02.jablux.gfdi.be
+      currentSchema: CARE
+      databaseName: MCT500
+      enableSeamlessFailover: 1
+      driverType: 4
+      jndiName: jdbc/CH4_LINUX_RC
+      name: LNXCH4_500
+      portNumber: 50004
+      serverName: s999lq2dbfl01.jablux.gfdi.be
+      typeds: universal
+      user: dbmcttst
+      webSphereDefaultIsolationLevel: 2
+      connectionPool:
+        maxConnections: 50
+        minConnections: 5
+
+#    jmscf:
+#    - jndiName: jms/mqIIBConnectionFactory 
+#      qmgrName: IQM3FL1
+#      qmgrSvrconnChannel: MTEAM.CLIENT.SVRCONN
+#      connectionNameList: s999lq2iib02.jablux.gfdi.be(16300)
+#      authDataAlias: JMSCF/uqmfl500
+#      user: uqmfl500
+#      authDataPassword: Welcome01
+#      name: CHAP4_mqConnectionFactory
+
+#    jmsq:
+#    - jndiName: jms/CHAP4_ASK_AGREEMENT_REQUEST
+#      queueName: QA.NIPPIN.CHIV.AGREEMENT.REQUEST
+#      advancedProperties:
+#        useRFH2: 'false'
+
+#    - jndiName: jms/CHAP4_ASK_AGREEMENT_RESPONSE
+#      queueName: QA.NIPPIN.CHIV.AGREEMENT.RESPONSE
+
+#    - jndiName: jms/CHAP4_CONSULTATION_REQUEST
+#      queueName: QA.NIPPIN.CHIV.CONSULTATION.REQUEST
+#      advancedProperties:
+#        useRFH2: 'false'
+
+#    - jndiName: jms/CHAP4_CONSULTATION_RESPONSE
+#      queueName: QA.NIPPIN.CHIV.CONSULTATION.RESPONSE
+
+#    - jndiName: jms/CHAP4_MEDICAL_RECORD_REQUEST
+#      queueName: QA.NIPPIN.CHIV.RECORD
+#      advancedProperties:
+#        useRFH2: 'false'
+
+#    - jndiName: jms/CHAP4_INTG_MC_IN
+#      queueName: QA.INTG_MC_IN
+#      advancedProperties:
+#        useRFH2: 'false'
+
+    resourceEnvEntries:
+    - name: Chapter4Config
+      jndiName: config/ConfigServer
+      customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/ch4.properties"
+
+    systemProperties:
+    - name: spring.profiles.active
+      value: was
+
+    resourceFiles:
+    - files/CHAP4/ch4.properties
+
+  roles:
+  - base_was

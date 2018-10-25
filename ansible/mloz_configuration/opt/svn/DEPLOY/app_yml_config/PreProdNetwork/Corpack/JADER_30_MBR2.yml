@@ -1,0 +1,152 @@
+---
+- hosts: PreProdNode_GFDI_30B_RFND
+  user: root
+  vars:
+    was_app_name: JADER_30_MBR2
+    was_cluster_name: JADER_30
+    owner: was6cpk
+    group: was6group
+    default_port: 21080
+    path: /data/jade/{{ was_app_name }}
+
+    vhost: RfndCorpack_vhost
+
+    systemProperties:
+    - name: jade2.jobs.031
+      value: true
+    - name: jade2.jobs.039
+      value: true
+    - name: net.sf.ehcache.skipUpdateCheck
+      value: true
+  
+    dataSources:
+    - authDataAlias: CORPACK/JRDE030
+      authDataPassword: P2DE030
+      dataTruncation: 'false'
+      databaseName: GFDIDB2
+      dateFormat: iso
+      jndiName: jdbc/JADE2_030
+      libraries: '*LIBL'
+      name: JADE2_030
+      naming: system
+      serverName: s44g5036.jablux.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE030
+      extendedDynamic: false
+      package: DSJ2030
+      packageLibrary: JADEBUS030
+      packageCriteria: select
+
+    - authDataAlias: CORPACK/JRDE031
+      authDataPassword: P2DE031
+      dataTruncation: 'false'
+      databaseName: GFDIDB2
+      dateFormat: iso
+      jndiName: jdbc/JADE2_031
+      libraries: '*LIBL'
+      name: JADE2_031
+      naming: system
+      serverName: s44g5036.jablux.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE031
+      extendedDynamic: false
+      package: DSJ2031
+      packageLibrary: JADEBUS031
+      packageCriteria: select
+
+    - authDataAlias: CORPACK/JRDE032
+      authDataPassword: P2DE032
+      dataTruncation: 'false'
+      databaseName: GFDIDB2
+      dateFormat: iso
+      jndiName: jdbc/JADE2_032
+      libraries: '*LIBL'
+      name: JADE2_032
+      naming: system
+      serverName: s44g5036.jablux.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE032
+      extendedDynamic: false
+      package: DSJ2032
+      packageLibrary: JADEBUS032
+      packageCriteria: select
+
+    - authDataAlias: CORPACK/JRDE039
+      authDataPassword: P2DE039
+      dataTruncation: 'false'
+      databaseName: GFDIDB2
+      dateFormat: iso
+      jndiName: jdbc/JADE2_039
+      libraries: '*LIBL'
+      name: JADE2_039
+      naming: system
+      serverName: s44g5036.jablux.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE039
+      extendedDynamic: false
+      package: DSJ2039
+      packageLibrary: JADEBUS039
+      packageCriteria: select
+
+    - authDataAlias: udbicpk97/dborccpk
+      authDataPassword: cpk20090204
+      currentSchema: ORC030
+      databaseName: ORC030
+      driverType: '4'
+      jndiName: jdbc/BPE_030
+      name: BPE_030
+      portNumber: '50004'
+      serverName: db2-corpak03.jablux.gfdi.be
+      typeds: universal
+      user: dborccpk
+      webSphereDefaultIsolationLevel: '2'
+
+    - authDataAlias: udbicpk97/dborccpk
+      authDataPassword: cpk20090204
+      currentSchema: ORC031
+      databaseName: ORC030
+      driverType: '4'
+      jndiName: jdbc/BPE_031
+      name: BPE_031
+      portNumber: '50004'
+      serverName: db2-corpak03.jablux.gfdi.be
+      typeds: universal
+      user: dborccpk
+      webSphereDefaultIsolationLevel: '2'
+
+    - authDataAlias: udbicpk97/dborccpk
+      authDataPassword: cpk20090204
+      currentSchema: ORC032
+      databaseName: ORC030
+      driverType: '4'
+      jndiName: jdbc/BPE_032
+      name: BPE_032
+      portNumber: '50004'
+      serverName: db2-corpak03.jablux.gfdi.be
+      typeds: universal
+      user: dborccpk
+      webSphereDefaultIsolationLevel: '2'
+
+    - authDataAlias: udbicpk97/dborccpk
+      authDataPassword: cpk20090204
+      currentSchema: ORC039
+      databaseName: ORC030
+      driverType: '4'
+      jndiName: jdbc/BPE_039
+      name: BPE_039
+      portNumber: '50004'
+      serverName: db2-corpak03.jablux.gfdi.be
+      typeds: universal
+      user: dborccpk
+      webSphereDefaultIsolationLevel: '2'
+
+    directories:
+    - '{{ path }}/work/jobs'
+
+  roles:
+  - base_was
+

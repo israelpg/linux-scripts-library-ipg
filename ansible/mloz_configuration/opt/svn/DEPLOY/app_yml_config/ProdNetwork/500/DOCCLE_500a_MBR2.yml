@@ -1,0 +1,130 @@
+---
+- hosts: ProdNode_AIRBUS_500B_EB
+  user: root
+
+  vars:
+    was_app_name: DOCCLE_500a_MBR2
+    was_cluster_name: DOCCLE_500a
+    default_port: 21520
+    group: was6group
+    owner: was6u500
+    path: /data/dcl/{{ was_app_name }}
+
+    vhost: DOCCLE_500_vhost
+    host_aliases:
+    - hostname:   s598lp{{ dc }}wseb01.jablux.cpc998.be
+      port: 21520
+    - hostname:   s598lp{{ dc }}wseb02.jablux.cpc998.be  
+      port: 21520
+    - hostname:   s598lp{{ dc }}wseb01.jablux.cpc998.be
+      port: 21560
+    - hostname:   s598lp{{ dc }}wseb02.jablux.cpc998.be  
+      port: 21560
+    - hostname:   s598lp{{ dc }}wseb01.jablux.cpc998.be
+      port: 80
+    - hostname:   s598lp{{ dc }}wseb02.jablux.cpc998.be  
+      port: 80
+    - hostname:  doccle.jablux.cpc998.be
+      port: 80
+    - hostname:  doccle.jablux.cpc998.be
+      port: 21520
+    - hostname:  doccle.jablux.cpc998.be
+      port: 21560
+    - hostname:  *
+      port: 21520
+    - hostname:  *
+      port: 21560
+
+    systemProperties:
+      - name: logging.config
+        value: "{{ path }}/resources/logback.xml"
+      - name: be.mteam.ebusiness.doccle.backend.atosworldline.keyStorePass
+        value: D1cCartwat
+      - name: be.mteam.ebusiness.doccle.backend.atosworldline.auth
+        value: "bWxvei1pdEBvejUwMTptdENaVHhrNnJkb25BbktEMFRITw=="
+      - name: be.mteam.ebusiness.doccle.backend.prefs-center.url
+        value: "http://prefscenter.jablux.cpc998.be/prefsCenter"
+
+    jmscf:
+      - jndiName: jms/doccle_mqConnectionFactory
+        qmgrName: PQM5EB1
+        qmgrSvrconnChannel: MTEAM.CLIENT.SVRCONN
+        connectionNameList: s598lp1iib01.jablux.cpc998.be(15500),s598lp1iib02.jablux.cpc998.be(15500)
+        authDataAlias: JMSCF/uqmeb500
+        user: uqmeb500
+        authDataPassword: n3touc3p4s4s4
+        name: DOCCLE_mqConnectionFactory
+        connectionPool:
+          minConnections: 1
+          maxConnections: 100
+        sessionPool:
+          minConnections: 1
+          maxConnections: 10
+
+    jmsq:
+    - jndiName: jms/QA.DOCCLE.RECEIVER.BATCH
+      queueName: QA.DOCCLE.RECEIVER.BATCH
+    - jndiName: jms/QA.DOCCLE.RECEIVER
+      queueName: QA.DOCCLE.RECEIVER
+    - jndiName: jms/QA.DOCUMENT.RECEIVER.BATCH
+      queueName: QA.DOCUMENT.RECEIVER.BATCH
+    - jndiName: jms/QA.DOCCLE.DOCUMENTS
+      queueName: QA.DOCCLE.DOCUMENTS
+    - jndiName: jms/QA.DOCCLE.STARTBATCH
+      queueName: QA.DOCCLE.STARTBATCH
+    - jndiName: jms/QA.DOCCLE.DOCUMENT.BATCH 
+      queueName: QA.DOCCLE.DOCUMENT.BATCH
+    - jndiName: jms/QA.DOCCLE.RESPONSE
+      queueName: QA.DOCCLE.RESPONSE
+    - jndiName: jms/QA.DOCCLE.REQUEST
+      queueName: QA.DOCCLE.REQUEST
+
+    resourceFiles:
+      - files/DOCCLE/logback.xml
+
+    dataSources:
+      - authDataAlias: udbbl2105/dbdcl500 
+        authDataPassword: 500DoUlk
+        user: dbdcl500
+        currentSchema: DOCCLE
+        databaseName: FIN500
+        driverType: 4
+        jndiName: jdbc/doccle
+        name: DOCCLE
+        serverName: s598lp1dbfn01.jablux.cpc998.be
+        portNumber: 50004
+        clientRerouteAlternateServerName: s598lp2dbfn01.jablux.cpc998.be
+        clientRerouteAlternatePortNumber: 50004
+        typeds: universal
+        webSphereDefaultIsolationLevel: 2
+        enableRowsetSupport: 1
+        connectionPool:
+           minConnections: 1
+           maxConnections: 10
+      - authDataAlias: AS400/DOCCLE
+        authDataPassword: W3stenWind
+        dataTruncation: 'false'
+        databaseName: pfysl8
+        dateFormat: iso
+        jndiName: jdbc/iseries
+        libraries: 'libcxfil01'
+        name: DOCCLE_PROD
+        naming: system
+        serverName: airbus
+        timeFormat: iso
+        typeds: toolbox
+        user: C501JAVA
+        extendedDynamic: false
+        connectionPool:
+         connectionTimeout: 30
+         maxConnections: 60
+         minConnections: 1
+         reapTime: 300
+         agedTimeout: 0   
+
+    resourceFiles:
+    - files/DOCCLE/logback.xml
+
+  roles:
+  - base_was
+

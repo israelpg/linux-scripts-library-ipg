@@ -1,0 +1,52 @@
+---
+- hosts: PreProdNode_GFDI_30B_RFND
+  user: root
+  vars:
+    was_app_name: INTG_30
+    default_port: 21160
+    path: /data/intg/{{ was_app_name }}
+    group: was6group
+    owner: was6cpk
+
+    vhost: RfndCorpack_vhost
+
+    systemProperties:
+    - name: intg.jndi.prefix
+      value: jndi
+    - name: net.sf.ehcache.skipUpdateCheck
+      value: true
+
+    dataSources:
+    - authDataAlias: udbicpk597/dbintcpk
+      authDataPassword: cpk20090204
+      currentSchema: INTG
+      databaseName: INT030
+      driverType: '4'
+      jndiName: jdbc/INTG_030
+      name: INTG_030
+      portNumber: '50004'
+      serverName: db2-corpak03.jablux.gfdi.be
+      typeds: universal
+      user: dbintcpk
+      webSphereDefaultIsolationLevel: '2'
+
+    - authDataAlias: CORPACK/INTG030
+      authDataPassword: GTNI030
+      dataTruncation: 'false'
+      databaseName: GFDIDB2
+      dateFormat: iso
+      extendedDynamic: 'false'
+      jndiName: jdbc/JADE2_030
+      libraries: '*LIBL'
+      name: JADE2_030
+      naming: system
+      package: DSJ2030
+      packageCriteria: select
+      packageLibrary: JADEBUS030
+      serverName: s44g5036.jablux.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: INTG030
+
+  roles:
+  - base_was

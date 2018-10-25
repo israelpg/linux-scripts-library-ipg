@@ -1,0 +1,12 @@
+---
+- hosts: jvirtRefDpz80
+  user: root
+  vars:
+    was_app_name: DPZ_50080
+    default_port: 21120
+    owner: was8dpz
+    group: was6group
+    path: /data/dpz/{{ was_app_name }}
+
+  roles:
+  - base_was

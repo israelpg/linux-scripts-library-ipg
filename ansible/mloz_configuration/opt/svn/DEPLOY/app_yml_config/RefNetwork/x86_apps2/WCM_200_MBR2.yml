@@ -1,0 +1,90 @@
+---
+- hosts: RefNodeapps202
+  user: root
+  vars:
+    was_app_name: WCM_apps2_MBR2
+    was_cluster_name: WCM_apps2
+    default_port: 22140
+    group: was6group
+    owner: was6u200
+    path: /data/wcm/{{ was_app_name }}
+
+    web_conf:
+      web_servers:
+      - s998jrlnx061.ref.cpc998.be
+
+      server_name: wcm2xx-ref.ref.cpc998.be
+      rewrite_current_version: 0.0.79.1
+      rewrite_previous_version: 0.0.78.17
+
+    dataSources:
+    - authDataAlias: REF/WCM203
+      authDataPassword: NSTZ5QY8
+      dataTruncation: 'false'
+      databaseName: REFGFDI
+      dateFormat: iso
+      jndiName: jdbc/WCM_DS203
+      libraries: '*LIBL'
+      name: WCM_DS203
+      naming: system
+      serverName: ref.ref.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: WCM203
+    - authDataAlias: REF/WCM216
+      authDataPassword: PMQYXND7
+      dataTruncation: 'false'
+      databaseName: REFGFDI
+      dateFormat: iso
+      jndiName: jdbc/WCM_DS216
+      libraries: '*LIBL'
+      name: WCM_DS216
+      naming: system
+      serverName: ref.ref.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: WCM216
+    - authDataAlias: REF/WCM232
+      authDataPassword: ADFQPME4
+      dataTruncation: 'false'
+      databaseName: REFGFDI
+      dateFormat: iso
+      jndiName: jdbc/WCM_DS232
+      libraries: '*LIBL'
+      name: WCM_DS232
+      naming: system
+      serverName: ref.ref.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: WCM232
+    - authDataAlias: REF/WCM235
+      authDataPassword: ARFGRTI8
+      dataTruncation: 'false'
+      databaseName: REFGFDI
+      dateFormat: iso
+      jndiName: jdbc/WCM_DS235
+      libraries: '*LIBL'
+      name: WCM_DS235
+      naming: system
+      serverName: ref.ref.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: WCM235
+    - authDataAlias: REF/WCM282
+      authDataPassword: YT48S9FL
+      dataTruncation: 'false'
+      databaseName: REFGFDI
+      dateFormat: iso
+      jndiName: jdbc/WCM_DS282
+      libraries: '*LIBL'
+      name: WCM_DS282
+      naming: system
+      serverName: ref.ref.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: WCM282
+    resourceFiles:
+    - files/WCM200/wcm_config_ref.xml
+
+  roles:
+  - base_was

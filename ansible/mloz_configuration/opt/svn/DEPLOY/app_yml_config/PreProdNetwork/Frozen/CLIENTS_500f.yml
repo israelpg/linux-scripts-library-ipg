@@ -1,0 +1,39 @@
+---
+- hosts: PreProdNode_FROZENGFDI_500fA_RFND
+  user: root
+  vars:
+    was_app_name: CLIENTS_500f
+    owner: was6u500
+    group: was6group
+    default_port: 21040
+    path: /data/clients/{{ was_app_name }}
+
+    vhost: RfndFrozen_vhost
+    host_aliases:
+    - hostname: rffrozen.jablux.gfdi.be
+      port: 80
+    - hostname: s509lq2wsrf14.jablux.gfdi.be
+      port: 21040
+    - hostname: s509lq2wsrf14.jablux.gfdi.be
+      port: 21080
+    - hostname: s509lq2wsrf14.jablux.gfdi.be
+      port: 21120
+
+    dataSources:
+    - authDataAlias: FROZEN/M998JADEWS
+      authDataPassword: md1spr0d
+      dataTruncation: 'false'
+      databaseName: FROZENGFDI
+      dateFormat: iso
+      jndiName: jdbc/MDIS_RfndFrozen
+      libraries: 'JADEPRF'
+      name: MDIS_RfndFrozen
+      naming: system
+      serverName: frozen.jablux.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: M998JADEWS
+
+  roles:
+  - base_was
+

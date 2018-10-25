@@ -1,0 +1,35 @@
+---
+- hosts: PreProdNode_OZONEGFDI_500fA_RFND
+  user: root
+  vars:
+    was_app_name: CLIENTS_500f516
+    owner: was6u500
+    group: was6group
+    default_port: 21040
+    path: /data/clients/{{ was_app_name }}
+
+    vhost: RfndOzone_vhost
+    host_aliases:
+    - hostname: rfozone.jablux.gfdi.be
+      port: 80
+    - hostname: "{{ ansible_fqdn }}"
+      port: "{{ default_port }}"
+
+    dataSources:
+    - authDataAlias: OZONE/M998JADEWS
+      authDataPassword: md1spr0d
+      dataTruncation: 'false'
+      databaseName: OZONEGFDI
+      dateFormat: iso
+      jndiName: jdbc/MDIS_RfndOzone
+      libraries: 'JADEPRF'
+      name: MDIS_RfndOzone
+      naming: system
+      serverName: ozone.jablux.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: M998JADEWS
+
+  roles:
+  - base_was
+

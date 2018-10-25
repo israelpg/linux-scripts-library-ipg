@@ -1,0 +1,94 @@
+---
+- hosts: RefNodeapps501
+  user: root
+  vars:
+    was_app_name: DMG_apps5_MBR1
+    was_cluster_name: DMG_apps5
+    default_port: 21060
+    owner: was6u500
+    group: was6group
+    path: /data/dmg/{{ was_app_name }}
+
+    dataSources:
+    - authDataAlias: REF/JCARE500
+      authDataPassword: MAQID31
+      dataTruncation: 'false'
+      databaseName: REFGFDI
+      dateFormat: iso
+      jndiName: jdbc/DMG_AS400_RC
+      libraries: '*LIBL'
+      name: AS400GDMG_500
+      naming: system
+      serverName: ref.ref.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JCARE500
+    - authDataAlias: udbidmg597/dbmct500
+      authDataPassword: 19jun091541
+      clientProgramName: DMG
+      clientRerouteAlternatePortNumber: '50004'
+      clientRerouteAlternateServerName: iobe-pil-db2-02.ref.cpc998.be
+      currentSchema: CARE
+      databaseName: MCT500
+      driverType: 4
+      jndiName: jdbc/DMG_LINUX_RC
+      name: LNXGDMG_500
+      portNumber: 50004
+      serverName: iobe-pil-db2-01.ref.cpc998.be
+      typeds: universal
+      user: dbmct500
+      webSphereDefaultIsolationLevel: 2
+      statementCacheSize: 500
+      connectionPool:
+        maxConnections: 50
+        minConnections: 5
+
+    mqjms:
+    - name: DMG_JMS_Connection_Factory
+      jndiName: jms/DMG_jmsConnectionFactory
+      description: DMG_JMS_Connection_Factory
+      qmgrName: QM.500
+      qmgrSvrconnChannel: SYSTEM.DEF.SVRCONN
+      qmgrHostname: ref.ref.cpc998.be
+      qmgrPortNumber: 14500
+      authDataAlias: REF/JCARE500
+      user: JCARE500
+      authDataPassword: MAQID31
+
+    jmsq:
+    - jndiName: jms/DMG.CONSULT.IN
+      queueName: QA.DMG.CONSULT.IN
+    - jndiName: jms/DMG.CONSULT.OUT
+      queueName: QA.DMG.CONSULT.OUT
+    - jndiName: jms/DMG.CONSULT.LIST.IN
+      queueName: QA.DMG.CONSULT.LIST.IN
+    - jndiName: jms/DMG.CONSULT.LIST.OUT
+      queueName: QA.DMG.CONSULT.LIST.OUT
+    - jndiName: jms/DMG.NOTIFY.IN
+      queueName: QA.DMG.NOTIFY.IN
+    - jndiName: jms/DMG.NOTIFY.OUT
+      queueName: QA.DMG.NOTIFY.OUT
+    - jndiName: jms/DMG.SUBSCRIPTION.IN
+      queueName: QA.DMG.SUBSCRIPTION.IN
+    - jndiName: jms/DMG.CLOSURE.OUT
+      queueName: QA.DMG.CLOSURE.OUT
+    - jndiName: jms/DMG.PROLONG.OUT
+      queueName: QA.DMG.PROLONG.OUT
+
+    resourceEnvEntries:
+    - name: DMGConfig
+      jndiName: config/dmgConfig
+      customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/dmg.properties"
+
+    systemProperties:
+    - name: spring.profiles.active
+      value: was
+
+    resourceFiles:
+    - files/DMG/dmg.properties
+
+  roles:
+  - base_was

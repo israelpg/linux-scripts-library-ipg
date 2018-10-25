@@ -1,0 +1,80 @@
+---
+- hosts: IntegNode_500A_EB
+  user: root
+  
+  roles:
+  - base_was  
+  
+  vars:
+    was_app_name: BCM_500a_MBR1
+    was_cluster_name:  BCM_500a
+    default_port: 21400
+    group: was6group
+    owner: was6u500
+    path: /data/bcm/{{ was_app_name }}
+
+    systemProperties:
+    - name: logback.configurationFile
+      value: "{{ path }}/resources/logback.xml"
+    
+    vhost: BCM_500_vhost
+    host_aliases:
+    - hostname:   s598li2wseb01.integ.gfdi.be  
+      port: 21400
+  
+            
+    jmscf:
+    - jndiName: jms/BCM_mqConnectionFactory
+      qmgrName: NQM5EB1
+      qmgrSvrconnChannel: MTEAM.CLIENT.SVRCONN
+      connectionNameList: s598li2iib03.integ.gfdi.be(15500)
+      authDataAlias: JMSCF/uqmeb500
+      user: uqmeb500
+      authDataPassword: n3touc3p4s4s4
+      name: BCM_mqConnectionFactory
+      connectionPool:
+        minConnections: 1
+        maxConnections: 100
+      sessionPool:
+        minConnections: 1
+        maxConnections: 10
+
+    jmsq:
+    - jndiName: jms/BCM.JOB.REPLY
+      queueName: QA.BCM.JOB.REPLY 
+
+    - jndiName: jms/BCM.NOTIFICATION
+      queueName: QA.BCM.NOTIFICATION
+
+    - jndiName: jms/BCM.SMS.STATUS
+      queueName: QA.BCM.SMS.STATUS
+
+            
+    dataSources:
+      - authDataAlias: udbbl2105/dbbcm500
+        user: dbbcm500
+        authDataPassword: 4HIRmZqG
+        currentSchema: BCM
+        databaseName: FIN500
+        driverType: 4
+        jndiName: jdbc/BCM
+        name: BCM
+        portNumber: 50004
+        serverName: s998li2dbfn01.integ.gfdi.be
+        typeds: universal
+        webSphereDefaultIsolationLevel: 2
+        enableRowsetSupport: 1
+        connectionPool:
+           minConnections: 1
+           maxConnections: 10
+
+    resourceFiles:
+    - files/BCM_Notification/logback.xml
+    - files/BCM_Notification/bcmJms.properties
+    
+  roles:
+  - base_was
+
+  tasks:
+  - name: create symlinks /data/bcm/BCM_500
+    file: src=/data/bcm/BCM_500a_MBR1 dest=/data/bcm/BCM_500 state=link force=True

@@ -1,0 +1,58 @@
+---
+- hosts: ProdNode_AIRBUS_200B_FLUX
+  user: root
+  vars:
+    was_app_name: SAMDB_200_MBR2
+    was_cluster_name: SAMDB_200
+    default_port: 21240
+    owner: was6u200
+    group: was6group
+    path: /data/samdb/{{ was_app_name }}
+
+    host_aliases:
+    - hostname: samdb200.jablux.cpc998.be
+      port: 80
+    - hostname: s298lp{{ dc }}wsrp01.jablux.cpc998.be
+      port: 80
+    - hostname: s298lp{{ dc }}wsrp02.jablux.cpc998.be
+      port: 80
+    - hostname: s298lp{{ dc }}wsfl01.jablux.cpc998.be
+      port: 21240
+    - hostname: s298lp{{ dc }}wsfl02.jablux.cpc998.be
+      port: 21240
+    - hostname: s298lp{{ dc }}wsfl01.jablux.cpc998.be
+      port: 21241
+    - hostname: s298lp{{ dc }}wsfl02.jablux.cpc998.be
+      port: 21241
+
+    dataSources:
+    - authDataAlias: AIRBUS/JCARE200
+      authDataPassword: AKELD52
+      dataTruncation: 'false'
+      databaseName: AIRBUS
+      dateFormat: iso
+      jndiName: jdbc/DBSAM_AS400_RC
+      libraries: '*LIBL'
+      name: AS400DBSAM_2xx
+      naming: system
+      serverName: airbus.jablux.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JCARE200
+      connectionPool:
+         maxConnections: 50
+         minConnections: 5
+
+    resourceEnvEntries:
+    - name: SamdbRessourceConfig
+      jndiName: config/dbsamConfig
+      customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/ch4_dbsam.properties"
+
+    resourceFiles:
+    - files/SAMDB/ch4_dbsam.properties
+
+  roles:
+  - base_was

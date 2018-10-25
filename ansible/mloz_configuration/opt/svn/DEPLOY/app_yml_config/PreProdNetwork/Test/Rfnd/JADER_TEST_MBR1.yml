@@ -1,0 +1,146 @@
+---
+- hosts: PreProdNode_TEST_500A_RFND
+  user: root
+  vars:
+    was_app_name: JADER_TEST_MBR1
+    was_cluster_name: JADER_TEST
+    owner: wasserver
+    group: was6group
+    default_port: 21080
+    path: /data/jade/{{ was_app_name }}
+
+    vhost: RfndTest_vhost
+    host_aliases:
+    - hostname: "{{ ansible_fqdn }}"
+      port: "{{ default_port }}"
+
+    systemProperties:
+    - name: jade2.jobs.500
+      value: true
+    - name: jade2.jobs.501
+      value: true
+    - name: jade2.jobs.509
+      value: true
+    - name: jade2.jobs.JADE2_SERVER
+      value: true
+    - name: net.sf.ehcache.skipUpdateCheck
+      value: true
+  
+    dataSources:
+    - authDataAlias: TEST/JRDE500
+      authDataPassword: P2DE500
+      dataTruncation: 'false'
+      databaseName: TESTGFDI
+      dateFormat: iso
+      jndiName: jdbc/JADE2_500
+      libraries: '*LIBL'
+      name: JADE2_500
+      naming: system
+      serverName: test.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE500
+      extendedDynamic: false
+      package: DSJ2500
+      packageLibrary: JADEBUS500
+      packageCriteria: select
+      connectionPool:
+        maxConnections: 60
+        minConnections: 1
+
+    - authDataAlias: TEST/JRDE501
+      authDataPassword: P2DE501
+      dataTruncation: 'false'
+      databaseName: TESTGFDI
+      dateFormat: iso
+      jndiName: jdbc/JADE2_501
+      libraries: '*LIBL'
+      name: JADE2_501
+      naming: system
+      serverName: test.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE501
+      extendedDynamic: false
+      package: DSJ2501
+      packageLibrary: JADEBUS501
+      packageCriteria: select
+      connectionPool:
+        maxConnections: 60
+        minConnections: 1
+
+    - authDataAlias: TEST/JRDE509
+      authDataPassword: P2DE509
+      dataTruncation: 'false'
+      databaseName: TESTGFDI
+      dateFormat: iso
+      jndiName: jdbc/JADE2_509
+      libraries: '*LIBL'
+      name: JADE2_509
+      naming: system
+      serverName: test.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE509
+      extendedDynamic: false
+      package: DSJ2509
+      packageLibrary: JADEBUS509
+      packageCriteria: select
+      connectionPool:
+        maxConnections: 60
+        minConnections: 1
+
+    - authDataAlias: udbitst97/dborctst
+      authDataPassword: tst20090204
+      clientRerouteAlternatePortNumber: '50004'
+      clientRerouteAlternateServerName: s999lq2dbrf02.jablux.gfdi.be
+      currentSchema: ORC500
+      databaseName: RFN500
+      enableSeamlessFailover: 1
+      driverType: '4'
+      jndiName: jdbc/BPE_500
+      name: BPE_500
+      portNumber: '50004'
+      serverName: s999lq2dbrf01.jablux.gfdi.be
+      typeds: universal
+      user: dborctst
+      webSphereDefaultIsolationLevel: '2'
+
+    - authDataAlias: udbitst97/dborctst
+      authDataPassword: tst20090204
+      clientRerouteAlternatePortNumber: '50004'
+      clientRerouteAlternateServerName: s999lq2dbrf02.jablux.gfdi.be
+      currentSchema: ORC501
+      databaseName: RFN500
+      enableSeamlessFailover: 1
+      driverType: '4'
+      jndiName: jdbc/BPE_501
+      name: BPE_501
+      portNumber: '50004'
+      serverName: s999lq2dbrf01.jablux.gfdi.be
+      typeds: universal
+      user: dborctst
+      webSphereDefaultIsolationLevel: '2'
+
+    - authDataAlias: udbitst97/dborctst
+      authDataPassword: tst20090204
+      clientRerouteAlternatePortNumber: '50004'
+      clientRerouteAlternateServerName: s999lq2dbrf02.jablux.gfdi.be
+      currentSchema: ORC509
+      databaseName: RFN500
+      enableSeamlessFailover: 1
+      driverType: '4'
+      jndiName: jdbc/BPE_509
+      name: BPE_509
+      portNumber: '50004'
+      serverName: s999lq2dbrf01.jablux.gfdi.be
+      typeds: universal
+      user: dborctst
+      webSphereDefaultIsolationLevel: '2'
+
+    directories:
+    - '{{ path }}/work/jobs'
+
+  roles:
+  - base_was
+

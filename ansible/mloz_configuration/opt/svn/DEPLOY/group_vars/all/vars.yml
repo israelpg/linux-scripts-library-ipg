@@ -1,0 +1,8 @@
+---
+wasnd_version: "85"
+webspherend_technical_user_password: g0tfert0um
+dmgr_sdk_default: "1.7_64"
+was_server_alias: "{{ ansible_fqdn }}"
+web_server_alias: "{{ ansible_fqdn }}"
+was_web_frontend_alias: "{{ ansible_fqdn }}"
+base_node_name_sufix: ""

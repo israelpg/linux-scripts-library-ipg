@@ -1,0 +1,125 @@
+---
+- hosts: ProdNode_AIRBUS_200A_FLUX
+  user: root
+  vars:
+    was_app_name: DMG_200_MBR1
+    was_cluster_name: DMG_200
+    default_port: 21080
+    owner: was6u200
+    group: was6group
+    path: /data/dmg/{{ was_app_name }}
+
+    vhost: DMG_200_vhost
+    host_aliases:
+    - hostname: dmg2xx.jablux.cpc998.be
+      port: 443
+    - hostname: s298lp{{ dc }}wsrp01.jablux.cpc998.be
+      port: 443
+    - hostname: s298lp{{ dc }}wsrp02.jablux.cpc998.be
+      port: 443
+    - hostname: s298lp{{ dc }}wsfl01.jablux.cpc998.be
+      port: 21080
+    - hostname: s298lp{{ dc }}wsfl02.jablux.cpc998.be
+      port: 21080
+    - hostname: s298lp{{ dc }}wsfl01.jablux.cpc998.be
+      port: 21081
+    - hostname: s298lp{{ dc }}wsfl02.jablux.cpc998.be
+      port: 21081
+
+    dataSources:
+    - authDataAlias: AIRBUS/JCARE200
+      authDataPassword: AKELD52
+      dataTruncation: 'false'
+      databaseName: AIRBUS
+      dateFormat: iso
+      jndiName: jdbc/DMG_AS400_RC
+      libraries: '*LIBL'
+      name: AS400GDMG_200
+      naming: system
+      serverName: airbus.jablux.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JCARE200
+      connectionPool:
+         maxConnections: 50
+         minConnections: 5
+
+    - authDataAlias: udbidmg2/dbmct200
+      authDataPassword: 3006beatit
+      clientRerouteAlternatePortNumber: 50008
+      clientRerouteAlternateServerName: "{{ standby }}"
+      currentSchema: CARE
+      enableSeamlessFailover: 1
+      databaseName: MCT200
+      driverType: 4
+      jndiName: jdbc/DMG_LINUX_RC
+      name: LNXGDMG_200
+      portNumber: 50008
+      serverName: "{{ primary }}"
+      typeds: universal
+      user: dbmct200
+      webSphereDefaultIsolationLevel: 2
+      connectionPool:
+        maxConnections: 50
+        minConnections: 5
+
+    jmscf:
+    - jndiName: jms/mqIIBConnectionFactory 
+      qmgrName: "PQM2FL{{ dc }}"
+      qmgrSvrconnChannel: MTEAM.CLIENT.SVRCONN
+      connectionNameList: "{{ qmhostlist }}"
+      authDataAlias: JMSCF/uqmfl200
+      user: uqmfl200
+      authDataPassword: Welcome01
+      name: DMG_mqConnectionFactory
+      connectionPool:
+        minConnections: 20
+        maxConnections: 80
+
+    jmsq:
+    - jndiName: jms/DMG_CONSULT_IN
+      queueName: QA.DMG.CONSULT.IN
+      advancedProperties:
+        useRFH2: 'false'
+    - jndiName: jms/DMG_CONSULT_OUT
+      queueName: QA.DMG.CONSULT.OUT
+    - jndiName: jms/DMG_CONSULT_LIST_IN
+      queueName: QA.DMG.CONSULT.LIST.IN
+      advancedProperties:
+        useRFH2: 'false'
+    - jndiName: jms/DMG_CONSULT_LIST_OUT
+      queueName: QA.DMG.CONSULT.LIST.OUT
+    - jndiName: jms/DMG_NOTIFY_IN
+      queueName: QA.DMG.NOTIFY.IN
+      advancedProperties:
+        useRFH2: 'false'
+    - jndiName: jms/DMG_NOTIFY_OUT
+      queueName: QA.DMG.NOTIFY.OUT
+    - jndiName: jms/DMG_CLOSURE_OUT
+      queueName: QA.DMG.CLOSURE.OUT
+    - jndiName: jms/DMG_PROLONG_OUT
+      queueName: QA.DMG.PROLONG.OUT
+    - jndiName: jms/DMG_SUBSCRIPTION_IN
+      queueName: QA.DMG.SUBSCRIPTION.IN
+      advancedProperties:
+        useRFH2: 'false'
+    - jndiName: jms/DMG_SUBSCRIPTION_OUT
+      queueName: QA.DMG.SUBSCRIPTION.OUT
+
+    resourceEnvEntries:
+    - name: DMGConfig
+      jndiName: config/dmgConfig
+      customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/dmg.properties"
+
+    systemProperties:
+    - name: spring.profiles.active
+      value: was
+
+    resourceFiles:
+    - files/DMG/dmg.properties
+
+  roles:
+  - base_was

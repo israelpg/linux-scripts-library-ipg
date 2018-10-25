@@ -1,0 +1,75 @@
+---
+- hosts:   RefNode_REF_500B_EB  
+  user: root
+  vars:
+    was_app_name: PREFS_500a_MBR2
+    was_cluster_name:   PREFS_500a  
+    default_port: 21600
+    group: was6group
+    owner: was6u500
+    path: /data/prf/{{ was_app_name }}
+
+    systemProperties:
+    - name: logback.configurationFile
+      value: "{{ path }}/resources/logback.xml"
+    
+      
+    vhost: PREFS_500_vhost
+    host_aliases:
+    - hostname: s598lr2wseb01.ref.cpc998.be  
+      port: 21600
+    - hostname: s598lr2wseb02.ref.cpc998.be  
+      port: 21600
+    - hostname: prefscenter.ref.cpc998.be  
+      port: 21600
+    - hostname: prefscenter.ref.cpc998.be  
+      port: 21600
+    - hostname: prefscenter.ref.cpc998.be  
+      port: 80
+
+    jmscf:
+    - jndiName: jms/PREFCNTR_mqConnectionFactory
+      qmgrName: RQM5EB1
+      qmgrSvrconnChannel: MTEAM.CLIENT.SVRCONN
+      connectionNameList: s598lr2iib01.ref.cpc998.be(15500)
+      authDataAlias: JMSCF/uqmeb500
+      user: uqmeb500
+      authDataPassword: n3touc3p4s4s4
+      name: PREFS_mqConnectionFactory
+      connectionPool:
+        minConnections: 1
+        maxConnections: 100
+      sessionPool:
+        minConnections: 1
+        maxConnections: 10
+
+    jmsq:
+    - jndiName: jms/PREFCNTR.USER.REQ
+      queueName: QA.PREFCNTR.USER.REQ
+    - jndiName: jms/PREFCNTR.USER.REPLY
+      queueName: QA.PREFCNTR.USER.REPLY
+      
+    dataSources:
+      - authDataAlias: udbbl2105/dbprc500 
+        authDataPassword: JOEEaD-A
+        user: dbprc500
+        currentSchema: PCENTER
+        databaseName: FIN500
+        driverType: 4
+        jndiName: jdbc/PREFSCENTER
+        name: PREFSC_REF
+        portNumber: 50004
+        serverName: s598lr2dbfn01.ref.cpc998.be
+        typeds: universal
+        webSphereDefaultIsolationLevel: 2
+        enableRowsetSupport: 1
+        connectionPool:
+           minConnections: 1
+           maxConnections: 10 
+
+    resourceFiles:
+    - files/PREFS/logback.xml
+
+  roles:
+  - base_was
+

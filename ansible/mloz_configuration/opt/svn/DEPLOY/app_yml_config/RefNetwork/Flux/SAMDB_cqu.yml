@@ -1,0 +1,10 @@
+    resourceEnvEntries:
+    - name: SamdbRessourceConfig
+      jndiName: config/dbsamConfig
+      customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/ch4_dbsam.properties"
+
+    resourceFiles:
+    - files/SAMDB/ch4_dbsam.properties

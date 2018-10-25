@@ -1,0 +1,7 @@
+MLOZ approach:
+
+hosts.cfg : Where all servers are referenced, grouped by environment, cluster (the example of using children in opendj db is optimal)
+
+For each environment, there are different applications, each in a folder containing several .yml Playbooks
+
+When you edit changes, or add new configurations, you then execute the Playbook in the central-repository server (pointing via SVN), and execute a .yml for each WAS server

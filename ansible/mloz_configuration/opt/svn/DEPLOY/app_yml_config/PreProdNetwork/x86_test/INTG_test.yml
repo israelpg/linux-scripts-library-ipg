@@ -1,0 +1,56 @@
+---
+- hosts: PreProdNodetest
+  user: root
+  vars:
+    was_app_name: INTG_test
+    owner: was6tst
+    group: was6group
+    default_port: 21200
+    path: /data/intg/{{ was_app_name }}
+
+    dataSources:
+    - authDataAlias: TEST/INTG500
+      authDataPassword: GTNI500
+      dataTruncation: 'false'
+      databaseName: TESTGFDI
+      dateFormat: iso
+      jndiName: jdbc/JADE2_500
+      libraries: '*LIBL'
+      name: JADE2_500
+      naming: system
+      serverName: test.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: INTG500
+    - authDataAlias: udbitst97/dbinttst
+      authDataPassword: tst20090204
+      clientRerouteAlternatePortNumber: '50004'
+      clientRerouteAlternateServerName: db2-test04.jablux.gfdi.be
+      currentSchema: INTG
+      databaseName: INT500
+      driverType: '4'
+      jndiName: jdbc/INTG_500
+      name: INTG_500
+      portNumber: '50004'
+      serverName: db2-test03.jablux.gfdi.be
+      typeds: universal
+      user: dbinttst
+      webSphereDefaultIsolationLevel: '2'
+
+    resourceEnvEntries:
+    - customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/server-config.xml"
+      jndiName: config/IntgConfig
+      name: ConfigServer
+
+    resourceFiles:
+    - files/INTG/server-config.xml
+
+    systemProperties:
+    - name: intg.jndi.prefix
+      value: jndi
+
+  roles:
+  - base_was

@@ -1,0 +1,44 @@
+---
+- hosts: RefNode_REF_500C_EB
+  user: root
+  vars:
+    was_app_name: EBP_500e
+    default_port: 21040
+    owner: was6u500
+    group: was6group
+    path: /data/ebp/{{ was_app_name }}
+
+    dataSources:
+    - authDataAlias: REF/EBP506
+      authDataPassword: EBP506
+      dataTruncation: 'false'
+      databaseName: REFGFDI
+      dateFormat: iso
+      jndiName: jdbc/EBP_506
+      libraries: '*LIBL'
+      name: AS400EBP_506
+      naming: system
+      serverName: ref.ref.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: EBP506
+
+    host_aliases:
+    - hostname: ebp506-ref.ref.cpc998.be
+      port: 80
+
+    resourceFiles:
+    - files/EBP506/ebp_506.properties
+    - files/EBP506/id_dsa
+    - files/EBP506/logback.xml
+
+    systemProperties:
+    - name: spring.profiles.active
+      value: prod
+    - name: ebp.configuration.file
+      value: "{{ path }}/resources/ebp_506.properties"
+    - name: logback.configurationFile
+      value: "{{ path }}/resources/logback.xml"
+
+  roles:
+  - base_was

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration debug="true" scan="true" scanPeriod="5 minutes">
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the mediaType
+				ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+
+        <encoder>
+            <pattern>{TIME:"%date",MARKER:%marker,ORG:%X{ORG},APP:%logger{36},LVL:%level,COR:%X{COR},CLIENT_ID:%X{CLIENT_ID} ,INFO:"%msg"}%n</pattern>
+        </encoder>
+    </appender>
+
+
+    <appender name="SIFT" class="ch.qos.logback.classic.sift.SiftingAppender">
+        <discriminator class="be.mteam.ebusiness.commons.logging.MarkerBasedDiscriminator">
+            <defaultValue>APPLICATION</defaultValue>
+        </discriminator>
+        <sift>
+            <appender name="FILE-${marker}" class="ch.qos.logback.core.rolling.RollingFileAppender">
+                <file>./logs/${marker}.log</file>
+                <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                    <!-- daily rollover -->
+                    <fileNamePattern>${marker}.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+					<!-- keep 30 days' worth of history -->
+					<maxHistory>30</maxHistory>                    
+                    <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                        <!-- or whenever the file size reaches 20MB -->
+                        <maxFileSize>20MB</maxFileSize>
+                    </timeBasedFileNamingAndTriggeringPolicy>
+                </rollingPolicy>
+
+                <layout class="ch.qos.logback.classic.PatternLayout">
+                    <pattern>{"TIME": "%date", "MARKER": "%marker", "UHST": "%X{UHST}", "ORG": "%X{ORG}", "APP": "%logger{36}", "SVC": "%X{SVC}", "USR": "%X{USR}", "LVL": "%level", "COR": "%X{COR}", "CLIENT_ID": "%X{CLIENT_ID}", "INFO": "%msg"}%n</pattern>
+                </layout>
+            </appender>
+        </sift>
+    </appender>
+
+
+    <logger name="org.springframework" level="INFO"/>
+    <logger name="ch.qos.logback.core" level="INFO"/>
+    <!--  <logger name="org.apache.cxf" level="TRACE"/>  -->
+    <logger name="be.mteam.ebusiness.service" level="INFO"/>
+    <logger name="be.mteam.ebusiness.commons.profiling" level="TRACE"/>
+    <logger name="be.mteam.ebusiness.integration" level="INFO"/>
+    <logger name="be.mteam.ebusiness.web.core.cxf.interceptor.EbusinessContextInInterceptor" level="INFO"/>
+	<logger name="be.mteam.ebusiness.web.core.cxf.interceptor.EbusinessLoggingOutInterceptor" level="INFO"/>
+
+
+	<root level="WARN">
+        <appender-ref ref="SIFT"/>
+    </root>
+</configuration>

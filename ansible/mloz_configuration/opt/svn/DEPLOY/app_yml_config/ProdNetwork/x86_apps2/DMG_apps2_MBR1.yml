@@ -1,0 +1,34 @@
+---
+- hosts: jabluxProdNodeapps201
+  user: root
+  vars:
+    was_app_name: DMG_apps2_MBR1
+    was_cluster_name: DMG_apps2
+    default_port: 21060
+    owner: was6u200
+    group: was6group
+    path: /data/dmg/{{ was_app_name }}
+
+    host_aliases:
+    - hostname: dmg2xx.jablux.cpc998.be
+      port: '443'
+    - hostname: dmg2xx.jablux.cpc998.be
+      port: '80'
+
+    resourceEnvEntries:
+    - customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/dmg.properties"
+      jndiName: config/dmgConfig
+      name: DMGConfig
+
+    resourceFiles:
+    - files/DMG/dmg.properties
+
+    systemProperties:
+    - name: spring.profiles.active
+      value: was
+
+  roles:
+  - base_was

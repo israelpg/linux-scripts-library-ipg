@@ -1,0 +1,190 @@
+---
+- hosts: ProdNode_AIRBUS_200bD_RFND
+  user: root
+  vars:
+    was_app_name: JADER_200b_MBR2
+    was_cluster_name: JADER_200b
+    owner: was6u200
+    group: was6group
+    default_port: 21040
+    path: /data/jade/{{ was_app_name }}
+
+    vhost: RfndProd{{ dc }}_vhost
+
+    systemProperties:
+    - name: client.encoding.override
+      value: 'UTF-8'
+    - name: file.encoding
+      value: 'UTF-8'
+    - name: net.sf.ehcache.skipUpdateCheck
+      value: true
+    - name: jade2.jobs.228
+      value: true
+
+    dataSources:
+    - authDataAlias: udbiorc297/dborc200
+      authDataPassword: 200jdfqh
+      clientRerouteAlternateServerName: s298lp2dbrf02.jablux.cpc998.be
+      clientRerouteAlternatePortNumber: 50004
+      currentSchema: ORC200
+      enableSeamlessFailover: 1
+      databaseName: RFN200
+      driverType: '4'
+      jndiName: jdbc/BPE_200
+      name: BPE_200
+      portNumber: '50004'
+      serverName: s298lp1dbrf02.jablux.cpc998.be
+      typeds: universal
+      user: dborc200
+      webSphereDefaultIsolationLevel: '2'
+
+    - authDataAlias: udbiorc297/dborc206
+      authDataPassword: 206irucn
+      clientRerouteAlternateServerName: s298lp2dbrf02.jablux.cpc998.be
+      clientRerouteAlternatePortNumber: 50004
+      currentSchema: ORC206
+      enableSeamlessFailover: 1
+      databaseName: RFN200
+      driverType: '4'
+      jndiName: jdbc/BPE_206
+      name: BPE_206
+      portNumber: '50004'
+      serverName: s298lp1dbrf02.jablux.cpc998.be
+      typeds: universal
+      user: dborc206
+      webSphereDefaultIsolationLevel: '2'
+
+    - authDataAlias: udbiorc297/dborc226
+      authDataPassword: 226eaiea
+      clientRerouteAlternateServerName: s298lp2dbrf02.jablux.cpc998.be
+      clientRerouteAlternatePortNumber: 50004
+      currentSchema: ORC226
+      enableSeamlessFailover: 1
+      databaseName: RFN200
+      driverType: '4'
+      jndiName: jdbc/BPE_226
+      name: BPE_226
+      portNumber: '50004'
+      serverName: s298lp1dbrf02.jablux.cpc998.be
+      typeds: universal
+      user: dborc226
+      webSphereDefaultIsolationLevel: '2'
+
+    - authDataAlias: udbiorc297/dborc228
+      authDataPassword: 228zoziq
+      clientRerouteAlternateServerName: s298lp2dbrf02.jablux.cpc998.be
+      clientRerouteAlternatePortNumber: 50004
+      currentSchema: ORC228
+      enableSeamlessFailover: 1
+      databaseName: RFN200
+      driverType: '4'
+      jndiName: jdbc/BPE_228
+      name: BPE_228
+      portNumber: '50004'
+      serverName: s298lp1dbrf02.jablux.cpc998.be
+      typeds: universal
+      user: dborc228
+      webSphereDefaultIsolationLevel: '2'
+
+    - authDataAlias: AIRBUS/JRDE200
+      authDataPassword: qmslj200
+      dataTruncation: 'false'
+      databaseName: AIRBUS
+      dateFormat: iso
+      extendedDynamic: 'false'
+      jndiName: jdbc/JADE2_200
+      libraries: '*LIBL'
+      name: JADE2_200
+      naming: system
+      package: DSJ2200
+      packageCriteria: select
+      packageLibrary: JADEBUS200
+      serverName: airbus.jablux.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE200
+      connectionPool:
+         connectionTimeout: 30
+         maxConnections: 50
+         minConnections: 15
+         reapTime: 300
+         agedTimeout: 0 
+
+    - authDataAlias: AIRBUS/JRDE206
+      authDataPassword: poeqi206
+      dataTruncation: 'false'
+      databaseName: AIRBUS
+      dateFormat: iso
+      extendedDynamic: 'false'
+      jndiName: jdbc/JADE2_206
+      libraries: '*LIBL'
+      name: JADE2_206
+      naming: system
+      package: DSJ2206
+      packageCriteria: select
+      packageLibrary: JADEBUS206
+      serverName: airbus.jablux.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE206
+      connectionPool:
+         connectionTimeout: 30
+         maxConnections: 50
+         minConnections: 15
+         reapTime: 300
+         agedTimeout: 0 
+
+    - authDataAlias: AIRBUS/JRDE226
+      authDataPassword: vklws226
+      dataTruncation: 'false'
+      databaseName: AIRBUS
+      dateFormat: iso
+      extendedDynamic: 'false'
+      jndiName: jdbc/JADE2_226
+      libraries: '*LIBL'
+      name: JADE2_226
+      naming: system
+      package: DSJ2226
+      packageCriteria: select
+      packageLibrary: JADEBUS226
+      serverName: airbus.jablux.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE226
+      connectionPool:
+         connectionTimeout: 30
+         maxConnections: 50
+         minConnections: 15
+         reapTime: 300
+         agedTimeout: 0 
+
+    - authDataAlias: AIRBUS/JRDE228
+      authDataPassword: ckljh228
+      dataTruncation: 'false'
+      databaseName: AIRBUS
+      dateFormat: iso
+      extendedDynamic: 'false'
+      jndiName: jdbc/JADE2_228
+      libraries: '*LIBL'
+      name: JADE2_228
+      naming: system
+      package: DSJ2228
+      packageCriteria: select
+      packageLibrary: JADEBUS228
+      serverName: airbus.jablux.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE228
+      connectionPool:
+         connectionTimeout: 30
+         maxConnections: 50
+         minConnections: 15
+         reapTime: 300
+         agedTimeout: 0 
+
+    directories:
+    - '{{ path }}/work/jobs'
+
+  roles:
+  - base_was
+

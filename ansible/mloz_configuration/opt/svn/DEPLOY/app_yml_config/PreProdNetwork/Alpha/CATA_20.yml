@@ -1,0 +1,98 @@
+---
+- hosts: PreProdNode_GFDI_20A_RFND
+  user: root
+  vars:
+    was_app_name: CATA_20
+    owner: was6alf
+    group: was6group
+    default_port: 21120
+    path: /data/cata/{{ was_app_name }}
+
+    vhost: RfndAlpha_vhost
+
+    dataSources:
+    - authDataAlias: udbialf597/dbcatalf
+      authDataPassword: alf20090204
+      currentSchema: ADM
+      databaseName: CAT020
+      driverType: '4'
+      jndiName: jdbc/DCADM02X
+      name: DCADM02X
+      portNumber: '50028'
+      serverName: s999ld2dbdv01.teams.gfdi.be
+      typeds: universal
+      user: dbcatalf
+      webSphereDefaultIsolationLevel: '2'
+
+    - authDataAlias: udbialf597/dbcatalf
+      authDataPassword: alf20090204
+      currentSchema: IDX
+      databaseName: CAT020
+      driverType: '4'
+      jndiName: jdbc/DCIDX02X
+      name: DCIDX02X
+      portNumber: '50028'
+      serverName: s999ld2dbdv01.teams.gfdi.be
+      typeds: universal
+      user: dbcatalf
+      webSphereDefaultIsolationLevel: '1'
+
+
+    systemProperties:
+    - name: doccenter.scheduler.enabled
+      value: true
+    - name: doccenter.scheduler.threads
+      value: '1'
+    - name: doccenter.script.folderref.recheck.delay
+      value: '-1'
+    - name: net.sf.ehcache.skipUpdateCheck
+      value: true
+
+    directories:
+    - "{{ path }}/work/logs"
+    - /data/cata/alf
+    - /data/cata/alf/02X
+    - /data/cata/alf/02X/chunks
+    - /data/cata/alf/02X/config
+    - /data/cata/alf/02X/config/dbspecific
+    - /data/cata/alf/02X/config/dbspecific/DCIDX02X
+    - /data/cata/alf/02X/dccache
+    - /data/cata/alf/02X/logs
+    - /data/cata/alf/02X/work
+
+  roles:
+  - base_was
+
+  # Post Install
+  tasks:
+  - name: Copy dbspecific.zip
+    copy: src="files/CATA/dbspecific.zip" dest="/data/cata/alf/02X/config/dbspecific.zip"
+      owner={{ owner }} group={{ group }} mode=0644
+    register: dbspecific_zip
+    tags: files
+    notify: reset_acl
+
+  - name: Extract dbspecific.zip if uploaded
+    when: dbspecific_zip.changed
+    unarchive: src="/data/cata/alf/02X/config/dbspecific.zip"
+      dest="/data/cata/alf/02X/config/dbspecific/DCIDX02X/"
+      owner={{ owner }} group={{ group }} mode=u=rwX,g=rX,o=rX copy=no
+    tags: files
+    notify: reset_acl
+
+  - name: Copy dbdefault.zip
+    copy: src="files/CATA/dbdefault.zip" dest="/data/cata/alf/02X/config/dbdefault.zip"
+      owner={{ owner }} group={{ group }} mode=0644
+    register: dbdefault_zip
+    tags: files
+    notify: reset_acl
+
+  - name: Extract dbdefault.zip if uploaded
+    when: dbdefault_zip.changed
+    unarchive: src="/data/cata/alf/02X/config/dbdefault.zip"
+      dest="/data/cata/alf/02X/config/"
+      owner={{ owner }} group={{ group }} mode=u=rwX,g=rX,o=rX copy=no creates="/data/cata/alf/02X/config/dbdefault"
+    tags: files
+    notify: reset_acl
+
+  

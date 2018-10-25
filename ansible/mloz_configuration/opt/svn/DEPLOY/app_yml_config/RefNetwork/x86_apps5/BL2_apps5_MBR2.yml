@@ -1,0 +1,116 @@
+---
+- hosts: RefNodeapps502
+  user: root
+  vars:
+    was_app_name: BL2_apps5_MBR2
+    was_cluster_name: BL2_apps5
+    default_port: 22200
+    group: was6group
+    owner: was6u500
+    path: /data/bl2/{{ was_app_name }}
+
+    systemProperties:
+    - name: logback.configurationFile
+      value: "{{ path }}/resources/logback.xml"
+    - name: spring.profiles.active
+      value: ref,mocked-security
+    - name: com.ibm.ws.classloader.strict
+      value: true
+    - name: user.timezone
+      value: Europe/Brussels
+    - name: opendj.baseuri
+      value: http://s999jqlnx175.jablux.gfdi.be:8389/
+    - name: opendj.username
+      value: sa_openam
+    - name: opendj.password
+      value: sa_password
+    - name: openam.baseuri
+      value: http://s999jqlnx175.jablux.gfdi.be:8389/
+      
+    jmscf:
+    - jndiName: jms/MCA_mqConnectionFactory
+      qmgrName: QM.EB.500
+      qmgrSvrconnChannel: MTEAM.ADMIN.SVRCONN
+      connectionNameList: s998jrlnx080.ref.cpc998.be(14500),s998jrlnx081.ref.cpc998.be(14500)
+      authDataAlias: JMSCF/uqmeb500
+      user: uqmeb500
+      authDataPassword: n3touc3p4s4s4
+      name: MCA_mqConnectionFactory
+      connectionPool:
+        minConnections: 25
+        maxConnections: 200
+      sessionPool:
+        minConnections: 10
+        maxConnections: 40
+
+    jmsq:
+    - jndiName: jms/MCA_PERSON_IN
+      queueName: QA.MCA.PERSON.IN
+      qmgr: QM.EB.500
+    - jndiName: jms/MCA_OUT
+      queueName: QA.MCA.OUT
+      qmgr: QM.EB.500
+    - jndiName: jms/MCA_INSURANCE_IN
+      queueName: QA.MCA.INSURANCE.IN
+      qmgr: QM.EB.500
+    - jndiName: jms/MCA_FAMILY_IN
+      queueName: QA.MCA.FAMILY.IN
+      qmgr: QM.EB.500
+    - jndiName: jms/MCA_INDEMNITY_IN
+      queueName: QA.MCA.INDEMNITY.IN
+      qmgr: QM.EB.500
+    - jndiName: jms/MCA_DISPENSATION_IN
+      queueName: QA.MCA.DISPENSATION.IN
+      qmgr: QM.EB.500
+    - jndiName: jms/MCA_HEALTHCARE_IN
+      queueName: QA.MCA.HEALTHCARE.IN
+      qmgr: QM.EB.500
+    - jndiName: jms/MCA_REPLY
+      queueName: QA.MCA.REPLY
+      qmgr: QM.EB.500
+    - jndiName: jms/MCA_FINANCIAL_IN
+      queueName: QA.MCA.FINANCIAL.IN
+      qmgr: QM.EB.500
+    - jndiName: jms/MCA_ACTION_IN
+      queueName: QA.MCA.ACTION.IN
+      qmgr: QM.EB.500
+    - jndiName: jms/MCA_INFOBOX_IN
+      queueName: QA.MCA.INFOBOX.IN
+      qmgr: QM.EB.500
+    - jndiName: jms/MCA_DOCUMENT_REPLY
+      queueName: QA.MCA.DOCUMENT.REPLY
+      qmgr: QM.EB.500
+    - jndiName: jms/MCA_PROCURATION_IN
+      queueName: QA.MCA.PROCURATION.IN
+      qmgr: QM.EB.500
+    - jndiName: jms/MCA_MEDICAL_AGREEMENT_IN
+      queueName: QA.MCA.MEDICAL_AGREEMENT.IN
+      qmgr: QM.EB.500
+    - jndiName: jms/MCA_TASKS_IN
+      queueName: QA.MCA.DGC_TASK.IN
+      qmgr: QM.EB.500
+    - jndiName: jms/MCA_ONLINE_ACCOUNT_IN
+      queueName: QA.MCA.ONLINE_ACCOUNT.IN
+      qmgr: QM.EB.500
+
+      
+
+    dataSources:
+    - authDataAlias: udbbl2105/dbdil500     # pools des connexions: min = 25, max = 250
+      authDataPassword: f8ty5j1z
+      currentSchema: DIL
+      databaseName: EBU500
+      driverType: 4
+      jndiName: jdbc/MCA_DIL
+      name: MCA_DIL
+      portNumber: 50004
+      serverName: s998jrlnx083.ref.cpc998.be
+      typeds: universal
+      user: dbdil500
+      webSphereDefaultIsolationLevel: 2
+
+    resourceFiles:
+    - files/BL2/logback.xml
+
+  roles:
+  - base_was

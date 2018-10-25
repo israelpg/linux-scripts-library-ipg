@@ -1,0 +1,89 @@
+---
+- hosts: jabluxProdNodeapps201
+  user: root
+  vars:
+    was_app_name: EFAC_apps2_MBR1
+    was_cluster_name: EFAC_apps2
+    owner: was6u200
+    group: was6group
+    default_port: 21080
+    path: /data/efac/{{ was_app_name }}
+
+    jmscf:
+    - jndiName: jms/mqIIBConnectionFactory 
+      qmgrName: QM.FL.200
+      qmgrSvrconnChannel: MTEAM.ADMIN.SVRCONN
+      connectionNameList: s998jplnx134.jablux.cpc998.be(15200),s998jplnx135.jablux.cpc998.be(15200)
+      authDataAlias: JMSCF/uqmfl200
+      user: uqmfl200
+      authDataPassword: Welcome01
+      name: EFAC_mqConnectionFactory
+
+    jmsq:
+# UNCHECK : Append an RFH version 2 header to reply messages 
+    - jndiName: jms/QA.NIPPIN.ASYNC.GENERIC.OUT.BIG
+      queueName: QA.NIPPIN.ASYNC.GENERIC.OUT.BIG
+      qmgr: QM.FL.200
+# UNCHECK : Append an RFH version 2 header to reply messages 
+    - jndiName: jms/QA.NIPPIN.LOGS
+      queueName: QA.NIPPIN.LOGS
+      qmgr: QM.FL.200
+# UNCHECK : Append an RFH version 2 header to reply messages 
+    - jndiName: jms/QA.INAMI.MODEL.ENCRYPT.REQ
+      queueName: QA.INAMI.MODEL.ENCRYPT.REQ
+      qmgr: QM.FL.200
+# UNCHECK : Append an RFH version 2 header to reply messages 
+    - jndiName: jms/QA.INAMI.MODEL.ENCRYPT.RESP
+      queueName: QA.INAMI.MODEL.ENCRYPT.RESP
+      qmgr: QM.FL.200
+
+    host_aliases:
+    - hostname: efac2xx.jablux.cpc998.be
+      port: '443'
+    - hostname: efac2xx.jablux.cpc998.be
+      port: '80'
+
+    resourceEnvEntries:
+    - customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/efac.properties"
+      jndiName: config/efacConfig
+      name: EFACConfig
+
+    resourceFiles:
+    - files/EFAC/efac.properties
+    - files/EFAC/soapParser.properties
+    - files/EFAC/aesSymetric2013prod.key
+
+    systemProperties:
+    - name: spring.profiles.active
+      value: was
+
+  roles:
+  - base_was
+
+  tasks:
+  - name: add security.provider.12 properties
+    lineinfile: dest=/opt/WebSphere85/AppServer/java_1.7_64/jre/lib/security/java.security
+      regexp="^security\.provider\.12.*$"
+      line="security.provider.12=org.bouncycastle.jce.provider.BouncyCastleProvider"
+      insertafter="security.provider.11.*"
+      backup=yes
+    tags: custom
+
+  - name: copy bcprov-jdk16-1.45.jar
+    copy: src=files/EFAC/bcprov-jdk16-1.45.jar
+      dest=/opt/WebSphere85/AppServer/java_1.7_64/jre/lib/ext/bcprov-jdk16-1.45.jar
+      backup=yes
+    tags: custom
+
+  - name: copy local_policy.jar and US_export_policy.jar
+    copy: src=files/EFAC/{{ item }}
+      dest=/opt/WebSphere85/AppServer/java_1.7_64/jre/lib/security/{{ item }}
+      backup=yes
+    with_items:
+    - local_policy.jar
+    - US_export_policy.jar
+    tags: custom
+

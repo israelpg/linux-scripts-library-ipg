@@ -1,0 +1,39 @@
+---
+- hosts: PreProdNode_BETA_500A_RFND
+  user: root
+  vars:
+    was_app_name: CLIENTS_BETA
+    owner: was6bet
+    group: was6group
+    default_port: 21040
+    path: /data/clients/{{ was_app_name }}
+
+    vhost: RfndBeta_vhost
+    host_aliases:
+    - hostname: rfbeta.jablux.gfdi.be
+      port: 80
+    - hostname: s999lq2wsrf05.jablux.gfdi.be
+      port: 21040
+
+    dataSources:
+    - authDataAlias: BETA/M998JADEWS
+      authDataPassword: mdisbeta
+      dataTruncation: 'false'
+      databaseName: GFDIDB2
+      dateFormat: iso
+      jndiName: jdbc/MDIS_RfndBeta
+      libraries: 'JADEPRF'
+      name: MDIS_RfndBeta
+      naming: system
+      serverName: s444b58a.jablux.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: M998JADEWS
+      extendedDynamic: 'false'
+      package: DSMDIS
+      packageLibrary: QGPL
+      packageCriteria: select
+
+  roles:
+  - base_was
+

@@ -1,0 +1,67 @@
+---
+- hosts:   IntegNode_500A_EB  
+  user: root
+  vars:
+    was_app_name: PREFS_500a_MBR1
+    was_cluster_name:   PREFS_500a  
+    default_port: 21600
+    group: was6group
+    owner: was6u500
+    path: /data/prf/{{ was_app_name }}
+
+    systemProperties:
+    - name: logback.configurationFile
+      value: "{{ path }}/resources/logback.xml"
+    
+      
+    vhost: PREFS_500_vhost
+    host_aliases:
+    - hostname:   s598li2wseb01.integ.gfdi.be  
+      port: 21600
+
+    jmscf:
+    - jndiName: jms/PREFCNTR_mqConnectionFactory
+      qmgrName: NQM5EB1
+      qmgrSvrconnChannel: MTEAM.CLIENT.SVRCONN
+      connectionNameList: s598li2iib03.integ.gfdi.be(15500)
+      authDataAlias: JMSCF/uqmeb500
+      user: uqmeb500
+      authDataPassword: n3touc3p4s4s4
+      name: PREFCNTR_mqConnectionFactory
+      connectionPool:
+        minConnections: 25
+        maxConnections: 400
+      sessionPool:
+        minConnections: 10
+        maxConnections: 40
+
+    jmsq:
+    - jndiName: jms/PREFCNTR.USER.REQ
+      queueName: QA.PREFCNTR.USER.REQ
+    - jndiName: jms/PREFCNTR.USER.REPLY
+      queueName: QA.PREFCNTR.USER.REPLY
+      
+    dataSources:
+      - authDataAlias: udbbl2105/dbprc500 
+        authDataPassword: Xrv6VyEE
+        user: dbprc500
+        currentSchema: PCENTER
+        databaseName: FIN500
+        driverType: 4
+        jndiName: jdbc/PREFSCENTER
+        name: PREFSC_INTEG
+        portNumber: 50004
+        serverName: s998li2dbfn01.integ.gfdi.be
+        typeds: universal
+        webSphereDefaultIsolationLevel: 2
+        enableRowsetSupport: 1
+        connectionPool:
+           minConnections: 1
+           maxConnections: 10 
+
+    resourceFiles:
+    - files/PREFS/logback.xml
+
+  roles:
+  - base_was
+

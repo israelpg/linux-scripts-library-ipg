@@ -1,0 +1,63 @@
+---
+- hosts: RefNodeapps501
+  user: root
+  vars:
+    was_app_name: FLOWVIEW_apps5_MBR1
+    was_cluster_name: FLOWVIEW_apps5
+    default_port: 21320
+    owner: was6u500
+    group: was6group
+    path: /data/flowview/{{ was_app_name }}
+
+    host_aliases:
+    - hostname: flowview-ref.ref.cpc998.be
+      port: 443
+    - hostname: flowview-ref.ref.cpc998.be
+      port: 80
+
+    dataSources:
+    - authDataAlias: REF/JCARE500
+      user: JCARE500
+      authDataPassword: MAQID31
+      name: AS400IIBLOG_5xx
+      jndiName: jdbc/IIBLOG_AS400_RC
+      serverName: ref.ref.cpc998.be
+      typeds: toolbox
+      dataTruncation: 'false'
+      databaseName: REFGFDI
+      dateFormat: iso
+      libraries: '*LIBL'
+      naming: system
+      timeFormat: iso
+      websphereDefaultIsolationLevel: 2
+    - authDataAlias: udbidmg597/dbmct500
+      authDataPassword: 19jun091541
+      user: dbmct500
+      name: LNXIBLOG_5xx
+      jndiName: jdbc/IIBLOG_LINUX_RC
+      serverName: iobe-pil-db2-01.ref.cpc998.be
+      portNumber: 50004
+      clientRerouteAlternateServerName: iobe-pil-db2-02.ref.cpc998.be
+      clientRerouteAlternatePortNumber: 50004
+      databaseName: MCT500
+      driverType: 4
+      typeds: universal
+      currentSchema: CARE
+      webSphereDefaultIsolationLevel: 2
+      connectionPool:
+        maxConnections: 50
+        minConnections: 5
+
+    resourceEnvEntries:
+    - name: IIBLOGConfig
+      jndiName: config/iibLogViewConfig
+      customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/iib_logView.properties"
+
+    resourceFiles:
+    - files/FLOWVIEW/iib_logView.properties
+
+  roles:
+  - base_was

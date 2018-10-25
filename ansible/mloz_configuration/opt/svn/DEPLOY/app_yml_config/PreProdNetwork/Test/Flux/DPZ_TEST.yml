@@ -1,0 +1,124 @@
+---
+- hosts: PreProdNode_TEST_500A_FLUX
+  user: root
+  vars:
+    was_app_name: DPZ_TEST
+    default_port: 21120
+    owner: was6tst
+    group: was6group
+    path: /data/dpz/{{ was_app_name }}
+
+    webcntr_prop:
+    - name: com.ibm.ws.webcontainer.extractHostHeaderPort
+      value: 'true'
+    - name: trusthostheaderport
+      value: 'true'
+
+    vhost: DPZ_Test_vhost
+    host_aliases:
+    - hostname: dpz-test.jablux.gfdi.be
+      port: 80
+    - hostname: s999lq2wsrp01.jablux.gfdi.be
+      port: 80
+    - hostname: "{{ ansible_fqdn }}"
+      port: 21120
+    - hostname: "{{ ansible_fqdn }}"
+      port: 21121
+
+    dataSources:
+    - authDataAlias: TEST/JDPZ500
+      authDataPassword: wait
+      dataTruncation: 'false'
+      databaseName: TESTGFDI
+      dateFormat: iso
+      jndiName: jdbc/DPZ_RC
+      libraries: '*LIBL'
+      name: DPZ500
+      naming: system
+      serverName: test.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JDPZ500
+      webSphereDefaultIsolationLevel: 2
+      
+    - authDataAlias: udbitst97/dbdpztst
+      authDataPassword: dpztest123
+      clientRerouteAlternatePortNumber: '50004'
+      clientRerouteAlternateServerName: s999lq2dbrf02.jablux.gfdi.be
+      currentSchema: INTG
+      databaseName: RFN500
+      driverType: '4'
+      jndiName: jdbc/INTG_RC
+      name: INTGDPZ500
+      portNumber: '50004'
+      serverName: s999lq2dbrf01.jablux.gfdi.be
+      typeds: universal
+      user: dbdpztst
+      webSphereDefaultIsolationLevel: 2
+
+    mqjms:
+    - authDataAlias: TEST/JDPZ500
+      authDataPassword: wait
+      jndiName: jms/DPZ_QCF_RC
+      name: DPZ_QCF_500
+      qmgrHostname: test.gfdi.be
+      qmgrName: QM.500
+      qmgrPortNumber: 14500
+      qmgrSvrconnChannel: SYSTEM.DEF.SVRCONN
+
+    resourceEnvEntries:
+    - name: ConfigServer
+      jndiName: config/ConfigServer
+      customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/server-config.xml"
+    - name: CareUnitConfig
+      jndiName: config/CareUnitConfig
+      customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/careunit.properties"
+    - name: CertificateConfig
+      jndiName: config/CertificateConfig
+      customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/wssecurityin.properties"
+    - name: KeystoreConfig
+      jndiName: config/KeystoreConfig
+      customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/wssecurityout.properties"
+    - name: FlowListConfig
+      jndiName: config/flowListConfig
+      customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/flowList.properties"
+
+    resourceFiles:
+    - files/DPZ/careunit.properties
+    - files/DPZ/flowList.properties
+    - files/DPZ/server-config.xml
+    - files/DPZ/wssecurityin.properties
+    - files/DPZ/wssecurityout.properties
+
+    directories:
+    - "{{ path }}/work/archive"
+    - "{{ path }}/work/flow"
+    - "{{ path }}/work/logs"
+
+  roles:
+  - base_was
+  
+    
+    
+  # Post Install
+  tasks:
+  - name: create symlinks AuthenticationKeystore.jks -> CertificateKeystore.jks
+    file: src="{{ path }}/resources/CertificateKeystore.jks" dest="{{ path }}/resources/AuthenticationKeystore.jks" owner={{ owner }} group={{ group }} mode=0644 state=link
+    notify: reset_acl
+    tags: files
+  

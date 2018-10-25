@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:config xmlns:tns="http://be.gfdi.fwk"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://be.gfdi.fwk application-config.xsd ">
+
+	<application name="DPZ" />
+
+	<environments>
+		<environment name="500" host="{{ was_server_alias }}" port="{{ default_port }}" contextPath="DPZ" >
+			<as400 systemname="AIRBUS" username="JDPZ500" password="J4PZ500" />
+			<jdbc url="" username="JDPZ500" password="J4PZ500" />
+			<hibernate dialect="be.gfdi.fwk.server.hibernate.DB2400Dialect" show_sql="false" />
+			<security enforceAuthentication="false" />
+			<services>
+				<interceptors>
+					<interceptor name="fwk_securityInterceptor"/>
+				</interceptors>
+			</services>
+			<jobs>
+				<jmsScheduler enabled="false" />
+				<autoStarter enabled="true" />
+			</jobs>
+		</environment>
+	</environments>
+
+</tns:config>

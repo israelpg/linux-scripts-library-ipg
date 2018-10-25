@@ -1,0 +1,11 @@
+---
+- hosts: opdj_hosts
+  user: root
+  vars:
+    owner: forgerock
+    group: forgerock
+
+  tasks:
+  - name: Copy opdj_flashcopy_script
+    copy: src="files/flashcopy_setting_dj.sh" dest="/home/forgerock/flashcopy_setting_dj.sh"
+      owner={{ owner }} group={{ group }} mode=0770    

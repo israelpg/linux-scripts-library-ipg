@@ -1,0 +1,62 @@
+---
+- hosts: ProdNode_AIRBUS_566A_RFND
+  user: root
+  vars:
+    was_app_name: INTG_566
+    default_port: 21120
+    path: /data/intg/{{ was_app_name }}
+    group: was6group
+    owner: was6u566
+
+    vhost: RfndTrn{{ dc }}_vhost
+
+    systemProperties:
+    - name: client.encoding.override
+      value: 'UTF-8'
+    - name: file.encoding
+      value: 'UTF-8'
+    - name: intg.jndi.prefix
+      value: jndi
+    - name: net.sf.ehcache.skipUpdateCheck
+      value: true
+
+    dataSources:
+    - authDataAlias: udbiint597/dbint500
+      authDataPassword: 500fkghu
+      clientRerouteAlternateServerName: s598lp2dbrf01.jablux.cpc998.be
+      clientRerouteAlternatePortNumber: 50004
+      currentSchema: INTG
+      enableSeamlessFailover: 1
+      databaseName: RFN500
+      driverType: '4'
+      jndiName: jdbc/INTG_566
+      name: INTG_566
+      portNumber: '50004'
+      serverName: s598lp1dbrf01.jablux.cpc998.be
+      typeds: universal
+      user: dbint500
+      webSphereDefaultIsolationLevel: '2'
+      connectionPool:
+        maxConnections: 60
+        minConnections: 1
+
+    - authDataAlias: AIRBUS/INTG566
+      authDataPassword: rfnd566
+      dataTruncation: 'false'
+      databaseName: AIRBUS
+      dateFormat: iso
+      extendedDynamic: 'false'
+      jndiName: jdbc/JADE2_566
+      libraries: '*LIBL'
+      name: JADE2_566
+      naming: system
+      package: DSJ2566
+      packageCriteria: select
+      packageLibrary: JADEBUS566
+      serverName: airbus.jablux.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: INTG566
+
+  roles:
+  - base_was

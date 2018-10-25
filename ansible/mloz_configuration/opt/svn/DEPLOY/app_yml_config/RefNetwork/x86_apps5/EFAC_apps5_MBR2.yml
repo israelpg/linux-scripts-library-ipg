@@ -1,0 +1,150 @@
+---
+- hosts: RefNodeapps502
+  user: root
+  vars:
+    was_app_name: EFAC_apps5_MBR2
+    was_cluster_name: EFAC_apps5
+    default_port: 22080
+    owner: was6u500
+    group: was6group
+    path: /data/efac/{{ was_app_name }}
+
+    dataSources:
+    - authDataAlias: REF/JCARE500
+      authDataPassword: MAQID31
+      dataTruncation: 'false'
+      databaseName: REFGFDI
+      dateFormat: iso
+      jndiName: jdbc/EFAC_AS400_RC
+      libraries: '*LIBL'
+      name: AS400EFAC_500
+      naming: system
+      serverName: ref.ref.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JCARE500
+    - authDataAlias: REF/JCARE500
+      authDataPassword: MAQID31
+      dataTruncation: 'false'
+      databaseName: REFACT
+      dateFormat: iso
+      enableMultithreadedAccessDetection: 'false'
+      errorDetectionModel: ExceptionMapping
+      jmsOnePhaseOptimization: 'false'
+      jndiName: jdbc/EFAC_AS400_RO_RC
+      libraries: '*LIBL'
+      name: AS400_RO_EFAC_500
+      naming: system
+      nonTransactionalDataSource: 'false'
+      preTestSQLString: SELECT CURRENT SQLID FROM SYSIBM.SYSDUMMY1
+      reauthentication: 'false'
+      serverName: refact.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JCARE500
+      validateNewConnection: 'false'
+      validateNewConnectionRetryCount: 100
+      validateNewConnectionRetryInterval: 3
+      connectionPool:
+        maxConnections: 30
+        minConnections: 1
+    - authDataAlias: udbidmg597/dbmct500
+      authDataPassword: 19jun091541
+      clientRerouteAlternatePortNumber: 50004
+      clientRerouteAlternateServerName: iobe-pil-db2-02.ref.cpc998.be
+      currentSchema: CARE
+      databaseName: MCT500
+      driverType: 4
+      jndiName: jdbc/EFAC_LINUX_RC
+      name: LNXEFAC_500
+      portNumber: 50004
+      serverName: iobe-pil-db2-01.ref.cpc998.be
+      typeds: universal
+      user: dbmct500
+      webSphereDefaultIsolationLevel: 2
+      connectionPool:
+        maxConnections: 50
+        minConnections: 5
+
+    jmscf:
+    - jndiName: jms/mqIIBConnectionFactory 
+      qmgrName: QM.FL.500
+      qmgrSvrconnChannel: MTEAM.ADMIN.SVRCONN
+      connectionNameList: s998jrlnx080.ref.cpc998.be(15500),s998jrlnx081.ref.cpc998.be(15500)
+      authDataAlias: JMSCF/uqmfl500
+      user: uqmfl500
+      authDataPassword: Welcome01
+      name: EFAC_mqConnectionFactory
+
+    jmsq:
+# UNCHECK : Append an RFH version 2 header to reply messages 
+    - jndiName: jms/QA.NIPPIN.ASYNC.GENERIC.OUT.BIG
+      queueName: QA.NIPPIN.ASYNC.GENERIC.OUT.BIG
+      qmgr: QM.FL.500
+# UNCHECK : Append an RFH version 2 header to reply messages 
+    - jndiName: jms/QA.NIPPIN.LOGS
+      queueName: QA.NIPPIN.LOGS
+      qmgr: QM.FL.500
+# UNCHECK : Append an RFH version 2 header to reply messages 
+    - jndiName: jms/QA.INAMI.MODEL.ENCRYPT.REQ
+      queueName: QA.INAMI.MODEL.ENCRYPT.REQ
+      qmgr: QM.FL.500
+# UNCHECK : Append an RFH version 2 header to reply messages 
+    - jndiName: jms/QA.INAMI.MODEL.ENCRYPT.RESP
+      queueName: QA.INAMI.MODEL.ENCRYPT.RESP
+      qmgr: QM.FL.500
+
+    host_aliases:
+    - hostname: efac5xx-ref.ref.cpc998.be
+      port: 80
+    - hostname: efac5xx-ref.ref.cpc998.be
+      port: 443
+
+    resourceEnvEntries:
+    - name: EFACConfig
+      jndiName: config/efacConfig
+      customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/efac.properties"
+    - name: EfacSoapParser
+      jndiName: config/soapParserConfig
+      customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/soapParser.properties"
+
+    systemProperties:
+    - name: spring.profiles.active
+      value: was
+
+    resourceFiles:
+    - files/EFAC/efac.properties
+    - files/EFAC/soapParser.properties
+    - files/EFAC/aesSymetric2013prod.key
+
+  roles:
+  - base_was
+
+  tasks:
+  - name: add security.provider.12 properties
+    lineinfile: dest=/opt/WebSphere85/AppServer/java_1.7_64/jre/lib/security/java.security
+      regexp="^security\.provider\.12.*$"
+      line="security.provider.12=org.bouncycastle.jce.provider.BouncyCastleProvider"
+      insertafter="security.provider.11.*"
+      backup=yes
+    tags: test
+
+  - name: copy bcprov-jdk16-1.45.jar
+    copy: src=files/EFAC/bcprov-jdk16-1.45.jar
+      dest=/opt/WebSphere85/AppServer/java_1.7_64/jre/lib/ext/bcprov-jdk16-1.45.jar
+      backup=yes
+
+  - name: copy local_policy.jar and US_export_policy.jar
+    copy: src=files/EFAC/{{ item }}
+      dest=/opt/WebSphere85/AppServer/java_1.7_64/jre/lib/security/{{ item }}
+      backup=yes
+    with_items:
+    - local_policy.jar
+    - US_export_policy.jar
+

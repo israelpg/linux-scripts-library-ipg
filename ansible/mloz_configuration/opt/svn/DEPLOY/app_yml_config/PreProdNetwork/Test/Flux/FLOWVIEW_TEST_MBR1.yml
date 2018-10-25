@@ -1,0 +1,88 @@
+---
+- hosts: PreProdNode_TEST_500A_FLUX
+  user: root
+  vars:
+    was_app_name: FLOWVIEW_TEST_MBR1
+    was_cluster_name: FLOWVIEW_TEST
+    default_port: 21320
+    owner: was6tst
+    group: was6group
+    path: /data/flowview/{{ was_app_name }}
+
+    vhost: FLOWVIEW_Test_vhost
+    host_aliases:
+    - hostname: flowview-test.jablux.gfdi.be
+      port: 443
+    - hostname: s999lq2wsrp01.jablux.gfdi.be
+      port: 443
+    - hostname: s999lq2wsfl07.jablux.gfdi.be
+      port: 21320
+    - hostname: s999lq2wsfl07.jablux.gfdi.be
+      port: 21321
+
+    dataSources:
+    - authDataAlias: TEST/JCARE500
+      authDataPassword: wait
+      dataTruncation: 'false'
+      databaseName: TESTGFDI
+      dateFormat: iso
+      jndiName: jdbc/IIBLOG_AS400_RC
+      libraries: '*LIBL'
+      name: AS400IIBLOG_500
+      naming: system
+      serverName: test.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JCARE500
+
+    - authDataAlias: udbitst597/dbmcttst
+      authDataPassword: tst20120410
+      clientRerouteAlternatePortNumber: 50004
+      clientRerouteAlternateServerName: s999lq2dbfl04.jablux.gfdi.be
+      currentSchema: CARE
+      enableSeamlessFailover: 1
+      databaseName: MCT500
+      driverType: 4
+      jndiName: jdbc/IIBLOG_LINUX_RC_2
+      name: LNXIBLOG2_500
+      portNumber: 50004
+      serverName: s999lq2dbfl03.jablux.gfdi.be
+      typeds: universal
+      user: dbmcttst
+      webSphereDefaultIsolationLevel: 2
+      connectionPool:
+        maxConnections: 50
+        minConnections: 1
+
+    - authDataAlias: udbitst597/dbmcttst
+      authDataPassword: tst20120410
+      clientRerouteAlternatePortNumber: 50004
+      clientRerouteAlternateServerName: s999lq2dbfl02.jablux.gfdi.be
+      currentSchema: CARE
+      enableSeamlessFailover: 1
+      databaseName: MCT500
+      driverType: 4
+      jndiName: jdbc/IIBLOG_LINUX_RC
+      name: LNXIBLOG_500
+      portNumber: 50004
+      serverName: s999lq2dbfl01.jablux.gfdi.be
+      typeds: universal
+      user: dbmcttst
+      webSphereDefaultIsolationLevel: 2
+      connectionPool:
+        maxConnections: 50
+        minConnections: 1
+
+    resourceEnvEntries:
+    - name: IIBLOGConfig
+      jndiName: config/iibLogViewConfig
+      customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/iib_logView.properties"
+
+    resourceFiles:
+    - files/FLOWVIEW/iib_logView.properties
+
+  roles:
+  - base_was

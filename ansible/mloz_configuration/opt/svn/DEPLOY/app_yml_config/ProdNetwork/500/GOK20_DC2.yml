@@ -1,0 +1,256 @@
+---
+- hosts:  pdrpGOK20
+  user: root
+  vars:
+    owner: root
+    group: tomcat
+
+  tasks:
+
+  - name: create root directory mgnl_509
+    file: path="/data/mgnl_509" state=directory mode=0777
+  - name: create symlinks /opt/tomcat/mgnl_509 to /data/mgnl_509
+    file: src=/data/mgnl_509 dest=/opt/tomcat/mgnl_509 state=link force=True
+  - name: create  conf sub directory for mgnl_509
+    file: path="/opt/tomcat/mgnl_509/conf" state=directory mode=0777
+  - name: create  conf/fes sub directory for mgnl_509
+    file: path="/opt/tomcat/mgnl_509/conf/fes" state=directory mode=0777
+  - name: create  conf/magnolia sub directory for mgnl_509
+    file: path="/opt/tomcat/mgnl_509/conf/magnolia" state=directory mode=0777
+  - name: create  conf/mca sub directory for mgnl_509
+    file: path="/opt/tomcat/mgnl_509/conf/mca" state=directory mode=0777
+  - name: create  conf/docupload sub directory for mgnl_509
+    file: path="/opt/tomcat/mgnl_509/conf/docupload" state=directory mode=0777
+  - name: create  conf/ldap sub directory for mgnl_509
+    file: path="/opt/tomcat/mgnl_509/conf/ldap" state=directory mode=0777
+  - name: create  conf/log4j sub directory for mgnl_509
+    file: path="/opt/tomcat/mgnl_509/conf/log4j" state=directory mode=0777
+  - name: create webapps sub directory for mgnl_509
+    file: path="/opt/tomcat/mgnl_509/webapps" state=directory mode=0777
+  - name: create temp sub directory for mgnl_509
+    file: path="/opt/tomcat/mgnl_509/temp" state=directory mode=0777
+  - name: create logs sub directory for mgnl_509
+    file: path="/opt/tomcat/mgnl_509/logs" state=directory mode=0777
+  - name: create work sub directory for mgnl_509
+    file: path="/opt/tomcat/mgnl_509/work" state=directory mode=0777
+  - name: create db sub directory for mgnl_509
+    file: path="/opt/tomcat/mgnl_509/conf/db" state=directory mode=0777
+  - name: create smtp sub directory for mgnl_509
+    file: path="/opt/tomcat/mgnl_509/conf/smtp" state=directory mode=0777
+  - name: create brodoc sub directory for mgnl_509
+    file: path="/opt/tomcat/mgnl_509/conf/brodoc" state=directory mode=0777
+  - name: create esigne sub directory for mgnl_509
+    file: path="/opt/tomcat/mgnl_509/conf/esigne" state=directory mode=0777
+
+  - name: create root directory mgnl_526
+    file: path="/data/mgnl_526" state=directory mode=0777
+  - name: create symlinks /opt/tomcat/mgnl_526 to /data/mgnl_526
+    file: src=/data/mgnl_526 dest=/opt/tomcat/mgnl_526 state=link force=True
+  - name: create conf sub directory for mgnl_526
+    file: path="/opt/tomcat/mgnl_526/conf" state=directory mode=0777
+  - name: create  conf/fes sub directory for mgnl_526
+    file: path="/opt/tomcat/mgnl_526/conf/fes" state=directory mode=0777
+  - name: create  conf/magnolia sub directory for mgnl_526
+    file: path="/opt/tomcat/mgnl_526/conf/magnolia" state=directory mode=0777
+  - name: create  conf/mca sub directory for mgnl_526
+    file: path="/opt/tomcat/mgnl_526/conf/mca" state=directory mode=0777
+  - name: create  conf/docupload sub directory for 526
+    file: path="/opt/tomcat/mgnl_526/conf/docupload" state=directory mode=0777
+  - name: create  conf/ldap sub directory for mgnl_526
+    file: path="/opt/tomcat/mgnl_526/conf/ldap" state=directory mode=0777
+  - name: create  conf/log4j sub directory for mgnl_526
+    file: path="/opt/tomcat/mgnl_526/conf/log4j" state=directory mode=0777
+  - name: create webapps sub directory for mgnl_526
+    file: path="/opt/tomcat/mgnl_526/webapps" state=directory mode=0777
+  - name: create temp sub directory for mgnl_526
+    file: path="/opt/tomcat/mgnl_526/temp" state=directory mode=0777
+  - name: create logs sub directory for mgnl_526
+    file: path="/opt/tomcat/mgnl_526/logs" state=directory mode=0777
+  - name: create work sub directory for mgnl_526
+    file: path="/opt/tomcat/mgnl_526/work" state=directory mode=0777
+  - name: create db sub directory for mgnl_526
+    file: path="/opt/tomcat/mgnl_526/conf/db" state=directory mode=0777
+  - name: create smtp sub directory for mgnl_526
+    file: path="/opt/tomcat/mgnl_526/conf/smtp" state=directory mode=0777
+  - name: create brodoc sub directory for mgnl_526
+    file: path="/opt/tomcat/mgnl_526/conf/brodoc" state=directory mode=0777
+  - name: create esigne sub directory for mgnl_526
+    file: path="/opt/tomcat/mgnl_526/conf/esigne" state=directory mode=0777
+
+  - name: create root directory author
+    file: path="/data/author" state=directory mode=0777
+  - name: create symlinks /opt/tomcat/author to /data/author
+    file: src=/data/author dest=/opt/tomcat/author state=link force=True
+  - name: create conf sub directory for author
+    file: path="/opt/tomcat/author/conf" state=directory mode=0777
+  - name: create  conf/fes sub directory for author
+    file: path="/opt/tomcat/author/conf/fes" state=directory mode=0777
+  - name: create  conf/magnolia sub directory for author
+    file: path="/opt/tomcat/author/conf/magnolia" state=directory mode=0777
+  - name: create  conf/mca sub directory for author
+    file: path="/opt/tomcat/author/conf/mca" state=directory mode=0777
+  - name: create  conf/docupload sub directory for author
+    file: path="/opt/tomcat/author/conf/docupload" state=directory mode=0777
+  - name: create  conf/ldap sub directory for author
+    file: path="/opt/tomcat/author/conf/ldap" state=directory mode=0777
+  - name: create  conf/log4j sub directory for author
+    file: path="/opt/tomcat/author/conf/log4j" state=directory mode=0777
+  - name: create webapps sub directory for author
+    file: path="/opt/tomcat/author/webapps" state=directory mode=0777
+  - name: create temp sub directory for author
+    file: path="/opt/tomcat/author/temp" state=directory mode=0777
+  - name: create logs sub directory for author
+    file: path="/opt/tomcat/author/logs" state=directory mode=0777
+  - name: create work sub directory for author
+    file: path="/opt/tomcat/author/work" state=directory mode=0777
+  - name: create db sub directory for author
+    file: path="/opt/tomcat/author/conf/db" state=directory mode=0777
+  - name: create smtp sub directory for author
+    file: path="/opt/tomcat/author/conf/smtp" state=directory mode=0777
+  - name: create brodoc sub directory for author
+    file: path="/opt/tomcat/author/conf/brodoc" state=directory mode=0777
+  - name: create esigne sub directory for author
+    file: path="/opt/tomcat/author/conf/esigne" state=directory mode=0777
+
+  - name: create logs sub directory for httpd
+    file: path="/var/www/html/logs/" state=directory mode=0777
+  - name: create symlinks author to /opt/tomcat/author/logs/
+    file: src=/opt/tomcat/author/logs/ dest=/var/www/html/logs/author state=link force=True
+  - name: create symlinks mgnl_509 to /opt/tomcat/mgnl_509/logs/
+    file: src=/opt/tomcat/mgnl_509/logs/ dest=/var/www/html/logs/mgnl_509 state=link force=True
+  - name: create symlinks mgnl_526 to /opt/tomcat/mgnl_526/logs/
+    file: src=/opt/tomcat/mgnl_526/logs/ dest=/var/www/html/logs/mgnl_526 state=link force=True
+
+  - name: Copy server.xml for author
+    copy: src="files/GOK20/author/server.xml" dest="/opt/tomcat/author/conf/server.xml"
+      owner={{ owner }} group={{ group }} mode=0644       
+  - name: Copy server.xml for mgnl_509
+    copy: src="files/GOK20/mgnl_509/server.xml" dest="/opt/tomcat/mgnl_509/conf/server.xml"
+      owner={{ owner }} group={{ group }} mode=0644
+  - name: Copy server.xml for mgnl_526
+    copy: src="files/GOK20/mgnl_526/server.xml" dest="/opt/tomcat/mgnl_526/conf/server.xml"
+      owner={{ owner }} group={{ group }} mode=0644
+
+  - name: Copy web.xml for author
+    copy: src="files/GOK20/author/web.xml" dest="/opt/tomcat/author/conf/web.xml"
+      owner={{ owner }} group={{ group }} mode=0644       
+  - name: Copy web.xml for mgnl_509
+    copy: src="files/GOK20/mgnl_509/web.xml" dest="/opt/tomcat/mgnl_509/conf/web.xml"
+      owner={{ owner }} group={{ group }} mode=0644
+  - name: Copy web.xml for mgnl_526
+    copy: src="files/GOK20/mgnl_526/web.xml" dest="/opt/tomcat/mgnl_526/conf/web.xml"
+      owner={{ owner }} group={{ group }} mode=0644
+
+  - name: Copy context.xml for author
+    copy: src="files/GOK20/author/context.xml" dest="/opt/tomcat/author/conf/context.xml"
+      owner={{ owner }} group={{ group }} mode=0644       
+  - name: Copy context.xml for mgnl_509
+    copy: src="files/GOK20/mgnl_509/conf/DC1/context.xml" dest="/opt/tomcat/mgnl_509/conf/context.xml"
+      owner={{ owner }} group={{ group }} mode=0644
+  - name: Copy context.xml for mgnl_526
+    copy: src="files/GOK20/mgnl_526/conf/DC1/context.xml" dest="/opt/tomcat/mgnl_526/conf/context.xml"
+      owner={{ owner }} group={{ group }} mode=0644
+
+  - name: Copy fes.properties for author
+    copy: src="files/GOK20/author/conf/fes/fes.properties" dest="/opt/tomcat/author/conf/fes/fes.properties"
+      owner={{ owner }} group={{ group }} mode=0644       
+  - name: Copy fes.properties for mgnl_509
+    copy: src="files/GOK20/mgnl_509/conf/fes/fes.properties" dest="/opt/tomcat/mgnl_509/conf/fes/fes.properties"
+      owner={{ owner }} group={{ group }} mode=0644
+  - name: Copy fes.properties for mgnl_526
+    copy: src="files/GOK20/mgnl_526/conf/fes/fes.properties" dest="/opt/tomcat/mgnl_526/conf/fes/fes.properties"
+      owner={{ owner }} group={{ group }} mode=0644
+
+  - name: Copy magnolia.properties for author
+    copy: src="files/GOK20/author/conf/magnolia/magnolia.properties" dest="/opt/tomcat/author/conf/magnolia/magnolia.properties"
+      owner={{ owner }} group={{ group }} mode=0644       
+  - name: Copy magnolia.properties for mgnl_509
+    copy: src="files/GOK20/mgnl_509/conf/magnolia/magnolia.properties" dest="/opt/tomcat/mgnl_509/conf/magnolia/magnolia.properties"
+      owner={{ owner }} group={{ group }} mode=0644
+  - name: Copy magnolia.properties for mgnl_526
+    copy: src="files/GOK20/mgnl_526/conf/magnolia/magnolia.properties" dest="/opt/tomcat/mgnl_526/conf/magnolia/magnolia.properties"
+      owner={{ owner }} group={{ group }} mode=0644
+
+  - name: Copy mca.properties for author
+    copy: src="files/GOK20/author/conf/mca/mca.properties" dest="/opt/tomcat/author/conf/mca/mca.properties"
+      owner={{ owner }} group={{ group }} mode=0644       
+  - name: Copy mca.properties for mgnl_509
+    copy: src="files/GOK20/mgnl_509/conf/mca/mca.properties" dest="/opt/tomcat/mgnl_509/conf/mca/mca.properties"
+      owner={{ owner }} group={{ group }} mode=0644
+  - name: Copy mca.properties for mgnl_526
+    copy: src="files/GOK20/mgnl_526/conf/mca/mca.properties" dest="/opt/tomcat/mgnl_526/conf/mca/mca.properties"
+      owner={{ owner }} group={{ group }} mode=0644
+
+  - name: Copy docupload.properties for author
+    copy: src="files/GOK20/author/conf/docupload/docupload.properties" dest="/opt/tomcat/author/conf/docupload/docupload.properties"
+      owner={{ owner }} group={{ group }} mode=0644       
+  - name: Copy docupload.properties for mgnl_509
+    copy: src="files/GOK20/mgnl_509/conf/docupload/docupload.properties" dest="/opt/tomcat/mgnl_509/conf/docupload/docupload.properties"
+      owner={{ owner }} group={{ group }} mode=0644
+  - name: Copy docupload.properties for mgnl_526
+    copy: src="files/GOK20/mgnl_526/conf/docupload/docupload.properties" dest="/opt/tomcat/mgnl_526/conf/docupload/docupload.properties"
+      owner={{ owner }} group={{ group }} mode=0644
+  
+  - name: Copy ad.properties for author
+    copy: src="files/GOK20/author/conf/ldap/ad.properties" dest="/opt/tomcat/author/conf/ldap/ad.properties"
+      owner={{ owner }} group={{ group }} mode=0644       
+  - name: Copy ad.properties for mgnl_509
+    copy: src="files/GOK20/mgnl_509/conf/ldap/ad.properties" dest="/opt/tomcat/mgnl_509/conf/ldap/ad.properties"
+      owner={{ owner }} group={{ group }} mode=0644
+  - name: Copy ad.properties for mgnl_526
+    copy: src="files/GOK20/mgnl_526/conf/ldap/ad.properties" dest="/opt/tomcat/mgnl_526/conf/ldap/ad.properties"
+      owner={{ owner }} group={{ group }} mode=0644
+
+  - name: Copy log4j2.xml for author
+    copy: src="files/GOK20/author/conf/log4j/log4j2.xml" dest="/opt/tomcat/author/conf/log4j/log4j2.xml"
+      owner={{ owner }} group={{ group }} mode=0644       
+  - name: Copy log4j2.xml for mgnl_509
+    copy: src="files/GOK20/mgnl_509/conf/log4j/log4j2.xml" dest="/opt/tomcat/mgnl_509/conf/log4j/log4j2.xml"
+      owner={{ owner }} group={{ group }} mode=0644
+  - name: Copy log4j2.xml for mgnl_526
+    copy: src="files/GOK20/mgnl_526/conf/log4j/log4j2.xml" dest="/opt/tomcat/mgnl_526/conf/log4j/log4j2.xml"
+      owner={{ owner }} group={{ group }} mode=0644
+
+  - name: Copy datasource.properties for author
+    copy: src="files/GOK20/author/conf/db/datasource.properties" dest="/opt/tomcat/author/conf/db/datasource.properties"
+      owner={{ owner }} group={{ group }} mode=0644       
+  - name: Copy datasource.properties for mgnl_509
+    copy: src="files/GOK20/mgnl_509/conf/db/datasource.properties" dest="/opt/tomcat/mgnl_509/conf/db/datasource.properties"
+      owner={{ owner }} group={{ group }} mode=0644
+  - name: Copy datasource.properties for mgnl_526
+    copy: src="files/GOK20/mgnl_526/conf/db/datasource.properties" dest="/opt/tomcat/mgnl_526/conf/db/datasource.properties"
+      owner={{ owner }} group={{ group }} mode=0644
+
+  - name: Copy smtp.properties for author
+    copy: src="files/GOK20/author/conf/smtp/smtp.properties" dest="/opt/tomcat/author/conf/smtp/smtp.properties"
+      owner={{ owner }} group={{ group }} mode=0644       
+  - name: Copy smtp.properties for mgnl_509
+    copy: src="files/GOK20/mgnl_509/conf/smtp/smtp.properties" dest="/opt/tomcat/mgnl_509/conf/smtp/smtp.properties"
+      owner={{ owner }} group={{ group }} mode=0644
+  - name: Copy smtp.properties for mgnl_526
+    copy: src="files/GOK20/mgnl_526/conf/smtp/smtp.properties" dest="/opt/tomcat/mgnl_526/conf/smtp/smtp.properties"
+      owner={{ owner }} group={{ group }} mode=0644
+
+  - name: Copy esigne.properties for author
+    copy: src="files/GOK20/author/conf/esigne/esigne.properties" dest="/opt/tomcat/author/conf/esigne/esigne.properties"
+      owner={{ owner }} group={{ group }} mode=0644       
+  - name: Copy esigne.properties for mgnl_509
+    copy: src="files/GOK20/mgnl_509/conf/esigne/esigne.properties" dest="/opt/tomcat/mgnl_509/conf/esigne/esigne.properties"
+      owner={{ owner }} group={{ group }} mode=0644
+  - name: Copy esigne.properties for mgnl_526
+    copy: src="files/GOK20/mgnl_526/conf/esigne/esigne.properties" dest="/opt/tomcat/mgnl_526/conf/esigne/esigne.properties"
+      owner={{ owner }} group={{ group }} mode=0644
+
+  - name: Copy brodoc.properties for author
+    copy: src="files/GOK20/author/conf/brodoc/brodoc.properties" dest="/opt/tomcat/author/conf/brodoc/brodoc.properties"
+      owner={{ owner }} group={{ group }} mode=0644       
+  - name: Copy brodoc.properties for mgnl_509
+    copy: src="files/GOK20/mgnl_509/conf/brodoc/brodoc.properties" dest="/opt/tomcat/mgnl_509/conf/brodoc/brodoc.properties"
+      owner={{ owner }} group={{ group }} mode=0644
+  - name: Copy brodoc.properties for mgnl_526
+    copy: src="files/GOK20/mgnl_526/conf/brodoc/brodoc.properties" dest="/opt/tomcat/mgnl_526/conf/brodoc/brodoc.properties"
+      owner={{ owner }} group={{ group }} mode=0644
+
+#  - name: Copy keystore
+#    copy: src="files/GOK20/keystoreGOK" dest="/opt/tomcat/keystoreGOK"
+#      owner=root group=root mode=0644

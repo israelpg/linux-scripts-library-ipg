@@ -1,0 +1,73 @@
+---
+
+# ports prefix for cluster members ex 21020 and 22020 
+#portm1: 21000
+#portm2: 22000
+
+upload_scripts:
+- src: wsadminlib.py
+  dst: /data/wsadmin/share/procs/wsadminlib.py
+- src: jaas.py
+  dst: /data/wsadmin/share/procs/jaas.py
+- src: save.py
+  dst: /data/wsadmin/share/procs/save.py
+- src: serverprocs.py
+  dst: /data/wsadmin/share/procs/serverprocs.py
+- src: sessioncookie.py
+  dst: /data/wsadmin/share/procs/sessioncookie.py
+- src: updateports.py
+  dst: /data/wsadmin/share/procs/updateports.py
+- src: validateparams.py
+  dst: /data/wsadmin/share/procs/validateparams.py
+- src: createserver.py
+  dst: /data/wsadmin/servers/createserver.py
+- src: coregroups.py
+  dst: /data/wsadmin/servers/coregroups.py
+- src: addprops.py
+  dst: /data/wsadmin/servers/addprops.py
+- src: virtualhosts.py
+  dst: /data/wsadmin/servers/virtualhosts.py
+- src: updateNodeVariables.py
+  dst: /data/wsadmin/servers/updateNodeVariables.py
+- src: was_libraries.py
+  dst: /data/wsadmin/servers/was_libraries.py
+- src: checkdatasource.py
+  dst: /data/wsadmin/datasources/checkdatasource.py
+- src: apps.py
+  dst: /data/wsadmin/datasources/config/apps.py
+- src: drivers.py
+  dst: /data/wsadmin/datasources/config/drivers.py
+- src: servers.py
+  dst: /data/wsadmin/datasources/config/servers.py
+- src: sync_nodes.py
+  dst: /data/wsadmin/servers/sync_nodes.py
+
+force: False
+
+wasnd_version: 85
+base_data_location: /data/was{{ wasnd_version }}/base
+base_wsadmin_sh: "{{ base_data_location }}/bin/wsadmin.sh"
+ibmim_install_folder_logs: /data/install_log
+base_chdir: "{{ base_data_location }}/bin"
+
+ws_application_server: "{% if was_app_name %}{{ was_app_name }}{% else %}{{ item.was.0 }}_{{ base_node_name_sufix }}{% if item.was.6 == 'true' %}_{{ mbrx }}{% endif %}{% endif %}"
+full_path_ws_application_server: "/data/{{ item.was.2 }}/{{ ws_application_server }}"
+
+ws_application_server_sub: "{% if was_app_name %}{{ was_app_name }}{% else %}{{ item.0.was.0 }}_{{ base_node_name_sufix }}{% if item.0.was.6 == 'true' %}_{{ mbrx }}{% endif %}{% endif %}"
+full_path_ws_application_server_sub: "/data/{{ item.0.was.2 }}/{{ ws_application_server_sub }}"
+
+IBMHttpServer_installationDirectory: "/opt/WebSphere{{ wasnd_version }}/IBMHttpServer"
+
+
+## Web configuration
+CurrentVersionRewrite: current
+PreviousVersionRewrite: previous
+web_configurations:
+- regexp: "LoadModule rewrite_module modules/mod_rewrite.so"
+  line: "LoadModule rewrite_module modules/mod_rewrite.so"
+- regexp: "NameVirtualHost"
+  line: "NameVirtualHost 0.0.0.0:80"
+- regexp: "Include other_config"
+  line: "Include other_config/*.conf"
+
+nonotify: True

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?><tns:config xmlns:tns="http://be.gfdi.fwk" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://be.gfdi.fwk application-config.xsd ">
+
+	<application name="ddd" version="1021.28_20101222_2"/>
+
+	<default>
+		<environment host="rfweb.jablux.cpc998.be" port="80" contextPath="ddd200">
+			<as400 systemname="AIRBUS" />
+			<jdbc libname="*LIBL" url="" driverClassName="com.ibm.as400.access.AS400JDBCDriver" />
+			<!-- Default Config for DB2 UDB -->
+			<jdbc profile="bpe" url="" username="" password="" driverClassName="com.ibm.db2.jcc.DB2Driver" />	
+			<hibernate dialect="be.gfdi.fwk.server.hibernate.DB2400Dialect" show_sql="false" />
+			<security enforceAuthentication="false" /> 	
+		</environment>
+	</default>
+
+	<!-- =========================================================== -->
+	<!-- Environments                                                -->
+	<!-- =========================================================== -->
+
+	<environments>
+		<environment name="200" host="rfweb.jablux.cpc998.be" port="80" contextPath="ddd200" >
+			<as400 systemname="AIRBUS" username="JDDD200" password="ertgi200" />
+			<jdbc username="JDDD200" password="ertgi200" />
+			<security enforceAuthentication="false" />
+			<services>
+				<interceptors><interceptor name="fwk_securityInterceptor"/></interceptors>
+			</services>
+		</environment>
+		<environment name="203" host="rfweb.jablux.cpc998.be" port="80" contextPath="ddd200" >
+			<as400 systemname="AIRBUS" username="JDDD203" password="ouifd203" />
+			<jdbc username="JDDD203" password="ouifd203" />
+			<security enforceAuthentication="false" />
+			<services>
+				<interceptors><interceptor name="fwk_securityInterceptor"/></interceptors>
+			</services>
+		</environment>
+		<environment name="206" host="rfweb.jablux.cpc998.be" port="80" contextPath="ddd200" >
+			<as400 systemname="AIRBUS" username="JDDD206" password="lprtg206" />
+			<jdbc username="JDDD206" password="lprtg206" />
+			<security enforceAuthentication="false" />
+			<services>
+				<interceptors><interceptor name="fwk_securityInterceptor"/></interceptors>
+			</services>
+		</environment>
+		<environment name="216" host="rfweb.jablux.cpc998.be" port="80" contextPath="ddd200" >
+			<as400 systemname="AIRBUS" username="JDDD216" password="septr216" />
+			<jdbc username="JDDD216" password="septr216" />
+			<security enforceAuthentication="false" />
+			<services>
+				<interceptors><interceptor name="fwk_securityInterceptor"/></interceptors>
+			</services>
+		</environment>
+		<environment name="226" host="rfweb.jablux.cpc998.be" port="80" contextPath="ddd200" >
+			<as400 systemname="AIRBUS" username="JDDD226" password="keqsm226" />
+			<jdbc username="JDDD226" password="keqsm226" />
+			<security enforceAuthentication="false" />
+			<services>
+				<interceptors><interceptor name="fwk_securityInterceptor"/></interceptors>
+			</services>
+		</environment>
+		<environment name="228" host="rfweb.jablux.cpc998.be" port="80" contextPath="ddd200" >
+			<as400 systemname="AIRBUS" username="JDDD228" password="eqptf228" />
+			<jdbc username="JDDD228" password="eqptf228" />
+			<security enforceAuthentication="false" />
+			<services>
+				<interceptors><interceptor name="fwk_securityInterceptor"/></interceptors>
+			</services>
+		</environment>
+		<environment name="232" host="rfweb.jablux.cpc998.be" port="80" contextPath="ddd200" >
+			<as400 systemname="AIRBUS" username="JDDD232" password="pobtr232" />
+			<jdbc username="JDDD232" password="pobtr232" />
+			<security enforceAuthentication="false" />
+			<services>
+				<interceptors><interceptor name="fwk_securityInterceptor"/></interceptors>
+			</services>
+		</environment>
+		<environment name="235" host="rfweb.jablux.cpc998.be" port="80" contextPath="ddd200" >
+			<as400 systemname="AIRBUS" username="JDDD235" password="trcqs235" />
+			<jdbc username="JDDD235" password="trcqs235" />
+			<security enforceAuthentication="false" />
+			<services>
+				<interceptors><interceptor name="fwk_securityInterceptor"/></interceptors>
+			</services>
+		</environment>
+	</environments>
+
+</tns:config>

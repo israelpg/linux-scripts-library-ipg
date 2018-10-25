@@ -1,0 +1,56 @@
+---
+- hosts: IntegNode_200A_RFND
+  user: root
+  vars:
+    was_app_name: INTG_200
+    default_port: 21160
+    path: /data/intg/{{ was_app_name }}
+    group: was6group
+    owner: was6u200
+
+    vhost: RfndInteg_vhost
+    host_aliases:
+    - hostname: "{{ ansible_fqdn }}" 
+      port: "{{ default_port }}"
+    
+    systemProperties:
+    - name: intg.jndi.prefix
+      value: jndi
+    - name: net.sf.ehcache.skipUpdateCheck
+      value: true
+
+    dataSources:
+    - authDataAlias: lnxdb2/dbint200
+      authDataPassword: 200ljfqk
+      currentSchema: INTG
+      enableSeamlessFailover: 0
+      databaseName: RFN200
+      driverType: '4'
+      jndiName: jdbc/INTG_200
+      name: INTG_200
+      portNumber: '50004'
+      serverName: s298li2dbrf02.integ.gfdi.be
+      typeds: universal
+      user: dbint200
+      webSphereDefaultIsolationLevel: '2'
+
+    - authDataAlias: AS400/INTG200
+      authDataPassword: rq200vni
+      dataTruncation: 'false'
+      databaseName: INTEGGFDI
+      dateFormat: iso
+      extendedDynamic: 'false'
+      jndiName: jdbc/JADE2_200
+      libraries: '*LIBL'
+      name: JADE2_200
+      naming: system
+      package: DSJ2200
+      packageCriteria: select
+      packageLibrary: JADEBUS200
+      serverName: integ.integ.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: INTG200
+
+  roles:
+  - base_was

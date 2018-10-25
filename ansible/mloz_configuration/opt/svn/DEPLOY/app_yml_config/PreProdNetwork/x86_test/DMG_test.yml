@@ -1,0 +1,70 @@
+---
+- hosts: PreProdNodetest
+  user: root
+  vars:
+    was_app_name: DMG_test
+    owner: was6tst
+    group: was6group
+    default_port: 21040
+    path: /data/dmg/{{ was_app_name }}
+  
+    dataSources:
+    - authDataAlias: TEST/JCARE500
+      authDataPassword: wait
+      dataTruncation: 'false'
+      databaseName: TESTGFDI
+      dateFormat: iso
+      jndiName: jdbc/DMG_AS400_RC
+      libraries: LIBCXCOM00,*LIBL
+      name: DMG500
+      naming: system
+      serverName: test.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JCARE500
+      webSphereDefaultIsolationLevel: '2'
+    - authDataAlias: udbich4597/dbmcttst
+      authDataPassword: tst20120410
+      clientRerouteAlternatePortNumber: '50020'
+      clientRerouteAlternateServerName: db2-nippin02.jablux.gfdi.be
+      currentSchema: CARE
+      databaseName: MCT500
+      driverType: '4'
+      jndiName: jdbc/DMG_LINUX_RC
+      name: LNXGDMG_500
+      portNumber: '50020'
+      serverName: db2-nippin01.jablux.gfdi.be
+      typeds: universal
+      user: dbmcttst
+      webSphereDefaultIsolationLevel: '2'
+      connectionPool:
+        maxConnections: 50
+        minConnections: 5
+
+    resourceEnvEntries:
+    - customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/dmg.properties"
+      jndiName: config/dmgConfig
+      name: DMGConfig
+
+    resourceFiles:
+    - files/DMG/dmg.properties
+
+    systemProperties:
+    - name: com.ibm.websphere.webservices.DisableIBMJAXWSEngine
+      value: true
+    - name: spring.profiles.active
+      value: prod
+    - name: java.security.debug
+      value: certpath
+    - name: mule.verbose.exceptions
+      value: true
+    - name: file.encoding
+      value: ISO-8859-15
+    - name: mule.encoding
+      value: ISO-8859-15
+
+  roles:
+  - base_was

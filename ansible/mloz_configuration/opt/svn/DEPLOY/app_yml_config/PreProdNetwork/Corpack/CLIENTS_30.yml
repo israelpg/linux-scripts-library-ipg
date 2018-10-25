@@ -1,0 +1,49 @@
+---
+- hosts: PreProdNode_GFDI_30A_RFND
+  user: root
+  vars:
+    was_app_name: CLIENTS_30
+    owner: was6cpk
+    group: was6group
+    default_port: 21040
+    path: /data/clients/{{ was_app_name }}
+
+    vhost: RfndCorpack_vhost
+    host_aliases:
+    - hostname: rfcorpack.jablux.gfdi.be
+      port: 80
+    - hostname: s999lq2wsrf07.jablux.gfdi.be
+      port: 21040
+    - hostname: s999lq2wsrf07.jablux.gfdi.be
+      port: 21080
+    - hostname: s999lq2wsrf08.jablux.gfdi.be
+      port: 21080
+    - hostname: s999lq2wsrf07.jablux.gfdi.be
+      port: 21120
+    - hostname: s999lq2wsrf08.jablux.gfdi.be
+      port: 21120
+    - hostname: s999lq2wsrf08.jablux.gfdi.be
+      port: 21160
+
+    dataSources:
+    - authDataAlias: CORPACK/S999JADEWS
+      authDataPassword: JADEWS
+      dataTruncation: 'false'
+      databaseName: GFDIDB2
+      dateFormat: iso
+      jndiName: jdbc/MDIS_RfndCorpack
+      libraries: 'JADEPRF'
+      name: MDIS_RfndCorpack
+      naming: system
+      serverName: s44g5036.jablux.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: S999JADEWS
+      extendedDynamic: 'false'
+      package: DSMDIS
+      packageLibrary: QGPL
+      packageCriteria: select
+
+  roles:
+  - base_was
+

@@ -1,0 +1,106 @@
+---
+- hosts: RefNode_REF_500cF_RFND
+  user: root
+  vars:
+    was_app_name: JADER_500c_MBR2
+    was_cluster_name: JADER_500c
+    owner: was6u500
+    group: was6group
+    default_port: 21040
+    path: /data/jade/{{ was_app_name }}
+
+    vhost: RfndRef_vhost
+
+    systemProperties:
+    - name: net.sf.ehcache.skipUpdateCheck
+      value: true
+    - name: jade2.jobs.526
+      value: false
+    - name: client.encoding.override
+      value: 'UTF-8'
+    - name: file.encoding
+      value: 'UTF-8'
+
+    dataSources:
+    - authDataAlias: REF/JRDE506
+      authDataPassword: dmkfj506
+      dataTruncation: 'false'
+      databaseName: REFGFDI
+      dateFormat: iso
+      jndiName: jdbc/JADE2_506
+      libraries: '*LIBL'
+      name: JADE2_506
+      naming: system
+      serverName: ref.ref.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE506
+      extendedDynamic: false
+      package: DSJ2506
+      packageLibrary: JADEBUS506
+      packageCriteria: select
+      connectionPool:
+         connectionTimeout: 30
+         maxConnections: 50
+         minConnections: 15
+         reapTime: 300
+         agedTimeout: 0 
+
+    - authDataAlias: REF/JRDE526
+      authDataPassword: qmepo526
+      dataTruncation: 'false'
+      databaseName: REFGFDI
+      dateFormat: iso
+      jndiName: jdbc/JADE2_526
+      libraries: '*LIBL'
+      name: JADE2_526
+      naming: system
+      serverName: ref.ref.cpc998.be
+      timeFormat: iso
+      typeds: toolbox
+      user: JRDE526
+      extendedDynamic: false
+      package: DSJ2526
+      packageLibrary: JADEBUS526
+      packageCriteria: select
+      connectionPool:
+         connectionTimeout: 30
+         maxConnections: 50
+         minConnections: 15
+         reapTime: 300
+         agedTimeout: 0 
+
+    - authDataAlias: refiorc597/dborc506
+      authDataPassword: 506fmlfs
+      currentSchema: ORC506
+      enableSeamlessFailover: 0
+      databaseName: RFN500
+      driverType: '4'
+      jndiName: jdbc/BPE_506
+      name: BPE_506
+      portNumber: '50004'
+      serverName: s598lr2dbrf02.ref.cpc998.be
+      typeds: universal
+      user: dborc506
+      webSphereDefaultIsolationLevel: '2'
+
+    - authDataAlias: refiorc597/dborc526
+      authDataPassword: 526azpeo
+      currentSchema: ORC526
+      enableSeamlessFailover: 0
+      databaseName: RFN500
+      driverType: '4'
+      jndiName: jdbc/BPE_526
+      name: BPE_526
+      portNumber: '50004'
+      serverName: s598lr2dbrf02.ref.cpc998.be
+      typeds: universal
+      user: dborc526
+      webSphereDefaultIsolationLevel: '2'
+
+    directories:
+    - '{{ path }}/work/jobs'
+
+  roles:
+  - base_was
+

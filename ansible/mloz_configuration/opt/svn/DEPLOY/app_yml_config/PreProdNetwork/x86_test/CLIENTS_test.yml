@@ -1,0 +1,27 @@
+---
+- hosts: PreProdNodetest
+  user: root
+  vars:
+    was_app_name: CLIENTS_test
+    owner: was6tst
+    group: was6group
+    default_port: 21160
+    path: /data/clients/{{ was_app_name }}
+
+    dataSources:
+    - authDataAlias: TEST/M998JADEWS
+      authDataPassword: mdistest
+      dataTruncation: 'false'
+      databaseName: TESTGFDI
+      dateFormat: iso
+      jndiName: jdbc/MDIS_RfndTest
+      libraries: JADEPRF
+      name: MDIS_RfndTest
+      naming: system
+      serverName: test.gfdi.be
+      timeFormat: iso
+      typeds: toolbox
+      user: M998JADEWS
+
+  roles:
+  - base_was

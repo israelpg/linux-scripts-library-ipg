@@ -1,0 +1,51 @@
+---
+- hosts: PreProdNodetest
+  user: root
+  vars:
+    was_app_name: CATA_test_MBR1
+    was_cluster_name: CATA_test
+    owner: was6tst
+    group: was6group
+    default_port: 21180
+    path: /data/cata/{{ was_app_name }}
+
+    dataSources:
+    - authDataAlias: udbitst97/dbcattst
+      authDataPassword: tst20090204
+      clientRerouteAlternatePortNumber: '50004'
+      clientRerouteAlternateServerName: db2-test04.jablux.gfdi.be
+      currentSchema: ADM
+      databaseName: CAT500
+      driverType: '4'
+      jndiName: jdbc/DCADM5XX
+      name: DCADM5XX
+      portNumber: '50004'
+      serverName: db2-test03.jablux.gfdi.be
+      typeds: universal
+      user: dbcattst
+      webSphereDefaultIsolationLevel: '2'
+    - authDataAlias: udbitst97/dbcattst
+      authDataPassword: tst20090204
+      clientRerouteAlternatePortNumber: '50004'
+      clientRerouteAlternateServerName: db2-test04.jablux.gfdi.be
+      currentSchema: IDX
+      databaseName: CAT500
+      driverType: '4'
+      jndiName: jdbc/DCIDX5XX
+      name: DCIDX5XX
+      portNumber: '50004'
+      serverName: db2-test03.jablux.gfdi.be
+      typeds: universal
+      user: dbcattst
+      webSphereDefaultIsolationLevel: '1'
+
+    systemProperties:
+    - name: doccenter.scheduler.enabled
+      value: true
+    - name: doccenter.script.folderref.recheck.delay
+      value: '1000'
+    - name: doccenter.scheduler.threads
+      value: '1'
+
+  roles:
+  - base_was

@@ -1,0 +1,34 @@
+---
+- hosts: jabluxProdNodeapps502
+  user: root
+  vars:
+    was_app_name: CHAP4_apps5_MBR2
+    was_cluster_name: CHAP4_apps5
+    default_port: 22100
+    group: was6group
+    owner: was6u500
+    path: /data/chap4/{{ was_app_name }}
+
+    host_aliases:
+    - hostname: chap45xx.jablux.cpc998.be
+      port: '443'
+    - hostname: chap45xx.jablux.cpc998.be
+      port: '80'
+
+    resourceEnvEntries:
+    - customprop:
+      - name: path
+        type: java.lang.String
+        value: "{{ path }}/resources/ch4.properties"
+      jndiName: config/ConfigServer
+      name: CarenetConfig
+
+    resourceFiles:
+    - files/CHAP4/ch4.properties
+
+    systemProperties:
+    - name: spring.profiles.active
+      value: was
+
+  roles:
+  - base_was

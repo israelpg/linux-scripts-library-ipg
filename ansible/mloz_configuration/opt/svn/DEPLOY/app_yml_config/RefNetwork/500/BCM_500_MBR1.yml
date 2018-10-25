@@ -1,0 +1,92 @@
+---
+- hosts: RefNode_REF_500A_EB
+  user: root
+  
+  roles:
+  - base_was  
+  
+  vars:
+    was_app_name: BCM_500_MBR1
+    was_cluster_name:  BCM_500
+    default_port: 21400
+    group: was6group
+    owner: was6u500
+    path: /data/bcm/{{ was_app_name }}
+
+    systemProperties:
+    - name: logback.configurationFile
+      value: "{{ path }}/resources/logback.xml"
+    
+    vhost: BCM_500_vhost
+    host_aliases:
+    - hostname:  s598lr2wseb01.ref.cpc998.be  
+      port: 21400
+    - hostname:  s598lr2wseb02.ref.cpc998.be  
+      port: 21400
+    - hostname:  bcmnotifications-ref.m-team.be
+      port: 21400
+    - hostname:  bcmnotifications-ref.m-team.be
+      port: 443
+    - hostname:  s598lr2wseb01.ref.cpc998.be  
+      port: 21401
+    - hostname:  s598lr2wseb02.ref.cpc998.be  
+      port: 21401
+    - hostname:  bcmnotifications-ref.m-team.be
+      port: 21401
+            
+    jmscf:
+    - jndiName: jms/BCM_mqConnectionFactory
+      qmgrName: RQM5EB1
+      qmgrSvrconnChannel: MTEAM.CLIENT.SVRCONN
+      connectionNameList: s598lr2iib01.ref.cpc998.be(15500),s598lr2iib02.ref.cpc998.be(15500)
+      authDataAlias: JMSCF/uqmeb500
+      user: uqmeb500
+      authDataPassword: n3touc3p4s4s4
+      name: BCM_mqConnectionFactory
+      connectionPool:
+        minConnections: 1
+        maxConnections: 100
+      sessionPool:
+        minConnections: 1
+        maxConnections: 10
+
+    jmsq:
+    - jndiName: jms/BCM.JOB.REPLY
+      queueName: QA.BCM.JOB.REPLY 
+
+    - jndiName: jms/BCM.NOTIFICATION
+      queueName: QA.BCM.NOTIFICATION
+
+    - jndiName: jms/BCM.SMS.STATUS
+      queueName: QA.BCM.SMS.STATUS
+
+            
+    dataSources:
+    - authDataAlias: udbbl2105/dbbcm500
+      user: dbbcm500
+      authDataPassword: sjlk8N5i
+      currentSchema: BCM
+      enableSeamlessFailover: 1
+      databaseName: FIN500
+      driverType: 4
+      jndiName: jdbc/BCM
+      name: BCM
+      portNumber: 50004
+      serverName: s598lr2dbfn01.ref.cpc998.be
+      typeds: universal
+      webSphereDefaultIsolationLevel: 2
+      enableRowsetSupport: 1
+      connectionPool:
+         minConnections: 1
+         maxConnections: 10 
+
+    resourceFiles:
+    - files/BCM/logback.xml
+    - files/BCM/bcmJms.properties
+    
+  roles:
+  - base_was
+
+  tasks:
+  - name: create symlinks /data/bcm/BCM_500
+    file: src=/data/bcm/BCM_500_MBR dest=/data/bcm/BCM_500 state=link force=True

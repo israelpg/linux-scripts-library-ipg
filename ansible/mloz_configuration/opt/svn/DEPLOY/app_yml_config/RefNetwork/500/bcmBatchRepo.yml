@@ -1,0 +1,41 @@
+---
+- hosts:  refBCM01
+  user: root
+  vars:
+    owner: root
+    group: tomcat
+
+  tasks:
+  - name: Copy jt400
+    copy: src="files/bcmBatchRepo/jt400-java8-9.1.jar" dest="/usr/share/tomcat/lib/jt400-java8-9.1.jar"
+      owner={{ owner }} group={{ group }} mode=0644
+
+  - name: Copy HikariCP-2.7.7
+    copy: src="files/bcmBatchRepo/HikariCP-2.7.7.jar" dest="/usr/share/tomcat/lib/HikariCP-2.7.7.jar"
+      owner={{ owner }} group={{ group }} mode=0644
+
+  - name: Copy slf4j-api-1.7.7
+    copy: src="files/bcmBatchRepo/slf4j-api-1.7.7.jar" dest="/usr/share/tomcat/lib/slf4j-api-1.7.7.jar"
+      owner={{ owner }} group={{ group }} mode=0644	
+
+  - name: Copy dbpc
+    copy: src="files/bcmBatchRepo/tomcat-dbcp-7.0.69.jar" dest="/usr/share/tomcat/lib/tomcat-dbcp-7.0.69.jar"
+      owner={{ owner }} group={{ group }} mode=0644
+
+  - name: Copy dbpc
+    copy: src="files/bcmBatchRepo/context.xml" dest="/usr/share/tomcat/conf/context.xml"
+      owner={{ owner }} group={{ group }} mode=0644
+
+  - name: Copy dbpc
+    copy: src="files/bcmBatchRepo/server.xml" dest="/usr/share/tomcat/conf/server.xml"
+      owner={{ owner }} group={{ group }} mode=0644
+      
+  - name: create directory /var/bcm
+    file: path="/var/bcm" state=directory mode=0775
+
+  - name: create directory /opt/bcm
+    file: path="/opt/bcm" state=directory mode=0777
+
+  - name: Copy jms
+    copy: src="files/bcmBatchRepo/jms.properties" dest="/opt/bcm/jms.properties"
+      owner={{ owner }} group={{ group }} mode=0644       
