@@ -1,0 +1,13 @@
+     #Register your system:
+
+    ~]# subscription-manager register
+
+    #The command will prompt you to enter your Red Hat Customer Portal user name and password.
+    #Determine the pool ID of a subscription that you require:
+
+    ~]# subscription-manager list --available
+
+    #This command displays all available subscriptions for your Red Hat account. For every subscription, various characteristics are displayed, including the pool ID.
+    #Attach the appropriate subscription to your system by replacing pool_id with the pool ID determined in the previous step:
+
+    ~]# subscription-manager attach --pool=pool_id

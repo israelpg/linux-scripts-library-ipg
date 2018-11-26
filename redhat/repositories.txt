@@ -1,0 +1,13 @@
+ Listing all available repositories:
+
+~]# subscription-manager repos --list
+
+Listing all currently enabled repositories:
+
+~]$ yum repolist
+
+Enabling or disabling a repository:
+
+~]# subscription-manager repos --enable repository
+
+~]# subscription-manager repos --disable repository
