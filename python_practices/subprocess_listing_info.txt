@@ -1,0 +1,20 @@
+In [23]: subprocess.
+subprocess.CalledProcessError  subprocess.STDOUT              subprocess.errno               subprocess.mswindows           subprocess.signal              
+subprocess.MAXFD               subprocess.call                subprocess.fcntl               subprocess.os                  subprocess.sys                 
+subprocess.PIPE                subprocess.check_call          subprocess.gc                  subprocess.pickle              subprocess.traceback           
+subprocess.Popen               subprocess.check_output        subprocess.list2cmdline        subprocess.select              subprocess.types               
+
+In [23]: subprocess.call?
+Type:        function
+String form: <function call at 0x7ff309c7dc08>
+File:        /usr/lib/python2.7/subprocess.py
+Definition:  subprocess.call(*popenargs, **kwargs)
+Docstring:
+Run command with arguments.  Wait for command to complete, then
+return the returncode attribute.
+
+The arguments are the same as for the Popen constructor.  Example:
+
+retcode = call(["ls", "-l"])
+
+

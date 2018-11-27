@@ -1,0 +1,319 @@
+#### ipython is a Python terminal which also executes shell commands, interacting with the system, perfect for a SysAdmin
+
+Package: ipython
+Priority: optional
+Section: universe/python
+Installed-Size: 3300
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Debian Python Modules Team <python-modules-team@lists.alioth.debian.org>
+Architecture: all
+Version: 2.4.1-1
+Depends: python-decorator, python-pexpect, python-simplegeneric, python (>= 2.7), python (<< 2.8)
+Suggests: ipython-doc, ipython-notebook, ipython-qtconsole, python-matplotlib, python-numpy, python-profiler, python-zmq (>= 2.1.11)
+Filename: pool/universe/i/ipython/ipython_2.4.1-1_all.deb
+Size: 610366
+MD5sum: 06c53b814e235de9a2982d0ed7f77817
+SHA1: 0936dd64c15ac2c3dbe9da0ec0c0148605f21d34
+SHA256: 234b02cb0786efff70d8d381fdc8bdad39f9a79947134a27e5ed434b792de702
+Description-en: enhanced interactive Python shell
+ IPython can be used as a replacement for the standard Python shell,
+ or it can be used as a complete working environment for scientific
+ computing (like Matlab or Mathematica) when paired with the standard
+ Python scientific and numerical tools. It supports dynamic object
+ introspections, numbered input/output prompts, a macro system,
+ session logging, session restoring, complete system shell access,
+ verbose and colored traceback reports, auto-parentheses, auto-quoting,
+ and is embeddable in other Python programs.
+ .
+ This package contains the basic terminal shell. For the qt console
+ install ipython-qtconsole and for the html notebook install
+ ipython-notebook.
+Description-md5: 2b28f078a5ca3afc48380ee4b507967d
+Homepage: http://ipython.org/
+Bugs: https://bugs.launchpad.net/ubuntu/+filebug
+Origin: Ubuntu
+
+#### You can launch several shell comands in iPython
+
+[1] ls -lah
+
+#### in some cases, if the command is not available, create an alias:
+
+[2] alias netinfo netstat -tuplna
+
+### Persistent alias:
+
+%store
+
+
+#### Bash commands can also be executed as follows using ! :
+
+!ls -lah | grep '^d'
+!ps -aux | grep 'root'
+
+
+### to see magic functions: (Aliases are also listed here)
+%[tab]
+
+In [43]: %
+Display all 124 possibilities? (y or n)
+%%!                      %%ruby                   %cd                      %install_default_config  %logstop                 %pastebin                %pycat                   %sx
+%%HTML                   %%script                 %clear                   %install_ext             %ls                      %pdb                     %pylab                   %system
+%%SVG                    %%sh                     %colors                  %install_profiles        %lsmagic                 %pdef                    %quickref                %tb
+%%bash                   %%svg                    %config                  %killbgscripts           %lx                      %pdoc                    %recall                  %time
+%%capture                %%sx                     %cp                      %ldir                    %macro                   %pfile                   %rehashx                 %timeit
+%%debug                  %%system                 %cpaste                  %less                    %magic                   %pinfo                   %reload_ext              %unalias
+%%file                   %%time                   %debug                   %lf                      %man                     %pinfo2                  %rep                     %unload_ext
+%%html                   %%timeit                 %dhist                   %lk                      %matplotlib              %popd                    %rerun                   %who
+%%javascript             %%writefile              %dirs                    %ll                      %mkdir                   %pprint                  %reset                   %who_ls
+%%latex                  %alias                   %doctest_mode            %load                    %more                    %precision               %reset_selective         %whos
+%%perl                   %alias_magic             %ed                      %load_ext                %mv                      %profile                 %rm                      %xdel
+%%prun                   %autocall                %edit                    %loadpy                  %netstat                 %prun                    %rmdir                   %xmode
+%%pypy                   %autoindent              %env                     %logoff                  %netstat2                %psearch                 %run                     
+%%python                 %automagic               %gui                     %logon                   %notebook                %psource                 %save                    
+%%python2                %bookmark                %hist                    %logstart                %page                    %pushd                   %sc                      
+%%python3                %cat                     %history                 %logstate                %paste                   %pwd                     %store                   
+
+## info about a command/magic function: ?
+
+%load_ext?
+
+
+########## THE BEST SOLUTION FOR BASH / IPYTHON INTEGRATION: rehashx
+########## This way, the PATH content is copied into iPython, then you can launch any /usr/{bin,sbin} command you want, without ! nor aliases
+# Listing now the commands with %[tab] displays all the possible options, you can launch commands plus args as in the regular bash shell, plus Python terminal commands, excellent!
+
+rehashx
+
+
+#### MIXING for loop with bash execution, then the % aliases do not work, no matter whether rehashx is done, or alias <name> command was created ... you need to use !
+
+for i in range(10):
+	print(i)
+	!ls -lah | grep "$i"
+
+
+
+### importing libraries:
+
+import subprocess
+subprocess.call("ps -eo comm,user,tty,nice,pcpu,pmem --sort=pmem | head -n 5", shell = True)
+
+
+#### to check what else you can import, use the tab:
+subprocess.[tab]
+In [43]: subprocess.
+subprocess.CalledProcessError  subprocess.STDOUT              subprocess.errno               subprocess.mswindows           subprocess.signal
+subprocess.MAXFD               subprocess.call                subprocess.fcntl               subprocess.os                  subprocess.sys
+subprocess.PIPE                subprocess.check_call          subprocess.gc                  subprocess.pickle              subprocess.traceback
+subprocess.Popen               subprocess.check_output        subprocess.list2cmdline        subprocess.select              subprocess.types
+
+
+#### Accessing folders in a quicker way: Using Bookmarks
+
+cd /tmp
+bookmark t
+
+# or:
+
+bookmark t /tmp
+
+# list Bookmarks:
+
+bookmark -l
+
+# remove Bookmark:
+
+bookmark -d t
+
+
+###### GREP --- FILTER EQUIVALENCE SHELL/IPYTHON:
+
+# For example: Checking processes ID (PID) for a specific user in shell, using awk:
+
+ps -aux | awk '{if ($1 == "israel") print $2}'
+
+27263
+28983
+34990
+...
+
+# Equivalent in iPython: Output is presented in a list :
+
+ps = !ps -aux
+ps.grep('israel', field=0).fields(1)
+
+['27263',
+'28983',
+'34990',
+...
+
+## another example: Listing home dirs, extracting info from /etc/passwd :
+
+# shell:
+cat /etc/passwd | awk -F ':' '{print $6}' | grep 'home'
+
+# iPython: Leaving output in a list [] :
+In [60]: home_dirs.grep('home', field=5).fields(5)
+Out[60]: ['/home/steve', '/home/israel']
+
+
+#### Listing all declared objects : who
+
+In [94]: who
+cur_dir	 f1	 list	 list2	 loop1	 loop2	 processes	 psisrael	 
+subprocess	
+
+# same in a list result output:
+
+n [96]: %who_ls
+Out[96]: 
+['cur_dir',
+ 'f1',
+ 'list',
+ 'list2',
+ 'loop1',
+ 'loop2',
+ 'myfunc',
+ 'processes',
+ 'psisrael',
+ 'subprocess']
+
+# getting more details: %whos 
+
+In [97]: %whos
+Variable     Type        Data/Info
+----------------------------------
+cur_dir      SList       ['/home/israel/git/python_practices']
+f1           function    <function f1 at 0x7f38ccedc7d0>
+list         SList       ['total 40K', 'drwxrwxr-x<...>4,0K Nov 26 10:44 tools']
+list2        SList       ['drwxrwxr-x  2 israel is<...>K Nov 22 16:33 SysAdmin']
+loop1        function    <function loop1 at 0x7f38ccedc6e0>
+loop2        function    <function loop2 at 0x7f38ccedc938>
+myfunc       function    <function myfunc at 0x7f38cd015500>
+processes    SList       ['USER       PID %CPU %ME<...>vim subprocess_listing_']
+psisrael     SList       ['israel     787  0.0  0.<...>vim subprocess_listing_']
+subprocess   module      <module 'subprocess' from<...>ython2.7/subprocess.pyc'>
+
+
+##### Finding info about a declared function :
+
+In [32]: def myfunc(a, b, c, d):
+   ....:     return a, b, c, d
+   ....: 
+
+In [33]: myfunc(12,5,4,10)
+Out[33]: (12, 5, 4, 10)
+
+In [34]: ??myfunc
+Type:        function
+String form: <function myfunc at 0x7f38cd015500>
+File:        /home/israel/git/python_practices/<ipython-input-32-2063ec68068c>
+Definition:  myfunc(a, b, c, d)
+Source:
+def myfunc(a, b, c, d):
+    return a, b, c, d
+
+
+##### Searching an object with psearch (If you don't remember the object name, not even enough for a regex, then run who)
+# for instance loop* functions created :
+
+In [86]: %psearch loop*
+loop1
+loop2
+
+In [87]: loop2??
+Type:        function
+String form: <function loop2 at 0x7f38ccedc938>
+File:        /home/israel/git/python_practices/<ipython-input-82-db48b96ea55c>
+Definition:  loop2()
+Source:
+def loop2():
+    for i in range(0,10,1):
+       get_ipython().system(u'pwd')
+
+
+#### reset variables in the ipython shell :
+
+In [18]: a = 5
+
+In [19]: whos
+Variable   Type    Data/Info
+----------------------------
+a          int     5
+
+In [20]: reset
+Once deleted, variables cannot be recovered. Proceed (y/[n])? y
+
+In [21]: whos
+Interactive namespace is empty.
+
+#### store variables / persistent for future sessions :
+
+In [1]: l = ['hello',10,'world']
+  In [2]: %store l
+  In [3]: exit
+
+  (IPython session is closed and started again...)
+
+  ville@badger:~$ ipython
+  In [1]: l
+  NameError: name 'l' is not defined
+  In [2]: %store -r
+  In [3]: l
+  Out[3]: ['hello', 10, 'world']
+
+
+#### Bash output converted into a str :: Requirement : import subprocess
+
+In [62]: res = subprocess.Popen(['uname', '-sv'], stdout=subprocess.PIPE)
+
+In [63]: thisUname = res.stdout.read().strip()
+
+In [64]: thisUname
+Out[64]: 'Linux #42~16.04.1-Ubuntu SMP Wed Mar 7 16:03:28 UTC 2018'
+
+In [65]: thisUname.upper()
+Out[65]: 'LINUX #42~16.04.1-UBUNTU SMP WED MAR 7 16:03:28 UTC 2018'
+
+
+### Another way, is to deal with the bash output as a Python list, then each element can have a string applicability : like a slicing
+
+In [73]: myDistro = !uname -a
+
+In [74]: myDistro
+Out[74]: ['Linux W9980173 4.13.0-37-generic #42~16.04.1-Ubuntu SMP Wed Mar 7 16:03:28 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux']
+
+In [75]: myDistro[0][6:20]
+Out[75]: 'W9980173 4.13.
+
+# or applying .index('this') # gives char number/index
+# or .find('thisnow') # gives char number when you find this word
+
+myDistro[0].index('Linux')
+0
+
+myDistro[0].find('UTC')
+75
+
+##### a great example ... getting bash output in a list, treat each line as a string to get upper :
+
+myProcs = !ps -aux
+
+In [111]: for x in range(0,len(myProcs)):
+    print(myProcs[x].upper())
+
+
+
+
+#### COMPREHENSION LISTS SYNTAX IN IPYTHON:
+
+In [85]: [x>5 for x in range(10)]
+Out[85]: [False, False, False, False, False, False, True, True, True, True]
+
+In [86]: [x>5 for x in range(10) if x > 3]
+Out[86]: [False, False, True, True, True, True]
+
+
+
+
