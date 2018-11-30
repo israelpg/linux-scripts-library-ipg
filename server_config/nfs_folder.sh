@@ -55,4 +55,6 @@ df -h
 ip_server:/nfs-folder	/mnt/nfs/nfs-folder	nfs auto,nofail,noatime,nolock,intr,tcp,actimeo=1080 0 0
 
 
+# To use key-based authentication with NFS-mounted home directories, enable the use_nfs_home_dirs SELinux boolean first:
 
+setsebool -P use_nfs_home_dirs 1

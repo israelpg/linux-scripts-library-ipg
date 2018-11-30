@@ -44,3 +44,8 @@ SELINUXTYPE=targeted
 # SETLOCALDEFS= Check local definition changes
 
 SETLOCALDEFS=0
+
+
+# To use key-based authentication with NFS-mounted home directories, enable the use_nfs_home_dirs SELinux boolean first:
+
+setsebool -P use_nfs_home_dirs 1

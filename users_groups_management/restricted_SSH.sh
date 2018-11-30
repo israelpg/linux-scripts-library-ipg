@@ -15,3 +15,7 @@ sudo nano -c /etc/ssh/sshd_config
 # restart ssh.service:
 
 sudo systemctl restart ssh.service
+
+# You can also limit root access via ssh :
+
+PermitRootLogin no

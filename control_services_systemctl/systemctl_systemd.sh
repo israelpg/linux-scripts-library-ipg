@@ -35,3 +35,8 @@ systemct is-active service.name # if is active, we can stop it: sudo systemctl s
 # to see logs for services, use the journalctl:
 
 journalctl -u <service-name>
+
+
+## reloading changes :
+
+systemctl daemon-reload

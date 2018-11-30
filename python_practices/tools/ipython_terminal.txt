@@ -303,7 +303,7 @@ myProcs = !ps -aux
 In [111]: for x in range(0,len(myProcs)):
     print(myProcs[x].upper())
 
-
+# other string options include: startswith endswith 
 
 
 #### COMPREHENSION LISTS SYNTAX IN IPYTHON:
@@ -313,6 +313,64 @@ Out[85]: [False, False, False, False, False, False, True, True, True, True]
 
 In [86]: [x>5 for x in range(10) if x > 3]
 Out[86]: [False, False, True, True, True, True]
+
+
+### string to list conversion
+
+string1 = "This is a sample string for practicing"
+
+list1 = string1.split()
+
+In [174]: print(list1)
+['Insert', 'your', 'clever', 'little', 'piece', 'of', 'text', 'here.']
+
+# if the string has commas, can be used as a delimiter:
+
+stringCommas="One, two, third"
+stringCommas.split(',')
+['One', 'two', 'third']
+
+# split delim but only x times:
+stringCommas.split(',',1)
+['One', 'two,third']
+
+
+### string built-in functions
+
+# booleans are returned, useful when checking for content :
+
+string11.startswith('Linux')
+True
+
+string11.endswith('Mac')
+False
+
+string11.find('UTC')
+True
+
+string11.upper()
+LINUX ...
+
+
+# getting some values for string properties :
+# number of characters
+len(string11)
+56
+
+# strip characters, tags, and so on:
+
+# strip blank spaces in the whole string: left and right
+
+string11.strip()
+
+# tags: 
+
+htmlString.strip("<>")
+
+# you can remove tags only left or right
+string11.lstrip("<")
+
+
 
 
 

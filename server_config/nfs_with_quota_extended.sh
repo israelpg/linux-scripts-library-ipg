@@ -181,3 +181,8 @@ ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:mountd cts
 ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:nfs ctstate NEW
 ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:34915 ctstate NEW
 ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:sunrpc ctstate NEW
+
+
+# To use key-based authentication with NFS-mounted home directories, enable the use_nfs_home_dirs SELinux boolean first:
+
+setsebool -P use_nfs_home_dirs 1
