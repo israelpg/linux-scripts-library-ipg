@@ -1,0 +1,12 @@
+FROM centos/systemd
+
+MAINTAINER "Israel PG" israelpg@gmail.com>
+
+RUN echo 'proxy=http://10.198.205.226:8080' >>/etc/yum.conf
+RUN yum -y update
+RUN yum -y install httpd openssh.x86_64 openssh.x86_64 net-tools nmap-ncat.x86_64; yum clean all; systemctl enable httpd.service
+
+#EXPOSE 80
+
+#CMD ["/usr/sbin/init"]
+CMD ["/bin/bash"]

@@ -1,0 +1,18 @@
+https://github.com/CentOS/CentOS-Dockerfiles/tree/master/systemd/centos7
+
+FROM centos/systemd
+
+MAINTAINER "Israel PG" israelpg@gmail.com>
+
+RUN echo 'proxy=http://10.198.205.226:8080' >>/etc/yum.conf
+RUN yum -y update
+RUN yum -y install httpd net-tools; yum clean all; systemctl enable httpd.service
+
+#EXPOSE 80
+
+#CMD ["/usr/sbin/init"]
+CMD ["/bin/bash"]
+
+
+### If you just one the httpd service (systemctl) running, then uncomment the init line
+

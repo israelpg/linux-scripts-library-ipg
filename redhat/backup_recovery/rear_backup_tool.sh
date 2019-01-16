@@ -97,7 +97,7 @@ BACKUP=NETFS
 BACKUP_URL="nfs://192.168.122.1/nfs/rear/"
 
 ## other options instead of nfs:
-# local file :
+# local file as long as path is pointing to another disk:
 BACKUP_URL=file:///
 # samba server :
 BACKUP_URL=cifs://

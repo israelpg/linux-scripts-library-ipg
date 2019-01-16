@@ -49,6 +49,8 @@ systemctl restart sshd.service
 
 # even reloading config, for instance in bind9 after config changes, eg: updating zones:
 systemctl reload bind9.service
+# or applying several changes:
+systemctl daemon-reload
 
 # disable and enable again:
 

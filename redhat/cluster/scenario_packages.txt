@@ -1,0 +1,22 @@
+Source: https://www.tecmint.com/what-is-clustering-and-advantages-disadvantages-of-clustering-in-linux/
+
+Now let’s see what kind of packages/installations we need to configure this setup successfully. The following packages/RPMs can be downloaded by rpmfind.net.
+
+Ricci (ricci-0.16.2-75.el6.x86_64.rpm)
+Luci (luci-0.26.0-63.el6.centos.x86_64.rpm)
+Mod_cluster (modcluster-0.16.2-29.el6.x86_64.rpm)
+CCS (ccs-0.16.2-75.el6_6.2.x86_64.rpm)
+CMAN(cman-3.0.12.1-68.el6.x86_64.rpm)
+Clusterlib (clusterlib-3.0.12.1-68.el6.x86_64.rpm)
+Let’s see what each installation does for us and their meanings.
+
+Ricci is a daemon which used for cluster management and configurations. It distributes/dispatches receiving messages to the nodes configured.
+
+Luci is a server that runs on the cluster management server and communicates with other multiple nodes. It provides a web interface to make things easier.
+
+Mod_cluster is a load balancer utility based on httpd services and here it is used to communicate the incoming requests with the underlying nodes.
+
+CCS is used to create and modify the cluster configuration on remote nodes through ricci. It is also used to start and stop the cluster services.
+
+CMAN is one of the primary utilities other than ricci and luci for this particular setup, since this acts as the cluster manager. Actually, cman stands for 
+CLUSTER MANAGER. It is a high-availability add-on for RedHat which is distributed among the nodes in the cluster.

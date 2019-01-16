@@ -1,0 +1,96 @@
+connection.id:                          System eth0
+connection.uuid:                        5fb06bd0-0bb0-7ffb-45f1-d6edd65f3e03
+connection.stable-id:                   --
+connection.type:                        802-3-ethernet
+connection.interface-name:              eth0
+connection.autoconnect:                 yes
+connection.autoconnect-priority:        0
+connection.autoconnect-retries:         -1 (default)
+connection.auth-retries:                -1
+connection.timestamp:                   1543939475
+connection.read-only:                   no
+connection.permissions:                 --
+connection.zone:                        --
+connection.master:                      --
+connection.slave-type:                  --
+connection.autoconnect-slaves:          -1 (default)
+connection.secondaries:                 --
+connection.gateway-ping-timeout:        0
+connection.metered:                     unknown
+connection.lldp:                        default
+802-3-ethernet.port:                    --
+802-3-ethernet.speed:                   0
+802-3-ethernet.duplex:                  --
+802-3-ethernet.auto-negotiate:          no
+802-3-ethernet.mac-address:             6A:CE:6E:1C:BE:20
+802-3-ethernet.cloned-mac-address:      --
+802-3-ethernet.generate-mac-address-mask:--
+802-3-ethernet.mac-address-blacklist:   --
+802-3-ethernet.mtu:                     auto
+802-3-ethernet.s390-subchannels:        --
+802-3-ethernet.s390-nettype:            --
+802-3-ethernet.s390-options:            --
+802-3-ethernet.wake-on-lan:             ignore
+802-3-ethernet.wake-on-lan-password:    --
+ipv4.method:                            manual
+ipv4.dns:                               10.197.101.15,10.197.101.17
+ipv4.dns-search:                        --
+ipv4.dns-options:                       ""
+ipv4.dns-priority:                      0
+ipv4.addresses:                         10.197.100.20/24
+ipv4.gateway:                           10.197.100.254
+ipv4.routes:                            --
+ipv4.route-metric:                      -1
+ipv4.route-table:                       0 (unspec)
+ipv4.ignore-auto-routes:                no
+ipv4.ignore-auto-dns:                   no
+ipv4.dhcp-client-id:                    --
+ipv4.dhcp-timeout:                      0 (default)
+ipv4.dhcp-send-hostname:                yes
+ipv4.dhcp-hostname:                     --
+ipv4.dhcp-fqdn:                         --
+ipv4.never-default:                     no
+ipv4.may-fail:                          yes
+ipv4.dad-timeout:                       -1 (default)
+ipv6.method:                            ignore
+ipv6.dns:                               --
+ipv6.dns-search:                        --
+ipv6.dns-options:                       ""
+ipv6.dns-priority:                      0
+ipv6.addresses:                         --
+ipv6.gateway:                           --
+ipv6.routes:                            --
+ipv6.route-metric:                      -1
+ipv6.route-table:                       0 (unspec)
+ipv6.ignore-auto-routes:                no
+ipv6.ignore-auto-dns:                   no
+ipv6.never-default:                     no
+ipv6.may-fail:                          yes
+ipv6.ip6-privacy:                       -1 (unknown)
+ipv6.addr-gen-mode:                     stable-privacy
+ipv6.dhcp-send-hostname:                yes
+ipv6.dhcp-hostname:                     --
+ipv6.token:                             --
+proxy.method:                           none
+proxy.browser-only:                     no
+proxy.pac-url:                          --
+proxy.pac-script:                       --
+GENERAL.NAME:                           System eth0
+GENERAL.UUID:                           5fb06bd0-0bb0-7ffb-45f1-d6edd65f3e03
+GENERAL.DEVICES:                        eth0
+GENERAL.STATE:                          activated
+GENERAL.DEFAULT:                        yes
+GENERAL.DEFAULT6:                       no
+GENERAL.SPEC-OBJECT:                    --
+GENERAL.VPN:                            no
+GENERAL.DBUS-PATH:                      /org/freedesktop/NetworkManager/ActiveConnection/1
+GENERAL.CON-PATH:                       /org/freedesktop/NetworkManager/Settings/1
+GENERAL.ZONE:                           --
+GENERAL.MASTER-PATH:                    --
+IP4.ADDRESS[1]:                         10.197.100.20/24
+IP4.GATEWAY:                            10.197.100.254
+IP4.ROUTE[1]:                           dst = 10.197.100.0/24, nh = 0.0.0.0, mt = 100
+IP4.ROUTE[2]:                           dst = 0.0.0.0/0, nh = 10.197.100.254, mt = 100
+IP4.DNS[1]:                             10.197.101.15
+IP4.DNS[2]:                             10.197.101.17
+IP6.GATEWAY:                            --
