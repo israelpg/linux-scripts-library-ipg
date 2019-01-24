@@ -1,0 +1,13 @@
+Scenario A:
+
+Cluster Manager container running pcsd.service is part of Cluster with another node "node2"
+
+
+Scenario B:
+
+Cluster Manager is a container running pcsd.service
+
+Then cluster itself is composed of two nodes in a pcs container, no one is master/manager
+
+
+

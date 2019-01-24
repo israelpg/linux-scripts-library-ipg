@@ -14,5 +14,5 @@ RUN yum -y install httpd net-tools; yum clean all; systemctl enable httpd.servic
 CMD ["/bin/bash"]
 
 
-### If you just one the httpd service (systemctl) running, then uncomment the init line
+### If you just want the httpd service (systemctl) running, then uncomment the init line
 
