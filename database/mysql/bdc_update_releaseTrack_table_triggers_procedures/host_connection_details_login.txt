@@ -1,0 +1,17 @@
+SSH as root to host:
+
+ssh root@s999lnx86.gfdi.be
+
+Check the mysql root password:
+
+[root@s999lnx86 ~]# cat /root/.mysql_rootpw 
+MYPASSWD="*********"
+
+Database: bdc
+
+use bdc;
+
+show tables;
+
+select * from releaseTrack;
+

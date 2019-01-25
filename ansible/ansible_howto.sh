@@ -14,13 +14,15 @@ sudo yum install -y epel-release
 
 sudo yum install -y ansible
 
-## Configuring Ansible hosts:
-#
+##### Rational: The Ansible Server needs to be configured:
+
+## 1) Configuring Ansible hosts: These are the hosts managed by Ansible Server
+
 ## You can create groups of servers, to create lists within config file:
 
 sudo vim /etc/ansible/hosts
 
-# simple hosts in our network
+# simple_hosts in our network
 [simple_hosts]
 ubuntu1 ansible_ssh_host=10.136.137.110
 
@@ -28,7 +30,7 @@ ubuntu1 ansible_ssh_host=10.136.137.110
 # ansible_ssh_host is a property name of ansible, must be used
 # just indicate the IP for the host
 
-## Now create the group variable simple_hosts created in hosts file in:
+## 2) Configure the variables for the simple_hosts, including defined host ubuntu1, and the username to be used for connecting:
 
 mkdir /etc/ansible/group_vars && sudo vim /etc/ansible/group_vars/simple_hosts
 
@@ -39,8 +41,11 @@ ansible_ssh_user: ip14aai
 
 # check the connectivity from ansible server to host (it is via ssh):
 # NOTE: You better add id_rsa.pub from server to each client host machine
+ssh-copy-id user@host-client 
+# or: 
+ssh-copy-id -i /folder/this_key.pub user@host-client
 
-ssh-copy-id user@host-client # or: ssh-copy-id -i /folder/this_key.pub user@host-client
+## 3) Check connectivity from server to host:
 
 [ip14aai@02DI20161235444 ~]$ ansible -m ping all
 ubuntu1 | SUCCESS => {
@@ -62,7 +67,7 @@ ubuntu1 | SUCCESS => {
     "ping": "pong"
 }
 
-## executing a command in the client, output in server:
+## From Ansible Server executing a command in the client, output in server:
 
 [ip14aai@02DI20161235444 ~]$ ansible ubuntu1 -m command -a "cat /etc/hosts"
 ubuntu1 | SUCCESS | rc=0 >>

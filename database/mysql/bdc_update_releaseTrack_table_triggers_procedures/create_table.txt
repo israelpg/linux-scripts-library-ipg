@@ -1,0 +1,73 @@
+mysql> CREATE TABLE releaseTrack (release_id SMALLINT(20) NOT NULL, project_id SMALLINT(20) NOT NULL, env_type SMALLINT(20) NOT NULL, version VARCHAR(50) NOT NULL, date DATETIME NOT NULL, PRIMARY KEY (project_id,env_type,version));
+
+mysql> desc releaseTrackTest;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| release_id | smallint(20) | NO   |     | NULL    |       | 
+| project_id | smallint(20) | NO   | PRI | NULL    |       | 
+| env_type   | smallint(20) | NO   | PRI | NULL    |       | 
+| version    | varchar(50)  | NO   | PRI | NULL    |       | 
+| date       | datetime     | NO   |     | NULL    |       | 
++------------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+RATIONALE :
+
+# This release is deployed in REF release August:
+# version table is updated with:
+project_id 500
+version 1.1
+env_type REF
+date 20180815
+
+# In the releaseTrack table check last record for PROD, which is release July:
+project_id 500
+version 1.0
+env_type PROD
+date 20180730
+release_id 1807
+
+# inserting now this version for ref in release August :
+
+1. The version table is updated, a trigger update is executed
+
+2. The trigger will do some operations / checkings in the releaseTrack :
+
+For same project_id take the release_id of last version in PROD
+
+Then use this release_id to be incremented of plus 1 month, and insert the rest of info: version, ref and so on ... 
+and makes an INSERT in releaseTrack for REF.
+
+latest PROD record for that project
+1807 
+@month
+@year
+if @month is 12 then increment @year + 1 and month will be 01
+else ( @month is not 12 ) then increment @month + 1 keeping same @year
+for august: 1808
+..
+when latest PROD release will have release_id 1812, then: 1901
+
+# The release in PROD:
+
+1. versions table is updated with PROD ... trigger update releaseTrack
+
+2. insert in releaseTrack the new version ... checking the latest release_id in PROD for this project, and same approach 
+as above, get previous release_id and increment
+
+TRIGGER:
+
+UPDATE of versions table:
+
+if new update is INT, REF, PROD
+then
+	check/update releaseTrack table
+fi
+
+triggering
+table releaseTrack INSERT :
+
+Get latest release_id in PROD for this project_id update triggered
+increment one month
+insert tuple with new record with all details from version table new update: project_id, type, version, date ...

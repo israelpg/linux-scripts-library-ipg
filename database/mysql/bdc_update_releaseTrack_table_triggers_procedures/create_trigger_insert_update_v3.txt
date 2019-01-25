@@ -1,0 +1,20 @@
+# no releaseID implementation, to make it more flexible:
+
+mysql> show triggers;
++----------------------------+--------+---------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+---------+----------+----------------+
+| Trigger                    | Event  | Table   | Statement                                                                                                                                                                                                                           | Timing | Created | sql_mode | Definer        |
++----------------------------+--------+---------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+---------+----------+----------------+
+| after_insert_version_track | INSERT | version | BEGIN
+    IF (NEW.type IN(6,8,11,13) and NEW.version <> 'EMPTY') THEN
+        INSERT INTO releaseTrack
+        SET project_id=NEW.project_id, env_type=NEW.type, version=NEW.version, date=NEW.modificationdate;
+    END IF;
+END    | AFTER  | NULL    |          | root@localhost | 
+| after_update_version_track | UPDATE | version | BEGIN   
+    IF (NEW.type IN(6,8,11,13) and NEW.version <> 'EMPTY') THEN
+        INSERT INTO releaseTrack
+        SET project_id=NEW.project_id, env_type=NEW.type, version=NEW.version, date=NEW.modificationdate;
+    END IF;
+END | AFTER  | NULL    |          | root@localhost | 
++----------------------------+--------+---------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+---------+----------+----------------+
+2 rows in set (0.00 sec)

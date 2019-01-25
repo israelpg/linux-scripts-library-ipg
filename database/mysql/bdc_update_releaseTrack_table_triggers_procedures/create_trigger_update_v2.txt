@@ -1,0 +1,85 @@
+Project ID: 9090
+
+There was a Hotfix during 1810 was ongoing.
+
+Version: 1809.1.01
+
+This was then deployed in REF
+
+Then in PROD, therefore new versions for REF linked to 1810 were incremented to 1811 onwards ...
+
+
+Solution: Check how I handle the Hotfix coming versions in PROD, so that are not deployed as next release, but as
+Current Release instead!!!!
+
+
+
+
+DELIMITER |
+CREATE TRIGGER after_update_version_track
+    AFTER UPDATE ON version
+    FOR EACH ROW
+BEGIN
+    DECLARE year INT(2) ZEROFILL;
+    DECLARE month INT(2) ZEROFILL;
+    DECLARE generatedYear INT(2) ZEROFILL;
+    DECLARE generatedMonth INT(2) ZEROFILL;
+    SET @january := 1;
+
+    SELECT MAX(release_id)
+    INTO @releaseID
+    FROM releaseTrack WHERE env_type=11;
+
+    SET @year := LEFT(@releaseID,length(@releaseID)-2);
+    SET @month := RIGHT(@releaseID,length(@releaseID)-2);
+
+    IF (@month = 12) THEN
+        SET @generatedYear := @year+1;
+        SET @generatedMonth := CONCAT(0,@january);
+    ELSE
+        SET @generatedYear := @year;
+        SET @generatedMonth := @month+1;
+        IF (@generatedMonth < 10) THEN
+            SET @generatedMonth := CONCAT(0,@generatedMonth);
+        END IF;
+    END IF;
+
+    SET @generatedRelease := CONCAT(@generatedYear,@generatedMonth);
+
+    IF (NEW.type IN(8) and NEW.version <> 'EMPTY') THEN
+        SELECT release_id
+        INTO @releaseHotfixSpecific
+        FROM releaseTrack WHERE project_id = NEW.project_id AND env_type IN(13,6) AND version = NEW.version;
+        
+        IF (@releaseHotfixSpecific IS NULL) THEN
+            CALL sp_check_previous_versions(@generatedRelease, OLD.project_id);
+            CALL sp_common_triggers_track(@generatedRelease, NEW.project_id, NEW.type, NEW.version, NEW.modificationdate);            
+        ELSE
+            CALL sp_common_triggers_track(@releaseID, NEW.project_id, NEW.type, NEW.version, NEW.modificationdate);
+        END IF;
+    ELSEIF (NEW.type IN(11) and NEW.version <> 'EMPTY') THEN
+        SELECT release_id
+        INTO @releaseHotfixSpecific
+        FROM releaseTrack WHERE project_id = NEW.project_id AND env_type IN(13,6) AND version = NEW.version;
+        
+        IF (@releaseHotfixSpecific IS NULL) THEN
+			SELECT MAX(release_id)
+            INTO @maxRefRelease
+            FROM releaseTrack WHERE env_type=8;
+
+            CALL sp_check_previous_versions(@generatedRelease, OLD.project_id);
+
+            SELECT release_id
+            INTO @nextRelease
+            FROM releaseTrack WHERE project_id = NEW.project_id AND env_type = 8 AND version = NEW.version;
+            
+            CALL sp_common_triggers_track(@nextRelease, NEW.project_id, NEW.type, NEW.version, NEW.modificationdate);            
+        ELSE
+            CALL sp_common_triggers_track(@releaseID, NEW.project_id, NEW.type, NEW.version, NEW.modificationdate);
+        END IF;
+    ELSEIF (NEW.type IN(13,6) and NEW.version <> 'EMPTY') THEN
+        CALL sp_common_triggers_track(@releaseID, NEW.project_id, NEW.type, NEW.version, NEW.modificationdate);                 
+    END IF;
+END;
+|
+DELIMITER ;

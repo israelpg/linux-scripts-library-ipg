@@ -1,0 +1,43 @@
+drop trigger after_update_version_track;
+
+drop trigger after_insert_version_track;
+
+drop procedure sp_check_previous_versions;
+
+# table: Two options:
+# 1)    
+
+truncate table releaseTrack;
+
+INSERT INTO releaseTrack
+SELECT '1810',project_id,type,version,modificationdate FROM version
+WHERE type=11;
+
+# 2)
+
+delete from releaseTrack where env_type = 14;
+
+update releaseTrack set release_id = 1810 where release_id > 1810;
+
+
+# operations: create procedure sp_procedure_check_versions_v2.txt , and create two triggers from v2 scripts: insert and update.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Other operations:
+
+## update for documenting purposes (learned lesson):
+
+update versionTest set version='180304.10',modificationdate=CURRENT_TIMESTAMP() where project_id = 1652 and type=8;

@@ -1,0 +1,6 @@
+Some stuff I see in the MLOZ configuration that I would do differently:
+
+- MLOZ: The Playbook contains the vars for the host
+- Israel: I would rather add the vars information within /group_vars/<ansible-host>
+
+

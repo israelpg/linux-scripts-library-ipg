@@ -1,0 +1,42 @@
+DELIMITER |
+CREATE PROCEDURE sp_check_previous_versions(IN generatedRelease SMALLINT(20), projectID SMALLINT(20))
+BEGIN
+    DECLARE year INT(2) ZEROFILL;
+    DECLARE month INT(2) ZEROFILL;
+    DECLARE one INT(1) ZEROFILL;
+    DECLARE generatedYear INT(2) ZEROFILL;
+    DECLARE generatedMonth INT(2) ZEROFILL;
+
+    SET @year := LEFT(@generatedRelease,length(@generatedRelease)-2);
+    SET @month := RIGHT(@generatedRelease,length(@generatedRelease)-2);
+    SET @one := 1;
+    SET @january := CONCAT(0,@one);
+    IF (@month = @january) THEN
+        SET @generatedYear := @year-1;
+        SET @generatedMonth := 12;
+    ELSE
+        SET @generatedYear := @year;
+        SET @generatedMonth := @month-1;
+        IF (@generatedMonth < 10) THEN
+            SET @generatedMonth := CONCAT(0,@generatedMonth);
+        END IF;
+    END IF;
+
+    SET @previousRelease := CONCAT(@generatedYear,@generatedMonth);
+
+    SELECT MAX(release_id)
+    INTO @lastProdRelease
+    FROM releaseTrack
+    WHERE project_id = projectID 
+    AND env_type = 11;
+
+    IF (@lastProdRelease < @previousRelease) THEN
+        UPDATE releaseTrack
+        SET release_id = generatedRelease
+        WHERE project_id = projectID 
+        AND release_id > @lastProdRelease
+        AND env_type IN (8);
+    END IF;
+END;
+|
+DELIMITER ;
