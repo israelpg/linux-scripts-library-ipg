@@ -1,0 +1,91 @@
+---
+- hosts: IntegNode_200A_EB
+  user: root
+  
+  roles:
+  - base_was  
+  
+  vars:
+    was_app_name: MCA_FBIO_200a_MBR1 ## IPG
+    was_cluster_name:  MCA_FBIO_200a ## IPG
+    default_port: 21400
+    group: was6group
+    owner: was6u200
+    path: /data/???/{{ was_app_name }} ## IPG
+
+    systemProperties:
+    - name: logback.configurationFile
+      value: "{{ path }}/resources/logback.xml"
+    
+    vhost: MCA_FBIO_200_vhost ## IPG
+    host_aliases:
+    - hostname: s298li2wseb01.integ.gfdi.be
+      port: 21400 ## ???
+  
+            
+    jmscf:
+    - jndiName: jms/MCA_FBIO_mqConnectionFactory ## IPG
+      qmgrName: NQM2EB1
+      qmgrSvrconnChannel: MTEAM.CLIENT.SVRCONN
+      connectionNameList: s298li2iib03.integ.gfdi.be(15200)
+      authDataAlias: JMSCF/uqmeb200
+      user: uqmeb200
+      authDataPassword: n3touc3p4s4s4
+      name: MCA_FBIO_mqConnectionFactory ## IPG
+      connectionPool:
+        minConnections: 25  ## IPG
+        maxConnections: 400 ## IPG
+      sessionPool:
+        minConnections: 1
+        maxConnections: 10
+            
+    dataSources: ## IPG : Copied from BL2_200 Test
+    - authDataAlias: udbbl2102/dbdil200     # pools des connexions: min = 25, max = 250
+      authDataPassword: 200MindZD
+      user: dbdil200
+      currentSchema: DIL
+      enableSeamlessFailover: 1
+      databaseName: EBU200
+      driverType: 4
+      jndiName: jdbc/MCA_FBIO_DIL
+      name: MCA_DIL
+      portNumber: 50004
+      serverName: s298li2dbeb01.integ.gfdi.be
+      typeds: universal
+      webSphereDefaultIsolationLevel: 2
+      enableRowsetSupport: 1
+      deferPrepares: true
+      blockingReadConnectionTimeout: 900
+      queryDataSize: 262143
+      fetchSize: 1000   
+      retrieveMessagesFromServerOnGetMessage: true
+      statementCacheSize: 10000 
+      blockingReadConnectionTimeout: 120
+      connectionPool:
+        minConnections: 5
+        maxConnections: 100
+        connectionTimeout: 30
+        reapTime: 7200
+        agedTimeout: 330 
+    - authDataAlias: ???/??? ## Fill in with valid values for Datasource Schema MCA_FBIO
+      user: ??? ##
+      authDataPassword: ??? ##
+      currentSchema: MCA_FBIO ## IPG ???
+      databaseName: EBU200
+      driverType: 4 ## ???
+      jndiName: jdbc/MCA_FBIO_CIN ## IPG
+      name: MCA_FBIO
+      portNumber: 50004 ## ???
+      serverName: s298li2dbfn01.integ.gfdi.be ## ???
+      typeds: universal 
+      webSphereDefaultIsolationLevel: 2
+      enableRowsetSupport: 1
+      connectionPool:
+        minConnections: 1
+        maxConnections: 10
+
+    resourceFiles:
+    - files/MCA_FBIO_200/logback.xml ## IPG
+    
+  roles:
+  - base_was
