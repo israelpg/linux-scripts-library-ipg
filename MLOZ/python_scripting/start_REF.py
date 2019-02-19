@@ -62,7 +62,7 @@ if CLIENTS_998_status != '': # CLIENTS_998 started
         #Starting JadeR Clusters:
         print('Starting JadeR Clusters...')
         for jaderCluster in listJaderClusters:
-                AdminControl.invoke(jaderCluster, 'start')
+                AdminClusterManagement.startSingleCluster(jaderCluster)
                 time.sleep(480) # Allowing 8 minutes for each JadeR Cluster to start
 
 # Check that all JadeR Servers are started otherwise will try to individually start and report
@@ -94,7 +94,7 @@ else:
         print('All required JadeR Servers are started.')
         print('Starting rest of Clusters...')
         for notJaderCluster in listNotJaderClusters:
-                AdminControl.invoke(notJaderCluster, 'start')
+                AdminClusterManagement.startSingleCluster(notJaderCluster)
                 sleep(480)
 
 # Check that all non JadeR Servers are started
