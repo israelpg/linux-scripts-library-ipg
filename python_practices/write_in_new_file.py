@@ -1,0 +1,10 @@
+''' Open an existing file, and create a new one with same content but upper()  '''
+
+def read_original():
+    with open('texto.txt', 'r') as in_file:
+        with open('upper_' + 'texto.txt', 'w') as out_file:
+            for line in in_file:
+                line = line.strip().upper()
+                print(line, file=out_file)
+
+read_original()
