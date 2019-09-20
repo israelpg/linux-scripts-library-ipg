@@ -99,6 +99,15 @@ for i in range(10):
 import subprocess
 subprocess.call("ps -eo comm,user,tty,nice,pcpu,pmem --sort=pmem | head -n 5", shell = True)
 
+In [37]: subprocess.call(["ls", "-lah"])
+total 16K
+drwxrwxr-x. 1 israel israel  142 Sep 17 14:53 .
+drwxrwxr-x. 1 israel israel 3.1K Sep 16 15:40 ..
+-rw-rw-r--. 1 israel israel  197 Sep 16 15:58 check_dirs_2.py
+-rw-rw-r--. 1 israel israel  187 Sep 16 16:00 check_dirs_3.py
+-rw-rw-r--. 1 israel israel  134 Sep 16 15:42 check_dirs.py
+-rw-rw-r--. 1 israel israel   25 Sep 17 14:53 ipython_install.sh
+drwxrwxr-x. 1 israel israel  138 Sep 17 14:56 monitoring
 
 #### to check what else you can import, use the tab:
 subprocess.[tab]
