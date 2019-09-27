@@ -18,3 +18,35 @@ $ sed -n '181,188 p' apache2.conf
 ## to make a permanent deletion, use option -i :
 
 sed -i '2d' file.txt
+
+### adding text to a file when a pattern is found:
+# after pattern:
+
+[israel@w50019045l-mutworld-be tmp]$ sed '/^<\/properties>/ r /tmp/git_config_lines_template.txt' /tmp/testeando.txt 
+esta linea contiene nippin.git para cambiar
+agregar despues de siguiente tag
+</properties>
+<scm class="hudson.plugins.git.GitSCM" plugin="git@3.10.1">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>ssh://git@git.sdlc.gfdi.be:7999/bitbucket-project/git-repository.git</url>
+        <credentialsId>tomcat</credentialsId>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>*/master</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <submoduleCfg class="list"/>
+    <extensions/>
+aqui hay texto q viene despues del agregado
+
+# before pattern:
+sed -i $'/<\/properties>/{e cat git_config_lines_template.txt\n}' "${WORKSPACE}/${job}/config.xml"
+
+# After a pattern, add the content of file:
+sed -i -e "/<\/properties>/r ${EXECUTION_DIR}/git_config_lines_template.txt" "${WORKSPACE}/${job}/config.xml"
+
