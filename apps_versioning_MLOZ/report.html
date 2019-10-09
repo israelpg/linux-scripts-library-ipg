@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Application Versions - INTEG</title>
+	<link rel="stylesheet" href="styles.css">
+	<script src="javascript.js"></script>
+</head>
+<body>
+	<h2>Integration Environment - Application Versions</h2>
+	<!-- Tab links -->
+	<div class="tab">
+		<button class="tablinks" onclick="openCity(event, 'Tomcat')">Tomcat</button>
+		<button class="tablinks" onclick="openCity(event, 'WAS')">WAS</button>
+		<button class="tablinks" onclick="openCity(event, 'IIB')">IIB</button>
+	</div>
+
+	<!-- Tab content -->
+	<div id="Tomcat" class="tabcontent">
+		<h3>Tomcat</h3>
+		<p>Here we add the list of Tomcat Servers</p>
+	</div>
+
+	<div id="WAS" class="tabcontent">
+		<h3>WAS</h3>
+		<button class="accordion">eBusiness</button>
+		<div class="panel">
+	  		<p>Lorem ipsum...</p>
+		</div>
+		<button class="accordion">Flux</button>
+		<div class="panel">
+  			<p>Lorem ipsum...</p>
+		</div>
+	</div>
+
+	<div id="IIB" class="tabcontent">
+		<h3>IIB</h3>
+		<button class="accordion">eBusiness</button>
+		<div class="panel">
+	  		<p>Lorem ipsum...</p>
+		</div>
+		<button class="accordion">Flux</button>
+		<div class="panel">
+  			<p>Lorem ipsum...</p>
+		</div>
+	</div>
+	<script>
+	var acc = document.getElementsByClassName("accordion");
+	var i;
+
+	for (i = 0; i < acc.length; i++) {
+	  acc[i].addEventListener("click", function() {
+	    this.classList.toggle("active");
+	    var panel = this.nextElementSibling;
+	    if (panel.style.maxHeight) {
+	      panel.style.maxHeight = null;
+	    } else {
+	      panel.style.maxHeight = panel.scrollHeight + "px";
+	    } 
+	  });
+	}
+</script>
+</body>
+</html>

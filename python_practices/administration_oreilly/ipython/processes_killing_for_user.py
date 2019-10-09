@@ -1,3 +1,4 @@
+processes = !ps -aux
 In [85]: listProcesses=processes.grep('israel').fields(1)
 In [85]: for process in listProcesses:                 
     ...:     print(process)  
