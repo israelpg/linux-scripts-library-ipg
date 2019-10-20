@@ -14,6 +14,8 @@ In [143]: thisdict = {
 In [144]: print(thisdict['year'])
 1964
 
+
+
 # change value for a key:
 
 In [145]: thisdict['year'] = 1968
@@ -30,6 +32,10 @@ brand
 model
 year
 
+# or:
+
+print thisdict.keys()
+
 # print values instead of keys:
 
 In [148]: for key in thisdict:
@@ -41,19 +47,12 @@ Mustang
 
 # or like this:
 
-In [149]: for key in thisdict.values():
-     ...:     print(key)
+In [149]: for value in thisdict.values():
+     ...:     print(value)
      ...:
 Ford
 Mustang
 1968
-
-In [151]: for key in thisdict.keys():
-     ...:     print(key)
-     ...:
-brand
-model
-year
 
 # check if a key exists in the dict:
 
@@ -73,6 +72,11 @@ In [168]: thisdict["color"] = "blue"
 
 In [169]: thisdict
 Out[169]: {'brand': 'Ford', 'color': 'blue', 'model': 'Mustang', 'year': 1968}
+
+# getting key for a specific value:
+x = thisdict.has_key('blue')
+print(x)
+color
 
 # remove items:
 

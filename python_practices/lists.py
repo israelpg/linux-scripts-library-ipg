@@ -1,3 +1,9 @@
+# Table to help with the id listing:
+#
+# h    e    l    p    A
+# 0    1    2    3    4
+# -5   -4   -3   -2   -1
+
 numbers = [10, 22, 43, 11, 5, 55]
 
 print(numbers)
@@ -44,12 +50,32 @@ list1 += ['h']
 
 list1.append('h')
 
+# adding element to specific position:
+
+list1.insert(2, 60) # in position 2 of the list placing value 60
+
 # Removing an element from the list:
 
 list1 = [10, 20 ,30, 40, 50]
 del list1[2]
 list1
 # [10, 20, 40, 50]
+
+# another way to remove a specific element:
+list1.remove(40)
+
+# an example below:
+In [5]: list1 = [10, 20 ,30, 40, 50]
+
+In [6]: del list1[0]
+
+In [7]: print(list1)
+[20, 30, 40, 50]
+
+In [8]: list1.remove(50)
+
+In [9]: print(list1)
+[20, 30, 40]
 
 # two or more elements by index:
 del list1[1], list1[3]
@@ -61,7 +87,7 @@ del lista[2:4]
 lista
 # [10, 20, 50, 60]
 
-# evaluate a list and do something with its elements:
+# evaluate a list using a regular expression and do something with its elements:
 
 list11 = [2, -5, 50, 0, -55, 60, 1, -4, 8, 10, 2]
 list11
