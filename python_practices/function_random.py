@@ -13,6 +13,9 @@ pear
 0.227654923992
 0
 
+# specific range of integers:
+print random.randint(1,8)
+
 from random import randrange, seed
 
 # setting seed function, which establishes the initial value from which the sequence of pseudorandom numbers is generated. If num was 100, next one would from 123 ...
