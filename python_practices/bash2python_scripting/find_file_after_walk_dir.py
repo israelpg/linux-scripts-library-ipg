@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/python3
 
 import os
 import sys
@@ -11,8 +11,6 @@ def find_files(filename, search_path):
         if filename in files:
             result.append(os.path.join(root, filename))
             return result
-        else:
-            print ("Cannot find {thisFile} in {thisDir}".format(thisFile=filename,thisDir=dir))
 
 def main():
     # Clear the screen

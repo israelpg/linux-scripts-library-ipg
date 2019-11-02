@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="74feDl9yxH3_iP1Xjy6HEr7y44jOEkR5sJ8rkBy841Y">
+    <link rel="canonical" href="https://pythonspot.com/regular-expressions/">
+    
+    <title>Regular Expressions - Python Tutorial</title>
+     <link rel="icon" href="/img/favicon.ico"> 
+    <meta name="keyword" content>
+
+    <link rel="stylesheet" href="/css/theme.css" type="text/css" async>
+
+    
+        
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-67250722-1', 'auto');
+ga('send', 'pageview', {
+  'anonymizeIp': true
+    });
+
+</script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookie-bar/cookiebar-latest.min.js?theme=white&tracking=1&thirdparty=1&always=1&hideDetailsBtn=1"></script>
+
+<link rel="apple-touch-icon-precomposed" href="https://pythonspot.com/wp-content/uploads/2016/08/python.png">
+<meta name="msapplication-TileImage" content="https://pythonspot.com/wp-content/uploads/2016/08/python.png">
+
+
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Regular Expressions">
+<meta property="og:url" content="https://pythonspot.com/regular-expressions/">
+<meta property="og:site_name" content="pythonspot">
+<meta name="twitter:title" content="Regular Expressions">
+<meta name="twitter:site" content="@pythonspot">
+<meta name="twitter:creator" content="@pythonspot">
+
+</head>
+
+<body>
+
+  <div class="page">
+    <div class="head">
+      <header class="head-header">
+    <a href="/" class="head-authorLink">
+      <picture>
+        <source srcset="/wp-content/uploads/2017/09/python-tutorials.jpg.webp" type="image/webp">
+        <source srcset="/wp-content/uploads/2017/09/python-tutorials.jpg" type="image/jpeg"> 
+        <img src="/wp-content/uploads/2017/09/python-tutorials.jpg" alt="logo">
+      </picture>
+    </a>
+  <div class="head-right">
+    <!-- <div class="head-search">
+      <input class="head-searchK"></input>
+      <span class="head-searchT">
+        </span>
+    </div> -->
+    <button class="barWrap" id="barWrap-toggle">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <div class="head-about" id="head-about">
+      
+      <a class="head-aboutLink" href="/beginner">
+        Beginner</a>
+      
+      <a class="head-aboutLink" href="/machine-learning">
+        Machine Learning</a>
+      
+      <a class="head-aboutLink" href="/python-database">
+        Database</a>
+      
+      <a class="head-aboutLink" href="/gui">
+        GUI</a>
+      
+      <a class="head-aboutLink" href="/">
+        More</a>
+      
+    </div>
+  </div>
+</header>
+    </div>
+    <div class="main">
+        <div class="barShow-head" id="barShow">
+  <ul class="barShow-ul">
+    
+      <li class="barShow-item">
+        <a href="/beginner"><span>
+            Beginner</span></a>
+      </li>
+    
+      <li class="barShow-item">
+        <a href="/machine-learning"><span>
+            Machine Learning</span></a>
+      </li>
+    
+      <li class="barShow-item">
+        <a href="/python-database"><span>
+            Database</span></a>
+      </li>
+    
+      <li class="barShow-item">
+        <a href="/gui"><span>
+            GUI</span></a>
+      </li>
+    
+      <li class="barShow-item">
+        <a href="/"><span>
+            More</span></a>
+      </li>
+    
+    
+      <li class="barShow-item">
+        <a class="head-aboutLink" href="/beginner">
+          Beginner
+        </a>
+      </li>
+    
+      <li class="barShow-item">
+        <a class="head-aboutLink" href="/machine-learning">
+          Machine Learning
+        </a>
+      </li>
+    
+      <li class="barShow-item">
+        <a class="head-aboutLink" href="/python-database">
+          Database
+        </a>
+      </li>
+    
+      <li class="barShow-item">
+        <a class="head-aboutLink" href="/gui">
+          GUI
+        </a>
+      </li>
+    
+      <li class="barShow-item">
+        <a class="head-aboutLink" href="/">
+          More
+        </a>
+      </li>
+    
+  </ul>
+</div>
+      <article class="post" id="post">
+  <header class="post-head">
+    <h1 class="post-title">Regular Expressions</h1>
+  </header>
+
+
+  
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Pythonspot Responsive Header -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8496423617181272"
+     data-ad-slot="9066125140"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+  
+
+
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>Regular expressions are essentially a highly specialized programming language embedded inside Python that empowers you to specify the rules for the set of possible strings that you want to match.</p>
+<p>In Python you need the <strong>re</strong> module for regular expressions usage. The grammar overview is on the bottom of this page.</p>
+<p><strong>Related course:</strong><br><a href="https://gum.co/dcsp" target="_blank" rel="noopener">Python Programming Bootcamp: Go from zero to hero</a><br></p>
+<p></p><h2>The Match function</h2><br>The match function is defined as:<p></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">re.match(pattern, string)</span><br></pre></td></tr></table></figure>
+<p>The parameters are:<br><table class="table table-bordered table-striped table-hover table-condensed table-responsive">
+	<thead>
+		<tr>
+			<th>
+Parameters
+			</th>
+			<th>
+Description
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+pattern
+			</td>
+			<td>
+a regular expression
+			</td>
+		</tr>
+		<tr>
+			<td>
+string
+			</td>
+			<td>
+the input string
+			</td>
+		</tr>
+	</tbody>
+</table></p>
+<p>If you want to match a string to a numberic sequence of exactly five, you can use this code:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">input = raw_input(<span class="string">"Enter an input string:"</span>)</span><br><span class="line">m = re.match(<span class="string">'\d&#123;5&#125;\Z'</span>,input)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> m:</span><br><span class="line">    print(<span class="string">"True"</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">"False"</span>)</span><br></pre></td></tr></table></figure>
+<p>Example outputs:</p>
+<table class="table table-bordered table-striped table-hover table-condensed table-responsive">
+	<thead>
+		<tr>
+			<th>
+String
+			</th>
+			<th>
+Match
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+12345
+			</td>
+			<td>
+True
+			</td>
+		</tr>
+		<tr>
+			<td>
+12358
+			</td>
+			<td>
+True
+			</td>
+		</tr>
+		<tr>
+			<td>
+55555
+			</td>
+			<td>
+True
+			</td>
+		</tr>
+		<tr>
+			<td>
+123
+			</td>
+			<td>
+False
+			</td>
+		</tr>
+		<tr>
+			<td>
+123K5
+			</td>
+			<td>
+False
+			</td>
+		</tr>
+		<tr>
+			<td>
+5555555
+			</td>
+			<td>
+False
+			</td>
+		</tr>
+	</tbody>
+
+<p></p><h2>Email validation regex</h2><br>We can use the same function to validate <em>email address</em>. The grammar rules are seen in re.compile and in the grammar table.<p></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">input = raw_input(<span class="string">"Enter an input string:"</span>)</span><br><span class="line">m = re.match(<span class="string">'[^@]<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a982e9">[email&#160;protected]</a>[^@]+\.[^@]+'</span>,input)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> m:</span><br><span class="line">    print(<span class="string">"True"</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">"False"</span>)</span><br></pre></td></tr></table></figure>
+<p></p><h2>The Search Function</h2><br>The search function is defined as:<p></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">re.search(pattern, string)</span><br></pre></td></tr></table></figure>
+<p>The parameters are:<br><table class="table table-bordered table-striped table-hover table-condensed table-responsive">
+	<thead>
+		<tr>
+			<th>
+Parameter
+			</th>
+			<th>
+Description
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+pattern
+			</td>
+			<td>
+a regular expression, defines the string to be searched
+			</td>
+		</tr>
+		<tr>
+			<td>
+string
+			</td>
+			<td>
+the search space
+			</td>
+		</tr>
+	</tbody>
+</table></p>
+<p>To search if an e-mail address is in a string:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">input = <span class="string">"Contact me by <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6a1e0f191e2a0f120b071a060f44090507">[email&#160;protected]</a> or at the office."</span></span><br><span class="line"></span><br><span class="line">m = re.search(<span class="string">'[^@]<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6d462d">[email&#160;protected]</a>[^@]+\.[^@]+'</span>,input)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> m:</span><br><span class="line">    print(<span class="string">"String found."</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">"Nothing found."</span>)</span><br></pre></td></tr></table></figure>
+<p></p><h2>Regular Expression Examples</h2><br>A few examples of regular expressions:<br><table class="table table-bordered table-striped table-hover table-condensed table-responsive">
+	<thead>
+		<tr>
+			<th>
+Example
+			</th>
+			<th>
+Regex
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+IP address
+			</td>
+			<td>
+ (([2][5][0-5]\.)|([2][0-4][0-9]\.)|([0-1]?[0-9]?[0-9]\.)){3}(([2][5][0-5])|([2][0-4][0-9])|([0-1]?[0-9]?[0-9]))
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+Email
+			</td>
+			<td>
+[^@]<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="022942">[email&#160;protected]</a>[^@]+\.[^@]+
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+Date MM/DD/YY
+			</td>
+			<td>
+(\d+/\d+/\d+)
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+Integer (positive)
+			</td>
+			<td>
+ (?&lt;![-.])\b[0-9]+\b(?!\.[0-9])
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+Integer
+			</td>
+			<td>
+[+-]?(?&lt;!\.)\b[0-9]+\b(?!\.[0-9])
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+Float
+			</td>
+			<td>
+(?&lt;=&gt;)\d+.\d+|\d+
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+Hexadecimal
+			</td>
+			<td>
+\s–([0-9a-fA-F]+)(?:–)?\s
+			</td>
+		</tr>
+
+	</tbody>
+<p></p>
+<p></p><h2>Regular Expression Grammar</h2><br>Overview of the regex grammar:<br><table class="table table-bordered table-striped table-hover table-condensed table-responsive">
+	<thead>
+		<tr>
+			<th>
+Regex
+			</th>
+			<th>
+Description
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+\d
+			</td>
+			<td>
+Matches any decimal digit; this is equivalent to the class [0-9]
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+\D
+			</td>
+			<td>
+Matches any non-digit character; this is equivalent to the class [^0-9].
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+\s
+			</td>
+			<td>
+Matches any whitespace character; this is equivalent to the class [ \t\n\r\f\v].
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+\S
+			</td>
+			<td>
+Matches any non-whitespace character; this is equivalent to the class [^ \t\n\r\f\v].
+			</td>
+		</tr>	
+
+		<tr>
+			<td>
+\w
+			</td>
+			<td>
+Matches any alphanumeric character; this is equivalent to the class [a-zA-Z0-9_].
+			</td>
+		</tr>	
+
+		<tr>
+			<td>
+\W
+			</td>
+			<td>
+Matches any non-alphanumeric character; this is equivalent to the class [^a-zA-Z0-9_].
+			</td>
+		</tr>	
+
+		<tr>
+			<td>
+\Z
+			</td>
+			<td>
+Matches only at end of string
+			</td>
+		</tr>	
+
+		<tr>
+			<td>
+[..]
+			</td>
+			<td>
+Match single character in brackets
+			</td>
+		</tr>	
+
+		<tr>
+			<td>
+[^..]
+			</td>
+			<td>
+Match any single character not in brackets
+			</td>
+		</tr>	
+
+		<tr>
+			<td>
+.
+			</td>
+			<td>
+Match any character except newline
+			</td>
+		</tr>	
+
+		<tr>
+			<td>
+$
+			</td>
+			<td>
+Match the end of the string
+			</td>
+		</tr>	
+
+		<tr>
+			<td>
+*
+			</td>
+			<td>
+Match 0 or more repetitions
+			</td>
+		</tr>	
+
+		<tr>
+			<td>
++
+			</td>
+			<td>
+1 or more repetitions
+			</td>
+		</tr>	
+
+
+		<tr>
+			<td>
+{m}
+			</td>
+			<td>
+Exactly m copies of the previous RE should be matched.
+			</td>
+		</tr>	
+
+
+		<tr>
+			<td>
+|
+			</td>
+			<td>
+Match A or B. A|B
+			</td>
+		</tr>	
+
+		<tr>
+			<td>
+?
+			</td>
+			<td>
+ 0 or 1 repetitions of the preceding RE
+			</td>
+		</tr>	
+
+		<tr>
+			<td>
+[a-z]
+			</td>
+			<td>
+ Any lowercase character
+			</td>
+		</tr>	
+
+		<tr>
+			<td>
+[A-Z]
+			</td>
+			<td>
+ Any uppercase character
+			</td>
+		</tr>	
+
+		<tr>
+			<td>
+[a-zA-Z]
+			</td>
+			<td>
+ Any character
+			</td>
+		</tr>	
+
+		<tr>
+			<td>
+[0-9]
+			</td>
+			<td>
+ Any digit
+			</td>
+		</tr>	
+	</tbody>
+        <p></p>
+<div><a id="nav-back" href="/files-spreadsheets-csv/">Back</a><a id="nav-next" href="/fun-tricks-with-python/">Next</a></div>
+</table></table></table>
+    
+  </div>
+  <div class="cat-links">
+  <br>     
+ 
+  <div class="article-category">
+    Posted in <a class="article-category-link" href="/category/Pro/">Pro</a>►<a class="article-category-link" href="/category/Pro/Tutorials/">Tutorials</a>
+  </div>
+
+
+  </div>
+  <br>
+  <div class="post-datetag">
+    <div class="post-date">
+      <time class="post-time" title="2015-04-15 10:55:20" datetime="2015-04-15T10:55:20.000Z" itemprop="datePublished">
+  2015-04-15</time>
+    </div>
+    <div class="post-tag">
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tag/RE/">RE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tag/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tag/regular-expression/">regular expression</a></li></ul>
+
+    </div>
+  </div>
+
+
+  
+
+  
+
+  <div class="comments-area" id="comments"><div class="comments-area" id="comments"> <h2 class="comments-title">			5 thoughts on “<span>Regular Expressions</span>”		</h2><br/> <ol class="comment-list"> <li class="comment even thread-even depth-1" id="comment-1090"> <div class="avatar-container"> <img alt="" class="avatar avatar-80 wp-user-avatar wp-user-avatar-80 photo avatar-default" height="80" src="https://pythonspot.com/wp-content/uploads/2018/05/wpavatar-144x144.png" width="80"/> </div> <div class="comment-container">  <div class="info"> <span class="author">Falcon</span><br/>					-					<span class="date">November 17, 2015</span><br/> </div> <div class="comment-content content"> <p>hi frank, I want to ask something. I did the example for the match function but all the string that i entered came out “false”<br/>I even tried with your example of string and all came out with the same answer which is “false”<br/>I am using python 3.5.0<br/>did I missed something?<br>Thank you for your time</br></p> </div> </div> <div class="clear"></div> <ol class="children"> <li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="comment-1093"> <div class="avatar-container"> <img alt="" class="avatar avatar-80 wp-user-avatar wp-user-avatar-80 photo avatar-default" height="80" src="https://pythonspot.com/wp-content/uploads/2018/05/wpavatar-144x144.png" width="80"/> </div> <div class="comment-container">  <div class="info"> <span class="author">Frank</span><br/>					-					<span class="date">November 20, 2015</span><br/> </div> <div class="comment-content content"> <p>Hi Falcon, this is strange. Which strings did you try?</p> </div> </div> <div class="clear"></div> <ol class="children"> <li class="comment even depth-3" id="comment-1118"> <div class="avatar-container"> <img alt="" class="avatar avatar-80 wp-user-avatar wp-user-avatar-80 photo avatar-default" height="80" src="https://pythonspot.com/wp-content/uploads/2018/05/wpavatar-144x144.png" width="80"/> </div> <div class="comment-container">  <div class="info"> <span class="author">Falcon</span><br/>					-					<span class="date">December 7, 2015</span><br/> </div> <div class="comment-content content"> <p>hi frank, sorry for the late reply. I tried all the example output from 12345, 12358,55555,123,123K5, and 555555. It all came out “false”</p> </div> </div> <div class="clear"></div> <ol class="children"> <li class="comment byuser comment-author-admin bypostauthor odd alt depth-4" id="comment-1123"> <div class="avatar-container"> <img alt="" class="avatar avatar-80 wp-user-avatar wp-user-avatar-80 photo avatar-default" height="80" src="https://pythonspot.com/wp-content/uploads/2018/05/wpavatar-144x144.png" width="80"/> </div> <div class="comment-container">  <div class="info"> <span class="author">Frank</span><br/>					-					<span class="date">December 8, 2015</span><br/> </div> <div class="comment-content content"> <p>This is very strange. Is your grammar string ‘\d{5}\Z’ ?<br/>Try to copy the code exactly, change input to ‘12345’ and use a Python install on another computer. Something is wrong with the configuration I think. The code works here on 2.5, 2.7 and 3.4</p> </div> </div> <div class="clear"></div> <ol class="children"> <li class="comment even depth-5" id="comment-1154"> <div class="avatar-container"> <img alt="" class="avatar avatar-80 wp-user-avatar wp-user-avatar-80 photo avatar-default" height="80" src="https://pythonspot.com/wp-content/uploads/2018/05/wpavatar-144x144.png" width="80"/> </div> <div class="comment-container">  <div class="info"> <span class="author">Falcon</span><br/>					-					<span class="date">December 22, 2015</span><br/> </div> <div class="comment-content content"> <p>thank you frank. it worked. i use version 2.7 and it worked. maybe there is something in version 3.5 that made it wrong. anyway thanks for your replies </p> </div> </div> <div class="clear"></div> </li><!-- #comment-## --></ol><!-- .children --></li><!-- #comment-## --></ol><!-- .children --></li><!-- #comment-## --></ol><!-- .children --></li><!-- #comment-## --></ol><!-- .children --></li><!-- #comment-## --> </ol><!-- .comment-list --> <div class="comment-respond" id="respond"> <h3 class="comment-reply-title" id="reply-title">Leave a Reply <small><a href="/regular-expressions/#respond" id="cancel-comment-reply-link" rel="nofollow" style="display:none;">Cancel reply</a></small></h3><p>Login disabled</p></div></div></div>
+
+  
+  
+</article>
+
+
+
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+
+            <br><br><br><br>
+
+<div id="contentsearch">
+  <form id="searchForm" name="searchForm" action="https://google.com/search">
+    <input name="q" type="text" value="" placeholder="search" maxlength="200" />
+    <input name="q" type="hidden" value="site:pythonspot.com"/>
+  </form>
+</div>
+
+	    <br>
+	    <br>
+	    
+            <ul>
+            <li id="menu-item"><a href="/beginner/">Beginner</a></li>
+            <li id="menu-item"><a href="/gui/">Graphical Interfaces (GUI)</a></li>
+            <li id="menu-item"><a href="/web-development/">Web development</a></li>
+            <li id="menu-item"><a href="/python-database/">Database</a></li>
+            <li id="menu-item"><a href="/robotics/">Robotics</a></li>
+            <li id="menu-item"><a href="/matplotlib/">Matplotlib</a></li>
+            <li id="menu-item"><a href="/network/">Network</a></li>
+            <li id="menu-item"><a href="/machine-learning/">Machine Learning</a></li>
+            </ul>
+
+        </nav>
+    </aside>
+   
+    </div>
+    <footer class="footer-nav">
+      
+  <span class="footer-msg">
+    Copyright &copy; 2015
+    
+    - 2019
+    
+    <span class="timeDivide">-</span>
+    
+    Pythonspot.&nbsp; |
+    
+    <a href="https://pythonspot.com/cookie-policy/">Cookie policy</a> | <a href="https://pythonspot.com/terms-of-use/">Terms of use</a> | <a href="https://pythonspot.com/privacy-policy/">Privacy policy</a>
+  </span>
+
+    </footer>
+    <div class="back-top" id="back-top">
+      <i class="back-top-icon"></i>
+    </div>
+    
+  
+  <!-- <script src="/js/jquery/jquery-3.1.1.min.js"></script> -->
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/js/theme.js"></script>
+    <script src="/js/index.js"></script>
+  
+  </div>
+</body>
