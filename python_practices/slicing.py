@@ -38,3 +38,8 @@ print(lst[::2])
 print(lst[::-1])
 # [120, 110, 100, 90, 80, 70, 60, 50, 40, 30, 20, 10]
 
+print(bikes[::2]) #print alternate elements
+
+print(bikes[::-1]) #prints reversed list
+
+print(bikes[::-2]) #prints reversed list with alternate elements
