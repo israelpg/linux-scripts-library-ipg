@@ -6,7 +6,7 @@
 
 import sys
 
-if __name__ == "__main__":
+def main():
     # Initialize a names dictionary as empty to start with.
     # Each key in this dictionary will be a name and the value
     # will be the number of times that name appears.
@@ -27,3 +27,6 @@ if __name__ == "__main__":
     # number of times it appeared.
     for name, count in names.items():
         sys.stdout.write("%d\t%s\n" % (count, name))
+
+if __name__ == "__main__":
+    main()

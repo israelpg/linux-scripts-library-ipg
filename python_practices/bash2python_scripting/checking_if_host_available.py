@@ -4,7 +4,7 @@ import subprocess
 import sys
 
 # Clear the screen
-subprocess.call('clear', shell=True)
+subprocess.call('clear')
 
 # Clear buffer
 sys.stdout.flush()

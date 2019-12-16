@@ -1,12 +1,16 @@
 #!/usr/bin/python3
 
+# searches in a dir for a filename: recursive search
+# os_walk searches in the whole dir, including subdirs, returning with a join the
+# complete path/filename :)
+
 import os
 import sys
 import subprocess
 
 def find_files(filename, search_path):
     result = []
-    # Walking top-down from the root
+    # Walking top-down from the root : os_walk --> dirpath, dirnames, filenames
     for root, dir, files in os.walk(search_path):
         if filename in files:
             result.append(os.path.join(root, filename))

@@ -1,6 +1,10 @@
 import os
+import sys
+import subprocess
 
 def main():
+    sys.stdout.flush()
+    subprocess.call("ls -lah", shell=True)
     try:
         if os.path.isfile('guru99.txt'):
             f=open("guru99.txt","a")
@@ -18,17 +22,16 @@ def main():
                 line = line.strip()
                 print (line)
     except ValueError:
-        print("There was an error")
+        print ("There was an error")
         raise
     except IOError as e:
-        print "I/O error({0}): {1}".format(e.errno, e.strerror)
+        print ("I/O error({0}): {1}".format(e.errno, e.strerror))
         raise
     except:
-        print "Unexpected error:", sys.exc_info()[0]
+        print ("Unexpected error:", sys.exc_info()[0])
         raise
     finally:
         f.close()
 
 if __name__== "__main__":
     main()
-

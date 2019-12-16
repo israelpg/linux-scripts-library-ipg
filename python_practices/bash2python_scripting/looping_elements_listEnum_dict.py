@@ -11,4 +11,5 @@ if __name__ == "__main__":
     
     dict1 = {'Israel': 10, 'Natasa': 6, 'Ankica': 7}
     for name, count in dict1.items():
-        print ("Name is %s | Count: %d" % (name, count)) 
+        print ("Name is %s | Count: %d" % (name, count))
+        #print ("Name is {name} | Count: {count}".format(name=name, count=count))

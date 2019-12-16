@@ -8,6 +8,6 @@ except ValueError:
 
 ###
 
-[israel@w50019045l-mutworld-be python_practices]$ python3 arguments_command_line_adding.py 10 5
-sum = 15
+# [israel@w50019045l-mutworld-be python_practices]$ python3 arguments_command_line_adding.py 10 5
+# sum = 15
 

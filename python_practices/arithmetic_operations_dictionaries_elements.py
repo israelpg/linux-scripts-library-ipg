@@ -16,3 +16,6 @@ In [74]: prices = {'apple': 0.40, 'banana': 0.50}
     ...:
 I owe the grocer $3.40
 
+## You can also use the items() for the dict:
+
+grocery_bill = sum(prices[thisFruit] * thisQuant for thisFruit, thisQuant in my_purchase.items())

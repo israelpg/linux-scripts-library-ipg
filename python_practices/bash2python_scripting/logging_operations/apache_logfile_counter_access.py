@@ -10,25 +10,15 @@ def main():
     subprocess.call('clear', shell=True)
     # Clear buffer
     sys.stdout.flush()
-    
-    while True:
-        logfile = input("Type the log file name: ")
-        if os.path.isfile(logfile):
-            try:
-                logfile = open("yourlogfile.log", "r")
-                break
-            except IOError:
-                print ("Error, cannot open file")
-        else:
-            print ("Log file name", logfile, " does not exist")
-            continue
-          
+
+    logfile = open("yourlogfile.log", "r")
+
     clean_log=[]
 
     for line in logfile:
         try:
             # copy the URLS to an empty list.
-            # We get the part between GET and HTTP (from line the 4th to http)
+            # We get the part between GET and HTTP
             clean_log.append(line[line.index("GET")+4:line.index("HTTP")])
         except:
             pass
