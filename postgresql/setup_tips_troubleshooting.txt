@@ -1,0 +1,22 @@
+https://computingforgeeks.com/how-to-install-postgresql-on-fedora/
+
+# after installing you must init database:
+
+$ sudo /usr/pgsql-11/bin/postgresql-11-setup initdb
+Initializing database ... OK
+
+# Setup postgres password:
+
+$ sudo su - postgres 
+[postgres@fed29 ~]$ psql -c "alter user postgres with password 'StrongPassword'" 
+ALTER ROLE
+
+In case you want to use password, it is important to update following file with md5 option instead of ident:
+
+# METHOD can be "trust", "reject", "md5", "password", "scram-sha-256",
+# Note that "password" sends passwords in clear text; "md5" or
+host    all             all             127.0.0.1/32            md5
+host    all             all             ::1/128                 md5
+host    replication     all             127.0.0.1/32            md5
+
+# You can use pgadmin for managing the postgres databases

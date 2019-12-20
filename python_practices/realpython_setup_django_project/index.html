@@ -1,0 +1,943 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<link href="//files.realpython.com" rel="dns-prefetch">
+<link href="//fonts.googleapis.com" rel="dns-prefetch">
+<link href="//fonts.gstatic.com" rel="dns-prefetch">
+<title>Django Migrations: A Primer – Real Python</title>
+<meta name="author" content="Real Python">
+<meta name="description" content="In this tutorial, you’ll get comfortable with Django migrations and learn how to create database tables without writing any SQL, how to automatically modify your database after you changed your models, and how to revert changes made to your database.">
+<meta name="keywords" content="django migrations, django, web development, python tutorial, django 1.7, migrations">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" href="https://realpython.com/django-migrations-a-primer/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://files.realpython.com/media/Django-Migrations---A-Primer-Update_Watermarked.798eade8f3df.jpg">
+<meta property="og:image" content="https://files.realpython.com/media/Django-Migrations---A-Primer-Update_Watermarked.798eade8f3df.jpg">
+<meta name="twitter:creator" content="@realpython">
+<meta name="twitter:site" content="@realpython">
+<meta property="og:title" content="Django Migrations: A Primer – Real Python">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://realpython.com/django-migrations-a-primer/">
+<meta property="og:description" content="In this tutorial, you’ll get comfortable with Django migrations and learn how to create database tables without writing any SQL, how to automatically modify your database after you changed your models, and how to revert changes made to your database.">
+<link href="/static/favicon.68cbf4197b0c.png" rel="icon">
+<link href="https://realpython.com/atom.xml" rel="alternate" title="Real Python" type="application/atom+xml">
+<link rel="manifest" href="/manifest.json">
+<link rel="stylesheet" href="/static/realpython.min.029c3809a32e.css">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-35184939-1', 'auto', {'allowLinker': true});
+  ga('require', 'linker');
+  ga('linker:autoLink', ['fastspring.com', 'realpython.onfastspring.com', 'onfastspring.com']);
+  
+  ga('send', 'pageview');
+  
+  ga('require', 'ecommerce');
+  
+  
+  
+  ga('set', 'anonymizeIp', true);
+  
+</script>
+</head>
+<body>
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark flex-column">
+<div class="container flex-row">
+<a class="navbar-brand" href="/">
+<img src="/static/real-python-logo.ab1a167d9717.svg" height="40" class="d-inline-block align-top" alt="Real Python">
+</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+<ul class="navbar-nav mr-2 flex-fill">
+<li class="nav-item">
+<a class="nav-link" href="/start-here/">Start&nbsp;Here</a>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLibrary" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<span class="fa fa-graduation-cap"></span> Learn Python
+</a>
+ <div class="dropdown-menu" aria-labelledby="navbarDropdownLibrary">
+<a class="dropdown-item" href="/">Python Tutorials</a>
+<a class="dropdown-item" href="/courses/">Video Courses</a>
+<a class="dropdown-item" href="/quizzes/">Interactive Quizzes</a>
+<a class="dropdown-item" href="/learning-paths/">Learning Paths</a>
+<a class="dropdown-item" href="/tutorials/all/">Browse Topics</a>
+<a class="dropdown-item border-top" href="/account/join/"><i class="fa fa-fw fa-star text-warning"></i> Unlock All Content</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBooksCourses" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Store
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownBooksCourses">
+<a class="dropdown-item" href="/account/join/"><i class="fa fa-fw fa-star text-warning"></i> RP Membership</a>
+<a class="dropdown-item" href="/products/python-basics-book/">Python Basics Book</a>
+<a class="dropdown-item" href="/products/python-tricks-book/">Python Tricks Book</a>
+<a class="dropdown-item" href="/products/real-python-course/">The Real Python Course</a>
+<a class="dropdown-item" href="/products/managing-python-dependencies/">Managing Python Dependencies</a>
+<a class="dropdown-item" href="/products/sublime-python/">Sublime Text + Python Setup</a>
+<a class="dropdown-item" href="/products/pythonic-wallpapers/">Pythonic Wallpapers Pack</a>
+<a class="dropdown-item" href="https://nerdlettering.com" target="_blank">Python Mugs, T-Shirts, and More</a>
+<a class="dropdown-item" href="https://www.pythonistacafe.com" target="_blank">Pythonista Cafe Community</a>
+<a class="dropdown-item border-top" href="/products/">Browse All »</a>
+</div>
+</li>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMore" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+More
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMore">
+<a class="dropdown-item" href="/newsletter/">Python Newsletter</a>
+<a class="dropdown-item" href="https://www.pythonjobshq.com" target="_blank">Python Job Board</a>
+<a class="dropdown-item" href="/team/">The RP Team</a>
+<a class="dropdown-item" href="/write-for-us/">Become a Tutorial Author</a>
+<a class="dropdown-item" href="/become-an-instructor/">Become a Video Instructor</a>
+</div>
+</li>
+</ul>
+<form class="form-inline my-2 my-lg-0 mr-2 flex-fill" action="/search" method="GET">
+<input class="search-field form-control form-control-md mr-sm-1 mr-lg-2 w-100" type="search" placeholder="Search&hellip;" aria-label="Search" name="q">
+</form>
+<ul class="navbar-nav">
+<li class="nav-item form-inline">
+<a class="btn btn-sm btn-primary px-3" href="/account/join/">Join</a>
+</li>
+<li class="nav-item">
+<a class="btn text-light" href="/account/login/">Sign&nbsp;In</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<div class="container main-content">
+<div class="row justify-content-center">
+<div class="col-md-11 col-lg-8 article">
+<figure class="embed-responsive embed-responsive-16by9">
+<img class="card-img-top m-0 p-0 embed-responsive-item rounded" style="object-fit: contain;" alt="Django Migrations: A Primer" src="https://files.realpython.com/media/Django-Migrations---A-Primer-Update_Watermarked.798eade8f3df.jpg" width="1920" height="1080" srcset="https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/Django-Migrations---A-Primer-Update_Watermarked.798eade8f3df.jpg&amp;w=480&amp;sig=fa13a92d350767a1b83f71943e5557498f2bcce6 480w, https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/Django-Migrations---A-Primer-Update_Watermarked.798eade8f3df.jpg&amp;w=960&amp;sig=437fc8b66bb0d3fa36f3cce6cb6b8a7fb72aa78a 960w, https://files.realpython.com/media/Django-Migrations---A-Primer-Update_Watermarked.798eade8f3df.jpg 1920w" sizes="75vw">
+</figure>
+<h1>Django Migrations: A Primer</h1>
+<p>
+<span class="text-muted">by <a class="text-muted" href="#author">Daniel Hepper</a>
+<span class="ml-2 fa fa-clock-o"></span> Jan 09, 2019
+<span class="ml-2 mr-1 fa fa-comments"></span><a class="text-muted" href="#reader-comments"><span class="disqus-comment-count" data-disqus-identifier="https://realpython.com/django-migrations-a-primer/"></span></a>
+<span class="ml-2 fa fa-tags"></span>
+<a href="/tutorials/basics/" class="badge badge-light text-muted">basics</a>
+<a href="/tutorials/databases/" class="badge badge-light text-muted">databases</a>
+<a href="/tutorials/django/" class="badge badge-light text-muted">django</a>
+<a href="/tutorials/web-dev/" class="badge badge-light text-muted">web-dev</a>
+<br>
+<a target="_blank" rel="nofollow" href="https://twitter.com/intent/tweet/?text=Check out this %23Python tutorial: Django%20Migrations%3A%20A%20Primer by @realpython&url=https%3A//realpython.com/django-migrations-a-primer/" class="mr-1 badge badge-twitter text-light"><i class="mr-1 fa fa-twitter text-light"></i>Tweet</a>
+<a target="_blank" rel="nofollow" href="https://facebook.com/sharer/sharer.php?u=https%3A//realpython.com/django-migrations-a-primer/" class="mr-1 badge badge-facebook text-light"><i class="mr-1 fa fa-facebook text-light"></i>Share</a>
+<a target="_blank" rel="nofollow" href="mailto:?subject=Python article for you&body=Check out this Python tutorial:%0A%0ADjango%20Migrations%3A%20A%20Primer%0A%0Ahttps%3A//realpython.com/django-migrations-a-primer/" class="mr-1 badge badge-red text-light"><i class="mr-1 fa fa-envelope text-light"></i>Email</a>
+</span></p>
+<div class="article-body">
+<div class="bg-light sidebar-module sidebar-module-inset" id="toc">
+<p class="h3 mb-2 text-muted">Table of Contents</p>
+<div class="toc">
+<ul>
+<li><a href="#the-problems-that-migrations-solve">The Problems That Migrations Solve</a><ul>
+<li><a href="#making-database-changes-without-sql">Making Database Changes Without SQL</a></li>
+<li><a href="#avoiding-repetition">Avoiding Repetition</a></li>
+<li><a href="#ensuring-model-definitions-and-the-database-schema-in-sync">Ensuring Model Definitions and the Database Schema in Sync</a></li>
+<li><a href="#tracking-database-schema-change-in-version-control">Tracking Database Schema Change in Version Control</a></li>
+</ul>
+</li>
+<li><a href="#setting-up-a-django-project">Setting Up a Django Project</a></li>
+<li><a href="#creating-migrations">Creating Migrations</a></li>
+<li><a href="#applying-migrations">Applying Migrations</a></li>
+<li><a href="#changing-models">Changing Models</a></li>
+<li><a href="#listing-out-migrations">Listing Out Migrations</a></li>
+<li><a href="#unapplying-migrations">Unapplying Migrations</a></li>
+<li><a href="#naming-migrations">Naming Migrations</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+<li><a href="#video">Video</a></li>
+</ul>
+</div>
+</div>
+<div class="sidebar-module sidebar-module-inset p-0" style="overflow:hidden;">
+<div style="display:block;position:relative;">
+<div style="display:block;width:100%;padding-top:12.5%;"></div>
+<div class="rpad" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div>
+</div>
+</div>
+<div class="border rounded p-3 card mb-2">
+<p class="mb-0"><span class="badge badge-pill badge-success"><i class="fa fa-play-circle" aria-hidden="true"></i> Watch Now</span> This tutorial has a related video course created by the Real Python team. Watch it together with the written tutorial to deepen your understanding: <a class="stretched-link text-success" href="/courses/django-migrations-101/"><strong>Django Migrations 101</strong></a></p>
+</div>
+<p>Since version 1.7, Django has come with built-in support for database migrations. In Django, database migrations usually go hand in hand with models: whenever you code up a new model, you also generate a migration to create the necessary table in the database. However, migrations can do much more.</p>
+<p>You are going to learn how Django Migrations work and how you can get the most out of them over the course of four articles and one video:</p>
+<ul>
+<li><strong>Part 1: Django Migrations: A Primer (current article)</strong></li>
+<li>Part 2: <a href="https://realpython.com/digging-deeper-into-migrations/">Digging Deeper into Migrations</a></li>
+<li>Part 3: <a href="https://realpython.com/data-migrations/">Data Migrations</a></li>
+<li>Video: <a href="https://realpython.com/django-migrations-a-primer/#video">Django 1.7 Migrations - primer</a></li>
+</ul>
+<p>In this article, you&rsquo;ll get comfortable with Django migrations and learn the following:</p>
+<ul>
+<li>How to create database tables without writing any SQL</li>
+<li>How to automatically modify your database after you changed your models</li>
+<li>How to revert changes made to your database</li>
+</ul>
+<div class="alert alert-warning" role="alert"><p><strong>Free Bonus:</strong> <a href="#" class="alert-link" data-toggle="modal" data-target="#modal-django-resources-learing-guide" data-focus="false">Click here to get access to a free Django Learning Resources Guide (PDF)</a> that shows you tips and tricks as well as common pitfalls to avoid when building Python + Django web applications.</p></div>
+<div class="w-100 text-center js-needs-scaling" style="transform-origin: 0 0;"><div id="waldo-tag-4996"></div> <a class="small text-muted js-disclosure" href="/account/join/" rel="nofollow" style="display: none;"> <i aria-hidden="true" class="fa fa-info-circle"> </i> Remove ads</a></div><h2 id="the-problems-that-migrations-solve">The Problems That Migrations Solve</h2>
+<p>If you are new to Django or web development in general, you might not be familiar with the concept of database migrations, and it might not seem obvious why they&rsquo;re a good idea.</p>
+<p>First, let&rsquo;s quickly define a couple of terms to make sure everybody is on the same page. Django is designed to work with a <a href="https://en.wikipedia.org/wiki/Relational_database">relational
+database</a>, stored in a relational database management system like <a href="https://www.postgresql.org/">PostgreSQL</a>, <a href="https://www.mysql.com/de/">MySQL</a>, or <a href="https://www.sqlite.org/index.html">SQLite</a>.</p>
+<p>In a relational database, data is organized in tables. A database table has a certain number of columns, but it can have any number of rows. Each column has a specific datatype, like a string of a certain maximum length or a positive integer. The description of all tables with their columns and their respective datatypes is called a database schema.</p>
+<p>All database systems supported by Django use the language SQL to create, read, update and delete data in a relational database. SQL is also used to create, change, and delete the database tables themselves.</p>
+<p>Working directly with SQL can be quite cumbersome, so to make your life easier, Django comes with an object-relational mapper, or ORM for short. The ORM maps the relational database to the world of object oriented programming. Instead of defining database tables in SQL, you write <a href="https://docs.djangoproject.com/en/2.1/topics/db/models/">Django models</a> in Python. Your models define database fields, which correspond to the columns in their database tables.</p>
+<p>Here&rsquo;s an example of how a Django model class is mapped to a database table:</p>
+<p><a href="https://files.realpython.com/media/model_to_schema.4e4b8506dc26.png" target="_blank"><img class="img-fluid mx-auto d-block " src="https://files.realpython.com/media/model_to_schema.4e4b8506dc26.png" width="1338" height="546" srcset="https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/model_to_schema.4e4b8506dc26.png&amp;w=334&amp;sig=b5ebbf7b88386dd021e722b5f5209ec153cb15e0 334w, https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/model_to_schema.4e4b8506dc26.png&amp;w=669&amp;sig=561cc26b596e6aeb9018b67400b0843b75b3e9fe 669w, https://files.realpython.com/media/model_to_schema.4e4b8506dc26.png 1338w" sizes="75vw" alt="Django Model to Database Schema" /></a></p>
+<p>But just defining a model class in a Python file does not make a database table magically appear out of nowhere. Creating the database tables to store your Django models is the job of a database migration. Additionally, whenever you make a change to your models, like adding a field, the database has to be changed too. Migrations handle that as well.</p>
+<p>Here are a few ways Django migrations make your life easier.</p>
+<h3 id="making-database-changes-without-sql">Making Database Changes Without SQL</h3>
+<p>Without migrations, you would have to connect to your database and type in a bunch of SQL commands or use a graphical tool like <a href="https://www.phpmyadmin.net/">PHPMyAdmin</a> to modify the database schema every time you wanted to change your model definition.</p>
+<p>In Django, migrations are primarily written in Python, so you don&rsquo;t have to know any SQL unless you have really advanced use cases.</p>
+<h3 id="avoiding-repetition">Avoiding Repetition</h3>
+<p>Creating a model and then writing SQL to create the database tables for it would be repetitive.</p>
+<p>Migrations are generated from your models, making sure you <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">don&rsquo;t repeat yourself</a>.</p>
+<h3 id="ensuring-model-definitions-and-the-database-schema-in-sync">Ensuring Model Definitions and the Database Schema in Sync</h3>
+<p>Usually, you have multiple instances of your database, for example one database for each developer in your team, a database for testing and a database with live data.</p>
+<p>Without migrations, you will have to perform any schema changes on each one of your database, and you will have to keep track which changes have already been made to which database.</p>
+<p>With Django Migrations, you can easily keep multiple databases in sync with your models.</p>
+<div class="w-100 text-center js-needs-scaling" style="transform-origin: 0 0;"><div id="waldo-tag-4998"></div> <a class="small text-muted js-disclosure" href="/account/join/" rel="nofollow" style="display: none;"> <i aria-hidden="true" class="fa fa-info-circle"> </i> Remove ads</a></div><h3 id="tracking-database-schema-change-in-version-control">Tracking Database Schema Change in Version Control</h3>
+<p><a href="https://realpython.com/python-git-github-intro/">A version control system, like Git</a> is excellent for code, but not so much for database schemas.</p>
+<p>As migrations are plain Python in Django, you can put them in a version control system just like any other piece of code.</p>
+<p>By now, you&rsquo;re hopefully convinced that migrations are a useful and powerful tool. Let&rsquo;s start learning how to unleash that power.</p>
+<h2 id="setting-up-a-django-project">Setting Up a Django Project</h2>
+<p>Throughout this tutorial, you are going to work on a simple Bitcoin tracker app as an example project.</p>
+<p>The first step is to install Django. Here is how you do that on Linux or macOS X using a <a href="https://realpython.com/python-virtual-environments-a-primer/">virtual environment</a>:</p>
+<div class="highlight sh"><pre><span></span><span class="gp">$</span> python3 -m venv env
+<span class="gp">$</span> <span class="nb">source</span> env/bin/activate
+<span class="gp">(env) $</span> pip install <span class="s2">&quot;Django==2.1.*&quot;</span>
+<span class="go">...</span>
+<span class="go">Successfully installed Django-2.1.3</span>
+</pre></div>
+<p>Now you have created a new virtual environment and activated it, as well as installed Django in that virtual environment.</p>
+<p>Note that on Windows, you would run <code>env/bin/activate.bat</code> instead of <code>source env/bin/activate</code> to activate your virtual environment.</p>
+<p>For easier readability, console examples won&rsquo;t include the <code>(env)</code> part of the prompt from now on.</p>
+<p>With Django installed, you can create the project using the following commands:</p>
+<div class="highlight sh"><pre><span></span><span class="gp">$</span> django-admin.py startproject bitcoin_tracker
+<span class="gp">$</span> <span class="nb">cd</span> bitcoin_tracker
+<span class="gp">$</span> python manage.py startapp historical_data
+</pre></div>
+<p>This gives you a simple project and an app called <code>historical_data</code>. You should now have this directory structure:</p>
+<div class="highlight"><pre><span></span>bitcoin_tracker/
+|
+├── bitcoin_tracker/
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+|
+├── historical_data/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations/
+│   │   └── __init__.py
+|   |
+│   ├── models.py
+│   ├── tests.py
+│   └── views.py
+|
+└── manage.py
+</pre></div>
+<p>Within the <code>bitcoin_tracker</code> directory, there are two sub-directories: <code>bitcoin_tracker</code> for project-wide files and <code>historical_data</code> containing files for the app you created.</p>
+<p>Now, to create a model, add this class in <code>historical_data/models.py</code>:</p>
+<div class="highlight python"><pre><span></span><span class="k">class</span> <span class="nc">PriceHistory</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DecimalField</span><span class="p">(</span><span class="n">max_digits</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">decimal_places</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">volume</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">PositiveIntegerField</span><span class="p">()</span>
+</pre></div>
+<p>This is the basic model to keep track of Bitcoin prices.</p>
+<p>Also, don&rsquo;t forget to add the newly created app to <code>settings.INSTALLED_APPS</code>. Open <code>bitcoin_tracker/settings.py</code> and append <code>historical_data</code> to the list <code>INSTALLED_APPS</code>, like this:</p>
+<div class="highlight python"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;django.contrib.admin&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.sessions&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.messages&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;django.contrib.staticfiles&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;historical_data&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+<p>The other settings are fine for this project. This tutorial assumes that your project is configured to use an SQLite database, which is the default.</p>
+<div class="w-100 text-center js-needs-scaling" style="transform-origin: 0 0;"><div id="waldo-tag-5000"></div> <a class="small text-muted js-disclosure" href="/account/join/" rel="nofollow" style="display: none;"> <i aria-hidden="true" class="fa fa-info-circle"> </i> Remove ads</a></div><h2 id="creating-migrations">Creating Migrations</h2>
+<p>With the model created, the first thing you need to do is create a migration for it. You can do this with the following command:</p>
+<div class="highlight sh"><pre><span></span><span class="gp">$</span> python manage.py makemigrations historical_data
+<span class="go">Migrations for &#39;historical_data&#39;:</span>
+<span class="go">  historical_data/migrations/0001_initial.py</span>
+<span class="go">    - Create model PriceHistory</span>
+</pre></div>
+<div class="alert alert-primary" role="alert">
+<p><strong>Note:</strong> Specifying the name of the application, <code>historical_data</code>, is optional. Leaving it off creates migrations for all apps.</p>
+</div>
+<p>This creates the migrations file that instructs Django on how to create the database tables for the models defined in your application. Let&rsquo;s have another look at the directory tree:</p>
+<div class="highlight"><pre><span></span>bitcoin_tracker/
+|
+├── bitcoin_tracker/
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+|
+├── historical_data/
+│   ├── migrations/
+<span class="hll">│   │   ├── 0001_initial.py
+</span>│   │   └── __init__.py
+|   |
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── models.py
+│   ├── tests.py
+│   └── views.py
+|
+├── db.sqlite3
+└── manage.py
+</pre></div>
+<p>As you can see, the <code>migrations</code> directory now contains a new file: <code>0001_initial.py</code>.</p>
+<div class="alert alert-primary" role="alert">
+<p><strong>Note:</strong> You might notice that running the <code>makemigrations</code> command also created the file <code>db.sqlite3</code>, which contains your SQLite database.</p>
+<p>When you try to access a non-existing SQLite3 database file, it will automatically be created.</p>
+<p>This behavior is unique to SQLite3. If you use any other database backend like PostgreSQL or MySQL, you have to create the database yourself <em>before</em> running <code>makemigrations</code>.</p>
+</div>
+<p>You can take a peek at the database with the <a href="https://docs.djangoproject.com/en/2.1/ref/django-admin/#dbshell"><code>dbshell</code> management command</a>. In SQLite, the command to list all tables is simply <code>.tables</code>:</p>
+<div class="highlight sh"><pre><span></span><span class="gp">$</span> python manage.py dbshell
+<span class="go">SQLite version 3.19.3 2017-06-27 16:48:08</span>
+<span class="go">Enter &quot;.help&quot; for usage hints.</span>
+<span class="go">sqlite&gt; .tables</span>
+<span class="go">sqlite&gt;</span>
+</pre></div>
+<p>The database is still empty. That will change when you apply the migration. Type <code>.quit</code> to exit the SQLite shell.</p>
+<h2 id="applying-migrations">Applying Migrations</h2>
+<p>You have now created the migration, but to actually make any changes in the database, you have to apply it with the management command <code>migrate</code>:</p>
+<div class="highlight sh"><pre><span></span><span class="gp">$</span> python manage.py migrate
+<span class="go">Operations to perform:</span>
+<span class="go">  Apply all migrations: admin, auth, contenttypes, historical_data, sessions</span>
+<span class="go">Running migrations:</span>
+<span class="go">  Applying contenttypes.0001_initial... OK</span>
+<span class="go">  Applying auth.0001_initial... OK</span>
+<span class="go">  Applying admin.0001_initial... OK</span>
+<span class="go">  Applying admin.0002_logentry_remove_auto_add... OK</span>
+<span class="go">  Applying admin.0003_logentry_add_action_flag_choices... OK</span>
+<span class="go">  Applying contenttypes.0002_remove_content_type_name... OK</span>
+<span class="go">  Applying auth.0002_alter_permission_name_max_length... OK</span>
+<span class="go">  Applying auth.0003_alter_user_email_max_length... OK</span>
+<span class="go">  Applying auth.0004_alter_user_username_opts... OK</span>
+<span class="go">  Applying auth.0005_alter_user_last_login_null... OK</span>
+<span class="go">  Applying auth.0006_require_contenttypes_0002... OK</span>
+<span class="go">  Applying auth.0007_alter_validators_add_error_messages... OK</span>
+<span class="go">  Applying auth.0008_alter_user_username_max_length... OK</span>
+<span class="go">  Applying auth.0009_alter_user_last_name_max_length... OK</span>
+<span class="go">  Applying historical_data.0001_initial... OK</span>
+<span class="go">  Applying sessions.0001_initial... OK</span>
+</pre></div>
+<p>There is a lot going on here! According to the output, your migration has been successfully applied. But where do all the other migrations come from?</p>
+<p>Remember the setting <code>INSTALLED_APPS</code>? Some of the other apps listed there also come with migrations, and the <code>migrate</code> management command applies the migrations for all installed apps by default.</p>
+<p>Have another look at the database:</p>
+<div class="highlight sh"><pre><span></span><span class="gp">$</span> python manage.py dbshell
+<span class="go">SQLite version 3.19.3 2017-06-27 16:48:08</span>
+<span class="go">Enter &quot;.help&quot; for usage hints.</span>
+<span class="go">sqlite&gt; .tables</span>
+<span class="go">auth_group                    django_admin_log</span>
+<span class="go">auth_group_permissions        django_content_type</span>
+<span class="go">auth_permission               django_migrations</span>
+<span class="go">auth_user                     django_session</span>
+<span class="go">auth_user_groups              historical_data_pricehistory</span>
+<span class="go">auth_user_user_permissions</span>
+<span class="go">sqlite&gt;</span>
+</pre></div>
+<p>Now there are multiple tables. Their names give you an idea of their purpose. The migration that you generated in the previous step has created the <code>historical_data_pricehistory</code> table. Let&rsquo;s inspect it using the <code>.schema</code> command:</p>
+<div class="highlight sh"><pre><span></span><span class="go">sqlite&gt; .schema --indent historical_data_pricehistory</span>
+<span class="go">CREATE TABLE IF NOT EXISTS &quot;historical_data_pricehistory&quot;(</span>
+<span class="go">  &quot;id&quot; integer NOT NULL PRIMARY KEY AUTOINCREMENT,</span>
+<span class="go">  &quot;date&quot; datetime NOT NULL,</span>
+<span class="go">  &quot;price&quot; decimal NOT NULL,</span>
+<span class="go">  &quot;volume&quot; integer unsigned NOT NULL</span>
+<span class="go">);</span>
+</pre></div>
+<p>The <code>.schema</code> command prints out the <code>CREATE</code> statement that you would execute to create the table. The parameter <code>--indent</code> formats it nicely. Even if you are not familiar with SQL syntax, you can see that the schema of the <code>historical_data_pricehistory</code> table reflects the fields of the <code>PriceHistory</code> model.</p>
+<p>There is a column for each field and an additional column <code>id</code> for the primary key, which Django creates automatically unless you explicitly specify a primary key in your model.</p>
+<p>Here&rsquo;s what happens if you run the <code>migrate</code> command again:</p>
+<div class="highlight sh"><pre><span></span><span class="gp">$</span> python manage.py migrate
+<span class="go">Operations to perform:</span>
+<span class="go">  Apply all migrations: admin, auth, contenttypes, historical_data, sessions</span>
+<span class="go">Running migrations:</span>
+<span class="go">  No migrations to apply.</span>
+</pre></div>
+<p>Nothing! Django remembers which migrations have already been applied and does not try to rerun them.</p>
+<p>It is worth noting that you can also limit the <code>migrate</code> management command to a single app:</p>
+<div class="highlight sh"><pre><span></span><span class="gp">$</span> python manage.py migrate historical_data
+<span class="go">Operations to perform:</span>
+<span class="go"> Apply all migrations: historical_data</span>
+<span class="go">Running migrations:</span>
+<span class="go"> No migrations to apply.</span>
+</pre></div>
+<p>As you can see, Django now only applies migrations for the <code>historical_data</code> app.</p>
+<p>When you are running the migrations for the first time, it is a good idea to apply all migrations to ensure your database contains the necessary tables for the features you might take for granted, like user authentication and sessions.</p>
+<div class="w-100 text-center js-needs-scaling" style="transform-origin: 0 0;"><div id="waldo-tag-5002"></div> <a class="small text-muted js-disclosure" href="/account/join/" rel="nofollow" style="display: none;"> <i aria-hidden="true" class="fa fa-info-circle"> </i> Remove ads</a></div><h2 id="changing-models">Changing Models</h2>
+<p>Your models are not set in stone. Your models will change as your Django project gains more features. You might add or remove fields or change their types and options.</p>
+<p>When you change the definition of a model, the database tables used to store these models have to be changed too. If your model definitions don&rsquo;t match your current database schema, you will most likely run into a <code>django.db.utils.OperationalError</code>.</p>
+<p>So how do you change the database tables? By creating and applying a migration.</p>
+<p>While testing your Bitcoin tracker, you realize that you made a mistake. People are selling fractions of a Bitcoin, so the field <code>volume</code> should be of the type <code>DecimalField</code> instead of <code>PositiveIntegerField</code>.</p>
+<p>Let&rsquo;s change the model to look like this:</p>
+<div class="highlight python"><pre><span></span><span class="k">class</span> <span class="nc">PriceHistory</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">date</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DecimalField</span><span class="p">(</span><span class="n">max_digits</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">decimal_places</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="hll">    <span class="n">volume</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DecimalField</span><span class="p">(</span><span class="n">max_digits</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">decimal_places</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</span></pre></div>
+<p>Without migrations, you would have to figure out the SQL syntax to turn a <code>PositiveIntegerField</code> into a <code>DecimalField</code>. Luckily, Django will handle that for you. Just tell it to make migrations:</p>
+<div class="highlight sh"><pre><span></span><span class="gp">$</span> python manage.py makemigrations
+<span class="go">Migrations for &#39;historical_data&#39;:</span>
+<span class="go">  historical_data/migrations/0002_auto_20181112_1950.py</span>
+<span class="go">    - Alter field volume on pricehistory</span>
+</pre></div>
+<div class="alert alert-primary" role="alert">
+<p><strong>Note:</strong> The name of the migration file (<code>0002_auto_20181112_1950.py</code>) is based on the current time and will be different if you follow along on your system.</p>
+</div>
+<p>Now you apply this migration to your database:</p>
+<div class="highlight sh"><pre><span></span><span class="gp">$</span> python manage.py migrate
+<span class="go">Operations to perform:</span>
+<span class="go">  Apply all migrations: admin, auth, contenttypes, historical_data, sessions</span>
+<span class="go">Running migrations:</span>
+<span class="go">  Applying historical_data.0002_auto_20181112_1950... OK</span>
+</pre></div>
+<p>The migration has been applied successfully, so you can use <code>dbshell</code> to verify that the changes had an effect:</p>
+<div class="highlight sh"><pre><span></span><span class="gp">$</span> python manage.py dbshell
+<span class="go">SQLite version 3.19.3 2017-06-27 16:48:08</span>
+<span class="go">Enter &quot;.help&quot; for usage hints.</span>
+<span class="go">sqlite&gt; .schema --indent historical_data_pricehistory</span>
+<span class="go">CREATE TABLE IF NOT EXISTS &quot;historical_data_pricehistory&quot; (</span>
+<span class="go">  &quot;id&quot; integer NOT NULL PRIMARY KEY AUTOINCREMENT,</span>
+<span class="go">  &quot;date&quot; datetime NOT NULL,</span>
+<span class="go">  &quot;price&quot; decimal NOT NULL,</span>
+<span class="hll"><span class="go">  &quot;volume&quot; decimal NOT NULL</span>
+</span><span class="go">);</span>
+</pre></div>
+<p>If you compare the new schema with the schema you saw earlier, you will notice that the type of the <code>volume</code> column has changed from <code>integer</code> to <code>decimal</code> to reflect the change of the <code>volume</code> field in the model from <code>PositiveIntegerField</code> to <code>DecimalField</code>.</p>
+<h2 id="listing-out-migrations">Listing Out Migrations</h2>
+<p>If you want to know what migrations exist in a Django project, you don&rsquo;t have to dig trough the <code>migrations</code> directories of your installed apps. You can use the <code>showmigrations</code> command:</p>
+<div class="highlight sh"><pre><span></span><span class="gp">$</span> ./manage.py showmigrations
+<span class="go">admin</span>
+<span class="go"> [X] 0001_initial</span>
+<span class="go"> [X] 0002_logentry_remove_auto_add</span>
+<span class="go"> [X] 0003_logentry_add_action_flag_choices</span>
+<span class="go">auth</span>
+<span class="go"> [X] 0001_initial</span>
+<span class="go"> [X] 0002_alter_permission_name_max_length</span>
+<span class="go"> [X] 0003_alter_user_email_max_length</span>
+<span class="go"> [X] 0004_alter_user_username_opts</span>
+<span class="go"> [X] 0005_alter_user_last_login_null</span>
+<span class="go"> [X] 0006_require_contenttypes_0002</span>
+<span class="go"> [X] 0007_alter_validators_add_error_messages</span>
+<span class="go"> [X] 0008_alter_user_username_max_length</span>
+<span class="go"> [X] 0009_alter_user_last_name_max_length</span>
+<span class="go">contenttypes</span>
+<span class="go"> [X] 0001_initial</span>
+<span class="go"> [X] 0002_remove_content_type_name</span>
+<span class="go">historical_data</span>
+<span class="go"> [X] 0001_initial</span>
+<span class="go"> [X] 0002_auto_20181112_1950</span>
+<span class="go">sessions</span>
+<span class="go"> [X] 0001_initial</span>
+</pre></div>
+<p>This lists all apps in the project and the migrations associated with each app. Also, it will put a big <code>X</code> next to the migrations that have already been applied.</p>
+<p>For our little example, the <code>showmigrations</code> command is not particularly exciting, but it comes in handy when you start working on an existing code base or work in a team where you are not the only person adding migrations.</p>
+<div class="w-100 text-center js-needs-scaling" style="transform-origin: 0 0;"><div id="waldo-tag-5004"></div> <a class="small text-muted js-disclosure" href="/account/join/" rel="nofollow" style="display: none;"> <i aria-hidden="true" class="fa fa-info-circle"> </i> Remove ads</a></div><h2 id="unapplying-migrations">Unapplying Migrations</h2>
+<p>Now you know how to make changes to your database schema by creating and applying migrations. At some point, you might want to undo changes and switch back to an earlier database schema because you:</p>
+<ul>
+<li>Want to test a migration a colleague wrote</li>
+<li>Realize that a change you made was a bad idea</li>
+<li>Work on multiple features with different database changes in parallel</li>
+<li>Want to restore a backup that was created when the database still had an older schema</li>
+</ul>
+<p>Luckily, migrations don&rsquo;t have to be a one-way street. In many cases, the effects of a migration can be undone by unapplying a migration. To unapply a migration, you have to call <code>migrate</code> with the name of the app and the name of the migration <em>before</em> the migration you want to unapply.</p>
+<p>If you want to revert the migration <code>0002_auto_20181112_1950</code> in your <code>historical_data</code> app, you have to pass <code>0001_initial</code> as an argument to the <code>migrate</code> command:</p>
+<div class="highlight sh"><pre><span></span><span class="gp">$</span> python manage.py migrate historical_data 0001_initial
+<span class="go">Operations to perform:</span>
+<span class="go">  Target specific migration: 0001_initial, from historical_data</span>
+<span class="go">Running migrations:</span>
+<span class="go">  Rendering model states... DONE</span>
+<span class="go">  Unapplying historical_data.0002_auto_20181112_1950... OK</span>
+</pre></div>
+<p>The migration has been unapplied, meaning that the changes to the database have been reversed.</p>
+<p>Unapplying a migration does not remove its migration file. The next time you run the <code>migrate</code> command, the migration will be applied again.</p>
+<div class="alert alert-primary" role="alert">
+<p><strong>Caution:</strong> Don&rsquo;t confuse unapplying migrations with the undo operation you are used to from your favorite text editor.</p>
+<p>Not all database operations can be completely reverted. If you remove a field from a model, create a migration, and apply it, Django will remove the respective column from the database.</p>
+<p>Unapplying that migration will re-create the column, but it won&rsquo;t bring back the data that was stored in that column!</p>
+</div>
+<p>When you&rsquo;re dealing with migration names, Django saves you a few keystrokes by not forcing you to spell out the whole name of the migration. It needs just enough of the name to identify it uniquely.</p>
+<p>In the previous example, it would have been enough to run <code>python manage.py migrate historical_data 0001</code>.</p>
+<h2 id="naming-migrations">Naming Migrations</h2>
+<p>In the above example, Django came up with a name for the migration based on the timestamp&mdash;something like <code>*0002_auto_20181112_1950</code>. If you&rsquo;re not happy with that, then you can use the <code>--name</code> parameter to provide a custom name (without the <code>.py</code> extension).</p>
+<p>To try that out, you first have to remove the old migration. You have already unapplied it, so you can safely delete the file:</p>
+<div class="highlight sh"><pre><span></span><span class="gp">$</span> rm historical_data/migrations/0002_auto_20181112_1950.py
+</pre></div>
+<p>Now you can recreate it with a more descriptive name:</p>
+<div class="highlight sh"><pre><span></span><span class="gp">$</span> ./manage.py makemigrations historical_data --name switch_to_decimals
+</pre></div>
+<p>This will create the same migration as before except with the new name of <code>0002_switch_to_decimals</code>.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>You covered quite a bit of ground in this tutorial and learned the fundamentals of Django migrations.</p>
+<p>To recap, the basic steps to use Django migrations look like this:</p>
+<ol>
+<li>Create or update a model</li>
+<li>Run <code>./manage.py makemigrations &lt;app_name&gt;</code></li>
+<li>Run <code>./manage.py migrate</code> to migrate everything or <code>./manage.py migrate &lt;app_name&gt;</code> to migrate an individual app</li>
+<li>Repeat as necessary</li>
+</ol>
+<p>That&rsquo;s it! This workflow will work the majority of the time, but if things don&rsquo;t work out as expected, you also know how to list and unapply migrations.</p>
+<p>If you previously created and modified your database tables with hand-written SQL, you have now become much more efficient by delegating this work to Django migrations.</p>
+<p>In the next tutorial in this series, you will dig deeper into the topic and learn <a href="https://realpython.com/digging-deeper-into-migrations/">how Django Migrations work under the hood</a>.</p>
+<div class="alert alert-warning" role="alert"><p><strong>Free Bonus:</strong> <a href="#" class="alert-link" data-toggle="modal" data-target="#modal-django-resources-learing-guide" data-focus="false">Click here to get access to a free Django Learning Resources Guide (PDF)</a> that shows you tips and tricks as well as common pitfalls to avoid when building Python + Django web applications.</p></div>
+<p>Cheers!</p>
+<div class="w-100 text-center js-needs-scaling" style="transform-origin: 0 0;"><div id="waldo-tag-5257"></div> <a class="small text-muted js-disclosure" href="/account/join/" rel="nofollow" style="display: none;"> <i aria-hidden="true" class="fa fa-info-circle"> </i> Remove ads</a></div><h2 id="video">Video</h2>
+<div class="embed-responsive embed-responsive-16by9 mb-3">
+<iframe class="embed-responsive-item" type="text/html" src="https://www.youtube.com/embed/7PiyO-N6Pho?autoplay=0&modestbranding=1&rel=0&showinfo=0&origin=https://realpython.com" frameborder="0" allowfullscreen></iframe>
+</div>
+<div class="border rounded p-3 card mb-2">
+<p class="mb-0"><span class="badge badge-pill badge-success"><i class="fa fa-play-circle" aria-hidden="true"></i> Watch Now</span> This tutorial has a related video course created by the Real Python team. Watch it together with the written tutorial to deepen your understanding: <a class="stretched-link text-success" href="/courses/django-migrations-101/"><strong>Django Migrations 101</strong></a></p>
+</div>
+</div>
+<div class="card mt-4 mb-4 bg-secondary">
+<p class="card-header h3 text-center bg-light">🐍 Python Tricks 💌</p>
+<div class="card-body">
+<div class="container">
+<div class="row">
+<div class="col-xs-12 col-sm-7">
+<p>Get a short &amp; sweet <strong>Python Trick</strong> delivered to your inbox every couple of days. No spam ever. Unsubscribe any time. Curated by the Real Python team.</p>
+</div>
+<div class="col-xs-12 col-sm-5">
+<img class="img-fluid rounded mb-3" src="/static/pytrick-dict-merge.4201a0125a5e.png" width="738" height="490" alt="Python Tricks Dictionary Merge">
+</div>
+</div>
+<div class="row mb-3">
+<form class="col-12" action="/optins/process/" method="post">
+<input type="hidden" name="csrfmiddlewaretoken" value="KBjgk3otw85TJetjiliY6ou7C8NyVdazkWeUMuK7OmFL183HdqJWY6AoOCqV9nuq">
+<input type="hidden" name="slug" value="static-python-tricks-footer">
+<div class="form-group">
+<input name="email" type="email" class="form-control form-control-lg" placeholder="Email Address" required>
+</div>
+<button name="submit" type="submit" class="btn btn-primary btn-lg btn-block">Send Me Python Tricks »</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+<div class="card mt-3" id="author">
+<p class="card-header h3">About <strong>Daniel Hepper</strong></p>
+<div class="card-body">
+<div class="container">
+<div class="row">
+<div class="col-12 col-md-3 align-self-center">
+<a href="/team/dhepper/"><img src="https://files.realpython.com/media/IMG_0809_resized.fe58f761ee76.aa2c135dfbb9.JPG" srcset="https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/IMG_0809_resized.fe58f761ee76.aa2c135dfbb9.JPG&amp;w=254&amp;sig=d9763c2ad46bfcc53ce80a56dc8946647ffc7571 254w, https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/IMG_0809_resized.fe58f761ee76.aa2c135dfbb9.JPG&amp;w=508&amp;sig=4ced6c674759367b54177bed06594ed4dc5121cb 508w, https://files.realpython.com/media/IMG_0809_resized.fe58f761ee76.aa2c135dfbb9.JPG 1017w" class="rounded-circle img-fluid w-100 mb-0" alt="Daniel Hepper" sizes="25vw"></a>
+</div>
+<div class="col mt-3">
+<p>Daniel is an independent software engineer, consultant, and trainer with a focus on web development with Django. He lives and works in Cologne, Germany.</p>
+<a href="/team/dhepper/" class="card-link">» More about Daniel</a>
+</div>
+</div>
+</div>
+</div>
+<hr class="my-0">
+<div class="card-body pb-0">
+<div class="container">
+<div class="row">
+<p><em>Each tutorial at Real Python is created by a team of developers so that it meets our high quality standards. The team members who worked on this tutorial are:</em></p>
+</div>
+<div class="row align-items-center w-100 mx-auto">
+<div class="col-4 col-sm-2 align-self-center">
+<a href="/team/asantos/"><img src="https://files.realpython.com/media/asantos-avatar.888c78fffab3.jpg" srcset="https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/asantos-avatar.888c78fffab3.jpg&amp;w=175&amp;sig=a095ca193d3f40e73e6921403c1c43e48c9a4bdc 175w, https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/asantos-avatar.888c78fffab3.jpg&amp;w=350&amp;sig=28c0dc29376daf4ca29d5f47b3708b873c21af76 350w, https://files.realpython.com/media/asantos-avatar.888c78fffab3.jpg 700w" sizes="10vw" class="rounded-circle img-fluid w-100" alt="Aldren Santos"></a>
+</div>
+<div class="col pl-0 d-none d-sm-block">
+<a href="/team/asantos/" class="card-link"><p>Aldren</p></a>
+</div>
+<div class="col-4 col-sm-2 align-self-center">
+<a href="/team/dbader/"><img src="https://files.realpython.com/media/daniel-square.d58bf4388750.jpg" srcset="https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/daniel-square.d58bf4388750.jpg&amp;w=250&amp;sig=0f6c5ef7f5786b2a198fe2d700695467601836fe 250w, https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/daniel-square.d58bf4388750.jpg&amp;w=500&amp;sig=6d44e31ac8b0ed5d7bf09163b66e9374d79b7256 500w, https://files.realpython.com/media/daniel-square.d58bf4388750.jpg 1000w" sizes="10vw" class="rounded-circle img-fluid w-100" alt="Dan Bader"></a>
+</div>
+<div class="col pl-0 d-none d-sm-block">
+<a href="/team/dbader/" class="card-link"><p>Dan</p></a>
+</div>
+<div class="col-4 col-sm-2 align-self-center">
+<a href="/team/jjablonski/"><img src="https://files.realpython.com/media/jjablonksi-avatar.e37c4f83308e.jpg" srcset="https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/jjablonksi-avatar.e37c4f83308e.jpg&amp;w=200&amp;sig=d779dbceba743afb659648000525a6a71656ae98 200w, https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/jjablonksi-avatar.e37c4f83308e.jpg&amp;w=400&amp;sig=99ce401a9a219f6b406309e90925252be1900dfc 400w, https://files.realpython.com/media/jjablonksi-avatar.e37c4f83308e.jpg 800w" sizes="10vw" class="rounded-circle img-fluid w-100" alt="Joanna Jablonski"></a>
+</div>
+<div class="col pl-0 d-none d-sm-block">
+<a href="/team/jjablonski/" class="card-link"><p>Joanna</p></a>
+</div>
+</div>
+<div class="row align-items-center w-100 mx-auto">
+<div class="col-4 col-sm-2 align-self-center">
+<a href="/team/mherman/"><img src="https://files.realpython.com/media/mike.fa94729a1e81.jpg" srcset="https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/mike.fa94729a1e81.jpg&amp;w=40&amp;sig=3735a67c9735f419173d8bc5e67ca7b16403998f 40w, https://robocrop.realpython.net/?url=https%3A//files.realpython.com/media/mike.fa94729a1e81.jpg&amp;w=80&amp;sig=1a8bf16a41f7f28fced72035b957a1f5ec210a61 80w, https://files.realpython.com/media/mike.fa94729a1e81.jpg 160w" sizes="10vw" class="rounded-circle img-fluid w-100" alt="Michael Herman"></a>
+</div>
+<div class="col pl-0 d-none d-sm-block">
+<a href="/team/mherman/" class="card-link"><p>Michael</p></a>
+</div>
+<div class="col-4 col-sm-2 align-self-center"></div>
+<div class="col pl-0 d-none d-sm-block"></div>
+<div class="col-4 col-sm-2 align-self-center"></div>
+<div class="col pl-0 d-none d-sm-block"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="sidebar-module sidebar-module-inset p-0 my-4" style="overflow:hidden;">
+<div style="display:block;position:relative;">
+<div style="display:block;width:100%;padding-top:25%;"></div>
+<div class="rpad" data-unit="4x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div>
+</div>
+</div>
+<div class="card mt-4" id="reader-comments">
+<p class="card-header h3">What Do You Think?</p>
+<div class="text-center mt-3 mb-0 p-0">
+<a target="_blank" rel="nofollow" href="https://twitter.com/intent/tweet/?text=Check out this %23Python tutorial: Django%20Migrations%3A%20A%20Primer by @realpython&url=https%3A//realpython.com/django-migrations-a-primer/" class="mr-1 badge badge-twitter text-light"><i class="mr-1 fa fa-twitter text-light"></i>Tweet</a>
+<a target="_blank" rel="nofollow" href="https://facebook.com/sharer/sharer.php?u=https%3A//realpython.com/django-migrations-a-primer/" class="mr-1 badge badge-facebook text-light"><i class="mr-1 fa fa-facebook text-light"></i>Share</a>
+<a target="_blank" rel="nofollow" href="mailto:?subject=Python article for you&body=Check out this Python tutorial:%0A%0ADjango%20Migrations%3A%20A%20Primer%0A%0Ahttps%3A//realpython.com/django-migrations-a-primer/" class="mr-1 badge badge-red text-light"><i class="mr-1 fa fa-envelope text-light"></i>Email</a>
+</div>
+<div class="card-body">
+<div class="alert alert-dark">
+<p class="mb-0"><strong>Real Python Comment Policy:</strong> The most useful comments are those written with the goal of learning from or helping out other readers—after reading the whole article and all the earlier comments. Complaints and insults generally won’t make the cut here.</p>
+</div>
+<p>What’s your #1 takeaway or favorite thing you learned? How are you going to put your newfound skills to use? Leave a comment below and let us know.</p>
+<div class="mb-4" id="disqus_thread"></div>
+</div>
+</div>
+<div class="card mt-4 mb-4">
+<p class="card-header h3">Keep Learning</p>
+<div class="card-body">
+<p class="mb-0">Related Tutorial Categories:
+<a href="/tutorials/basics/" class="badge badge-light text-muted">basics</a>
+<a href="/tutorials/databases/" class="badge badge-light text-muted">databases</a>
+<a href="/tutorials/django/" class="badge badge-light text-muted">django</a>
+<a href="/tutorials/web-dev/" class="badge badge-light text-muted">web-dev</a>
+</p>
+<p class="mt-3 mb-0">Recommended Video Course: <a class="text-success" href="/courses/django-migrations-101/">Django Migrations 101</a></p>
+</div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" id="rpvc">
+<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+<div class="modal-content">
+<div class="modal-header border-0 mt-3">
+<div class="col-12 modal-title text-center">
+<h2 class="my-0 mx-5">Master <u>Real-World Python Skills</u> With Unlimited Access to Real Python</h2>
+<p class="text-center text-muted mt-2 mb-1">Already a member? <a href="/account/login/">Log In</a></p>
+</div>
+</div>
+<div class="modal-body bg-light">
+<div class="col-12 text-center">
+<p class="mb-2 mt-3"><a href="/account/join/?utm_source=rp&utm_medium=web&utm_campaign=pwn&utm_content=v1"><img class="w-50 mb-2" src="/static/videos/lesson-locked.f5105cfd26db.svg"></a></p>
+<p class="mx-auto w-66 mb-3"><strong>Join us and get access to hundreds of tutorials, hands-on video courses, and a community of expert Pythonistas:</strong></p>
+<p><a href="/account/join/?utm_source=rp&utm_medium=web&utm_campaign=pwn&utm_content=v1" class="btn btn-primary btn-lg px-4">See Membership Options »</a>
+</div>
+</div>
+<div class="modal-footer border-0">
+<a href="#!" class="text-muted btn" data-dismiss="modal">Close</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<aside class="col-md-7 col-lg-4">
+<div class="card mb-3 bg-secondary">
+<form class="card-body" action="/optins/process/" method="post">
+<div class="form-group">
+<p class="h5 text-muted text-center">— FREE Email Series —</p>
+<p class="h3 text-center">🐍 Python Tricks 💌</p>
+<p><img class="img-fluid rounded" src="/static/pytrick-dict-merge.4201a0125a5e.png" width="738" height="490" alt="Python Tricks Dictionary Merge"></p>
+</div>
+<div class="form-group">
+<input type="hidden" name="csrfmiddlewaretoken" value="KBjgk3otw85TJetjiliY6ou7C8NyVdazkWeUMuK7OmFL183HdqJWY6AoOCqV9nuq">
+<input type="hidden" name="slug" value="static-python-tricks-sidebar">
+<input type="email" class="form-control form-control-md" name="email" placeholder="Email&hellip;" required>
+</div>
+<button type="submit" name="submit" class="btn btn-primary btn-md btn-block">Get Python Tricks »</button>
+<p class="mb-0 mt-2 text-muted text-center">🔒 No spam. Unsubscribe any time.</p>
+</form>
+</div>
+<div class="sidebar-module sidebar-module-inset border">
+<p class="h4"><a class="link-unstyled" href="/tutorials/all/">All Tutorial Topics</a></p>
+<a href="/tutorials/advanced/" class="badge badge-light text-muted">advanced</a>
+<a href="/tutorials/api/" class="badge badge-light text-muted">api</a>
+<a href="/tutorials/basics/" class="badge badge-light text-muted">basics</a>
+<a href="/tutorials/best-practices/" class="badge badge-light text-muted">best-practices</a>
+<a href="/tutorials/community/" class="badge badge-light text-muted">community</a>
+<a href="/tutorials/databases/" class="badge badge-light text-muted">databases</a>
+<a href="/tutorials/data-science/" class="badge badge-light text-muted">data-science</a>
+<a href="/tutorials/devops/" class="badge badge-light text-muted">devops</a>
+<a href="/tutorials/django/" class="badge badge-light text-muted">django</a>
+<a href="/tutorials/docker/" class="badge badge-light text-muted">docker</a>
+<a href="/tutorials/flask/" class="badge badge-light text-muted">flask</a>
+<a href="/tutorials/front-end/" class="badge badge-light text-muted">front-end</a>
+<a href="/tutorials/intermediate/" class="badge badge-light text-muted">intermediate</a>
+<a href="/tutorials/machine-learning/" class="badge badge-light text-muted">machine-learning</a>
+<a href="/tutorials/python/" class="badge badge-light text-muted">python</a>
+<a href="/tutorials/testing/" class="badge badge-light text-muted">testing</a>
+<a href="/tutorials/tools/" class="badge badge-light text-muted">tools</a>
+<a href="/tutorials/web-dev/" class="badge badge-light text-muted">web-dev</a>
+<a href="/tutorials/web-scraping/" class="badge badge-light text-muted">web-scraping</a>
+</div>
+<div class="sidebar-module sidebar-module-inset p-0" style="overflow:hidden;">
+<div style="display:block;position:relative;">
+<div style="display:block;width:100%;padding-top:100%;"></div>
+<div class="rpad" data-unit="1x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div>
+</div>
+</div>
+<div class="sidebar-sticky">
+<div class="sidebar-module sidebar-module-inset border">
+<p class="h4"><a class="link-unstyled" href="#toc">Table of Contents</a></p>
+<div class="toc">
+<ul>
+<li><a href="#the-problems-that-migrations-solve">The Problems That Migrations Solve</a><ul>
+<li><a href="#making-database-changes-without-sql">Making Database Changes Without SQL</a></li>
+<li><a href="#avoiding-repetition">Avoiding Repetition</a></li>
+<li><a href="#ensuring-model-definitions-and-the-database-schema-in-sync">Ensuring Model Definitions and the Database Schema in Sync</a></li>
+<li><a href="#tracking-database-schema-change-in-version-control">Tracking Database Schema Change in Version Control</a></li>
+</ul>
+</li>
+<li><a href="#setting-up-a-django-project">Setting Up a Django Project</a></li>
+<li><a href="#creating-migrations">Creating Migrations</a></li>
+<li><a href="#applying-migrations">Applying Migrations</a></li>
+<li><a href="#changing-models">Changing Models</a></li>
+<li><a href="#listing-out-migrations">Listing Out Migrations</a></li>
+<li><a href="#unapplying-migrations">Unapplying Migrations</a></li>
+<li><a href="#naming-migrations">Naming Migrations</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+<li><a href="#video">Video</a></li>
+</ul>
+</div>
+</div>
+<div class="sidebar-module sidebar-module-inset text-center my-3 py-0">
+<a target="_blank" rel="nofollow" href="https://twitter.com/intent/tweet/?text=Check out this %23Python tutorial: Django%20Migrations%3A%20A%20Primer by @realpython&url=https%3A//realpython.com/django-migrations-a-primer/" class="mr-1 badge badge-twitter text-light"><i class="mr-1 fa fa-twitter text-light"></i>Tweet</a>
+<a target="_blank" rel="nofollow" href="https://facebook.com/sharer/sharer.php?u=https%3A//realpython.com/django-migrations-a-primer/" class="mr-1 badge badge-facebook text-light"><i class="mr-1 fa fa-facebook text-light"></i>Share</a>
+<a target="_blank" rel="nofollow" href="mailto:?subject=Python article for you&body=Check out this Python tutorial:%0A%0ADjango%20Migrations%3A%20A%20Primer%0A%0Ahttps%3A//realpython.com/django-migrations-a-primer/" class="mr-1 badge badge-red text-light"><i class="mr-1 fa fa-envelope text-light"></i>Email</a>
+</div>
+<div class="sidebar-module sidebar-module-inset border card">
+<p><span class="badge badge-pill badge-success"><i class="fa fa-play-circle mr-1" aria-hidden="true"></i> Recommended Video Course</span><br><a class="stretched-link text-success" href="/courses/django-migrations-101/">Django Migrations 101</a></p>
+</div>
+<div class="sidebar-module sidebar-module-inset p-0" style="overflow:hidden;">
+<div style="display:block;position:relative;">
+<div style="display:block;width:100%;padding-top:25%;"></div>
+<div class="rpad" data-unit="4x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</div>
+<div class="modal fade" id="modal-django-resources-learing-guide" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+<div class="modal-content">
+<div class="modal-header bg-light pt-3 pb-2">
+<div class="container-fluid">
+<div class="row">
+<div class="col-12">
+<div class="progress" style="height: .5rem;">
+<div class="progress-bar progress-bar-striped progress-bar-animated w-50" role="progressbar"></div>
+</div>
+</div>
+<div class="col-12">
+<p class="text-muted text-center mb-0 mt-2">Almost there! Complete this form and click the button below to gain instant access:</p>
+</div>
+</div>
+</div>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+<div class="modal-body m-4">
+<div class="container-fluid">
+<div class="row align-items-center">
+<div class="col-12 col-lg-4">
+<img class="img-fluid rounded w-100 mb-4" src="https://files.realpython.com/media/django-pony.c61d43c33ab3.png">
+</div>
+<div class="col">
+<p class="text-center h3 mb-4">Get the &quot;Django Learning Resources Guide&quot;</p>
+<form class="col-12" action="/optins/process/" method="post">
+<input type="hidden" name="csrfmiddlewaretoken" value="KBjgk3otw85TJetjiliY6ou7C8NyVdazkWeUMuK7OmFL183HdqJWY6AoOCqV9nuq">
+<input type="hidden" name="slug" value="django-resources-learing-guide">
+<div class="form-group">
+<input type="email" name="email" class="form-control" placeholder="Email Address" required autofocus>
+</div>
+<button name="submit" type="submit" class="btn btn-primary btn-block text-wrap">Send My Free PDF Guide »</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer class="footer">
+<div class="container">
+<div class="w-75 mx-auto my-0">
+<div style="display:block;position:relative;">
+<div style="display:block;width:100%;padding-top:12.5%;"></div>
+<div class="rpad" data-unit="8x1" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;"></div>
+</div>
+</div>
+<p class="text-center text-muted">© 2012–2019 Real Python ⋅ <a href="/newsletter/">Newsletter</a> ⋅ <a href="https://www.youtube.com/realpython">YouTube</a> ⋅ <a href="https://twitter.com/realpython">Twitter</a> ⋅ <a href="https://facebook.com/LearnRealPython">Facebook</a> ⋅ <a href="https://www.instagram.com/realpython/">Instagram</a><br><a href="/">Python Tutorials</a> ⋅ <a href="/search">Search</a> ⋅ <a href="/privacy-policy/">Privacy Policy</a> ⋅ <a href="/energy-policy/" class="text-success active">Energy Policy</a> ⋅ <a href="/sponsorships/">Advertise</a> ⋅ <a href="/contact/">Contact</a><br>❤️ Happy Pythoning!</p>
+</div>
+</footer>
+<script>
+      (function(document, history, location) {
+        var HISTORY_SUPPORT = !!(history && history.pushState);
+
+        var anchorScrolls = {
+          ANCHOR_REGEX: /^#[^ ]+$/,
+          OFFSET_HEIGHT_PX: 120,
+
+          /**
+           * Establish events, and fix initial scroll position if a hash is provided.
+           */
+          init: function() {
+            this.scrollToCurrent();
+            window.addEventListener('hashchange', this.scrollToCurrent.bind(this));
+            document.body.addEventListener('click', this.delegateAnchors.bind(this));
+          },
+
+          /**
+           * Return the offset amount to deduct from the normal scroll position.
+           * Modify as appropriate to allow for dynamic calculations
+           */
+          getFixedOffset: function() {
+            return this.OFFSET_HEIGHT_PX;
+          },
+
+          /**
+           * If the provided href is an anchor which resolves to an element on the
+           * page, scroll to it.
+           * @param  {String} href
+           * @return {Boolean} - Was the href an anchor.
+           */
+          scrollIfAnchor: function(href, pushToHistory) {
+            var match, rect, anchorOffset;
+
+            if(!this.ANCHOR_REGEX.test(href)) {
+              return false;
+            }
+
+            match = document.getElementById(href.slice(1));
+
+            if(match) {
+              rect = match.getBoundingClientRect();
+              anchorOffset = window.pageYOffset + rect.top - this.getFixedOffset();
+              window.scrollTo(window.pageXOffset, anchorOffset);
+
+              // Add the state to history as-per normal anchor links
+              if(HISTORY_SUPPORT && pushToHistory) {
+                history.pushState({}, document.title, location.pathname + href);
+              }
+            }
+
+            return !!match;
+          },
+
+          /**
+           * Attempt to scroll to the current location's hash.
+           */
+          scrollToCurrent: function() {
+            this.scrollIfAnchor(window.location.hash);
+          },
+
+          /**
+           * If the click event's target was an anchor, fix the scroll position.
+           */
+          delegateAnchors: function(e) {
+            var elem = e.target;
+
+            if(
+              elem.nodeName === 'A' &&
+              this.scrollIfAnchor(elem.getAttribute('href'), true)
+            ) {
+              e.preventDefault();
+            }
+          }
+        };
+
+        window.addEventListener(
+          'DOMContentLoaded', anchorScrolls.init.bind(anchorScrolls)
+        );
+      })(window.document, window.history, window.location);
+    </script>
+<script src="/static/jquery.min.220afd743d9e.js"></script>
+<script src="/static/popper.min.84415b7368fd.js"></script>
+<script src="/static/bootstrap.min.e1d98d47689e.js"></script>
+<script src="/static/repl-toggle.0c6f07cf3eee.js"></script>
+<script>window.rp_prop_id = '58946116052';</script>
+<script src="https://srv.realpython.net/tag.js" async></script>
+<script id="dsq-count-scr" src="https://realpython.disqus.com/count.js" async></script>
+<script>
+    var disqus_config = function () {
+      this.page.url = 'https://realpython.com/django-migrations-a-primer/';
+      this.page.identifier = 'https://realpython.com/django-migrations-a-primer/';
+      this.callbacks.onReady = [function() {
+        if (window.onDisqusReady) {
+          window.onDisqusReady();
+        }
+      }];
+    };
+    var disqus_script_url = 'https://realpython.disqus.com/embed.js';
+  </script>
+<script src="/static/lazydisqus.3a3e39583b32.js" defer></script>
+<script src="/static/articlevc.11f8c3a3f08d.js" defer></script>
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Django Migrations: A Primer",
+    
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://files.realpython.com/media/Django-Migrations---A-Primer-Update_Watermarked.798eade8f3df.jpg",
+      "width": 1920,
+      "height": 1080
+    },
+    
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://realpython.com/django-migrations-a-primer/"
+    },
+    "datePublished": "2019-01-09T12:10:21+00:00",
+    "dateModified": "2019-03-03T18:38:07.368721+00:00",
+     "publisher": {
+      "@type": "Organization",
+      "name": "Real Python",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://realpython.com/static/real-python-logo-square-tiny.b2452b6d3823.png",
+        "width": 60,
+        "height": 60
+      }
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Real Python",
+      "url": "https://realpython.com",
+      "logo": "https://realpython.com/static/real-python-logo-square.28474fda9228.png"
+    },
+    "description": "In this tutorial, you’ll get comfortable with Django migrations and learn how to create database tables without writing any SQL, how to automatically modify your database after you changed your models, and how to revert changes made to your database."
+  }
+  </script>
+<script>
+  var _dcq = _dcq || [];
+  var _dcs = _dcs || {};
+  _dcs.account = '6214500';
+
+  (function() {
+    var dc = document.createElement('script');
+    dc.type = 'text/javascript'; dc.async = true;
+    dc.src = '//tag.getdrip.com/6214500.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(dc, s);
+  })();
+</script>
+</body>
+</html>

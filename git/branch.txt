@@ -1,0 +1,96 @@
+# Scenario based on source: https://realpython.com/deploying-a-django-app-to-aws-elastic-beanstalk/
+
+$ git clone https://github.com/realpython/image-of-the-day.git
+$ cd image-of-the-day/
+$ git checkout tags/start_here
+
+[israel@w50019045l-mutworld-be image-of-the-day]$ git checkout tags/start_here
+Note: checking out 'tags/start_here'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+# Note that you can move from dettached to attached to HEAD by creating a branch.
+
+You can check your current state as follows:
+
+[israel@w50019045l-mutworld-be image-of-the-day]$ git branch
+* (HEAD detached at start_here)
+  master
+
+# Create a new branch and switch to use it:
+
+[israel@w50019045l-mutworld-be image-of-the-day]$ git branch test
+[israel@w50019045l-mutworld-be image-of-the-day]$ git branch
+* (HEAD detached at start_here)
+  master
+  test
+[israel@w50019045l-mutworld-be image-of-the-day]$ git checkout test 
+Switched to branch 'test'
+[israel@w50019045l-mutworld-be image-of-the-day]$ git branch
+  master
+* test
+
+
+At this point, commits can be made on the new branch to implement the new feature. Once the feature is complete, the branch 
+can be merged back into the main code branch (usually master).
+
+First we run git checkout master to change the active branch back to master. Then we run the command git merge new-branch 
+to merge the new feature into the master branch.
+
+# ...develop some code...
+
+$ git add –A
+$ git commit –m "Some commit message"
+$ git checkout master
+Switched to branch 'master'
+$ git merge test
+
+#### REBASE AND/OR MERGE
+
+#### rebase from master to branch, or using merge
+
+REBASE:
+
+Taking the example from the git rebase manual, git rebase master in branch feature:
+
+      A---B---C feature                             A'--B'--C' feature
+     /                   --rebase-->               /
+D---E---F---G master                  D---E---F---G master
+
+However, git rebase is only suitable when the branch hasn't been distributed, or there will be confusion and extra work 
+downstream, because the old commits A, B, C are now replaced by new commits A', B', C', plus F and G that were not there before.
+
+The actual result after git rebase master in branch feature is this:
+
+      ( A---B---C )
+       /
+      /       A'--B'--C' feature
+     /       /
+D---E---F---G master
+
+Commits A, B, C are dangling after the rebase, but are reachable through git reflog feature.
+
+MERGE:
+
+If someone has pulled your branch, or you have pushed it somewhere, you should merge into it instead, to avoid 
+confusion and extra work on the other end. See Recovering from upstream rebase.
+
+This is the result of git merge master in branch feature:
+
+      A---B---C feature                    A---B---C---M feature
+     /                   --merge-->       /       ,---’
+D---E---F---G master                 D---E---F---G master
+
+Alternatively, if you git merge feature in branch master, it would look like this:
+
+      A---B---C feature                    A---B---C feature
+     /                   --merge-->       /         \
+D---E---F---G master                 D---E---F---G---M master
+
