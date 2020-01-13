@@ -8,7 +8,7 @@ print str(now)
 
 print
 print "Current date and time using instance attributes:"
-print "Current year: %d" % now.year
+print "Current year: %d" % now.year # print "Current year: {}".format(stringDate.year) 
 print "Current month: %d" % now.month
 print "Current day: %d" % now.day
 print "Current hour: %d" % now.hour

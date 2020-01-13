@@ -14,14 +14,16 @@ def menu():
     return input("A)dd S)ubtract H)elp Q)uit ")
 
 def get_input():
-    global arg1 
-    arg1 = float(input("Enter arg 1: "))
-    global arg2 
-    arg2 = float(input("Enter arg 2: "))
+    try:
+        global arg1 
+        arg1 = float(input("Enter arg 1: "))
+        global arg2 
+        arg2 = float(input("Enter arg 2: "))
+    except ValueError:
+        print("Please, supply numbers.")
 
 def calculation(operand):
     global result
-
     if operand == "Add":
         result = arg1 + arg2
     elif operand == "Substract":
@@ -32,10 +34,8 @@ def calculation(operand):
 # Runs a command loop that allows users to perform simple arithmetic.
 
 def main():
-    done = False
-    while not done:
+    while True:
         choice = menu()
-
         if choice == "A" or choice == "a":
             # Addition
             get_input()
@@ -53,6 +53,6 @@ def main():
             break
         else:
             continue # will ask the choice again, since user's input was not valid
-    done = True
 
-main()
+if __name__ == "__main__":
+    main()

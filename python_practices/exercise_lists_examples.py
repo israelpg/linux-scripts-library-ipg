@@ -11,6 +11,12 @@ for positionList1, elementList1 in enumerate(list1):
     for match in (elementList2 for elementList2 in list2 if elementList2 == elementList1):
         print ('Element: ', match, ' is in both lists')
 
+# same but identifying which elements are different between the two lists:
+
+for positionList1, elementList1 in enumerate(list1):
+    for nonMatch in (elementList2 for elementList2 in list2 if elementList2 != elementList1):
+        print ('Element: ', nonMatch, ' is not in both lists')
+
 # What about getting sames values if only in same position/index:
 # using comprehension list, zip, and dict
 

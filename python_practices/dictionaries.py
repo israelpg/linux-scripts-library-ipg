@@ -38,6 +38,9 @@ print thisdict.keys()
 
 # print values instead of keys:
 
+print thisdict.values()
+
+#or:
 In [148]: for key in thisdict:
      ...:     print(thisdict[key])
      ...:
@@ -46,7 +49,6 @@ Mustang
 1968
 
 # or like this:
-
 In [149]: for value in thisdict.values():
      ...:     print(value)
      ...:

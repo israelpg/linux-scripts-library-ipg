@@ -19,3 +19,7 @@ I owe the grocer $3.40
 ## You can also use the items() for the dict:
 
 grocery_bill = sum(prices[thisFruit] * thisQuant for thisFruit, thisQuant in my_purchase.items())
+
+# or the basketball example:
+
+totalPoints = sum(basketScoring[thisShot] * converted for thisShot, converted in myScore.items())

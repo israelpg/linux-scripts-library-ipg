@@ -16,9 +16,12 @@ Out[36]: int
 In [37]: if isinstance(int1, int): print ('You can proceed, is an integer')
 You can proceed, is an integer
 
+# alternative:
+print('It is an integer' if isinstance(int1, int) else 'Not an integer')
+
 # You can also evaluate a Class in OOP:
 
-# wrinting a class
+# writing a class
 class SampleClass:
    # constructor
    def __init__(self):
