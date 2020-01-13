@@ -30,13 +30,15 @@ python -m pip install -e django/
 
 # now you can create the project:
 
-django-admin.py startproject bitcoin_tracker
-# in theory, if well installed, you can also type: django-admin startproject bitcoin_tracker
+django-admin startproject bitcoin_tracker
 
 # and you can create an app:
 
 $ cd bitcoin_tracker
-$ python manage.py startapp historical_data
+
+django-admin startapp historical_data
+
+# or: $ python manage.py startapp historical_data
 
 [israel@w50019045l-mutworld-be bitcoin_tracker]$ tree
 .
@@ -294,5 +296,27 @@ rm historical_data/migrations/0002_auto_20181112_1950.py
 ## NAMING MIGRATIONS WITH OPTION --name :
 
 manage.py makemigrations historical_data --name switch_to_decimals
+
+# Another way of tracking migrations is by checking the corresponding db table:
+
+1|contenttypes|0001_initial|2020-01-08 16:35:29.544565
+2|auth|0001_initial|2020-01-08 16:35:29.610999
+3|admin|0001_initial|2020-01-08 16:35:29.635743
+4|admin|0002_logentry_remove_auto_add|2020-01-08 16:35:29.664881
+5|admin|0003_logentry_add_action_flag_choices|2020-01-08 16:35:29.695570
+6|contenttypes|0002_remove_content_type_name|2020-01-08 16:35:29.738729
+7|auth|0002_alter_permission_name_max_length|2020-01-08 16:35:29.761244
+8|auth|0003_alter_user_email_max_length|2020-01-08 16:35:29.790278
+9|auth|0004_alter_user_username_opts|2020-01-08 16:35:29.814227
+10|auth|0005_alter_user_last_login_null|2020-01-08 16:35:29.839389
+11|auth|0006_require_contenttypes_0002|2020-01-08 16:35:29.860680
+12|auth|0007_alter_validators_add_error_messages|2020-01-08 16:35:29.896105
+13|auth|0008_alter_user_username_max_length|2020-01-08 16:35:29.922649
+14|auth|0009_alter_user_last_name_max_length|2020-01-08 16:35:29.950198
+15|auth|0010_alter_group_name_max_length|2020-01-08 16:35:29.987681
+16|auth|0011_update_proxy_permissions|2020-01-08 16:35:30.012792
+17|historical_data|0001_initial|2020-01-08 16:35:30.037874
+18|sessions|0001_initial|2020-01-08 16:35:30.058525
+
 
 
