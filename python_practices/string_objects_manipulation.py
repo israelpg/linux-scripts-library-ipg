@@ -6,9 +6,17 @@ print(string1.upper())
 string1 = string1.upper()
 print(string1)
 
-string2 = 'Israel'
+# justify string text:
 
+In [166]: string2.rjust(15)
+Out[166]: '         Israel'
+
+string2 = 'Israel'
 print(string2.rjust(15,'*'))
+'*********Israel'
+
+In [164]: string2.ljust(20, '*')
+Out[164]: 'Israel**************'
 
 # other string built-in functions: ljust, strip ... check book Fundamentals
 

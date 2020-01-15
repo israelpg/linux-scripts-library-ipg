@@ -12,6 +12,11 @@ re.search("^a", "abcdef")  # Match
 # for MULTILINE, better use search:
 re.search('^X', 'A\nB\nX', re.MULTILINE)  # Match in the third line
 
+# A good example of generating a comprehension list filtering words with search:
+bikes = ['thunderbird' , 'Pulsar' , 'R15' , 'Duke']
+[x for x in bikes if re.search("^P", x)]
+['Pulsar']
+
 # method: match (re.match)
 # Testing phone numbers: 
 # Evaluating that string is composed of 3 integers d dash - 4 integers d

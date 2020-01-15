@@ -13,3 +13,6 @@ listMixed
 ['ABC', 'C']
 # you can evaluate opposite as: if type(x) != str
 
+# you can also use the isinstance bif:
+In [73]: [x for x in listMixed if isinstance(x, str)]
+Out[73]: ['ABC', 'C']

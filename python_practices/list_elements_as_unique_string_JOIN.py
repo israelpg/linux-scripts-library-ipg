@@ -17,6 +17,12 @@ In [51]: print('Bikes are : ',(" and ".join(bikes)))
 In [53]: print("Bikes are : %s" %', '.join(bikes))
 Bikes are : thunderbird, Pulsar, R15, Duke
 
+# You can then use comprehension list to apply filters:
+# A good example of generating a comprehension list filtering words with search:
+bikes = ['thunderbird' , 'Pulsar' , 'R15' , 'Duke']
+[x for x in bikes if re.search("^P", x)]
+['Pulsar']
+
 ##
 
 In [55]: pistonsPlayers=['Drummond', 'Kennard', 'Griffin']
@@ -36,6 +42,3 @@ Griffin
 
 In [59]: print ("%s" %', '.join(pistonsPlayers))
 Drummond, Kennard, Griffin
-
-In [60]:
-
