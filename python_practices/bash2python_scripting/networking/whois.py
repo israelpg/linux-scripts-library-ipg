@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 
-# install whois package using pip:
+# Two options:
+# import whois
+# or install whois package using pip:
 # sudo pip install python-whois
 
 In [13]: infoSite = whois.whois("pythonforbeginners.com")

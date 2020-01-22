@@ -1,0 +1,32 @@
+# To handle http requests, use package: PyPI
+
+# First make sure that pip is updated:
+
+python3 -m pip install --upgrade pip
+
+# show details for package requests:
+
+[israel@w50019045l-mutworld-be tests]$ pip show requests
+Name: requests
+Version: 2.20.1
+Summary: Python HTTP for Humans.
+Home-page: http://python-requests.org
+Author: Kenneth Reitz
+Author-email: me@kennethreitz.org
+License: Apache 2.0
+Location: /home/israel/.local/lib/python3.7/site-packages
+Requires: chardet, idna, urllib3, certifi
+Required-by: docker, docker-compose, awsebcli, requests-ntlm, requests-ftp, requests-file, pywinrm, httpie
+
+pip install requests
+
+# now you can create a script which uses requests library:
+
+# In using-requests.py
+
+import requests
+
+url = 'https://www.google.com'
+response = requests.get(url)
+print(f'Response returned: {response.status_code}, {response.reason}')
+print(response.text)

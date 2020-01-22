@@ -1,0 +1,5 @@
+2020-01-22 12:44:23,101 - root - pid: 355355 - ERROR -  Exception occurred: script_logs_in_file_format_process.py raised at line 12 on function: func1
+Traceback (most recent call last):
+  File "script_logs_in_file_format_process.py", line 10, in func1
+    c = a / b
+ZeroDivisionError: division by zero

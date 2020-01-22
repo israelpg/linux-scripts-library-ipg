@@ -13,6 +13,11 @@ pear
 0.227654923992
 0
 
+# random.choice(string1):
+
+In [186]: random.choice(string1)
+Out[186]: 't'
+
 # specific range of integers:
 print random.randint(1,8)
 

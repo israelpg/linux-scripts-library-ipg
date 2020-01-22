@@ -2,6 +2,7 @@
 
 from urllib.request import urlopen
 import re
+import sys
 
 def main():
     try:

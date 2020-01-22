@@ -3,15 +3,17 @@
 import sys
 import subprocess
 import string
-from random import *
+import random
 
 def generate_password():
     characters = string.ascii_letters + string.punctuation  + string.digits
-    password =  "".join(choice(characters) for x in range(randint(8, 16)))
+    password =  "".join(random.choice(characters) for x in range(random.randint(8, 16)))
     print (password)
 
+# you can also select all pwds of n chars, e.g. 10 chars: range(10)
+
 def main():
-    subprocess.call("clear", shell=True)
+    subprocess.call("clear")
     sys.stdout.flush()
     while True:
         try:

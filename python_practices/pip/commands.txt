@@ -1,9 +1,111 @@
+# upgrade to latest available pip:
+pip install --upgrade pip --user
+
+# In case you need to get latest pip version, check:
+# get-pip_latestVersion.txt
+
+pip search django
 pip uninstall psycopg2
+
+# checking outdated packages:
 pip list --outdated
+# and upgrade the needed packages, for instance:
 pip install --upgrade wheel
+# or:
 pip install --upgrade setuptools
-pip install psycopg2
 
 # you can install with an upgrade for package dependencies, auto-resolution
-
 pip install awsebcli --upgrade --user
+
+pip show <package_name>
+
+# you can freeze the packages versioning so that you get a requirements.txt file
+# this file can then be used to install package dependencies:
+
+pip install -r requirements.txt
+
+### RECOMMENDED: WORKING IN A VENV
+
+[israel@w50019045l-mutworld-be tests]$ mkdir pip-test1
+[israel@w50019045l-mutworld-be tests]$ cd pip-test1/
+[israel@w50019045l-mutworld-be pip-test1]$ python3 -m venv env
+[israel@w50019045l-mutworld-be pip-test1]$ ls -lah
+total 0
+drwxrwxr-x. 1 israel israel    6 Jan 21 15:56 .
+drwxrwxr-x. 1 israel israel 3.5K Jan 21 15:56 ..
+drwxrwxr-x. 1 israel israel   56 Jan 21 15:56 env
+[israel@w50019045l-mutworld-be pip-test1]$ source env/bin/activate
+(env) [israel@w50019045l-mutworld-be pip-test1]$ 
+
+# initial list in a venv:
+
+[israel@w50019045l-mutworld-be tests]$ mkdir pip-test1
+[israel@w50019045l-mutworld-be tests]$ cd pip-test1/
+[israel@w50019045l-mutworld-be pip-test1]$ python3 -m venv env
+[israel@w50019045l-mutworld-be pip-test1]$ ls -lah
+total 0
+drwxrwxr-x. 1 israel israel    6 Jan 21 15:56 .
+drwxrwxr-x. 1 israel israel 3.5K Jan 21 15:56 ..
+drwxrwxr-x. 1 israel israel   56 Jan 21 15:56 env
+[israel@w50019045l-mutworld-be pip-test1]$ source env/bin/activate
+
+# you can install a package like django framework:
+
+(env) [israel@w50019045l-mutworld-be pip-test1]$ pip install django
+Collecting django
+  Using cached https://files.pythonhosted.org/packages/55/d1/8ade70e65fa157e1903fe4078305ca53b6819ab212d9fbbe5755afc8ea2e/Django-3.0.2-py3-none-any.whl
+Collecting asgiref~=3.2 (from django)
+  Using cached https://files.pythonhosted.org/packages/a5/cb/5a235b605a9753ebcb2730c75e610fb51c8cab3f01230080a8229fa36adb/asgiref-3.2.3-py2.py3-none-any.whl
+Collecting sqlparse>=0.2.2 (from django)
+  Using cached https://files.pythonhosted.org/packages/ef/53/900f7d2a54557c6a37886585a91336520e5539e3ae2423ff1102daf4f3a7/sqlparse-0.3.0-py2.py3-none-any.whl
+Collecting pytz (from django)
+  Using cached https://files.pythonhosted.org/packages/e7/f9/f0b53f88060247251bf481fa6ea62cd0d25bf1b11a87888e53ce5b7c8ad2/pytz-2019.3-py2.py3-none-any.whl
+Installing collected packages: asgiref, sqlparse, pytz, django
+Successfully installed asgiref-3.2.3 django-3.0.2 pytz-2019.3 sqlparse-0.3.0
+WARNING: You are using pip version 19.1.1, however version 20.0.1 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+(env) [israel@w50019045l-mutworld-be pip-test1]$ pip list
+Package    Version
+---------- -------
+asgiref    3.2.3  
+Django     3.0.2  
+pip        19.1.1 
+pytz       2019.3 
+setuptools 41.2.0 
+sqlparse   0.3.0
+
+# once development done, you can freeze your list of packages:
+
+pip freeze > requirements.txt
+
+# then you can install like this in the server:
+
+pip install -r requirements.txt
+
+pip list
+# returning the same as in your env environment
+
+Package    Version
+---------- -------
+asgiref    3.2.3  
+Django     3.0.2  
+pip        19.1.1 
+pytz       2019.3 
+setuptools 41.2.0 
+sqlparse   0.3.0
+
+# You can also manage the requirements.txt file to indicate to upgrade package if possible:
+# Let’s say that a new version 3.0 of requests is published but introduces an incompatible change 
+# that breaks your application. You can modify the requirements file to prevent 3.0 or higher 
+# from being installed:
+certifi>=2018.11.29
+chardet>=3.0.4
+idna>=2.8
+requests>=2.21.0
+urllib3>=1.24.1
+
+pip install --upgrade -r requirements.txt
+
+# a common practice is to have different requirements txt files for each env:
+requirements_dev.txt
+

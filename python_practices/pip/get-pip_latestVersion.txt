@@ -1,0 +1,5 @@
+https://bootstrap.pypa.io/get-pip.py
+
+# and then:
+
+python3 get-pip.py --user
