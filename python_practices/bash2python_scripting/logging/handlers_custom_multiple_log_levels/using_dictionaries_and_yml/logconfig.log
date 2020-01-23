@@ -1,0 +1,5 @@
+2020-01-23 14:41:13 - Logger: __main__ - pid: 503028 - ERROR - Exception occurred: logs_from_yaml_console_file.py
+Traceback (most recent call last):
+  File "logs_from_yaml_console_file.py", line 10, in func1
+    c = a / b
+ZeroDivisionError: division by zero

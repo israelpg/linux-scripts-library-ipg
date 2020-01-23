@@ -6,7 +6,7 @@ def accessed(username, IP_address):
     logging.info('Logged in from {IP} as {user}'.format(IP=IP_address, user=username))
 
 # Define format of log file and set basicConfig:
-FORMAT = '%(asctime)s - %(name)s - %(levelname)s -  %(message)s'
+FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 logging.basicConfig(filename='access.log', filemode='a+', format=FORMAT, datefmt='%d-%b-%y %H:%M:%S', level=logging.INFO)
 
 # expected output:

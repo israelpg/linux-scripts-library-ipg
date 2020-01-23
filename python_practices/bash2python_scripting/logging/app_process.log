@@ -3,3 +3,8 @@ Traceback (most recent call last):
   File "script_logs_in_file_format_process.py", line 10, in func1
     c = a / b
 ZeroDivisionError: division by zero
+2020-01-23 10:22:10,188 - root - pid: 444785 - ERROR - Exception occurred: script_logs_in_file_format_process_error.py raised at line 13 on function: func1
+Traceback (most recent call last):
+  File "script_logs_in_file_format_process_error.py", line 10, in func1
+    c = a / b
+ZeroDivisionError: division by zero

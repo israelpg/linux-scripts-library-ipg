@@ -1,0 +1,7 @@
+2020-01-23 10:38:13,510 - __main__ - pid: 448795 - ERROR - This is an error in file: : my_logger_classes.py
+NoneType: None
+2020-01-23 10:46:09,278 - Logger: __main__ - pid: 450890 - ERROR - Exception occurred: my_logger_classes.py
+Traceback (most recent call last):
+  File "my_logger_classes.py", line 8, in func1
+    c = a / b
+ZeroDivisionError: division by zero
