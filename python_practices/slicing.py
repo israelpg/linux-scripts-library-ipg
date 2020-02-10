@@ -43,3 +43,7 @@ print(bikes[::2]) #print alternate elements
 print(bikes[::-1]) #prints reversed list
 
 print(bikes[::-2]) #prints reversed list with alternate elements
+
+# last element:
+
+print(bikes[-1])
