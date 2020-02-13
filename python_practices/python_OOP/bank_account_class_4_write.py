@@ -30,10 +30,13 @@ def main():
     # Customer introduces Bank Card, the machine reads the Account Number
     if len(sys.argv) < 2:
         print('Not a valid Bank Card, cannot read your Account Number')
+        print('You should call the script passing one argument as Bank Account, check accounts.txt')
         os._exit(0)
     else:
         global accountNumber
         accountNumber = sys.argv[1]
+        dateTime = os.popen('date').read()
+        print('System Date: ', dateTime)
         print('Hello, and welcome to IP Bank client', accountNumber)
         print('Proceeding with your Account Login validation...')
         validateAccount(accountNumber)
@@ -147,6 +150,8 @@ def manageAccount():
                 global newAmount
                 newAmount = myAccount.record()
                 print('Exiting with new amount: ', newAmount)
+                print('Past Balance', currentBalance)
+                print('Difference: ', newAmount - currentBalance)
                 recordAccount(newAmount)
                 print('Goodbye client')
                 break
@@ -165,47 +170,33 @@ def manageAccount():
     sys.exit()
 
 def recordAccount(newAmount):
-    lines = []
-    # Parse the file into lines
-    with open('accounts.txt', 'r') as f:
-        for line in f:
-            #if line.startswith(accountNumber):
-            if accountNumber in line:
-                print('Past Balance', currentBalance)
-                print('Difference: ', newAmount - currentBalance)
-                line.replace(str(currentBalance), str(newAmount))
-                
-            lines.append(line)
-
-    # Write them back to the file
-    with open('accounts.txt', 'w') as f:
-        #f.writelines(lines)
-        f.write(''.join(lines))
-
-#    try:
-#        if os.path.isfile("accounts.txt"):
-#            with open("accounts.txt", "rw") as accountsFile:
-#                for line in accountsFile:
-#                    if accountNumber in line:
-#                        line.replace(str(currentBalance), str(newAmount))
-#        else:
-#            print('Sorry, it seems we have a system error checking Accounts List, Bank not operative.')
-#            os._exit(1)
-#    except KeyboardInterrupt:
-#            print ("You pressed Ctrl+C")
-#            os._exit(1)
-#    except ValueError:
-#            print ("There was an error")
-#            raise
-#    except IOError as e:
-#            print ("I/O error({0}): {1}".format(e.errno, e.strerror))
-#            raise
-#    except:
-#            print ("Unexpected error:", sys.exc_info()[0])
-#            raise
-    #finally:
-    #        accountsFile.close()
-    
+    try:
+        if os.path.isfile("accounts.txt"):
+            f = open('accounts.txt', 'r')
+            lines = f.readlines()
+            f.close()
+            for i, line in enumerate(lines):
+                if line.split('|')[0].strip(' \n') == accountNumber:
+                    lines[i] = str(accountNumber) + '|' + str(recordedPIN) + '|' + str(newAmount) + ' \n'
+            f = open('accounts.txt', 'w')
+            f.write("".join(lines))
+        else:
+            print('Sorry, it seems we have a system error checking Accounts List, Bank not operative.')
+            os._exit(1)
+    except KeyboardInterrupt:
+        print ("You pressed Ctrl+C")
+        os._exit(1)
+    except ValueError:
+        print ("There was an error")
+        raise
+    except IOError as e:
+        print ("I/O error({0}): {1}".format(e.errno, e.strerror))
+        raise
+    except:
+        print ("Unexpected error:", sys.exc_info()[0])
+        raise
+    finally:
+        f.close()            
 
 if __name__ == "__main__":
     main()
