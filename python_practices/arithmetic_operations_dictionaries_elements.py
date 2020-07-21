@@ -1,4 +1,4 @@
-In [73]: basketScoring = {'fg' : 2, '3p' : 3, 'ft' : 1}
+:!In [73]: basketScoring = {'fg' : 2, '3p' : 3, 'ft' : 1}
     ...: myScore = { 'fg': 6, '3p': 5, 'ft': 10}
     ...: lastMatch = sum(basketScoring[shot] * myScore[shot]
     ...:                 for shot in myScore)
@@ -22,4 +22,4 @@ grocery_bill = sum(prices[thisFruit] * thisQuant for thisFruit, thisQuant in my_
 
 # or the basketball example:
 
-totalPoints = sum(basketScoring[thisShot] * converted for thisShot, converted in myScore.items())
+totalPoints = sum(basketScoring[thisShot] * numberScored for thisShot, numberScored in myScore.items())

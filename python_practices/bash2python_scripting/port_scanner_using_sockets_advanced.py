@@ -18,12 +18,23 @@ def main():
                 continue
             remoteServerIP = socket.gethostbyname(remoteServer)
             break
+
+        except KeyboardInterrupt:
+            print "You pressed Ctrl+C"
+            sys.exit()
+
+        except socket.gaierror:
+            print 'Hostname could not be resolved. Exiting'
+            sys.exit()
+
+        except socket.error:
+            print "Couldn't connect to server"
+            sys.exit()
+        
         except ValueError as e:
             print(e)
             sys.exit()
-        except KeyboardInterrupt:
-            print ("You pressed Ctrl+C")
-            sys.exit()
+
         finally:
             # Print a nice banner with information on which host we are about to scan
             print ("-" * 90)

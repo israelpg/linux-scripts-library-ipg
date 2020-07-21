@@ -16,6 +16,9 @@ Out[127]: '10/Oct/2000:13:55:36 -0700'
 # or getting the url:
 line[line.index("GET")+4:line.index("HTTP")]
 
+# or the username:
+line[line.index("-")+2:line.index("[")-1]
+
 # a nice script can be found here:
 # /home/israel/git_repos/linux-scripts-library-ipg/python_practices/bash2python_scripting/logging_operations
 # script name: apache_logfile_counter_access.py

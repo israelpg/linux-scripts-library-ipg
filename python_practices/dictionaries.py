@@ -61,6 +61,11 @@ Mustang
 In [152]: if "year" in thisdict: print("Yes, year is a key in thisdict")
 Yes, year is a key in thisdict
 
+# or:
+
+In [60]: if "year" in thisdict.keys(): print("Yes, year is a key in thisdict")
+Yes, year is a key in thisdict
+
 # check if a value exists:
 
 In [166]: if "Ford" in thisdict.values():
@@ -68,7 +73,12 @@ In [166]: if "Ford" in thisdict.values():
      ...:
 Ford is a valid model
 
-# adding more values to the dict:
+# evaluate the value of a particular key:
+
+In [58]: print('1968 is the good model') if thisdict['year'] == 1968 else ('Not good model')
+1968 is the good model
+
+# adding more key and values to the dict:
 
 In [168]: thisdict["color"] = "blue"
 

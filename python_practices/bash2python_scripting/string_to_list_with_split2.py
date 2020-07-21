@@ -5,7 +5,7 @@ import sys
 import subprocess
 
 def main():
-     subprocess.call('clear')
+     subprocess.call('clear', shell=True)
      sys.stdout.flush()
      try:
           # opening a file to read its lines (each line is a sequence of numbers)
@@ -25,8 +25,8 @@ def main():
      except KeyboardInterrupt:
           print ("You pressed Ctrl+C")
           sys.exit()
-     except ValueError:
-          print ("There was an error")
+     except ValueError as e:
+          print (e)
           raise
      except IOError as e:
           print ("I/O error({0}): {1}".format(e.errno, e.strerror))

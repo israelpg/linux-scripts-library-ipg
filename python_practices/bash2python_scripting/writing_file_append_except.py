@@ -3,6 +3,7 @@ import sys
 import subprocess
 
 def main():
+    subprocess.call("clear", shell=True)
     sys.stdout.flush()
     subprocess.call("ls -lah", shell=True)
     try:

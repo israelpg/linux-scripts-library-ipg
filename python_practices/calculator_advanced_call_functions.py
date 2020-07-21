@@ -20,7 +20,7 @@ def get_input():
         global arg2 
         arg2 = float(input("Enter arg 2: "))
     except ValueError:
-        print("Please, supply numbers.")
+        print('Please supply numbers')
 
 def calculation(operand):
     global result
