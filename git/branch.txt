@@ -1,3 +1,7 @@
+# Clone only a specific branch:
+
+git clone -b mybranch --single-branch git://sub.domain.com/repo.git
+
 # Scenario based on source: https://realpython.com/deploying-a-django-app-to-aws-elastic-beanstalk/
 
 $ git clone https://github.com/realpython/image-of-the-day.git
